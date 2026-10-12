@@ -174,7 +174,7 @@
       "number": 1,
       "page": 251,
       "title": "验证两种亥姆霍兹点源基本解",
-      "question": "证明教材式 (6.4.8) 中的两个 $G(r)$ 都满足相应非齐次方程，即 $G_\\pm(r)=-e^{\\pm i\\omega r}/(4\\pi r)$ 满足 $(\\Delta+\\omega^2)G_\\pm=\\delta(\\mathbf r)$。",
+      "question": "证明教材式 (6.4.15) 给出的两个函数 $G_\\pm(r)=-e^{\\pm i\\omega r}/(4\\pi r)$ 都是式 (6.4.8) 的解，即满足 $(\\Delta+\\omega^2)G_\\pm=\\delta(\\mathbf r)$。",
       "idea": "分开验证源点外的齐次方程与源点上的 δ 归一化。",
       "hint": "球对称函数满足 $\\Delta g=(rg)\\prime\\prime/r$（r>0）；δ 系数由小球通量定。",
       "solution": "1. 对 r>0，令 $v_\\pm=rG_\\pm=-e^{\\pm i\\omega r}/(4\\pi)$。直接求导得 $v_\\pm\\prime\\prime=-\\omega^2v_\\pm$，因此 $\\Delta G_\\pm+\\omega^2G_\\pm=0$。\n\n2. r→0 时展开：$G_\\pm=-1/(4\\pi r)\\mp i\\omega/(4\\pi)+O(r)$，两式具有相同的奇异主部。故 $\\partial_rG_\\pm=1/(4\\pi r^2)+O(1)$，在半径 ε 的小球上\n$$\\oint_{r=\\varepsilon}\\partial_rG_\\pm\\,dS=1+O(\\varepsilon^2)\\to1.$$\n同时 $\\omega^2\\int_{r<\\varepsilon}G_\\pm\\,dV=O(\\varepsilon^2)\\to0$。\n\n3. 因而该算符在源点产生单位点源，在其余位置为零。更严格地对光滑紧支试验函数 ψ，在挖去小球的区域分部积分，内边界极限仅留下 ψ(0)，于是 $\\langle(\\Delta+\\omega^2)G_\\pm,\\psi\\rangle=\\psi(0)$。二者均满足所求分布方程。\n\n4. 两解之差 $G_+-G_-=-i\\sin(\\omega r)/(2\\pi r)$ 在原点有有限极限，满足齐次方程。方程本身不能选择正负号，需要辐射条件。时间因子 $e^{-i\\omega t}$ 时 + 为出射；教材若采用 $e^{+i\\omega t}$，出入射称呼反向。",

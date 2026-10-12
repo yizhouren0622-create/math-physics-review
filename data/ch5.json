@@ -173,7 +173,7 @@
       "question": "在场强为 $E_0$ 的匀强电场中放入半径 a 的接地导体球，求球外电势分布及电场强度。",
       "idea": "取 z 轴沿外场方向，远场电势 −E₀r cosθ，只需增加一个 l=1 衰减项满足接地条件。",
       "hint": "设 Φ=(−E₀r+B/r²)cosθ，令 Φ(a)=0。",
-      "solution": "取外电场为 $E_0\\mathbf e_z$，零势选择使远场 $\\Phi\\sim-E_0r\\cos\\theta$。轴对称 Laplace 通解中与远场相容的 l=1 部分为 $(-E_0r+B/r^2)\\cos\\theta$。球面接地给 $-E_0a+B/a^2=0$，故 $B=E_0a^3$。由外域唯一性，\n$$\\Phi(r,\\theta)=-E_0\\left(r-\\frac{a^3}{r^2}\\right)\\cos\\theta,\\quad r\\ge a.$$\n电场 $\\mathbf E=-\\nabla\\Phi$，逐项求导：\n$$E_r=E_0\\left(1+\\frac{2a^3}{r^3}\\right)\\cos\\theta,\\quad E_\\theta=-E_0\\left(1-\\frac{a^3}{r^3}\\right)\\sin\\theta,\\quad E_\\phi=0.$$\n在 r=a，切向场为零，法向场为 $3E_0\\cos\\theta$；在无穷远恢复匀强场的球坐标分量。",
+      "solution": "取外电场为 $E_0\\mathbf e_z$，明确采用远场条件 $\\Phi+E_0r\\cos\\theta\\to0$，即相对给定匀强场的附加电势趋于零（因此 $\\Phi\\sim-E_0r\\cos\\theta$）。轴对称 Laplace 通解中与远场相容的 l=1 部分为 $(-E_0r+B/r^2)\\cos\\theta$。球面接地给 $-E_0a+B/a^2=0$，故 $B=E_0a^3$。由外域唯一性，\n$$\\Phi(r,\\theta)=-E_0\\left(r-\\frac{a^3}{r^2}\\right)\\cos\\theta,\\quad r\\ge a.$$\n电场 $\\mathbf E=-\\nabla\\Phi$，逐项求导：\n$$E_r=E_0\\left(1+\\frac{2a^3}{r^3}\\right)\\cos\\theta,\\quad E_\\theta=-E_0\\left(1-\\frac{a^3}{r^3}\\right)\\sin\\theta,\\quad E_\\phi=0.$$\n在 r=a，切向场为零，法向场为 $3E_0\\cos\\theta$；在无穷远恢复匀强场的球坐标分量。",
       "answer": "$\\Phi=-E_0(r-a^3/r^2)\\cos\\theta$，$E_r=E_0(1+2a^3/r^3)\\cos\\theta$，$E_\\theta=-E_0(1-a^3/r^3)\\sin\\theta$。",
       "pattern": "远场决定增长模态，导体表面条件决定衰减模态，最后取负梯度。",
       "pitfall": "Eθ=−(1/r)∂θΦ，不能漏 1/r；远场电势并不趋零。",

@@ -132,6 +132,15 @@ for c in chapters:
     for e in c['exercises']:
         if e.get('errata'):
             h+=f'<article class="card correction"><a href="chapter-{c["chapter"]}.html#ex-{e["id"]}">习题 {e["section"]} · {e["number"]} →</a>{md(e["errata"])}</article>'
+revisions=json.loads((DATA/'revisions.json').read_text()) if (DATA/'revisions.json').exists() else []
+if revisions:
+    reader.register('本次内容修订','Content revisions')
+    reader.register('独立复算与教材核对后的修订记录；未读取的教师答案仍不标为已核验。','Revisions after independent recalculation and textbook checks. Unread teacher references remain unverified.')
+    h+='<section class="card prose"><h2>本次内容修订</h2><p>独立复算与教材核对后的修订记录；未读取的教师答案仍不标为已核验。</p>'
+    for change in revisions:
+        reader.register(change['zh'],change['en'])
+        h+=f'<article class="correction"><p><a href="{esc(change["link"])}">{esc(change["label"])}</a> · {esc(change["date"])}</p>'+md(change['zh'])+'</article>'
+    h+='</section>'
 page('sources.html','资料与勘误',h,'sources.html')
 
 index=[]

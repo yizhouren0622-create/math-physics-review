@@ -79,3 +79,17 @@ for n in range(1,7):
   assert len(g['zh']['steps'])==len(g['en']['steps'])
 assert not json.loads((ROOT/'data/untranslated.json').read_text()),'Untranslated visible prose'
 print('Bilingual coverage and 126 guided learning paths passed.')
+
+# Guide formulas contain no alignment environments: a doubled command escape is a display error.
+import re
+for p in (ROOT/'data/learn').glob('*.json'):
+ def check_guide_strings(x):
+  if isinstance(x,dict):
+   for v in x.values():check_guide_strings(v)
+  elif isinstance(x,list):
+   for v in x:check_guide_strings(v)
+  elif isinstance(x,str):
+   assert not re.search(r'\\\\(?=[A-Za-z])',x),(p.name,'Doubled TeX command escape')
+   assert '(1/2'+chr(92)+'pi)' not in x,(p.name,'Ambiguous inverse-transform coefficient')
+ check_guide_strings(json.loads(p.read_text()))
+print('Guided self-check formula escapes and normalization notation passed.')

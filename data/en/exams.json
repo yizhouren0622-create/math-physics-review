@@ -80,7 +80,7 @@
         "chapter": 2,
         "topic": "Laplace transform of an ODE",
         "question": "Solve by Laplace transform: $y\\prime\\prime+2y\\prime+y=1$, $y(0)=y\\prime(0)=0$, $t\\ge0$.",
-        "hint": "The derivative transforms to $Y(s)=1/[s(s+1)^2]$. Then use partial fractions.",
+        "hint": "Transform the derivatives and insert the zero initial data. Solve for $Y(s)=1/[s(s+1)^2]$, then use partial fractions.",
         "solution": "The zero initial data give $\\mathcal L[y\\prime\\prime]=s^2Y$ and $\\mathcal L[y\\prime]=sY$, hence $(s+1)^2Y=1/s$. Decompose\n\n$$Y=\\frac1s-\\frac1{s+1}-\\frac1{(s+1)^2}.$$\n\nThe inverse transform gives $y=1-e^{-t}-te^{-t}=1-(1+t)e^{-t}$. Differentiation gives $y\\prime=te^{-t}$, so both initial conditions hold. Substitution into the differential equation gives the required right-hand side, 1.",
         "rubric": "Transformed equation: 4 points; partial fractions: 3 points; inverse transform: 3 points; check: 2 points."
       }
@@ -106,7 +106,7 @@
         "points": 12,
         "chapter": 3,
         "topic": "Forced mode",
-        "question": "A fixed-end string satisfies $u_{tt}=c^2u_{xx}+F\\sin(2\\pi x/L)\\cos\\Omega t$ with zero initial displacement and velocity. Assume $\\Omega\\ne\\omega_2=2\\pi c/L$ and solve.",
+        "question": "A fixed-end string satisfies $u_{tt}=c^2u_{xx}+F\\sin(2\\pi x/L)\\cos\\Omega t$ with zero initial displacement and velocity. Assume $\\Omega\\ge0$ and $\\Omega\\ne\\omega_2=2\\pi c/L$, and solve.",
         "hint": "Set $u=q(t)\\sin(2\\pi x/L)$. Include a homogeneous term to cancel the particular solution at time zero.",
         "solution": "Substitution gives $q\\prime\\prime+\\omega_2^2q=F\\cos\\Omega t$. A particular solution is $F\\cos\\Omega t/(\\omega_2^2-\\Omega^2)$. Add the homogeneous solution $B\\cos\\omega_2t+D\\sin\\omega_2t$; zero initial velocity gives $D=0$ and zero initial displacement gives $B=-F/(\\omega_2^2-\\Omega^2)$. Thus\n\n$$u=\\frac{F(\\cos\\Omega t-\\cos\\omega_2t)}{\\omega_2^2-\\Omega^2}\\sin\\frac{2\\pi x}{L}.$$\n\nAt resonance, do not substitute $0/0$ directly into the quotient. Taking the limit gives $q=Ft\\sin(\\omega_2t)/(2\\omega_2)$.",
         "rubric": "Mode reduction: 3 points; particular and homogeneous solutions: 3 points; initial data: 3 points; result and resonance qualification: 3 points."
@@ -166,7 +166,7 @@
         "points": 12,
         "chapter": 6,
         "topic": "Dirichlet method of images",
-        "question": "In the upper half-space $z>0$, use convention $-\\nabla^2G(\\mathbf r,\\mathbf r_0)=\\delta(\\mathbf r-\\mathbf r_0)$ with boundary $G=0$ at $z=0$. Write the two-term Green function and explain each term.",
+        "question": "In the upper half-space $z>0$, use convention $-\\nabla^2G(\\mathbf r,\\mathbf r_0)=\\delta(\\mathbf r-\\mathbf r_0)$, with $G=0$ on $z=0$ and $G\\to0$ as $|\\mathbf r|\\to\\infty$. Write the Green function and explain the role of each term.",
         "hint": "Place the real source inside and its negative image outside.",
         "solution": "Let $\\mathbf r_0=(x_0,y_0,z_0)$ and $z_0>0$, with reflected point $\\mathbf r_0^*=(x_0,y_0,-z_0)$. The free-space fundamental solution is $1/(4\\pi|\\mathbf r-\\mathbf r_0|)$, so\n\n$$G=\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0^*|}.$$\n\nInside the domain, the second term has no singularity and is harmonic; the first supplies the unit source. On $z=0$ the two distances agree, so the terms cancel. Both terms decay at infinity. If the convention becomes $+\\nabla^2G=\\delta$, reverse the overall sign.",
         "rubric": "Source and image positions: 3 points; Green function: 4 points; interior and boundary checks: 3 points; sign convention: 2 points."
@@ -203,7 +203,7 @@
         "points": 10,
         "chapter": 2,
         "topic": "Translation rule",
-        "question": "Given $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$, find the transform of $e^{-a|x-b|}$ using kernel $e^{-ikx}$.",
+        "question": "Let $a>0$ and $b\\in\\mathbb R$. Given $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$, find the transform of $e^{-a|x-b|}$ using kernel $e^{-ikx}$.",
         "hint": "Substitute $t=x-b$ and track the resulting phase factor.",
         "solution": "We have $x=t+b$, so $e^{-ikx}=e^{-ikb}e^{-ikt}$. Thus $F(k)=e^{-ikb}2a/(a^2+k^2)$. Translation preserves the transform’s magnitude and changes its phase. The phase sign follows from the chosen kernel.",
         "rubric": "Substitution: 3 points; phase sign: 3 points; result and interpretation: 4 points."
@@ -233,9 +233,9 @@
         "points": 10,
         "chapter": 3,
         "topic": "Neumann boundary conditions",
-        "question": "A rod $0<x<L$ obeys $u_t=\\kappa u_{xx}$, is insulated at both ends, and starts from $u(x,0)=T_0+A\\cos(2\\pi x/L)$. Find its temperature and long-time limit.",
+        "question": "A rod $0<x<L$ obeys $u_t=\\kappa u_{xx}$ with $\\kappa>0$, is insulated at both ends, and starts from $u(x,0)=T_0+A\\cos(2\\pi x/L)$. Find its temperature and long-time limit.",
         "hint": "Use cosine modes. The constant mode has eigenvalue zero.",
-        "solution": "The spatial eigenvalues for $\\cos(2\\pi x/L)$ are $(2\\pi/L)^2$. The constant mode does not decay. Thus $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$. At both ends $u_x=0$. As $t\\to\\infty$, we have $u\\to T_0$: this is the conserved mean temperature.",
+        "solution": "The spatial eigenvalue for $\\cos(2\\pi x/L)$ is $(2\\pi/L)^2$. The constant mode does not decay. Thus $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$. At both ends $u_x=0$. As $t\\to\\infty$, we have $u\\to T_0$: this is the conserved mean temperature.",
         "rubric": "Basis and zero mode: 3 points; solution: 4 points; limit and meaning: 3 points."
       },
       {
@@ -253,7 +253,7 @@
         "points": 10,
         "chapter": 5,
         "topic": "Spherical functions",
-        "question": "Expand $x^2$ on $[-1,1]$ and evaluate $\\int_{-1}^1x^2P_2(x)dx$.",
+        "question": "Expand $x^2$ on $[-1,1]$ in Legendre polynomials and evaluate $\\int_{-1}^1x^2P_2(x)dx$.",
         "hint": "Use $P_2=(3x^2-1)/2$ and the norm $2/(2l+1)$.",
         "solution": "The definitions give $x^2=P_0/3+2P_2/3$. Multiply by $P_2$ and integrate. Orthogonality eliminates the $P_0$ term, leaving $(2/3)\\cdot[2/(2\\cdot2+1)]=4/15$. Direct integration of $(3x^4-x^2)/2$ checks the result.",
         "rubric": "Expansion: 4 points; orthogonality and norm: 3 points; result: 3 points."
@@ -263,7 +263,7 @@
         "points": 10,
         "chapter": 5,
         "topic": "Bessel eigenfunctions",
-        "question": "A circular membrane of radius $a$ obeys $u_{tt}=c^2\\nabla^2u$, has a fixed edge, and is axisymmetric and bounded at the center. Find its radial modes and frequencies. For initial shape $A J_0(j_{0,1}r/a)$ and zero initial velocity, find its motion.",
+        "question": "A circular membrane of radius $a$ obeys $u_{tt}=c^2\\nabla^2u$, has a fixed edge, and is axisymmetric and bounded at the center. Find its radial eigenfunctions and natural angular frequencies. For initial shape $A J_0(j_{0,1}r/a)$ and zero initial velocity, find its motion.",
         "hint": "Discard $Y_0$ at the center. The edge requires $J_0(ka)=0$.",
         "solution": "The axisymmetric radial equation is $R\\prime\\prime+R\\prime/r+k^2R=0$. Its bounded solution is $J_0(kr)$. Let $j_{0,n}$ be the $n$-th positive zero of $J_0$. Then $R_n=J_0(j_{0,n}r/a)$ and $\\omega_n=cj_{0,n}/a$. The given shape excites only the first radial mode, giving $u=A J_0(j_{0,1}r/a)\\cos(cj_{0,1}t/a)$.",
         "rubric": "Radial equation: 3 points; zeros and frequencies: 4 points; single-mode solution: 3 points."

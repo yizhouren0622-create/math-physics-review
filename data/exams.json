@@ -80,7 +80,7 @@
         "chapter": 2,
         "topic": "Laplace 解 ODE",
         "question": "用拉普拉斯变换解 $y\\prime\\prime+2y\\prime+y=1$，$y(0)=y\\prime(0)=0$，$t\\ge0$。",
-        "hint": "先变换导数，得到 $Y(s)=1/[s(s+1)^2]$，再拆分。",
+        "hint": "先变换导数并代入零初值，解得 $Y(s)=1/[s(s+1)^2]$，再拆分。",
         "solution": "由初值为零，$\\mathcal L[y\\prime\\prime]=s^2Y$、$\\mathcal L[y\\prime]=sY$，故 $(s+1)^2Y=1/s$。拆分\n\n$$Y=\\frac1s-\\frac1{s+1}-\\frac1{(s+1)^2}.$$\n\n逆变换得 $y=1-e^{-t}-te^{-t}=1-(1+t)e^{-t}$。求导 $y\\prime=te^{-t}$，所以两初值满足，代回微分方程右侧为1。",
         "rubric": "带初值变换4分；拆分3分；逆变换3分；核验2分。"
       }
@@ -106,7 +106,7 @@
         "points": 12,
         "chapter": 3,
         "topic": "受迫模态",
-        "question": "在同一固定弦上，$u_{tt}=c^2u_{xx}+F\\sin(2\\pi x/L)\\cos\\Omega t$，初位移和初速度均为零。设 $\\Omega\\ne\\omega_2=2\\pi c/L$，求解。",
+        "question": "在同一固定弦上，$u_{tt}=c^2u_{xx}+F\\sin(2\\pi x/L)\\cos\\Omega t$，初位移和初速度均为零。设 $\\Omega\\ge0$ 且 $\\Omega\\ne\\omega_2=2\\pi c/L$，求解。",
         "hint": "令 $u=q(t)\\sin(2\\pi x/L)$，齐次时间项负责抵消初位移。",
         "solution": "代入得 $q\\prime\\prime+\\omega_2^2q=F\\cos\\Omega t$。特解 $F\\cos\\Omega t/(\\omega_2^2-\\Omega^2)$。加齐次解 $B\\cos\\omega_2t+D\\sin\\omega_2t$，零初速度给 $D=0$，零初位移给 $B=-F/(\\omega_2^2-\\Omega^2)$。所以\n\n$$u=\\frac{F(\\cos\\Omega t-\\cos\\omega_2t)}{\\omega_2^2-\\Omega^2}\\sin\\frac{2\\pi x}{L}.$$\n\n共振不能直接代成 $0/0$；取极限会得 $q=Ft\\sin(\\omega_2t)/(2\\omega_2)$。",
         "rubric": "模态方程3分；特解与齐次解3分；初值3分；最终式与共振说明3分。"
@@ -166,7 +166,7 @@
         "points": 12,
         "chapter": 6,
         "topic": "Dirichlet 镜像法",
-        "question": "上半空间 $z>0$ 中，取约定 $-\\nabla^2G(\\mathbf r,\\mathbf r_0)=\\delta(\\mathbf r-\\mathbf r_0)$，边界 $G=0$ 于 $z=0$。写出格林函数，并说明两项分别起什么作用。",
+        "question": "上半空间 $z>0$ 中，取约定 $-\\nabla^2G(\\mathbf r,\\mathbf r_0)=\\delta(\\mathbf r-\\mathbf r_0)$，边界 $G=0$ 于 $z=0$，并要求 $|\\mathbf r|\\to\\infty$ 时 $G\\to0$。写出格林函数，并说明两项分别起什么作用。",
         "hint": "真实源在域内，负镜像源在域外。",
         "solution": "令 $\\mathbf r_0=(x_0,y_0,z_0)$，$z_0>0$，镜像点 $\\mathbf r_0^*=(x_0,y_0,-z_0)$。自由空间基本解为 $1/(4\\pi|\\mathbf r-\\mathbf r_0|)$，故\n\n$$G=\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0^*|}.$$\n\n在域内，第二项没有奇点且调和，第一项提供单位源；在 $z=0$ 两距离相等，恰好相消。两项在无穷远趋零。若方程约定改为 $+\\nabla^2G=\\delta$，整体应取负号。",
         "rubric": "源与镜像点3分；格林函数4分；域内和边界检查3分；符号约定2分。"
@@ -203,7 +203,7 @@
         "points": 10,
         "chapter": 2,
         "topic": "平移性质",
-        "question": "已知 $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$，求 $e^{-a|x-b|}$ 的变换，采用核 $e^{-ikx}$。",
+        "question": "设 $a>0$、$b\\in\\mathbb R$。已知 $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$，求 $e^{-a|x-b|}$ 的变换，采用核 $e^{-ikx}$。",
         "hint": "换元 $t=x-b$，指数多出相位。",
         "solution": "$x=t+b$，所以 $e^{-ikx}=e^{-ikb}e^{-ikt}$。因此 $F(k)=e^{-ikb}2a/(a^2+k^2)$。平移不改变变换模长，只改变相位；相位负号由核的约定决定。",
         "rubric": "换元3分；相位符号3分；完整式与解释4分。"
@@ -233,7 +233,7 @@
         "points": 10,
         "chapter": 3,
         "topic": "Neumann 边界",
-        "question": "杆 $0<x<L$ 满足 $u_t=\\kappa u_{xx}$，两端绝热，初温 $u(x,0)=T_0+A\\cos(2\\pi x/L)$。求解并给出长时间极限。",
+        "question": "杆 $0<x<L$ 满足 $u_t=\\kappa u_{xx}$，其中 $\\kappa>0$。两端绝热，初温 $u(x,0)=T_0+A\\cos(2\\pi x/L)$。求解并给出长时间极限。",
         "hint": "绝热边界用余弦；常数模态本征值为零。",
         "solution": "$\\cos(2\\pi x/L)$ 的空间本征值为 $(2\\pi/L)^2$，常数模态不衰减。因此 $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$。两端 $u_x=0$。当 $t\\to\\infty$，$u\\to T_0$；这就是守恒的平均温度。",
         "rubric": "基底与零模态3分；解4分；长时极限与物理意义3分。"

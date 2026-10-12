@@ -426,7 +426,7 @@
       "steps": [
         "选 $f(x)=1$ 在 $[-1,1]$，其余零；它的平方积分就是 2。",
         "写它的变换 $F(k)=2\\sin k/k$。",
-        "代入 $\\int|f|^2=(1/2\\pi)\\int|F|^2$，把 F 的系数 2 平方，再解目标积分。"
+        "代入 $\\int|f|^2=\\frac{1}{2\\pi}\\int|F|^2$，把 F 的系数 2 平方，再解目标积分。"
       ],
       "check": {
         "question": "F 前面的系数 2，放进平方积分后变成多少？",
@@ -439,7 +439,7 @@
       "steps": [
         "Choose f=1 on $[-1,1]$ and zero elsewhere. Its squared integral is two.",
         "Its transform is $F(k)=2\\sin k/k$.",
-        "Insert this into $\\int|f|^2=(1/2\\pi)\\int|F|^2$. Square the prefactor two, then solve for the target integral."
+        "Insert this into $\\int|f|^2=\\frac{1}{2\\pi}\\int|F|^2$. Square the prefactor two, then solve for the target integral."
       ],
       "check": {
         "question": "What happens to the prefactor two inside the squared integral?",
@@ -536,12 +536,12 @@
       "goal": "从定义证明：时域相乘，对应频域卷积并乘系数。",
       "recognize": "要把乘积拆开，就把其中一个函数改写成逆变换。逆变换的 $1/(2\\pi)$ 会一直留下。",
       "steps": [
-        "把 f 写成 $(1/2\\pi)\\int F(q)e^{iqx}dq$，代入 fg 的正变换。",
+        "把 f 写成 $\\frac{1}{2\\pi}\\int F(q)e^{iqx}dq$，代入 fg 的正变换。",
         "在有充分衰减、可换序的条件下，把 q 积分移到外面。",
         "里面的 x 积分是 $G(k-q)$，外面积分就是卷积，再保留 $1/(2\\pi)$。"
       ],
       "check": {
-        "question": "本章时域乘积的变换是 F*G 还是 $(F*G)/(2\\\\pi)$？",
+        "question": "本章时域乘积的变换是 F*G 还是 $(F*G)/(2\\pi)$？",
         "answer": "是 $(F*G)/(2\\pi)$。"
       }
     },
@@ -549,12 +549,12 @@
       "goal": "Prove from the definition that multiplication in time becomes a scaled convolution in frequency.",
       "recognize": "Separate a product by replacing one factor with its inverse transform. The inverse factor $1/(2\\pi)$ remains throughout.",
       "steps": [
-        "Write $f=(1/2\\pi)\\int F(q)e^{iqx}dq$ and substitute it into the forward transform of fg.",
+        "Write $f=\\frac{1}{2\\pi}\\int F(q)e^{iqx}dq$ and substitute it into the forward transform of fg.",
         "With sufficient decay to justify interchange, move the q integral outside.",
         "Recognize the inner x integral as $G(k-q)$. The outer integral is the convolution, with the retained $1/(2\\pi)$."
       ],
       "check": {
-        "question": "With this convention, is the product transform F*G or $(F*G)/(2\\\\pi)$?",
+        "question": "With this convention, is the product transform F*G or $(F*G)/(2\\pi)$?",
         "answer": "It is $(F*G)/(2\\pi)$."
       }
     }
@@ -765,7 +765,7 @@
         "分母拆成 $(p-1)(p+3)$，做部分分式，再逐项逆变换并检查两个初值。"
       ],
       "check": {
-        "question": "这里 $\\\\mathcal L[y\\\\prime\\\\prime]$ 为什么有 -1？",
+        "question": "这里 $\\mathcal L[y\\prime\\prime]$ 为什么有 -1？",
         "answer": "因为要减去初速度 $y\\prime(0)=1$。"
       }
     },
@@ -778,7 +778,7 @@
         "Factor the denominator as $(p-1)(p+3)$, take partial fractions, invert term by term, and check both initial values."
       ],
       "check": {
-        "question": "Why is there a minus one in $\\\\mathcal L[y\\\\prime\\\\prime]$ here?",
+        "question": "Why is there a minus one in $\\mathcal L[y\\prime\\prime]$ here?",
         "answer": "It subtracts the initial velocity $y\\prime(0)=1$."
       }
     }
@@ -821,7 +821,7 @@
         "若为零直接拆 $a/p+b/p^2$；若为负，设 $\\mu=\\sqrt{-\\lambda}$，匹配双曲函数。"
       ],
       "check": {
-        "question": "当 $\\\\lambda=0$，运动是什么？",
+        "question": "当 $\\lambda=0$，运动是什么？",
         "answer": "$y=a+bt$。"
       }
     },
@@ -834,7 +834,7 @@
         "For zero, split $a/p+b/p^2$. For a negative parameter, set $\\mu=\\sqrt{-\\lambda}$ and match hyperbolic functions."
       ],
       "check": {
-        "question": "What is the motion when $\\\\lambda=0$?",
+        "question": "What is the motion when $\\lambda=0$?",
         "answer": "$y=a+bt$."
       }
     }
@@ -877,7 +877,7 @@
         "消元得到 X、Y，各自做部分分式逆变换；最后代入两个原方程，不只检查一个。"
       ],
       "check": {
-        "question": "零初值下，$-2y\\\\prime$ 的像是什么？",
+        "question": "零初值下，$-2y\\prime$ 的像是什么？",
         "answer": "$-2pY$。"
       }
     },
@@ -890,7 +890,7 @@
         "Eliminate to obtain X and Y. Invert their partial fractions and substitute into both original equations, not only one."
       ],
       "check": {
-        "question": "With zero initial values, what is the transform of $-2y\\\\prime$?",
+        "question": "With zero initial values, what is the transform of $-2y\\prime$?",
         "answer": "$-2pY$."
       }
     }

@@ -284,7 +284,7 @@
       "goal": "把正方形膜的二维振动拆成许多熟悉的单模态振动。",
       "recognize": "四边固定，x 和 y 两个方向都用正弦；每个模式要用两个编号 m、n。",
       "steps": [
-        "写 uₜₜ=c²(uₓₓ+uᵧᵧ)，四边 u=0；c²=张力/面密度。",
+        "写 $u_{tt}=c^2(u_{xx}+u_{yy})$，四边 $u=0$。设 $\\tau$ 是膜的单位长度张力（N/m），$\\sigma$ 是面密度（kg/m²），则 $c^2=\\tau/\\sigma$。",
         "空间模式取 sin(mπx/a)sin(nπy/a)，把两个方向的平方波数相加。",
         "得到频率 Ωₘₙ=(cπ/a)√(m²+n²)，不是按 m+n 相加。",
         "把初位移做双重投影求 Aₘₙ；把初速度做双重投影后除以 Ωₘₙ 求 Bₘₙ。",
@@ -299,7 +299,7 @@
       "goal": "Split the square membrane’s two-dimensional motion into individual modes.",
       "recognize": "All four edges are fixed, so use a sine in each direction. Every mode needs two indices, m and n.",
       "steps": [
-        "Write uₜₜ=c²(uₓₓ+uᵧᵧ), with u=0 on all edges and c²=tension/areal density.",
+        "Write $u_{tt}=c^2(u_{xx}+u_{yy})$ with $u=0$ on all four edges. Let $\\tau$ be membrane tension per unit length (N/m) and $\\sigma$ be areal density (kg/m²), so $c^2=\\tau/\\sigma$.",
         "Choose sin(mπx/a)sin(nπy/a) and add the squared wavenumbers from both directions.",
         "The frequency is Ωₘₙ=(cπ/a)√(m²+n²), not proportional to m+n.",
         "Double-project the initial displacement for Aₘₙ. Double-project velocity and divide by Ωₘₙ for Bₘₙ.",

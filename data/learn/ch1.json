@@ -4,9 +4,11 @@
       "goal": "把每个结果写成“实数 + 实数乘 i”。",
       "recognize": "分母里有 i，先乘共轭。共轭就是把 i 前的符号反过来，它能让分母变成实数。",
       "steps": [
-        "第一问先把分子、分母同时乘 $2+5i$，这样没有改变原分式。",
-        "分母算成 $2^2+5^2=29$；分子展开时把 $i^2$ 换成 $-1$。",
-        "第三问先把三个分母因子乘成 $-10i$；第四问先平方，再平方。"
+        "先记住 $i^2=-1$。第(1)问分母有 $2-5i$，上下同乘 $2+5i$：这样分母变实数，分式值不变。",
+        "把第(1)问分子逐项乘开，得到 $3+22i$；分母是 $29$。所以实部是 $3/29$，虚部是 $22/29$，虚部不是 $22i/29$。",
+        "第(2)问先分别算两项：第一项上下乘 $3+4i$，第二项用 $1/i=-i$。得到 $(-1+2i)/5$ 与 $(3-2i)/5$，相加时虚部抵消。",
+        "第(3)问先乘前两个因子，$(1-i)(2-i)=1-3i$；再乘 $3-i$，得到 $-10i$。最后 $5/(-10i)=i/2$。",
+        "第(4)问分两次平方：$(1-i)^2=-2i$，再算 $(-2i)^2=-4$。结果没有 i 项，所以虚部为零。"
       ],
       "check": {
         "question": "$(2-5i)(2+5i)$ 等于多少？",
@@ -17,9 +19,11 @@
       "goal": "Write each answer as a real number plus a real multiple of i.",
       "recognize": "An i in the denominator suggests multiplying by its conjugate: reverse the sign before i to make the denominator real.",
       "steps": [
-        "In part (1), multiply both numerator and denominator by $2+5i$; the fraction keeps the same value.",
-        "The denominator becomes $2^2+5^2=29$. Expand the numerator and replace $i^2$ by $-1$.",
-        "In part (3), multiply the three denominator factors to get $-10i$. In part (4), square first, then square again."
+        "Remember $i^2=-1$. In part (1), multiply numerator and denominator by $2+5i$. This makes the denominator real without changing the fraction.",
+        "Expand the numerator in part (1) to get $3+22i$; the denominator is $29$. The real part is $3/29$ and the imaginary part is $22/29$, without the factor i.",
+        "In part (2), handle the fractions separately: multiply the first by the conjugate $3+4i$ and use $1/i=-i$ in the second. This gives $(-1+2i)/5$ and $(3-2i)/5$; their imaginary parts cancel.",
+        "For part (3), multiply the first factors: $(1-i)(2-i)=1-3i$. Multiplication by $3-i$ gives $-10i$. Finally, $5/(-10i)=i/2$.",
+        "For part (4), square twice: $(1-i)^2=-2i$, then $(-2i)^2=-4$. The result has no i term, so its imaginary part is zero."
       ],
       "check": {
         "question": "What is $(2-5i)(2+5i)$?",
@@ -32,9 +36,11 @@
       "goal": "找出复数离原点多远，以及它指向哪个角度。",
       "recognize": "题目是乘、除、乘方。用极形式更省事：长度相乘，角度相加。",
       "steps": [
-        "第一问先算分子的模 $\\sqrt2$、角 $\\pi/4$，分母的模 $4$、角 $-\\pi/3$。",
-        "相除得到模 $\\sqrt2/4$；角度做减法，得到 $7\\pi/12$。",
-        "乘方时把角乘指数、模取对应次幂；最后把角移入 $(-\\pi,\\pi]$，完整辐角再加 $2k\\pi$。"
+        "模是“长度”，乘除时分别乘除；辐角是“方向”，乘除时分别相加相减。第(1)问的分子是 $(\\sqrt2,\\pi/4)$，分母是 $(4,-\\pi/3)$。",
+        "第(1)问算长度 $\\sqrt2/4$、方向 $\\pi/4-(-\\pi/3)=7\\pi/12$。减去负角会变成加，别漏掉括号。",
+        "第(2)问 $1-i$ 的长度是 $\\sqrt2$、方向是 $-\\pi/4$。三次方就把长度三次方、角度乘3，得到 $2\\sqrt2$ 与 $-3\\pi/4$。",
+        "第(3)问先直接乘开得 $1+i$，于是长度 $\\sqrt2$、方向 $\\pi/4$。第(4)问把 $\\sqrt3-i$ 写成 $2e^{-i\\pi/6}$，四次方给长度 $16$、方向 $-2\\pi/3$。",
+        "检查角度象限。主辐角只选 $(-\\pi,\\pi]$ 中一个；若题目要所有辐角，每个主辐角再加 $2k\\pi$，其中 $k$ 为整数。"
       ],
       "check": {
         "question": "复数相除时，两个辐角是相加还是相减？",
@@ -45,9 +51,11 @@
       "goal": "Find each complex number's distance from the origin and direction angle.",
       "recognize": "These are products, quotients, and powers. Polar form makes them simpler: multiply lengths and add angles.",
       "steps": [
-        "For part (1), find numerator modulus $\\sqrt2$ and angle $\\pi/4$, and denominator modulus $4$ and angle $-\\pi/3$.",
-        "Division gives modulus $\\sqrt2/4$. Subtract the angles to get $7\\pi/12$.",
-        "For a power, raise the modulus and multiply the angle by the exponent. Move the final angle into $(-\\pi,\\pi]$; add $2k\\pi$ for all arguments."
+        "Modulus means length: multiply or divide lengths. Argument means direction: add or subtract angles. In part (1), the numerator has $(\\sqrt2,\\pi/4)$ and the denominator has $(4,-\\pi/3)$.",
+        "Part (1) gives length $\\sqrt2/4$ and angle $\\pi/4-(-\\pi/3)=7\\pi/12$. Keep the parentheses when subtracting a negative angle.",
+        "In part (2), $1-i$ has length $\\sqrt2$ and angle $-\\pi/4$. Cube the length and triple the angle: $2\\sqrt2$ and $-3\\pi/4$.",
+        "In part (3), expansion gives $1+i$, with length $\\sqrt2$ and angle $\\pi/4$. In part (4), write $\\sqrt3-i=2e^{-i\\pi/6}$; its fourth power has length $16$ and angle $-2\\pi/3$.",
+        "Check the quadrant. A principal argument is the one chosen in $(-\\pi,\\pi]$. For all arguments, add $2k\\pi$ with integer $k$."
       ],
       "check": {
         "question": "When dividing complex numbers, do you add or subtract their arguments?",
@@ -65,7 +73,7 @@
         "第三问设 $z=x+iy$，把比值分母实数化；角在第一象限且小于 $\\pi/4$，就是 $0<\\Im w<\\Re w$。"
       ],
       "check": {
-        "question": "$|z-(2-i)|\\\\le3$ 的圆心是什么？",
+        "question": "$|z-(2-i)|\\le3$ 的圆心是什么？",
         "answer": "$(2,-1)$。"
       }
     },
@@ -78,7 +86,7 @@
         "In part (3), set $z=x+iy$ and make the quotient denominator real. An angle between zero and $\\pi/4$ means $0<\\Im w<\\Re w$."
       ],
       "check": {
-        "question": "What is the center of $|z-(2-i)|\\\\le3$?",
+        "question": "What is the center of $|z-(2-i)|\\le3$?",
         "answer": "$(2,-1)$."
       }
     }
@@ -93,7 +101,7 @@
         "第二问先求 $\\sum_{j=1}^n e^{ij\\phi}$ 的等比和，最后取虚部；$\\phi=2k\\pi$ 单独代原式。"
       ],
       "check": {
-        "question": "$\\\\log i$ 为什么含 $2k\\\\pi$？",
+        "question": "$\\log i$ 为什么含 $2k\\pi$？",
         "answer": "因为转过任意整圈都表示同一个复数，但对数会记录这个角度。"
       }
     },
@@ -106,7 +114,7 @@
         "For part (2), sum $\\sum_{j=1}^n e^{ij\\phi}$ geometrically, then take its imaginary part. Substitute into the original sum separately when $\\phi=2k\\pi$."
       ],
       "check": {
-        "question": "Why does $\\\\log i$ contain $2k\\\\pi$?",
+        "question": "Why does $\\log i$ contain $2k\\pi$?",
         "answer": "Every full turn represents the same complex number, while the logarithm records the additional angle."
       }
     }
@@ -228,9 +236,11 @@
       "goal": "分别回答“哪些点有复导数”和“哪些区域内解析”。",
       "recognize": "含共轭或 x、y 的式子不能直接按 z 求导。先检查两条 C–R 方程。",
       "steps": [
-        "先拆出 u、v，求 $u_x,u_y,v_x,v_y$。第一问的 $z+3z^*$ 先化成 $4x-2iy$。",
-        "把 $u_x=v_y$ 与 $u_y=-v_x$ 同时求解，找到可能可导的点。",
-        "偏导连续时这些点确实可导；再看点集是否含开邻域。第三、四问也可识别为 $z+1/z$ 和 $\\cos z$。"
+        "先拆成 $f=u+iv$。两条 C–R 条件 $u_x=v_y$、$u_y=-v_x$ 必须同时成立；它们先帮你筛选“可能可导”的点。",
+        "第(1)问化成 $4x-2iy$，于是 $u_x=4,v_y=-2$，第一条就不成立，处处不可导。",
+        "第(2)问第一条给 $2x=-2x$，所以 $x=0$；第二条给 $-2y-2=-2+2y$，所以 $y=0$。偏导连续，原点可导，导数为 $2i$。",
+        "别在第(2)问停在“原点可导”。解析要求一个小圆盘内处处可导，而这里只有一个点，所以无处解析。",
+        "第(3)问 $z+1/z$ 只需排除没有定义的原点，其他地方解析。第(4)问是 $\\cos z$，整个复平面解析。"
       ],
       "check": {
         "question": "只在原点可导，能叫作在原点解析吗？",
@@ -241,9 +251,11 @@
       "goal": "Answer separately where the complex derivative exists and where the function is analytic.",
       "recognize": "Conjugates or explicit x,y terms prevent direct differentiation as a function of z. Start with both C–R equations.",
       "steps": [
-        "Separate u and v and compute $u_x,u_y,v_x,v_y$. In (1), first rewrite $z+3z^*$ as $4x-2iy$.",
-        "Solve $u_x=v_y$ and $u_y=-v_x$ together to find candidate differentiability points.",
-        "Continuous partial derivatives establish differentiability there. Then check for an open neighborhood. In (3) and (4), recognize $z+1/z$ and $\\cos z$."
+        "Write $f=u+iv$. Both Cauchy–Riemann equations, $u_x=v_y$ and $u_y=-v_x$, must hold. They first identify possible points of differentiability.",
+        "Part (1) becomes $4x-2iy$, so $u_x=4,v_y=-2$. The first equation fails everywhere: there are no differentiable points.",
+        "In part (2), the first equation gives $2x=-2x$, hence $x=0$. The second gives $-2y-2=-2+2y$, hence $y=0$. Continuous partial derivatives establish differentiability there, with derivative $2i$.",
+        "Do not stop at “differentiable at the origin” in part (2). Analyticity requires differentiability throughout a small open disk. A single point is not enough, so the function is nowhere analytic.",
+        "For part (3), $z+1/z$ is analytic wherever it is defined: exclude the origin. Part (4) is $\\cos z$, analytic on the whole plane."
       ],
       "check": {
         "question": "If a function is differentiable only at the origin, is it analytic there?",
@@ -253,12 +265,12 @@
   },
   "1.3-2": {
     "zh": {
-      "goal": "判断函数能不能在整个复平面解析。",
-      "recognize": "“整函数”就是全平面解析。已知实部时，可以先用调和条件快速排除。",
+      "goal": "判断是否存在一块开区域，让函数在里面每一点都可导。",
+      "recognize": "题目问解析性。只找到一个可导点不够：一个点周围还要有整片可导的邻域。",
       "steps": [
-        "第一问把 $z^2$ 和 $zz^*$ 展开成 x、y，再列 C–R。",
-        "第二问直接对 $u=x^2+y^2$ 求 $u_{xx}+u_{yy}$。",
-        "得到 $4\\ne0$，说明它不是调和函数，因此不可能是解析函数的实部。"
+        "第(1)问先写 $u=3x^2+y^2-2,v=2xy$，计算四个一阶偏导。",
+        "C–R 两条式子给 $6x=2x$、$2y=-2y$，所以只有原点可导。单点不是开区域，因此无处解析。",
+        "第(2)问没有给虚部，先检查实部是否调和。算 $u_{xx}+u_{yy}=4$，不是0，所以不用继续找虚部：所求解析函数不存在。"
       ],
       "check": {
         "question": "$x^2+y^2$ 的拉普拉斯 $u_{xx}+u_{yy}$ 等于多少？",
@@ -266,12 +278,12 @@
       }
     },
     "en": {
-      "goal": "Decide whether the function can be analytic on the entire complex plane.",
-      "recognize": "An entire function is analytic everywhere. When its real part is given, harmonicity can quickly rule it out.",
+      "goal": "Decide whether there is an open region on which the function is differentiable at every point.",
+      "recognize": "The question is about analyticity. One differentiable point is not enough; an entire neighborhood must also consist of differentiable points.",
       "steps": [
-        "In (1), expand $z^2$ and $zz^*$ in x,y and write C–R.",
-        "In (2), directly compute $u_{xx}+u_{yy}$ for $u=x^2+y^2$.",
-        "The result $4\\ne0$ is not harmonic, so this cannot be the real part of an analytic function."
+        "For part (1), write $u=3x^2+y^2-2,v=2xy$ and compute the four first partial derivatives.",
+        "The Cauchy–Riemann equations give $6x=2x$ and $2y=-2y$. Only the origin is differentiable. A single point is not open, so the function is nowhere analytic.",
+        "Part (2) supplies no imaginary part. First test harmonicity of the real part: $u_{xx}+u_{yy}=4$, not zero. Stop there: the requested analytic function does not exist."
       ],
       "check": {
         "question": "What is $u_{xx}+u_{yy}$ for $u=x^2+y^2$?",
@@ -284,9 +296,11 @@
       "goal": "已知实部或虚部，补出另一半，再用给定函数值定常数。",
       "recognize": "解析函数的两半由 C–R 联系。积分一次后，别把剩下的未知函数误当成常数。",
       "steps": [
-        "第一问从 $v_y=u_x=2x$ 积分，写 $v=2xy+g(x)$。",
-        "再用 $v_x=-u_y=2y$，确定 $g$ 不再随 x 变。",
-        "用 $f(0)=0$ 定最后的常数。其他小问也按这两条 C–R 和初值依次做；第三问可先识别 $\\Re(1/z)$。"
+        "只对 y 积分时，“积分常数”可以是 x 的函数；只对 x 积分时也一样。这就是下面为什么先写 $g(x)$ 或 $g(y)$，再用另一条 C–R 来确定它。",
+        "第(1)问从 $v_y=2x$ 得 $v=2xy+g(x)$；再用 $v_x=2y$ 得 $g\\prime=0$。给定值把常数定为0，于是 $f=z^2$。",
+        "第(2)问已知虚部，改从 $u_x=v_y=e^x\\cos y$ 积分，得 $u=e^x\\cos y+g(y)$。另一条 C–R 让 g 为常数，$f(0)=0$ 给 $g=-1$。",
+        "第(3)问先分母实数化 $1/z=(x-iy)/(x^2+y^2)$，认出题给实部。另一半只能差一个纯虚常数，代 $f(2)=1/2$ 将它定为0。",
+        "第(4)问积分 $u_x=v_y=x-2y$，得 $u=x^2/2-2xy+g(y)$；再用 $u_y=-v_x$ 得 $g=-y^2/2+C$。代 $z=i$ 得 $C=3/2$。"
       ],
       "check": {
         "question": "对 y 积分时，为什么写 $g(x)$？",
@@ -297,9 +311,11 @@
       "goal": "Recover the missing real or imaginary part, then fix the constant using the given function value.",
       "recognize": "C–R links the two parts of an analytic function. After one integration, the leftover may still depend on the other variable.",
       "steps": [
-        "In (1), integrate $v_y=u_x=2x$ to write $v=2xy+g(x)$.",
-        "Use $v_x=-u_y=2y$ to show that g is constant in x.",
-        "Apply $f(0)=0$ to fix that constant. Repeat both C–R equations and the initial value in the other parts; (3) can be recognized as $\\Re(1/z)$."
+        "When integrating with respect to y, the integration constant may depend on x, and vice versa. Write $g(x)$ or $g(y)$ first, then use the other Cauchy–Riemann equation to determine it.",
+        "Part (1): integrate $v_y=2x$ to get $v=2xy+g(x)$. Then $v_x=2y$ gives $g\\prime=0$. The given value sets the constant to zero, giving $f=z^2$.",
+        "Part (2) gives the imaginary part. Integrate $u_x=v_y=e^x\\cos y$ to get $u=e^x\\cos y+g(y)$. The other equation makes g constant; $f(0)=0$ gives $g=-1$.",
+        "For part (3), rationalize $1/z=(x-iy)/(x^2+y^2)$ to recognize the real part. The analytic function can differ only by an imaginary constant. Use $f(2)=1/2$ to set it to zero.",
+        "Part (4): integrate $u_x=v_y=x-2y$ to get $u=x^2/2-2xy+g(y)$. Then $u_y=-v_x$ gives $g=-y^2/2+C$. Substituting $z=i$ gives $C=3/2$."
       ],
       "check": {
         "question": "Why write $g(x)$ after integrating with respect to y?",
@@ -317,7 +333,7 @@
         "用 $u_x=v_y,u_y=-v_x$ 替换，比较两边；只在 $\\rho>0$ 除以半径。"
       ],
       "check": {
-        "question": "$x_\\\\phi$ 等于多少？",
+        "question": "$x_\\phi$ 等于多少？",
         "answer": "$-\\rho\\sin\\phi$。"
       }
     },
@@ -330,7 +346,7 @@
         "Substitute $u_x=v_y,u_y=-v_x$ and compare the two sides. Divide by the radius only for $\\rho>0$."
       ],
       "check": {
-        "question": "What is $x_\\\\phi$?",
+        "question": "What is $x_\\phi$?",
         "answer": "$-\\rho\\sin\\phi$."
       }
     }
@@ -345,7 +361,7 @@
         "利用 $v_{\\phi\\rho}=v_{\\rho\\phi}$ 消去 v，再整理；交换 u、v 得另一条方程。"
       ],
       "check": {
-        "question": "对 $\\\\rho u_\\\\rho$ 求 $\\\\rho$ 导数能漏掉 $u_\\\\rho$ 吗？",
+        "question": "对 $\\rho u_\\rho$ 求 $\\rho$ 导数能漏掉 $u_\\rho$ 吗？",
         "answer": "不能。乘积法则给 $u_\\rho+\\rho u_{\\rho\\rho}$。"
       }
     },
@@ -358,7 +374,7 @@
         "Use $v_{\\phi\\rho}=v_{\\rho\\phi}$ to eliminate v, then rearrange. Exchange u and v for the second equation."
       ],
       "check": {
-        "question": "Can the derivative of $\\\\rho u_\\\\rho$ omit $u_\\\\rho$?",
+        "question": "Can the derivative of $\\rho u_\\rho$ omit $u_\\rho$?",
         "answer": "No. The product rule gives $u_\\rho+\\rho u_{\\rho\\rho}$."
       }
     }
@@ -429,7 +445,7 @@
         "上半圆用 $t:0\\to\\pi$，下半圆用 $t:\\pi\\to2\\pi$；都是角度增加，不要误判方向。"
       ],
       "check": {
-        "question": "逆时针绕单位圆一周，$\\\\int dz/z$ 是多少？",
+        "question": "逆时针绕单位圆一周，$\\int dz/z$ 是多少？",
         "answer": "$2\\pi i$。"
       }
     },
@@ -442,7 +458,7 @@
         "Use $t:0\\to\\pi$ on the upper arc and $t:\\pi\\to2\\pi$ on the lower arc. Both increase the angle."
       ],
       "check": {
-        "question": "What is $\\\\int dz/z$ for one counterclockwise unit-circle circuit?",
+        "question": "What is $\\int dz/z$ for one counterclockwise unit-circle circuit?",
         "answer": "$2\\pi i$."
       }
     }
@@ -536,9 +552,11 @@
       "goal": "围绕题目指定的点，把函数改写成正幂级数。",
       "recognize": "中心不一定是零。先平移，让“离中心多远”成为新的变量。",
       "steps": [
-        "前三问直接写指数、正弦、双曲余弦的标准级数。",
-        "第五问先设 $w=z-i$，拆 $1/[z(z-1)]=-1/z+1/(z-1)$，分别改成几何级数。",
-        "每项展开都写自己的小变量条件；把条件取交集，再用最近极点距离核验半径。"
+        "“围绕中心展开”就是只使用 $w=z-z_0$ 的非负整数次幂。前3问中心都是0，直接写 $e^z$、$\\sin z$、$\\cosh z$ 的标准级数，半径都是无穷。",
+        "第(4)问先写成 $(z/4)/(1+z^2/4)$。把几何级数的小量选成 $-z^2/4$，要求它的模小于1，因此 $|z|<2$。",
+        "第(5)问中心不是0：设 $w=z-i$，拆成 $-1/(i+w)+1/(i-1+w)$。分别提常数 i 和 i−1，再按 w 展开；两个条件取交集 $|w|<1$。",
+        "第(6)问把 $\\sin z=z-z^3/6+\\cdots$ 与 $1/(1-z)=1+z+z^2+\\cdots$ 相乘。每个目标幂次只收集次数相加等于它的项，例如三次项是 $z^3-z^3/6$。",
+        "第(7)问先设 $w=z-1$，再拆分母为 $(z-i)(z+i)$ 后分别展开。收敛半径等于中心1到最近极点的距离 $\\sqrt2$；其他小问也用距离核验。"
       ],
       "check": {
         "question": "以 i 为中心时，新的小变量应该是什么？",
@@ -549,9 +567,11 @@
       "goal": "Write a positive-power series around the point specified in the question.",
       "recognize": "The center need not be zero. Shift first so the new variable measures displacement from the center.",
       "steps": [
-        "Use the standard exponential, sine, and hyperbolic-cosine series in the first three parts.",
-        "In (5), set $w=z-i$ and split $1/[z(z-1)]=-1/z+1/(z-1)$. Rewrite each fraction as a geometric series.",
-        "State the small-variable condition for each expansion. Intersect these conditions, then check the radius against the nearest pole."
+        "Expand using nonnegative integer powers of $w=z-z_0$. In the first three parts the center is zero, so use the standard series for $e^z$, $\\sin z$, and $\\cosh z$, each with infinite radius.",
+        "In part (4), write $(z/4)/(1+z^2/4)$. The geometric-series ratio is $-z^2/4$. Its modulus must be below 1, giving $|z|<2$.",
+        "Part (5) is centered away from zero. Set $w=z-i$ and split into $-1/(i+w)+1/(i-1+w)$. Factor i and i−1 from the denominators, expand in w, and intersect the conditions to obtain $|w|<1$.",
+        "For part (6), multiply $\\sin z=z-z^3/6+\\cdots$ by $1/(1-z)=1+z+z^2+\\cdots$. Collect terms with the same total degree: the cubic term is $z^3-z^3/6$.",
+        "For part (7), set $w=z-1$, factor the denominator as $(z-i)(z+i)$, and expand its partial fractions. The nearest poles are distance $\\sqrt2$ from center 1; use pole distances to check the other radii too."
       ],
       "check": {
         "question": "What new variable should you use for a center at i?",
@@ -625,7 +645,7 @@
         "第二、四问展开复合正弦或指数，观察无限多负幂不会被有限乘方消掉。"
       ],
       "check": {
-        "question": "$\\\\sin z/z$ 在零点补什么值？",
+        "question": "$\\sin z/z$ 在零点补什么值？",
         "answer": "$1$。"
       }
     },
@@ -638,7 +658,7 @@
         "In (2) and (4), expand the composite sine or exponential. A finite power cannot remove infinitely many negative powers."
       ],
       "check": {
-        "question": "What value removes the hole in $\\\\sin z/z$ at zero?",
+        "question": "What value removes the hole in $\\sin z/z$ at zero?",
         "answer": "$1$."
       }
     }
@@ -648,9 +668,11 @@
       "goal": "只取展开中 $z^{-1}$ 的系数，不必把整个级数算完。",
       "recognize": "留数就是负一次幂的系数。先反推哪个原始项会变成负一次。",
       "steps": [
-        "第一问写 $1/[z(1+z)]$，几何级数的常数项除以 z 就贡献 1。",
-        "第四问先把两个指数的常数项相消，再找 z 的一次项，除以 $z^2$ 后就是目标。",
-        "第五问只有偶次幂，留数零；第六问 $z^2 e^{1/z}$ 需要指数中的 $z^{-3}$ 项。"
+        "留数只要 $z^{-1}$ 的系数。第(1)问写 $z^{-1}(1-z+\\cdots)$，常数1乘 $z^{-1}$，所以留数是1。",
+        "第(2)问写 $z[1-1/(2z^2)+\\cdots]$，目标项是 $-1/(2z)$，所以留数 $-1/2$。",
+        "第(3)问 $z-\\sin z$ 从三次幂开始，除以 z 后没有负幂，留数0。第(4)问两个指数的常数相消，剩下的一次项 $i(a-b)z$ 除以 $z^2$，留数为 $i(a-b)$。",
+        "第(5)问先看奇偶性：$\\cot z$ 是奇函数，再除以奇函数 $z^3$ 后变成偶函数，只能有偶次幂，所以没有 $z^{-1}$。",
+        "第(6)问外面有 $z^2$，所以指数级数里要找 $z^{-3}$。它来自 $n=3$，系数 $1/3!$，因此留数 $1/6$。"
       ],
       "check": {
         "question": "第六问需要 $e^{1/z}$ 的哪一项？",
@@ -661,9 +683,11 @@
       "goal": "Extract only the $z^{-1}$ coefficient instead of computing the entire series.",
       "recognize": "A residue is the coefficient of power minus one. Work backward to the original term that produces it.",
       "steps": [
-        "In (1), write $1/[z(1+z)]$. The geometric series constant becomes $1/z$ and contributes one.",
-        "In (4), the two exponential constants cancel. Find the linear z term; division by $z^2$ makes it the target.",
-        "In (5), only even powers occur, so the residue is zero. In (6), $z^2e^{1/z}$ needs the exponential term in $z^{-3}$."
+        "A residue is the coefficient of $z^{-1}$. Part (1) is $z^{-1}(1-z+\\cdots)$; the constant 1 contributes residue 1.",
+        "In part (2), write $z[1-1/(2z^2)+\\cdots]$. The target term is $-1/(2z)$, so the residue is $-1/2$.",
+        "In part (3), $z-\\sin z$ starts at degree three; division by z leaves no negative powers, so the residue is zero. In part (4), constants cancel and the linear term $i(a-b)z$ divided by $z^2$ gives residue $i(a-b)$.",
+        "For part (5), use parity: $\\cot z$ and $z^3$ are odd, so their quotient is even. Its Laurent series has only even powers and no $z^{-1}$ term.",
+        "Part (6) has an outside factor $z^2$, so find $z^{-3}$ in the exponential series. It occurs at $n=3$, with coefficient $1/3!$, giving residue $1/6$."
       ],
       "check": {
         "question": "Which term of $e^{1/z}$ is needed in part (6)?",
@@ -737,7 +761,7 @@
         "有实极点的第四、五、七问先说明普通积分发散，再对称挖孔算主值。偶函数的半轴结果最后除 2。"
       ],
       "check": {
-        "question": "第五问有 $x=\\\\pm3$ 的单极点，普通积分收敛吗？",
+        "question": "第五问有 $x=\\pm3$ 的单极点，普通积分收敛吗？",
         "answer": "不收敛；给出的有限数是另行定义的主值。"
       }
     },
@@ -750,7 +774,7 @@
         "In (4), (5), and (7), state divergence first, then define symmetric exclusions for the principal value. Finally halve whole-line values for even half-line problems."
       ],
       "check": {
-        "question": "Does the ordinary integral in (5) converge despite simple poles at $x=\\\\pm3$?",
+        "question": "Does the ordinary integral in (5) converge despite simple poles at $x=\\pm3$?",
         "answer": "No. Its finite reported value is a separately defined principal value."
       }
     }
