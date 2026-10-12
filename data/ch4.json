@@ -1,0 +1,207 @@
+{
+  "chapter": 4,
+  "title": "二阶线性常微分方程",
+  "sections": [
+    {
+      "id": "4.1",
+      "title": "二阶齐次常微分方程解的线性关系",
+      "page": 165,
+      "concepts": [
+        {
+          "id": "4.1-wronskian",
+          "title": "朗斯基行列式与阿贝尔公式",
+          "explain": "二阶齐次线性方程的解空间在一个正则区间内是二维的。两个解能否作为一组基底，由 $W=y_1y_2\\prime-y_1\\prime y_2$ 判断。一个点的 $W\\ne0$ 已能保证整个正则区间内线性独立。",
+          "formula": "W(x)=W(x_0)\\exp\\!\\left[-\\int_{x_0}^{x}P(t)\\,dt\\right]",
+          "conditions": "标准式 $y\\prime\\prime+P(x)y\\prime+Q(x)y=0$，$P,Q$ 在连通区间连续；两个函数必须是该方程的解。",
+          "proof": "由定义求导：$W\\prime=y_1y_2\\prime\\prime-y_1\\prime\\prime y_2$。代入 $y_i\\prime\\prime=-Py_i\\prime-Qy_i$，$Q$ 项相消，得到 $W\\prime=-PW$。分离变量，或用一阶方程积分因子，得到阿贝尔公式。若 $W(x_0)=0$，初值向量相关，再用线性初值问题唯一性推出两个解线性相关。",
+          "example": {
+            "question": "判断 $e^x,e^{-x}$ 是否可组成 $y\\prime\\prime-y=0$ 的基本解组。",
+            "solution": "$W=e^x(-e^{-x})-e^x e^{-x}=-2\\ne0$，所以是基本解组；通解为 $C_1e^x+C_2e^{-x}$。"
+          },
+          "memory": "先除最高阶系数，再读出一阶导系数；W 的指数中带负号。"
+        }
+      ]
+    },
+    {
+      "id": "4.2",
+      "title": "二阶齐次常微分方程的级数解法",
+      "page": 167,
+      "concepts": [
+        {
+          "id": "4.2-frobenius",
+          "title": "常点幂级数与正则奇点 Frobenius 法",
+          "explain": "常点用 $y=\\sum a_n(x-x_0)^n$；正则奇点用 $y=(x-x_0)^r\\sum a_n(x-x_0)^n$。最低次幂给指标方程，其余各次幂给递推。特殊函数的多项式解来自递推系数在某一级变成零。",
+          "formula": "y=(x-x_0)^r\\sum_{n=0}^{\\infty}a_n(x-x_0)^n,\\quad a_0\\ne0",
+          "conditions": "先写标准式 $y\\prime\\prime+P y\\prime+Qy=0$。若 $(x-x_0)P$、$(x-x_0)^2Q$ 解析，则为正则奇点。整数差或重指标根需检查对数解。",
+          "proof": "若 $(x-x_0)P=p_0+p_1(x-x_0)+\\cdots$，$(x-x_0)^2Q=q_0+q_1(x-x_0)+\\cdots$，代入后最低次幂系数是 $a_0[r(r-1)+p_0r+q_0]$，故指标方程为 $r(r-1)+p_0r+q_0=0$。之后逐次比较系数，得到 $a_n$ 递推；不可只求指标根就停止。",
+          "example": {
+            "question": "求 $x^2y\\prime\\prime+xy\\prime-\\nu^2y=0$ 的指标根及解。",
+            "solution": "代入 $y=x^r$ 得 $r(r-1)+r-\\nu^2=r^2-\\nu^2=0$。$\\nu\\ne0$ 时 $y=C_1x^\\nu+C_2x^{-\\nu}$（取 $x>0$）；$\\nu=0$ 时第二解为 $\\ln x$。"
+          },
+          "memory": "最低幂找指数，同幂比较找递推，分母为零查对数。"
+        }
+      ]
+    },
+    {
+      "id": "4.3",
+      "title": "二阶非齐次常微分方程",
+      "page": 180,
+      "concepts": [
+        {
+          "id": "4.3-variation",
+          "title": "常数变易法",
+          "explain": "非齐次线性方程的通解等于齐次通解加一个特解。让齐次解前的常数变为函数，并增加一个辅助条件，可把求特解降为两个积分。",
+          "formula": "y_p=-y_1\\int\\frac{y_2f}{W}\\,dx+y_2\\int\\frac{y_1f}{W}\\,dx",
+          "conditions": "针对标准式 $y\\prime\\prime+P y\\prime+Qy=f$，$y_1,y_2$ 为齐次基本解，$W=y_1y_2\\prime-y_1\\prime y_2\\ne0$。非标准式需先除最高阶系数。",
+          "proof": "令 $y_p=u_1y_1+u_2y_2$，规定 $u_1\\prime y_1+u_2\\prime y_2=0$。代入方程后剩 $u_1\\prime y_1\\prime+u_2\\prime y_2\\prime=f$。解二元方程得 $u_1\\prime=-y_2f/W$、$u_2\\prime=y_1f/W$，分别积分即得公式。积分常数已经包含在齐次通解中。",
+          "example": {
+            "question": "求 $y\\prime\\prime+y=1$ 的通解。",
+            "solution": "取 $y_1=\\cos x,y_2=\\sin x,W=1$。$y_p=-\\cos x\\int\\sin x\\,dx+\\sin x\\int\\cos x\\,dx=\\cos^2x+\\sin^2x=1$，故 $y=C_1\\cos x+C_2\\sin x+1$。"
+          },
+          "memory": "先齐次，后特解；变易积分前检查标准式。"
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "4.1-1",
+      "section": "4.1",
+      "number": 1,
+      "page": 167,
+      "title": "归一化单项式的线性独立性",
+      "question": "利用朗斯基行列式证明函数组 $\\{x^n/n!,\\ n=0,1,\\ldots,N\\}$ 线性独立。",
+      "idea": "按函数次数从低到高排列，求导后形成上三角矩阵。",
+      "hint": "第 k 阶导数作用于次数小于 k 的多项式会变成零。",
+      "solution": "设 $f_j=x^j/j!$（$j=0,\\ldots,N$）。第 $i$ 行取 $i$ 阶导数，则\n$$f_j^{(i)}=\\begin{cases}x^{j-i}/(j-i)!,&j\\ge i,\\\\0,&j<i.\\end{cases}$$\n该矩阵是上三角矩阵，所有对角元 $f_i^{(i)}=1$，故 $W(f_0,\\ldots,f_N)=1$。\n若 $\\sum c_jf_j\\equiv0$，在任意一点连续求导 $0,\\ldots,N$ 次得到一个系数矩阵行列式为 1 的齐次方程组，只能有 $c_0=\\cdots=c_N=0$。所以线性独立。",
+      "answer": "$W=1$，该函数组线性独立。",
+      "pattern": "单项式组按次数升序排列，导数矩阵上三角，直接乘对角元。",
+      "pitfall": "本题有 N+1 个函数，W 应是 (N+1)×(N+1)；不能少取常数项。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。"
+    },
+    {
+      "id": "4.1-2",
+      "section": "4.1",
+      "number": 2,
+      "page": 167,
+      "title": "W 恒为零时何时能推出相关",
+      "question": "如果两个函数 $y_1(x)$ 和 $y_2(x)$ 的朗斯基行列式恒为零，证明它们满足 $y_1(x)=c y_2(x)$，$c$ 为常数，即线性相关。",
+      "idea": "先检查命题适用条件；在 y₂ 非零的连通区间可通过商的导数证明，但任意光滑函数在跨过公共零点时结论不一定成立。",
+      "hint": "计算 $(y_1/y_2)\\prime$；同时想一想分母为零处能否跨越。",
+      "solution": "在 $y_2\\ne0$ 的一个连通区间上，\n$$\\left(\\frac{y_1}{y_2}\\right)\\prime=\\frac{y_1\\prime y_2-y_1y_2\\prime}{y_2^2}=-\\frac{W}{y_2^2}=0,$$\n所以 $y_1=c y_2$。若两函数是同一个正则二阶线性齐次方程的解，可任选一个 $y_2(x_0)\\ne0$ 的点令 $c=y_1(x_0)/y_2(x_0)$；$W(x_0)=0$ 同时给 $y_1\\prime(x_0)=cy_2\\prime(x_0)$。差函数具有零初值，由唯一性在整个正则区间等于零。\n\n**题干条件说明：**对任意光滑函数，原命题并不成立。例如 $(-1,1)$ 上令 $y_1=e^{-1/x^2}$（$x>0$）、其余为零；$y_2=e^{-1/x^2}$（$x<0$）、其余为零。两函数都是 $C^\\infty$，支撑互不相交，故 $W\\equiv0$，却不成比例。另若 $y_2\\equiv0$ 而 $y_1\\not\\equiv0$，两函数线性相关，但不能写成题干指定的 $y_1=cy_2$。",
+      "answer": "在 $y_2\\ne0$ 的连通区间，或补充“同一正则齐次 ODE 的解且 $y_2\\not\\equiv0$”后，$y_1=cy_2$。一般函数版本需修正。",
+      "pattern": "W=0 先用商导数作局部证明；要全区间结论，补唯一性或解析性依据。",
+      "pitfall": "W 非零足以判独立；W 恒零对任意光滑函数不总能判相关。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。",
+      "errata": "对任意可微函数，$W\\equiv0$ 未必推出整个区间内线性相关；需要同一正规齐次方程解等额外条件。解析给出反例与正确证明。"
+    },
+    {
+      "id": "4.1-3",
+      "section": "4.1",
+      "number": 3,
+      "page": 167,
+      "title": "阿贝尔公式及教材公式的条件",
+      "question": "证明二阶线性齐次常微分方程 $p(x)y\\prime\\prime+q(x)y\\prime+r(x)y=0$ 的朗斯基行列式为 $L=C/p(x)$，其中 $C$ 为常数。",
+      "idea": "直接求 W 的导数，确定教材给定结论是否需要 q=p′。",
+      "hint": "$W\\prime=y_1y_2\\prime\\prime-y_1\\prime\\prime y_2$，再用原方程消去二阶导数。",
+      "solution": "在 $p\\ne0$ 的正则区间上，$y_i\\prime\\prime=-(q/p)y_i\\prime-(r/p)y_i$。因此\n$$W\\prime=-\\frac{q}{p}(y_1y_2\\prime-y_1\\prime y_2)=-\\frac{q}{p}W,$$\n从而\n$$\\boxed{W=C\\exp\\!\\left(-\\int\\frac{q(x)}{p(x)}\\,dx\\right)}.$$\n只有当 $q=p\\prime$（方程可写成 $(py\\prime)\\prime+ry=0$）时，$W=C/p$ 才成立。也可直接把自伴形式代入：$(pW)\\prime=p\\prime W+pW\\prime=(p\\prime-q)W=0$。\n\n**反例：**$y\\prime\\prime+y\\prime=0$ 中 $p=1,q=1$，取 $1,e^{-x}$ 得 $W=-e^{-x}$，不是常数 $C/p=C$。故按题面原式无法无条件证明，必须补充 $q=p\\prime$。",
+      "answer": "一般式为 $W=C e^{-\\int q/p\\,dx}$；若 $q=p\\prime$，则 $W=C/p$。",
+      "pattern": "先标准化，再用 W′=−(一阶导系数)W；遇 C/p 先检查自伴形式。",
+      "pitfall": "最高阶系数 p 与标准式的一阶导系数 q/p 不能混淆。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。",
+      "errata": "原命题缺少 $q=p\\prime$ 条件。一般 Abel 公式为 $W=C\\exp(-\\int q/p\\,dx)$；只有自伴形式才有 $W=C/p$。"
+    },
+    {
+      "id": "4.2-1",
+      "section": "4.2",
+      "number": 1,
+      "page": 180,
+      "title": "Hermite 方程与终止级数",
+      "question": "在 $x_0=0$ 邻域用级数求解 $y\\prime\\prime-2xy\\prime+(\\lambda-1)y=0$。确定何时解可退化为多项式。把最高次幂归一化为 $(2x)^n$ 得 $H_n(x)$，写出前三阶 Hermite 多项式。",
+      "idea": "常点展开，偶数项和奇数项形成互不相连的两条递推链；链在次数 n 处终止。",
+      "hint": "比较 xᵏ 系数，得到 aₖ₊₂ 与 aₖ 的关系。",
+      "solution": "设 $y=\\sum_{k\\ge0}a_kx^k$，代入并统一幂次得\n$$\\sum_{k\\ge0}\\big[(k+2)(k+1)a_{k+2}+(\\lambda-1-2k)a_k\\big]x^k=0.$$\n故\n$$a_{k+2}=\\frac{2k+1-\\lambda}{(k+2)(k+1)}a_k.$$\n于是两支独立解分别由任意 $a_0$、$a_1$ 决定：\n$$y=a_0\\left[1+\\frac{1-\\lambda}{2!}x^2+\\frac{(1-\\lambda)(5-\\lambda)}{4!}x^4+\\cdots\\right]+a_1\\left[x+\\frac{3-\\lambda}{3!}x^3+\\frac{(3-\\lambda)(7-\\lambda)}{5!}x^5+\\cdots\\right].$$\n两支级数均对所有有限 x 收敛。若有 n 次非零多项式，最高次系数要求 $\\lambda-1-2n=0$，即 $\\lambda=2n+1$，$n=0,1,\\ldots$。再取与 n 同奇偶的递推链，另一链系数置零，便得到终止解。\n最高次系数固定为 $2^n$ 后：$H_0=1$，$H_1=2x$，$H_2=4x^2-2$，$H_3=8x^3-12x$。若“前三阶”从一阶数起，答案是 $H_1,H_2,H_3$；同时列出零阶避免歧义。",
+      "answer": "$\\lambda=2n+1$ 时存在 n 次多项式解；$H_0=1,H_1=2x,H_2=4x^2-2,H_3=8x^3-12x$。",
+      "pattern": "求递推→令最高次那一级分子为零→保留同奇偶链→按最高次系数归一化。",
+      "pitfall": "参数满足终止条件仅保证一支为多项式，通解的另一支通常仍是无穷级数。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。"
+    },
+    {
+      "id": "4.2-2",
+      "section": "4.2",
+      "number": 2,
+      "page": 180,
+      "title": "Chebyshev 方程的偶奇级数",
+      "question": "在 $x_0=0$ 邻域用级数求解 $(1-x^2)y\\prime\\prime-xy\\prime+n^2y=0$。",
+      "idea": "这是常点，递推跨两个次数；也可用 x=sin t 验证答案。",
+      "hint": "xᵏ 项中 −x²y″−xy′ 合成 −k²aₖ。",
+      "solution": "设 $y=\\sum a_kx^k$，系数比较得\n$$a_{k+2}=\\frac{k^2-n^2}{(k+2)(k+1)}a_k.$$\n所以\n$$y=a_0\\sum_{j=0}^{\\infty}\\frac{\\prod_{s=0}^{j-1}[(2s)^2-n^2]}{(2j)!}x^{2j}+a_1\\sum_{j=0}^{\\infty}\\frac{\\prod_{s=0}^{j-1}[(2s+1)^2-n^2]}{(2j+1)!}x^{2j+1},$$\n空乘积取 1，通常收敛半径为 1。整数 $n\\ge0$ 时，与 n 同奇偶的一支在 n 次终止，归一化为 $T_n(x)$，满足 $T_n(\\cos t)=\\cos nt$。\n为核对，令 $x=\\sin t$，链式法则给 $(1-x^2)y\\prime\\prime-xy\\prime=y_{tt}$，方程化为 $y_{tt}+n^2y=0$。当 $n\\ne0$，通解可写为 $C_1\\cos(n\\arcsin x)+C_2\\sin(n\\arcsin x)$；$n=0$ 时为 $C_1+C_2\\arcsin x$。",
+      "answer": "递推 $a_{k+2}=(k^2-n^2)a_k/[(k+2)(k+1)]$，两条偶奇级数组成局部通解。",
+      "pattern": "含 1−x² 的方程先做常点级数；用 x=sin t 或 cos t 检查特殊函数。",
+      "pitfall": "n=0 时不能把两支都写成 cos、sin 后认为第二支为零，应取极限得到 arcsin x。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。"
+    },
+    {
+      "id": "4.2-3",
+      "section": "4.2",
+      "number": 3,
+      "page": 180,
+      "title": "超几何方程的 Frobenius 级数",
+      "question": "在 $x_0=0$ 邻域用级数求解 $x(x-1)y\\prime\\prime+[(1+a+b)x-c]y\\prime+aby=0$。",
+      "idea": "0 为正则奇点。先乘 −1 化成标准 Gauss 方程，指标为 0 与 1−c。",
+      "hint": "用 y=xʳΣaₖxᵏ，最低幂系数是 r(r+c−1)。",
+      "solution": "改写为 $x(1-x)y\\prime\\prime+[c-(a+b+1)x]y\\prime-aby=0$。代入 $y=x^r\\sum_{k\\ge0}d_kx^k$，最低次项给\n$$r(r+c-1)=0,$$\n下一组系数给\n$$d_{k+1}=\\frac{(k+r+a)(k+r+b)}{(k+r+1)(k+r+c)}d_k.$$\n定义 $(a)_k=a(a+1)\\cdots(a+k-1)$，则对 $c\\notin\\mathbb Z$，\n$$y=C_1\\,{}_2F_1(a,b;c;x)+C_2x^{1-c}{}_2F_1(a-c+1,b-c+1;2-c;x),$$\n其中 ${}_2F_1(a,b;c;x)=\\sum_{k\\ge0}(a)_k(b)_k x^k/[(c)_k k!]$，$|x|<1$，并选择 $x^{1-c}$ 的一个分支。\n当 c 为整数，两指标重根或相差整数，以上两项可能不定义或相关，不能盲套。先用递推找一支非零解 $y_1$，再由标准式的一阶导系数 $P=c/x+(c-a-b-1)/(1-x)$ 得\n$$y_2=y_1\\int\\frac{x^{-c}(1-x)^{c-a-b-1}}{y_1^2}\\,dx.$$\n该式在 $y_1\\ne0$ 的局部区间给出第二解，展开积分即可得到必要的对数项，也涵盖退化参数。",
+      "answer": "一般参数通解为两支 Gauss 超几何级数；整数 c 的共振情形由递推加降阶积分求第二解。",
+      "pattern": "标准化符号→指标方程→递推→识别 Pochhammer 系数→检查参数分母及整数差。",
+      "pitfall": "原方程是 x(x−1)，先乘负号；c 是非正整数时第一支常用级数分母可能为零。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。"
+    },
+    {
+      "id": "4.2-4",
+      "section": "4.2",
+      "number": 4,
+      "page": 180,
+      "title": "合流超几何方程",
+      "question": "在 $x=0$ 邻域求解 $xy\\prime\\prime+(c-x)y\\prime-ay=0$。",
+      "idea": "同样用 Frobenius，但递推分子只有一个线性因子。",
+      "hint": "指标仍为 0 与 1−c；递推 aₖ₊₁=(k+r+a)aₖ/[(k+r+1)(k+r+c)]。",
+      "solution": "取 $y=x^r\\sum d_kx^k$，代入得指标方程 $r(r+c-1)=0$，且\n$$d_{k+1}=\\frac{k+r+a}{(k+r+1)(k+r+c)}d_k.$$\n定义 $M(a,c,x)={}_1F_1(a;c;x)=\\sum_{k\\ge0}(a)_kx^k/[(c)_k k!]$。当 $c\\notin\\mathbb Z$，\n$$y=C_1M(a,c,x)+C_2x^{1-c}M(a-c+1,2-c,x).$$\n这些级数对所有有限 x 收敛（分母参数不触发极点时），$x^{1-c}$ 需选定分支。\n整数 c 时应检查重根和递推分母：在得到一支 $y_1$ 后，标准式 $P=c/x-1$ 给出\n$$y_2=y_1\\int e^x x^{-c}y_1^{-2}\\,dx.$$\n积分的 Laurent 展开中 $x^{-1}$ 项产生 $\\ln x$，此公式也适用于特殊终止参数。若 $a=-n$，$n\\ge0$ 且分母允许，一支在 n 次终止为多项式。",
+      "answer": "$y=C_1{}_1F_1(a;c;x)+C_2x^{1-c}{}_1F_1(a-c+1;2-c;x)$（非整数 c）；共振参数用降阶积分。",
+      "pattern": "合流型递推“一个升阶因子除两个因子”；整数 c 不能略过共振检查。",
+      "pitfall": "a 的负整数对应终止，不是正整数；标准式 P=c/x−1 的积分因子给 eˣ。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。"
+    },
+    {
+      "id": "4.2-5",
+      "section": "4.2",
+      "number": 5,
+      "page": 180,
+      "title": "Legendre 方程在 x=1 的展开",
+      "question": "在 $x=1$ 邻域求解 $(1-x^2)y\\prime\\prime-2xy\\prime+l(l+1)y=0$。",
+      "idea": "把奇点移到零，指标重根 0；第一解为常规级数，第二解一般含对数。",
+      "hint": "令 t=x−1，得到 t(t+2)yₜₜ+2(t+1)yₜ−l(l+1)y=0。",
+      "solution": "令 $t=x-1$，乘 −1 后方程为 $t(t+2)y_{tt}+2(t+1)y_t-l(l+1)y=0$。设 $y=t^r\\sum d_kt^k$，指标方程 $2r^2=0$，故 $r=0$ 为重根。对第一支取 $d_0=1$，比较 tᵏ 得\n$$d_{k+1}=\\frac{l(l+1)-k(k+1)}{2(k+1)^2}d_k,$$\n所以\n$$y_1=\\sum_{k=0}^{\\infty}\\frac{(-l)_k(l+1)_k}{(k!)^2}\\left(\\frac{1-x}{2}\\right)^k={}_2F_1\\!\\left(-l,l+1;1;\\frac{1-x}{2}\\right).$$\n其解析半径至少到另一奇点 x=−1，即 $|x-1|<2$；非负整数 l 时终止，成为 $P_l(x)$。标准式一阶导系数 $P=-2x/(1-x^2)$，故 $e^{-\\int Pdx}=1/(1-x^2)$（常数倍不影响）。于是\n$$y_2=y_1\\int\\frac{dx}{(1-x^2)y_1(x)^2}.$$\n因为 $y_1(1)=1$，被积函数在 x=1 有首项 $-1/[2(x-1)]$，所以 $y_2=-\\tfrac12y_1\\ln|x-1|+$解析项。局部通解为 $C_1y_1+C_2y_2$。例如 l=0 得 $y_1=1$、$y_2=\\frac12\\ln|(1+x)/(1-x)|$。",
+      "answer": "解析支为 $P_l(x)={}_2F_1(-l,l+1;1;(1-x)/2)$；另一支由上式降阶积分给出，一般含对数。",
+      "pattern": "移奇点→重指标→求一支→用 W 或降阶积分构造对数支。",
+      "pitfall": "在 x=1 不能直接使用以零为中心的普通幂级数来声称有两支解析解。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。",
+      "errata": "公开参考图片未给完整的第二支解，且递推式需包含上一项系数。解析补出重根 Frobenius 的对数支及降阶积分。"
+    },
+    {
+      "id": "4.2-6",
+      "section": "4.2",
+      "number": 6,
+      "page": 180,
+      "title": "Laguerre 方程与教材的归一化",
+      "question": "在 $x=0$ 邻域求解 $xy\\prime\\prime+(1-x)y\\prime+\\lambda y=0$。确定多项式解的参数；最高次幂归一化为 $(-x)^n$ 得 $L_n(x)$，写出前三阶。",
+      "idea": "这是合流超几何方程 a=−λ,c=1；重指标 0，解析支可终止。",
+      "hint": "递推 aₖ₊₁=(k−λ)aₖ/(k+1)²；注意教材最高次系数与常用 Lₙ 定义差 n!。",
+      "solution": "设 $y=x^r\\sum a_kx^k$，最低项为 $r^2a_0x^{r-1}$，指标重根 $r=0$。解析支递推为\n$$a_{k+1}=\\frac{k-\\lambda}{(k+1)^2}a_k,\\qquad y_1=a_0\\sum_{k=0}^{\\infty}\\frac{(-\\lambda)_k}{(k!)^2}x^k.$$\n第二支可由降阶得到 $y_2=y_1\\int\\frac{e^x}{x y_1^2}\\,dx$；在 $a_0\\ne0$ 下积分含对数项。若 $\\lambda=n=0,1,\\ldots$，n 次递推分子为零，解析支终止；其最高次系数为 $a_0(-1)^n/n!$，题设要求最高次为 $(-x)^n$，故取 $a_0=n!$。\n因此教材归一化下\n$$L_n(x)=n!\\sum_{k=0}^{n}(-1)^k\\binom nk\\frac{x^k}{k!},$$\n并有 $L_0=1$，$L_1=1-x$，$L_2=x^2-4x+2$，$L_3=-x^3+9x^2-18x+6$。常见数学表格把上述多项式再除以 n!；本题按教材最高次系数约定。",
+      "answer": "$\\lambda=n\\in\\mathbb N_0$；教材约定 $L_1=1-x,L_2=x^2-4x+2,L_3=-x^3+9x^2-18x+6$（另 $L_0=1$）。",
+      "pattern": "递推分子归零定本征参数，最后通过最高次系数确定整体倍数。",
+      "pitfall": "不要直接抄常见归一化 $L_2=1-2x+x^2/2$ 而忽略题设最高次系数。",
+      "verification": "依教材原页逐字核对题干；解析为独立推导，未声称与教师答案核对。",
+      "errata": "题设最高次项为 $(-x)^n$，与常用 Laguerre 多项式相差 $n!$。这是归一化约定差异，不能混用。"
+    }
+  ]
+}

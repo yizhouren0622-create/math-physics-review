@@ -1,0 +1,380 @@
+{
+  "chapter": 5,
+  "title": "三维曲线坐标系下分离变量法与特殊函数",
+  "sections": [
+    {
+      "id": "5.1",
+      "title": "正交曲线坐标系",
+      "page": 184,
+      "concepts": [
+        {
+          "id": "5.1-lame",
+          "title": "拉梅系数与曲线坐标算符",
+          "explain": "正交坐标的微小实际长度是 $ds_i=h_i dq_i$。梯度、散度与拉普拉斯算符中的尺度因子，分别来自长度、面积和体积的变化。",
+          "formula": "\\nabla^2u=\\frac1{h_1h_2h_3}\\sum_{i=1}^3\\frac{\\partial}{\\partial q_i}\\left(\\frac{h_1h_2h_3}{h_i^2}\\frac{\\partial u}{\\partial q_i}\\right)",
+          "conditions": "坐标正交且取右手方向；$h_i=|\\partial\\mathbf r/\\partial q_i|$，各分量指单位基矢上的物理分量。坐标奇点处用极限或正则性处理。",
+          "proof": "由 $du=\\sum u_{q_i}dq_i=\\nabla u\\cdot\\sum h_i\\mathbf e_i dq_i$ 得梯度分量 $u_{q_i}/h_i$。对小曲面盒应用高斯公式，i 方向两面的净流量为 $\\partial_{q_i}(A_i h_jh_k)dq_1dq_2dq_3$，除以体积 $h_1h_2h_3dq_1dq_2dq_3$ 得散度。令 $\\mathbf A=\\nabla u$ 即得所列拉普拉斯算符。",
+          "example": {
+            "question": "由拉梅系数推出柱坐标的拉普拉斯算符。",
+            "solution": "柱坐标 $(\\rho,\\phi,z)$ 的 $h_\\rho=1,h_\\phi=\\rho,h_z=1$，代入得 $\\nabla^2u=\\rho^{-1}(\\rho u_\\rho)_\\rho+\\rho^{-2}u_{\\phi\\phi}+u_{zz}$。"
+          },
+          "memory": "长度看 h，面积看两个 h，体积看三个 h。"
+        }
+      ]
+    },
+    {
+      "id": "5.2",
+      "title": "球坐标系下拉普拉斯方程定解问题求解",
+      "page": 187,
+      "concepts": [
+        {
+          "id": "5.2-solid-harmonics",
+          "title": "球谐展开与球内、球外径向解",
+          "explain": "球面边界最适合球谐函数。轴对称时角函数为 $P_l(\\cos\\theta)$；每一角模态只有两个径向幂 $r^l$ 与 $r^{-l-1}$。球内舍去奇异幂，球外衰减解舍去增长幂。",
+          "formula": "u=\\sum_{l=0}^{\\infty}\\left(A_lr^l+B_lr^{-l-1}\\right)P_l(\\cos\\theta)",
+          "conditions": "无源区域满足 $\\nabla^2u=0$；上述形式适用于轴对称。非轴对称需 $Y_l^m(\\theta,\\phi)$；外域须说明无穷远条件。",
+          "proof": "令 $u=R(r)\\Theta(\\theta)$，分离常数取 $l(l+1)$。角方程在 $x=\\cos\\theta$ 下为 Legendre 方程；两极有限性选 $l=0,1,\\ldots$ 及 $P_l$。径向方程 $(r^2R\\prime)\\prime-l(l+1)R=0$，试 $R=r^s$ 得 $s(s+1)=l(l+1)$，所以 $s=l,-l-1$。边界函数系数 $a_l=(2l+1)\\int_{-1}^1f(x)P_l(x)dx/2$ 来自正交性。",
+          "example": {
+            "question": "半径 R 的球面温度为 $2+3\\cos\\theta$，求球内稳态温度。",
+            "solution": "边界仅有 $P_0$ 和 $P_1$。球心有限给 $u=2+3(r/R)\\cos\\theta$，代入 r=R 即满足边界，两个项均为调和函数。"
+          },
+          "memory": "角度先拆成 P 或 Y，区域再决定保留哪一个径向幂。"
+        }
+      ]
+    },
+    {
+      "id": "5.3",
+      "title": "柱坐标系下拉普拉斯方程定解问题求解",
+      "page": 209,
+      "concepts": [
+        {
+          "id": "5.3-bessel",
+          "title": "圆柱中的 Bessel 展开",
+          "explain": "圆柱轴对称径向算符是 $R\\prime\\prime+R\\prime/\\rho$，本征函数为 $J_0(k\\rho)$，其正交权为 $\\rho$。侧面零温时 k 由 $J_0(ka)=0$ 决定；把上下底面先做正弦分解时，径向反而出现 $I_0$。",
+          "formula": "\\int_0^a\\rho J_0(j_{0n}\\rho/a)J_0(j_{0m}\\rho/a)\\,d\\rho=\\frac{a^2}{2}J_1(j_{0n})^2\\delta_{nm}",
+          "conditions": "圆柱包含轴线，排除 $Y_0$ 的轴线发散；$j_{0n}$ 为 $J_0$ 的第 n 个正零点。Robin 侧面要改本征方程。",
+          "proof": "径向方程可写为 $(\\rho R\\prime)\\prime+k^2\\rho R=0$。两不同本征解交叉相乘相减并积分，得 $(k_n^2-k_m^2)\\int_0^a\\rho R_nR_m d\\rho=[\\rho(R_nR_m\\prime-R_mR_n\\prime)]_0^a$，齐次同类边界令右端为零，因此带权正交。范数由 Bessel 递推积分得 $a^2[J_0(ka)^2+J_1(ka)^2]/2$，在 $J_0(ka)=0$ 时化为所列式。",
+          "example": {
+            "question": "如何把常数 1 展开成零侧边界的圆柱径向本征函数？",
+            "solution": "$1=\\sum_{n\\ge1}c_nJ_0(j_{0n}\\rho/a)$，$c_n=\\frac{2}{a^2J_1(j)^2}\\int_0^a\\rho J_0(j\\rho/a)d\\rho=2/[jJ_1(j)]$。在开区间成立；端点值由级数边界条件决定。"
+          },
+          "memory": "柱坐标积分带 ρ；侧面先齐次选 J，上下底先齐次常选 I。"
+        }
+      ]
+    },
+    {
+      "id": "5.4",
+      "title": "亥姆霍兹方程在球坐标系和柱坐标系下的求解问题",
+      "page": 228,
+      "concepts": [
+        {
+          "id": "5.4-heat-modes",
+          "title": "空间本征值决定扩散速度与振动频率",
+          "explain": "热方程和波动方程分离变量后，共用 $\\nabla^2X+k^2X=0$ 的空间本征问题。热问题各模态按 $e^{-Dk^2t}$ 衰减；波动问题各模态以 $ck$ 振荡。球中角阶 l 的径向函数是球 Bessel 函数 $j_l(kr)$。",
+          "formula": "u_{\\rm heat}=\\sum_n c_nX_ne^{-Dk_n^2t},\\qquad u_{\\rm wave}=\\sum_nX_n[A_n\\cos(ck_nt)+B_n\\sin(ck_nt)]",
+          "conditions": "先把非齐次边界平移成齐次，空间本征算符需配合同类边界；系数按几何体积权重投影。D 为热扩散率，c 为波速。",
+          "proof": "设 $u=XT$，$u_t=D\\nabla^2u$ 给 $T\\prime/(DT)=\\nabla^2X/X=-k^2$，故 $T=e^{-Dk^2t}$。波动方程给 $T\\prime\\prime+c^2k^2T=0$。球坐标角分离出 $l(l+1)$ 后径向方程为 $R\\prime\\prime+2R\\prime/r+[k^2-l(l+1)/r^2]R=0$，有限解为 $j_l(kr)$。",
+          "example": {
+            "question": "半径 R 的球、球面零温，球对称模态最慢衰减的时间尺度是多少？",
+            "solution": "l=0，$j_0(kR)=\\sin(kR)/(kR)=0$ 给 $k_1=\\pi/R$。最慢指数为 $e^{-D\\pi^2t/R^2}$，时间尺度 $\\tau=R^2/(D\\pi^2)$。"
+          },
+          "memory": "同一空间模态：扩散看 k²，振动看 k。"
+        }
+      ]
+    },
+    {
+      "id": "5.5",
+      "title": "贝塞尔函数的应用",
+      "page": 235,
+      "concepts": [
+        {
+          "id": "5.5-taper",
+          "title": "变截面细杆与环形膜",
+          "explain": "几何形状会改变微分算符：截面积 $A(x)$ 的细杆纵振动满足 $u_{tt}=c^2A^{-1}(Au_x)_x$；楔杆 $A\\propto x$ 对应普通 Bessel，锥杆 $A\\propto x^2$ 对应球 Bessel。环形膜不包含原点，不能因 $Y_m$ 在零点发散就舍掉它。",
+          "formula": "(A X\\prime)\\prime+k^2AX=0,\\qquad \\omega=ck",
+          "conditions": "杆均匀材质、线弹性、小纵振动、细杆近似，$c=\\sqrt{E/\\varrho}$。膜张力 T、面密度 σ 恒定时 c=√(T/σ)。",
+          "proof": "取长 dx 的杆元，纵向弹性力为 $EAu_x$，两端净力 $E(Au_x)_x dx$；质量为 $\\varrho A dx$，牛顿定律给出所列方程。代入 $u=XT$ 后得自伴本征方程，因此正交权是 A；自由端条件是 $AX\\prime=0$，在 A 非零端等价于 $X\\prime=0$。",
+          "example": {
+            "question": "一端尖、截面积正比于 x 的自由楔杆，其正频率由哪类零点给出？",
+            "solution": "有限径向解 $X=J_0(kx)$，粗端 x=l 自由给 $X\\prime(l)=-kJ_1(kl)=0$，故正频率 $\\omega_n=cj_{1n}/l$，另有零频刚体平移模态。"
+          },
+          "memory": "先算截面积随 x 的幂，再决定 Bessel 类型；环域保留两类解。"
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "5.1-1",
+      "section": "5.1",
+      "number": 1,
+      "page": 187,
+      "title": "正交曲线坐标的旋度公式",
+      "question": "对矢量 $\\mathbf A(q_1,q_2,q_3)$，旋度第 i 分量由包围该点、法线为 $\\mathbf e_i$ 的无穷小面上的右手定向环量除以面积定义。证明\n$$\\nabla\\times\\mathbf A=\\frac{\\partial_{q_2}(A_3h_3)-\\partial_{q_3}(A_2h_2)}{h_2h_3}\\mathbf e_1+\\frac{\\partial_{q_3}(A_1h_1)-\\partial_{q_1}(A_3h_3)}{h_3h_1}\\mathbf e_2+\\frac{\\partial_{q_1}(A_2h_2)-\\partial_{q_2}(A_1h_1)}{h_1h_2}\\mathbf e_3.$$",
+      "idea": "取法向 e₁ 的 q₂–q₃ 微小矩形，四边线积分成对相减后做一阶展开。",
+      "hint": "沿 qⱼ 方向的线元是 hⱼdqⱼ；法向 e₁ 的面积是 h₂h₃dq₂dq₃。",
+      "solution": "以 $\\mathbf e_1$ 分量为例，按 $(\\mathbf e_2,\\mathbf e_3)$ 的正向绕行。q₃ 方向两边的净环量为\n$$[A_3h_3(q_2+dq_2,q_3)-A_3h_3(q_2,q_3)]dq_3=\\partial_{q_2}(A_3h_3)dq_2dq_3+o(dq_2dq_3).$$\nq₂ 方向两边因绕行方向相反，给 $-\\partial_{q_3}(A_2h_2)dq_2dq_3$。除以面积 $h_2h_3dq_2dq_3$，并取小面极限，得\n$$ (\\nabla\\times\\mathbf A)_1=\\frac{\\partial_{q_2}(A_3h_3)-\\partial_{q_3}(A_2h_2)}{h_2h_3}.$$\n循环置换 $1\\to2\\to3\\to1$ 即得另两个分量。三个分量沿各自单位基矢相加即为题设公式，也可记成形式行列式 $\\frac1{h_1h_2h_3}\\det[(h_i\\mathbf e_i);(\\partial_{q_i});(h_iA_i)]$，导数只作用于最后一行。",
+      "answer": "旋度三个分量均为“相邻两个 hA 的交叉偏导差，除以相应面积尺度因子”，即题设公式。",
+      "pattern": "画定向微小矩形→四边积分→成对差分→除面积→循环置换。",
+      "pitfall": "Aᵢ 是单位基矢分量；线积分时必须乘 hᵢ，且环路方向决定正负。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-1",
+      "section": "5.2",
+      "number": 1,
+      "page": 208,
+      "title": "Legendre 多项式在 −1 的值",
+      "question": "证明任意阶 Legendre 多项式 $P_l(x)$ 在 $x=-1$ 处取值 $P_l(-1)=(-1)^l$。",
+      "idea": "用生成函数同时给出所有阶的端点值。",
+      "hint": "在 (1−2xt+t²)⁻¹/² 中代入 x=−1。",
+      "solution": "由生成函数 $\\sum_{l\\ge0}P_l(x)t^l=(1-2xt+t^2)^{-1/2}$，在 $|t|<1$ 代入 x=−1：\n$$\\sum_{l\\ge0}P_l(-1)t^l=(1+2t+t^2)^{-1/2}=\\frac1{1+t}=\\sum_{l\\ge0}(-1)^lt^l.$$\n两边都是 t=0 邻域的解析函数，幂级数系数唯一，逐项比较得 $P_l(-1)=(-1)^l$。另可由 $P_l(-x)=(-1)^lP_l(x)$ 与 $P_l(1)=1$ 得到同一结论。",
+      "answer": "$P_l(-1)=(-1)^l$。",
+      "pattern": "端点或奇偶性问题优先代生成函数，再比较同次幂系数。",
+      "pitfall": "平方根取 t=0 时值为 1 的解析分支；这里不是任意实 t 下把 √(1+t)² 随意去绝对值。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-2",
+      "section": "5.2",
+      "number": 2,
+      "page": 208,
+      "title": "五条 Legendre 导数递推关系",
+      "question": "证明教材 (5.2.58)–(5.2.62)：\n$$P_l=P_{l+1}\\prime-2xP_l\\prime+P_{l-1}\\prime;\\quad (2l+1)P_l=P_{l+1}\\prime-P_{l-1}\\prime;$$\n$$P_{l+1}\\prime=(l+1)P_l+xP_l\\prime;\\quad lP_l=xP_l\\prime-P_{l-1}\\prime;$$\n$$ (2l+1)xP_l\\prime=lP_{l+1}\\prime+(l+1)P_{l-1}\\prime.$$",
+      "idea": "从同一个生成函数的 x、t 偏导出发，先证前三式，另两式用代数消元。",
+      "hint": "设 G=(1−2xt+t²)⁻¹/²，Gₓ=tD⁻³/²、Gₜ=(x−t)D⁻³/²。",
+      "solution": "令 $D=1-2xt+t^2$，$G=\\sum P_lt^l$。直接求导得 $G_x=tD^{-3/2}$、$G_t=(x-t)D^{-3/2}$。\n\n1. $DG_x=tG$。比较 $t^{l+1}$ 系数得 $P_{l+1}\\prime-2xP_l\\prime+P_{l-1}\\prime=P_l$，即 (58)。\n2. 由 $(1-t^2)G_x=t(2tG_t+G)$，比较 $t^{l+1}$ 得 $P_{l+1}\\prime-P_{l-1}\\prime=(2l+1)P_l$，即 (59)。该恒等式两端同为 $t(1-t^2)D^{-3/2}$。\n3. 由 $(1-xt)G_x=tG+t^2G_t$，比较 $t^{l+1}$ 得 $P_{l+1}\\prime-xP_l\\prime=(l+1)P_l$，即 (60)。\n4. (59) 减 (60) 得 $lP_l=xP_l\\prime-P_{l-1}\\prime$，即 (61)。\n5. 对 Bonnet 递推 $(l+1)P_{l+1}=(2l+1)xP_l-lP_{l-1}$ 求导：\n$$ (2l+1)xP_l\\prime=(l+1)P_{l+1}\\prime+lP_{l-1}\\prime-(2l+1)P_l.$$\n用 (59) 消去最后一项，就得到 $lP_{l+1}\\prime+(l+1)P_{l-1}\\prime$，即 (62)。\n含 $P_{l-1}$ 的式子通常写于 $l\\ge1$；低阶端点可单独用 $P_0=1,P_1=x$ 检查。",
+      "answer": "五式均由生成函数系数比较及 Bonnet 递推推出，证明见展开步骤。",
+      "pattern": "先引入 G，把含导数递推翻译为 Gₓ、Gₜ 恒等式，再逐项比较。",
+      "pitfall": "(58) 左端是 P_l 而非 P_l′；(62) 右边的 l 与 l+1 不要对调。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-3",
+      "section": "5.2",
+      "number": 3,
+      "page": 208,
+      "title": "多项式的 Legendre 展开（四问）",
+      "question": "以 $P_l(x)$ 为基底，在 $[-1,1]$ 展开：\n1. $2x^3+3x+4$；\n2. $x^4+2x^3$；\n3. $x^3$；\n4. $1+x+2x^2+3x^3$。",
+      "idea": "多项式只有有限个模态，直接反解低阶 Pₗ 比逐项积分省力。",
+      "hint": "用 P₀=1，P₁=x，P₂=(3x²−1)/2，P₃=(5x³−3x)/2，P₄=(35x⁴−30x²+3)/8。",
+      "solution": "先反解：\n$$x=P_1,\\quad x^2=\\frac13P_0+\\frac23P_2,\\quad x^3=\\frac35P_1+\\frac25P_3,$$\n$$x^4=\\frac15P_0+\\frac47P_2+\\frac8{35}P_4.$$\n逐式代入并合并同阶：\n1. $2x^3+3x+4=4P_0+\\frac{21}{5}P_1+\\frac45P_3$。\n2. $x^4+2x^3=\\frac15P_0+\\frac65P_1+\\frac47P_2+\\frac45P_3+\\frac8{35}P_4$。\n3. $x^3=\\frac35P_1+\\frac25P_3$。\n4. $1+x+2x^2+3x^3=\\frac53P_0+\\frac{14}{5}P_1+\\frac43P_2+\\frac65P_3$。\n检查每式右边的最高次系数及 x=1 的值；如第4式系数和为 7，与原函数在 1 的值一致。",
+      "answer": "(1) $4P_0+21P_1/5+4P_3/5$；(2) $P_0/5+6P_1/5+4P_2/7+4P_3/5+8P_4/35$；(3) $3P_1/5+2P_3/5$；(4) $5P_0/3+14P_1/5+4P_2/3+6P_3/5$。",
+      "pattern": "有限次多项式→写同次数低阶 Pₗ→从最高次倒推系数→按奇偶检查。",
+      "pitfall": "x³ 不等于 P₃；奇函数只有奇阶，偶函数只有偶阶。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-4",
+      "section": "5.2",
+      "number": 4,
+      "page": 208,
+      "title": "匀强电场中的接地导体球",
+      "question": "在场强为 $E_0$ 的匀强电场中放入半径 a 的接地导体球，求球外电势分布及电场强度。",
+      "idea": "取 z 轴沿外场方向，远场电势 −E₀r cosθ，只需增加一个 l=1 衰减项满足接地条件。",
+      "hint": "设 Φ=(−E₀r+B/r²)cosθ，令 Φ(a)=0。",
+      "solution": "取外电场为 $E_0\\mathbf e_z$，零势选择使远场 $\\Phi\\sim-E_0r\\cos\\theta$。轴对称 Laplace 通解中与远场相容的 l=1 部分为 $(-E_0r+B/r^2)\\cos\\theta$。球面接地给 $-E_0a+B/a^2=0$，故 $B=E_0a^3$。由外域唯一性，\n$$\\Phi(r,\\theta)=-E_0\\left(r-\\frac{a^3}{r^2}\\right)\\cos\\theta,\\quad r\\ge a.$$\n电场 $\\mathbf E=-\\nabla\\Phi$，逐项求导：\n$$E_r=E_0\\left(1+\\frac{2a^3}{r^3}\\right)\\cos\\theta,\\quad E_\\theta=-E_0\\left(1-\\frac{a^3}{r^3}\\right)\\sin\\theta,\\quad E_\\phi=0.$$\n在 r=a，切向场为零，法向场为 $3E_0\\cos\\theta$；在无穷远恢复匀强场的球坐标分量。",
+      "answer": "$\\Phi=-E_0(r-a^3/r^2)\\cos\\theta$，$E_r=E_0(1+2a^3/r^3)\\cos\\theta$，$E_\\theta=-E_0(1-a^3/r^3)\\sin\\theta$。",
+      "pattern": "远场决定增长模态，导体表面条件决定衰减模态，最后取负梯度。",
+      "pitfall": "Eθ=−(1/r)∂θΦ，不能漏 1/r；远场电势并不趋零。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-5",
+      "section": "5.2",
+      "number": 5,
+      "page": 208,
+      "title": "均匀带电圆环的空间电势",
+      "question": "半径 R 的均匀带电细圆环，总电量 Q，求空间电势分布。",
+      "idea": "把圆环放在赤道平面，库仑积分最直接；用 Legendre 加法定理得到适合本章的内外多极展开。",
+      "hint": "对源点方位角积分后，Pₗ(cosγ) 的平均等于 Pₗ(0)Pₗ(cosθ)。",
+      "solution": "令环在 z=0 平面、圆心为原点，取无穷远零势，介质介电常数为 ε。源点 $\\mathbf r\\prime=R(\\cos\\phi\\prime,\\sin\\phi\\prime,0)$，$dq=Qd\\phi\\prime/(2\\pi)$，故处处（除细环本身）\n$$\\Phi(r,\\theta)=\\frac{Q}{8\\pi^2\\varepsilon}\\int_0^{2\\pi}\\frac{d\\phi\\prime}{\\sqrt{r^2+R^2-2rR\\sin\\theta\\cos\\phi\\prime}}.$$\n当 r≠R，展开库仑核 $|\\mathbf r-\\mathbf r\\prime|^{-1}=\\sum_{l\\ge0}r_<^l r_>^{-l-1}P_l(\\cos\\gamma)$。方位角平均由加法定理只保留 m=0，得到\n$$\\boxed{\\Phi=\\frac{Q}{4\\pi\\varepsilon}\\sum_{l=0}^\\infty\\frac{r_<^l}{r_>^{l+1}}P_l(0)P_l(\\cos\\theta)}.$$\n这里 $r_<=\\min(r,R),r_>=\\max(r,R)$。奇阶 $P_{2n+1}(0)=0$，偶阶 $P_{2n}(0)=(-1)^n(2n)!/[2^{2n}(n!)^2]$。所以球内用 $r^{2n}/R^{2n+1}$，球外用 $R^{2n}/r^{2n+1}$。在轴线上 θ=0，积分直接给 $\\Phi=Q/[4\\pi\\varepsilon\\sqrt{r^2+R^2}]$，与级数一致。在环上理想细线电势发散；r=R 的非环位置可用原积分或相应极限。",
+      "answer": "库仑积分或 $\\frac{Q}{4\\pi\\varepsilon}\\sum r_<^lr_>^{-l-1}P_l(0)P_l(\\cos\\theta)$；只有偶阶。",
+      "pattern": "先固定源几何与零势→库仑核生成函数→源角平均→内外分别选径向幂。",
+      "pitfall": "只在轴线上得到 Q/(4πε√(z²+R²))，不能把这个轴上式当成整个空间电势。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-6",
+      "section": "5.2",
+      "number": 6,
+      "page": 208,
+      "title": "分割导体球壳的内外电势",
+      "question": "半径 R 的导体球壳，在 $\\theta=\\theta_0$ 处用绝缘细环分成两部分。上部接地、下部保持电势 U。求球壳内部与外部电势分布。",
+      "idea": "边界是角度阶跃函数，先作 Legendre 展开；同一组表面系数分别乘内域和外域径向因子。",
+      "hint": "令 μ₀=cosθ₀，边界 f(μ)=U（−1≤μ<μ₀）、0（μ₀<μ≤1）。",
+      "solution": "记 $\\mu=\\cos\\theta,\\mu_0=\\cos\\theta_0$。绝缘环视为零宽，除分割线外表面电势 $f(\\mu)=U$（$\\mu<\\mu_0$）、0（$\\mu>\\mu_0$）。写 $f=\\sum a_lP_l$，有\n$$a_0=\\frac U2(1+\\mu_0),\\qquad a_l=\\frac{U(2l+1)}2\\int_{-1}^{\\mu_0}P_l(\\mu)d\\mu=\\frac U2[P_{l+1}(\\mu_0)-P_{l-1}(\\mu_0)],\\ l\\ge1.$$\n最后一步使用 $(2l+1)P_l=P_{l+1}\\prime-P_{l-1}\\prime$，在 −1 的差值为零。\n内部球心有限，外部取无穷远零势，因此\n$$\\Phi_{\\rm in}=\\sum_{l=0}^\\infty a_l(r/R)^lP_l(\\cos\\theta),\\qquad\\Phi_{\\rm out}=\\sum_{l=0}^\\infty a_l(R/r)^{l+1}P_l(\\cos\\theta).$$\n边界两开区域分别回到 0 和 U；跃变线上的 Legendre 级数取两侧平均 U/2，是理想零宽间隙的极限描述。若“上下半部”严格为半球，则 θ₀=π/2、μ₀=0，是上述通式的特例。",
+      "answer": "内外展开如上，$a_0=U(1+\\cos\\theta_0)/2$，$a_l=U[P_{l+1}(\\cos\\theta_0)-P_{l-1}(\\cos\\theta_0)]/2$。",
+      "pattern": "阶跃边界→写清积分区间→计算球面系数→同一系数配内外幂。",
+      "pitfall": "μ=cosθ 随 θ 增大而减小，积分限很容易颠倒；外域需补无穷远零势。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-7",
+      "section": "5.2",
+      "number": 7,
+      "page": 208,
+      "title": "球外 Robin 边界与共振参数",
+      "question": "在球外求解 $\\nabla^2u=0$（$r>R$），边界 $[u+h\\,\\partial_ru]_{r=R}=5\\cos3\\theta$，h 为常数。",
+      "idea": "先把角边界分成 P₁、P₃；径向求导会使每个模态得到不同 Robin 因子。",
+      "hint": "5cos3θ=8P₃(cosθ)−3P₁(cosθ)。",
+      "solution": "**补充定解条件：**原题未写无穷远条件。以下采用外域标准衰减条件 $u\\to0$；若不加该条件，答案不唯一。\n令 $\\mu=\\cos\\theta$，$5\\cos3\\theta=5(4\\mu^3-3\\mu)=8P_3(\\mu)-3P_1(\\mu)$。衰减展开 $u=\\sum a_l(R/r)^{l+1}P_l(\\mu)$ 在 r=R 满足\n$$[u+hu_r]_{r=R}=\\sum a_l\\left[1-\\frac{h(l+1)}R\\right]P_l(\\mu).$$\n若 $h\\ne R/2,R/4$，一个轴对称特解是\n$$u=-\\frac{3(R/r)^2}{1-2h/R}P_1(\\mu)+\\frac{8(R/r)^4}{1-4h/R}P_3(\\mu).$$\n若 h=R/2 或 R/4，对应非零强迫系数遇零分母，衰减解不存在。若 $h=R/(n+1)$ 且 n≠1,3，则该特解仍存在，但可任意叠加衰减齐次 n 阶球谐模态；轴对称类中为 $C(R/r)^{n+1}P_n$，一般类中为任意 m 的 $Y_n^m$，因此不唯一。除这些离散共振值外，配合衰减条件解唯一。题中径向导数是 +∂r；球外区域在内球面上的外法线实际上为 −eᵣ，不应自行改题面符号。",
+      "answer": "非共振衰减解为 $-3(R/r)^2P_1/(1-2h/R)+8(R/r)^4P_3/(1-4h/R)$；h=R/2,R/4 无解，其他 h=R/(n+1) 有齐次自由度。",
+      "pattern": "角模态分解→径向导数作用在每个幂→逐模态除 Robin 因子→检查零分母及无穷条件。",
+      "pitfall": "不能直接把 cos3θ 当成 P₃；也不能略去 h 的共振例外。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。",
+      "errata": "原题未给无穷远条件；解析采用衰减条件，并讨论 Robin 系数 $h=R/(n+1)$ 时的共振、无解或不唯一。"
+    },
+    {
+      "id": "5.2-8",
+      "section": "5.2",
+      "number": 8,
+      "page": 208,
+      "title": "厚球壳的混合角模态稳态温度",
+      "question": "均匀厚球壳内半径 $R_1$、外半径 $R_2$，无热源热汇；内表面温度 $2(1-\\cos\\theta)$，外表面温度 $\\sin\\theta\\sin\\phi$。求壳内稳态温度。",
+      "idea": "内边界是 l=0 与 l=1,m=0，外边界是 l=1 的实球谐。分别建立径向边界插值。",
+      "hint": "对每个 l 建 Fₗ(R₁)=1,Fₗ(R₂)=0 与 Gₗ(R₁)=0,Gₗ(R₂)=1。",
+      "solution": "记 a=R₁、b=R₂，0<a<b。$1$ 是 l=0 球谐，$\\cos\\theta$ 与 $\\sin\\theta\\sin\\phi$ 都是 l=1。定义\n$$F_l(r)=\\frac{r^l-b^{2l+1}r^{-l-1}}{a^l-b^{2l+1}a^{-l-1}},\\qquad G_l(r)=\\frac{r^l-a^{2l+1}r^{-l-1}}{b^l-a^{2l+1}b^{-l-1}}.$$\n这两个函数都是径向方程的解，且分别在内、外边界取 (1,0) 与 (0,1)。故\n$$\\boxed{u(r,\\theta,\\phi)=2F_0(r)-2F_1(r)\\cos\\theta+G_1(r)\\sin\\theta\\sin\\phi}.$$\n可显式写 $F_0=a(b-r)/[r(b-a)]$。在 r=a，G₁=0、F₀=F₁=1，得 $2-2\\cos\\theta$；在 r=b，F₀=F₁=0、G₁=1，得外边界。每一项满足 Laplace 方程，Dirichlet 唯一性保证此为唯一稳态解。",
+      "answer": "$u=2F_0-2F_1\\cos\\theta+G_1\\sin\\theta\\sin\\phi$，F、G 见展开定义。",
+      "pattern": "按球谐阶分组，分别用两个径向幂构造边界插值，最后线性叠加。",
+      "pitfall": "厚球壳不包含原点，两种径向幂都保留；φ 依赖不能用轴对称 Legendre 展开全部代替。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.2-9",
+      "section": "5.2",
+      "number": 9,
+      "page": 208,
+      "title": "球面二次函数的调和延拓",
+      "question": "半径 R 的均匀球体，表面温度为 $3\\sin^2\\theta\\cos^2\\phi$，求球内稳态温度。",
+      "idea": "边界是 3x²/R²；把二次多项式分成常数球谐与无迹二次调和多项式。",
+      "hint": "3sin²θcos²φ 的球面平均为 1，剩余部分是 l=2。",
+      "solution": "设笛卡尔 x=r sinθ cosφ。由于 $\\Delta x^2=2$、$\\Delta r^2=6$，$3x^2-r^2$ 是二次调和多项式。因此边界 $3x^2/R^2$ 可延拓为\n$$u=1+\\frac{3x^2-r^2}{R^2}=1+\\frac{r^2}{R^2}\\big(3\\sin^2\\theta\\cos^2\\phi-1\\big).$$\n它在球心有限、在 r=R 回到指定温度，且 Laplace 算符为零。按球谐写法，用 $\\cos^2\\phi=(1+\\cos2\\phi)/2$ 可得\n$$3\\sin^2\\theta\\cos^2\\phi=1-P_2(\\cos\\theta)+\\frac32\\sin^2\\theta\\cos2\\phi,$$\n后两项均为 l=2，故都乘 (r/R)²，得到相同公式。中心温度为 1，也等于球面平均。",
+      "answer": "$u=1+(r/R)^2[3\\sin^2\\theta\\cos^2\\phi-1]$。",
+      "pattern": "低次球面多项式先找常数平均与无迹调和部分，再乘相应 rˡ。",
+      "pitfall": "直接令 u=3(r/R)²sin²θcos²φ 不调和，必须减去 r²/R² 并补常数 1。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.3-1",
+      "section": "5.3",
+      "number": 1,
+      "page": 228,
+      "title": "圆柱底面为 ρ² 的稳态温度",
+      "question": "半径 $\\rho_0$、高 h 的均质圆柱体，上底和侧面保持零温，下底温度 $f(\\rho)=\\rho^2$。求柱内稳态温度。",
+      "idea": "选 z=0 为下底，侧面齐次先选 J₀ 零点，轴向组合自动满足上底零温。",
+      "hint": "用 J₀(j₀ₙρ/a)sinh[kₙ(h−z)]/sinh(kₙh)。",
+      "solution": "记 a=ρ₀，0<z<h，轴对称 Laplace 方程为 $u_{\\rho\\rho}+u_\\rho/\\rho+u_{zz}=0$。取 $J_0(k_n\\rho)$，$k_n=j_{0n}/a$，即可满足侧面零温与轴线有限。轴向取 $\\sinh[k_n(h-z)]/\\sinh(k_nh)$，上下底分别取 1、0。所以\n$$u=\\sum_{n=1}^\\infty A_nJ_0(j_{0n}\\rho/a)\\frac{\\sinh[j_{0n}(h-z)/a]}{\\sinh(j_{0n}h/a)}.$$\n由带权正交性，\n$$A_n=\\frac{2}{a^2J_1(j)^2}\\int_0^a\\rho^3J_0(j\\rho/a)d\\rho,\\quad j=j_{0n}.$$\n用 $(xJ_1)\\prime=xJ_0$、$(x^2J_2)\\prime=x^2J_1$ 分部积分得积分 $a^4[J_1(j)/j-2J_2(j)/j^2]$。又 $J_2(j)=2J_1(j)/j$，故\n$$A_n=\\frac{2a^2(j_{0n}^2-4)}{j_{0n}^3J_1(j_{0n})}.$$\n代入 z=0 的展开即为 ρ²；上下底与侧面的公共棱边条件冲突（下底取 a²、侧面取 0），按各开面边界及内部解的极限理解，不要求角点连续。",
+      "answer": "上述 Bessel–双曲正弦级数，系数 $A_n=2a^2(j_{0n}^2-4)/(j_{0n}^3J_1(j_{0n}))$。",
+      "pattern": "侧面先齐次→J₀ 正零点→轴向满足另一底面→按 ρ 权投影非齐次底面。",
+      "pitfall": "分母范数有 a²/2，积分是 ρ³J₀ 而不是 ρ²J₀；棱边不相容须按开面理解。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.3-2",
+      "section": "5.3",
+      "number": 2,
+      "page": 228,
+      "title": "恒温侧面的圆柱稳态温度",
+      "question": "半径 $\\rho_0$、高 h 的均质圆柱体，上下底面零温，侧面保持温度 $u_0$。求柱内稳态温度。",
+      "idea": "先用正弦满足上下底面，再用 I₀ 满足径向方程和侧面常数展开。",
+      "hint": "z 模态为 sin(nπz/h)，径向方程是 R″+R′/ρ−(nπ/h)²R=0。",
+      "solution": "记 a=ρ₀。取 $u=R(\\rho)\\sin(n\\pi z/h)$，径向方程为修正 Bessel 方程；轴线有限排除 $K_0$，所以归一化径向解为 $I_0(n\\pi\\rho/h)/I_0(n\\pi a/h)$。在侧面把常数作正弦展开：\n$$b_n=\\frac2h\\int_0^h u_0\\sin(n\\pi z/h)dz=\\frac{2u_0}{n\\pi}[1-(-1)^n].$$\n故\n$$u(\\rho,z)=\\frac{4u_0}{\\pi}\\sum_{p=0}^\\infty\\frac1{2p+1}\\frac{I_0((2p+1)\\pi\\rho/h)}{I_0((2p+1)\\pi a/h)}\\sin\\frac{(2p+1)\\pi z}{h}.$$\n各项在两个底面为零，侧面在 0<z<h 回到 u₀，且满足 Laplace 方程。底面与侧面交线上的不同指定温度是理想化不连续边界，内部解仍确定。",
+      "answer": "只含奇数 n 的 I₀–正弦级数，见展开公式。",
+      "pattern": "两个底面同为零→正弦本征值→修正 Bessel 径向→侧面函数正弦投影。",
+      "pitfall": "这次径向是 I₀，不是 J₀；不能凭看到圆柱就一律取普通 Bessel。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.3-3",
+      "section": "5.3",
+      "number": 3,
+      "page": 228,
+      "title": "侧面自由冷却的圆柱",
+      "question": "半径 $\\rho_0$、高 h 的均质圆柱体，上底温度为 $f(\\rho)$，下底零温，侧面在零温空气中自由冷却。求柱内稳态温度。",
+      "idea": "牛顿冷却给侧面 Robin 条件，先求对应 J₀ 的本征值，再投影上底温度。",
+      "hint": "引入 β=换热系数/导热系数，侧边为 uρ+βu=0。",
+      "solution": "题目未给换热强度，需记导热系数 K、表面换热系数 H，令 $\\beta=H/K\\ge0$。外法线为 +eρ，牛顿冷却 $-Ku_\\rho=Hu$ 给 $u_\\rho(a,z)+\\beta u(a,z)=0$，a=ρ₀。令 $R_n=J_0(k_n\\rho)$，得到\n$$-k_nJ_1(k_na)+\\beta J_0(k_na)=0.$$\n设 $\\beta>0$，取所有正根 kₙ，轴向函数选 $\\sinh(k_nz)/\\sinh(k_nh)$ 满足下底零、上底 1。于是\n$$u=\\sum_{n=1}^\\infty c_nJ_0(k_n\\rho)\\frac{\\sinh(k_nz)}{\\sinh(k_nh)},$$\n$$c_n=\\frac{\\int_0^a\\rho f(\\rho)J_0(k_n\\rho)d\\rho}{N_n},\\quad N_n=\\frac{a^2}{2}[J_0(k_na)^2+J_1(k_na)^2].$$\n范数来自 Bessel 积分恒等式；Robin 同类边界使不同 k 以 ρ 权正交。若 β=0（侧面绝热），除 J₁ 正零点外还有 k=0 模态，必须补 $c_0z/h$，其中 $c_0=2\\int_0^a\\rho f(\\rho)d\\rho/a^2$。β→∞ 时本征方程趋向 J₀(kₙa)=0。",
+      "answer": "Robin 根满足 $k_nJ_1(k_na)=\\beta J_0(k_na)$；温度为上述 J₀–sinh 级数，系数按 ρ 权投影。",
+      "pattern": "先把物理散热律转成带正确法向符号的 Robin 条件，再定根与范数。",
+      "pitfall": "自由冷却不是零温边界，也不是绝热；β 未给出时答案必须保留参数。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。",
+      "errata": "自由冷却边界须保留表面换热参数。题面未给具体数值时，用 Robin 参数表示本征方程，不能自行按零温边界替代。"
+    },
+    {
+      "id": "5.4-1",
+      "section": "5.4",
+      "number": 1,
+      "page": 235,
+      "title": "圆柱混合边界的热扩散",
+      "question": "半径 $\\rho_0$、高 h 的均质圆柱，下底和侧面保持 $u_0$，上底绝热，初始温度 $u_0+f(\\rho)g(z)$。求各点温度随时间变化。",
+      "idea": "先减去常温 u₀，再用径向 Dirichlet 与轴向 Dirichlet–Neumann 本征函数。",
+      "hint": "底面取 sinλz，顶面导数零使 λ=(m+1/2)π/h。",
+      "solution": "记 a=ρ₀、D 为热扩散率，令 v=u−u₀，则 $v_t=D\\Delta v$，$v(a,z,t)=v(\\rho,0,t)=0$，$v_z(\\rho,h,t)=0$。径向 $J_0(k_n\\rho)$，$k_n=j_{0n}/a$；轴向 $\\sin(\\lambda_mz)$，$\\lambda_m=(m+\\tfrac12)\\pi/h$（m=0,1,…）。\n初值乘积可分别展开：\n$$F_n=\\frac{2}{a^2J_1(j_{0n})^2}\\int_0^a\\rho f(\\rho)J_0(j_{0n}\\rho/a)d\\rho,$$\n$$G_m=\\frac2h\\int_0^hg(z)\\sin(\\lambda_mz)dz.$$\n利用热方程时间因子，\n$$\\boxed{u=u_0+\\sum_{n=1}^\\infty\\sum_{m=0}^\\infty F_nG_mJ_0(k_n\\rho)\\sin(\\lambda_mz)e^{-D(k_n^2+\\lambda_m^2)t}}.$$\n逐项满足三类空间边界，t=0 时两展开相乘恢复 f g；t→∞ 温度趋 u₀。若初值与边界在棱边或 t=0 不相容，公式按内部 L² 初值及 t>0 解理解。",
+      "answer": "双重本征展开如上，轴向为半整数正弦模态，衰减率 $D[(j_{0n}/a)^2+((m+1/2)\\pi/h)^2]$。",
+      "pattern": "减稳态→两方向本征值→乘积初值各自投影→时间指数叠加。",
+      "pitfall": "绝热顶面是 v_z=0，不是 v=0；轴向不能取整数 nπ/h。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.4-2",
+      "section": "5.4",
+      "number": 2,
+      "page": 235,
+      "title": "均匀初温球体的冷却",
+      "question": "半径 R 的均匀导热介质球，初始温度 $u_0$；球面保持零温，求球内温度随时间变化。",
+      "idea": "球对称时把 v=ru 变成一维热方程，利用正弦展开避免球 Bessel 系数计算。",
+      "hint": "vₜ=Dvᵣᵣ，v(0,t)=v(R,t)=0，v(r,0)=u₀r。",
+      "solution": "球对称热方程 $u_t=D(u_{rr}+2u_r/r)$。令 v=ru，得 $v_t=Dv_{rr}$。球心有限意味着 v(0,t)=0，球面零温给 v(R,t)=0。展开\n$$v=\\sum_{n\\ge1}b_n\\sin(n\\pi r/R)e^{-Dn^2\\pi^2t/R^2},$$\n$$b_n=\\frac2R\\int_0^Ru_0r\\sin(n\\pi r/R)dr=\\frac{2u_0R}{n\\pi}(-1)^{n+1}.$$\n所以对 0<r<R、t>0，\n$$u(r,t)=\\frac{2u_0R}{\\pi r}\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}n\\sin\\frac{n\\pi r}{R}e^{-Dn^2\\pi^2t/R^2}.$$\n也可写 $2u_0\\sum(-1)^{n+1}j_0(n\\pi r/R)e^{-Dn^2\\pi^2t/R^2}$。球心取连续极限：\n$$u(0,t)=2u_0\\sum_{n=1}^\\infty(-1)^{n+1}e^{-Dn^2\\pi^2t/R^2}.$$\nt→0⁺ 时每个内部点回到 u₀，r=R 在 t>0 为零；初始表面与突然冷却边界的跳变按极限处理。",
+      "answer": "上述正弦/r（或 j₀）级数，最慢衰减率 Dπ²/R²。",
+      "pattern": "球对称→乘 r 消去一阶导→一维零端热方程→最后除 r，并单独取中心极限。",
+      "pitfall": "r=0 处不能直接代入 1/r 形式；最终温度无奇点。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.4-3",
+      "section": "5.4",
+      "number": 3,
+      "page": 235,
+      "title": "初温含 cosθ 的球体冷却",
+      "question": "半径 R 的均匀导热介质球，初始温度 $f(r)\\cos\\theta$；置入冰水后球面保持零温，求球内温度变化。",
+      "idea": "初值只有 l=1 球谐，扩散不混合角阶；径向用 j₁ 及其正零点展开。",
+      "hint": "j₁(x)=sin x/x²−cos x/x；边界 j₁(αₙ)=0，相当于 tanαₙ=αₙ。",
+      "solution": "因 $\\cos\\theta=P_1(\\cos\\theta)$，设 $u=V(r,t)\\cos\\theta$，代入热方程得 $V_t=D[V_{rr}+2V_r/r-2V/r^2]$。空间有限解为 $j_1(kr)$；球面零温给 $k_n=\\alpha_n/R$，$\\alpha_n>0$ 为 $j_1$ 的正零点（$\\tan\\alpha_n=\\alpha_n$，须排除 0）。\n$$u(r,\\theta,t)=\\cos\\theta\\sum_{n=1}^\\infty A_nj_1(\\alpha_nr/R)e^{-D\\alpha_n^2t/R^2}.$$\n按径向权 r² 投影初温：\n$$A_n=\\frac{\\int_0^Rr^2f(r)j_1(\\alpha_nr/R)dr}{\\int_0^Rr^2j_1(\\alpha_nr/R)^2dr}=\\frac{2}{R^3j_2(\\alpha_n)^2}\\int_0^Rr^2f(r)j_1(\\alpha_nr/R)dr.$$\n范数使用球 Bessel 正交关系。每项在球心按 r 消失，在球面为零，初值由完备展开恢复。若要求初温在球心连续，至少需 $f(r)\\to0$；若要求光滑，常见充分条件是 $f(r)=O(r)$ 并具相应奇次光滑展开。原题未说明 f 的正则性，非连续初值仍可作 L² 热方程解释。",
+      "answer": "仅 l=1 的 j₁ 模态衰减，系数如上，正本征值由 tanα=α 决定。",
+      "pattern": "识别初值球谐阶 l→选 j_l→由表面零温定正根→按 r² 权展开。",
+      "pitfall": "cosθ 不是球对称；不能使用 j₀ 的 nπ 根，且 α=0 不是非零 l=1 本征模态。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.5-1",
+      "section": "5.5",
+      "number": 1,
+      "page": 238,
+      "title": "自由楔形细杆纵振动",
+      "question": "均质楔形细杆长 l、宽 ε 很小且首尾同宽，粗端高度 h；x 轴沿杆，削尖一端平衡位置为原点。两端自由，初速度零、初位移 f(x)。求纵振动。",
+      "idea": "楔杆截面面积正比 x，得到零阶 Bessel 空间方程；自由粗端选 J₁ 零点，别漏刚体零模态。",
+      "hint": "A(x)=εhx/l；空间自伴权为 x，有限解为 J₀(kx)。",
+      "solution": "取杨氏模量 E、材料密度 ϱ，波速 c=√(E/ϱ)。楔杆截面积 $A(x)=\\varepsilon hx/l$，杆元受力给\n$$u_{tt}=c^2\\frac1A(Au_x)_x=c^2\\left(u_{xx}+\\frac1xu_x\\right),\\quad0<x<l.$$\n自由条件是 $EAu_x=0$。分离 $u=XT$，正频空间方程 $X\\prime\\prime+X\\prime/x+k^2X=0$。尖端选有限、零力的 $J_0(kx)$，排除 $Y_0$；粗端 $X\\prime(l)=0$ 得 $J_1(kl)=0$。设 αₙ 为 J₁ 第 n 个正零点，则 Xₙ=J₀(αₙx/l)、ωₙ=cαₙ/l。另 k=0 给常数空间模态，表示整杆平移。\n初速度为零使所有正弦时间系数与零模态线性时间项为零，最终\n$$u(x,t)=A_0+\\sum_{n=1}^\\infty A_nJ_0(\\alpha_nx/l)\\cos(c\\alpha_nt/l),$$\n$$A_0=\\frac2{l^2}\\int_0^lxf(x)dx,\\qquad A_n=\\frac{2}{l^2J_0(\\alpha_n)^2}\\int_0^lxf(x)J_0(\\alpha_nx/l)dx.$$\n这里 $\\int_0^lxJ_0(\\alpha_nx/l)^2dx=l^2[J_0(\\alpha_n)^2+J_1(\\alpha_n)^2]/2=l^2J_0(\\alpha_n)^2/2$。ε、h 作为截面积整体因子在方程和投影中约去。若两端自由，质量加权平均位移 A₀保持不变，亦可用来检查结果。",
+      "answer": "$u=A_0+\\sum A_nJ_0(\\alpha_nx/l)\\cos(c\\alpha_nt/l)$，αₙ 为 J₁ 正零点，投影权 x。",
+      "pattern": "截面 A(x)→自伴纵振方程→端点有限/自由条件→加零模态→以 A 权投影。",
+      "pitfall": "楔杆 A∝x，与正文锥杆 A∝x² 不同；不能套球 j₀ 或 r² 权。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    },
+    {
+      "id": "5.5-2",
+      "section": "5.5",
+      "number": 2,
+      "page": 238,
+      "title": "固定环形膜的本征振动与频率",
+      "question": "内外边缘固定且张紧的环形膜，内、外半径分别 $\\rho_1,\\rho_2$。求本征振动与本征频率。",
+      "idea": "角向周期给整数 m，环域径向同时保留 Jₘ 与 Yₘ；两圈固定条件形成行列式零点方程。",
+      "hint": "先构造自动在 ρ₁ 为零的 Rₘ(kρ)=Jₘ(kρ)Yₘ(kρ₁)−Yₘ(kρ)Jₘ(kρ₁)。",
+      "solution": "设膜张力（每单位长度）T、面密度 σ，波速 c=√(T/σ)，$u_{tt}=c^2\\Delta_{2D}u$。取 $u=R(\\rho)\\Phi(\\phi)T_*(t)$，角向 $\\Phi=A\\cos m\\phi+B\\sin m\\phi$，$m=0,1,\\ldots$；径向满足\n$$R\\prime\\prime+\\rho^{-1}R\\prime+(k^2-m^2/\\rho^2)R=0,$$\n故 $R=CJ_m(k\\rho)+DY_m(k\\rho)$。内外固定要求系数方程有非零解，即\n$$J_m(k\\rho_1)Y_m(k\\rho_2)-Y_m(k\\rho_1)J_m(k\\rho_2)=0.$$\n记其第 n 个正根 kₘₙ，可取\n$$R_{mn}(\\rho)=J_m(k_{mn}\\rho)Y_m(k_{mn}\\rho_1)-Y_m(k_{mn}\\rho)J_m(k_{mn}\\rho_1).$$\n因此本征振动为\n$$u_{mn}=R_{mn}(\\rho)[A\\cos m\\phi+B\\sin m\\phi]\\cos(ck_{mn}t+\\delta),$$\n本征角频率 $\\omega_{mn}=ck_{mn}$，普通频率 $\\nu_{mn}=ck_{mn}/(2\\pi)$。m=0 时只有角向常数；m≥1 有正弦、余弦两重简并。两固定边界使 k=0 不产生非平凡模态，可用能量积分验证。",
+      "answer": "正根满足上述 Jₘ/Yₘ 行列式方程；ωₘₙ=√(T/σ)kₘₙ，模态为径向组合乘 cos mφ 或 sin mφ。",
+      "pattern": "周期角函数→Bessel 双解→两个边界列行列式→正根给频率→检查简并。",
+      "pitfall": "环域没有 ρ=0，Yₘ 必须保留；角频率与赫兹频率差 2π。",
+      "verification": "已从教材对应习题页核对题干；解析独立推导，并通过方程、边界及初始条件作解析核验。未声称与教师答案逐题核对。"
+    }
+  ]
+}

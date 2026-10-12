@@ -1,0 +1,283 @@
+[
+  {
+    "title": "复变函数与积分变换",
+    "scope": "第1–2章 · 可导与解析、级数、留数、傅里叶与拉普拉斯变换",
+    "minutes": 90,
+    "questions": [
+      {
+        "title": "可导，不一定解析",
+        "points": 12,
+        "chapter": 1,
+        "topic": "C–R 条件",
+        "question": "设 $f(z)=|z|^2$。判断其可导点、解析区域，并求所有存在的复导数。",
+        "hint": "写 $u=x^2+y^2,v=0$。先解 C–R 条件，再用定义核验候选点。",
+        "solution": "$u_x=2x,u_y=2y,v_x=v_y=0$，C–R 条件只在 $(0,0)$ 成立。对原点直接计算 $[f(h)-f(0)]/h=|h|^2/h=\\bar h\\to0$，故 $f\\prime(0)=0$。其他点不满足必要条件所以不可导。任何开邻域都包含非原点，所以函数无处解析。",
+        "rubric": "C–R 条件与候选点4分；原点差商4分；可导与解析区别4分。"
+      },
+      {
+        "title": "同一函数的两个环域",
+        "points": 12,
+        "chapter": 1,
+        "topic": "洛朗展开",
+        "question": "把 $f(z)=1/[z(z-2)]$ 分别在 $0<|z|<2$ 和 $|z|>2$ 展开，并给出原点留数。",
+        "hint": "先部分分式；内域按 $z/2$ 展开，外域按 $2/z$ 展开。",
+        "solution": "部分分式为 $-1/(2z)+1/[2(z-2)]$。内域有\n\n$$f(z)=-\\frac1{2z}-\\sum_{n=0}^{\\infty}\\frac{z^n}{2^{n+2}},\\quad0<|z|<2.$$\n\n外域直接提取 $z^2$：\n\n$$f(z)=\\frac1{z^2}\\frac1{1-2/z}=\\sum_{n=0}^{\\infty}2^nz^{-n-2},\\quad |z|>2.$$\n\n原点留数从原点无心邻域展开中读取，为 $-1/2$。外域无 $z^{-1}$ 项不表示原点留数为零；环域包住了另一个极点。",
+        "rubric": "部分分式2分；两个展开及域各4分；原点留数2分。"
+      },
+      {
+        "title": "高阶柯西积分公式",
+        "points": 12,
+        "chapter": 1,
+        "topic": "闭路积分",
+        "question": "计算 $\\oint_{|z|=2}e^z/(z-1)^3\\,dz$，曲线逆时针。",
+        "hint": "三次分母对应二阶导数，别漏 $2!$。",
+        "solution": "$e^z$ 在闭圆内解析，$1$ 在圆内。取柯西高阶公式 $\\oint f(z)/(z-a)^{n+1}dz=2\\pi i f^{(n)}(a)/n!$，令 $n=2,a=1$，故积分为 $2\\pi i e/2=\\pi i e$。也可用 $e^z=e[1+(z-1)+(z-1)^2/2+\\cdots]$ 读取留数 $e/2$。",
+        "rubric": "判断内部奇点3分；公式与阶数4分；代入及结果5分。"
+      },
+      {
+        "title": "半轴有理积分",
+        "points": 14,
+        "chapter": 1,
+        "topic": "留数实积分",
+        "question": "利用留数求 $I=\\int_0^\\infty dx/[(x^2+1)(x^2+4)]$。",
+        "hint": "先扩成全轴；上半平面极点是 $i,2i$。",
+        "solution": "被积函数为偶函数，$2I$ 等于全轴积分。上半平面留数\n\n$$R_i=\\frac1{2i(4-1)}=\\frac1{6i},\\qquad R_{2i}=\\frac1{4i(1-4)}=-\\frac1{12i}.$$\n\n大圆弧积分为 $O(R^{-3})\\to0$。所以 $2I=2\\pi i(1/(6i)-1/(12i))=\\pi/6$，即 $I=\\pi/12$。用部分分式 $\\frac13[1/(x^2+1)-1/(x^2+4)]$ 可另验。",
+        "rubric": "偶函数处理3分；两个留数各3分；圆弧消失2分；结果3分。"
+      },
+      {
+        "title": "指数函数的傅里叶变换",
+        "points": 12,
+        "chapter": 2,
+        "topic": "傅里叶变换",
+        "question": "采用 $F(k)=\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}dx$，求 $f(x)=e^{-a|x|}$（$a>0$）的变换，解释为何结果为实偶函数。",
+        "hint": "在 $x=0$ 拆开，分别积两个衰减指数。",
+        "solution": "正半轴积分为 $1/(a+ik)$，负半轴换 $t=-x$ 后为 $1/(a-ik)$，相加\n\n$$F(k)=\\frac1{a+ik}+\\frac1{a-ik}=\\frac{2a}{a^2+k^2}.$$\n\n因为 $f$ 实且偶，正弦部分积分为零，余弦部分为实偶函数。$F(0)=2/a$ 也等于 $\\int f dx$，可核验系数。",
+        "rubric": "拆积分4分；积分计算与合并5分；对称性及检验3分。"
+      },
+      {
+        "title": "锯齿函数的傅里叶级数",
+        "points": 14,
+        "chapter": 2,
+        "topic": "周期函数展开",
+        "question": "将 $f(x)=x$（$0<x<2\\pi$）作周期 $2\\pi$ 延拓，求实傅里叶级数，并说明在 $x=0,2\\pi$ 收敛到什么值。",
+        "hint": "用常数项 $a_0/2$ 的约定；分部积分求 $b_n$。",
+        "solution": "采用 $f\\sim a_0/2+\\sum_{n\\ge1}(a_n\\cos nx+b_n\\sin nx)$，\n\n$$a_0=\\frac1\\pi\\int_0^{2\\pi}x\\,dx=2\\pi,\\quad a_n=0,\\quad b_n=\\frac1\\pi\\int_0^{2\\pi}x\\sin nx\\,dx=-\\frac2n.$$\n\n因此 $f(x)=\\pi-2\\sum_{n=1}^\\infty\\sin(nx)/n$，$0<x<2\\pi$。周期连接点的左右极限为 $2\\pi$ 与 $0$，级数收敛到平均值 $\\pi$。端点人为赋值不会改变傅里叶系数。",
+        "rubric": "常数项约定3分；系数各3分共6分；级数3分；端点2分。"
+      },
+      {
+        "title": "δ 函数的缩放与导数",
+        "points": 12,
+        "chapter": 2,
+        "topic": "分布运算",
+        "question": "计算 $\\int_{\\mathbb R}x^2\\delta(2x-4)dx$ 与 $\\int_{\\mathbb R}(x^2+1)\\delta\\prime(x-1)dx$。",
+        "hint": "缩放用绝对值；$\\delta\\prime$ 对测试函数作用带负号。",
+        "solution": "$\\delta(2x-4)=\\frac12\\delta(x-2)$，故第一项为 $\\frac12\\cdot2^2=2$。\n\n第二项根据 $\\langle\\delta\\prime(x-a),\\varphi\\rangle=-\\varphi\\prime(a)$，取 $\\varphi=x^2+1$，得 $-2$。这里可视为紧支撑分布对光滑函数的作用（或在支点附近乘一个恒为1的光滑截断）。",
+        "rubric": "缩放公式3分；第一值3分；分布导数符号3分；第二值3分。"
+      },
+      {
+        "title": "把初值条件带进变换",
+        "points": 12,
+        "chapter": 2,
+        "topic": "Laplace 解 ODE",
+        "question": "用拉普拉斯变换解 $y\\prime\\prime+2y\\prime+y=1$，$y(0)=y\\prime(0)=0$，$t\\ge0$。",
+        "hint": "先变换导数，得到 $Y(s)=1/[s(s+1)^2]$，再拆分。",
+        "solution": "由初值为零，$\\mathcal L[y\\prime\\prime]=s^2Y$、$\\mathcal L[y\\prime]=sY$，故 $(s+1)^2Y=1/s$。拆分\n\n$$Y=\\frac1s-\\frac1{s+1}-\\frac1{(s+1)^2}.$$\n\n逆变换得 $y=1-e^{-t}-te^{-t}=1-(1+t)e^{-t}$。求导 $y\\prime=te^{-t}$，所以两初值满足，代回微分方程右侧为1。",
+        "rubric": "带初值变换4分；拆分3分；逆变换3分；核验2分。"
+      }
+    ]
+  },
+  {
+    "title": "方程求解与特殊函数",
+    "scope": "第3–6章 · 分离变量、边界条件、级数解、球函数、贝塞尔与格林函数",
+    "minutes": 120,
+    "questions": [
+      {
+        "title": "固定弦的单模振动",
+        "points": 12,
+        "chapter": 3,
+        "topic": "波动方程",
+        "question": "求 $u_{tt}=c^2u_{xx}$，$0<x<L$，$u(0,t)=u(L,t)=0$，$u(x,0)=A\\sin(\\pi x/L)$，$u_t(x,0)=0$。",
+        "hint": "空间本征函数已经由初位移给定，只需解一个时间模态。",
+        "solution": "取 $u=T(t)\\sin(\\pi x/L)$。代入得 $T\\prime\\prime+\\omega_1^2T=0$，$\\omega_1=c\\pi/L$。初值 $T(0)=A,T\\prime(0)=0$，故\n\n$$u(x,t)=A\\cos(c\\pi t/L)\\sin(\\pi x/L).$$\n\n边界由正弦保证；位移初值由余弦在0等于1保证；时间导数在0为零。",
+        "rubric": "选空间模态3分；时间方程3分；初值定系数4分；核验2分。"
+      },
+      {
+        "title": "非共振受迫弦",
+        "points": 12,
+        "chapter": 3,
+        "topic": "受迫模态",
+        "question": "在同一固定弦上，$u_{tt}=c^2u_{xx}+F\\sin(2\\pi x/L)\\cos\\Omega t$，初位移和初速度均为零。设 $\\Omega\\ne\\omega_2=2\\pi c/L$，求解。",
+        "hint": "令 $u=q(t)\\sin(2\\pi x/L)$，齐次时间项负责抵消初位移。",
+        "solution": "代入得 $q\\prime\\prime+\\omega_2^2q=F\\cos\\Omega t$。特解 $F\\cos\\Omega t/(\\omega_2^2-\\Omega^2)$。加齐次解 $B\\cos\\omega_2t+D\\sin\\omega_2t$，零初速度给 $D=0$，零初位移给 $B=-F/(\\omega_2^2-\\Omega^2)$。所以\n\n$$u=\\frac{F(\\cos\\Omega t-\\cos\\omega_2t)}{\\omega_2^2-\\Omega^2}\\sin\\frac{2\\pi x}{L}.$$\n\n共振不能直接代成 $0/0$；取极限会得 $q=Ft\\sin(\\omega_2t)/(2\\omega_2)$。",
+        "rubric": "模态方程3分；特解与齐次解3分；初值3分；最终式与共振说明3分。"
+      },
+      {
+        "title": "热方程的衰减级数",
+        "points": 14,
+        "chapter": 3,
+        "topic": "热传导",
+        "question": "求 $u_t=\\kappa u_{xx}$，$0<x<L$，两端温度为零，$u(x,0)=x(L-x)$，$\\kappa>0$。",
+        "hint": "选正弦基；两次分部积分给 $n^{-3}$ 系数。",
+        "solution": "固定零端点给本征函数 $\\sin(n\\pi x/L)$，时间因子为 $e^{-\\kappa(n\\pi/L)^2t}$。设 $b_n=(2/L)\\int_0^Lx(L-x)\\sin(n\\pi x/L)dx$。令 $a=n\\pi/L$，两次分部积分得到积分 $2[1-(-1)^n]/a^3$，故\n\n$$b_n=\\frac{4L^2[1-(-1)^n]}{n^3\\pi^3}.$$\n\n因此\n\n$$u(x,t)=\\sum_{m=0}^\\infty\\frac{8L^2}{(2m+1)^3\\pi^3}e^{-\\kappa((2m+1)\\pi/L)^2t}\\sin\\frac{(2m+1)\\pi x}{L}.$$\n\n只有奇数模态，且高频衰减更快。$t>0$ 的级数光滑，初值在内部按傅里叶收敛恢复。",
+        "rubric": "分离变量4分；系数积分与奇偶性5分；完整解3分；物理解读2分。"
+      },
+      {
+        "title": "矩形稳定场",
+        "points": 14,
+        "chapter": 3,
+        "topic": "Laplace 分离变量",
+        "question": "矩形 $0<x<a,0<y<b$ 内 $u_{xx}+u_{yy}=0$，边界 $u(0,y)=u(a,y)=u(x,0)=0$，$u(x,b)=V\\sin(\\pi x/a)$。求 $u$。",
+        "hint": "横向正弦、纵向双曲正弦；用顶边定归一化。",
+        "solution": "令 $u=X(x)Y(y)$，$X\\prime\\prime+\\lambda X=0$，$Y\\prime\\prime-\\lambda Y=0$。左右零边界选 $X=\\sin(\\pi x/a)$，$\\lambda=(\\pi/a)^2$。底边零给 $Y=B\\sinh(\\pi y/a)$，顶边给 $B=V/\\sinh(\\pi b/a)$。故\n\n$$u=V\\frac{\\sinh(\\pi y/a)}{\\sinh(\\pi b/a)}\\sin(\\pi x/a).$$\n\n对两坐标分别求二阶导数，正负项恰好抵消，四边均满足。",
+        "rubric": "分离符号与本征函数4分；纵向解4分；边界定系数4分；验证2分。"
+      },
+      {
+        "title": "混合边界的本征值",
+        "points": 12,
+        "chapter": 3,
+        "topic": "Sturm–Liouville",
+        "question": "求 $-X\\prime\\prime=\\lambda X$，$X\\prime(0)=0,X(L)=0$ 的全部本征值、本征函数及其平方范数。",
+        "hint": "正本征值给余弦；零或负值分别排除。",
+        "solution": "若 $\\lambda=k^2>0$，通解 $A\\cos kx+B\\sin kx$。$X\\prime(0)=0$ 给 $B=0$，$X(L)=0$ 给 $\\cos kL=0$。所以\n\n$$\\lambda_n=((n+1/2)\\pi/L)^2,\\quad X_n=\\cos((n+1/2)\\pi x/L),\\quad n=0,1,\\ldots.$$\n\n$\\lambda=0$ 时 $X=A+Bx$，两边界只得零解；$\\lambda=-\\mu^2$ 时 $X=A\\cosh\\mu x$，因 $\\cosh\\mu L>0$ 也只有零解。积分 $\\int_0^L X_n^2dx=L/2$。不同频率用积化和差可验正交。",
+        "rubric": "正值求谱5分；排除零负值4分；范数3分。"
+      },
+      {
+        "title": "普通点幂级数",
+        "points": 12,
+        "chapter": 4,
+        "topic": "级数递推",
+        "question": "用幂级数解 $y\\prime\\prime-xy=0$，$y(0)=1,y\\prime(0)=0$，写出至 $x^9$ 项。",
+        "hint": "设 $y=\\sum a_nx^n$，比较系数时把 $xy$ 下标平移。",
+        "solution": "$y\\prime\\prime=\\sum_{n\\ge0}(n+2)(n+1)a_{n+2}x^n$，$xy=\\sum_{n\\ge1}a_{n-1}x^n$。常数项给 $a_2=0$；$n\\ge1$ 给 $a_{n+2}=a_{n-1}/[(n+2)(n+1)]$。由 $a_0=1,a_1=0$ 得 $a_3=1/6,a_6=1/180,a_9=1/12960$，其他至9次项为零。\n\n$$y=1+\\frac{x^3}{6}+\\frac{x^6}{180}+\\frac{x^9}{12960}+O(x^{12}).$$\n\n每隔3阶形成一条递推链，初值选中了其中一条。",
+        "rubric": "代级数3分；递推4分；系数与结果5分。"
+      },
+      {
+        "title": "球内轴对称稳定场",
+        "points": 12,
+        "chapter": 5,
+        "topic": "Legendre 展开",
+        "question": "球内 $r<a$ 满足 $\\nabla^2u=0$，中心有界，$u(a,\\theta)=V\\cos^2\\theta$。求解。",
+        "hint": "用 $\\cos^2\\theta=1/3+(2/3)P_2(\\cos\\theta)$，舍去中心发散项。",
+        "solution": "轴对称通解的正则部分为 $u=\\sum_{l\\ge0}A_lr^lP_l(\\cos\\theta)$。由 $P_0=1,P_2(\\mu)=(3\\mu^2-1)/2$，边界分解为 $V/3+(2V/3)P_2(\\cos\\theta)$。因此仅 $l=0,2$：\n\n$$u=\\frac V3+\\frac{2V}{3}\\left(\\frac r a\\right)^2P_2(\\cos\\theta).$$\n\n径向 $r^{-l-1}$ 项在中心发散，必须剔除。中心温度/势为边界球面平均 $V/3$。",
+        "rubric": "边界Legendre分解4分；舍发散分支3分；系数与完整解3分；检查2分。"
+      },
+      {
+        "title": "镜像与零边界格林函数",
+        "points": 12,
+        "chapter": 6,
+        "topic": "Dirichlet 镜像法",
+        "question": "上半空间 $z>0$ 中，取约定 $-\\nabla^2G(\\mathbf r,\\mathbf r_0)=\\delta(\\mathbf r-\\mathbf r_0)$，边界 $G=0$ 于 $z=0$。写出格林函数，并说明两项分别起什么作用。",
+        "hint": "真实源在域内，负镜像源在域外。",
+        "solution": "令 $\\mathbf r_0=(x_0,y_0,z_0)$，$z_0>0$，镜像点 $\\mathbf r_0^*=(x_0,y_0,-z_0)$。自由空间基本解为 $1/(4\\pi|\\mathbf r-\\mathbf r_0|)$，故\n\n$$G=\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0^*|}.$$\n\n在域内，第二项没有奇点且调和，第一项提供单位源；在 $z=0$ 两距离相等，恰好相消。两项在无穷远趋零。若方程约定改为 $+\\nabla^2G=\\delta$，整体应取负号。",
+        "rubric": "源与镜像点3分；格林函数4分；域内和边界检查3分；符号约定2分。"
+      }
+    ]
+  },
+  {
+    "title": "全书综合自测",
+    "scope": "六章综合 · 从选择方法到完成计算；每题10分，共100分",
+    "minutes": 120,
+    "questions": [
+      {
+        "title": "从实部恢复函数",
+        "points": 10,
+        "chapter": 1,
+        "topic": "调和共轭",
+        "question": "已知解析函数实部为 $e^x\\cos y$ 且 $f(0)=1+2i$，求 $f(z)$。",
+        "hint": "识别 $e^z$，或按 C–R 求虚部。",
+        "solution": "$v_y=u_x=e^x\\cos y$，故 $v=e^x\\sin y+C(x)$；再由 $v_x=-u_y=e^x\\sin y$ 得 $C\\prime=0$。于是 $f=e^z+iC$，初值给 $C=2$，故 $f=e^z+2i$。",
+        "rubric": "C–R及积分4分；确定常数3分；完整函数3分。"
+      },
+      {
+        "title": "零点抵消与留数",
+        "points": 10,
+        "chapter": 1,
+        "topic": "奇点分类",
+        "question": "判断 $f(z)=(e^z-1-z)/z^3$ 在原点的奇点类型与留数。",
+        "hint": "展开分子到三次项；不要只看分母三次幂。",
+        "solution": "$e^z-1-z=z^2/2+z^3/6+\\cdots$，故 $f=1/(2z)+1/6+z/24+\\cdots$。原点为一阶极点，留数为 $1/2$。",
+        "rubric": "分子展开4分；极点阶数3分；留数3分。"
+      },
+      {
+        "title": "带平移的傅里叶变换",
+        "points": 10,
+        "chapter": 2,
+        "topic": "平移性质",
+        "question": "已知 $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$，求 $e^{-a|x-b|}$ 的变换，采用核 $e^{-ikx}$。",
+        "hint": "换元 $t=x-b$，指数多出相位。",
+        "solution": "$x=t+b$，所以 $e^{-ikx}=e^{-ikb}e^{-ikt}$。因此 $F(k)=e^{-ikb}2a/(a^2+k^2)$。平移不改变变换模长，只改变相位；相位负号由核的约定决定。",
+        "rubric": "换元3分；相位符号3分；完整式与解释4分。"
+      },
+      {
+        "title": "Laplace 延迟与初值",
+        "points": 10,
+        "chapter": 2,
+        "topic": "单位阶跃",
+        "question": "求 $y\\prime+y=H(t-2)$，$y(0)=0$。",
+        "hint": "右侧变换 $e^{-2s}/s$；逆变换用延迟性质。",
+        "solution": "$(s+1)Y=e^{-2s}/s$，所以 $Y=e^{-2s}[1/s-1/(s+1)]$。逆变换为 $y=H(t-2)[1-e^{-(t-2)}]$。$t<2$ 为零，$t>2$ 满足受迫方程；在 $t=2$ 解连续，因此一阶导数没有额外δ项。",
+        "rubric": "变换4分；拆分与延迟4分；连续性核验2分。"
+      },
+      {
+        "title": "无限弦的达朗贝解",
+        "points": 10,
+        "chapter": 3,
+        "topic": "行波",
+        "question": "无限弦 $u_{tt}=c^2u_{xx}$，初位移 $\\phi(x)=e^{-x^2}$，初速度零。求解并解释传播。",
+        "hint": "初速度零时两列行波各承担一半初位移。",
+        "solution": "达朗贝公式 $u=[\\phi(x-ct)+\\phi(x+ct)]/2+(1/(2c))\\int_{x-ct}^{x+ct}\\psi(s)ds$，此处 $\\psi=0$，故 $u=\\frac12[e^{-(x-ct)^2}+e^{-(x+ct)^2}]$。第一项向右以速率 $c$ 传播，第二项向左；代入 $t=0$ 恢复初位移，时间导数相消。",
+        "rubric": "公式4分；代入3分；方向与初值3分。"
+      },
+      {
+        "title": "热方程中的常数模态",
+        "points": 10,
+        "chapter": 3,
+        "topic": "Neumann 边界",
+        "question": "杆 $0<x<L$ 满足 $u_t=\\kappa u_{xx}$，两端绝热，初温 $u(x,0)=T_0+A\\cos(2\\pi x/L)$。求解并给出长时间极限。",
+        "hint": "绝热边界用余弦；常数模态本征值为零。",
+        "solution": "$\\cos(2\\pi x/L)$ 的空间本征值为 $(2\\pi/L)^2$，常数模态不衰减。因此 $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$。两端 $u_x=0$。当 $t\\to\\infty$，$u\\to T_0$；这就是守恒的平均温度。",
+        "rubric": "基底与零模态3分；解4分；长时极限与物理意义3分。"
+      },
+      {
+        "title": "Abel 公式与条件",
+        "points": 10,
+        "chapter": 4,
+        "topic": "Wronskian",
+        "question": "对 $y\\prime\\prime+2y\\prime+y=0$，已知 $y_1=e^{-x},y_2=xe^{-x}$。计算 $W=y_1y_2\\prime-y_1\\prime y_2$，并用 Abel 公式核验。",
+        "hint": "标准形式的 $y\\prime$ 系数为2，所以 $W=C e^{-2x}$。",
+        "solution": "$y_1\\prime=-e^{-x}$，$y_2\\prime=(1-x)e^{-x}$，故 $W=(1-x)e^{-2x}+xe^{-2x}=e^{-2x}$。Abel公式 $W\\prime=-2W$ 给 $W=C e^{-2x}$；由 $W(0)=1$ 得 $C=1$。$W\\ne0$，两解线性独立。",
+        "rubric": "求导及行列式4分；Abel核验4分；独立性2分。"
+      },
+      {
+        "title": "Legendre 正交展开",
+        "points": 10,
+        "chapter": 5,
+        "topic": "球函数",
+        "question": "把 $x^2$ 在 $[-1,1]$ 上展开成 Legendre 多项式，并求 $\\int_{-1}^1x^2P_2(x)dx$。",
+        "hint": "$P_2=(3x^2-1)/2$；范数为 $2/(2l+1)$。",
+        "solution": "由定义直接得 $x^2=P_0/3+2P_2/3$。乘 $P_2$ 积分，正交性消去 $P_0$ 项，得到 $(2/3)\\cdot[2/(2\\cdot2+1)]=4/15$。也可将 $(3x^4-x^2)/2$ 直接积分验算。",
+        "rubric": "展开4分；正交性与范数3分；积分结果3分。"
+      },
+      {
+        "title": "圆膜的最低径向模态",
+        "points": 10,
+        "chapter": 5,
+        "topic": "Bessel 本征值",
+        "question": "半径 $a$ 的圆膜满足 $u_{tt}=c^2\\nabla^2u$，边缘固定，轴对称且中心有界。写出径向本征函数与固有角频率；初形为 $A J_0(j_{0,1}r/a)$、初速度零时给出振动。",
+        "hint": "中心有界舍去 $Y_0$，边缘零要求 $J_0(ka)=0$。",
+        "solution": "轴对称径向方程为 $R\\prime\\prime+R\\prime/r+k^2R=0$。有界解 $J_0(kr)$；设 $j_{0,n}$ 为 $J_0$ 第 $n$ 个正零点，则 $R_n=J_0(j_{0,n}r/a)$，$\\omega_n=cj_{0,n}/a$。所给初形只激发第一径向模态，$u=A J_0(j_{0,1}r/a)\\cos(cj_{0,1}t/a)$。",
+        "rubric": "径向方程3分；边界定零点与频率4分；单模态解3分。"
+      },
+      {
+        "title": "点源与格林函数符号",
+        "points": 10,
+        "chapter": 6,
+        "topic": "基本解",
+        "question": "全空间求解 $-\\nabla^2u=q\\delta(\\mathbf r-\\mathbf r_0)$，要求无穷远趋零。写出解，并用小球通量验证常数。",
+        "hint": "利用 $\\nabla^2(1/r)=-4\\pi\\delta$；向外法向导数是负的。",
+        "solution": "令 $R=|\\mathbf r-\\mathbf r_0|$，有 $u=q/(4\\pi R)$。源外调和。围绕源点取半径 $\\varepsilon$ 小球，$\\partial_nu=-q/(4\\pi\\varepsilon^2)$，故 $-\\int_{S_\\varepsilon}\\partial_nu\\,dS=q$，与积分后的源强一致；无穷远趋零。",
+        "rubric": "解与常数4分；通量验证4分；域外和无穷远2分。"
+      }
+    ]
+  }
+]

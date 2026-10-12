@@ -1,0 +1,51 @@
+"""Check textbook exercise coverage, data completeness and local HTML links."""
+import json
+from pathlib import Path
+from html.parser import HTMLParser
+from urllib.parse import urlsplit,unquote
+ROOT=Path(__file__).resolve().parent
+expected={'1.1':5,'1.2':3,'1.3':6,'1.4':4,'1.5':5,'1.6':3,'1.7':5,'2.1':6,'2.2':9,'2.3':6,'2.4':6,'2.5':5,'3.1':16,'3.2':8,'3.3':3,'3.4':4,'4.1':3,'4.2':6,'5.1':1,'5.2':9,'5.3':3,'5.4':3,'5.5':2,'6.1':1,'6.2':3,'6.4':1}
+all_ex=[]
+for p in sorted((ROOT/'data').glob('ch[1-6].json')):
+ c=json.loads(p.read_text());all_ex+=c['exercises']
+ for s in c['sections']:
+  assert s['concepts'],f'No concept in {s["id"]}'
+  for k in s['concepts']:
+   for field in ['title','explain','formula','conditions','proof','memory']:assert k.get(field),(k['id'],field)
+   assert k.get('example',{}).get('solution'),k['id']
+ for e in c['exercises']:
+  for field in ['title','question','idea','hint','solution','answer','pattern','pitfall']:assert e.get(field),(e['id'],field)
+ids=[e['id'] for e in all_ex]
+assert len(ids)==len(set(ids)),'Duplicate exercise ID'
+assert set(ids)=={f'{s}-{n}' for s,count in expected.items() for n in range(1,count+1)},'Textbook coverage mismatch'
+exams=json.loads((ROOT/'data/exams.json').read_text())
+assert len(exams)==3
+for exam in exams:
+ assert sum(q['points'] for q in exam['questions'])==100
+ for q in exam['questions']:
+  for k in ['question','hint','solution','rubric']:assert q.get(k),(exam['title'],k)
+class Document(HTMLParser):
+ def __init__(self,text):
+  super().__init__(convert_charrefs=True);self.ids=[];self.urls=[];self.math=0;self.details=0;self.feed(text)
+ def handle_starttag(self,tag,attrs):
+  a=dict(attrs)
+  if 'id' in a:self.ids.append(a['id'])
+  for key in ['href','src']:
+   if key in a:self.urls.append(a[key])
+  if tag=='math':self.math+=1
+  if tag=='details':
+   self.details+=1;assert 'open' not in a,'Answers must start closed'
+docs={p.name:Document(p.read_text()) for p in ROOT.glob('*.html')}
+assert len(docs)==15
+links=0
+for name,d in docs.items():
+ assert len(d.ids)==len(set(d.ids)),(name,'duplicate HTML IDs')
+ for url in d.urls:
+  u=urlsplit(url)
+  if u.scheme or u.netloc:continue
+  target=unquote(u.path) or name
+  assert (ROOT/target).is_file(),(name,'missing asset',url)
+  if u.fragment and target in docs:assert unquote(u.fragment) in docs[target].ids,(name,'missing anchor',url)
+  links+=1
+assert not json.loads((ROOT/'data/coverage.json').read_text())['formula_failures']
+print(json.dumps(dict(status='passed',chapters=6,exercises=len(ids),pages=len(docs),local_links=links,math_elements=sum(d.math for d in docs.values()),closed_details=sum(d.details for d in docs.values())),ensure_ascii=False))
