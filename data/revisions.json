@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-10-13",
+    "link": "chapter-1.html#try-c1-polar",
+    "label": "38 TRANSFER PRACTICES",
+    "zh": "为38张知识卡各增加一道原创变式题，提供三级提示、分步完整解答、验算和常见错误，并链接相关教材题。所有帮助默认收起，草稿自动保存，可一键收起提示重做。中英同步，搜索可直达题目而不打开答案。",
+    "en": "Add one original transfer problem to each of the 38 concept cards, with three hints, a full step-by-step solution, checks, common mistakes, and a related textbook exercise. All help starts closed; scratch notes save automatically, and one button hides help for a retry. Both languages are available, and search links open the problem without revealing its solution."
+  },
+  {
+    "date": "2026-10-13",
     "link": "exercises.html",
     "label": "126 GUIDED ROUTES",
     "zh": "全书126道题的入门路线均展开为5–9步，给出实际起手计算、中间式及自检，题内小问分别处理。中英文同步细化，保留主值、共振、零模态及原题缺条件的说明。",

@@ -94,3 +94,27 @@ for p in (ROOT/'data/learn').glob('*.json'):
    assert x.count('$')%2==0,(p.name,'Unclosed guide formula delimiter')
  check_guide_strings(json.loads(p.read_text()))
 print('Guided self-check formula escapes and normalization notation passed.')
+
+# Each concept gets one original problem with independently expandable help.
+practice=json.loads((ROOT/'data/practice.json').read_text())
+concept_chapters={}
+for n in range(1,7):
+ chapter=json.loads((ROOT/f'data/ch{n}.json').read_text())
+ chapter_exercises={e['id'] for e in chapter['exercises']}
+ for section in chapter['sections']:
+  for concept in section['concepts']:
+   ident=concept['id'];concept_chapters[ident]=n
+   problem=practice[ident]
+   assert problem['chapter']==n,(ident,'wrong chapter')
+   assert problem['exercise'] in chapter_exercises,(ident,'missing textbook exercise')
+   assert f'try-c{n}-{ident}' in docs[f'chapter-{n}.html'].ids
+   for language in ['zh','en']:
+    content=problem[language]
+    assert all(content.get(field) for field in ['prompt','hints','solution','check'])
+    assert len(content['hints'])==3,(ident,'expected three hints')
+    assert 3<=len(content['solution'].split('\n\n'))<=5,(ident,'expected short solution steps')
+    check_guide_strings(content)
+   assert not re.search(r'[\u3400-\u9fff]',json.dumps(problem['en'],ensure_ascii=False)),(ident,'Chinese in English')
+   same_math(problem['zh'],problem['en']);same_math(problem['en'],problem['zh'])
+assert set(practice)==set(concept_chapters) and len(practice)==38,'Transfer practice coverage mismatch'
+print('38 bilingual transfer problems, hints, solutions and textbook links passed.')

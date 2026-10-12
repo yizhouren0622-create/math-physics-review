@@ -1,0 +1,914 @@
+{
+  "polar": {
+    "chapter": 1,
+    "exercise": "1.1-5",
+    "zh": {
+      "prompt": "求方程 $w^3=-27$ 的全部复数根。用极形式列出三个根，再写成实部加虚部的形式。",
+      "hints": [
+        "负实数的长度是正数；先写 $-27=27e^{i\\pi}$。",
+        "设 $w=se^{i\\phi}$，比较得到 $s^3=27$ 和 $3\\phi=\\pi+2k\\pi$。",
+        "只需取 $k=0,1,2$；三个角是 $\\pi/3,\\pi,5\\pi/3$。"
+      ],
+      "solution": "首先取长度：$|w|^3=27$，所以 $|w|=3$。负号属于角度，不属于长度。\n\n方向需满足 $3\\phi=\\pi+2k\\pi$，因此 $w_k=3e^{i(\\pi+2k\\pi)/3}$。取 $k=0,1,2$ 就得到三个互异根，继续取值只会重复。\n\n代入三角函数得 $w_0=3/2+(3\\sqrt3/2)i$、$w_1=-3$、$w_2=3/2-(3\\sqrt3/2)i$。每个根的角乘三后都是奇数倍的圆周半圈，因此立方都为负实数。",
+      "check": "检查 $(-3)^3=-27$，另两根互为共轭且模均为3。常见错误：只写实根；三次方程在复数中应列出三个根。"
+    },
+    "en": {
+      "prompt": "Find all complex roots of $w^3=-27$. List three roots in polar form, then write each in real-plus-imaginary form.",
+      "hints": [
+        "A negative real number still has positive magnitude: start with $-27=27e^{i\\pi}$.",
+        "Write $w=se^{i\\phi}$ and compare: $s^3=27$ and $3\\phi=\\pi+2k\\pi$.",
+        "Use $k=0,1,2$ only; the three angles are $\\pi/3,\\pi,5\\pi/3$."
+      ],
+      "solution": "First compare magnitudes: $|w|^3=27$, so $|w|=3$. The minus sign belongs to the angle, not the magnitude.\n\nThe direction must satisfy $3\\phi=\\pi+2k\\pi$, giving $w_k=3e^{i(\\pi+2k\\pi)/3}$. Choosing $k=0,1,2$ gives three distinct roots; further values repeat them.\n\nEvaluate the trigonometric functions to obtain $w_0=3/2+(3\\sqrt3/2)i$, $w_1=-3$, and $w_2=3/2-(3\\sqrt3/2)i$. Tripling any of their angles gives an odd number of half-turns, so every cube is negative real.",
+      "check": "Check $(-3)^3=-27$; the other two roots are conjugates with magnitude 3. A common error is giving only the real root: list all three complex roots."
+    }
+  },
+  "branch": {
+    "chapter": 1,
+    "exercise": "1.2-3",
+    "zh": {
+      "prompt": "对多值函数 $F(z)=\\sqrt{(z-2)^2(z+1)}$，判断 $z=2$、$z=-1$ 和无穷远点是否为支点。支点按沿小闭路连续跟踪一圈后是否变值来判断。",
+      "hints": [
+        "看根号内部零点或极点的阶数：平方根遇奇数阶才翻号。",
+        "在 $z=2$ 附近是二阶零点；在 $z=-1$ 附近是一阶零点。",
+        "无穷远改令 $w=1/z$，根号内部变为 $w^{-3}(1-2w)^2(1+w)$。"
+      ],
+      "solution": "在 $z=2$ 附近，因子 $z+1$ 不为零，可以局部选一个解析平方根。于是 $F(z)=(z-2)\\sqrt{z+1}$；绕一圈时整数幂不变，所以这里不是支点。\n\n在 $z=-1$ 附近，因子 $(z-2)^2$ 非零，而 $\\sqrt{z+1}$ 绕一圈会乘以 $e^{i\\pi}=-1$。因此这里是支点。\n\n对无穷远令 $w=1/z$。根号内部是 $w^{-3}(1-2w)^2(1+w)$；后两个因子在原点附近非零，可能变值的是 $w^{-3/2}$。绕一圈乘以 $e^{-3\\pi i}=-1$，因此无穷远也是支点。",
+      "check": "答案：只有 $z=-1$ 和无穷远是支点。不要把所有根号零点都判为支点；偶数阶零点 $z=2$ 不翻号。"
+    },
+    "en": {
+      "prompt": "For the multivalued function $F(z)=\\sqrt{(z-2)^2(z+1)}$, decide whether $z=2$, $z=-1$, and infinity are branch points. Track a value continuously around one small closed loop.",
+      "hints": [
+        "Inspect the order of a zero or pole inside the square root: an odd order reverses the sign.",
+        "Near $z=2$ the zero has order two; near $z=-1$ it has order one.",
+        "At infinity put $w=1/z$; the expression inside the root becomes $w^{-3}(1-2w)^2(1+w)$."
+      ],
+      "solution": "Near $z=2$, the factor $z+1$ is nonzero and has a locally analytic square root. Thus $F(z)=(z-2)\\sqrt{z+1}$; an integer power returns to its original value after one loop, so this is not a branch point.\n\nNear $z=-1$, the factor $(z-2)^2$ is nonzero, while $\\sqrt{z+1}$ acquires the factor $e^{i\\pi}=-1$ after one loop. This point is therefore a branch point.\n\nAt infinity set $w=1/z$. Inside the root we obtain $w^{-3}(1-2w)^2(1+w)$; the last two factors are nonzero near the origin, leaving $w^{-3/2}$ as the possible source of multiple values. A loop multiplies it by $e^{-3\\pi i}=-1$, so infinity is also a branch point.",
+      "check": "Answer: only $z=-1$ and infinity are branch points. A zero inside a square root need not be a branch point: the even-order zero $z=2$ does not reverse the sign."
+    }
+  },
+  "cr": {
+    "chapter": 1,
+    "exercise": "1.3-3",
+    "zh": {
+      "prompt": "设 $f=u+iv$ 在整个复平面解析，实部 $u(x,y)=x^2-y^2+2x$，且 $f(0)=i$。求 $v(x,y)$ 和 $f(z)$。",
+      "hints": [
+        "先求 $u_x$ 和 $u_y$，再用 $v_y=u_x$、$v_x=-u_y$。",
+        "由 $v_y=2x+2$，关于 $y$ 积分得到 $v=(2x+2)y+g(x)$。",
+        "另一条方程给 $g^{\\prime}(x)=0$，初值再定这个实常数。"
+      ],
+      "solution": "求偏导得 $u_x=2x+2$、$u_y=-2y$。两条 C–R 方程因此要求 $v_y=2x+2$、$v_x=2y$。\n\n先对第一条关于 $y$ 积分：$v=2xy+2y+g(x)$。此时“积分常数”可以依赖另一个变量，不能直接删掉。\n\n再对所得式关于 $x$ 求导，得到 $v_x=2y+g^{\\prime}(x)$。与第二条比较可知 $g^{\\prime}(x)=0$，所以 $g=C$。\n\n初值说明 $v(0,0)=1$，故 $C=1$。答案为 $v=2xy+2y+1$ 和 $f(z)=z^2+2z+i$。",
+      "check": "把 $z=x+iy$ 代入答案检查实部，再检查 $f(0)=i$。常见错误是忘记虚部的常数1。"
+    },
+    "en": {
+      "prompt": "Let $f=u+iv$ be analytic on the entire complex plane, with real part $u(x,y)=x^2-y^2+2x$ and $f(0)=i$. Find $v(x,y)$ and $f(z)$.",
+      "hints": [
+        "Find $u_x$ and $u_y$, then use $v_y=u_x$ and $v_x=-u_y$.",
+        "From $v_y=2x+2$, integration with respect to $y$ gives $v=(2x+2)y+g(x)$.",
+        "The other equation gives $g^{\\prime}(x)=0$; use the initial value to determine this real constant."
+      ],
+      "solution": "Differentiate to obtain $u_x=2x+2$ and $u_y=-2y$. The two C–R equations require $v_y=2x+2$ and $v_x=2y$.\n\nIntegrate the first equation with respect to $y$: $v=2xy+2y+g(x)$. The integration constant may depend on the other variable, so keep it.\n\nDifferentiate this expression with respect to $x$ to get $v_x=2y+g^{\\prime}(x)$. Comparing with the second equation yields $g^{\\prime}(x)=0$, hence $g=C$.\n\nThe initial value says $v(0,0)=1$, so $C=1$. The answers are $v=2xy+2y+1$ and $f(z)=z^2+2z+i$.",
+      "check": "Substitute $z=x+iy$ into the answer to check its real part, then check $f(0)=i$. A common error is omitting the constant 1 in the imaginary part."
+    }
+  },
+  "harmonic": {
+    "chapter": 1,
+    "exercise": "1.3-6",
+    "zh": {
+      "prompt": "对 $f(z)=e^z$，写出实部 $u$ 和虚部 $v$。在点 $(x,y)=(0,\\pi/2)$，求通过该点的两条等值线的切线方向，并判断是否垂直。",
+      "hints": [
+        "用 $e^{x+iy}=e^x(\\cos y+i\\sin y)$，梯度是等值线的法向量。",
+        "先求 $\\nabla u=(e^x\\cos y,-e^x\\sin y)$ 和 $\\nabla v=(e^x\\sin y,e^x\\cos y)$。",
+        "在指定点，两法向量为 $(0,-1)$、$(1,0)$；切线方向需分别与它们垂直。"
+      ],
+      "solution": "展开指数得到 $u=e^x\\cos y$、$v=e^x\\sin y$。在指定点，它们的值分别为0和1，所以研究的是这两个值的等值线。\n\n求偏导后代入该点，得到 $\\nabla u=(0,-1)$、$\\nabla v=(1,0)$。二者均非零，因此两条局部等值线都有确定的切线。\n\n与第一个法向量垂直的方向可取 $(1,0)$，与第二个垂直的方向可取 $(0,1)$。两切向量内积为零，因此两条切线垂直。",
+      "check": "也可检查 $f^{\\prime}(i\\pi/2)=i\\ne0$，正交结论的非临界条件满足。不要把梯度方向直接当成切线方向。"
+    },
+    "en": {
+      "prompt": "For $f(z)=e^z$, write its real part $u$ and imaginary part $v$. At $(x,y)=(0,\\pi/2)$, find tangent directions to the two level curves through the point and decide whether they are perpendicular.",
+      "hints": [
+        "Use $e^{x+iy}=e^x(\\cos y+i\\sin y)$; a gradient is normal to a level curve.",
+        "First compute $\\nabla u=(e^x\\cos y,-e^x\\sin y)$ and $\\nabla v=(e^x\\sin y,e^x\\cos y)$.",
+        "At the specified point the normals are $(0,-1)$ and $(1,0)$; each tangent must be perpendicular to its corresponding normal."
+      ],
+      "solution": "Expand the exponential to get $u=e^x\\cos y$ and $v=e^x\\sin y$. Their values at the specified point are 0 and 1, respectively, which identifies the two level curves.\n\nDifferentiate and evaluate at that point: $\\nabla u=(0,-1)$ and $\\nabla v=(1,0)$. Both are nonzero, so both local level curves have well-defined tangents.\n\nA direction perpendicular to the first normal is $(1,0)$; one perpendicular to the second is $(0,1)$. The tangent vectors have zero dot product, so the two tangents are perpendicular.",
+      "check": "Alternatively check $f^{\\prime}(i\\pi/2)=i\\ne0$, confirming the noncritical-point condition. Do not mistake a gradient direction for a tangent direction."
+    }
+  },
+  "cauchy": {
+    "chapter": 1,
+    "exercise": "1.4-4",
+    "zh": {
+      "prompt": "圆周 $C:|z-1|=1/2$ 按逆时针方向。计算 $I=\\oint_C\\cos z/(z-1)^2\\,dz$。",
+      "hints": [
+        "分母是二次幂，选柯西公式的一阶导数形式。",
+        "公式为 $\\oint_C f(z)/(z-a)^2\\,dz=2\\pi i f^{\\prime}(a)$。先认出 $a=1$。",
+        "这里 $f(z)=\\cos z$，故 $f^{\\prime}(1)=-\\sin1$。"
+      ],
+      "solution": "先检查条件：$\\cos z$ 在整个复平面解析，点 $z=1$ 位于圆周内部，且路径取正向。柯西导数公式可以直接使用。\n\n把分母写成 $(z-a)^{n+1}$ 对照，得到 $a=1,n=1$。这里不是函数值公式，必须求一次导数。\n\n有 $f^{\\prime}(z)=-\\sin z$，代入得 $I=2\\pi i(-\\sin1)=-2\\pi i\\sin1$。",
+      "check": "局部展开 $\\cos z=\\cos1-\\sin1(z-1)+\\cdots$，被积函数的留数确为 $-\\sin1$。常见错误：二阶分母却代入函数值。"
+    },
+    "en": {
+      "prompt": "The circle $C:|z-1|=1/2$ is traversed counterclockwise. Evaluate $I=\\oint_C\\cos z/(z-1)^2\\,dz$.",
+      "hints": [
+        "The denominator is squared, so use the first-derivative form of Cauchy's formula.",
+        "The formula is $\\oint_C f(z)/(z-a)^2\\,dz=2\\pi i f^{\\prime}(a)$. Identify $a=1$ first.",
+        "Here $f(z)=\\cos z$, so $f^{\\prime}(1)=-\\sin1$."
+      ],
+      "solution": "Check the conditions first: $\\cos z$ is entire, $z=1$ is inside the circle, and the path has positive orientation. Cauchy's derivative formula applies directly.\n\nCompare the denominator with $(z-a)^{n+1}$ to identify $a=1,n=1$. This requires one derivative rather than a function value.\n\nSince $f^{\\prime}(z)=-\\sin z$, substitution gives $I=2\\pi i(-\\sin1)=-2\\pi i\\sin1$.",
+      "check": "Expand locally: $\\cos z=\\cos1-\\sin1(z-1)+\\cdots$, so the residue of the integrand is indeed $-\\sin1$. A common error is using the function value despite the squared denominator."
+    }
+  },
+  "laurent": {
+    "chapter": 1,
+    "exercise": "1.5-3",
+    "zh": {
+      "prompt": "以原点为中心，将 $f(z)=1/(z-2)$ 在 $|z|>2$ 展开为洛朗级数。写出前三项和一般项，并说明为何不含非负次幂。",
+      "hints": [
+        "几何级数的小量要是 $2/z$，不是 $z/2$。",
+        "改写 $1/(z-2)=z^{-1}/(1-2/z)$。",
+        "用 $1/(1-q)=\\sum_{n=0}^{\\infty}q^n$，条件为 $|q|<1$。"
+      ],
+      "solution": "题目要求外侧区域，所以把分母中的大变量先提出来：$z-2=z(1-2/z)$。此时 $|2/z|<1$，正好满足几何级数条件。\n\n代入几何级数得 $f(z)=z^{-1}\\sum_{n=0}^{\\infty}(2/z)^n=\\sum_{n=0}^{\\infty}2^nz^{-n-1}$。\n\n前三项是 $z^{-1}+2z^{-2}+4z^{-3}$。一般指数为 $-n-1$ 且 $n\\ge0$，所以全部为负幂；这个展开只在 $|z|>2$ 使用。",
+      "check": "把级数乘以 $z-2$，相邻项相消后只留下1。常见错误：选成 $z/2$ 会得到另一收敛区域，不能用于本题。"
+    },
+    "en": {
+      "prompt": "Expand $f(z)=1/(z-2)$ as a Laurent series about the origin for $|z|>2$. Give its first three terms and general term, and explain the absence of nonnegative powers.",
+      "hints": [
+        "The small quantity in the geometric series must be $2/z$, not $z/2$.",
+        "Rewrite $1/(z-2)=z^{-1}/(1-2/z)$.",
+        "Use $1/(1-q)=\\sum_{n=0}^{\\infty}q^n$, valid for $|q|<1$."
+      ],
+      "solution": "The requested region is exterior, so factor out the large variable: $z-2=z(1-2/z)$. Now $|2/z|<1$, exactly the geometric-series condition.\n\nSubstitution gives $f(z)=z^{-1}\\sum_{n=0}^{\\infty}(2/z)^n=\\sum_{n=0}^{\\infty}2^nz^{-n-1}$.\n\nThe first three terms are $z^{-1}+2z^{-2}+4z^{-3}$. The exponent is $-n-1$ with $n\\ge0$, so every power is negative; this expansion is used only for $|z|>2$.",
+      "check": "Multiply the series by $z-2$: adjacent terms cancel and leave 1. Choosing $z/2$ instead gives a different convergence region and does not answer this question."
+    }
+  },
+  "singularity": {
+    "chapter": 1,
+    "exercise": "1.5-5",
+    "zh": {
+      "prompt": "函数 $f(z)=(1-\\cos z)/z^2$ 在 $z=0$ 处未定义。判断这个孤立奇点的类型，并求能使函数在原点解析的补定义值。",
+      "hints": [
+        "不要只看分母；先检查分子在原点消失了几阶。",
+        "使用 $\\cos z=1-z^2/2+z^4/24-\\cdots$。",
+        "相减再除以 $z^2$，看看是否还存在负幂。"
+      ],
+      "solution": "余弦在原点的展开给出 $1-\\cos z=z^2/2-z^4/24+\\cdots$。分子也有二阶零点，正好可以消去分母的二阶零点。\n\n在穿孔邻域内相除得 $f(z)=1/2-z^2/24+\\cdots$。没有负幂项，因此它不是极点，也不是本性奇点，而是可去奇点。\n\n展开的常数项就是极限：$\\lim_{z\\to0}f(z)=1/2$。补定义 $f(0)=1/2$ 后，所得幂级数在原点附近解析。",
+      "check": "检查分子首项确为 $z^2/2$。常见错误：看到分母平方就称为二阶极点，漏掉分子消零。"
+    },
+    "en": {
+      "prompt": "The function $f(z)=(1-\\cos z)/z^2$ is undefined at $z=0$. Classify this isolated singularity and find the value that makes the function analytic at the origin.",
+      "hints": [
+        "Do not inspect the denominator alone; find the order to which the numerator vanishes.",
+        "Use $\\cos z=1-z^2/2+z^4/24-\\cdots$.",
+        "Subtract and divide by $z^2$, then check whether any negative powers remain."
+      ],
+      "solution": "The cosine expansion gives $1-\\cos z=z^2/2-z^4/24+\\cdots$. The numerator has a zero of order two, which cancels the zero of the same order in the denominator.\n\nDivision in a punctured neighborhood gives $f(z)=1/2-z^2/24+\\cdots$. There are no negative powers, so this is a removable singularity rather than a pole or an essential singularity.\n\nThe constant term gives the limit: $\\lim_{z\\to0}f(z)=1/2$. Define $f(0)=1/2$; the resulting power series is analytic near the origin.",
+      "check": "Check that the leading numerator term is $z^2/2$. A common error is calling this a second-order pole from the denominator alone, overlooking cancellation."
+    }
+  },
+  "residue": {
+    "chapter": 1,
+    "exercise": "1.6-3",
+    "zh": {
+      "prompt": "求 $f(z)=z^2/(z+2)^3$ 在 $z=-2$ 处的留数；再求逆时针圆周 $|z+2|=1$ 上的积分 $\\oint f(z)\\,dz$。",
+      "hints": [
+        "这里是三阶极点；留数仍然只取一次负幂的系数。",
+        "可令 $w=z+2$，把分子写成 $(w-2)^2$。",
+        "展开得到 $f=w^{-1}-4w^{-2}+4w^{-3}$；找到所需系数后乘 $2\\pi i$。"
+      ],
+      "solution": "分子在 $z=-2$ 处等于4，不会消去分母，所以极点的阶数确为三阶。先确认阶数，避免错误套用简单极点公式。\n\n令 $w=z+2$，有 $z=w-2$，所以 $f=(w^2-4w+4)/w^3=w^{-1}-4w^{-2}+4w^{-3}$。\n\n留数是 $w^{-1}$ 的系数，因此 $\\operatorname{Res}_{z=-2}f=1$。圆周内只有这个极点，留数定理给 $\\oint f(z)\\,dz=2\\pi i$。",
+      "check": "高阶公式也给 $\\tfrac1{2!}(z^2)^{\\prime^{\\prime}}|_{z=-2}=1$。别把三阶极点的最高负幂系数4当成留数。"
+    },
+    "en": {
+      "prompt": "Find the residue of $f(z)=z^2/(z+2)^3$ at $z=-2$, then evaluate $\\oint f(z)\\,dz$ on the counterclockwise circle $|z+2|=1$.",
+      "hints": [
+        "This is a third-order pole, but its residue is still the coefficient of the first negative power.",
+        "You can set $w=z+2$ and write the numerator as $(w-2)^2$.",
+        "Expansion gives $f=w^{-1}-4w^{-2}+4w^{-3}$; take the required coefficient and multiply by $2\\pi i$."
+      ],
+      "solution": "The numerator equals 4 at $z=-2$ and does not cancel the denominator, so the pole really has order three. Confirm the order before choosing a residue formula.\n\nSet $w=z+2$, giving $z=w-2$ and $f=(w^2-4w+4)/w^3=w^{-1}-4w^{-2}+4w^{-3}$.\n\nThe residue is the coefficient of $w^{-1}$, hence $\\operatorname{Res}_{z=-2}f=1$. This is the only pole inside the circle, so the residue theorem gives $\\oint f(z)\\,dz=2\\pi i$.",
+      "check": "The higher-order formula also gives $\\tfrac1{2!}(z^2)^{\\prime^{\\prime}}|_{z=-2}=1$. Do not confuse the coefficient 4 of the most negative power with the residue."
+    }
+  },
+  "contour": {
+    "chapter": 1,
+    "exercise": "1.7-1",
+    "zh": {
+      "prompt": "用上半平面半圆围道求 $I=\\int_{-\\infty}^{\\infty}x^2/[(x^2+1)(x^2+9)]\\,dx$。说明上半平面有哪些极点以及大圆弧为什么消失。",
+      "hints": [
+        "有理函数在无穷远按 $1/z^2$ 衰减，适合闭合半圆。",
+        "上半平面的极点为 $z=i,3i$，都是简单极点。",
+        "两个留数分别为 $i/16$ 和 $-3i/16$，先相加再乘 $2\\pi i$。"
+      ],
+      "solution": "令 $F(z)=z^2/[(z-i)(z+i)(z-3i)(z+3i)]$。沿实轴从左到右，再经大上半圆返回，方向为逆时针；内部只有两个上半平面极点。\n\n对简单极点去掉对应的一次因子再代入。由此 $\\operatorname{Res}_{i}F=(-1)/[(2i)(8)]=i/16$，以及 $\\operatorname{Res}_{3i}F=(-9)/[(-8)(6i)]=-3i/16$。\n\n大圆弧上被积函数为 $O(R^{-2})$，弧长为 $\\pi R$，故弧积分为 $O(R^{-1})$，趋于零。取足够大的半径也避开了所有固定极点。\n\n实积分因此等于 $2\\pi i(i/16-3i/16)=\\pi/4$。原函数非负，结果为正，与符号检查一致。",
+      "check": "可用分式 $F(x)=-1/[8(x^2+1)]+9/[8(x^2+9)]$ 独立检验。常见错误：把下半平面两极点也算进去。"
+    },
+    "en": {
+      "prompt": "Use an upper-half-plane semicircular contour to evaluate $I=\\int_{-\\infty}^{\\infty}x^2/[(x^2+1)(x^2+9)]\\,dx$. Identify the enclosed poles and explain why the large-arc integral vanishes.",
+      "hints": [
+        "The rational function decays like $1/z^2$ at infinity, making a semicircle suitable.",
+        "The upper-half-plane poles are $z=i,3i$, both simple.",
+        "The residues are $i/16$ and $-3i/16$; add them before multiplying by $2\\pi i$."
+      ],
+      "solution": "Set $F(z)=z^2/[(z-i)(z+i)(z-3i)(z+3i)]$. Travel from left to right on the real axis and return on a large upper semicircle; this is counterclockwise and encloses only the two upper-half-plane poles.\n\nAt a simple pole remove its linear factor and substitute. This gives $\\operatorname{Res}_{i}F=(-1)/[(2i)(8)]=i/16$ and $\\operatorname{Res}_{3i}F=(-9)/[(-8)(6i)]=-3i/16$.\n\nOn the large arc the integrand is $O(R^{-2})$ and the arc length is $\\pi R$, so its integral is $O(R^{-1})$ and vanishes. A sufficiently large radius also avoids all fixed poles.\n\nThe real integral is therefore $2\\pi i(i/16-3i/16)=\\pi/4$. The original integrand is nonnegative, agreeing with the positive result.",
+      "check": "Independently check with $F(x)=-1/[8(x^2+1)]+9/[8(x^2+9)]$. A common error is including the two lower-half-plane poles as well."
+    }
+  },
+  "dispersion": {
+    "chapter": 1,
+    "exercise": "1.7-1",
+    "zh": {
+      "prompt": "设 $f(z)=1/(z+2i)$，实轴边界值写作 $f(x)=u(x)+iv(x)$。先判断它是否在上半平面解析且充分衰减，再用 $v(0)=-\\pi^{-1}\\operatorname{PV}\\int_{-\\infty}^{\\infty}u(t)/t\\,dt$ 验证虚部在原点的值。",
+      "hints": [
+        "先找极点：$z=-2i$ 在下半平面。",
+        "有理化得到 $u(t)=t/(t^2+4)$、$v(t)=-2/(t^2+4)$。",
+        "当 $t\\ne0$，$u(t)/t=1/(t^2+4)$；这个商在原点可去，所以主值等于普通收敛积分。"
+      ],
+      "solution": "唯一极点是 $z=-2i$，因此上半平面和实轴附近均解析。无穷远有 $f(z)=O(1/|z|)$，于是色散推导中 $f(z)/z$ 的大弧积分消失；本题所需主值也存在。\n\n实轴上有 $f(t)=(t-2i)/(t^2+4)$，故 $u(t)=t/(t^2+4)$、$v(t)=-2/(t^2+4)$。直接代入得到 $v(0)=-1/2$。\n\n在主值公式中，除去原点后 $u(t)/t=1/(t^2+4)$。把原点补成有限值不会改变积分，且 $\\int_{-\\infty}^{\\infty}dt/(t^2+4)=\\pi/2$。\n\n因此公式右侧为 $-\\pi^{-1}(\\pi/2)=-1/2$，与直接计算吻合。这里保留主值记号以对应一般公式，但本题的表面奇点可以消去。",
+      "check": "符号核验：分母约定是 $t-x$，所以虚部公式带负号。相关课后题仅用于练习其中的有理实积分；不把它称作教材中的色散关系原题。"
+    },
+    "en": {
+      "prompt": "Let $f(z)=1/(z+2i)$, with real-axis boundary value $f(x)=u(x)+iv(x)$. Check analyticity and sufficient decay in the upper half-plane, then verify the imaginary part at the origin using $v(0)=-\\pi^{-1}\\operatorname{PV}\\int_{-\\infty}^{\\infty}u(t)/t\\,dt$.",
+      "hints": [
+        "Locate the pole first: $z=-2i$ lies in the lower half-plane.",
+        "Rationalizing gives $u(t)=t/(t^2+4)$ and $v(t)=-2/(t^2+4)$.",
+        "For $t\\ne0$, $u(t)/t=1/(t^2+4)$; the quotient has a removable singularity at the origin, so its principal value equals an ordinary convergent integral."
+      ],
+      "solution": "The only pole is $z=-2i$, so the function is analytic in the upper half-plane and near the real axis. At infinity $f(z)=O(1/|z|)$, making the large-arc integral of $f(z)/z$ in the dispersion derivation vanish; the required principal value also exists.\n\nOn the real axis $f(t)=(t-2i)/(t^2+4)$, hence $u(t)=t/(t^2+4)$ and $v(t)=-2/(t^2+4)$. Direct substitution gives $v(0)=-1/2$.\n\nAway from the origin the principal-value integrand satisfies $u(t)/t=1/(t^2+4)$. Assigning its finite limiting value at the origin does not affect the integral, and $\\int_{-\\infty}^{\\infty}dt/(t^2+4)=\\pi/2$.\n\nThe formula therefore yields $-\\pi^{-1}(\\pi/2)=-1/2$, agreeing with direct evaluation. The principal-value notation is retained to match the general formula, although the apparent singularity is removable here.",
+      "check": "Sign check: with denominator $t-x$, the imaginary-part formula has a minus sign. The linked textbook exercise practices the rational real integral used here; this is not presented as a textbook dispersion-relation question."
+    }
+  },
+  "2.1-core": {
+    "chapter": 2,
+    "exercise": "2.1-3",
+    "zh": {
+      "prompt": "函数 $f$ 的周期为 $2\\pi$，在 $-\\pi<x<\\pi$ 上 $f(x)=1+x/2$。求傅里叶级数，并判断级数在周期接缝 $x=\\pi$ 的和。接缝处函数自身如何定义不影响系数。",
+      "hints": [
+        "把函数拆成常数部分和奇函数部分。",
+        "常数系数 $a_0=2$，正余弦交叉项消失；$b_n=\\pi^{-1}\\int_0^\\pi x\\sin(nx)dx$。",
+        "分部积分给 $b_n=(-1)^{n+1}/n$；接缝取左右极限的平均。"
+      ],
+      "solution": "在对称区间积分，常数部分贡献 $a_0=\\pi^{-1}\\int_{-\\pi}^{\\pi}1\\,dx=2$。奇函数部分与余弦相乘仍为奇函数，所以 $a_n=0$，其中 $n\\ge1$。\n\n正弦系数中常数部分消失，而奇函数乘正弦变成偶函数，因此 $b_n=\\pi^{-1}\\int_0^\\pi x\\sin(nx)dx$。分部积分得到 $\\int_0^\\pi x\\sin(nx)dx=-\\pi(-1)^n/n$。\n\n所以 $f(x)\\sim1+\\sum_{n=1}^{\\infty}(-1)^{n+1}\\sin(nx)/n$。在开区间内，分段光滑收敛定理给出和就是原函数。\n\n在接缝，左右极限分别是 $1+\\pi/2$ 和 $1-\\pi/2$，平均为1。级数在 $x=\\pi$ 的和因此为1，与每个正弦项都为零也一致。",
+      "check": "常数项是 $a_0/2=1$，不能误写成2；接缝取平均而不是取左极限。"
+    },
+    "en": {
+      "prompt": "The function $f$ has period $2\\pi$ and satisfies $f(x)=1+x/2$ for $-\\pi<x<\\pi$. Find its Fourier series and the series sum at the periodic seam $x=\\pi$. The assigned function value at the seam does not affect the coefficients.",
+      "hints": [
+        "Split the function into a constant part and an odd part.",
+        "The constant coefficient is $a_0=2$ and the sine-cosine cross terms vanish; $b_n=\\pi^{-1}\\int_0^\\pi x\\sin(nx)dx$.",
+        "Integration by parts gives $b_n=(-1)^{n+1}/n$; take the average of the one-sided limits at the seam."
+      ],
+      "solution": "On the symmetric interval the constant part contributes $a_0=\\pi^{-1}\\int_{-\\pi}^{\\pi}1\\,dx=2$. The odd part times a cosine remains odd, so $a_n=0$ for $n\\ge1$.\n\nIn the sine coefficient the constant part vanishes, while the odd part times a sine is even; thus $b_n=\\pi^{-1}\\int_0^\\pi x\\sin(nx)dx$. Integration by parts gives $\\int_0^\\pi x\\sin(nx)dx=-\\pi(-1)^n/n$.\n\nHence $f(x)\\sim1+\\sum_{n=1}^{\\infty}(-1)^{n+1}\\sin(nx)/n$. Inside the open interval, the piecewise-smooth convergence theorem identifies the sum with the original function.\n\nAt the seam the one-sided limits are $1+\\pi/2$ and $1-\\pi/2$, with average 1. The series sum at $x=\\pi$ is therefore 1, also agreeing with every sine term being zero there.",
+      "check": "The constant term is $a_0/2=1$, not 2; use the average at the seam rather than its left limit."
+    }
+  },
+  "2.2-core": {
+    "chapter": 2,
+    "exercise": "2.2-1",
+    "zh": {
+      "prompt": "设 $f(x)=2$（$|x|\\le1$），其余处为零。按 $F(k)=\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}dx$ 求变换，并单独给出 $F(0)$。",
+      "hints": [
+        "函数是偶函数，变换中的正弦虚部积分为零。",
+        "变换化为 $F(k)=4\\int_0^1\\cos(kx)dx$。",
+        "对 $k\\ne0$ 积分得 $4\\sin k/k$；在零频率直接算面积。"
+      ],
+      "solution": "只有区间内有贡献，所以 $F(k)=2\\int_{-1}^1e^{-ikx}dx$。把指数拆成余弦和正弦，正弦部分因奇偶性消失。\n\n剩下的余弦是偶函数，得到 $F(k)=4\\int_0^1\\cos(kx)dx$。当 $k\\ne0$，原函数为 $\\sin(kx)/k$，因此 $F(k)=4\\sin k/k$。\n\n在 $k=0$ 时不直接除以零，而用原积分得到 $F(0)=2\\int_{-1}^1dx=4$。这也等于上一表达式在零点的极限，故零点是可去的。",
+      "check": "检查 $F(0)=4$ 等于矩形面积，且频谱为实偶函数。常见错误：在本章正变换中多乘 $1/(2\\pi)$。"
+    },
+    "en": {
+      "prompt": "Let $f(x)=2$ for $|x|\\le1$ and zero elsewhere. Find the transform using $F(k)=\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}dx$, and give $F(0)$ separately.",
+      "hints": [
+        "The function is even, so the sine contribution to the transform integrates to zero.",
+        "The transform reduces to $F(k)=4\\int_0^1\\cos(kx)dx$.",
+        "For $k\\ne0$, integration gives $4\\sin k/k$; at zero frequency compute the area directly."
+      ],
+      "solution": "Only the finite interval contributes, so $F(k)=2\\int_{-1}^1e^{-ikx}dx$. Split the exponential into cosine and sine; oddness eliminates the sine part.\n\nThe remaining cosine is even, giving $F(k)=4\\int_0^1\\cos(kx)dx$. For $k\\ne0$, its antiderivative is $\\sin(kx)/k$, hence $F(k)=4\\sin k/k$.\n\nAt $k=0$ do not divide by zero; return to the original integral to get $F(0)=2\\int_{-1}^1dx=4$. This also equals the limit of the previous expression, so the zero-frequency singularity is removable.",
+      "check": "Check that $F(0)=4$ equals the rectangle area and that the spectrum is real and even. A common error is adding $1/(2\\pi)$ to the forward transform in this convention."
+    }
+  },
+  "fourier-rules": {
+    "chapter": 2,
+    "exercise": "2.2-4",
+    "zh": {
+      "prompt": "已知在正变换负指数的规范下，$\\widehat{e^{-x^2}}=\\sqrt\\pi e^{-k^2/4}$。求 $g(x)=\\frac{d}{dx}e^{-(x-2)^2}$ 的傅里叶变换 $G(k)$，并写出 $g(x)$ 的普通表达式。",
+      "hints": [
+        "连续用两个性质：空间平移产生相位，空间导数产生 $ik$。",
+        "令 $h(x)=e^{-(x-2)^2}$，先得 $H(k)=e^{-2ik}\\sqrt\\pi e^{-k^2/4}$。",
+        "再用 $G(k)=ikH(k)$；高斯函数衰减使分部积分边界项为零。"
+      ],
+      "solution": "先认出 $h(x)=f(x-2)$，其中 $f(x)=e^{-x^2}$。平移距离为正2，因此相位是 $e^{-2ik}$，得到 $H(k)=e^{-2ik}\\sqrt\\pi e^{-k^2/4}$。\n\n现在 $g=h^{\\prime}$。分部积分中两端的高斯函数趋零，故导数的变换等于 $ik$ 乘原变换，答案为 $G(k)=ik e^{-2ik}\\sqrt\\pi e^{-k^2/4}$。\n\n对原函数用链式法则，还可写成 $g(x)=-2(x-2)e^{-(x-2)^2}$。注意这个式子的负号已经包含在求导规则里，不能再给频域结果随意加负号。",
+      "check": "零频率检查：$G(0)=0$，因为 $\\int_{-\\infty}^{\\infty}g(x)dx=h(\\infty)-h(-\\infty)=0$。关联题用于复习变换性质，不是该题的同题重做。"
+    },
+    "en": {
+      "prompt": "In the negative-exponent forward-transform convention, suppose $\\widehat{e^{-x^2}}=\\sqrt\\pi e^{-k^2/4}$. Find the Fourier transform $G(k)$ of $g(x)=\\frac{d}{dx}e^{-(x-2)^2}$, and write an ordinary expression for $g(x)$.",
+      "hints": [
+        "Apply two properties: spatial translation gives a phase and spatial differentiation gives $ik$.",
+        "Set $h(x)=e^{-(x-2)^2}$; first obtain $H(k)=e^{-2ik}\\sqrt\\pi e^{-k^2/4}$.",
+        "Next use $G(k)=ikH(k)$; Gaussian decay makes the integration-by-parts boundary term zero."
+      ],
+      "solution": "Recognize $h(x)=f(x-2)$ with $f(x)=e^{-x^2}$. The positive translation by 2 gives the phase $e^{-2ik}$, so $H(k)=e^{-2ik}\\sqrt\\pi e^{-k^2/4}$.\n\nNow $g=h^{\\prime}$. The Gaussian tends to zero at both integration endpoints, so integration by parts makes the derivative transform $ik$ times the original transform. Thus $G(k)=ik e^{-2ik}\\sqrt\\pi e^{-k^2/4}$.\n\nThe chain rule in real space also gives $g(x)=-2(x-2)e^{-(x-2)^2}$. Its minus sign is already accounted for by the derivative rule; do not add another minus sign to the frequency-space answer.",
+      "check": "Zero-frequency check: $G(0)=0$ because $\\int_{-\\infty}^{\\infty}g(x)dx=h(\\infty)-h(-\\infty)=0$. The linked exercise reviews transform properties; this is a separate practice problem."
+    }
+  },
+  "2.3-core": {
+    "chapter": 2,
+    "exercise": "2.3-3",
+    "zh": {
+      "prompt": "计算 $I=\\int_{-3}^{3}(x+4)\\delta(x^2-4)dx$。所有零点都在区间内部；使用单根公式时说明每个根的权重。",
+      "hints": [
+        "先解 $x^2-4=0$，不要只取正根。",
+        "两根是 $x=2,-2$，且 $g^{\\prime}(x)=2x$ 在两根都非零。",
+        "绝对导数均为4，因此两贡献为 $6/4$ 与 $2/4$。"
+      ],
+      "solution": "令 $g(x)=x^2-4$。零点是 $x=2,-2$，都位于积分区间内部。又因 $g^{\\prime}(2)=4$、$g^{\\prime}(-2)=-4$，两根都是单根，可以使用换元公式。\n\n取导数绝对值得 $\\delta(x^2-4)=[\\delta(x-2)+\\delta(x+2)]/4$。负根的权重仍为正，不能直接除以负导数。\n\n分别抽样：在正根处 $x+4=6$，在负根处 $x+4=2$。所以 $I=6/4+2/4=2$。",
+      "check": "检查奇函数部分 $x\\delta(x^2-4)$ 在对称区间积分为零，常数部分贡献为2。常见错误：漏负根或漏绝对值。"
+    },
+    "en": {
+      "prompt": "Evaluate $I=\\int_{-3}^{3}(x+4)\\delta(x^2-4)dx$. All zeros lie strictly inside the interval; state the weight at each root when applying the simple-root rule.",
+      "hints": [
+        "First solve $x^2-4=0$; do not retain only the positive root.",
+        "The roots are $x=2,-2$, and $g^{\\prime}(x)=2x$ is nonzero at both.",
+        "The absolute derivative equals 4 at each root, giving contributions $6/4$ and $2/4$."
+      ],
+      "solution": "Set $g(x)=x^2-4$. Its roots are $x=2,-2$, both strictly inside the integration interval. Since $g^{\\prime}(2)=4$ and $g^{\\prime}(-2)=-4$, both roots are simple and the change-of-variable formula applies.\n\nTaking absolute derivatives gives $\\delta(x^2-4)=[\\delta(x-2)+\\delta(x+2)]/4$. The weight at the negative root remains positive; do not divide by a signed negative derivative.\n\nSample at each root: $x+4=6$ at the positive root and $x+4=2$ at the negative root. Thus $I=6/4+2/4=2$.",
+      "check": "Check that the odd part $x\\delta(x^2-4)$ integrates to zero over the symmetric interval, while the constant part contributes 2. Common errors are missing the negative root or the absolute value."
+    }
+  },
+  "2.4-core": {
+    "chapter": 2,
+    "exercise": "2.4-4",
+    "zh": {
+      "prompt": "求 $f(t)=t e^{-3t}$（$t\\ge0$）的拉普拉斯变换 $F(p)=\\int_0^\\infty f(t)e^{-pt}dt$，同时给出复参数 $p$ 的收敛条件。",
+      "hints": [
+        "先合并指数；真正需要积分的是 $t e^{-(p+3)t}$。",
+        "令 $q=p+3$，要求 $\\operatorname{Re}q>0$ 才能让上端边界项消失。",
+        "分部积分，取 $u=t$、$v=-e^{-qt}/q$。"
+      ],
+      "solution": "把指数合并得到 $F(p)=\\int_0^\\infty t e^{-(p+3)t}dt$。令 $q=p+3$，先要求 $\\operatorname{Re}q>0$，保证指数压过线性增长。\n\n分部积分给 $\\int_0^\\infty t e^{-qt}dt=[-t e^{-qt}/q]_0^\\infty+(1/q)\\int_0^\\infty e^{-qt}dt$。首项在上述条件下为零。\n\n剩下的指数积分为 $1/q$，所以 $F(p)=1/(p+3)^2$，收敛半平面是 $\\operatorname{Re}p>-3$。代数表达式能延拓到更多点，但不表示原积分在那些点也收敛。",
+      "check": "在 $p=0$，结果为 $1/9>0$，符合正函数积分。常见错误：把衰减指数的平移写成 $p-3$。"
+    },
+    "en": {
+      "prompt": "Find the Laplace transform of $f(t)=t e^{-3t}$ for $t\\ge0$, using $F(p)=\\int_0^\\infty f(t)e^{-pt}dt$, and state its convergence condition for complex $p$.",
+      "hints": [
+        "Combine the exponentials first; the integrand becomes $t e^{-(p+3)t}$.",
+        "Put $q=p+3$; require $\\operatorname{Re}q>0$ so the upper-end boundary term vanishes.",
+        "Integrate by parts with $u=t$ and $v=-e^{-qt}/q$."
+      ],
+      "solution": "Combining exponentials gives $F(p)=\\int_0^\\infty t e^{-(p+3)t}dt$. Put $q=p+3$ and require $\\operatorname{Re}q>0$ so exponential decay dominates linear growth.\n\nIntegration by parts yields $\\int_0^\\infty t e^{-qt}dt=[-t e^{-qt}/q]_0^\\infty+(1/q)\\int_0^\\infty e^{-qt}dt$. The boundary term is zero under the stated condition.\n\nThe remaining exponential integral is $1/q$, hence $F(p)=1/(p+3)^2$ with convergence half-plane $\\operatorname{Re}p>-3$. The algebraic expression extends to more points, but that does not make the original integral converge there.",
+      "check": "At $p=0$ the result is $1/9>0$, consistent with integrating a positive function. A common error is writing the shift as $p-3$ for a decaying exponential."
+    }
+  },
+  "2.5-core": {
+    "chapter": 2,
+    "exercise": "2.5-1",
+    "zh": {
+      "prompt": "用拉普拉斯变换解初值问题 $y^{\\prime}+2y=3$（$t>0$），$y(0)=1$。要求写出含初值的变换方程和部分分式。",
+      "hints": [
+        "记 $Y(p)=\\mathcal L[y](p)$；导数变换中必须保留初值。",
+        "变换方程为 $pY-1+2Y=3/p$。",
+        "解得 $Y=(p+3)/[p(p+2)]=3/(2p)-1/[2(p+2)]$。"
+      ],
+      "solution": "设 $Y(p)=\\mathcal L[y](p)$。用 $\\mathcal L[y^{\\prime}]=pY-y(0)$，方程变成 $pY-1+2Y=3/p$；常数3的变换是 $3/p$。\n\n合并未知量得到 $(p+2)Y=1+3/p$，所以 $Y=(p+3)/[p(p+2)]$。先把初值带进去再求逆变换，不能丢掉额外的1。\n\n设部分分式为 $Y=A/p+B/(p+2)$。比较分子 $p+3=A(p+2)+Bp$ 得 $A=3/2,B=-1/2$。\n\n逐项逆变换，最终 $y(t)=3/2-(1/2)e^{-2t}$。它从初值1逐渐趋向常数解 $3/2$。",
+      "check": "代回得 $y^{\\prime}=e^{-2t}$，故 $y^{\\prime}+2y=3$；同时 $y(0)=1$。两项都检查才完成初值题。"
+    },
+    "en": {
+      "prompt": "Use the Laplace transform to solve $y^{\\prime}+2y=3$ for $t>0$, with $y(0)=1$. Show the transformed equation including the initial value and the partial fractions.",
+      "hints": [
+        "Write $Y(p)=\\mathcal L[y](p)$; retain the initial value in the derivative transform.",
+        "The transformed equation is $pY-1+2Y=3/p$.",
+        "Solving gives $Y=(p+3)/[p(p+2)]=3/(2p)-1/[2(p+2)]$."
+      ],
+      "solution": "Set $Y(p)=\\mathcal L[y](p)$. Using $\\mathcal L[y^{\\prime}]=pY-y(0)$ gives $pY-1+2Y=3/p$; the transform of the constant 3 is $3/p$.\n\nCollect terms to obtain $(p+2)Y=1+3/p$, hence $Y=(p+3)/[p(p+2)]$. Include the initial value before inversion; the extra 1 must remain.\n\nWrite the partial fractions as $Y=A/p+B/(p+2)$. Comparing numerators in $p+3=A(p+2)+Bp$ yields $A=3/2,B=-1/2$.\n\nInvert term by term to get $y(t)=3/2-(1/2)e^{-2t}$. It starts at 1 and approaches the constant solution $3/2$.",
+      "check": "Substitution gives $y^{\\prime}=e^{-2t}$, so $y^{\\prime}+2y=3$; also $y(0)=1$. Check both the equation and the initial value."
+    }
+  },
+  "3.1-core": {
+    "chapter": 3,
+    "exercise": "3.1-2",
+    "zh": {
+      "prompt": "一根左端固定、右端自由的均匀杆满足 $u_{tt}=4u_{xx}$，$0<x<\\pi$，$t>0$；边界为 $u(0,t)=0$、$u_x(\\pi,t)=0$。初始位移为 $3\\sin(x/2)$，初速度为 $2\\sin(x/2)$。求经典解，并说明为什么不能套两端固定的空间基。",
+      "hints": [
+        "先检查初值中的 $\\sin(x/2)$ 是否同时满足两端条件。",
+        "令 $u=q(t)\\sin(x/2)$，先算 $u_{xx}=-q(t)\\sin(x/2)/4$。",
+        "时间方程为 $q''+q=0$，初值为 $q(0)=3$、$q'(0)=2$。"
+      ],
+      "solution": "左端固定要求位移为零；右端自由要求轴向应力、因此位移斜率为零。对 $X=\\sin(x/2)$，有 $X(0)=0$、$X'(\\pi)=\\cos(\\pi/2)/2=0$，所以它正好是本题的一个空间模态。\n\n将 $u=q(t)X(x)$ 代入方程。因为 $X''=-X/4$，得到 $q''X=-qX$，故 $q''+q=0$。于是 $q=A\\cos t+B\\sin t$。\n\n初始位移给 $A=3$；初速度给 $B=2$。最终 $u(x,t)=(3\\cos t+2\\sin t)\\sin(x/2)$。这里所有初值都是光滑函数且与边界相容，所写有限模态解是经典解。\n\n两端固定时常用 $\\sin(nx)$；它在右端的导数为 $n\\cos(n\\pi)$，并不为零。本题需要满足自由端条件的半整数波数，不能只凭“是振动题”就照搬整数正弦。",
+      "check": "代回检查 $u_{tt}=4u_{xx}$，并分别检查位移、速度和两端条件。典型错误是把初速度系数直接当成正弦时间项系数；一般还要除以模态频率，本题频率恰好为一。"
+    },
+    "en": {
+      "prompt": "A uniform rod has a fixed left end and a free right end. It satisfies $u_{tt}=4u_{xx}$ for $0<x<\\pi$, $t>0$, with $u(0,t)=0$ and $u_x(\\pi,t)=0$. Its initial displacement is $3\\sin(x/2)$ and its initial velocity is $2\\sin(x/2)$. Find the classical solution and explain why the spatial basis for two fixed ends does not apply.",
+      "hints": [
+        "First check whether $\\sin(x/2)$ satisfies both endpoint conditions.",
+        "Set $u=q(t)\\sin(x/2)$ and first calculate $u_{xx}=-q(t)\\sin(x/2)/4$.",
+        "The time equation is $q''+q=0$, with $q(0)=3$ and $q'(0)=2$."
+      ],
+      "solution": "The fixed left end requires zero displacement. The free right end requires zero axial stress and hence zero displacement slope. For $X=\\sin(x/2)$, we have $X(0)=0$ and $X'(\\pi)=\\cos(\\pi/2)/2=0$, so this is a spatial mode of this problem.\n\nSubstitute $u=q(t)X(x)$ into the equation. Since $X''=-X/4$, we obtain $q''X=-qX$ and hence $q''+q=0$. Thus $q=A\\cos t+B\\sin t$.\n\nThe initial displacement gives $A=3$, and the initial velocity gives $B=2$. Therefore $u(x,t)=(3\\cos t+2\\sin t)\\sin(x/2)$. All initial data are smooth and compatible with the boundaries, so this finite-mode expression is a classical solution.\n\nFor two fixed ends one commonly uses $\\sin(nx)$, but its derivative at the right end is $n\\cos(n\\pi)$, which is nonzero. This problem requires half-integer wave numbers to satisfy the free-end condition; identifying a vibration problem alone does not determine the basis.",
+      "check": "Substitute back to check $u_{tt}=4u_{xx}$, then check the displacement, velocity, and both boundaries separately. A common error is to use the initial-velocity coefficient directly as the sine-in-time coefficient: in general it must be divided by the modal frequency, which happens to be one here."
+    }
+  },
+  "dalambert": {
+    "chapter": 3,
+    "exercise": "3.1-15",
+    "zh": {
+      "prompt": "全轴波动方程为 $u_{tt}=4u_{xx}$，$x\\in\\mathbb R$、$t\\ge0$，初值为 $u(x,0)=x^2$、$u_t(x,0)=2x$。用达朗贝尔公式求解。这里求光滑经典解，不要求总能量有限。",
+      "hints": [
+        "先从方程读出波速 $c=2$；两个取值点是 $x-2t$ 和 $x+2t$。",
+        "写成 $u=\\frac{(x-2t)^2+(x+2t)^2}{2}+\\frac14\\int_{x-2t}^{x+2t}2s\\,ds$。",
+        "两个平方的平均为 $x^2+4t^2$；积分项为 $2xt$。"
+      ],
+      "solution": "全轴且无外力，直接使用达朗贝尔公式 $u=\\frac12[\\varphi(x-ct)+\\varphi(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v(s)\\,ds$。本题 $c=2$，所以初速度积分前的系数为 $1/4$。\n\n位移项为 $[(x-2t)^2+(x+2t)^2]/2=x^2+4t^2$，因为两个交叉项相消。速度项为 $[(x+2t)^2-(x-2t)^2]/4=2xt$。\n\n相加得到 $u(x,t)=x^2+2xt+4t^2$。它在全轴上光滑。初值虽不衰减，达朗贝尔公式在每个有限的特征区间内仍可正常积分，不需要把它误当作有限能量问题。",
+      "check": "计算 $u_{tt}=8$、$u_{xx}=2$，并检查 $u(x,0)=x^2$、$u_t(x,0)=2x$。典型错误是漏掉初速度积分，或把它的系数写成一半。"
+    },
+    "en": {
+      "prompt": "On the whole line, solve $u_{tt}=4u_{xx}$ for $x\\in\\mathbb R$, $t\\ge0$, with $u(x,0)=x^2$ and $u_t(x,0)=2x$, using d'Alembert's formula. Seek a smooth classical solution; finite total energy is not required.",
+      "hints": [
+        "Read the wave speed $c=2$ from the equation; the two sampling points are $x-2t$ and $x+2t$.",
+        "Write $u=\\frac{(x-2t)^2+(x+2t)^2}{2}+\\frac14\\int_{x-2t}^{x+2t}2s\\,ds$.",
+        "The average of the two squares is $x^2+4t^2$; the integral contribution is $2xt$."
+      ],
+      "solution": "The domain is the whole line and there is no forcing, so use d'Alembert's formula $u=\\frac12[\\varphi(x-ct)+\\varphi(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v(s)\\,ds$. Here $c=2$, so the coefficient of the velocity integral is $1/4$.\n\nThe displacement contribution is $[(x-2t)^2+(x+2t)^2]/2=x^2+4t^2$ because the cross terms cancel. The velocity contribution is $[(x+2t)^2-(x-2t)^2]/4=2xt$.\n\nAdding the contributions gives $u(x,t)=x^2+2xt+4t^2$. It is smooth on the whole line. Although the initial data do not decay, the formula only integrates over a finite characteristic interval at each point, so the calculation is valid without a finite-energy assumption.",
+      "check": "Calculate $u_{tt}=8$ and $u_{xx}=2$, and check $u(x,0)=x^2$ and $u_t(x,0)=2x$. Common errors are omitting the velocity integral or incorrectly using one half as its coefficient."
+    }
+  },
+  "forcing": {
+    "chapter": 3,
+    "exercise": "3.1-11",
+    "zh": {
+      "prompt": "求 $u_{tt}-u_{xx}=6t+4\\cos(2x)\\cos(2t)$ 在 $0<x<\\pi$、$t>0$ 的解，边界为 $u_x(0,t)=u_x(\\pi,t)=0$，初始位移和初速度均为零。区分常数空间模态与第二余弦模态；所有数据均光滑。",
+      "hints": [
+        "零导数边界允许常数模态，因此设 $u=q_0(t)+q_2(t)\\cos(2x)$。",
+        "分别得到 $q_0''=6t$ 和 $q_2''+4q_2=4\\cos(2t)$，两组初值均为零。",
+        "常数模态积分两次；第二模态是共振，可试 $q_2=At\\sin(2t)$。"
+      ],
+      "solution": "边界为零法向导数，常数和 $\\cos(2x)$ 都满足边界。因此将解写成 $u=q_0+q_2\\cos(2x)$，将两个空间系数分别比较，得到 $q_0''=6t$、$q_2''+4q_2=4\\cos(2t)$。\n\n常数模态的频率为零，不能代入含有除以频率的振动公式。直接积分得 $q_0'=3t^2+C$、$q_0=t^3+Ct+D$；零初值给 $C=D=0$，故 $q_0=t^3$。\n\n第二模态的自由频率和外力频率都为二。试 $q_2=At\\sin(2t)$，求导后 $q_2''+4q_2=4A\\cos(2t)$，因此 $A=1$。此表达式的位移和速度初值也都是零。\n\n因此 $u(x,t)=t^3+t\\sin(2t)\\cos(2x)$。常数部分来自零频率模态；振幅随时间线性增长的余弦空间部分来自共振，两种增长机制应分开理解。",
+      "check": "直接计算 $u_{tt}-u_{xx}=6t+4\\cos(2x)\\cos(2t)$，再检查两端导数和零初值。典型错误是漏掉常数模态，或把共振响应写成有界的余弦。"
+    },
+    "en": {
+      "prompt": "Solve $u_{tt}-u_{xx}=6t+4\\cos(2x)\\cos(2t)$ for $0<x<\\pi$, $t>0$, with $u_x(0,t)=u_x(\\pi,t)=0$ and zero initial displacement and velocity. Distinguish the constant spatial mode from the second cosine mode. All data are smooth.",
+      "hints": [
+        "The zero-derivative boundaries allow a constant mode, so set $u=q_0(t)+q_2(t)\\cos(2x)$.",
+        "The equations are $q_0''=6t$ and $q_2''+4q_2=4\\cos(2t)$, both with zero initial data.",
+        "Integrate the constant-mode equation twice. The second mode is resonant; try $q_2=At\\sin(2t)$."
+      ],
+      "solution": "The boundary derivatives vanish, and both a constant and $\\cos(2x)$ satisfy these conditions. Write $u=q_0+q_2\\cos(2x)$ and compare the spatial coefficients separately to obtain $q_0''=6t$ and $q_2''+4q_2=4\\cos(2t)$.\n\nThe constant mode has zero frequency, so formulas that divide by the frequency cannot be used. Direct integration gives $q_0'=3t^2+C$ and $q_0=t^3+Ct+D$. Zero initial data give $C=D=0$, so $q_0=t^3$.\n\nBoth the natural frequency of the second mode and the forcing frequency equal two. Try $q_2=At\\sin(2t)$; differentiation gives $q_2''+4q_2=4A\\cos(2t)$, hence $A=1$. This expression also has zero initial displacement and velocity.\n\nTherefore $u(x,t)=t^3+t\\sin(2t)\\cos(2x)$. The spatially constant contribution comes from the zero-frequency mode, whereas the cosine contribution has a linearly growing envelope because of resonance. These are distinct mechanisms.",
+      "check": "Calculate directly that $u_{tt}-u_{xx}=6t+4\\cos(2x)\\cos(2t)$, then check both endpoint derivatives and the zero initial data. Common errors are discarding the constant mode or writing a bounded cosine response at resonance."
+    }
+  },
+  "3.2-core": {
+    "chapter": 3,
+    "exercise": "3.2-8",
+    "zh": {
+      "prompt": "一根绝热杆满足 $u_t=\\frac12u_{xx}$，$0<x<\\pi$、$t>0$，两端条件为 $u_x(0,t)=u_x(\\pi,t)=0$，初温为 $u(x,0)=4+3\\cos(2x)$。求温度及长期极限，并解释为什么不会全部降到零。",
+      "hints": [
+        "初温已经是常数模态与一个余弦模态的和。设 $u=a(t)+b(t)\\cos(2x)$。",
+        "由空间二阶导数得到 $a'=0$、$b'=-2b$。",
+        "用 $a(0)=4$、$b(0)=3$，常数部分保留，余弦部分乘上 $e^{-2t}$。"
+      ],
+      "solution": "两端绝热对应零温度导数；常数和 $\\cos(2x)$ 都满足此边界。代入 $u=a+b\\cos(2x)$，有 $u_{xx}=-4b\\cos(2x)$，故 $a'=0$、$b'=-2b$。\n\n积分得 $a=4$、$b=3e^{-2t}$，因此 $u(x,t)=4+3e^{-2t}\\cos(2x)$。初值与边界相容，有限模态表达式是光滑经典解。\n\n长期极限为 $u\\to4$。绝热意味着热量不经端点流失；初始平均温度为 $\\frac1\\pi\\int_0^\\pi[4+3\\cos(2x)]\\,dx=4$。扩散消除的是温度起伏，保留下来的常数就是平均温度。",
+      "check": "检查 $u_t=-6e^{-2t}\\cos(2x)=u_{xx}/2$，以及 $\\int_0^\\pi u\\,dx=4\\pi$ 始终不变。典型错误是套用两端零温的正弦展开，错误删除零模态。"
+    },
+    "en": {
+      "prompt": "An insulated rod satisfies $u_t=\\frac12u_{xx}$ for $0<x<\\pi$, $t>0$, with $u_x(0,t)=u_x(\\pi,t)=0$ and initial temperature $u(x,0)=4+3\\cos(2x)$. Find the temperature and its long-time limit, and explain why it does not all decay to zero.",
+      "hints": [
+        "The initial temperature is already the sum of a constant mode and one cosine mode. Set $u=a(t)+b(t)\\cos(2x)$.",
+        "The second spatial derivative gives $a'=0$ and $b'=-2b$.",
+        "Use $a(0)=4$ and $b(0)=3$: the constant part remains and the cosine part acquires a factor $e^{-2t}$."
+      ],
+      "solution": "Insulated ends require zero temperature derivative; both a constant and $\\cos(2x)$ satisfy these boundaries. Substitute $u=a+b\\cos(2x)$ to obtain $u_{xx}=-4b\\cos(2x)$, so $a'=0$ and $b'=-2b$.\n\nIntegration gives $a=4$ and $b=3e^{-2t}$, hence $u(x,t)=4+3e^{-2t}\\cos(2x)$. The initial data are compatible with the boundaries, and this finite-mode expression is a smooth classical solution.\n\nThe long-time limit is $u\\to4$. Insulation prevents heat loss through the ends. The initial mean temperature is $\\frac1\\pi\\int_0^\\pi[4+3\\cos(2x)]\\,dx=4$. Diffusion removes temperature variations while preserving their constant mean.",
+      "check": "Check $u_t=-6e^{-2t}\\cos(2x)=u_{xx}/2$ and the conserved quantity $\\int_0^\\pi u\\,dx=4\\pi$. A common error is to use the sine expansion for zero-temperature ends and incorrectly remove the zero mode."
+    }
+  },
+  "heat-kernel": {
+    "chapter": 3,
+    "exercise": "3.2-6",
+    "zh": {
+      "prompt": "全轴热方程为 $u_t=u_{xx}$，$x\\in\\mathbb R$、$t>0$，初值为 $u(x,0)=e^{-x^2}$。用热核卷积求解，并判断总热量是否守恒。可使用高斯积分 $\\int_{\\mathbb R}e^{-a(s-b)^2}\\,ds=\\sqrt{\\pi/a}$，其中 $a>0$。",
+      "hints": [
+        "写卷积 $u=\\frac1{\\sqrt{4\\pi t}}\\int_{\\mathbb R}e^{-(x-s)^2/(4t)-s^2}\\,ds$。",
+        "配方：$\\frac{(x-s)^2}{4t}+s^2=\\frac{1+4t}{4t}\\left(s-\\frac{x}{1+4t}\\right)^2+\\frac{x^2}{1+4t}$。",
+        "高斯积分产生因子 $\\sqrt{4\\pi t/(1+4t)}$，与卷积前系数相乘。"
+      ],
+      "solution": "热核为 $G(z,t)=(4\\pi t)^{-1/2}e^{-z^2/(4t)}$。初值光滑可积，卷积给出 $u=\\frac1{\\sqrt{4\\pi t}}\\int_{\\mathbb R}e^{-(x-s)^2/(4t)-s^2}\\,ds$。\n\n合并指数后配方为 $\\frac{(x-s)^2}{4t}+s^2=\\frac{1+4t}{4t}(s-\\frac{x}{1+4t})^2+\\frac{x^2}{1+4t}$。后一项不含积分变量，可以先提出积分号外。\n\n使用给定高斯积分，得到 $u(x,t)=\\frac1{\\sqrt{1+4t}}\\exp[-x^2/(1+4t)]$。令 $t\\downarrow0$ 恢复初值；随时间增大，峰值降低，曲线变宽。\n\n再对空间积分，令 $z=x/\\sqrt{1+4t}$，系数恰好与换元的雅可比相消，故 $\\int_{\\mathbb R}u(x,t)\\,dx=\\int_{\\mathbb R}e^{-z^2}\\,dz=\\sqrt\\pi$。总热量与初始值相同。",
+      "check": "对所得表达式求导可检验 $u_t=u_{xx}$，并用初值极限与总热量双重检查。典型错误是只保留指数的变宽，却漏掉峰值前的归一化因子。"
+    },
+    "en": {
+      "prompt": "Solve the whole-line heat equation $u_t=u_{xx}$ for $x\\in\\mathbb R$, $t>0$, with $u(x,0)=e^{-x^2}$, using convolution with the heat kernel. Determine whether total heat is conserved. You may use $\\int_{\\mathbb R}e^{-a(s-b)^2}\\,ds=\\sqrt{\\pi/a}$ for $a>0$.",
+      "hints": [
+        "Write the convolution $u=\\frac1{\\sqrt{4\\pi t}}\\int_{\\mathbb R}e^{-(x-s)^2/(4t)-s^2}\\,ds$.",
+        "Complete the square: $\\frac{(x-s)^2}{4t}+s^2=\\frac{1+4t}{4t}\\left(s-\\frac{x}{1+4t}\\right)^2+\\frac{x^2}{1+4t}$.",
+        "The Gaussian integral contributes $\\sqrt{4\\pi t/(1+4t)}$; multiply this by the prefactor of the convolution."
+      ],
+      "solution": "The heat kernel is $G(z,t)=(4\\pi t)^{-1/2}e^{-z^2/(4t)}$. The initial function is smooth and integrable, so convolution gives $u=\\frac1{\\sqrt{4\\pi t}}\\int_{\\mathbb R}e^{-(x-s)^2/(4t)-s^2}\\,ds$.\n\nCombining exponents and completing the square gives $\\frac{(x-s)^2}{4t}+s^2=\\frac{1+4t}{4t}(s-\\frac{x}{1+4t})^2+\\frac{x^2}{1+4t}$. The last term is independent of the integration variable and can be taken outside the integral.\n\nUsing the stated Gaussian integral yields $u(x,t)=\\frac1{\\sqrt{1+4t}}\\exp[-x^2/(1+4t)]$. Taking $t\\downarrow0$ recovers the initial data. As time increases, the peak falls and the profile broadens.\n\nIntegrate over space using $z=x/\\sqrt{1+4t}$. The prefactor cancels the Jacobian, giving $\\int_{\\mathbb R}u(x,t)\\,dx=\\int_{\\mathbb R}e^{-z^2}\\,dz=\\sqrt\\pi$. Total heat equals its initial value.",
+      "check": "Differentiate the result to verify $u_t=u_{xx}$, and check both the initial limit and total heat. A common error is to broaden the exponential but omit the normalizing factor that lowers the peak."
+    }
+  },
+  "lifting": {
+    "chapter": 3,
+    "exercise": "3.2-1",
+    "zh": {
+      "prompt": "在 $0<x<1$、$t>0$ 上，求 $u_t=u_{xx}+2$，边界为 $u(0,t)=2t$、$u(1,t)=2t+1$，初值为 $u(x,0)=x+\\sin(\\pi x)$。请写出边界齐次化后的方程和初值，再求解。",
+      "hints": [
+        "用连接两端值的直线 $h(x,t)=2t+x$，令 $v=u-h$。",
+        "注意 $h_t=2$、$h_{xx}=0$，所以 $v_t=v_{xx}+2+h_{xx}-h_t=v_{xx}$。",
+        "初值也要减去 $h(x,0)=x$，留下 $v(x,0)=\\sin(\\pi x)$。"
+      ],
+      "solution": "选择 $h=2t+x$，它同时满足两端给定温度。令 $v=u-h$，因此 $v(0,t)=v(1,t)=0$。边界齐次化只保证边界变为零，还必须重新计算方程。\n\n把 $u=v+h$ 代入得 $v_t+h_t=v_{xx}+h_{xx}+2$。由于 $h_t=2$、$h_{xx}=0$，本题恰好化为 $v_t=v_{xx}$。若没有原来的热源项，时间变化的边界本身就会留下一个非零源项。\n\n初值变为 $v(x,0)=x+\\sin(\\pi x)-x=\\sin(\\pi x)$。设 $v=b(t)\\sin(\\pi x)$，得到 $b'=-\\pi^2b$、$b(0)=1$，故 $v=e^{-\\pi^2t}\\sin(\\pi x)$。\n\n加回连接函数，最终 $u(x,t)=2t+x+e^{-\\pi^2t}\\sin(\\pi x)$。本题初值、边界及方程在角点也相容，有限模态表达式可直接作为光滑经典解。",
+      "check": "分别检查两端温度、初温和 $u_t-u_{xx}=2$。典型错误是忘记初值减去连接函数，或者忘记方程中的 $-h_t$。"
+    },
+    "en": {
+      "prompt": "For $0<x<1$, $t>0$, solve $u_t=u_{xx}+2$ with $u(0,t)=2t$, $u(1,t)=2t+1$, and $u(x,0)=x+\\sin(\\pi x)$. Write the equation and initial data after making the boundaries homogeneous, then solve it.",
+      "hints": [
+        "Use the line joining the boundary values, $h(x,t)=2t+x$, and set $v=u-h$.",
+        "Note that $h_t=2$ and $h_{xx}=0$, so $v_t=v_{xx}+2+h_{xx}-h_t=v_{xx}$.",
+        "Subtract $h(x,0)=x$ from the initial data as well, leaving $v(x,0)=\\sin(\\pi x)$."
+      ],
+      "solution": "Choose $h=2t+x$, which matches the prescribed temperatures at both ends. Set $v=u-h$, so $v(0,t)=v(1,t)=0$. Making the boundaries zero is only the first step; the differential equation must also be recalculated.\n\nSubstitute $u=v+h$ to obtain $v_t+h_t=v_{xx}+h_{xx}+2$. Since $h_t=2$ and $h_{xx}=0$, this particular problem reduces to $v_t=v_{xx}$. Without the original heat source, the time-dependent boundary lifting would itself leave a nonzero forcing term.\n\nThe initial data become $v(x,0)=x+\\sin(\\pi x)-x=\\sin(\\pi x)$. Set $v=b(t)\\sin(\\pi x)$ to obtain $b'=-\\pi^2b$ and $b(0)=1$, hence $v=e^{-\\pi^2t}\\sin(\\pi x)$.\n\nAdd the lifting function back to obtain $u(x,t)=2t+x+e^{-\\pi^2t}\\sin(\\pi x)$. The initial data, boundaries, and equation are compatible at the corners, so this finite-mode expression is directly a smooth classical solution.",
+      "check": "Check the endpoint temperatures, initial temperature, and $u_t-u_{xx}=2$ separately. Common errors are forgetting to subtract the lifting function from the initial data or omitting $-h_t$ from the transformed equation."
+    }
+  },
+  "3.3-core": {
+    "chapter": 3,
+    "exercise": "3.3-1",
+    "zh": {
+      "prompt": "在矩形 $0<x<\\pi$、$0<y<1$ 内求 $u_{xx}+u_{yy}=0$；左右边界及底边温度均为零，顶边为 $u(x,1)=2\\sin(2x)$。要求解连续到闭矩形且内部光滑。",
+      "hints": [
+        "顶边只含一个正弦模态，先设 $u=Y(y)\\sin(2x)$。",
+        "方程给 $Y''-4Y=0$；底边条件为 $Y(0)=0$。",
+        "留下 $Y=C\\sinh(2y)$，再用 $Y(1)=2$ 求出常数。"
+      ],
+      "solution": "左右边界均为零，而顶边已经写成 $2\\sin(2x)$，因此不需要计算完整傅里叶级数，只取这个空间模态：$u=Y(y)\\sin(2x)$。\n\n代入拉普拉斯方程得 $(Y''-4Y)\\sin(2x)=0$，于是 $Y''-4Y=0$。通解为 $Y=A\\cosh(2y)+B\\sinh(2y)$；底边给 $A=0$。\n\n顶边要求 $B\\sinh2=2$，所以 $u(x,y)=\\frac{2\\sinh(2y)}{\\sinh2}\\sin(2x)$。顶边在两个角点也为零，和相邻侧边相容；所得函数连续到边界。",
+      "check": "检查 $u_{xx}=-4u$、$u_{yy}=4u$，然后逐边代入。典型错误是把纵向函数也写成普通正弦，忘记拉普拉斯方程分离后两个方向的符号相反。"
+    },
+    "en": {
+      "prompt": "Solve $u_{xx}+u_{yy}=0$ in the rectangle $0<x<\\pi$, $0<y<1$. The left, right, and bottom boundaries have zero temperature, and the top boundary is $u(x,1)=2\\sin(2x)$. Seek a solution continuous on the closed rectangle and smooth inside.",
+      "hints": [
+        "The top boundary contains just one sine mode, so set $u=Y(y)\\sin(2x)$.",
+        "The equation gives $Y''-4Y=0$; the bottom boundary requires $Y(0)=0$.",
+        "This leaves $Y=C\\sinh(2y)$; use $Y(1)=2$ to determine the constant."
+      ],
+      "solution": "Both side boundaries are zero and the top boundary is already $2\\sin(2x)$, so no full Fourier expansion is needed. Use this single spatial mode: $u=Y(y)\\sin(2x)$.\n\nSubstitution into Laplace's equation gives $(Y''-4Y)\\sin(2x)=0$, hence $Y''-4Y=0$. Its general solution is $Y=A\\cosh(2y)+B\\sinh(2y)$; the bottom boundary gives $A=0$.\n\nThe top boundary requires $B\\sinh2=2$, so $u(x,y)=\\frac{2\\sinh(2y)}{\\sinh2}\\sin(2x)$. The top data vanish at both corners and agree with the adjacent side boundaries; the result is continuous up to the boundary.",
+      "check": "Check $u_{xx}=-4u$ and $u_{yy}=4u$, then substitute each boundary. A common error is to use an ordinary sine in the vertical direction as well, overlooking the opposite signs of the separated equations for Laplace's equation."
+    }
+  },
+  "uniqueness": {
+    "chapter": 3,
+    "exercise": "3.3-1",
+    "zh": {
+      "prompt": "令 $B=\\{\\mathbf x\\in\\mathbb R^3:|\\mathbf x|<2\\}$。在球内 $\\Delta u=0$，且 $u\\in C^2(B)\\cap C(\\overline B)$。若球面上 $u=7$，求球内温度并证明唯一。再判断：若改成光滑解满足球面上 $\\partial_nu=0$，是否仍能唯一确定温度？",
+      "hints": [
+        "常数 $u=7$ 是一个候选解；要证明唯一，可以对两个候选解作差。",
+        "差函数 $w=u-7$ 调和且边界为零，分别对 $w$ 和 $-w$ 用最大值原理。",
+        "零法向导数允许任意常数 $u=C$；仅给绝热边界没有规定平均温度。"
+      ],
+      "solution": "常数函数 $u=7$ 的拉普拉斯算子为零，而且满足边界，所以存在一个解。接下来不是猜测中心温度，而是排除任何其他可能解。\n\n令 $w=u-7$，则 $\\Delta w=0$，球面上 $w=0$。有界球域上的最大值原理给 $w\\le0$；对 $-w$ 再用一次，得 $-w\\le0$。因此 $w=0$，球内唯一温度为 $u=7$。\n\n若边界改成 $\\partial_nu=0$，每个常数 $u=C$ 都满足方程与边界，因此不能唯一确定绝对温度。对光滑解，用格林恒等式可得 $\\int_B|\\nabla u|^2\\,dV=\\int_{\\partial B}u\\partial_nu\\,dS-\\int_Bu\\Delta u\\,dV=0$，故连通球域中的解确实都是常数。\n\n本题的零通量满足 Neumann 相容条件；但还需要指定一个平均温度，才能在常数族中选定唯一解。证明“只差一个常数”和证明“唯一”是不同结论。",
+      "check": "把 $u=7$ 代入原题即可验证存在；第二问用 $u=0$ 与 $u=1$ 两个不同解直接检验不唯一。典型错误是把 Dirichlet 唯一性原样套到纯 Neumann 问题。"
+    },
+    "en": {
+      "prompt": "Let $B=\\{\\mathbf x\\in\\mathbb R^3:|\\mathbf x|<2\\}$. Suppose $\\Delta u=0$ in the ball and $u\\in C^2(B)\\cap C(\\overline B)$. If $u=7$ on the sphere, determine the interior temperature and prove uniqueness. Then decide whether replacing this with a smooth solution satisfying $\\partial_nu=0$ on the sphere still determines a unique temperature.",
+      "hints": [
+        "The constant $u=7$ is a candidate solution. To prove uniqueness, consider the difference of two candidates.",
+        "The difference $w=u-7$ is harmonic with zero boundary data. Apply the maximum principle to both $w$ and $-w$.",
+        "Zero normal derivative permits any constant $u=C$; insulated boundary data alone do not prescribe the mean temperature."
+      ],
+      "solution": "The constant function $u=7$ has zero Laplacian and satisfies the boundary data, so a solution exists. The next step is to exclude other solutions rather than guess the temperature at the center.\n\nSet $w=u-7$. Then $\\Delta w=0$ and $w=0$ on the sphere. The maximum principle in the bounded ball gives $w\\le0$. Applying it to $-w$ gives $-w\\le0$. Thus $w=0$, and the unique interior temperature is $u=7$.\n\nIf the boundary is instead $\\partial_nu=0$, every constant $u=C$ satisfies both the equation and the boundary, so the absolute temperature is not uniquely determined. For a smooth solution, Green's identity gives $\\int_B|\\nabla u|^2\\,dV=\\int_{\\partial B}u\\partial_nu\\,dS-\\int_Bu\\Delta u\\,dV=0$, so the solutions on the connected ball are indeed all constants.\n\nThe zero-flux data satisfy the Neumann compatibility condition. A prescribed mean temperature is still needed to select one solution from the constant family. Uniqueness up to an additive constant and absolute uniqueness are different conclusions.",
+      "check": "Substitute $u=7$ to verify existence in the original problem. For the second question, the distinct solutions $u=0$ and $u=1$ directly verify nonuniqueness. A common error is to transfer Dirichlet uniqueness unchanged to a pure Neumann problem."
+    }
+  },
+  "3.4-core": {
+    "chapter": 3,
+    "exercise": "3.4-4",
+    "zh": {
+      "prompt": "考虑非零本征函数 $X\\in C^2([0,1])$ 满足 $-X''=\\lambda X$。端点采用外法线 Robin 条件 $-X'(0)+X(0)=0$、$X'(1)+X(1)=0$。用分部积分证明所有本征值为实数且严格为正，特别说明零本征值为什么不可能。可允许 $X$ 和 $\\lambda$ 先取复数。",
+      "hints": [
+        "将方程乘 $\\overline X$ 后在区间积分，保留边界项。",
+        "分部积分给 $\\lambda\\int_0^1|X|^2dx=\\int_0^1|X'|^2dx-[\\overline X X']_0^1$。",
+        "两端分别有 $X'(0)=X(0)$、$X'(1)=-X(1)$，所以边界贡献是两个正的端点平方。"
+      ],
+      "solution": "区间左端的外法线方向向左，右端向右。因此同样的正系数 Robin 条件在两端写成 $-X'(0)+X(0)=0$ 和 $X'(1)+X(1)=0$；不能把两端导数符号写成相同。\n\n将方程乘 $\\overline X$ 并积分，得到 $\\lambda\\int_0^1|X|^2dx=\\int_0^1|X'|^2dx-[\\overline X X']_0^1$。用 $X'(0)=X(0)$、$X'(1)=-X(1)$，右边化为 $\\int_0^1|X'|^2dx+|X(0)|^2+|X(1)|^2$。\n\n非零连续函数满足 $\\int_0^1|X|^2dx>0$。所以 $\\lambda=\\frac{\\int_0^1|X'|^2dx+|X(0)|^2+|X(1)|^2}{\\int_0^1|X|^2dx}$ 是实数且非负。\n\n若 $\\lambda=0$，分子每一项都必须为零，故 $X'=0$ 且 $X(0)=0$。前者使函数为常数，后者使常数为零，与本征函数非零矛盾。因此所有本征值实际上满足 $\\lambda>0$。",
+      "check": "单独令 $\\lambda=0$，写出 $X=ax+b$ 并代入两端，可再次得到 $a=b=0$。典型错误是只看微分方程就宣称非负，而没有检查 Robin 边界项的符号。"
+    },
+    "en": {
+      "prompt": "Let a nonzero eigenfunction $X\\in C^2([0,1])$ satisfy $-X''=\\lambda X$, with outward-normal Robin conditions $-X'(0)+X(0)=0$ and $X'(1)+X(1)=0$. Use integration by parts to prove that every eigenvalue is real and strictly positive, explaining in particular why zero is impossible. Allow $X$ and $\\lambda$ initially to be complex.",
+      "hints": [
+        "Multiply the equation by $\\overline X$ and integrate over the interval, keeping the boundary term.",
+        "Integration by parts gives $\\lambda\\int_0^1|X|^2dx=\\int_0^1|X'|^2dx-[\\overline X X']_0^1$.",
+        "The endpoints give $X'(0)=X(0)$ and $X'(1)=-X(1)$, so the boundary contribution is the sum of two nonnegative endpoint squares."
+      ],
+      "solution": "The outward normal points left at the left endpoint and right at the right endpoint. Thus Robin conditions with the same positive coefficient become $-X'(0)+X(0)=0$ and $X'(1)+X(1)=0$. Their derivative signs must not be written identically.\n\nMultiply by $\\overline X$ and integrate to obtain $\\lambda\\int_0^1|X|^2dx=\\int_0^1|X'|^2dx-[\\overline X X']_0^1$. With $X'(0)=X(0)$ and $X'(1)=-X(1)$, the right side becomes $\\int_0^1|X'|^2dx+|X(0)|^2+|X(1)|^2$.\n\nA nonzero continuous function has $\\int_0^1|X|^2dx>0$. Therefore $\\lambda=\\frac{\\int_0^1|X'|^2dx+|X(0)|^2+|X(1)|^2}{\\int_0^1|X|^2dx}$ is real and nonnegative.\n\nIf $\\lambda=0$, every numerator term must vanish, giving $X'=0$ and $X(0)=0$. The first makes the function constant and the second makes that constant zero, contradicting a nonzero eigenfunction. Thus every eigenvalue actually satisfies $\\lambda>0$.",
+      "check": "As a second check, set $\\lambda=0$, write $X=ax+b$, and apply both endpoint conditions to obtain $a=b=0$. A common error is to claim nonnegativity from the differential equation without examining the signs of the Robin boundary terms."
+    }
+  },
+  "4.1-wronskian": {
+    "chapter": 4,
+    "exercise": "4.1-3",
+    "zh": {
+      "prompt": "在实轴上，验证 $y_1=e^{2x}$、$y_2=xe^{2x}$ 是否为 $y''-4y'+4y=0$ 的基本解组。计算朗斯基行列式，并求满足 $y(0)=1$、$y'(0)=3$ 的解。",
+      "hints": [
+        "先确认两个函数确实满足同一个齐次方程，再求 $W=y_1y_2'-y_1'y_2$。",
+        "有 $y_1'=2e^{2x}$、$y_2'=(1+2x)e^{2x}$，因此 $W=e^{4x}$。",
+        "写 $y=(A+Bx)e^{2x}$，初值依次给 $A=1$、$2A+B=3$。"
+      ],
+      "solution": "第一函数有 $y_1''=4e^{2x}$，直接代入为零。第二函数有 $y_2'=(1+2x)e^{2x}$、$y_2''=(4+4x)e^{2x}$；代入也得到 $y_2''-4y_2'+4y_2=0$。\n\n计算 $W=e^{2x}(1+2x)e^{2x}-2e^{2x}xe^{2x}=e^{4x}$。它处处非零，因此两个解线性独立，组成基本解组。方程标准式的一阶导系数为 $P=-4$，阿贝尔公式预测 $W=W(0)e^{4x}$，与计算一致。\n\n通解为 $y=(A+Bx)e^{2x}$。在零点，$y(0)=A=1$，$y'(0)=2A+B=3$，所以 $B=1$。所求解为 $y=(1+x)e^{2x}$。",
+      "check": "检查所求解满足方程和两条初值。典型错误是把 $xe^{2x}$ 的导数写成 $2xe^{2x}$，漏掉乘积法则中的 $e^{2x}$。"
+    },
+    "en": {
+      "prompt": "On the real line, verify whether $y_1=e^{2x}$ and $y_2=xe^{2x}$ form a fundamental set for $y''-4y'+4y=0$. Calculate the Wronskian and find the solution satisfying $y(0)=1$ and $y'(0)=3$.",
+      "hints": [
+        "First verify that both functions solve the same homogeneous equation, then calculate $W=y_1y_2'-y_1'y_2$.",
+        "We have $y_1'=2e^{2x}$ and $y_2'=(1+2x)e^{2x}$, giving $W=e^{4x}$.",
+        "Write $y=(A+Bx)e^{2x}$; the initial data give $A=1$ and $2A+B=3$."
+      ],
+      "solution": "For the first function, $y_1''=4e^{2x}$ gives zero upon substitution. For the second, $y_2'=(1+2x)e^{2x}$ and $y_2''=(4+4x)e^{2x}$; substitution also gives $y_2''-4y_2'+4y_2=0$.\n\nCalculate $W=e^{2x}(1+2x)e^{2x}-2e^{2x}xe^{2x}=e^{4x}$. It is nonzero everywhere, so the two solutions are independent and form a fundamental set. The standard equation has first-derivative coefficient $P=-4$, so Abel's formula predicts $W=W(0)e^{4x}$, consistent with the direct calculation.\n\nThe general solution is $y=(A+Bx)e^{2x}$. At zero, $y(0)=A=1$ and $y'(0)=2A+B=3$, so $B=1$. The required solution is $y=(1+x)e^{2x}$.",
+      "check": "Check that the result satisfies the equation and both initial conditions. A common error is to differentiate $xe^{2x}$ as $2xe^{2x}$, omitting the $e^{2x}$ term from the product rule."
+    }
+  },
+  "4.2-frobenius": {
+    "chapter": 4,
+    "exercise": "4.2-1",
+    "zh": {
+      "prompt": "在 $x=0$ 附近用幂级数求 $y''+2xy'+2y=0$，初值为 $y(0)=1$、$y'(0)=0$。先判断展开点是常点还是正则奇点，再给出递推式、前三个非零项以及可识别的闭式解。",
+      "hints": [
+        "最高阶系数为一，其余系数解析，因此是常点，用 $y=\\sum_{n=0}^{\\infty}a_nx^n$ 即可。",
+        "同次幂比较得 $(n+2)(n+1)a_{n+2}+(2n+2)a_n=0$。",
+        "由 $a_0=1$、$a_1=0$，得到 $a_{2k}=(-1)^k/k!$，所有奇次系数为零。"
+      ],
+      "solution": "标准式中 $P=2x$、$Q=2$ 在原点解析，所以原点是常点。这里不需要额外的指标因子；设 $y=\\sum_{n=0}^{\\infty}a_nx^n$，初值给 $a_0=1$、$a_1=0$。\n\n二阶导数改写为 $y''=\\sum_{n=0}^{\\infty}(n+2)(n+1)a_{n+2}x^n$；另外 $2xy'+2y=\\sum_{n=0}^{\\infty}(2n+2)a_nx^n$。比较系数得到 $a_{n+2}=-2a_n/(n+2)$。\n\n从偶次链依次得到 $a_2=-1$、$a_4=1/2$；奇次链由 $a_1=0$ 始终为零。故前三个非零项为 $y=1-x^2+x^4/2+\\cdots$，一般偶次系数为 $a_{2k}=(-1)^k/k!$。\n\n识别指数级数，得到 $y=e^{-x^2}$。此级数对所有实数收敛；直接代回后确认为原初值问题的解。展开点分类决定的是选用哪种级数形式，不能看到二阶方程就一律先写 Frobenius 指标方程。",
+      "check": "计算 $y'=-2xe^{-x^2}$、$y''=(4x^2-2)e^{-x^2}$，代入为零。典型错误是给二阶导数移指标时漏掉两个连续因子，或把奇偶两条递推链混在一起。"
+    },
+    "en": {
+      "prompt": "Use a power series near $x=0$ to solve $y''+2xy'+2y=0$ with $y(0)=1$ and $y'(0)=0$. First classify the expansion point as ordinary or regular singular, then give the recurrence, the first three nonzero terms, and a recognizable closed-form solution.",
+      "hints": [
+        "The leading coefficient is one and the other coefficients are analytic, so this is an ordinary point. Use $y=\\sum_{n=0}^{\\infty}a_nx^n$.",
+        "Comparing equal powers gives $(n+2)(n+1)a_{n+2}+(2n+2)a_n=0$.",
+        "Starting from $a_0=1$ and $a_1=0$, obtain $a_{2k}=(-1)^k/k!$, with all odd coefficients zero."
+      ],
+      "solution": "In standard form, $P=2x$ and $Q=2$ are analytic at the origin, so it is an ordinary point. No additional indicial factor is needed. Set $y=\\sum_{n=0}^{\\infty}a_nx^n$; the initial data give $a_0=1$ and $a_1=0$.\n\nRewrite the second derivative as $y''=\\sum_{n=0}^{\\infty}(n+2)(n+1)a_{n+2}x^n$. Also, $2xy'+2y=\\sum_{n=0}^{\\infty}(2n+2)a_nx^n$. Comparing coefficients gives $a_{n+2}=-2a_n/(n+2)$.\n\nThe even chain gives $a_2=-1$ and $a_4=1/2$, while the odd chain stays zero because $a_1=0$. Thus the first three nonzero terms are $y=1-x^2+x^4/2+\\cdots$, with general even coefficient $a_{2k}=(-1)^k/k!$.\n\nRecognizing the exponential series gives $y=e^{-x^2}$. The series converges for every real argument, and direct substitution confirms the initial-value problem. Classifying the expansion point determines the series form; a second-order equation does not automatically require a Frobenius indicial equation.",
+      "check": "Calculate $y'=-2xe^{-x^2}$ and $y''=(4x^2-2)e^{-x^2}$; substitution gives zero. Common errors are dropping one of the two consecutive factors when shifting the second-derivative index or mixing the even and odd recurrence chains."
+    }
+  },
+  "4.3-variation": {
+    "chapter": 4,
+    "exercise": "4.1-3",
+    "zh": {
+      "prompt": "用常数变易法求实轴初值问题 $y''-y=2e^x$、$y(0)=0$、$y'(0)=0$。已知齐次基本解为 $y_1=e^x$、$y_2=e^{-x}$；请展示两个变系数的导数，而不只猜一个特解。",
+      "hints": [
+        "用 $W=y_1y_2'-y_1'y_2=-2$；非齐次项为 $f=2e^x$。",
+        "设 $y_p=v_1e^x+v_2e^{-x}$，则 $v_1'=-y_2f/W=1$、$v_2'=y_1f/W=-e^{2x}$。",
+        "积分后可取特解 $xe^x$；先加齐次通解，再用两条零初值确定常数。"
+      ],
+      "solution": "两个齐次解的朗斯基行列式为 $W=-2$。设 $y_p=v_1e^x+v_2e^{-x}$，并取辅助条件 $v_1'e^x+v_2'e^{-x}=0$。代入方程后另一行是 $v_1'e^x-v_2'e^{-x}=2e^x$。\n\n联立两行，得到 $v_1'=1$、$v_2'=-e^{2x}$。取积分常数为零，得 $v_1=x$、$v_2=-e^{2x}/2$，所以 $y_p=(x-1/2)e^x$。其中 $-e^x/2$ 本身是齐次解，可以吸收到通解常数中，改取 $y_p=xe^x$。\n\n因此 $y=C_1e^x+C_2e^{-x}+xe^x$。初值给 $C_1+C_2=0$、$C_1-C_2+1=0$，解得 $C_1=-1/2$、$C_2=1/2$。最终 $y=xe^x-\\sinh x$。",
+      "check": "检查 $(xe^x)''-xe^x=2e^x$，而 $\\sinh x$ 满足齐次方程；再检查两条零初值。典型错误是把一个特解当成满足指定初值的完整解，或把两个变系数公式的负号互换。"
+    },
+    "en": {
+      "prompt": "Use variation of parameters to solve $y''-y=2e^x$ on the real line with $y(0)=0$ and $y'(0)=0$. The homogeneous fundamental solutions are $y_1=e^x$ and $y_2=e^{-x}$. Show the derivatives of both varying coefficients rather than only guessing a particular solution.",
+      "hints": [
+        "Use $W=y_1y_2'-y_1'y_2=-2$; the forcing is $f=2e^x$.",
+        "Set $y_p=v_1e^x+v_2e^{-x}$, giving $v_1'=-y_2f/W=1$ and $v_2'=y_1f/W=-e^{2x}$.",
+        "After integration, $xe^x$ may be chosen as a particular solution. Add the homogeneous solution first, then use both zero initial conditions to determine its constants."
+      ],
+      "solution": "The Wronskian of the homogeneous solutions is $W=-2$. Set $y_p=v_1e^x+v_2e^{-x}$ and impose $v_1'e^x+v_2'e^{-x}=0$. Substitution into the equation gives the second row $v_1'e^x-v_2'e^{-x}=2e^x$.\n\nSolving the two rows gives $v_1'=1$ and $v_2'=-e^{2x}$. Choose zero integration constants to obtain $v_1=x$ and $v_2=-e^{2x}/2$, so $y_p=(x-1/2)e^x$. Since $-e^x/2$ is itself a homogeneous solution, it may be absorbed into the arbitrary constant, allowing the simpler choice $y_p=xe^x$.\n\nThus $y=C_1e^x+C_2e^{-x}+xe^x$. The initial data give $C_1+C_2=0$ and $C_1-C_2+1=0$, hence $C_1=-1/2$ and $C_2=1/2$. The final answer is $y=xe^x-\\sinh x$.",
+      "check": "Check $(xe^x)''-xe^x=2e^x$, while $\\sinh x$ solves the homogeneous equation; then check both zero initial conditions. Common errors are treating a particular solution as the full solution of the specified initial-value problem or swapping the signs in the varying-coefficient formulas."
+    }
+  },
+  "5.1-lame": {
+    "chapter": 5,
+    "exercise": "5.1-1",
+    "zh": {
+      "prompt": "柱坐标为 $(\\rho,\\phi,z)$，函数 $u=\\rho^2z$ 与角度无关。在 $\\rho>0$ 求 $\\Delta u$，再判断结果能否连续延伸到轴线。可使用柱坐标尺度因子 $h_\\rho=1,h_\\phi=\\rho,h_z=1$。",
+      "hints": [
+        "先用曲线坐标的拉普拉斯公式，不要把 $\\rho$ 当成直角坐标。",
+        "无角度依赖时，第一行是 $\\Delta u=\\rho^{-1}(\\rho u_\\rho)_\\rho+u_{zz}$。",
+        "先算 $u_\\rho=2\\rho z$，于是 $(\\rho u_\\rho)_\\rho=4\\rho z$；另外 $u_{zz}=0$。"
+      ],
+      "solution": "沿角度方向的实际长度是 $\\rho\\,d\\phi$，所以径向项要保留面积变化带来的因子。由给定尺度因子，$\\Delta u=\\rho^{-1}(\\rho u_\\rho)_\\rho+\\rho^{-2}u_{\\phi\\phi}+u_{zz}$。\n\n本题与角度无关，故 $u_{\\phi\\phi}=0$。径向先求一次导数：$u_\\rho=2\\rho z$；再乘以半径：$\\rho u_\\rho=2\\rho^2z$；最后求导：$(\\rho u_\\rho)_\\rho=4\\rho z$。\n\n函数关于高度只有一次项，故 $u_{zz}=0$。合并得 $\\Delta u=4z$。虽然计算公式出现除以半径，最后结果没有奇异性，能连续延伸到轴线。",
+      "check": "改写为 $u=(x^2+y^2)z$，有 $u_{xx}=2z,u_{yy}=2z,u_{zz}=0$，相加仍为 $4z$。典型错误是只算 $u_{\\rho\\rho}=2z$，漏掉 $u_\\rho/\\rho=2z$。"
+    },
+    "en": {
+      "prompt": "In cylindrical coordinates $(\\rho,\\phi,z)$, let $u=\\rho^2z$ be independent of the angle. Find $\\Delta u$ for $\\rho>0$, and decide whether the result extends continuously to the axis. You may use the scale factors $h_\\rho=1,h_\\phi=\\rho,h_z=1$.",
+      "hints": [
+        "Use the curvilinear Laplacian first; do not treat $\\rho$ as a Cartesian coordinate.",
+        "With no angular dependence, the first line is $\\Delta u=\\rho^{-1}(\\rho u_\\rho)_\\rho+u_{zz}$.",
+        "First find $u_\\rho=2\\rho z$, hence $(\\rho u_\\rho)_\\rho=4\\rho z$; also $u_{zz}=0$."
+      ],
+      "solution": "The physical length in the angular direction is $\\rho\\,d\\phi$, so the radial term must retain the factor caused by the changing area. The given scale factors yield $\\Delta u=\\rho^{-1}(\\rho u_\\rho)_\\rho+\\rho^{-2}u_{\\phi\\phi}+u_{zz}$.\n\nThere is no angular dependence, so $u_{\\phi\\phi}=0$. For the radial part, differentiate once: $u_\\rho=2\\rho z$; multiply by the radius: $\\rho u_\\rho=2\\rho^2z$; then differentiate: $(\\rho u_\\rho)_\\rho=4\\rho z$.\n\nThe height dependence is linear, so $u_{zz}=0$. Combining terms gives $\\Delta u=4z$. Although the coordinate formula divides by the radius, the final result has no singularity and extends continuously to the axis.",
+      "check": "Write $u=(x^2+y^2)z$ in Cartesian coordinates. Then $u_{xx}=2z,u_{yy}=2z,u_{zz}=0$, whose sum is again $4z$. A common error is to calculate only $u_{\\rho\\rho}=2z$, omitting $u_\\rho/\\rho=2z$."
+    }
+  },
+  "5.2-solid-harmonics": {
+    "chapter": 5,
+    "exercise": "5.2-6",
+    "zh": {
+      "prompt": "半径为 2 的球外没有源。求轴对称调和函数 $u(r,\\theta)$，满足 $r>2$、$u(2,\\theta)=3\\cos\\theta$ 以及 $u\\to0$ 当 $r\\to\\infty$。可用 $P_1(\\cos\\theta)=\\cos\\theta$，第一阶径向解为 $r$ 和 $r^{-2}$。",
+      "hints": [
+        "边界只有 $P_1$ 模态；球外条件决定保留哪种径向幂。",
+        "衰减条件删去增长项，因此先写 $u=Br^{-2}\\cos\\theta$。",
+        "代入球面得到 $B/4=3$，所以 $B=12$。"
+      ],
+      "solution": "先识别角度：$3\\cos\\theta=3P_1(\\cos\\theta)$，所以只需第一阶角模态，不必求无限多个系数。\n\n第一阶通解是 $u=(Ar+Br^{-2})\\cos\\theta$。球外要求趋零，增长项必须消失，因此 $A=0$。\n\n把球面半径代入，得 $u(2,\\theta)=(B/4)\\cos\\theta$。与给定边界比较得 $B=12$，故 $u=12r^{-2}\\cos\\theta$。",
+      "check": "代 $r=2$ 恢复 $3\\cos\\theta$；当 $r\\to\\infty$ 时确实趋零。径向方程也满足：$(r^2R^{\\prime})^{\\prime}-2R=0$，其中 $R=12r^{-2}$。典型错误是把球内的 $r$ 模态保留下来，导致远场增长。"
+    },
+    "en": {
+      "prompt": "There are no sources outside a sphere of radius 2. Find the axisymmetric harmonic function $u(r,\\theta)$ for $r>2$ with $u(2,\\theta)=3\\cos\\theta$ and $u\\to0$ as $r\\to\\infty$. You may use $P_1(\\cos\\theta)=\\cos\\theta$; the first-order radial solutions are $r$ and $r^{-2}$.",
+      "hints": [
+        "The boundary contains only the $P_1$ mode. The exterior condition selects the radial power.",
+        "The decay condition removes the growing term, so start with $u=Br^{-2}\\cos\\theta$.",
+        "At the sphere, $B/4=3$, hence $B=12$."
+      ],
+      "solution": "Identify the angular dependence first: $3\\cos\\theta=3P_1(\\cos\\theta)$. Only the first angular mode is needed; there is no infinite list of coefficients to compute.\n\nThe first-order general solution is $u=(Ar+Br^{-2})\\cos\\theta$. Decay in the exterior removes the growing term, so $A=0$.\n\nSubstitute the sphere radius to obtain $u(2,\\theta)=(B/4)\\cos\\theta$. Matching the boundary gives $B=12$, and therefore $u=12r^{-2}\\cos\\theta$.",
+      "check": "Setting $r=2$ recovers $3\\cos\\theta$, and the solution tends to zero as $r\\to\\infty$. The radial equation is also satisfied: $(r^2R^{\\prime})^{\\prime}-2R=0$ with $R=12r^{-2}$. A common error is to retain the interior $r$ mode, which grows in the far field."
+    }
+  },
+  "5.3-bessel": {
+    "chapter": 5,
+    "exercise": "5.3-1",
+    "zh": {
+      "prompt": "半径为 2 的圆柱径向本征函数为 $R_n(\\rho)=J_0(j_{0n}\\rho/2)$，其中 $j_{0n}$ 是 $J_0$ 的第 $n$ 个正零点。把 $f(\\rho)=3J_0(j_{01}\\rho/2)$ 展开为 $f=\\sum_{n\\ge1}c_nR_n$。已知 $\\int_0^2\\rho R_nR_m\\,d\\rho=N_n\\delta_{nm}$，$N_n=2J_1(j_{0n})^2>0$。求所有系数，并判断展开是否在侧面满足零值。",
+      "hints": [
+        "已经给出本征函数中的一个模态，但仍写一次带权投影，确认归一化。",
+        "投影式为 $c_n=\\int_0^2\\rho fR_n\\,d\\rho/N_n$，权必须是 $\\rho$。",
+        "代入 $f=3R_1$，分子为 $3N_1$ 当 $n=1$，其余为零。"
+      ],
+      "solution": "展开系数不能直接用无权积分。圆柱的面积环带带来径向权，所以 $c_n=\\int_0^2\\rho fR_n\\,d\\rho/N_n$。\n\n本题恰好有 $f=3R_1$。当 $n=1$，分子是 $3\\int_0^2\\rho R_1^2\\,d\\rho=3N_1$，除以范数得到 $c_1=3$。\n\n当 $n\\ne1$，正交性给 $\\int_0^2\\rho R_1R_n\\,d\\rho=0$，所以 $c_n=0$。展开只剩第一项，重建结果就是原函数。\n\n侧面代入 $\\rho=2$，有 $R_1(2)=J_0(j_{01})=0$，因此这次边界数据本身也与零侧面条件一致。",
+      "check": "把 $c_1=3$、$c_n=0\\ (n\\ne1)$ 代回级数，逐点得到原函数。典型错误是漏掉积分权 $\\rho$，或只乘本征函数却没有除以 $N_n$；都会破坏这个最简单的单模态检验。"
+    },
+    "en": {
+      "prompt": "For a cylinder of radius 2, the radial eigenfunctions are $R_n(\\rho)=J_0(j_{0n}\\rho/2)$, where $j_{0n}$ is the $n$th positive zero of $J_0$. Expand $f(\\rho)=3J_0(j_{01}\\rho/2)$ as $f=\\sum_{n\\ge1}c_nR_n$. You are given $\\int_0^2\\rho R_nR_m\\,d\\rho=N_n\\delta_{nm}$ with $N_n=2J_1(j_{0n})^2>0$. Find every coefficient and decide whether the expansion vanishes at the side.",
+      "hints": [
+        "The function is already one eigenmode, but write the weighted projection once to verify the normalization.",
+        "The projection is $c_n=\\int_0^2\\rho fR_n\\,d\\rho/N_n$, and the weight must be $\\rho$.",
+        "Substitute $f=3R_1$. The numerator is $3N_1$ for $n=1$ and zero otherwise."
+      ],
+      "solution": "Do not use an unweighted integral for the coefficients. Circular area elements supply the radial weight, so $c_n=\\int_0^2\\rho fR_n\\,d\\rho/N_n$.\n\nHere $f=3R_1$. For $n=1$, the numerator is $3\\int_0^2\\rho R_1^2\\,d\\rho=3N_1$. Dividing by the norm gives $c_1=3$.\n\nFor $n\\ne1$, orthogonality gives $\\int_0^2\\rho R_1R_n\\,d\\rho=0$, so $c_n=0$. Only the first term remains, reconstructing the original function.\n\nAt the side, set $\\rho=2$. Then $R_1(2)=J_0(j_{01})=0$, so these data themselves agree with the zero side condition.",
+      "check": "Substituting $c_1=3$ and $c_n=0\\ (n\\ne1)$ into the series recovers the function pointwise. A common error is to omit the weight $\\rho$, or to project without dividing by $N_n$; either error breaks this simplest single-mode check."
+    }
+  },
+  "5.4-heat-modes": {
+    "chapter": 5,
+    "exercise": "5.4-2",
+    "zh": {
+      "prompt": "半径为 2 的球内，球对称温度满足 $u_t=\\Delta u$，球面恒为零温。初温为 $u(r,0)=j_0(\\pi r/2)+2j_0(\\pi r)$，其中 $j_0(s)=\\sin s/s$，$j_0(0)=1$。已知 $\\Delta j_0(kr)=-k^2j_0(kr)$。求温度随时间的变化，并判断哪个模态衰减较慢。",
+      "hints": [
+        "初温已是两个空间本征模态之和，不必再做投影。",
+        "空间本征波数为 $k_1=\\pi/2$、$k_2=\\pi$；每个时间因子满足 $T^{\\prime}=-k^2T$。",
+        "两个时间因子分别为 $e^{-\\pi^2t/4}$ 和 $e^{-\\pi^2t}$，初始幅值分别为 1 和 2。"
+      ],
+      "solution": "先验边界：$j_0(\\pi)=j_0(2\\pi)=0$，所以两个初始模态都满足球面零值。它们在球心的极限都为 1，因此球心也有限。\n\n对一个模态写 $u=XT$，用 $\\Delta X=-k^2X$ 得 $XT^{\\prime}=-k^2XT$。消去空间函数后，$T^{\\prime}=-k^2T$，故时间因子是指数衰减。\n\n分别放入两个波数并保留初始幅值，得到 $u(r,t)=e^{-\\pi^2t/4}j_0(\\pi r/2)+2e^{-\\pi^2t}j_0(\\pi r)$。\n\n第一项的衰减率是 $\\pi^2/4$，第二项是 $\\pi^2$。第一模态衰减更慢；第二项虽初始幅值较大，长期仍由第一项控制。",
+      "check": "代 $t=0$ 恢复给定初温；代 $r=2$ 得零；逐项求时间导数与空间拉普拉斯相等。典型错误是用 $e^{-kt}$ 代替 $e^{-k^2t}$，或把初始系数 2 放进衰减率。"
+    },
+    "en": {
+      "prompt": "In a sphere of radius 2, a spherically symmetric temperature satisfies $u_t=\\Delta u$ with zero temperature at the surface. Initially $u(r,0)=j_0(\\pi r/2)+2j_0(\\pi r)$, where $j_0(s)=\\sin s/s$ and $j_0(0)=1$. You are given $\\Delta j_0(kr)=-k^2j_0(kr)$. Find the time-dependent temperature and identify the more slowly decaying mode.",
+      "hints": [
+        "The initial temperature is already a sum of two spatial eigenmodes; no projection is needed.",
+        "The wave numbers are $k_1=\\pi/2$ and $k_2=\\pi$; each time factor satisfies $T^{\\prime}=-k^2T$.",
+        "The time factors are $e^{-\\pi^2t/4}$ and $e^{-\\pi^2t}$, with initial amplitudes 1 and 2 respectively."
+      ],
+      "solution": "Check the boundary first: $j_0(\\pi)=j_0(2\\pi)=0$, so both initial modes vanish at the surface. Both approach 1 at the center, so they are finite there.\n\nFor one mode, write $u=XT$ and use $\\Delta X=-k^2X$ to obtain $XT^{\\prime}=-k^2XT$. Removing the spatial factor gives $T^{\\prime}=-k^2T$, so the time dependence is exponential decay.\n\nInsert the two wave numbers and retain their initial amplitudes: $u(r,t)=e^{-\\pi^2t/4}j_0(\\pi r/2)+2e^{-\\pi^2t}j_0(\\pi r)$.\n\nThe first decay rate is $\\pi^2/4$ and the second is $\\pi^2$. The first mode decays more slowly. Although the second has the larger initial amplitude, the first controls the long-time behavior.",
+      "check": "Setting $t=0$ recovers the initial data; setting $r=2$ gives zero; the time derivative and spatial Laplacian agree term by term. Common errors are to use $e^{-kt}$ instead of $e^{-k^2t}$, or to put the initial coefficient 2 into the decay rate."
+    }
+  },
+  "5.5-taper": {
+    "chapter": 5,
+    "exercise": "5.5-1",
+    "zh": {
+      "prompt": "自由楔形细杆占据 $0<x<L$，$L>0$，截面积 $A(x)=A_0x/L$，$A_0>0$，材质均匀且无阻尼。尖端取有限解，粗端无轴向力。初位移为 $f(x)=3[2(x/L)^2-(x/L)^4]$，初速度为零。只求常数零模态的位移幅值，并判断这是否意味着整杆最终静止在该位移。零模态为 $X_0=1$，投影权是 $A(x)$。",
+      "hints": [
+        "零模态表示整杆一起平移；幅值应是质量加权平均，而非普通平均。",
+        "写 $a_0=\\int_0^LA(x)f(x)\\,dx/\\int_0^LA(x)\\,dx$，常数材料密度会约去。",
+        "分子为 $A_0L$，分母为 $A_0L/2$；零初速度使这一模态没有线性时间项。"
+      ],
+      "solution": "常数空间函数满足 $(AX_0^{\\prime})^{\\prime}=0$，也满足两端的无力条件，所以它是零本征值模态。系数要用面积权：$a_0=\\int_0^LA(x)f(x)\\,dx/\\int_0^LA(x)\\,dx$。\n\n代入面积和初位移，分子是 $\\int_0^L3A_0(2x^3/L^3-x^5/L^5)\\,dx=A_0L$，分母是 $\\int_0^LA_0x/L\\,dx=A_0L/2$，故 $a_0=2$。\n\n零模态的时间方程为 $T_0^{\\prime\\prime}=0$。由于初速度为零，线性时间系数也为零，故平移分量恒为 $u_0=2$。\n\n这只确定整杆运动中的平移部分。初位移并非常数，还含正频率振动模态；题目没有阻尼，它们不会自动消失。因此不能据此断言整杆最终静止在位移 2。",
+      "check": "剩余初位移满足 $\\int_0^LA(x)[f(x)-2]\\,dx=0$，说明零模态已全部取出。普通平均是 $L^{-1}\\int_0^Lf(x)\\,dx=7/5$，它忽略粗端质量更大，不能作为本题零模态幅值。"
+    },
+    "en": {
+      "prompt": "A free wedge-shaped rod occupies $0<x<L$, with $L>0$, cross section $A(x)=A_0x/L$, and $A_0>0$. Its material is uniform and there is no damping. Require a finite solution at the tip and zero axial force at the thick end. The initial displacement is $f(x)=3[2(x/L)^2-(x/L)^4]$, and the initial velocity is zero. Find only the displacement amplitude of the constant zero mode, and decide whether the entire rod must eventually rest at that displacement. The zero mode is $X_0=1$, with projection weight $A(x)$.",
+      "hints": [
+        "The zero mode is a translation of the whole rod. Use a mass-weighted average, not an ordinary average.",
+        "Write $a_0=\\int_0^LA(x)f(x)\\,dx/\\int_0^LA(x)\\,dx$; the constant material density cancels.",
+        "The numerator is $A_0L$ and the denominator is $A_0L/2$. Zero initial velocity removes the linear time term in this mode."
+      ],
+      "solution": "The constant spatial function satisfies $(AX_0^{\\prime})^{\\prime}=0$ and the force-free conditions at both ends, so it is a zero-eigenvalue mode. Its coefficient uses the area weight: $a_0=\\int_0^LA(x)f(x)\\,dx/\\int_0^LA(x)\\,dx$.\n\nInsert the cross section and initial displacement. The numerator is $\\int_0^L3A_0(2x^3/L^3-x^5/L^5)\\,dx=A_0L$ and the denominator is $\\int_0^LA_0x/L\\,dx=A_0L/2$, giving $a_0=2$.\n\nThe zero-mode time equation is $T_0^{\\prime\\prime}=0$. Zero initial velocity also makes the linear time coefficient zero, so the translation component remains $u_0=2$.\n\nThis determines only the translation part of the motion. The initial displacement is not constant and also contains positive-frequency vibration modes. With no damping, those modes do not automatically disappear. The whole rod therefore need not eventually rest at displacement 2.",
+      "check": "The remaining initial displacement satisfies $\\int_0^LA(x)[f(x)-2]\\,dx=0$, confirming that the zero mode has been removed completely. The ordinary average is $L^{-1}\\int_0^Lf(x)\\,dx=7/5$; it ignores the greater mass near the thick end and is not the zero-mode amplitude."
+    }
+  },
+  "fundamental": {
+    "chapter": 6,
+    "exercise": "6.1-1",
+    "zh": {
+      "prompt": "在实轴上求满足 $u^{\\prime\\prime}=3\\delta(x-2)$ 的函数，要求它关于 $x=2$ 对称且 $u(2)=0$。按分布理解方程；先在源点两侧求解，再确定连接条件。",
+      "hints": [
+        "源点以外二阶导数为零，所以两侧都是直线；对称性提示使用绝对值。",
+        "写 $u=C|x-2|+B$。函数应连续，否则二阶导数会多出 $\\delta^{\\prime}$。",
+        "源点两侧导数为 $-C,C$，因此跳跃为 $2C=3$；参考值给 $B=0$。"
+      ],
+      "solution": "在 $x\\ne2$ 处没有源，所以 $u^{\\prime\\prime}=0$。两侧分别是仿射函数；关于源点对称并且连续时，可以统一写成 $u=C|x-2|+B$。\n\n跨过源点积分，得到 $u^{\\prime}(2+)-u^{\\prime}(2-)=3$。右斜率是 $C$，左斜率是 $-C$，故 $2C=3$，即 $C=3/2$。\n\n参考条件 $u(2)=0$ 给 $B=0$，因此 $u=3|x-2|/2$。它的导数跳跃正好产生强度为 3 的点源。\n\n方程本身可以加任意仿射齐次解；本题的对称条件去掉非零斜率项，参考条件再固定常数。不能另外要求两端都衰减，因为这个解随离源距离线性增长。",
+      "check": "两侧斜率为 $-3/2,3/2$，相减为 3，且函数连续，没有额外的 $\\delta^{\\prime}$。典型错误是照搬三维基本解的负号；本题算符为 $d^2/dx^2$，负号会产生强度为负的点源。"
+    },
+    "en": {
+      "prompt": "On the real line, find a function satisfying $u^{\\prime\\prime}=3\\delta(x-2)$, symmetric about $x=2$, with $u(2)=0$. Interpret the equation distributionally. Solve on each side of the source and then determine the matching conditions.",
+      "hints": [
+        "Away from the source the second derivative is zero, so each piece is a straight line. Symmetry suggests an absolute value.",
+        "Write $u=C|x-2|+B$. The function must be continuous, or its second derivative would also contain $\\delta^{\\prime}$.",
+        "The slopes are $-C,C$, giving the jump $2C=3$. The reference value gives $B=0$."
+      ],
+      "solution": "For $x\\ne2$ there is no source, so $u^{\\prime\\prime}=0$. Each piece is affine. Symmetry about the source and continuity let us combine them as $u=C|x-2|+B$.\n\nIntegrating across the source gives $u^{\\prime}(2+)-u^{\\prime}(2-)=3$. The right slope is $C$ and the left slope is $-C$, hence $2C=3$, or $C=3/2$.\n\nThe reference condition $u(2)=0$ gives $B=0$, so $u=3|x-2|/2$. Its slope jump produces exactly a point source of strength 3.\n\nThe differential equation alone allows any affine homogeneous addition. Here symmetry removes a nonzero slope addition and the reference condition fixes the constant. Decay at both ends cannot be imposed as another condition, because this solution grows linearly with distance from the source.",
+      "check": "The slopes are $-3/2,3/2$, with difference 3. The function is continuous, so there is no extra $\\delta^{\\prime}$. A common error is to copy the negative sign of the three-dimensional fundamental solution. Here the operator is $d^2/dx^2$, so that sign would give a negative source strength."
+    }
+  },
+  "dirichlet": {
+    "chapter": 6,
+    "exercise": "6.2-2",
+    "zh": {
+      "prompt": "圆盘半径为 2，盘内满足 $\\Delta u=0$，边界为 $u(2,\\theta)=2+\\cos\\theta+3\\cos(2\\theta)$。求盘内有限的解及圆心值。可用 Poisson 积分的模态性质：边界 $\\cos(n\\theta)$ 延拓为 $(r/2)^n\\cos(n\\theta)$，常数保持不变。",
+      "hints": [
+        "把边界拆成常数、第一角模态和第二角模态，再利用线性叠加。",
+        "三个径向因子分别为 $1$、$r/2$、$(r/2)^2$；原来的幅值要保留。",
+        "合并为 $u=2+(r/2)\\cos\\theta+3(r/2)^2\\cos(2\\theta)$。"
+      ],
+      "solution": "边界已经分成三个 Fourier 模态。常数项的盘内解仍是 2；第一角模态用 $r/2$ 保证边界幅值为 1；第二角模态用 $(r/2)^2$ 保证边界幅值为 3。\n\n利用 Laplace 方程的线性性相加，得到 $u=2+(r/2)\\cos\\theta+3(r/2)^2\\cos(2\\theta)$。各径向幂在圆心都有限，无须加入负幂。\n\n令 $r=0$，两个非常数模态均消失，所以 $u(0)=2$。这也等于边界平均值，因为两个余弦在一周上的积分都为零。",
+      "check": "代 $r=2$ 恢复题设边界。还可写成 $u=2+x/2+3(x^2-y^2)/4$，有 $u_{xx}+u_{yy}=3/2-3/2=0$。典型错误是所有角模态都乘同一个 $r/2$；第二模态必须用二次幂。"
+    },
+    "en": {
+      "prompt": "A disk has radius 2. Inside, $\\Delta u=0$, and the boundary is $u(2,\\theta)=2+\\cos\\theta+3\\cos(2\\theta)$. Find the finite interior solution and its center value. You may use the modal property of the Poisson integral: boundary data $\\cos(n\\theta)$ extend to $(r/2)^n\\cos(n\\theta)$, while constants remain unchanged.",
+      "hints": [
+        "Split the boundary into the constant, first angular mode, and second angular mode, then use linear superposition.",
+        "The radial factors are $1$, $r/2$, and $(r/2)^2$. Retain the original amplitudes.",
+        "Combine them as $u=2+(r/2)\\cos\\theta+3(r/2)^2\\cos(2\\theta)$."
+      ],
+      "solution": "The boundary is already split into three Fourier modes. The constant interior solution remains 2. The first angular mode uses $r/2$ to give boundary amplitude 1, and the second uses $(r/2)^2$ to give boundary amplitude 3.\n\nBy linearity of the Laplace equation, add them to obtain $u=2+(r/2)\\cos\\theta+3(r/2)^2\\cos(2\\theta)$. All radial powers are finite at the center; no negative powers are needed.\n\nSetting $r=0$ removes both nonconstant modes, so $u(0)=2$. This is also the boundary average, because each cosine integrates to zero over one full turn.",
+      "check": "Setting $r=2$ recovers the boundary. Alternatively write $u=2+x/2+3(x^2-y^2)/4$, for which $u_{xx}+u_{yy}=3/2-3/2=0$. A common error is to give every angular mode the same factor $r/2$; the second mode needs the second power."
+    }
+  },
+  "neumann": {
+    "chapter": 6,
+    "exercise": "6.1-1",
+    "zh": {
+      "prompt": "在区间 $0<x<2$ 求 $u^{\\prime\\prime}=3$，给定 $u^{\\prime}(0)=1$、$u^{\\prime}(2)=7$，并要求平均值 $\\frac12\\int_0^2u\\,dx=0$。先检查相容条件，再求解。注意题中给的是向右导数；左端的外法向导数等于 $-u^{\\prime}(0)$。",
+      "hints": [
+        "先把方程在全区间积分，检查净流出是否等于总源。",
+        "总源为 $\\int_0^2 3\\,dx=6$，净流出为 $7-1=6$，两者一致。",
+        "两次积分给 $u=3x^2/2+x+C$；其平均值为 $3+C$。"
+      ],
+      "solution": "先积分方程：$u^{\\prime}(2)-u^{\\prime}(0)=\\int_0^2 3\\,dx=6$。给定导数确实满足 $7-1=6$，所以没有总量矛盾。左端向外方向朝左，净外向通量是右端导数减左端向右导数。\n\n一次积分得 $u^{\\prime}=3x+C_1$。左端条件给 $C_1=1$，右端得到 $u^{\\prime}(2)=7$，再次通过检验。\n\n再积分得 $u=3x^2/2+x+C$。导数边界无法确定常数；用平均值条件，$\\frac12\\int_0^2u\\,dx=3+C=0$，所以 $C=-3$。最终 $u=3x^2/2+x-3$。",
+      "check": "直接求导得到 $u^{\\prime\\prime}=3$、$u^{\\prime}(0)=1$、$u^{\\prime}(2)=7$，且 $\\int_0^2u\\,dx=0$。典型错误是把净通量写成 $7+1$，或以为两端导数可以同时固定加法常数。"
+    },
+    "en": {
+      "prompt": "On $0<x<2$, solve $u^{\\prime\\prime}=3$ with $u^{\\prime}(0)=1$ and $u^{\\prime}(2)=7$, and impose the zero mean $\\frac12\\int_0^2u\\,dx=0$. Check compatibility before solving. The specified derivatives point rightward; the outward normal derivative at the left end is $-u^{\\prime}(0)$.",
+      "hints": [
+        "Integrate the equation over the whole interval first. Check that net outward flux equals total source.",
+        "The total source is $\\int_0^2 3\\,dx=6$, and net outward flux is $7-1=6$, so they agree.",
+        "Two integrations give $u=3x^2/2+x+C$, whose mean is $3+C$."
+      ],
+      "solution": "Integrate the equation: $u^{\\prime}(2)-u^{\\prime}(0)=\\int_0^2 3\\,dx=6$. The given derivatives satisfy $7-1=6$, so there is no total-balance contradiction. The left outward direction points left, making the net outward flux the right derivative minus the left rightward derivative.\n\nOne integration gives $u^{\\prime}=3x+C_1$. The left condition sets $C_1=1$; the right derivative is then $u^{\\prime}(2)=7$, confirming that condition as well.\n\nAnother integration gives $u=3x^2/2+x+C$. Derivative conditions cannot fix the constant. Apply the mean condition: $\\frac12\\int_0^2u\\,dx=3+C=0$, hence $C=-3$. The solution is $u=3x^2/2+x-3$.",
+      "check": "Direct differentiation gives $u^{\\prime\\prime}=3$, $u^{\\prime}(0)=1$, and $u^{\\prime}(2)=7$; also $\\int_0^2u\\,dx=0$. Common errors are to write the net flux as $7+1$, or to assume derivative conditions at both ends fix the additive constant."
+    }
+  },
+  "helmholtz": {
+    "chapter": 6,
+    "exercise": "6.4-1",
+    "zh": {
+      "prompt": "三维空间取时间因子 $e^{-i\\omega t}$、波数 $k=2$，要求 $(\\Delta+4)G=\\delta$ 且为出射波。以下哪一个符合要求？$G_A=-e^{2iR}/(4\\pi R)$，$G_B=-e^{-2iR}/(4\\pi R)$，$G_C=-e^{2iR}/(2\\pi R)$，其中 $R>0$ 为到源点距离。说明另外两项各错在哪里。",
+      "hints": [
+        "分开检查两件事：小球通量给源强，空间相位结合时间因子给传播方向。",
+        "若 $G\\sim C/R$，单位点源要求 $-4\\pi C=1$；不能只验源点外方程。",
+        "正空间指数与 $e^{-i\\omega t}$ 合成向外传播的相位；$G_C$ 的奇异系数却是标准值的 2 倍。"
+      ],
+      "solution": "三个候选在源点外都满足同一径向齐次方程，光验这一点不能选出答案。先查奇异主部：$G_A,G_B\\sim-1/(4\\pi R)$，故小球通量均趋于 1；而 $G_C\\sim-1/(2\\pi R)$，通量趋于 2，它对应两倍点源。\n\n再查方向。在时间因子 $e^{-i\\omega t}$ 下，正空间指数的相位为 $2R-\\omega t$。固定相位随时间向较大半径移动，因此为出射。负空间指数给入射方向。\n\n因此正确项为 $G_A$。$G_B$ 源强正确但为入射；$G_C$ 为出射但源强为 2。\n\n还可直接核查出射条件：$R(\\partial_RG_A-2iG_A)=e^{2iR}/(4\\pi R)\\to0$。对于入射项，相应表达式保留不衰减的振荡主项，不能满足这个极限。",
+      "check": "对 $G_A$ 同时检查源点外方程、通量 1 和出射条件，三项都成立。典型错误是认为出射就自动具有单位归一化，或不写时间约定就判断空间指数的方向。"
+    },
+    "en": {
+      "prompt": "In three dimensions, use time dependence $e^{-i\\omega t}$ and wave number $k=2$. Require $(\\Delta+4)G=\\delta$ and an outgoing wave. Which candidate works? $G_A=-e^{2iR}/(4\\pi R)$, $G_B=-e^{-2iR}/(4\\pi R)$, or $G_C=-e^{2iR}/(2\\pi R)$, where $R>0$ is distance from the source. Explain what fails for the other two.",
+      "hints": [
+        "Check two things separately: small-sphere flux fixes source strength, and spatial phase combined with time dependence fixes propagation direction.",
+        "If $G\\sim C/R$, a unit source requires $-4\\pi C=1$. Checking only away from the source is insufficient.",
+        "The positive spatial exponent combined with $e^{-i\\omega t}$ gives outward propagation. However, the singular coefficient of $G_C$ is 2 times the standard value."
+      ],
+      "solution": "All three candidates satisfy the same homogeneous radial equation away from the source, so this check alone cannot choose the answer. Check the singular part first: $G_A,G_B\\sim-1/(4\\pi R)$, so both small-sphere fluxes tend to 1. But $G_C\\sim-1/(2\\pi R)$ gives flux 2 and therefore a double-strength source.\n\nNext check direction. With time dependence $e^{-i\\omega t}$, the positive spatial exponent has phase $2R-\\omega t$. A fixed phase moves toward larger radii as time increases, so it is outgoing. The negative spatial exponent gives the incoming direction.\n\nThe correct candidate is therefore $G_A$. Candidate $G_B$ has the correct source strength but is incoming; $G_C$ is outgoing but has source strength 2.\n\nThe outgoing condition can also be checked directly: $R(\\partial_RG_A-2iG_A)=e^{2iR}/(4\\pi R)\\to0$. For the incoming candidate, the corresponding expression retains a nondecaying oscillatory leading term and cannot satisfy this limit.",
+      "check": "For $G_A$, check the equation away from the source, flux 1, and the outgoing condition: all three hold. Common errors are to assume an outgoing wave is automatically unit-normalized, or to infer direction from the spatial exponent without stating the time convention."
+    }
+  },
+  "retarded": {
+    "chapter": 6,
+    "exercise": "6.4-1",
+    "zh": {
+      "prompt": "三维无界空间满足 $u_{tt}-4\\Delta u=3\\delta(\\mathbf r)[H(t)-H(t-2)]$，源启动前响应为零。其中 $H$ 是 Heaviside 阶跃函数，波速 $c=2$。求距原点 $R=6$ 处的响应，并给出 $t=2,4,6$ 时的值。可用 $G_{\\rm ret}=\\delta(t-t^{\\prime}-R/c)/(4\\pi c^2R)$；不用讨论恰好在波前的值。",
+      "hints": [
+        "点源使空间积分只取原点；观察点看见的是延迟后的源脉冲。",
+        "传播延迟为 $R/c=3$。源脉冲从 0 到 2，抵达观察点后从 3 到 5。",
+        "幅值为 $3/(4\\pi c^2R)=1/(32\\pi)$，所以结果是这个幅值乘 $H(t-3)-H(t-5)$。"
+      ],
+      "solution": "原点的源强随时间为 $q(t)=3[H(t)-H(t-2)]$。空间点源把卷积中的源位置固定在原点，剩下时间积分。\n\n时间积分中的 $\\delta(t-t^{\\prime}-R/c)$ 选取 $t^{\\prime}=t-R/c$；对积分变量求导的绝对值为 1，不额外乘波速。因此 $u(R,t)=3[H(t-R/c)-H(t-2-R/c)]/(4\\pi c^2R)$。\n\n本题 $c=2,R=6$，延迟为 3，分母为 $96\\pi$。得到 $u(6,t)=[H(t-3)-H(t-5)]/(32\\pi)$。\n\n所以 $u(6,2)=0$、$u(6,4)=1/(32\\pi)$、$u(6,6)=0$。信号尚未到达时为零，持续时间仍为 2；源关闭的消息也要延迟后才传来。",
+      "check": "抵达时刻满足 $6=2\\times3$；关闭消息抵达时刻为 $2+3=5$。典型错误是源在 $t=2$ 关闭就让观察点立即归零，或遗漏算符中的 $c^2=4$ 导致幅值大 4 倍。"
+    },
+    "en": {
+      "prompt": "In unbounded three-dimensional space, let $u_{tt}-4\\Delta u=3\\delta(\\mathbf r)[H(t)-H(t-2)]$, with zero response before the source starts. Here $H$ is the Heaviside step function and the wave speed is $c=2$. Find the response at distance $R=6$ from the origin and its values at $t=2,4,6$. You may use $G_{\\rm ret}=\\delta(t-t^{\\prime}-R/c)/(4\\pi c^2R)$. Values exactly on the wavefronts need not be discussed.",
+      "hints": [
+        "The point source restricts the spatial integral to the origin. The observer sees the delayed source pulse.",
+        "The travel delay is $R/c=3$. A source pulse from 0 to 2 is observed from 3 to 5.",
+        "The amplitude is $3/(4\\pi c^2R)=1/(32\\pi)$, so multiply it by $H(t-3)-H(t-5)$."
+      ],
+      "solution": "The time-dependent strength at the origin is $q(t)=3[H(t)-H(t-2)]$. The spatial point source fixes the source position at the origin in the convolution, leaving a time integral.\n\nThe temporal factor $\\delta(t-t^{\\prime}-R/c)$ selects $t^{\\prime}=t-R/c$. Its derivative with respect to the integration variable has absolute value 1, so no extra wave-speed factor appears. Hence $u(R,t)=3[H(t-R/c)-H(t-2-R/c)]/(4\\pi c^2R)$.\n\nHere $c=2,R=6$, so the delay is 3 and the denominator is $96\\pi$. Thus $u(6,t)=[H(t-3)-H(t-5)]/(32\\pi)$.\n\nTherefore $u(6,2)=0$, $u(6,4)=1/(32\\pi)$, and $u(6,6)=0$. The response vanishes before arrival and still lasts 2 time units. The news that the source has switched off is delayed as well.",
+      "check": "The arrival time satisfies $6=2\\times3$, and the switch-off signal arrives at $2+3=5$. Common errors are to make the observer return to zero immediately when the source stops at $t=2$, or to omit the operator factor $c^2=4$, making the amplitude 4 times too large."
+    }
+  }
+}
