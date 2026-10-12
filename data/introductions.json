@@ -1,0 +1,154 @@
+{
+  "polar": {
+    "zh": "复数也能画成一支箭头。先找箭头有多长、朝哪里，再处理乘方和开方；角度会决定有几个不同的根。",
+    "en": "Think of a complex number as an arrow. Find its length and direction first; powers and roots then become operations on lengths and angles."
+  },
+  "branch": {
+    "zh": "沿着原点绕一圈，平方根可能变成原来的负数。先说明你在哪个区域、选哪一支，函数值才有唯一含义。",
+    "en": "Going once around the origin can reverse the sign of a square root. Specify the region and the chosen branch before calculating a value."
+  },
+  "cr": {
+    "zh": "实变量求导只沿一条直线，复变量求导却允许从任何方向靠近。先拆出实部和虚部，用两个偏导关系筛选候选点，再检查是否真的可导。",
+    "en": "A complex derivative must agree along every approach direction. Split the function into real and imaginary parts, use two partial-derivative relations to find candidates, then check differentiability."
+  },
+  "harmonic": {
+    "zh": "调和函数描述没有内部热源的稳定温度一类的场。把两个方向的二阶偏导相加，就能先检查题目是否属于这一类。",
+    "en": "A harmonic function models a steady field with no interior source. Add its second partial derivatives to check whether a proposed function is harmonic."
+  },
+  "cauchy": {
+    "zh": "一个闭合圈上的积分，可以告诉你圈内某一点的函数值或导数。先圈出分母对应的点，并检查它是否在路径内部。",
+    "en": "An integral around a closed curve can give a function value or derivative inside. Locate the denominator’s special point first and check that it lies inside the curve."
+  },
+  "laurent": {
+    "zh": "展开式就是把难算的函数改写成一串容易处理的幂。先标出离展开中心最近的奇点；区域选错，即使算式看起来对，也不能使用。",
+    "en": "A series replaces a function with manageable powers. Locate singularities around the expansion center first: the region determines which expansion is valid."
+  },
+  "singularity": {
+    "zh": "分母为零，不一定就是极点：分子也可能抵消它。先展开或约去共同因子，再看还剩多少负次幂。",
+    "en": "A zero denominator does not automatically mean a pole: the numerator may cancel it. Expand or cancel common factors, then inspect the remaining negative powers."
+  },
+  "residue": {
+    "zh": "留数就是局部展开中负一次幂的系数。算围道积分时，先找圈内有哪些奇点，再逐个取这个系数。",
+    "en": "The residue is the coefficient of the minus-first power in a local Laurent series. For a contour integral, locate the enclosed singularities and find that coefficient at each one."
+  },
+  "contour": {
+    "zh": "实轴积分可以借助复平面中的闭合路线来算。路线要让多出来的一段能算、或能证明趋近于零；先看指数衰减和极点的位置。",
+    "en": "Close a real integral along a suitable route in the complex plane. Choose the route by locating poles and finding where any exponential decays, then control the added pieces."
+  },
+  "dispersion": {
+    "zh": "解析性会把实部与虚部联系起来，它们并不是两个可随意指定的函数。先检查所在半平面、无穷远衰减以及主值积分的约定。",
+    "en": "Analyticity links the real and imaginary parts; they cannot be prescribed independently. Check the half-plane, decay at infinity, and principal-value convention first."
+  },
+  "2.1-core": {
+    "zh": "一条周期曲线可以拆成许多简单的正弦和余弦。积分得到的系数，就在回答“每一种波要放多少”。先确认周期和奇偶性。",
+    "en": "A periodic curve can be built from sine and cosine waves. Each coefficient says how much of one wave is needed. Identify the period and parity before integrating."
+  },
+  "2.2-core": {
+    "zh": "不周期的函数也能拆成频率成分，只是频率变成连续的。先抄清正、逆变换的符号与系数，再代入积分。",
+    "en": "A nonperiodic function can also be resolved into frequencies, now continuous ones. Write the forward and inverse conventions before calculating an integral."
+  },
+  "fourier-rules": {
+    "zh": "平移、求导、卷积各有对应的变换规则，可以省掉长积分。先辨认题目做了哪一种操作，再核对符号和系数。",
+    "en": "Translation, differentiation, and convolution have transform rules that save integration. Identify the operation first, then check its sign and normalization."
+  },
+  "2.3-core": {
+    "zh": "δ不是普通的尖峰函数，而是“在指定位置取值”的积分规则。遇到缩放先处理绝对值系数，遇到导数先处理负号。",
+    "en": "Delta is an integration rule that samples a value at one point. For scaling, handle the absolute-value factor; for a derivative, handle the minus sign."
+  },
+  "2.4-core": {
+    "zh": "拉普拉斯变换把时间函数换成关于s的函数。先把题目拆成已知变换表里的部分，再用平移或微分规则。",
+    "en": "The Laplace transform turns a time function into a function of s. Break the expression into table entries, then apply shift or derivative rules as needed."
+  },
+  "2.5-core": {
+    "zh": "变换能把微分方程改写成代数方程，初值也一起进入。按“变换→解代数式→拆分→逆变换”四步做，初值不要漏。",
+    "en": "Transform the differential equation, solve the algebraic equation, decompose it, and invert. Initial values enter the derivative transforms, so include them at the first step."
+  },
+  "3.1-core": {
+    "zh": "弦的运动既受方程控制，也受两端怎样固定控制。先列初始形状、初始速度和端点条件，再选适合的正弦或余弦。",
+    "en": "A vibrating string is controlled by both its equation and its endpoints. List initial shape, initial velocity, and endpoint conditions before choosing sine or cosine modes."
+  },
+  "dalambert": {
+    "zh": "无限长弦的初始形状会拆成向左、向右传播的两部分。看自变量里的加减号判断方向，再用初值确定它们的大小。",
+    "en": "An infinite string’s initial shape splits into left- and right-traveling pieces. Read the signs in their arguments to determine direction, then use the initial data to determine amplitudes."
+  },
+  "forcing": {
+    "zh": "外力会不断向系统输入运动。先把空间形状拆成模态，每个模态只剩一条时间方程；外力频率相同时要单独处理共振。",
+    "en": "A force drives the motion over time. Expand its spatial shape into modes, solve a time equation for each, and treat resonance separately when frequencies coincide."
+  },
+  "3.2-core": {
+    "zh": "热会让不均匀的温度逐渐变平。先看端点是固定温度还是绝热，这决定展开的基底；再给每一项乘衰减因子。",
+    "en": "Diffusion smooths uneven temperatures. Fixed-temperature and insulated endpoints select different bases. Attach the appropriate decay factor to each mode."
+  },
+  "heat-kernel": {
+    "zh": "热核告诉你一小团热经过一段时间会扩散成什么样。把各处初温加权叠加，就得到以后温度；有边界时要用合适的镜像。",
+    "en": "The heat kernel describes how a concentrated pulse spreads. Weight and add these responses using the initial temperature, with suitable images when a boundary is present."
+  },
+  "lifting": {
+    "zh": "端点不为零时，直接套零边界的正弦展开会失败。先减去一个满足边界的简单函数，让剩下的未知量在端点为零。",
+    "en": "For nonzero boundary data, subtract a simple function that already satisfies the boundary. The remainder then has zero boundary values and can use the standard expansion."
+  },
+  "3.3-core": {
+    "zh": "稳定场不再随时间变化。先找区域形状，再让分离出的每个因子满足对应边界；最后用边界上的函数确定系数。",
+    "en": "A steady field no longer changes with time. Use the region’s geometry to separate variables, enforce the boundary conditions, and determine coefficients from the boundary data."
+  },
+  "uniqueness": {
+    "zh": "算出一个解以后，还要知道是否可能有另一个解。比较两个解的差，并结合边界条件，能证明差只能为零。",
+    "en": "After finding a solution, ask whether another one could exist. Subtract two candidate solutions and use their zero difference on the boundary to prove uniqueness."
+  },
+  "3.4-core": {
+    "zh": "只有某些参数能让非零函数同时满足方程和两端边界，这些参数叫本征值。先分正、零、负三种情况，不要默认只有正值。",
+    "en": "An eigenvalue is a parameter allowing a nonzero solution to satisfy the equation and both boundaries. Examine positive, zero, and negative cases separately."
+  },
+  "4.1-wronskian": {
+    "zh": "两个解看起来不同，也可能只是常数倍。把它们及其导数放进一个行列式，可以在适用条件下检验独立性。",
+    "en": "Two expressions may differ yet be constant multiples. The Wronskian combines solutions and derivatives to test independence under the relevant equation assumptions."
+  },
+  "4.2-frobenius": {
+    "zh": "遇到没有熟悉公式的微分方程，可以先假设解是一串幂，再比较每次幂的系数。先判断展开点是否普通；奇点可能需要额外的起始幂。",
+    "en": "When no familiar formula solves an ODE, assume a power series and compare coefficients. Classify the expansion point first; a regular singular point may require a leading power."
+  },
+  "4.3-variation": {
+    "zh": "已经知道齐次方程的两个解，就把其中的常数改成待定函数，用它们吸收外力项。先把最高阶导数系数化为1。",
+    "en": "Start with two homogeneous solutions and replace their constants by functions to absorb the forcing. Normalize the highest-derivative coefficient before applying the formulas."
+  },
+  "5.1-lame": {
+    "zh": "球坐标、柱坐标的一个坐标增量，并不都代表同样的真实长度。先写距离元中的比例因子，再建立梯度和拉普拉斯算符。",
+    "en": "Coordinate increments in spherical or cylindrical coordinates do not all represent equal physical lengths. Find the scale factors from the line element before constructing differential operators."
+  },
+  "5.2-solid-harmonics": {
+    "zh": "球形边界适合用球谐函数拆分。球内先排除中心发散的项，球外先排除无穷远不符合条件的项，再匹配边界。",
+    "en": "Spherical boundaries suit spherical harmonics. Inside a sphere remove terms singular at the center; outside apply the condition at infinity, then match boundary coefficients."
+  },
+  "5.3-bessel": {
+    "zh": "圆柱或圆盘的径向方程会出现Bessel函数。先由中心是否包含在区域内决定保留哪种解，再让外边界挑出允许的零点。",
+    "en": "Radial equations in disks and cylinders lead to Bessel functions. Check whether the center belongs to the region, remove inadmissible solutions, and use the outer boundary to select zeros."
+  },
+  "5.4-heat-modes": {
+    "zh": "空间边界先选出本征值，时间变化随后由它决定。热问题看衰减率，振动问题看频率；两者可以使用同一组空间模态。",
+    "en": "Spatial boundaries select eigenvalues, which then set the time behavior. Heat modes decay, while wave modes oscillate; both can use the same spatial eigenfunctions."
+  },
+  "5.5-taper": {
+    "zh": "杆的截面积改变，或膜的中心挖空，都会改变方程或边界。先重新写物理方程和区域，再判断能否沿用熟悉的函数。",
+    "en": "A varying rod area or a hole in a membrane changes the equation or boundary conditions. Write the actual equation and domain before reusing a familiar solution form."
+  },
+  "fundamental": {
+    "zh": "格林函数先回答“只在一个点放入单位源，会发生什么”。一般分布的源再由这些点源响应叠加得到；第一步先固定方程的正负号。",
+    "en": "A Green function is the response to a unit source at one point. Add weighted point-source responses to solve for a general source. Fix the operator’s sign convention first."
+  },
+  "dirichlet": {
+    "zh": "边界值已知时，要让格林函数在边界上为零。简单平面可用镜像相消；写完后检查源点、边界和无穷远。",
+    "en": "For prescribed boundary values, use a Green function that vanishes on the boundary. Images work for simple planes. Check the source singularity, boundary, and infinity."
+  },
+  "neumann": {
+    "zh": "只给边界上的流量，温度整体加一个常数通常不受影响。先检查总源强与总流量是否平衡；Robin边界还要额外检查是否出现特殊参数。",
+    "en": "Flux data usually leave an additive constant undetermined. Check the balance of total source and boundary flux first. Robin conditions also require checking exceptional parameters."
+  },
+  "helmholtz": {
+    "zh": "同一频率下的波场需要区分向外传播与向内传播。先固定时间因子的约定，再用辐射条件选择正确的指数符号。",
+    "en": "A single-frequency wave field must distinguish outgoing from incoming waves. Fix the time convention, then use the radiation condition to select the exponential sign."
+  },
+  "retarded": {
+    "zh": "一个点发生的变化，要过一段传播时间才影响远处。把源项的时间向前回溯“距离除以速度”，就体现了因果关系。",
+    "en": "A disturbance takes time to reach a distant point. Evaluate the source at an earlier time, delayed by distance divided by speed, to enforce causality."
+  }
+}

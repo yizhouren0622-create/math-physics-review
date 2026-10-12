@@ -1,0 +1,283 @@
+[
+  {
+    "title": "Complex functions and integral transforms",
+    "scope": "Chapters 1–2 · Complex differentiability, series, residues, Fourier and Laplace transforms",
+    "minutes": 90,
+    "questions": [
+      {
+        "title": "Differentiable at a point; analytic on a region",
+        "points": 12,
+        "chapter": 1,
+        "topic": "Cauchy–Riemann conditions",
+        "question": "Let $f(z)=|z|^2$. Find every point of complex differentiability, every region of analyticity, and all complex derivatives that exist.",
+        "hint": "Write $u=x^2+y^2,v=0$. Solve the Cauchy–Riemann conditions first, then check the candidate point directly from the derivative definition.",
+        "solution": "We have $u_x=2x,u_y=2y,v_x=v_y=0$. The Cauchy–Riemann conditions hold only at $(0,0)$. At the origin, the difference quotient is $[f(h)-f(0)]/h=|h|^2/h=\\bar h\\to0$, so $f\\prime(0)=0$. Elsewhere the necessary conditions fail, so no complex derivative exists. Every open neighborhood contains a point other than the origin; consequently the function is nowhere analytic.",
+        "rubric": "Cauchy–Riemann conditions and candidate point: 4 points; difference-quotient check: 4 points; distinction between differentiability and analyticity: 4 points."
+      },
+      {
+        "title": "One function, two annuli",
+        "points": 12,
+        "chapter": 1,
+        "topic": "Laurent series",
+        "question": "Expand $f(z)=1/[z(z-2)]$ on $0<|z|<2$ and on $|z|>2$. Find the residue at the origin.",
+        "hint": "Use partial fractions. In the inner annulus use $z/2$; in the outer annulus use $2/z$.",
+        "solution": "Partial fractions give $-1/(2z)+1/[2(z-2)]$. In the inner annulus,\n\n$$f(z)=-\\frac1{2z}-\\sum_{n=0}^{\\infty}\\frac{z^n}{2^{n+2}},\\quad0<|z|<2.$$\n\nIn the outer annulus, factor out $z^2$:\n\n$$f(z)=\\frac1{z^2}\\frac1{1-2/z}=\\sum_{n=0}^{\\infty}2^nz^{-n-2},\\quad |z|>2.$$\n\nThe residue at the origin must be read from a punctured neighborhood of that point: it is $-1/2$. The absence of a $z^{-1}$ term in the outer expansion does not make this residue zero: the outer annulus also surrounds another pole.",
+        "rubric": "Partial fractions: 2 points; each expansion with its annulus: 4 points; residue: 2 points."
+      },
+      {
+        "title": "Cauchy’s derivative formula",
+        "points": 12,
+        "chapter": 1,
+        "topic": "Closed-contour integral",
+        "question": "Evaluate $\\oint_{|z|=2}e^z/(z-1)^3\\,dz$, with counterclockwise orientation.",
+        "hint": "A cubed denominator calls for a second derivative. Remember $2!$.",
+        "solution": "The function $e^z$ is analytic on and inside the circle, and $1$ lies inside. Use the higher-order Cauchy formula $\\oint f(z)/(z-a)^{n+1}dz=2\\pi i f^{(n)}(a)/n!$ with $n=2,a=1$. The integral is $2\\pi i e/2=\\pi i e$. Alternatively, expand $e^z=e[1+(z-1)+(z-1)^2/2+\\cdots]$ and read the residue $e/2$.",
+        "rubric": "Locate the interior pole: 3 points; correct formula and derivative order: 4 points; result: 5 points."
+      },
+      {
+        "title": "A rational integral on the half-line",
+        "points": 14,
+        "chapter": 1,
+        "topic": "Real integrals by residues",
+        "question": "Use residues to evaluate $I=\\int_0^\\infty dx/[(x^2+1)(x^2+4)]$.",
+        "hint": "Extend to the whole real line. The upper-half-plane poles are $i,2i$.",
+        "solution": "The integrand is even, so $2I$ equals the whole-line integral. The upper-half-plane residues are\n\n$$R_i=\\frac1{2i(4-1)}=\\frac1{6i},\\qquad R_{2i}=\\frac1{4i(1-4)}=-\\frac1{12i}.$$\n\nThe large semicircle contributes $O(R^{-3})\\to0$. Therefore $2I=2\\pi i(1/(6i)-1/(12i))=\\pi/6$, giving $I=\\pi/12$. Partial fractions $\\frac13[1/(x^2+1)-1/(x^2+4)]$ provide an independent check.",
+        "rubric": "Evenness: 3 points; each residue: 3 points; vanishing arc: 2 points; result: 3 points."
+      },
+      {
+        "title": "Fourier transform of a decaying exponential",
+        "points": 12,
+        "chapter": 2,
+        "topic": "Fourier transform",
+        "question": "With convention $F(k)=\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}dx$, find the transform of $f(x)=e^{-a|x|}$ ($a>0$). Explain why it is real and even.",
+        "hint": "Split the integral at $x=0$. Integrate the two exponentials separately.",
+        "solution": "The positive half-line gives $1/(a+ik)$. On the negative half-line, substitute $t=-x$ to obtain $1/(a-ik)$. Adding gives\n\n$$F(k)=\\frac1{a+ik}+\\frac1{a-ik}=\\frac{2a}{a^2+k^2}.$$\n\nSince $f$ is real and even, the sine part integrates to zero and the cosine part is real and even. Also $F(0)=2/a$ equals $\\int f dx$, which checks the normalization.",
+        "rubric": "Split the integral: 4 points; calculation: 5 points; symmetry and check: 3 points."
+      },
+      {
+        "title": "Fourier series of a sawtooth",
+        "points": 14,
+        "chapter": 2,
+        "topic": "Periodic Fourier series",
+        "question": "Extend $f(x)=x$ on $0<x<2\\pi$ periodically with period $2\\pi$. Find its real Fourier series and the series values at $x=0,2\\pi$.",
+        "hint": "The constant term is $a_0/2$. Use integration by parts for $b_n$.",
+        "solution": "Use convention $f\\sim a_0/2+\\sum_{n\\ge1}(a_n\\cos nx+b_n\\sin nx)$:\n\n$$a_0=\\frac1\\pi\\int_0^{2\\pi}x\\,dx=2\\pi,\\quad a_n=0,\\quad b_n=\\frac1\\pi\\int_0^{2\\pi}x\\sin nx\\,dx=-\\frac2n.$$\n\nThus $f(x)=\\pi-2\\sum_{n=1}^\\infty\\sin(nx)/n$ and $0<x<2\\pi$. At each periodic join, the one-sided limits are $2\\pi$ and $0$; the series converges to their average $\\pi$. Changing the assigned endpoint value does not change the Fourier coefficients.",
+        "rubric": "Constant term: 3 points; sine and cosine coefficients: 3 points each; series: 3 points; endpoint values: 2 points."
+      },
+      {
+        "title": "Scaling and differentiating delta",
+        "points": 12,
+        "chapter": 2,
+        "topic": "Distributions",
+        "question": "Evaluate $\\int_{\\mathbb R}x^2\\delta(2x-4)dx$ and $\\int_{\\mathbb R}(x^2+1)\\delta\\prime(x-1)dx$.",
+        "hint": "The scaling factor uses an absolute value. The action of $\\delta\\prime$ introduces a minus sign.",
+        "solution": "We have $\\delta(2x-4)=\\frac12\\delta(x-2)$, so the first result is $\\frac12\\cdot2^2=2$.\n\nFor the second, use $\\langle\\delta\\prime(x-a),\\varphi\\rangle=-\\varphi\\prime(a)$ with $\\varphi=x^2+1$ to obtain $-2$. This is the action of a compactly supported distribution on a smooth function; equivalently, insert a smooth cutoff equal to 1 near its support.",
+        "rubric": "Scaling factor: 3 points; first result: 3 points; derivative sign: 3 points; second result: 3 points."
+      },
+      {
+        "title": "Carry the initial data into the transform",
+        "points": 12,
+        "chapter": 2,
+        "topic": "Laplace transform of an ODE",
+        "question": "Solve by Laplace transform: $y\\prime\\prime+2y\\prime+y=1$, $y(0)=y\\prime(0)=0$, $t\\ge0$.",
+        "hint": "The derivative transforms to $Y(s)=1/[s(s+1)^2]$. Then use partial fractions.",
+        "solution": "The zero initial data give $\\mathcal L[y\\prime\\prime]=s^2Y$ and $\\mathcal L[y\\prime]=sY$, hence $(s+1)^2Y=1/s$. Decompose\n\n$$Y=\\frac1s-\\frac1{s+1}-\\frac1{(s+1)^2}.$$\n\nThe inverse transform gives $y=1-e^{-t}-te^{-t}=1-(1+t)e^{-t}$. Differentiation gives $y\\prime=te^{-t}$, so both initial conditions hold. Substitution into the differential equation gives the required right-hand side, 1.",
+        "rubric": "Transformed equation: 4 points; partial fractions: 3 points; inverse transform: 3 points; check: 2 points."
+      }
+    ]
+  },
+  {
+    "title": "Differential equations and special functions",
+    "scope": "Chapters 3–6 · Separation of variables, boundaries, series, spherical and Bessel functions, Green functions",
+    "minutes": 120,
+    "questions": [
+      {
+        "title": "One vibration mode of a fixed string",
+        "points": 12,
+        "chapter": 3,
+        "topic": "Wave equation",
+        "question": "Solve $u_{tt}=c^2u_{xx}$ with $0<x<L$, $u(0,t)=u(L,t)=0$, $u(x,0)=A\\sin(\\pi x/L)$, and $u_t(x,0)=0$.",
+        "hint": "The initial displacement already supplies a spatial mode. Only its time factor remains to be found.",
+        "solution": "Set $u=T(t)\\sin(\\pi x/L)$. Substitution gives $T\\prime\\prime+\\omega_1^2T=0$ and $\\omega_1=c\\pi/L$. The initial data give $T(0)=A,T\\prime(0)=0$, so\n\n$$u(x,t)=A\\cos(c\\pi t/L)\\sin(\\pi x/L).$$\n\nThe sine factor enforces the endpoints. The cosine is 1 at time zero, recovering the initial displacement, and its time derivative vanishes there.",
+        "rubric": "Spatial mode: 3 points; time equation: 3 points; constants: 4 points; verification: 2 points."
+      },
+      {
+        "title": "A nonresonant forced string",
+        "points": 12,
+        "chapter": 3,
+        "topic": "Forced mode",
+        "question": "A fixed-end string satisfies $u_{tt}=c^2u_{xx}+F\\sin(2\\pi x/L)\\cos\\Omega t$ with zero initial displacement and velocity. Assume $\\Omega\\ne\\omega_2=2\\pi c/L$ and solve.",
+        "hint": "Set $u=q(t)\\sin(2\\pi x/L)$. Include a homogeneous term to cancel the particular solution at time zero.",
+        "solution": "Substitution gives $q\\prime\\prime+\\omega_2^2q=F\\cos\\Omega t$. A particular solution is $F\\cos\\Omega t/(\\omega_2^2-\\Omega^2)$. Add the homogeneous solution $B\\cos\\omega_2t+D\\sin\\omega_2t$; zero initial velocity gives $D=0$ and zero initial displacement gives $B=-F/(\\omega_2^2-\\Omega^2)$. Thus\n\n$$u=\\frac{F(\\cos\\Omega t-\\cos\\omega_2t)}{\\omega_2^2-\\Omega^2}\\sin\\frac{2\\pi x}{L}.$$\n\nAt resonance, do not substitute $0/0$ directly into the quotient. Taking the limit gives $q=Ft\\sin(\\omega_2t)/(2\\omega_2)$.",
+        "rubric": "Mode reduction: 3 points; particular and homogeneous solutions: 3 points; initial data: 3 points; result and resonance qualification: 3 points."
+      },
+      {
+        "title": "A decaying series for heat",
+        "points": 14,
+        "chapter": 3,
+        "topic": "Heat equation",
+        "question": "Solve $u_t=\\kappa u_{xx}$ on $0<x<L$, with both endpoints zero, $u(x,0)=x(L-x)$, and $\\kappa>0$.",
+        "hint": "Use a sine basis. Two integrations by parts give $n^{-3}$; then attach each mode’s decay factor.",
+        "solution": "The zero endpoint conditions select $\\sin(n\\pi x/L)$, with time factor $e^{-\\kappa(n\\pi/L)^2t}$. Write $b_n=(2/L)\\int_0^Lx(L-x)\\sin(n\\pi x/L)dx$. Let $a=n\\pi/L$; two integrations by parts give integral $2[1-(-1)^n]/a^3$, hence\n\n$$b_n=\\frac{4L^2[1-(-1)^n]}{n^3\\pi^3}.$$\n\nTherefore\n\n$$u(x,t)=\\sum_{m=0}^\\infty\\frac{8L^2}{(2m+1)^3\\pi^3}e^{-\\kappa((2m+1)\\pi/L)^2t}\\sin\\frac{(2m+1)\\pi x}{L}.$$\n\nOnly odd modes remain, and higher frequencies decay faster. For $t>0$ the series is smooth; inside the interval, Fourier convergence recovers the initial data.",
+        "rubric": "Separation: 4 points; coefficients and parity: 5 points; solution: 3 points; physical interpretation: 2 points."
+      },
+      {
+        "title": "A steady field in a rectangle",
+        "points": 14,
+        "chapter": 3,
+        "topic": "Laplace equation by separation",
+        "question": "In rectangle $0<x<a,0<y<b$, solve $u_{xx}+u_{yy}=0$ with boundary data $u(0,y)=u(a,y)=u(x,0)=0$ and $u(x,b)=V\\sin(\\pi x/a)$. Find $u$.",
+        "hint": "Use sine in the horizontal direction and hyperbolic sine vertically. Normalize using the top edge.",
+        "solution": "Let $u=X(x)Y(y)$. Then $X\\prime\\prime+\\lambda X=0$ and $Y\\prime\\prime-\\lambda Y=0$. The zero left and right edges select $X=\\sin(\\pi x/a)$ and $\\lambda=(\\pi/a)^2$. The bottom edge gives $Y=B\\sinh(\\pi y/a)$; the top gives $B=V/\\sinh(\\pi b/a)$. Hence\n\n$$u=V\\frac{\\sinh(\\pi y/a)}{\\sinh(\\pi b/a)}\\sin(\\pi x/a).$$\n\nThe second derivatives in the two coordinates cancel, and all four boundary conditions hold.",
+        "rubric": "Separation signs and eigenvalue: 4 points; vertical solution: 4 points; boundary coefficient: 4 points; check: 2 points."
+      },
+      {
+        "title": "Eigenvalues with mixed boundary conditions",
+        "points": 12,
+        "chapter": 3,
+        "topic": "Sturm–Liouville problem",
+        "question": "Find all eigenvalues, eigenfunctions, and squared norms for $-X\\prime\\prime=\\lambda X$, $X\\prime(0)=0,X(L)=0$.",
+        "hint": "For a positive eigenvalue start with cosine. Exclude zero and negative eigenvalues separately.",
+        "solution": "For $\\lambda=k^2>0$ the general solution is $A\\cos kx+B\\sin kx$. Condition $X\\prime(0)=0$ gives $B=0$, and $X(L)=0$ gives $\\cos kL=0$. Therefore\n\n$$\\lambda_n=((n+1/2)\\pi/L)^2,\\quad X_n=\\cos((n+1/2)\\pi x/L),\\quad n=0,1,\\ldots.$$\n\nFor $\\lambda=0$, solution $X=A+Bx$ satisfies both boundaries only when it is zero. For $\\lambda=-\\mu^2$, use $X=A\\cosh\\mu x$; since $\\cosh\\mu L>0$, only the zero solution remains. The norm integral is $\\int_0^L X_n^2dx=L/2$. Product-to-sum identities also verify orthogonality of different frequencies.",
+        "rubric": "Positive eigenvalues: 5 points; exclusion of zero and negative values: 4 points; norm: 3 points."
+      },
+      {
+        "title": "Power series at an ordinary point",
+        "points": 12,
+        "chapter": 4,
+        "topic": "Coefficient recurrence",
+        "question": "Solve $y\\prime\\prime-xy=0$, $y(0)=1,y\\prime(0)=0$ by power series through $x^9$.",
+        "hint": "Set $y=\\sum a_nx^n$. Shift the index in $xy$ before comparing powers.",
+        "solution": "We have $y\\prime\\prime=\\sum_{n\\ge0}(n+2)(n+1)a_{n+2}x^n$ and $xy=\\sum_{n\\ge1}a_{n-1}x^n$. The constant coefficient gives $a_2=0$; coefficient $n\\ge1$ gives $a_{n+2}=a_{n-1}/[(n+2)(n+1)]$. From $a_0=1,a_1=0$ we obtain $a_3=1/6,a_6=1/180,a_9=1/12960$; the other coefficients through degree 9 vanish.\n\n$$y=1+\\frac{x^3}{6}+\\frac{x^6}{180}+\\frac{x^9}{12960}+O(x^{12}).$$\n\nThe recurrence splits into chains spaced three indices apart. The initial data select one chain.",
+        "rubric": "Series substitution: 3 points; recurrence: 4 points; coefficients and result: 5 points."
+      },
+      {
+        "title": "An axisymmetric steady field inside a sphere",
+        "points": 12,
+        "chapter": 5,
+        "topic": "Legendre expansion",
+        "question": "Inside sphere $r<a$, solve $\\nabla^2u=0$, bounded at the center, with boundary value $u(a,\\theta)=V\\cos^2\\theta$.",
+        "hint": "Use $\\cos^2\\theta=1/3+(2/3)P_2(\\cos\\theta)$. Discard radial terms that diverge at the center.",
+        "solution": "The regular part of the axisymmetric expansion is $u=\\sum_{l\\ge0}A_lr^lP_l(\\cos\\theta)$. Since $P_0=1,P_2(\\mu)=(3\\mu^2-1)/2$, the boundary expansion is $V/3+(2V/3)P_2(\\cos\\theta)$. Only $l=0,2$ remain:\n\n$$u=\\frac V3+\\frac{2V}{3}\\left(\\frac r a\\right)^2P_2(\\cos\\theta).$$\n\nRadial terms $r^{-l-1}$ diverge at the center and must be discarded. The value at the center is the spherical average of the boundary data, $V/3$.",
+        "rubric": "Boundary expansion: 4 points; discard singular terms: 3 points; solution: 3 points; check: 2 points."
+      },
+      {
+        "title": "Images and a zero-boundary Green function",
+        "points": 12,
+        "chapter": 6,
+        "topic": "Dirichlet method of images",
+        "question": "In the upper half-space $z>0$, use convention $-\\nabla^2G(\\mathbf r,\\mathbf r_0)=\\delta(\\mathbf r-\\mathbf r_0)$ with boundary $G=0$ at $z=0$. Write the two-term Green function and explain each term.",
+        "hint": "Place the real source inside and its negative image outside.",
+        "solution": "Let $\\mathbf r_0=(x_0,y_0,z_0)$ and $z_0>0$, with reflected point $\\mathbf r_0^*=(x_0,y_0,-z_0)$. The free-space fundamental solution is $1/(4\\pi|\\mathbf r-\\mathbf r_0|)$, so\n\n$$G=\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0^*|}.$$\n\nInside the domain, the second term has no singularity and is harmonic; the first supplies the unit source. On $z=0$ the two distances agree, so the terms cancel. Both terms decay at infinity. If the convention becomes $+\\nabla^2G=\\delta$, reverse the overall sign.",
+        "rubric": "Source and image positions: 3 points; Green function: 4 points; interior and boundary checks: 3 points; sign convention: 2 points."
+      }
+    ]
+  },
+  {
+    "title": "Whole-book practice exam",
+    "scope": "All six chapters · Choose a method, calculate, and check · 10 questions, 10 points each",
+    "minutes": 120,
+    "questions": [
+      {
+        "title": "Recover a function from its real part",
+        "points": 10,
+        "chapter": 1,
+        "topic": "Harmonic conjugate",
+        "question": "An analytic function has real part $e^x\\cos y$ and satisfies $f(0)=1+2i$. Find $f(z)$.",
+        "hint": "Recognize $e^z$, or integrate the Cauchy–Riemann equations.",
+        "solution": "From $v_y=u_x=e^x\\cos y$ we get $v=e^x\\sin y+C(x)$. Then $v_x=-u_y=e^x\\sin y$ implies $C\\prime=0$. Thus $f=e^z+iC$; the specified value gives $C=2$, so $f=e^z+2i$.",
+        "rubric": "Cauchy–Riemann integration: 4 points; constant: 3 points; analytic function: 3 points."
+      },
+      {
+        "title": "Cancellation of zeros and a residue",
+        "points": 10,
+        "chapter": 1,
+        "topic": "Singularity classification",
+        "question": "Classify the singularity of $f(z)=(e^z-1-z)/z^3$ at the origin and find its residue.",
+        "hint": "Expand the numerator through the cubic term. The denominator alone does not determine the pole order.",
+        "solution": "We have $e^z-1-z=z^2/2+z^3/6+\\cdots$, hence $f=1/(2z)+1/6+z/24+\\cdots$. The origin is a simple pole and its residue is $1/2$.",
+        "rubric": "Series: 4 points; pole order: 3 points; residue: 3 points."
+      },
+      {
+        "title": "A shifted Fourier transform",
+        "points": 10,
+        "chapter": 2,
+        "topic": "Translation rule",
+        "question": "Given $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$, find the transform of $e^{-a|x-b|}$ using kernel $e^{-ikx}$.",
+        "hint": "Substitute $t=x-b$ and track the resulting phase factor.",
+        "solution": "We have $x=t+b$, so $e^{-ikx}=e^{-ikb}e^{-ikt}$. Thus $F(k)=e^{-ikb}2a/(a^2+k^2)$. Translation preserves the transform’s magnitude and changes its phase. The phase sign follows from the chosen kernel.",
+        "rubric": "Substitution: 3 points; phase sign: 3 points; result and interpretation: 4 points."
+      },
+      {
+        "title": "Laplace delay and initial data",
+        "points": 10,
+        "chapter": 2,
+        "topic": "Heaviside step",
+        "question": "Solve $y\\prime+y=H(t-2)$, $y(0)=0$.",
+        "hint": "The right-hand side transforms to $e^{-2s}/s$. Use the time-delay rule when inverting.",
+        "solution": "We have $(s+1)Y=e^{-2s}/s$, hence $Y=e^{-2s}[1/s-1/(s+1)]$. The inverse transform is $y=H(t-2)[1-e^{-(t-2)}]$. For $t<2$ the solution is zero; for $t>2$ it satisfies the forced equation. At $t=2$ the solution is continuous, so its first derivative contains no additional delta term.",
+        "rubric": "Transformed equation: 4 points; partial fractions and delay: 4 points; continuity: 2 points."
+      },
+      {
+        "title": "D’Alembert’s solution on an infinite string",
+        "points": 10,
+        "chapter": 3,
+        "topic": "Traveling waves",
+        "question": "On an infinite string $u_{tt}=c^2u_{xx}$, with initial displacement $\\phi(x)=e^{-x^2}$ and zero initial velocity, find and interpret the solution.",
+        "hint": "Split the initial displacement into two traveling waves, each with half the amplitude.",
+        "solution": "D’Alembert’s formula is $u=[\\phi(x-ct)+\\phi(x+ct)]/2+(1/(2c))\\int_{x-ct}^{x+ct}\\psi(s)ds$. Here $\\psi=0$, giving $u=\\frac12[e^{-(x-ct)^2}+e^{-(x+ct)^2}]$. The first term travels right at speed $c$, and the second travels left. Setting $t=0$ recovers the displacement; their time derivatives cancel initially.",
+        "rubric": "Formula: 4 points; substitution: 3 points; directions and initial conditions: 3 points."
+      },
+      {
+        "title": "The constant heat mode",
+        "points": 10,
+        "chapter": 3,
+        "topic": "Neumann boundary conditions",
+        "question": "A rod $0<x<L$ obeys $u_t=\\kappa u_{xx}$, is insulated at both ends, and starts from $u(x,0)=T_0+A\\cos(2\\pi x/L)$. Find its temperature and long-time limit.",
+        "hint": "Use cosine modes. The constant mode has eigenvalue zero.",
+        "solution": "The spatial eigenvalues for $\\cos(2\\pi x/L)$ are $(2\\pi/L)^2$. The constant mode does not decay. Thus $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$. At both ends $u_x=0$. As $t\\to\\infty$, we have $u\\to T_0$: this is the conserved mean temperature.",
+        "rubric": "Basis and zero mode: 3 points; solution: 4 points; limit and meaning: 3 points."
+      },
+      {
+        "title": "Abel’s formula and its conditions",
+        "points": 10,
+        "chapter": 4,
+        "topic": "Wronskian",
+        "question": "For $y\\prime\\prime+2y\\prime+y=0$ and the given solutions $y_1=e^{-x},y_2=xe^{-x}$, calculate $W=y_1y_2\\prime-y_1\\prime y_2$ and check Abel’s formula.",
+        "hint": "The coefficient of $y\\prime$ is 2, so $W=C e^{-2x}$.",
+        "solution": "We have $y_1\\prime=-e^{-x}$ and $y_2\\prime=(1-x)e^{-x}$, hence $W=(1-x)e^{-2x}+xe^{-2x}=e^{-2x}$. Abel’s formula $W\\prime=-2W$ gives $W=C e^{-2x}$; using $W(0)=1$ yields $C=1$. Since $W\\ne0$, the two solutions are linearly independent.",
+        "rubric": "Derivatives and Wronskian: 4 points; Abel check: 4 points; independence: 2 points."
+      },
+      {
+        "title": "Orthogonal expansion in Legendre polynomials",
+        "points": 10,
+        "chapter": 5,
+        "topic": "Spherical functions",
+        "question": "Expand $x^2$ on $[-1,1]$ and evaluate $\\int_{-1}^1x^2P_2(x)dx$.",
+        "hint": "Use $P_2=(3x^2-1)/2$ and the norm $2/(2l+1)$.",
+        "solution": "The definitions give $x^2=P_0/3+2P_2/3$. Multiply by $P_2$ and integrate. Orthogonality eliminates the $P_0$ term, leaving $(2/3)\\cdot[2/(2\\cdot2+1)]=4/15$. Direct integration of $(3x^4-x^2)/2$ checks the result.",
+        "rubric": "Expansion: 4 points; orthogonality and norm: 3 points; result: 3 points."
+      },
+      {
+        "title": "The lowest radial mode of a circular membrane",
+        "points": 10,
+        "chapter": 5,
+        "topic": "Bessel eigenfunctions",
+        "question": "A circular membrane of radius $a$ obeys $u_{tt}=c^2\\nabla^2u$, has a fixed edge, and is axisymmetric and bounded at the center. Find its radial modes and frequencies. For initial shape $A J_0(j_{0,1}r/a)$ and zero initial velocity, find its motion.",
+        "hint": "Discard $Y_0$ at the center. The edge requires $J_0(ka)=0$.",
+        "solution": "The axisymmetric radial equation is $R\\prime\\prime+R\\prime/r+k^2R=0$. Its bounded solution is $J_0(kr)$. Let $j_{0,n}$ be the $n$-th positive zero of $J_0$. Then $R_n=J_0(j_{0,n}r/a)$ and $\\omega_n=cj_{0,n}/a$. The given shape excites only the first radial mode, giving $u=A J_0(j_{0,1}r/a)\\cos(cj_{0,1}t/a)$.",
+        "rubric": "Radial equation: 3 points; zeros and frequencies: 4 points; single-mode solution: 3 points."
+      },
+      {
+        "title": "A point source and the Green-function sign",
+        "points": 10,
+        "chapter": 6,
+        "topic": "Fundamental solution",
+        "question": "Solve $-\\nabla^2u=q\\delta(\\mathbf r-\\mathbf r_0)$ with decay at infinity. Check normalization using the flux through a small sphere.",
+        "hint": "Use $\\nabla^2(1/r)=-4\\pi\\delta$. The outward radial derivative is negative.",
+        "solution": "Let $R=|\\mathbf r-\\mathbf r_0|$. Then $u=q/(4\\pi R)$, harmonic away from the source. On a small sphere of radius $\\varepsilon$ centered at the source, $\\partial_nu=-q/(4\\pi\\varepsilon^2)$, hence $-\\int_{S_\\varepsilon}\\partial_nu\\,dS=q$. This matches the integrated source strength. The solution also decays at infinity.",
+        "rubric": "Solution and constant: 4 points; flux check: 4 points; source-free region and infinity: 2 points."
+      }
+    ]
+  }
+]

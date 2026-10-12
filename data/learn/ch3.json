@@ -1,0 +1,974 @@
+{
+  "3.1-1": {
+    "zh": {
+      "goal": "从“拉一下再放手”写出整根弦之后怎样运动。",
+      "recognize": "先区分拉弦和放手两个阶段。拉弦决定初始形状；放手后没有持续外力。",
+      "steps": [
+        "先画三角形：顶点在 l/4，高度记为 h；用左右斜率产生的力求 h=3Fl/(16T)。",
+        "写下四项：波动方程、两个固定端位移为 0、三角形初位移、初速度为 0。",
+        "两个固定端选择 sin(nπx/l)；把三角形按两段积分投影，得到每个模式的振幅。",
+        "初速度为 0，所以时间部分只乘 cos(cnπt/l)；最后检查 t=0 是否恢复三角形。"
+      ],
+      "check": {
+        "question": "放手后方程右边还保留 F 吗？",
+        "answer": "不保留。F 只用于确定放手时的初始形状。"
+      }
+    },
+    "en": {
+      "goal": "Find the motion of a string that is pulled aside and then released.",
+      "recognize": "Separate the pulling stage from the free-motion stage. Pulling sets the initial shape; there is no sustained force after release.",
+      "steps": [
+        "Draw the initial triangle with peak at l/4 and height h. Balance the two slope forces to get h=3Fl/(16T).",
+        "Write the wave equation, zero displacement at both fixed ends, triangular initial displacement, and zero initial velocity.",
+        "Choose sin(nπx/l) for two fixed ends. Project the triangle using two integrals, one on either side of its peak.",
+        "Zero initial velocity keeps only cos(cnπt/l) in time. Check that t=0 recovers the triangle."
+      ],
+      "check": {
+        "question": "Does F remain on the right side of the equation after release?",
+        "answer": "No. It is used only to determine the initial shape."
+      }
+    }
+  },
+  "3.1-2": {
+    "zh": {
+      "goal": "求一端固定、另一端放开的压缩杆怎样回弹。",
+      "recognize": "u 是相对未压缩杆的位移；压缩让位移为负。放开的端点不受力，所以给的是导数条件。",
+      "steps": [
+        "均匀压缩 2e，先写初位移 u(x,0)=−2ex；静止释放给初速度 0。",
+        "写左端 u(0,t)=0，右端 uₓ(l,t)=0；波速用 c=√(Y/ρ)。",
+        "这组“固定—自由”条件选 sin(kₙx)，其中 kₙ=(n+1/2)π/l。",
+        "用初位移与 sin(kₙx) 相乘积分求振幅，再乘 cos(ckₙt) 并相加。",
+        "初始右端应变不满足刚撤力后的条件，这是瞬时释放造成的角点不相容；按能量解理解。"
+      ],
+      "check": {
+        "question": "右端自由应写 u(l,t)=0 吗？",
+        "answer": "不是。自由是零应力，线性杆中写 uₓ(l,t)=0。"
+      }
+    },
+    "en": {
+      "goal": "Find how a compressed rod rebounds when one end is fixed and the other is released.",
+      "recognize": "u measures displacement from the undeformed rod. Compression gives negative displacement. A released end has zero force, so its condition concerns the derivative.",
+      "steps": [
+        "Uniform strain −2e gives u(x,0)=−2ex. Release from rest gives zero initial velocity.",
+        "Use u(0,t)=0 at the fixed end and uₓ(l,t)=0 at the free end, with c=√(Y/ρ).",
+        "These fixed–free boundaries select sin(kₙx), where kₙ=(n+1/2)π/l.",
+        "Project the initial displacement onto sin(kₙx), then multiply each amplitude by cos(ckₙt) and add.",
+        "The initial end strain conflicts with the newly released boundary at the instant of release; use the energy-solution interpretation."
+      ],
+      "check": {
+        "question": "Does a free right end mean u(l,t)=0?",
+        "answer": "No. It means zero stress, written uₓ(l,t)=0 for a linear rod."
+      }
+    }
+  },
+  "3.1-3": {
+    "zh": {
+      "goal": "求两端自由的压缩杆回弹，同时不漏掉整体平移。",
+      "recognize": "两端都没有力，空间模式用余弦；余弦族里包含常数模式，代表整根杆一起移动。",
+      "steps": [
+        "先约定中心不动，这样初位移是 e(l−2x)，两端位移差为 −2el。",
+        "两个边界都写 uₓ=0，初速度写 0。",
+        "把初位移投影到 1、cos(nπx/l) 上；平均值为 0，所以常数模式系数为 0。",
+        "积分后只有奇数 n 的系数不为 0，给它们乘 cos(cnπt/l) 后求和。",
+        "若题目没有固定中心位置，说明答案可再加任意常数，表示不改变变形的平移。"
+      ],
+      "check": {
+        "question": "为什么不能直接从 n=1 开始而不提常数模式？",
+        "answer": "因为自由—自由边界允许零频整体平移；本题靠初始平均位移为 0 才排除它。"
+      }
+    },
+    "en": {
+      "goal": "Find the recoil of a rod free at both ends without losing rigid translation.",
+      "recognize": "Both ends have zero force, giving cosine modes. The cosine family includes a constant mode, representing movement of the whole rod.",
+      "steps": [
+        "Fix the center by convention: initial displacement is e(l−2x), with endpoint difference −2el.",
+        "Set uₓ=0 at both ends and zero initial velocity.",
+        "Project onto 1 and cos(nπx/l). The initial mean is zero, so the constant mode has zero coefficient.",
+        "Only odd n survive the integrals. Multiply them by cos(cnπt/l) and sum.",
+        "If the center position is unspecified, allow an arbitrary added constant representing rigid translation."
+      ],
+      "check": {
+        "question": "Why mention the constant mode instead of silently starting at n=1?",
+        "answer": "Free–free boundaries admit zero-frequency rigid translation. Only the zero initial mean excludes it here."
+      }
+    }
+  },
+  "3.1-4": {
+    "zh": {
+      "goal": "把阻力正确放进弦的振动方程。",
+      "recognize": "阻力与速度反向，所以其单位长度力是 −Ruₜ。先写牛顿第二定律，最后再整理符号。",
+      "steps": [
+        "截取长 dx 的弦：质量是 ρdx，加速度是 uₜₜ。",
+        "张力差给 Tuₓₓdx，阻力给 −Ruₜdx；将两种力相加等于质量乘加速度。",
+        "除以 ρdx，得到 uₜₜ+(R/ρ)uₜ=(T/ρ)uₓₓ。",
+        "检查阻力做负功，能量应随时间减小；若得到增长，阻尼符号写反了。"
+      ],
+      "check": {
+        "question": "阻尼项移到方程左边后是正号还是负号？",
+        "answer": "正号：+(R/ρ)uₜ。"
+      }
+    },
+    "en": {
+      "goal": "Place the resistance term correctly in a string’s vibration equation.",
+      "recognize": "Resistance opposes velocity, so its force per unit length is −Ruₜ. Write Newton’s law before moving terms.",
+      "steps": [
+        "Take a segment dx: mass is ρdx and acceleration is uₜₜ.",
+        "Add tension difference Tuₓₓdx and resistance −Ruₜdx, and equate them to mass times acceleration.",
+        "Divide by ρdx to obtain uₜₜ+(R/ρ)uₜ=(T/ρ)uₓₓ.",
+        "Check that resistance does negative work and energy decreases. Growth signals a wrong damping sign."
+      ],
+      "check": {
+        "question": "What sign does the damping term have on the left?",
+        "answer": "A plus sign: +(R/ρ)uₜ."
+      }
+    }
+  },
+  "3.1-5": {
+    "zh": {
+      "goal": "把弹簧的作用变成边界条件，再算每个振动模式。",
+      "recognize": "弹簧端既不是完全固定也不是完全自由。Robin 条件就是位移和它的导数同时出现的条件。",
+      "steps": [
+        "先在右端平衡力：杆内力 YSuₓ 与弹簧恢复力 −ku 相等，得 uₓ+hu=0，h=k/(YS)。",
+        "左端固定选 X=sin(μx)；把它代入右端条件，得到 μcos(μl)+hsin(μl)=0。",
+        "每个正根 μₙ 给一个空间模式；根通常要数值求，不是 nπ/l。",
+        "算实际范数 Nₙ=∫sin²(μₙx)dx，再把初位移 −2ex 投影，不能直接套 l/2。",
+        "初速度为 0，给每个空间模式乘 cos(cμₙt)；用 k=0 的自由端极限检查。"
+      ],
+      "check": {
+        "question": "为什么本题不能直接取 μₙ=nπ/l？",
+        "answer": "因为右端是弹簧 Robin 条件，频率由超越方程决定。"
+      }
+    },
+    "en": {
+      "goal": "Translate the spring force into a boundary condition, then calculate the vibration modes.",
+      "recognize": "A spring end is neither perfectly fixed nor free. A Robin condition combines displacement and its derivative.",
+      "steps": [
+        "Balance the right-end forces: rod force YSuₓ equals spring force −ku. Thus uₓ+hu=0 with h=k/(YS).",
+        "The fixed left end selects X=sin(μx). The right condition gives μcos(μl)+hsin(μl)=0.",
+        "Each positive root μₙ defines a spatial mode. The roots usually require numerical calculation and are not nπ/l.",
+        "Calculate the actual norm Nₙ=∫sin²(μₙx)dx, then project −2ex. Do not assume Nₙ=l/2.",
+        "Zero initial velocity gives cos(cμₙt). Check the k=0 free-end limit."
+      ],
+      "check": {
+        "question": "Why can we not simply use μₙ=nπ/l?",
+        "answer": "The spring imposes a Robin boundary, so its frequencies solve a transcendental equation."
+      }
+    }
+  },
+  "3.1-6": {
+    "zh": {
+      "goal": "推导悬绳振动方程，理解为什么比均匀张力多一项。",
+      "recognize": "越靠近绳顶，支撑的下段越重，张力越大；张力不是常数。",
+      "steps": [
+        "先说明 x 从上端向下量；x 下方绳长 l−x，故 T(x)=ρg(l−x)。",
+        "写微段横向力差为 ∂ₓ(Tuₓ)dx，而不是 Tuₓₓdx。",
+        "代入牛顿定律 ρuₜₜ=∂ₓ(Tuₓ)，用乘积求导得到 g[(l−x)uₓₓ−uₓ]。",
+        "顶部固定写 u(0,t)=0；底部张力为 0，只要求 Tuₓ→0 和位移有限，不多加 uₓ(l,t)=0。"
+      ],
+      "check": {
+        "question": "乘积求导为什么会出现 −guₓ？",
+        "answer": "因为 T′(x)=−ρg；张力变化也贡献横向力。"
+      }
+    },
+    "en": {
+      "goal": "Derive a hanging-rope equation and understand its extra term.",
+      "recognize": "The upper rope supports more weight, so tension depends on position rather than staying constant.",
+      "steps": [
+        "State that x is measured downward. The rope below x has length l−x, so T(x)=ρg(l−x).",
+        "Write the transverse force difference as ∂ₓ(Tuₓ)dx, not simply Tuₓₓdx.",
+        "Use ρuₜₜ=∂ₓ(Tuₓ) and the product rule to obtain g[(l−x)uₓₓ−uₓ].",
+        "Set u(0,t)=0 at the top. At the zero-tension bottom require Tuₓ→0 and finite displacement, without adding uₓ(l,t)=0."
+      ],
+      "check": {
+        "question": "Why does the product rule produce −guₓ?",
+        "answer": "Because T′(x)=−ρg; changing tension contributes to the transverse force."
+      }
+    }
+  },
+  "3.1-7": {
+    "zh": {
+      "goal": "给旋转绳建立正确模型，先说清它往哪个方向振动。",
+      "recognize": "旋转提供随位置变化的张力；竖直振动与旋转平面内振动的惯性项不同。",
+      "steps": [
+        "从转轴向外量 x，积分外段所需向心力：T(x)=∫ₓˡρω²s ds。",
+        "算得 T=ρω²(l²−x²)/2，再求 (Tuₓ)ₓ；这里必须用乘积求导。",
+        "若 u 是竖直位移，直接用 ρuₜₜ=(Tuₓ)ₓ。",
+        "若 u 是随转坐标中的水平横位移，惯性为 uₜₜ−ω²u，方程右边需再加 ω²u。",
+        "写明采用哪一方向；固定轴端 u=0，自由端 Tuₓ→0 且位移有限。"
+      ],
+      "check": {
+        "question": "竖直小振动也要加 ω²u 吗？",
+        "answer": "不要。该项属于随转坐标中的平面内相对横振动。"
+      }
+    },
+    "en": {
+      "goal": "Build the rotating-rope model after specifying the direction of motion.",
+      "recognize": "Rotation creates position-dependent tension. Vertical motion and in-plane motion have different inertial terms.",
+      "steps": [
+        "Measure x outward and integrate the centripetal force required by the outer segment: T(x)=∫ₓˡρω²s ds.",
+        "Obtain T=ρω²(l²−x²)/2 and evaluate (Tuₓ)ₓ using the product rule.",
+        "For vertical displacement, use ρuₜₜ=(Tuₓ)ₓ directly.",
+        "For in-plane transverse displacement in rotating coordinates, inertia is uₜₜ−ω²u, so add ω²u on the right.",
+        "State the chosen direction. Set u=0 at the axis, with Tuₓ→0 and finite displacement at the free end."
+      ],
+      "check": {
+        "question": "Should vertical motion also have an added ω²u term?",
+        "answer": "No. That term belongs to relative in-plane motion in rotating coordinates."
+      }
+    }
+  },
+  "3.1-8": {
+    "zh": {
+      "goal": "写出点质量两侧应该怎样连接。",
+      "recognize": "弦不断开，所以位移相同；点质量需要加速，所以左右斜率一般不同。",
+      "steps": [
+        "先写连续条件 u(x₀⁻,t)=u(x₀⁺,t)=u₀(t)。",
+        "单独画点质量受力：右侧横向力是 Tuₓ(x₀⁺)，左侧是 −Tuₓ(x₀⁻)。",
+        "两力相加等于 mu₀″，得到 T[uₓ]=mu₀″；规定方括号为右减左。",
+        "若有重力，位移相对静态下垂平衡形状定义；不要在扰动方程里重复加静重力。"
+      ],
+      "check": {
+        "question": "有点质量时还能要求左右斜率相等吗？",
+        "answer": "通常不能；斜率差提供点质量的加速度。"
+      }
+    },
+    "en": {
+      "goal": "Find how the two string pieces connect at a point mass.",
+      "recognize": "The string remains attached, so displacement is continuous. Accelerating the mass generally requires a jump in slope.",
+      "steps": [
+        "Write continuity: u(x₀⁻,t)=u(x₀⁺,t)=u₀(t).",
+        "Draw the point-mass forces: the right contribution is Tuₓ(x₀⁺), the left is −Tuₓ(x₀⁻).",
+        "Set their sum equal to mu₀″, giving T[uₓ]=mu₀″. Define the jump as right minus left.",
+        "If gravity is present, measure displacement from the sagging static equilibrium so static weight is not counted again."
+      ],
+      "check": {
+        "question": "Can the left and right slopes still be required to agree?",
+        "answer": "Not generally. Their difference supplies the point mass’s acceleration."
+      }
+    }
+  },
+  "3.1-9": {
+    "zh": {
+      "goal": "把锤击的总冲量转成初速度，再求弦的振动。",
+      "recognize": "瞬间敲击来不及改变位移，却会改变速度。I 是总冲量，j 是每单位长度的冲量，二者不能混用。",
+      "steps": [
+        "先说明假设锤面给均匀冲量：敲击区内 j=I/(2δ)，区外为 0。",
+        "用冲量等于动量变化，写初速度 v=j/ρ，初位移为 0。",
+        "固定两端用 sin(kₙx)，kₙ=nπ/l；只在敲击区积分求速度系数 Vₙ。",
+        "时间取 sin(ckₙt)，但其振幅是 Vₙ/(ckₙ)，因为对时间求导才能恢复 Vₙ。",
+        "令 δ 趋于 0 检查点冲量极限；若冲量不均匀，保留 j(x) 的投影积分。"
+      ],
+      "check": {
+        "question": "为什么振幅还要除以 ckₙ？",
+        "answer": "因为初速度是位移对时间求导；sin(ckₙt) 求导会多乘 ckₙ。"
+      }
+    },
+    "en": {
+      "goal": "Convert a hammer’s total impulse into initial velocity, then solve the string motion.",
+      "recognize": "An instantaneous strike changes velocity before it changes displacement. I is total impulse; j is impulse per unit length.",
+      "steps": [
+        "State the uniform-strike assumption: j=I/(2δ) in the struck interval and zero elsewhere.",
+        "Impulse equals momentum change, giving v=j/ρ and zero initial displacement.",
+        "For fixed ends use sin(kₙx), kₙ=nπ/l. Integrate only over the struck interval to obtain velocity coefficients Vₙ.",
+        "Use sin(ckₙt) in time with amplitude Vₙ/(ckₙ), since differentiation must recover Vₙ.",
+        "Check δ→0 against a point impulse. For nonuniform impulse, keep the projection integral involving j(x)."
+      ],
+      "check": {
+        "question": "Why divide the displacement amplitude by ckₙ?",
+        "answer": "Because differentiating sin(ckₙt) to recover initial velocity multiplies it by ckₙ."
+      }
+    }
+  },
+  "3.1-10": {
+    "zh": {
+      "goal": "把正方形膜的二维振动拆成许多熟悉的单模态振动。",
+      "recognize": "四边固定，x 和 y 两个方向都用正弦；每个模式要用两个编号 m、n。",
+      "steps": [
+        "写 uₜₜ=c²(uₓₓ+uᵧᵧ)，四边 u=0；c²=张力/面密度。",
+        "空间模式取 sin(mπx/a)sin(nπy/a)，把两个方向的平方波数相加。",
+        "得到频率 Ωₘₙ=(cπ/a)√(m²+n²)，不是按 m+n 相加。",
+        "把初位移做双重投影求 Aₘₙ；把初速度做双重投影后除以 Ωₘₙ 求 Bₘₙ。",
+        "将 Aₘₙcos(Ωₘₙt)+Bₘₙsin(Ωₘₙt) 乘空间模式后求和。"
+      ],
+      "check": {
+        "question": "m=n=1 的频率是多少？",
+        "answer": "Ω₁₁=cπ√2/a。"
+      }
+    },
+    "en": {
+      "goal": "Split the square membrane’s two-dimensional motion into individual modes.",
+      "recognize": "All four edges are fixed, so use a sine in each direction. Every mode needs two indices, m and n.",
+      "steps": [
+        "Write uₜₜ=c²(uₓₓ+uᵧᵧ), with u=0 on all edges and c²=tension/areal density.",
+        "Choose sin(mπx/a)sin(nπy/a) and add the squared wavenumbers from both directions.",
+        "The frequency is Ωₘₙ=(cπ/a)√(m²+n²), not proportional to m+n.",
+        "Double-project the initial displacement for Aₘₙ. Double-project velocity and divide by Ωₘₙ for Bₘₙ.",
+        "Multiply Aₘₙcos(Ωₘₙt)+Bₘₙsin(Ωₘₙt) by the spatial mode and sum."
+      ],
+      "check": {
+        "question": "What is the frequency for m=n=1?",
+        "answer": "Ω₁₁=cπ√2/a."
+      }
+    }
+  },
+  "3.1-11": {
+    "zh": {
+      "goal": "把一道受迫偏微分方程化成一个受迫振子。",
+      "recognize": "外力的空间形状正好是第二个固定端模式，所以其余空间模式不需要计算。",
+      "steps": [
+        "直接设 u=q(t)sin(2πx/l)，让 q 代表这个形状的时间振幅。",
+        "代入方程，得到 q″+Ω²q=(A/ρ)sin(ωt)，Ω=2πc/l。",
+        "ω≠Ω 时先写正弦特解，再加齐次正弦项，确保 q(0)=q′(0)=0。",
+        "ω=Ω 时改用共振解或取极限，不能继续除以 Ω²−ω²。",
+        "最后把 q(t) 乘回空间正弦；检查 t=0 的位移和速度。"
+      ],
+      "check": {
+        "question": "仅写 q=A sin(ωt)/[ρ(Ω²−ω²)] 为什么不够？",
+        "answer": "它的初速度一般不为 0，必须加瞬态齐次项。"
+      }
+    },
+    "en": {
+      "goal": "Reduce a forced PDE to one forced oscillator.",
+      "recognize": "The force’s spatial shape is exactly the second fixed-end mode, so no other spatial modes need calculation.",
+      "steps": [
+        "Set u=q(t)sin(2πx/l), where q is the shape’s time-dependent amplitude.",
+        "Substitution gives q″+Ω²q=(A/ρ)sin(ωt), with Ω=2πc/l.",
+        "For ω≠Ω, find a sine particular solution, then add a homogeneous sine term to enforce q(0)=q′(0)=0.",
+        "At ω=Ω, use the resonant solution or a limit; do not divide by Ω²−ω².",
+        "Multiply q(t) back by the spatial sine and check both initial data."
+      ],
+      "check": {
+        "question": "Why is q=A sin(ωt)/[ρ(Ω²−ω²)] alone insufficient?",
+        "answer": "Its initial velocity is generally nonzero, so a transient homogeneous term is required."
+      }
+    }
+  },
+  "3.1-12": {
+    "zh": {
+      "goal": "计算某一点持续用力会激发弦上的哪些模式。",
+      "recognize": "持续点力不同于瞬间冲量：这里力留在方程里，并用 δ(x−x₀) 表示集中在一点。",
+      "steps": [
+        "写源项 Aδ(x−x₀)sin(ωt)/ρ，端点位移和两条初值都是 0。",
+        "展开 u=Σqₙ(t)sin(kₙx)；利用 δ 的抽样性质，积分直接给 sin(kₙx₀)。",
+        "得到每模态力 Fₙ=2A sin(kₙx₀)/(ρl)，再逐个解受迫振子。",
+        "若 ω 等于某个固有频率，单独替换该项为共振公式。",
+        "同时检查施力点是否恰在该模式节点；Fₙ=0 时即使频率匹配也不会激发它。"
+      ],
+      "check": {
+        "question": "在 x₀=l/2 用力，会激发第二模态吗？",
+        "answer": "不会；sin(2πx₀/l)=sinπ=0，施力点正好是它的节点。"
+      }
+    },
+    "en": {
+      "goal": "Determine which string modes a sustained point force excites.",
+      "recognize": "A sustained point force remains in the equation, unlike an instantaneous impulse. Use δ(x−x₀) to localize it.",
+      "steps": [
+        "Use source Aδ(x−x₀)sin(ωt)/ρ with zero endpoint values and zero initial displacement and velocity.",
+        "Expand u=Σqₙ(t)sin(kₙx). Delta sampling makes the projection contain sin(kₙx₀).",
+        "The modal force is Fₙ=2A sin(kₙx₀)/(ρl). Solve one forced oscillator for each mode.",
+        "If ω matches a natural frequency, replace that mode by its resonant formula.",
+        "Also check whether the force point is a node. If Fₙ=0, frequency matching alone does not excite the mode."
+      ],
+      "check": {
+        "question": "Does a force at x₀=l/2 excite the second mode?",
+        "answer": "No. sin(2πx₀/l)=sinπ=0: the force acts at its node."
+      }
+    }
+  },
+  "3.1-13": {
+    "zh": {
+      "goal": "正确处理“力只加在杆端”的受迫振动。",
+      "recognize": "端力是边界条件，不是整根杆都受的体力。用积分投影时要保留端点项。",
+      "steps": [
+        "写杆内无源波动方程，左端 u=0，右端 YSuₓ=A sin(ωt)。",
+        "用固定—自由模式 sin(kₙx)，kₙ=(n+1/2)π/l；把方程乘模式后积分两次分部积分。",
+        "保留右端力贡献，得到模态力 Gₙ=2A(−1)ⁿ/(ρSl)。",
+        "按零初值受迫振子解每个 qₙ；共振项单独替换后乘回空间模式。",
+        "这些模式右端导数为 0，但级数不能在端点任意逐项求导；真实端力已由积分边界项保留。"
+      ],
+      "check": {
+        "question": "能把 A sin(ωt) 直接作为杆内均匀源吗？",
+        "answer": "不能。它作用在端点，必须通过应力边界或边界齐次化来处理。"
+      }
+    },
+    "en": {
+      "goal": "Handle a rod force applied only at its endpoint.",
+      "recognize": "An end force is a boundary condition, not a body force along the entire rod. Modal integration must retain its boundary term.",
+      "steps": [
+        "Write the source-free wave equation inside the rod, u=0 on the left, and YSuₓ=A sin(ωt) on the right.",
+        "Use fixed–free modes sin(kₙx), kₙ=(n+1/2)π/l. Multiply by a mode and integrate by parts twice.",
+        "Retain the right-end force term to obtain Gₙ=2A(−1)ⁿ/(ρSl).",
+        "Solve each zero-initial-data forced oscillator, replace any resonant term, and multiply by its spatial mode.",
+        "Although each basis derivative is zero at the right end, endpoint termwise differentiation is not justified. The actual force is retained in the weak boundary term."
+      ],
+      "check": {
+        "question": "Can A sin(ωt) be inserted as a uniform interior source?",
+        "answer": "No. It acts at the end and must enter through the stress boundary or boundary lifting."
+      }
+    }
+  },
+  "3.1-14": {
+    "zh": {
+      "goal": "判断无限弦上某一点何时开始受到冲击影响。",
+      "recognize": "点冲量产生初速度 δ；达朗贝尔公式会把它在区间内积分，结果变成台阶而不是两个 δ。",
+      "steps": [
+        "先用冲量动量关系写 uₜ(x,0)=(I/ρ)δ(x−x₀)，初位移为 0。",
+        "在达朗贝尔公式中只保留初速度积分，积分范围是 [x−ct,x+ct]。",
+        "若该区间包含 x₀，积分是 I/ρ；否则是 0。",
+        "再除以 2c，写成 I H(ct−|x−x₀|)/(2ρc)，解释左右波前以 c 传播。"
+      ],
+      "check": {
+        "question": "距冲点 d 的位置多久后开始受影响？",
+        "answer": "t=d/c；波前经过后位移是 I/(2ρc)。"
+      }
+    },
+    "en": {
+      "goal": "Find when a point on an infinite string first feels an impulse.",
+      "recognize": "A point impulse gives delta initial velocity. D’Alembert’s integral turns it into a step, rather than two moving deltas.",
+      "steps": [
+        "Use impulse–momentum balance: uₜ(x,0)=(I/ρ)δ(x−x₀), with zero initial displacement.",
+        "Keep only the velocity integral in d’Alembert’s formula, over [x−ct,x+ct].",
+        "The integral is I/ρ if that interval contains x₀, and zero otherwise.",
+        "Divide by 2c and write I H(ct−|x−x₀|)/(2ρc). The two fronts travel at speed c."
+      ],
+      "check": {
+        "question": "When does a location at distance d first respond?",
+        "answer": "At t=d/c. Behind the front its displacement is I/(2ρc)."
+      }
+    }
+  },
+  "3.1-15": {
+    "zh": {
+      "goal": "把半无限弦的初始运动和端点运动分开算，再叠加。",
+      "recognize": "一个解负责初值，另一个解负责端位移。固定端反射用奇延拓；端点信号用传播延迟。",
+      "steps": [
+        "把 φ 和 v 向负半轴作奇延拓；这样套全轴公式后，x=0 的值自动为 0。",
+        "用奇延拓初值写达朗贝尔解 u₁。",
+        "另写端点响应 u₂=H(t−x/c)g(t−x/c)：信号到 x 处需 x/c 时间。",
+        "将 u₁+u₂ 相加；若要写原正半轴函数，分 x>ct 和 x<ct 两区整理积分。",
+        "检查角点条件 g(0)=φ(0)；要求更光滑时还要 g′(0)=v(0)。"
+      ],
+      "check": {
+        "question": "在 x>ct 时，端点驱动 g 已经影响到这里了吗？",
+        "answer": "没有。此时 t−x/c<0，端点信号尚未到达。"
+      }
+    },
+    "en": {
+      "goal": "Separate the effects of initial motion and end motion, then add them.",
+      "recognize": "One solution handles initial data and another handles the prescribed endpoint displacement. Odd extension handles fixed-end reflection; a delay handles boundary propagation.",
+      "steps": [
+        "Oddly extend φ and v to the negative half-line so the full-line formula has zero value at x=0.",
+        "Use the extended data in d’Alembert’s formula to obtain u₁.",
+        "Add the boundary response u₂=H(t−x/c)g(t−x/c); travel to x takes time x/c.",
+        "Sum u₁+u₂. To use only positive-half-line functions, split into x>ct and x<ct and simplify the integrals.",
+        "Check g(0)=φ(0) at the corner. Greater smoothness also needs g′(0)=v(0)."
+      ],
+      "check": {
+        "question": "Has the endpoint driving reached a point with x>ct?",
+        "answer": "No. Then t−x/c<0, so the boundary signal has not arrived."
+      }
+    }
+  },
+  "3.1-16": {
+    "zh": {
+      "goal": "从半无限弦的端力求出向右传播的位移。",
+      "recognize": "端力控制的是斜率，不能直接当位移。无限远无入射波时，只取向右传播的 w(t−x/c)。",
+      "steps": [
+        "先约定正力方向，左端条件写 −Tuₓ(0,t)=A sin(ωt)。",
+        "设 s=t−x/c，u=w(s)；则 uₓ=−w′/c。",
+        "代入边界得 (T/c)w′=A sin(ωt)，用 w(0)=0 积分出 w。",
+        "得到 w=Ac[1−cos(ωt)]/(Tω)，将 t 换成 t−x/c。",
+        "乘 H(t−x/c) 使波到达之前为 0；核验左端导数确实给所需外力。"
+      ],
+      "check": {
+        "question": "为什么结果是 1−cos，而不是直接 sin？",
+        "answer": "因为端力对应 w 的一阶导数，需要对 sin 积分一次。"
+      }
+    },
+    "en": {
+      "goal": "Find the displacement wave generated by a force at a half-infinite string’s end.",
+      "recognize": "An end force controls slope, not displacement. With no incoming wave from infinity, take only w(t−x/c).",
+      "steps": [
+        "State the force sign convention and write −Tuₓ(0,t)=A sin(ωt).",
+        "Set s=t−x/c and u=w(s), so uₓ=−w′/c.",
+        "The boundary gives (T/c)w′=A sin(ωt). Integrate with w(0)=0.",
+        "Obtain w=Ac[1−cos(ωt)]/(Tω), then replace t by t−x/c.",
+        "Multiply by H(t−x/c) for zero motion before arrival and verify the endpoint derivative."
+      ],
+      "check": {
+        "question": "Why does the result contain 1−cos instead of simply sin?",
+        "answer": "The force specifies w’s first derivative, so sin must be integrated once."
+      }
+    }
+  },
+  "3.2-1": {
+    "zh": {
+      "goal": "求通电产生热量后，杆从初温走向稳态的过程。",
+      "recognize": "有热源且端点不全为 0，先求最终稳态 U，再对差值 u−U 用正弦级数。",
+      "steps": [
+        "一小段的电阻是 rdx/S，焦耳热率是 I²rdx/S；除以体积热容得到 q=I²r/(ρcS²)。",
+        "写 uₜ=κuₓₓ+q，κ=k/(ρc)，并带上给定端温与初温。",
+        "解 κU″+q=0，配两端温度，得到线性项加抛物线。",
+        "令 w=u−U；w 的两端为 0，初值是负的抛物线，不是原初温。",
+        "投影这个初值，只剩奇数正弦模式，并给每项乘 e^(−κkₙ²t)。"
+      ],
+      "check": {
+        "question": "t 很大时温度还是原来的直线吗？",
+        "answer": "不是。焦耳热使稳态增加 qx(l−x)/(2κ) 的抛物线项。"
+      }
+    },
+    "en": {
+      "goal": "Find how a current-carrying rod approaches its heated steady state.",
+      "recognize": "With a heat source and nonzero boundary values, find the steady state U first, then expand u−U in sines.",
+      "steps": [
+        "A segment has resistance rdx/S and Joule heating rate I²rdx/S. Divide by heat capacity to get q=I²r/(ρcS²).",
+        "Write uₜ=κuₓₓ+q, κ=k/(ρc), with the given endpoint and initial temperatures.",
+        "Solve κU″+q=0 using the endpoint temperatures: U is linear plus parabolic.",
+        "Set w=u−U. Its endpoints are zero and its initial data are the negative parabola, not the original temperature.",
+        "Project this difference: only odd sine modes remain, each multiplied by e^(−κkₙ²t)."
+      ],
+      "check": {
+        "question": "Does the long-time temperature remain the original straight line?",
+        "answer": "No. Joule heating adds the steady parabolic term qx(l−x)/(2κ)."
+      }
+    }
+  },
+  "3.2-2": {
+    "zh": {
+      "goal": "把剩余水化热正确换成热方程里的热源。",
+      "recognize": "Q 是还没释放的能量，热方程需要每秒释放多少能量，也就是 −Qₜ。",
+      "steps": [
+        "先解 Qₜ=−βQ，得到 Q=Q₀e^(−βt)。",
+        "取负导数，得到正的放热率 βQ₀e^(−βt)。",
+        "把它加进热守恒 ρcuₜ=kΔu+热源，再除以 ρc 得标准热方程。",
+        "说明没有初始温度和边界时只能建方程，不能唯一算出温度。"
+      ],
+      "check": {
+        "question": "能把 Q₀e^(−βt) 直接作为功率密度吗？",
+        "answer": "不能；它是能量密度，还需要乘 β 才是每单位时间释放的量。"
+      }
+    },
+    "en": {
+      "goal": "Convert remaining hydration energy into the source of a heat equation.",
+      "recognize": "Q is unreleased energy. The heat equation needs energy released per second, which is −Qₜ.",
+      "steps": [
+        "Solve Qₜ=−βQ to get Q=Q₀e^(−βt).",
+        "Take the negative derivative: the positive heat-release rate is βQ₀e^(−βt).",
+        "Insert it in ρcuₜ=kΔu+source, then divide by ρc for standard form.",
+        "Without initial temperature and boundaries, formulate only the equation; temperature is not uniquely determined."
+      ],
+      "check": {
+        "question": "Can Q₀e^(−βt) itself be used as power density?",
+        "answer": "No. It is energy density; multiply by β to obtain energy released per unit time."
+      }
+    }
+  },
+  "3.2-3": {
+    "zh": {
+      "goal": "把太阳入射和环境散热同时写进球面的边界条件。",
+      "recognize": "边界条件来自表面通量平衡。球面不同位置接收的日照不同，背面没有直接入射。",
+      "steps": [
+        "先定义外法向 n 和指向太阳的 s；吸收通量是 q₀max(0,n·s)。",
+        "外向导热通量是 −k∂ₙu；将它等于“向外散热−吸收日照”。",
+        "采用牛顿换热时散热是 h(u−θ)，得到 kuᵣ+h(u−θ)=入射通量。",
+        "若采用黑体辐射，换成 σ(u⁴−θ⁴)，温度必须用开尔文；题干未给模型时要明说假设。"
+      ],
+      "check": {
+        "question": "球背面能否也写日照通量 q₀？",
+        "answer": "不能。背面的 n·s<0，直接吸收通量取 0。"
+      }
+    },
+    "en": {
+      "goal": "Include both solar absorption and environmental heat loss in the sphere’s boundary.",
+      "recognize": "The boundary follows from local surface flux balance. Sunlight varies over the sphere and does not directly hit the shaded side.",
+      "steps": [
+        "Define outward normal n and sunward direction s. Absorbed flux is q₀max(0,n·s).",
+        "Outward conductive flux is −k∂ₙu. Set it equal to outward heat loss minus absorbed sunlight.",
+        "For Newton cooling, heat loss is h(u−θ), giving kuᵣ+h(u−θ)=incident flux.",
+        "For blackbody radiation use σ(u⁴−θ⁴) and kelvin temperatures. State the assumption because the question does not specify a model."
+      ],
+      "check": {
+        "question": "Can the back of the sphere also receive flux q₀?",
+        "answer": "No. There n·s<0, so direct absorbed sunlight is zero."
+      }
+    }
+  },
+  "3.2-4": {
+    "zh": {
+      "goal": "用混合边界算细杆的降温。",
+      "recognize": "左端零温控制值，右端绝热控制导数；这种组合选半整数正弦。",
+      "steps": [
+        "先写 uₜ=κuₓₓ，u(0,t)=0，uₓ(l,t)=0，初温 x(l−x)。",
+        "解空间边界，取 kₙ=(n+1/2)π/l 和 sin(kₙx)，n 从 0 开始。",
+        "对 x(l−x) 做投影；两次分部积分后保留 4/(lkₙ³)−2(−1)ⁿ/kₙ² 两项。",
+        "每项乘 e^(−κkₙ²t) 后相加；长期全部降到 0。",
+        "初温在右端导数为 −l，与刚开始的绝热条件不相容；按内部或 L² 极限恢复初温。"
+      ],
+      "check": {
+        "question": "n=0 的波数为 0 吗？",
+        "answer": "不是。它是 π/(2l)；因此本题所有模式都会衰减。"
+      }
+    },
+    "en": {
+      "goal": "Find heat decay with mixed boundaries.",
+      "recognize": "The left end prescribes temperature and the right prescribes its derivative. This combination selects half-integer sine modes.",
+      "steps": [
+        "Write uₜ=κuₓₓ, u(0,t)=0, uₓ(l,t)=0, and initial temperature x(l−x).",
+        "Use kₙ=(n+1/2)π/l and sin(kₙx), starting at n=0.",
+        "Project x(l−x). Two integrations by parts give both terms 4/(lkₙ³)−2(−1)ⁿ/kₙ².",
+        "Multiply each mode by e^(−κkₙ²t) and sum. All modes eventually decay to zero.",
+        "The initial derivative −l conflicts with the insulated end at t=0. Recover the initial data by interior or L² limits."
+      ],
+      "check": {
+        "question": "Is the n=0 wavenumber zero?",
+        "answer": "No. It is π/(2l), so every mode in this problem decays."
+      }
+    }
+  },
+  "3.2-5": {
+    "zh": {
+      "goal": "用混合边界算细杆的降温；确认这就是上一题的原书重复题。",
+      "recognize": "左端零温控制值，右端绝热控制导数；这种组合选半整数正弦。",
+      "steps": [
+        "先写 uₜ=κuₓₓ，u(0,t)=0，uₓ(l,t)=0，初温 x(l−x)。",
+        "解空间边界，取 kₙ=(n+1/2)π/l 和 sin(kₙx)，n 从 0 开始。",
+        "对 x(l−x) 做投影；两次分部积分后保留 4/(lkₙ³)−2(−1)ⁿ/kₙ² 两项。",
+        "每项乘 e^(−κkₙ²t) 后相加；长期全部降到 0。",
+        "初温在右端导数为 −l，与刚开始的绝热条件不相容；按内部或 L² 极限恢复初温。"
+      ],
+      "check": {
+        "question": "n=0 的波数为 0 吗？",
+        "answer": "不是。它是 π/(2l)；因此本题所有模式都会衰减。"
+      }
+    },
+    "en": {
+      "goal": "Find heat decay with mixed boundaries; this is the textbook duplicate of the preceding question.",
+      "recognize": "The left end prescribes temperature and the right prescribes its derivative. This combination selects half-integer sine modes.",
+      "steps": [
+        "Write uₜ=κuₓₓ, u(0,t)=0, uₓ(l,t)=0, and initial temperature x(l−x).",
+        "Use kₙ=(n+1/2)π/l and sin(kₙx), starting at n=0.",
+        "Project x(l−x). Two integrations by parts give both terms 4/(lkₙ³)−2(−1)ⁿ/kₙ².",
+        "Multiply each mode by e^(−κkₙ²t) and sum. All modes eventually decay to zero.",
+        "The initial derivative −l conflicts with the insulated end at t=0. Recover the initial data by interior or L² limits."
+      ],
+      "check": {
+        "question": "Is the n=0 wavenumber zero?",
+        "answer": "No. It is π/(2l), so every mode in this problem decays."
+      }
+    }
+  },
+  "3.2-6": {
+    "zh": {
+      "goal": "直接读出已给模式的温度解，避免不必要的积分。",
+      "recognize": "初温已经是固定端的正弦模式；保留原来的 3、2 系数，分别加各自的衰减。",
+      "steps": [
+        "写两端零温热方程，取 κ=k/(ρc)。",
+        "识别第一项是 n=1，第二项是 n=3。",
+        "第一项乘 e^(−κπ²t/l²)，第三模态项乘 e^(−9κπ²t/l²)。",
+        "把两项相加，令 t=0 检查原初温；长期第一项占主导。"
+      ],
+      "check": {
+        "question": "哪个模式衰减更快，快在指数的几倍？",
+        "answer": "第三模式更快，其衰减率是第一模式的 9 倍。"
+      }
+    },
+    "en": {
+      "goal": "Read the temperature solution directly from the given modes.",
+      "recognize": "The initial data already use the fixed-end sine modes. Keep coefficients 3 and 2 and attach each mode’s decay factor.",
+      "steps": [
+        "Write the zero-end-temperature heat equation with κ=k/(ρc).",
+        "Identify n=1 in the first term and n=3 in the second.",
+        "Multiply the first by e^(−κπ²t/l²) and the third mode by e^(−9κπ²t/l²).",
+        "Add and set t=0 to check the data. The first mode dominates at long times."
+      ],
+      "check": {
+        "question": "Which mode decays faster, and by what rate factor?",
+        "answer": "The third mode decays faster, with nine times the first mode’s decay rate."
+      }
+    }
+  },
+  "3.2-7": {
+    "zh": {
+      "goal": "判断产热反馈能否战胜散热，找到临界长度。",
+      "recognize": "温度越高产热越多，这是正反馈；每个模式的“产热增长率−扩散衰减率”决定它增大还是减小。",
+      "steps": [
+        "先按单位长度写 Cuₜ=Kuₓₓ+βu，其中 C=ρcS，K=kS；不要先漏掉热容。",
+        "除以 C，定义 κ=K/C，γ=β/C；用正弦投影求初温系数 aₙ。",
+        "每个模式的时间因子是 e^([γ−κ(nπ/l)²]t)，检查括号正负。",
+        "n=1 最先增长，令 γ−κ(π/l)²=0，得 l_c=π√(κ/γ)。",
+        "超过临界只说明存在增长模式；初温也必须激发它，严格零初温仍为零。"
+      ],
+      "check": {
+        "question": "l=l_c 时第一模式会指数增大吗？",
+        "answer": "不会。此时增长率为 0，第一模式保持原幅度。"
+      }
+    },
+    "en": {
+      "goal": "Decide whether heat-generation feedback overcomes diffusion and find the critical length.",
+      "recognize": "Hotter material generates more heat. Each mode grows or decays according to generation rate minus diffusion decay rate.",
+      "steps": [
+        "Use per-length balance Cuₜ=Kuₓₓ+βu with C=ρcS and K=kS; retain heat capacity.",
+        "Divide by C, define κ=K/C and γ=β/C, and sine-project the initial temperature for aₙ.",
+        "Each mode has factor e^([γ−κ(nπ/l)²]t). Inspect the sign of its exponent.",
+        "The n=1 mode grows first. Set γ−κ(π/l)²=0 to get l_c=π√(κ/γ).",
+        "Above threshold, growth requires a nonzero initial projection on a growing mode. Exactly zero initial data remain zero."
+      ],
+      "check": {
+        "question": "At l=l_c, does the first mode grow exponentially?",
+        "answer": "No. Its growth rate is zero, so its amplitude stays constant."
+      }
+    }
+  },
+  "3.2-8": {
+    "zh": {
+      "goal": "计算绝热薄片如何把温度逐渐均匀化。",
+      "recognize": "绝热控制法向导数，两个方向都选余弦；常数模式就是不会流失的平均温度。",
+      "steps": [
+        "写二维热方程，四边的法向导数均为 0。",
+        "取 cos(mπx/a)cos(nπy/a)，m、n 都从 0 开始，包括只沿一个方向变化的模式。",
+        "投影初温求 Cₘₙ：某编号为 0 时范数不同，用 η₀=1、ηⱼ=2 统一写系数。",
+        "给每个模式乘 e^(−κπ²(m²+n²)t/a²) 并求和。",
+        "C₀₀ 不衰减，等于初始平均温度；用总热量守恒检查长期答案。"
+      ],
+      "check": {
+        "question": "长期温度一定是 0 吗？",
+        "answer": "不是。它趋于初始平均温度 C₀₀，因为四边绝热不漏热。"
+      }
+    },
+    "en": {
+      "goal": "Calculate how an insulated plate becomes uniform in temperature.",
+      "recognize": "Insulation prescribes normal derivatives, so use cosines in both directions. The constant mode is the conserved mean temperature.",
+      "steps": [
+        "Write the two-dimensional heat equation with zero normal derivative on all four edges.",
+        "Use cos(mπx/a)cos(nπy/a), with both indices starting at zero, including modes varying in only one direction.",
+        "Project the initial temperature for Cₘₙ. Zero indices have different norms; use η₀=1 and ηⱼ=2.",
+        "Multiply each mode by e^(−κπ²(m²+n²)t/a²) and sum.",
+        "C₀₀ does not decay and equals the initial mean. Check the long-time answer using heat conservation."
+      ],
+      "check": {
+        "question": "Must the long-time temperature be zero?",
+        "answer": "No. It tends to the initial mean C₀₀ because the insulated edges do not leak heat."
+      }
+    }
+  },
+  "3.3-1": {
+    "zh": {
+      "goal": "从矩形顶边温度求整个矩形内的稳态温度。",
+      "recognize": "这是无时间的 Laplace 方程。先满足三条零边，再用顶边来定每项系数。",
+      "steps": [
+        "左右零值选择 sin(nπx/a)，记 kₙ=nπ/a。",
+        "另一个方向满足 Y″−kₙ²Y=0；底边零值选择 sinh(kₙy)。",
+        "除以 sinh(kₙb)，让这个因子到顶边 y=b 时等于 1。",
+        "将 f(x) 按正弦投影得 fₙ，乘归一化的双曲因子后求和。",
+        "若要四角也连续，检查 f(0)=f(a)=0；否则只能在边的内部按极限恢复数据。"
+      ],
+      "check": {
+        "question": "为什么用 sinh 而不是 cosh？",
+        "answer": "因为底边 y=0 要为 0，而 sinh0=0、cosh0=1。"
+      }
+    },
+    "en": {
+      "goal": "Recover the steady temperature inside a rectangle from its top-edge data.",
+      "recognize": "Laplace’s equation has no time variable. Satisfy the three zero edges first, then use the top edge to set coefficients.",
+      "steps": [
+        "The zero side values select sin(nπx/a); set kₙ=nπ/a.",
+        "The other direction satisfies Y″−kₙ²Y=0. Zero at the bottom selects sinh(kₙy).",
+        "Divide by sinh(kₙb) so this factor equals 1 on the top edge.",
+        "Sine-project f(x) to obtain fₙ, multiply by the normalized hyperbolic factor, and sum.",
+        "Continuity at the corners requires f(0)=f(a)=0; otherwise recover data only in edge-interior limits."
+      ],
+      "check": {
+        "question": "Why use sinh rather than cosh?",
+        "answer": "The value at y=0 must be zero: sinh0=0, while cosh0=1."
+      }
+    }
+  },
+  "3.3-2": {
+    "zh": {
+      "goal": "求右边给导数、上下混合边界的矩形稳态场。",
+      "recognize": "先找上下两条齐次边界对应的模式；右边给的是导数，归一化也必须对导数做。",
+      "steps": [
+        "从 Y(0)=0、Y′(b)=0 得半整数模式 sin(μₙy)，μₙ=(n+1/2)π/b。",
+        "x 方向选 sinh(μₙx)，因为左边值要为 0。",
+        "将 f(y) 投影到这些半整数正弦上，得到 fₙ。",
+        "右边 x 导数是 μₙcosh(μₙa)，所以每项除以这个量，而不是除以 sinh。",
+        "求 uₓ 再令 x=a，检查分母抵消并恢复 f(y)。"
+      ],
+      "check": {
+        "question": "右边若给 uₓ=f，归一化分母应是什么？",
+        "answer": "是 μₙcosh(μₙa)，即 sinh(μₙx) 在右端的导数。"
+      }
+    },
+    "en": {
+      "goal": "Solve a steady rectangle with prescribed right derivative and mixed top/bottom conditions.",
+      "recognize": "Choose modes from the two homogeneous horizontal boundaries first. Because the right boundary specifies a derivative, normalize a derivative.",
+      "steps": [
+        "Y(0)=0 and Y′(b)=0 give sin(μₙy), μₙ=(n+1/2)π/b.",
+        "Choose sinh(μₙx) in x because its left value must vanish.",
+        "Project f(y) onto these half-integer sine modes to obtain fₙ.",
+        "The right x derivative is μₙcosh(μₙa), so divide by that quantity, not by sinh.",
+        "Differentiate u in x and set x=a; the denominator cancels and recovers f(y)."
+      ],
+      "check": {
+        "question": "What denominator is required for uₓ=f at the right edge?",
+        "answer": "μₙcosh(μₙa), the right-end derivative of sinh(μₙx)."
+      }
+    }
+  },
+  "3.3-3": {
+    "zh": {
+      "goal": "处理两个非零边界：分成两道单边题再相加。",
+      "recognize": "Laplace 方程是线性的，因此一部分只承担左边温度，另一部分只承担底边温度。",
+      "steps": [
+        "令 u=v+w；v 左边为 Ay(b−y)、其余为 0，w 底边为 Bsin(πx/a)、其余为 0。",
+        "v 沿 y 用正弦；沿 x 用 sinh[nπ(a−x)/b]，以保证右边为 0。",
+        "投影左边抛物线，仅保留奇数模式，再按左端值归一化。",
+        "w 的底边已是单模态，直接用 sinh[π(b−y)/a]/sinh(πb/a)。",
+        "相加后逐边检查：在每条非零边上，另一部分必须恰好为 0。"
+      ],
+      "check": {
+        "question": "左边驱动的双曲函数为何用 a−x？",
+        "answer": "因为 x=a 时 a−x=0，这样右边自动为 0。"
+      }
+    },
+    "en": {
+      "goal": "Handle two nonzero boundaries by splitting into two single-edge problems.",
+      "recognize": "Laplace’s equation is linear. One part carries only the left-edge data; the other carries only the bottom data.",
+      "steps": [
+        "Set u=v+w. Give v left data Ay(b−y) and zero elsewhere; give w bottom data Bsin(πx/a) and zero elsewhere.",
+        "For v, use a sine in y and sinh[nπ(a−x)/b] in x so the right edge is zero.",
+        "Project the left parabola: only odd modes remain. Normalize each factor at the left edge.",
+        "The bottom data for w are one mode, so use sinh[π(b−y)/a]/sinh(πb/a) directly.",
+        "Add and check each edge. At every nonzero boundary, the other part must vanish."
+      ],
+      "check": {
+        "question": "Why use a−x for the left-driven hyperbolic factor?",
+        "answer": "At x=a, a−x=0, so the right boundary vanishes automatically."
+      }
+    }
+  },
+  "3.4-1": {
+    "zh": {
+      "goal": "把 Laguerre 方程改成总导数形式，并找到投影需要的权。",
+      "recognize": "自伴形式把 y″、y′ 合在 (py′)′ 里；权函数是本征参数前的系数，不是 p。",
+      "steps": [
+        "先试乘 e^(−x)，因为 (xe^(−x))′=(1−x)e^(−x)。",
+        "把前两项合成 (xe^(−x)y′)′。",
+        "和 (py′)′−qy+λwy=0 对照：p=xe^(−x)，q=0，λ=a，w=e^(−x)。",
+        "说明通常在 (0,∞) 使用；零点、无穷远还需选恰当边界行为，方程本身不决定完整谱。"
+      ],
+      "check": {
+        "question": "本题的权是 xe^(−x) 还是 e^(−x)？",
+        "answer": "是 e^(−x)；xe^(−x) 是导数项系数 p。"
+      }
+    },
+    "en": {
+      "goal": "Convert Laguerre’s equation to a total-derivative form and identify the projection weight.",
+      "recognize": "Self-adjoint form combines y″ and y′ into (py′)′. The weight is the coefficient of the eigenvalue parameter, not p.",
+      "steps": [
+        "Try multiplying by e^(−x), since (xe^(−x))′=(1−x)e^(−x).",
+        "Combine the derivative terms into (xe^(−x)y′)′.",
+        "Compare with (py′)′−qy+λwy=0: p=xe^(−x), q=0, λ=a, w=e^(−x).",
+        "The usual interval is (0,∞). Appropriate behavior at zero and infinity is still needed to specify a spectrum."
+      ],
+      "check": {
+        "question": "Is the weight xe^(−x) or e^(−x)?",
+        "answer": "It is e^(−x). The factor xe^(−x) is the derivative coefficient p."
+      }
+    }
+  },
+  "3.4-2": {
+    "zh": {
+      "goal": "把 Hermite 方程写成自伴形式，避免权函数差一个 2。",
+      "recognize": "y′ 的系数 −2x 是 e^(−x²) 的对数导数，所以用高斯因子把导数项合并。",
+      "steps": [
+        "乘 e^(−x²)，把前两项认成 (e^(−x²)y′)′。",
+        "若取 λ=2a，则权 w=e^(−x²)，p 也为 e^(−x²)，q=0。",
+        "若另取 λ=a，权要改成 2e^(−x²)；两种写法都可以，但不能混搭。",
+        "说明通常在全轴作带权积分，并要求端点行为使积分和边界项有意义。"
+      ],
+      "check": {
+        "question": "若 λ 定义为 a，w 能仍写 e^(−x²) 吗？",
+        "answer": "不能；此时 w=2e^(−x²)。若 w=e^(−x²)，则 λ=2a。"
+      }
+    },
+    "en": {
+      "goal": "Put Hermite’s equation in self-adjoint form without losing a factor of two.",
+      "recognize": "The coefficient −2x is the logarithmic derivative of e^(−x²), so a Gaussian multiplier combines the derivatives.",
+      "steps": [
+        "Multiply by e^(−x²) and identify the first two terms as (e^(−x²)y′)′.",
+        "If λ=2a, then w=e^(−x²), p=e^(−x²), and q=0.",
+        "If λ=a instead, use w=2e^(−x²). Both conventions work, but they must not be mixed.",
+        "The usual weighted integral is on the full line, with endpoint behavior making integrals and boundary terms meaningful."
+      ],
+      "check": {
+        "question": "If λ is defined as a, can w still be e^(−x²)?",
+        "answer": "No. Then w=2e^(−x²). With w=e^(−x²), use λ=2a."
+      }
+    }
+  },
+  "3.4-3": {
+    "zh": {
+      "goal": "推导 Chebyshev 正交时为什么要带倒平方根的权。",
+      "recognize": "(1−x²) 的系数不会直接给权；先找乘子使导数项成为一个总导数。",
+      "steps": [
+        "在 −1<x<1 乘以 1/√(1−x²)。",
+        "检查乘积求导：(√(1−x²)y′)′ 正好等于变换后的前两项。",
+        "读出 λ=n²，p=√(1−x²)，w=1/√(1−x²)。",
+        "用 x=cosθ 检查，w dx 变成 −dθ；这对应普通余弦的正交积分。",
+        "端点权发散但可积，不能仅因其发散就舍弃。"
+      ],
+      "check": {
+        "question": "权与 p 是否相同？",
+        "answer": "不同；p 是平方根，w 是它的倒数。"
+      }
+    },
+    "en": {
+      "goal": "Derive the inverse-square-root weight in Chebyshev orthogonality.",
+      "recognize": "The leading factor 1−x² does not directly identify the weight. First choose a multiplier that creates a total derivative.",
+      "steps": [
+        "For −1<x<1, multiply by 1/√(1−x²).",
+        "Use the product rule to check that (√(1−x²)y′)′ equals the transformed derivative terms.",
+        "Read λ=n², p=√(1−x²), and w=1/√(1−x²).",
+        "Check with x=cosθ: w dx becomes −dθ, giving the usual cosine orthogonality integral.",
+        "The weight diverges at the endpoints but remains integrable, so divergence alone is not a reason to discard it."
+      ],
+      "check": {
+        "question": "Are the weight and p identical?",
+        "answer": "No. p is the square root, while w is its reciprocal."
+      }
+    }
+  },
+  "3.4-4": {
+    "zh": {
+      "goal": "分清“本征值为实数”和“本征值非负”需要不同条件。",
+      "recognize": "实 Robin 边界使边界的反对称项消失，但能量里的边界项不一定非负。题目第二问缺条件。",
+      "steps": [
+        "先补正规条件 k>0、ρ>0，每端两边界系数不全为 0，保证有标准本征问题。",
+        "用方程乘共轭解，再减去共轭方程；实边界使端点项为 0，从而 λ=共轭λ。",
+        "再用分部积分推能量商；把边界项 −[ky′共轭y] 保留下来。",
+        "用 k=ρ=1、q=0、两端 y′−y=0、y=eˣ 验算，得到 λ=−1，直接否定原第二问。",
+        "写正确补充：Dirichlet/Neumann 或使整个能量二次型非负的 Robin 条件，才能保证非负谱。"
+      ],
+      "check": {
+        "question": "边界 y′−y=0 下，y=eˣ 对应 λ 是几？",
+        "answer": "代入 y″+λy=0 得 1+λ=0，所以 λ=−1；实谱并不等于非负谱。"
+      }
+    },
+    "en": {
+      "goal": "Separate the assumptions for real eigenvalues from those for nonnegative eigenvalues.",
+      "recognize": "Real Robin boundaries cancel the antisymmetric boundary term, but their energy contribution need not be nonnegative. Part (2) is missing a condition.",
+      "steps": [
+        "Add regularity assumptions k>0, ρ>0, and a nonzero boundary-coefficient pair at each end.",
+        "Multiply the equation by the conjugate eigenfunction and subtract the conjugate equation. Real boundaries cancel endpoint terms, giving λ equal to its conjugate.",
+        "Integrate by parts for the energy quotient, retaining −[ky′ conjugate(y)].",
+        "Check k=ρ=1, q=0, y′−y=0 at both ends, and y=eˣ. This gives λ=−1 and disproves the original second claim.",
+        "State the corrected result: Dirichlet/Neumann conditions, or Robin conditions making the entire energy quadratic form nonnegative, ensure nonnegative eigenvalues."
+      ],
+      "check": {
+        "question": "With y′−y=0, what eigenvalue belongs to y=eˣ?",
+        "answer": "Substitution in y″+λy=0 gives 1+λ=0, so λ=−1. A real spectrum need not be nonnegative."
+      }
+    }
+  }
+}

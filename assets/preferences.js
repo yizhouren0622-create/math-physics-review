@@ -1,0 +1,2 @@
+// Apply display choices before the first paint; study records use a separate key.
+(()=>{let p={language:'zh',size:'comfortable',contrast:'high'};try{p={...p,...JSON.parse(localStorage.getItem('math-physics-display-v2')||'{}')};}catch{}for(const [key,allowed]of Object.entries({language:['zh','en','both'],size:['comfortable','large','largest'],contrast:['high','soft']}))document.documentElement.dataset[key]=allowed.includes(p[key])?p[key]:allowed[0];})();

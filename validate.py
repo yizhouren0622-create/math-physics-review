@@ -36,7 +36,7 @@ class Document(HTMLParser):
   if tag=='details':
    self.details+=1;assert 'open' not in a,'Answers must start closed'
 docs={p.name:Document(p.read_text()) for p in ROOT.glob('*.html')}
-assert len(docs)==15
+assert len(docs)==16
 links=0
 for name,d in docs.items():
  assert len(d.ids)==len(set(d.ids)),(name,'duplicate HTML IDs')
@@ -49,3 +49,33 @@ for name,d in docs.items():
   links+=1
 assert not json.loads((ROOT/'data/coverage.json').read_text())['formula_failures']
 print(json.dumps(dict(status='passed',chapters=6,exercises=len(ids),pages=len(docs),local_links=links,math_elements=sum(d.math for d in docs.values()),closed_details=sum(d.details for d in docs.values())),ensure_ascii=False))
+
+# Both languages and all beginner paths must have the same coverage.
+for n in range(1,7):
+ zh=json.loads((ROOT/f'data/ch{n}.json').read_text())
+ en=json.loads((ROOT/f'data/en/ch{n}.json').read_text())
+ guides=json.loads((ROOT/f'data/learn/ch{n}.json').read_text())
+ assert [e['id'] for e in zh['exercises']]==[e['id'] for e in en['exercises']]
+ assert set(guides)=={e['id'] for e in zh['exercises']}
+ def same_math(a,b):
+  if isinstance(a,dict):
+   for k in a:
+    assert k in b,k
+    same_math(a[k],b[k])
+  elif isinstance(a,list):
+   assert len(a)==len(b)
+   for x,y in zip(a,b):same_math(x,y)
+  elif isinstance(a,str):
+   import re
+   pattern=r'\$\$.*?\$\$|\$[^$\n]+?\$'
+   from collections import Counter
+   assert not (Counter(re.findall(pattern,a,re.S))-Counter(re.findall(pattern,b,re.S))),(a[:90],'missing math')
+ same_math(zh,en)
+ for ident,g in guides.items():
+  for language in ['zh','en']:
+   assert g[language]['goal'] and g[language]['recognize']
+   assert 3<=len(g[language]['steps'])<=5
+   assert g[language]['check']['question'] and g[language]['check']['answer']
+  assert len(g['zh']['steps'])==len(g['en']['steps'])
+assert not json.loads((ROOT/'data/untranslated.json').read_text()),'Untranslated visible prose'
+print('Bilingual coverage and 126 guided learning paths passed.')

@@ -1,0 +1,898 @@
+{
+  "2.1-1": {
+    "zh": {
+      "goal": "把带绝对值的波形，拆成平均值与一串正弦、余弦。",
+      "recognize": "绝对值会把负半波翻上来，可能缩短周期。第二问还有一个原来的正弦，不能把它丢掉。",
+      "steps": [
+        "第一问先观察 $|\\cos\\pi x|$ 的周期是 1，不是 2，并利用偶性删去正弦系数。",
+        "第二问令 $\\theta=\\pi x/l$，先把 $|\\sin\\theta|$ 展开成偶次余弦。",
+        "最后把原有的 $\\sin\\theta$ 加回来，所以正弦系数 $b_1=1$。"
+      ],
+      "check": {
+        "question": "第二问的全部正弦系数都为零吗？",
+        "answer": "不是，$b_1=1$。"
+      }
+    },
+    "en": {
+      "goal": "Build the absolute-value waveform from an average and sine/cosine components.",
+      "recognize": "Absolute value flips negative half-waves upward and can shorten the period. Part (2) also contains an original sine term that must remain.",
+      "steps": [
+        "In (1), first observe that $|\\cos\\pi x|$ has period one, not two. Evenness removes sine coefficients.",
+        "In (2), set $\\theta=\\pi x/l$ and expand $|\\sin\\theta|$ using even-index cosines.",
+        "Add the original $\\sin\\theta$ back at the end, so the sine coefficient is $b_1=1$."
+      ],
+      "check": {
+        "question": "Do all sine coefficients vanish in part (2)?",
+        "answer": "No. $b_1=1$."
+      }
+    }
+  },
+  "2.1-2": {
+    "zh": {
+      "goal": "用恒等式或几何级数，避免硬算一长串系数积分。",
+      "recognize": "平方余弦能降幂；三角函数在分母时，试着平移角度，配成已知的泊松核。",
+      "steps": [
+        "第一问直接用 $\\cos^2x=(1+\\cos2x)/2$。",
+        "第二问先令 $t=x-\\pi/2$，使 $\\sin x=\\cos t$。",
+        "选模小于 1 的根，把 $1+\\tfrac12\\cos t$ 配成 $1-2r\\cos t+r^2$ 的常数倍，再用几何级数。"
+      ],
+      "check": {
+        "question": "为什么不能选模大于 1 的几何公比？",
+        "answer": "因为对应级数不收敛。"
+      }
+    },
+    "en": {
+      "goal": "Use identities or geometric series instead of calculating many coefficient integrals.",
+      "recognize": "A squared cosine has a power-reduction identity. A trigonometric denominator suggests a phase shift and a Poisson kernel.",
+      "steps": [
+        "In (1), directly use $\\cos^2x=(1+\\cos2x)/2$.",
+        "In (2), set $t=x-\\pi/2$ so that $\\sin x=\\cos t$.",
+        "Choose the root with modulus below one. Express $1+\\tfrac12\\cos t$ as a constant multiple of $1-2r\\cos t+r^2$, then use the geometric series."
+      ],
+      "check": {
+        "question": "Why reject a geometric ratio with modulus greater than one?",
+        "answer": "The corresponding series does not converge."
+      }
+    }
+  },
+  "2.1-3": {
+    "zh": {
+      "goal": "把从 0 线性上升到 $2l$、再重复的锯齿波展开。",
+      "recognize": "题目给的一个周期是 $[0,2l)$。它的平均值不为零，不能当作以原点为中心的奇函数。",
+      "steps": [
+        "就在 $0\\le x<2l$ 积分，先算平均值 l，所以常数项是 l。",
+        "求 $b_n$ 时对 $\\int_0^{2l}x\\sin(n\\pi x/l)dx$ 分部积分，保留右端点边界项。",
+        "得到正弦系数后写出级数；跳跃点的和取左右极限平均值 l。"
+      ],
+      "check": {
+        "question": "每周期的平均值是 0 还是 l？",
+        "answer": "是 l。"
+      }
+    },
+    "en": {
+      "goal": "Expand a sawtooth that rises from zero to $2l$ and then repeats.",
+      "recognize": "The given period is $[0,2l)$. Its average is nonzero; it is not the odd sawtooth centered at the origin.",
+      "steps": [
+        "Integrate directly on $0\\le x<2l$. The average is l, so the constant term is l.",
+        "For $b_n$, integrate $\\int_0^{2l}x\\sin(n\\pi x/l)dx$ by parts and retain the right-end boundary term.",
+        "Write the sine coefficients and series. At a jump, take the average of the one-sided limits, l."
+      ],
+      "check": {
+        "question": "Is the mean over one period zero or l?",
+        "answer": "It is l."
+      }
+    }
+  },
+  "2.1-4": {
+    "zh": {
+      "goal": "用两端为零的正弦波，在区间内部拼出直线 x。",
+      "recognize": "两端零值选择正弦基。原函数到右端趋于 l，但指定端点值是零，两件事要分开理解。",
+      "steps": [
+        "选每个都满足两端零值的 $\\sin(n\\pi x/l)$。",
+        "算 $b_n=(2/l)\\int_0^l x\\sin(n\\pi x/l)dx$，对 x 分部积分。",
+        "把系数写入级数：内部等于 x，右端级数却是零；这是奇延拓的跳跃平均。"
+      ],
+      "check": {
+        "question": "在 x=l，正弦级数每一项是多少？",
+        "answer": "都是零，所以级数和也是零。"
+      }
+    },
+    "en": {
+      "goal": "Use sines that vanish at both ends to reconstruct x inside the interval.",
+      "recognize": "Zero-value endpoints select sine basis functions. The interior function tends to l at the right, while the prescribed endpoint value is zero; distinguish these statements.",
+      "steps": [
+        "Choose $\\sin(n\\pi x/l)$, each of which vanishes at both endpoints.",
+        "Calculate $b_n=(2/l)\\int_0^l x\\sin(n\\pi x/l)dx$ by integration by parts.",
+        "Insert the coefficients. The sum equals x inside but zero at the right endpoint, the jump average of the odd extension."
+      ],
+      "check": {
+        "question": "What is every sine-series term at x=l?",
+        "answer": "Zero, so the series sum is zero there too."
+      }
+    }
+  },
+  "2.1-5": {
+    "zh": {
+      "goal": "用两端斜率为零的余弦波，展开区间内的直线。",
+      "recognize": "零导数条件选择余弦基，并且要保留常数项。函数值展开不等于导数也能在端点逐项展开。",
+      "steps": [
+        "写 $x=a_0/2+\\sum a_n\\cos(n\\pi x/l)$。",
+        "先积分求 $a_0=l$，因此常数项为 $l/2$。",
+        "再对 $\\int_0^l x\\cos(n\\pi x/l)dx$ 分部积分两次，发现偶数 n 的系数为零。"
+      ],
+      "check": {
+        "question": "若 $a_0=l$，级数的常数项是多少？",
+        "answer": "$l/2$。"
+      }
+    },
+    "en": {
+      "goal": "Expand the interior straight line using cosines with zero endpoint slopes.",
+      "recognize": "Zero-derivative conditions select cosines, including a constant term. Expanding function values does not guarantee termwise endpoint differentiation.",
+      "steps": [
+        "Write $x=a_0/2+\\sum a_n\\cos(n\\pi x/l)$.",
+        "Integrate first to find $a_0=l$, so the constant term is $l/2$.",
+        "Integrate $\\int_0^l x\\cos(n\\pi x/l)dx$ by parts twice. The even-n coefficients vanish."
+      ],
+      "check": {
+        "question": "If $a_0=l$, what is the constant term in the series?",
+        "answer": "$l/2$."
+      }
+    }
+  },
+  "2.1-6": {
+    "zh": {
+      "goal": "找到同时满足“左边零斜率、右边零值”的波，再展开 x。",
+      "recognize": "两端条件不同，整数频率不一定合适。先选形状，再定频率。",
+      "steps": [
+        "左端零导数让我们选 $\\cos kx$，因为它的导数在零点为零。",
+        "右端零值要求 $\\cos kl=0$，得到 $k_n=(n+1/2)\\pi/l$。",
+        "每个基函数的平方积分是 $l/2$，所以系数用 $(2/l)\\int_0^l x\\cos(k_nx)dx$。"
+      ],
+      "check": {
+        "question": "这里应选整数频率还是半整数频率？",
+        "answer": "半整数频率 $k_n=(n+1/2)\\pi/l$。"
+      }
+    },
+    "en": {
+      "goal": "Find waves satisfying a zero left slope and zero right value, then expand x.",
+      "recognize": "Different endpoint types do not generally use integer frequencies. Choose the shape first, then its allowed frequencies.",
+      "steps": [
+        "The zero derivative on the left suggests $\\cos kx$, whose derivative vanishes at zero.",
+        "The zero value on the right requires $\\cos kl=0$, giving $k_n=(n+1/2)\\pi/l$.",
+        "Each basis function has squared integral $l/2$. Thus use coefficient $(2/l)\\int_0^l x\\cos(k_nx)dx$."
+      ],
+      "check": {
+        "question": "Are the allowed frequencies integer or half-integer here?",
+        "answer": "Half-integer: $k_n=(n+1/2)\\pi/l$."
+      }
+    }
+  },
+  "2.2-1": {
+    "zh": {
+      "goal": "求一个宽度 $2a$、高度 1 的矩形脉冲含有哪些频率。",
+      "recognize": "函数只在有限区间非零，所以全轴积分只剩 $[-a,a]$。",
+      "steps": [
+        "把定义写成 $F(k)=\\int_{-a}^a e^{-ikx}dx$。",
+        "利用偶性，虚部相消，变为 $2\\int_0^a\\cos kx\\,dx$。",
+        "得到 $2\\sin(ak)/k$；在 k=0 用极限补为 $2a$，正好是矩形面积。"
+      ],
+      "check": {
+        "question": "零频值 F(0) 是多少？",
+        "answer": "$2a$。"
+      }
+    },
+    "en": {
+      "goal": "Find the frequency content of a height-one rectangle of width $2a$.",
+      "recognize": "The function is nonzero only on a finite interval, so the whole-line integral reduces to $[-a,a]$.",
+      "steps": [
+        "Write the definition as $F(k)=\\int_{-a}^a e^{-ikx}dx$.",
+        "Evenness cancels the imaginary part, leaving $2\\int_0^a\\cos kx\\,dx$.",
+        "Obtain $2\\sin(ak)/k$. At k=0, fill in the limit $2a$, exactly the rectangle area."
+      ],
+      "check": {
+        "question": "What is the zero-frequency value F(0)?",
+        "answer": "$2a$."
+      }
+    }
+  },
+  "2.2-2": {
+    "zh": {
+      "goal": "说明 sinc 形状的函数对应一个矩形频谱。",
+      "recognize": "上一题已经建立“矩形 → sinc”。现在可以反过来用，但要带上逆变换的系数。",
+      "steps": [
+        "先利用实偶性，把变换写成两倍半轴余弦积分。",
+        "用积化和差把 $\\sin(ax)\\cos(kx)$ 拆成频率 $a+k$ 和 $a-k$ 的正弦。",
+        "分别按频率正、零、负使用 Dirichlet 积分；在 $|k|=a$ 取跳跃半值。"
+      ],
+      "check": {
+        "question": "频谱边界 $|k|=a$ 取内部值还是一半？",
+        "answer": "取一半，即 $\\pi/2$。"
+      }
+    },
+    "en": {
+      "goal": "Show that a sinc-shaped function has a rectangular spectrum.",
+      "recognize": "The preceding exercise gives “rectangle → sinc.” Reverse that relationship while retaining the inverse-transform factor.",
+      "steps": [
+        "Use real evenness to write twice a half-line cosine integral.",
+        "Split $\\sin(ax)\\cos(kx)$ into sines at frequencies $a+k$ and $a-k$.",
+        "Use the Dirichlet integral for positive, zero, and negative frequencies. At $|k|=a$, take the jump half-value."
+      ],
+      "check": {
+        "question": "At the spectral boundary $|k|=a$, use the interior value or half of it?",
+        "answer": "Half: $\\pi/2$."
+      }
+    }
+  },
+  "2.2-3": {
+    "zh": {
+      "goal": "求一个左右对称、向两边衰减的指数函数的频谱。",
+      "recognize": "原函数实且偶，变换应实且偶。先利用这一点，少算一半积分。",
+      "steps": [
+        "在正半轴 $|x|=x$，写 $F(k)=2\\int_0^\\infty e^{-x}\\cos kx\\,dx$。",
+        "把余弦积分看成 $\\int_0^\\infty e^{-(1-ik)x}dx$ 的实部。",
+        "积分得 $1/(1-ik)$，取实部再乘 2；用 F(0)=2 检验。"
+      ],
+      "check": {
+        "question": "负半轴上的 $e^{-|x|}$ 等于 $e^{-x}$ 吗？",
+        "answer": "不等于。负半轴是 $e^x$。"
+      }
+    },
+    "en": {
+      "goal": "Find the spectrum of a symmetric exponential decaying in both directions.",
+      "recognize": "A real even original function has a real even transform. Use that symmetry to halve the work.",
+      "steps": [
+        "On the positive half-line, $|x|=x$, so write $F(k)=2\\int_0^\\infty e^{-x}\\cos kx\\,dx$.",
+        "View the cosine integral as the real part of $\\int_0^\\infty e^{-(1-ik)x}dx$.",
+        "The exponential integral is $1/(1-ik)$. Take its real part and multiply by two; check F(0)=2."
+      ],
+      "check": {
+        "question": "Is $e^{-|x|}=e^{-x}$ on the negative half-line?",
+        "answer": "No. There it is $e^x$."
+      }
+    }
+  },
+  "2.2-4": {
+    "zh": {
+      "goal": "证明高斯函数变换后仍然是高斯形状，并算准系数。",
+      "recognize": "直接积分带复指数较难，但对频率求导会出现 x，与高斯自身的导数相连。",
+      "steps": [
+        "记 $F(k)=\\int e^{-x^2}e^{-ikx}dx$，对 k 求导得到因子 $-ix$。",
+        "用 $xe^{-x^2}=-(e^{-x^2})\\prime/2$，再对 x 分部积分，得到 $F\\prime=-kF/2$。",
+        "解这个一阶方程，再用 $F(0)=\\sqrt\\pi$ 定常数。"
+      ],
+      "check": {
+        "question": "解出 F 的方程后，哪一个值能定常数？",
+        "answer": "$F(0)=\\sqrt\\pi$。"
+      }
+    },
+    "en": {
+      "goal": "Prove that a Gaussian transforms into another Gaussian and determine its prefactor.",
+      "recognize": "Direct integration with a complex exponential is awkward. Differentiating in frequency introduces x, which relates to the Gaussian's derivative.",
+      "steps": [
+        "Let $F(k)=\\int e^{-x^2}e^{-ikx}dx$. Differentiate in k to introduce $-ix$.",
+        "Use $xe^{-x^2}=-(e^{-x^2})\\prime/2$ and integrate by parts in x to obtain $F\\prime=-kF/2$.",
+        "Solve this first-order equation and fix its constant using $F(0)=\\sqrt\\pi$."
+      ],
+      "check": {
+        "question": "Which value fixes the constant after solving the equation for F?",
+        "answer": "$F(0)=\\sqrt\\pi$."
+      }
+    }
+  },
+  "2.2-5": {
+    "zh": {
+      "goal": "求被截在 $[-\\pi,\\pi]$ 内的一段正弦的频谱。",
+      "recognize": "有限支集让积分区间有限；实奇函数告诉我们结果应为纯虚奇函数。",
+      "steps": [
+        "把定义限制到 $[-\\pi,\\pi]$。用 $\\sin x=(e^{ix}-e^{-ix})/(2i)$ 拆成两个指数。",
+        "分别积分频率 $k-1$ 与 $k+1$ 的指数，再合并。",
+        "表达式在 $k=\\pm1$ 可能出现 0/0；单独取极限或回到原积分，不要判成发散。"
+      ],
+      "check": {
+        "question": "看到 k=1 时的 0/0，可以直接说有极点吗？",
+        "answer": "不可以。这是可去点，需要取极限。"
+      }
+    },
+    "en": {
+      "goal": "Find the spectrum of a sine wave truncated to $[-\\pi,\\pi]$.",
+      "recognize": "Finite support makes the interval finite. Real odd symmetry predicts a purely imaginary odd transform.",
+      "steps": [
+        "Restrict the defining integral to $[-\\pi,\\pi]$. Split $\\sin x=(e^{ix}-e^{-ix})/(2i)$.",
+        "Integrate exponentials at frequencies $k-1$ and $k+1$ separately, then combine them.",
+        "At $k=\\pm1$, an apparent 0/0 is removable. Take a limit or use the original integral instead of claiming divergence."
+      ],
+      "check": {
+        "question": "Does 0/0 at k=1 automatically mean a pole?",
+        "answer": "No. It is removable and requires a limit."
+      }
+    }
+  },
+  "2.2-6": {
+    "zh": {
+      "goal": "把半轴问题接成奇函数，再分清正弦像与全轴像。",
+      "recognize": "零值边界适合奇延拓。负指数的全轴变换会给正弦积分带来 $-2i$。",
+      "steps": [
+        "先只算半轴 $S(k)=\\int_0^\\pi\\cos x\\sin kx\\,dx$。",
+        "用积化和差变成频率 $k+1$ 和 $k-1$ 的两个正弦积分。",
+        "如果要全轴奇延拓的像，再乘 $-2i$；若课程采用归一化正弦变换，则乘相应系数。"
+      ],
+      "check": {
+        "question": "本章负指数约定下，全轴奇延拓的像是 $2iS$ 吗？",
+        "answer": "不是，是 $-2iS$。"
+      }
+    },
+    "en": {
+      "goal": "Extend the half-line function oddly and distinguish its sine transform from its whole-line transform.",
+      "recognize": "A zero-value boundary suggests an odd extension. The negative-exponential whole-line transform contributes a factor $-2i$ to the sine integral.",
+      "steps": [
+        "First compute only $S(k)=\\int_0^\\pi\\cos x\\sin kx\\,dx$.",
+        "Use product-to-sum to obtain sine integrals at frequencies $k+1$ and $k-1$.",
+        "For the whole-line odd-extension transform, multiply by $-2i$. For a normalized sine transform, apply the course's normalization factor instead."
+      ],
+      "check": {
+        "question": "With this chapter\\'s negative exponent, is the odd-extension transform $2iS$?",
+        "answer": "No. It is $-2iS$."
+      }
+    }
+  },
+  "2.2-7": {
+    "zh": {
+      "goal": "把三维汤川势的变换化成一个一维径向积分。",
+      "recognize": "函数只依赖离原点的距离，球坐标能把方向积分一次做完。",
+      "steps": [
+        "令频率向量沿球坐标极轴，使点积成为 $kr\\cos\\theta$。",
+        "体积元用 $r^2\\sin\\theta\\,dr\\,d\\theta\\,d\\phi$；角积分得到 $4\\pi\\sin(kr)/(kr)$。",
+        "代入 $e^{-\\alpha r}/r$ 后化成指数乘正弦积分，再用 k=0 的正积分核对符号。"
+      ],
+      "check": {
+        "question": "这里体积元能只写成 dr 吗？",
+        "answer": "不能，必须包含 $r^2\\sin\\theta$ 和两个角度积分。"
+      }
+    },
+    "en": {
+      "goal": "Reduce the three-dimensional Yukawa transform to one radial integral.",
+      "recognize": "The function depends only on distance from the origin. Spherical coordinates finish the direction integrals at once.",
+      "steps": [
+        "Align the frequency vector with the polar axis so the dot product is $kr\\cos\\theta$.",
+        "Use volume element $r^2\\sin\\theta\\,dr\\,d\\theta\\,d\\phi$. The angular integral is $4\\pi\\sin(kr)/(kr)$.",
+        "Insert $e^{-\\alpha r}/r$ to obtain an exponential-sine integral. Check its sign against the positive integral at k=0."
+      ],
+      "check": {
+        "question": "Can the three-dimensional volume element be replaced by dr alone?",
+        "answer": "No. It needs $r^2\\sin\\theta$ and both angular integrations."
+      }
+    }
+  },
+  "2.2-8": {
+    "zh": {
+      "goal": "给不绝对可积的反平方核一个有明确意义的频谱。",
+      "recognize": "无穷远衰减不够，普通全空间绝对积分不存在。先加阻尼，再取极限。",
+      "steps": [
+        "先把原函数改为 $e^{-\\varepsilon r}/r^2$，取 $\\varepsilon>0$。",
+        "用球坐标得到 $(4\\pi/k)\\int_0^\\infty e^{-\\varepsilon r}\\sin(kr)/r\\,dr$。",
+        "把里面积分对 k 求导，算出反正切；最后令 $\\varepsilon\\to0^+$，保留 $k=|\\mathbf k|$。"
+      ],
+      "check": {
+        "question": "为什么答案里要用频率的模长？",
+        "answer": "径向函数的变换也径向，不能随频率方向变号。"
+      }
+    },
+    "en": {
+      "goal": "Give a non-absolutely-integrable inverse-square kernel a well-defined spectrum.",
+      "recognize": "Decay at infinity is too slow for ordinary absolute integration over all space. Add damping, then take a limit.",
+      "steps": [
+        "First replace the function by $e^{-\\varepsilon r}/r^2$, with $\\varepsilon>0$.",
+        "Spherical coordinates give $(4\\pi/k)\\int_0^\\infty e^{-\\varepsilon r}\\sin(kr)/r\\,dr$.",
+        "Differentiate the inner integral in k to obtain an arctangent. Finally let $\\varepsilon\\to0^+$ and retain $k=|\\mathbf k|$."
+      ],
+      "check": {
+        "question": "Why does the answer use the magnitude of the frequency?",
+        "answer": "A radial function has a radial transform, so its sign cannot depend on direction."
+      }
+    }
+  },
+  "2.2-9": {
+    "zh": {
+      "goal": "用已经收敛的汤川结果，得到库仑核的广义变换。",
+      "recognize": "库仑核直接积分会遇到收敛困难；它可以看作汤川核阻尼参数趋零。",
+      "steps": [
+        "先写第七题结果 $4\\pi/(k^2+\\alpha^2)$，此时 $\\alpha>0$。",
+        "让 $\\alpha\\to0^+$，得到 $4\\pi/k^2$，明确这是广义变换。",
+        "不要给 k=0 强行补有限值；再比较前题的 $1/k$，理解两种空间幂次对应不同频谱幂次。"
+      ],
+      "check": {
+        "question": "可以把 k=0 处的频谱写成有限常数吗？",
+        "answer": "不可以。那里有奇性，应按广义函数理解。"
+      }
+    },
+    "en": {
+      "goal": "Obtain the generalized Coulomb transform from the convergent Yukawa result.",
+      "recognize": "Direct Coulomb integration has convergence difficulties. The Coulomb kernel is the zero-damping limit of Yukawa kernels.",
+      "steps": [
+        "Begin with exercise 7: $4\\pi/(k^2+\\alpha^2)$ for $\\alpha>0$.",
+        "Let $\\alpha\\to0^+$ to obtain $4\\pi/k^2$, explicitly as a generalized transform.",
+        "Do not assign a finite value at k=0. Compare the preceding $1/k$ result to see how spatial powers determine spectral powers."
+      ],
+      "check": {
+        "question": "Can the spectrum at k=0 be assigned a finite constant?",
+        "answer": "No. It is singular there and requires the distributional interpretation."
+      }
+    }
+  },
+  "2.3-1": {
+    "zh": {
+      "goal": "不用直接积分振荡函数，改用矩形面积求平方积分。",
+      "recognize": "平方频谱积分适合帕塞瓦尔定理，它把频域平方积分换回原函数的平方积分。",
+      "steps": [
+        "选 $f(x)=1$ 在 $[-1,1]$，其余零；它的平方积分就是 2。",
+        "写它的变换 $F(k)=2\\sin k/k$。",
+        "代入 $\\int|f|^2=(1/2\\pi)\\int|F|^2$，把 F 的系数 2 平方，再解目标积分。"
+      ],
+      "check": {
+        "question": "F 前面的系数 2，放进平方积分后变成多少？",
+        "answer": "$4$。"
+      }
+    },
+    "en": {
+      "goal": "Evaluate the oscillatory square integral using the area of a rectangle instead.",
+      "recognize": "Parseval turns a squared-spectrum integral into the squared integral of its original function.",
+      "steps": [
+        "Choose f=1 on $[-1,1]$ and zero elsewhere. Its squared integral is two.",
+        "Its transform is $F(k)=2\\sin k/k$.",
+        "Insert this into $\\int|f|^2=(1/2\\pi)\\int|F|^2$. Square the prefactor two, then solve for the target integral."
+      ],
+      "check": {
+        "question": "What happens to the prefactor two inside the squared integral?",
+        "answer": "It becomes four."
+      }
+    }
+  },
+  "2.3-2": {
+    "zh": {
+      "goal": "证明越来越窄、但面积始终为 1 的矩形能表示 δ 的抽样作用。",
+      "recognize": "δ 是积分规则，不是普通点值函数。要测试它对任意连续测试函数的作用。",
+      "steps": [
+        "先检查高度 $1/h$ 乘宽度 h，面积确实为 1。",
+        "把 $\\int f_h(x)\\varphi(x)dx$ 写成 $(1/h)\\int_{-h/2}^{h/2}\\varphi(x)dx$。",
+        "令 x=hu，区间固定为 $[-1/2,1/2]$；由连续性让 $\\varphi(hu)$ 趋于 $\\varphi(0)$。"
+      ],
+      "check": {
+        "question": "δ 逼近要证明逐点极限，还是测试函数积分的极限？",
+        "answer": "测试函数积分的极限。"
+      }
+    },
+    "en": {
+      "goal": "Prove that narrowing unit-area rectangles reproduce delta's sampling action.",
+      "recognize": "Delta is an integration rule, not an ordinary point-value function. Test its action on any continuous test function.",
+      "steps": [
+        "Check area first: height $1/h$ times width h equals one.",
+        "Write $\\int f_h(x)\\varphi(x)dx=(1/h)\\int_{-h/2}^{h/2}\\varphi(x)dx$.",
+        "Set x=hu to fix the interval at $[-1/2,1/2]$. Continuity makes $\\varphi(hu)$ approach $\\varphi(0)$."
+      ],
+      "check": {
+        "question": "Does delta approximation require pointwise convergence or convergence of test-function integrals?",
+        "answer": "Convergence of test-function integrals."
+      }
+    }
+  },
+  "2.3-3": {
+    "zh": {
+      "goal": "在单位正方形里，算 δ 限定到斜线上的积分。",
+      "recognize": "先固定 y，就只剩关于 x 的一个 δ。它在 $x=1-y$ 抽样。",
+      "steps": [
+        "固定 $0<y<1$，解 $x+y-1=0$，根 $x=1-y$ 在积分区间内。",
+        "对 x 的导数是 1，所以内积分直接为 1。",
+        "再对 y 从 0 到 1 积分。端点的单点约定不影响外积分。"
+      ],
+      "check": {
+        "question": "固定 y 后，δ 的根在什么位置？",
+        "answer": "$x=1-y$。"
+      }
+    },
+    "en": {
+      "goal": "Evaluate a delta integral that restricts the unit square to a diagonal line.",
+      "recognize": "Fix y first. There is then one delta in x, sampling at $x=1-y$.",
+      "steps": [
+        "For fixed $0<y<1$, solve $x+y-1=0$. The root $x=1-y$ lies inside the x interval.",
+        "The derivative in x is one, so the inner integral is one.",
+        "Integrate that value over y from zero to one. Endpoint conventions at isolated points do not affect the outer integral."
+      ],
+      "check": {
+        "question": "Where is the delta root for fixed y?",
+        "answer": "$x=1-y$."
+      }
+    }
+  },
+  "2.3-4": {
+    "zh": {
+      "goal": "给不衰减的符号函数求一个广义频谱。",
+      "recognize": "普通 Fourier 积分不收敛。可以用分布导数把阶跃变化变成 δ。",
+      "steps": [
+        "符号函数在零点从 -1 跳到 1，所以分布导数是 $2\\delta$。",
+        "应用微分性质得到 $ikF=2$，提示 F 与 $1/k$ 有关。",
+        "通过对称阻尼确定为 $-2i\\,\\mathrm{PV}(1/k)$；奇性排除额外的偶 δ 项。"
+      ],
+      "check": {
+        "question": "从 -1 跳到 1，跳跃量是多少？",
+        "answer": "$2$，所以导数里的 δ 系数是 2。"
+      }
+    },
+    "en": {
+      "goal": "Find a generalized spectrum for the nondecaying sign function.",
+      "recognize": "Its ordinary Fourier integral does not converge. Distributional differentiation converts its jump into delta.",
+      "steps": [
+        "The sign function jumps from -1 to one at zero, so its distributional derivative is $2\\delta$.",
+        "The derivative property gives $ikF=2$, suggesting a multiple of $1/k$.",
+        "Symmetric damping identifies $-2i\\,\\mathrm{PV}(1/k)$. Oddness excludes any extra even delta term."
+      ],
+      "check": {
+        "question": "What is the jump from -1 to one?",
+        "answer": "Two, giving delta coefficient two in the derivative."
+      }
+    }
+  },
+  "2.3-5": {
+    "zh": {
+      "goal": "从定义证明：时域相乘，对应频域卷积并乘系数。",
+      "recognize": "要把乘积拆开，就把其中一个函数改写成逆变换。逆变换的 $1/(2\\pi)$ 会一直留下。",
+      "steps": [
+        "把 f 写成 $(1/2\\pi)\\int F(q)e^{iqx}dq$，代入 fg 的正变换。",
+        "在有充分衰减、可换序的条件下，把 q 积分移到外面。",
+        "里面的 x 积分是 $G(k-q)$，外面积分就是卷积，再保留 $1/(2\\pi)$。"
+      ],
+      "check": {
+        "question": "本章时域乘积的变换是 F*G 还是 $(F*G)/(2\\\\pi)$？",
+        "answer": "是 $(F*G)/(2\\pi)$。"
+      }
+    },
+    "en": {
+      "goal": "Prove from the definition that multiplication in time becomes a scaled convolution in frequency.",
+      "recognize": "Separate a product by replacing one factor with its inverse transform. The inverse factor $1/(2\\pi)$ remains throughout.",
+      "steps": [
+        "Write $f=(1/2\\pi)\\int F(q)e^{iqx}dq$ and substitute it into the forward transform of fg.",
+        "With sufficient decay to justify interchange, move the q integral outside.",
+        "Recognize the inner x integral as $G(k-q)$. The outer integral is the convolution, with the retained $1/(2\\pi)$."
+      ],
+      "check": {
+        "question": "With this convention, is the product transform F*G or $(F*G)/(2\\\\pi)$?",
+        "answer": "It is $(F*G)/(2\\pi)$."
+      }
+    }
+  },
+  "2.3-6": {
+    "zh": {
+      "goal": "求只在正半轴存在的正弦波的完整广义频谱。",
+      "recognize": "阶跃截断让函数不衰减。普通积分不够，既有主值项，也有共振频率上的 δ。",
+      "steps": [
+        "先在正半轴加 $e^{-\\varepsilon x}$，保证积分可算。",
+        "把 $\\sin\\omega x$ 拆成两个指数，得到以 $k-\\omega$、$k+\\omega$ 为变量的两个分式。",
+        "令 $\\varepsilon\\to0^+$ 时使用主值与 δ 的极限公式；两个部分都要保留。"
+      ],
+      "check": {
+        "question": "只写非共振处的有理式，完整吗？",
+        "answer": "不完整，会漏掉 $k=\\pm\\omega$ 的 δ 项。"
+      }
+    },
+    "en": {
+      "goal": "Find the complete generalized spectrum of a sine present only on the positive half-line.",
+      "recognize": "Step truncation leaves a nondecaying function. The result needs both principal-value terms and deltas at resonant frequencies.",
+      "steps": [
+        "Insert $e^{-\\varepsilon x}$ on the positive half-line to make the integral converge.",
+        "Split $\\sin\\omega x$ into two exponentials, producing fractions in $k-\\omega$ and $k+\\omega$.",
+        "As $\\varepsilon\\to0^+$, use the principal-value-plus-delta limit. Retain both kinds of term."
+      ],
+      "check": {
+        "question": "Is a rational expression valid away from resonance the complete answer?",
+        "answer": "No. It misses deltas at $k=\\pm\\omega$."
+      }
+    }
+  },
+  "2.4-1": {
+    "zh": {
+      "goal": "从定义得到正弦的 Laplace 变换，而不只背表。",
+      "recognize": "正弦能拆成指数，指数乘 $e^{-pt}$ 后都能直接积分。",
+      "steps": [
+        "先写 $\\sin at=(e^{iat}-e^{-iat})/(2i)$。",
+        "每项乘 $e^{-pt}$，分别积分得到 $1/(p-ia)$ 和 $1/(p+ia)$。",
+        "两项相减再除 $2i$，合并分母为 $p^2+a^2$，同时写收敛条件。"
+      ],
+      "check": {
+        "question": "正弦变换的分子是 a 还是 p？",
+        "answer": "是 a；p 对应余弦的分子。"
+      }
+    },
+    "en": {
+      "goal": "Derive the sine Laplace transform instead of only memorizing a table.",
+      "recognize": "Split sine into exponentials. Each becomes directly integrable after multiplication by $e^{-pt}$.",
+      "steps": [
+        "Write $\\sin at=(e^{iat}-e^{-iat})/(2i)$.",
+        "Multiply each term by $e^{-pt}$ and integrate to obtain $1/(p-ia)$ and $1/(p+ia)$.",
+        "Subtract and divide by $2i$. Combine the denominator into $p^2+a^2$ and state convergence."
+      ],
+      "check": {
+        "question": "Is the numerator of the sine transform a or p?",
+        "answer": "It is a. The cosine numerator is p."
+      }
+    }
+  },
+  "2.4-2": {
+    "zh": {
+      "goal": "分别求双曲正弦和双曲余弦的变换，分清正负号。",
+      "recognize": "双曲函数由实指数构成，不同于普通三角函数的虚指数。",
+      "steps": [
+        "写 $\\sinh at=(e^{at}-e^{-at})/2$，$\\cosh at=(e^{at}+e^{-at})/2$。",
+        "分别把两指数变成 $1/(p-a)$ 与 $1/(p+a)$。",
+        "相减或相加后整理，分母是 $p^2-a^2$；收敛要使两指数都衰减。"
+      ],
+      "check": {
+        "question": "双曲函数的分母是 $p^2+a^2$ 吗？",
+        "answer": "不是，是 $p^2-a^2$。"
+      }
+    },
+    "en": {
+      "goal": "Find hyperbolic-sine and hyperbolic-cosine transforms and distinguish their signs.",
+      "recognize": "Hyperbolic functions use real exponentials, unlike ordinary trigonometric functions with imaginary exponents.",
+      "steps": [
+        "Write $\\sinh at=(e^{at}-e^{-at})/2$ and $\\cosh at=(e^{at}+e^{-at})/2$.",
+        "Transform the exponentials to $1/(p-a)$ and $1/(p+a)$.",
+        "Subtract or add and simplify to denominator $p^2-a^2$. Convergence requires both exponentials to decay."
+      ],
+      "check": {
+        "question": "Is the hyperbolic denominator $p^2+a^2$?",
+        "answer": "No. It is $p^2-a^2$."
+      }
+    }
+  },
+  "2.4-3": {
+    "zh": {
+      "goal": "用已知余弦变换，快速求多乘一个 t 后的变换。",
+      "recognize": "时间上乘 t，对像函数求一次负导数，比重新积分更短。",
+      "steps": [
+        "先写 $F(p)=p/(p^2+a^2)$。",
+        "按商法则求 $F\\prime(p)$，分子是 $(p^2+a^2)-2p^2$。",
+        "最后整体加负号，得到目标；可用 a=0 检查是否回到 $\\mathcal L[t]=1/p^2$。"
+      ],
+      "check": {
+        "question": "时间乘 t，像函数是正求导还是负求导？",
+        "answer": "负求导。"
+      }
+    },
+    "en": {
+      "goal": "Use the known cosine transform to transform an extra factor of t quickly.",
+      "recognize": "Multiplication by t corresponds to one negative derivative of the transformed function, shorter than reintegration.",
+      "steps": [
+        "Start with $F(p)=p/(p^2+a^2)$.",
+        "Use the quotient rule. The derivative numerator is $(p^2+a^2)-2p^2$.",
+        "Apply the overall minus sign last. Check a=0 against $\\mathcal L[t]=1/p^2$."
+      ],
+      "check": {
+        "question": "Does multiplication by t give a positive or negative transform derivative?",
+        "answer": "A negative derivative."
+      }
+    }
+  },
+  "2.4-4": {
+    "zh": {
+      "goal": "把已有基础变换平移，处理乘指数的函数。",
+      "recognize": "乘 $e^{bt}$ 后，定义中的指数变成 $e^{-(p-b)t}$，所以整个像函数都要替换 p。",
+      "steps": [
+        "先分别写 $\\sin at$ 和 $\\cosh at$ 的基础变换。",
+        "对每个出现的 p 同时做 $p\\mapsto p-b$。",
+        "特别检查双曲余弦的分子也变成 $p-b$，不是 $(p-b)^2$；收敛半平面同步平移。"
+      ],
+      "check": {
+        "question": "双曲余弦平移后的分子是什么？",
+        "answer": "$p-b$。"
+      }
+    },
+    "en": {
+      "goal": "Shift basic transforms to handle an exponential multiplier.",
+      "recognize": "Multiplication by $e^{bt}$ changes the defining exponential to $e^{-(p-b)t}$. Replace p throughout the transformed function.",
+      "steps": [
+        "Write the basic transforms of $\\sin at$ and $\\cosh at$.",
+        "Apply $p\\mapsto p-b$ to every occurrence of p.",
+        "Check that the hyperbolic-cosine numerator becomes $p-b$, not $(p-b)^2$. Shift the convergence half-plane as well."
+      ],
+      "check": {
+        "question": "What is the shifted hyperbolic-cosine numerator?",
+        "answer": "$p-b$."
+      }
+    }
+  },
+  "2.4-5": {
+    "zh": {
+      "goal": "从像函数识别原函数；不能直接认出时先拆分。",
+      "recognize": "第一问形状是平移后的余弦；第二问有重复的零极点，部分分式必须含 $1/p^2$。",
+      "steps": [
+        "第一问把 $p-2$ 看成一个整体，与 $p/(p^2+2^2)$ 比较。",
+        "因此基础余弦是 $\\cos2t$，频域平移再对应乘 $e^{2t}$。",
+        "第二问写 $A/p+B/p^2+C/(p-1)$，解系数后逐项逆变换。"
+      ],
+      "check": {
+        "question": "$1/p^2$ 的原函数是 1 还是 t？",
+        "answer": "是 t。"
+      }
+    },
+    "en": {
+      "goal": "Recognize original functions from their transforms, splitting fractions when needed.",
+      "recognize": "Part (1) is a shifted cosine. Part (2) has a repeated zero pole, so partial fractions must include $1/p^2$.",
+      "steps": [
+        "In (1), treat $p-2$ as a unit and compare with $p/(p^2+2^2)$.",
+        "The basic function is $\\cos2t$. The frequency shift adds multiplier $e^{2t}$.",
+        "In (2), write $A/p+B/p^2+C/(p-1)$, solve the coefficients, and invert each term."
+      ],
+      "check": {
+        "question": "Is the inverse of $1/p^2$ one or t?",
+        "answer": "It is t."
+      }
+    }
+  },
+  "2.4-6": {
+    "zh": {
+      "goal": "解释为什么时间累积积分，会让 Laplace 像除以 p。",
+      "recognize": "内积分从 0 累积到 t。也可以把这个累积量当作新函数，对它求导就回到 f。",
+      "steps": [
+        "设 $g(t)=\\int_0^t f(\\tau)d\\tau$。",
+        "于是 $g(0)=0$、$g\\prime=f$，这两个信息都要写。",
+        "微分定理给 $pG(p)-0=F(p)$，所以 $G=F/p$；定义证明则交换三角域积分顺序。"
+      ],
+      "check": {
+        "question": "这个累积函数 g 的初值是多少？",
+        "answer": "$g(0)=0$。"
+      }
+    },
+    "en": {
+      "goal": "Explain why time integration divides a Laplace transform by p.",
+      "recognize": "The inner integral accumulates f from zero to t. Treat that accumulation as a new function whose derivative returns f.",
+      "steps": [
+        "Set $g(t)=\\int_0^t f(\\tau)d\\tau$.",
+        "Then $g(0)=0$ and $g\\prime=f$; record both facts.",
+        "The derivative theorem gives $pG(p)-0=F(p)$, hence $G=F/p$. A direct proof instead reverses the triangular-domain integrals."
+      ],
+      "check": {
+        "question": "What is the initial value of the accumulated function g?",
+        "answer": "$g(0)=0$."
+      }
+    }
+  },
+  "2.5-1": {
+    "zh": {
+      "goal": "把二阶初值问题改成代数分式，再还原成 y(t)。",
+      "recognize": "常系数方程加初值，适合 Laplace。初速度 1 不能在变换时漏掉。",
+      "steps": [
+        "设 $Y=\\mathcal L[y]$，写 $\\mathcal L[y\\prime\\prime]=p^2Y-1$，$\\mathcal L[y\\prime]=pY$。",
+        "合并得到 $(p^2+2p-3)Y=1+1/(p+1)$。",
+        "分母拆成 $(p-1)(p+3)$，做部分分式，再逐项逆变换并检查两个初值。"
+      ],
+      "check": {
+        "question": "这里 $\\\\mathcal L[y\\\\prime\\\\prime]$ 为什么有 -1？",
+        "answer": "因为要减去初速度 $y\\prime(0)=1$。"
+      }
+    },
+    "en": {
+      "goal": "Turn a second-order initial-value problem into algebraic fractions, then recover y(t).",
+      "recognize": "Constant coefficients with initial values suit Laplace transforms. Do not lose the initial velocity one.",
+      "steps": [
+        "Set $Y=\\mathcal L[y]$. Write $\\mathcal L[y\\prime\\prime]=p^2Y-1$ and $\\mathcal L[y\\prime]=pY$.",
+        "Collect terms to get $(p^2+2p-3)Y=1+1/(p+1)$.",
+        "Factor the denominator as $(p-1)(p+3)$, take partial fractions, invert term by term, and check both initial values."
+      ],
+      "check": {
+        "question": "Why is there a minus one in $\\\\mathcal L[y\\\\prime\\\\prime]$ here?",
+        "answer": "It subtracts the initial velocity $y\\prime(0)=1$."
+      }
+    }
+  },
+  "2.5-2": {
+    "zh": {
+      "goal": "找出一个被常力推动、同时带初速度的振子的运动。",
+      "recognize": "右边是常数 2，它的变换是 $2/p$，再加上初速度的贡献。",
+      "steps": [
+        "先写 $p^2Y-1+Y=2/p$。",
+        "解得 $Y=1/(p^2+1)+2/[p(p^2+1)]$。",
+        "第一项逆变换为 $\\sin t$；第二项拆成 $2/p-2p/(p^2+1)$，再检验初值。"
+      ],
+      "check": {
+        "question": "右边常数 2 的变换是 2 还是 $2/p$？",
+        "answer": "是 $2/p$。"
+      }
+    },
+    "en": {
+      "goal": "Find the motion of an oscillator with constant forcing and an initial velocity.",
+      "recognize": "The forcing constant two transforms to $2/p$, and the initial velocity contributes separately.",
+      "steps": [
+        "Write $p^2Y-1+Y=2/p$.",
+        "Solve for $Y=1/(p^2+1)+2/[p(p^2+1)]$.",
+        "The first inverse is $\\sin t$. Split the second into $2/p-2p/(p^2+1)$, then check the initial values."
+      ],
+      "check": {
+        "question": "Does the forcing constant two transform to two or $2/p$?",
+        "answer": "It transforms to $2/p$."
+      }
+    }
+  },
+  "2.5-3": {
+    "zh": {
+      "goal": "用同一个像函数，说明参数正、零、负时为什么出现三种运动。",
+      "recognize": "分母 $p^2+\\lambda$ 的根由参数符号决定，逆变换形式也随之变化。",
+      "steps": [
+        "先统一变换，得到 $Y=(ap+b)/(p^2+\\lambda)$。",
+        "若 $\\lambda>0$，设 $\\omega=\\sqrt\\lambda$，匹配余弦和正弦的变换。",
+        "若为零直接拆 $a/p+b/p^2$；若为负，设 $\\mu=\\sqrt{-\\lambda}$，匹配双曲函数。"
+      ],
+      "check": {
+        "question": "当 $\\\\lambda=0$，运动是什么？",
+        "answer": "$y=a+bt$。"
+      }
+    },
+    "en": {
+      "goal": "Use one transformed formula to explain the three motions for positive, zero, and negative parameters.",
+      "recognize": "The sign of the parameter determines the roots of $p^2+\\lambda$ and therefore the inverse-transform type.",
+      "steps": [
+        "First obtain the unified formula $Y=(ap+b)/(p^2+\\lambda)$.",
+        "For $\\lambda>0$, set $\\omega=\\sqrt\\lambda$ and match sine and cosine transforms.",
+        "For zero, split $a/p+b/p^2$. For a negative parameter, set $\\mu=\\sqrt{-\\lambda}$ and match hyperbolic functions."
+      ],
+      "check": {
+        "question": "What is the motion when $\\\\lambda=0$?",
+        "answer": "$y=a+bt$."
+      }
+    }
+  },
+  "2.5-4": {
+    "zh": {
+      "goal": "求一段时间内开着、之后关掉的外力造成的运动。",
+      "recognize": "开关力可以写成“现在打开的阶跃 - 延迟打开的阶跃”，延迟定理正好处理后半项。",
+      "steps": [
+        "先写 $f(t)=1-H(t-t_0)$，像是 $(1-e^{-pt_0})/p$。",
+        "初值贡献给出自由运动 $\\cos2t$；零初值单位阶跃响应是 $(1-\\cos2t)/4$。",
+        "把同一阶跃响应延迟到 $t_0$ 再减掉，延迟项必须乘 $H(t-t_0)$；检查 y 与 y\\prime 接续。"
+      ],
+      "check": {
+        "question": "关力瞬间 y 会突然跳变吗？",
+        "answer": "不会。有限阶跃力只使二阶导数跳变，y 和一阶导数连续。"
+      }
+    },
+    "en": {
+      "goal": "Find motion under a force that switches on, then switches off after a finite time.",
+      "recognize": "Write the force as a step now minus a delayed step. The delay theorem handles the second part.",
+      "steps": [
+        "Write $f(t)=1-H(t-t_0)$, whose transform is $(1-e^{-pt_0})/p$.",
+        "The initial values give free motion $\\cos2t$. The zero-initial-value unit-step response is $(1-\\cos2t)/4$.",
+        "Subtract that same response delayed to $t_0$, including $H(t-t_0)$. Check continuity of y and y\\prime."
+      ],
+      "check": {
+        "question": "Does y jump when the force switches off?",
+        "answer": "No. A finite step force jumps only the second derivative; y and its first derivative stay continuous."
+      }
+    }
+  },
+  "2.5-5": {
+    "zh": {
+      "goal": "把两个未知函数的耦合方程变成二元代数方程组。",
+      "recognize": "所有初值为零，导数变换没有额外常数项；但每一个导数阶数都要看清。",
+      "steps": [
+        "设 $X=\\mathcal L[x]$、$Y=\\mathcal L[y]$，把一阶导数换成 p 乘像，二阶换成 $p^2$ 乘像。",
+        "逐项写两个代数方程，注意第二式的 $-2y\\prime$ 是 $-2pY$，不是 $-2p^2Y$。",
+        "消元得到 X、Y，各自做部分分式逆变换；最后代入两个原方程，不只检查一个。"
+      ],
+      "check": {
+        "question": "零初值下，$-2y\\\\prime$ 的像是什么？",
+        "answer": "$-2pY$。"
+      }
+    },
+    "en": {
+      "goal": "Turn the coupled equations for two unknown functions into two algebraic equations.",
+      "recognize": "All initial values are zero, so derivative transforms have no constant corrections. Read every derivative order carefully.",
+      "steps": [
+        "Set $X=\\mathcal L[x]$ and $Y=\\mathcal L[y]$. Replace a first derivative by p times its transform and a second derivative by $p^2$ times it.",
+        "Write both algebraic equations term by term. In the second, $-2y\\prime$ becomes $-2pY$, not $-2p^2Y$.",
+        "Eliminate to obtain X and Y. Invert their partial fractions and substitute into both original equations, not only one."
+      ],
+      "check": {
+        "question": "With zero initial values, what is the transform of $-2y\\\\prime$?",
+        "answer": "$-2pY$."
+      }
+    }
+  }
+}

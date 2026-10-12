@@ -1,0 +1,380 @@
+{
+  "chapter": 5,
+  "title": "Separation of variables in three-dimensional curvilinear coordinates and special functions",
+  "sections": [
+    {
+      "id": "5.1",
+      "title": "Orthogonal curvilinear coordinates",
+      "page": 184,
+      "concepts": [
+        {
+          "id": "5.1-lame",
+          "title": "Lamé scale factors and curvilinear differential operators",
+          "explain": "Changing a coordinate does not always move you by the same physical distance. In orthogonal coordinates, the actual small length is $ds_i=h_i dq_i$. These scale factors enter the gradient, divergence, and Laplacian because lengths, areas, and volumes change with position.",
+          "formula": "\\nabla^2u=\\frac1{h_1h_2h_3}\\sum_{i=1}^3\\frac{\\partial}{\\partial q_i}\\left(\\frac{h_1h_2h_3}{h_i^2}\\frac{\\partial u}{\\partial q_i}\\right)",
+          "conditions": "The coordinates are orthogonal and right-handed. $h_i=|\\partial\\mathbf r/\\partial q_i|$, and vector components are physical components along unit basis vectors. Handle coordinate singularities by limits or regularity conditions.",
+          "proof": "Write $du=\\sum u_{q_i}dq_i=\\nabla u\\cdot\\sum h_i\\mathbf e_i dq_i$. Matching coefficients gives gradient component $u_{q_i}/h_i$. Next apply Gauss's theorem to a tiny coordinate box. The net flux through the two faces perpendicular to direction i is $\\partial_{q_i}(A_i h_jh_k)dq_1dq_2dq_3$. Dividing by the volume $h_1h_2h_3dq_1dq_2dq_3$ gives the divergence. Finally set $\\mathbf A=\\nabla u$ to obtain the stated Laplacian.",
+          "example": {
+            "question": "Derive the cylindrical-coordinate Laplacian from the scale factors.",
+            "solution": "For cylindrical coordinates $(\\rho,\\phi,z)$, $h_\\rho=1,h_\\phi=\\rho,h_z=1$. Substitution gives $\\nabla^2u=\\rho^{-1}(\\rho u_\\rho)_\\rho+\\rho^{-2}u_{\\phi\\phi}+u_{zz}$."
+          },
+          "memory": "A length uses one h; an area uses two h factors; a volume uses three."
+        }
+      ]
+    },
+    {
+      "id": "5.2",
+      "title": "Laplace boundary-value problems in spherical coordinates",
+      "page": 187,
+      "concepts": [
+        {
+          "id": "5.2-solid-harmonics",
+          "title": "Spherical-harmonic expansions and interior/exterior radial solutions",
+          "explain": "A spherical boundary suggests spherical harmonics: functions that separate the angular dependence into simple modes. With axial symmetry, the angular functions are $P_l(\\cos\\theta)$. Every angular mode has two radial powers, $r^l$ and $r^{-l-1}$. Inside a ball, remove the singular power; outside, remove the growing power when decay is required.",
+          "formula": "u=\\sum_{l=0}^{\\infty}\\left(A_lr^l+B_lr^{-l-1}\\right)P_l(\\cos\\theta)",
+          "conditions": "The source-free region satisfies $\\nabla^2u=0$. The displayed expansion assumes axial symmetry. Without it, use $Y_l^m(\\theta,\\phi)$. An exterior problem needs a condition at infinity.",
+          "proof": "Set $u=R(r)\\Theta(\\theta)$ and choose separation constant $l(l+1)$. With $x=\\cos\\theta$, the angular equation becomes Legendre's equation. Finiteness at both poles selects $l=0,1,\\ldots$ and $P_l$. The radial equation is $(r^2R\\prime)\\prime-l(l+1)R=0$. Trying $R=r^s$ gives $s(s+1)=l(l+1)$, hence $s=l,-l-1$. Orthogonality determines the boundary coefficients as $a_l=(2l+1)\\int_{-1}^1f(x)P_l(x)dx/2$.",
+          "example": {
+            "question": "A sphere of radius R has surface temperature $2+3\\cos\\theta$. Find the steady interior temperature.",
+            "solution": "The boundary contains only $P_0$ and $P_1$. Finiteness at the center gives $u=2+3(r/R)\\cos\\theta$. Substituting r=R recovers the boundary value, and both terms are harmonic."
+          },
+          "memory": "First split the angular data into P or Y modes. Then use the region to select the allowed radial power."
+        }
+      ]
+    },
+    {
+      "id": "5.3",
+      "title": "Laplace boundary-value problems in cylindrical coordinates",
+      "page": 209,
+      "concepts": [
+        {
+          "id": "5.3-bessel",
+          "title": "Bessel expansions in a cylinder",
+          "explain": "For axial symmetry, the radial operator is $R\\prime\\prime+R\\prime/\\rho$. Its eigenfunctions are $J_0(k\\rho)$, with orthogonality weight $\\rho$: coefficient integrals must include that extra factor. A zero side boundary selects k through $J_0(ka)=0$. If you first use sine modes to satisfy the two end faces, the radial function becomes $I_0$ instead.",
+          "formula": "\\int_0^a\\rho J_0(j_{0n}\\rho/a)J_0(j_{0m}\\rho/a)\\,d\\rho=\\frac{a^2}{2}J_1(j_{0n})^2\\delta_{nm}",
+          "conditions": "The cylinder includes its axis, so exclude $Y_0$, which diverges there. $j_{0n}$ is the nth positive zero of $J_0$. A Robin side boundary changes the eigenvalue equation.",
+          "proof": "Write the radial equation as $(\\rho R\\prime)\\prime+k^2\\rho R=0$. Multiply two equations for different eigenfunctions by the opposite function, subtract, and integrate:\n$(k_n^2-k_m^2)\\int_0^a\\rho R_nR_m d\\rho=[\\rho(R_nR_m\\prime-R_mR_n\\prime)]_0^a$.\nThe same homogeneous boundary conditions make the right side zero, proving weighted orthogonality. Bessel recurrence identities give the squared norm $a^2[J_0(ka)^2+J_1(ka)^2]/2$. When $J_0(ka)=0$, this reduces to the displayed formula.",
+          "example": {
+            "question": "How do we expand the constant 1 in the radial eigenfunctions for a zero side boundary?",
+            "solution": "Write $1=\\sum_{n\\ge1}c_nJ_0(j_{0n}\\rho/a)$, with $c_n=\\frac{2}{a^2J_1(j)^2}\\int_0^a\\rho J_0(j\\rho/a)d\\rho=2/[jJ_1(j)]$. The expansion holds in the open interval; the series boundary condition determines the endpoint value."
+          },
+          "memory": "Cylindrical projection integrals carry ρ. Satisfy the side first: often J. Satisfy the end faces first: often I."
+        }
+      ]
+    },
+    {
+      "id": "5.4",
+      "title": "The Helmholtz equation in spherical and cylindrical coordinates",
+      "page": 228,
+      "concepts": [
+        {
+          "id": "5.4-heat-modes",
+          "title": "Spatial eigenvalues determine diffusion rates and vibration frequencies",
+          "explain": "After separation of variables, heat and wave equations share the spatial eigenproblem $\\nabla^2X+k^2X=0$. An eigenfunction is one spatial pattern that evolves without changing shape. A heat mode decays as $e^{-Dk^2t}$; a wave mode oscillates with angular frequency $ck$. In a sphere, angular order l uses the spherical Bessel function $j_l(kr)$.",
+          "formula": "u_{\\rm heat}=\\sum_n c_nX_ne^{-Dk_n^2t},\\qquad u_{\\rm wave}=\\sum_nX_n[A_n\\cos(ck_nt)+B_n\\sin(ck_nt)]",
+          "conditions": "First subtract a steady solution to make nonzero boundary data homogeneous. Use matching boundary conditions for the spatial eigenproblem and project with the geometric volume weight. D is thermal diffusivity and c is wave speed.",
+          "proof": "Set $u=XT$. The heat equation $u_t=D\\nabla^2u$ gives $T\\prime/(DT)=\\nabla^2X/X=-k^2$, so $T=e^{-Dk^2t}$. The wave equation gives $T\\prime\\prime+c^2k^2T=0$. In spherical coordinates, separating the angular part introduces $l(l+1)$ and leaves $R\\prime\\prime+2R\\prime/r+[k^2-l(l+1)/r^2]R=0$. The finite radial solution is $j_l(kr)$.",
+          "example": {
+            "question": "For a spherically symmetric temperature in a ball of radius R with zero surface temperature, what is the slowest decay time?",
+            "solution": "Here l=0. The boundary equation $j_0(kR)=\\sin(kR)/(kR)=0$ gives $k_1=\\pi/R$. The slowest exponential is $e^{-D\\pi^2t/R^2}$, so the time scale is $\\tau=R^2/(D\\pi^2)$."
+          },
+          "memory": "For the same spatial mode, diffusion uses k² and vibration uses k."
+        }
+      ]
+    },
+    {
+      "id": "5.5",
+      "title": "Applications of Bessel functions",
+      "page": 235,
+      "concepts": [
+        {
+          "id": "5.5-taper",
+          "title": "Tapered rods and annular membranes",
+          "explain": "Geometry changes the differential operator. A rod with cross-sectional area $A(x)$ obeys $u_{tt}=c^2A^{-1}(Au_x)_x$ for longitudinal vibration. A wedge with $A\\propto x$ leads to ordinary Bessel functions; a cone with $A\\propto x^2$ leads to spherical Bessel functions. An annular membrane excludes the origin, so divergence of $Y_m$ at zero is not a reason to discard it.",
+          "formula": "(A X\\prime)\\prime+k^2AX=0,\\qquad \\omega=ck",
+          "conditions": "The rod has uniform material, linear elasticity, small longitudinal motion, and a slender-rod approximation; $c=\\sqrt{E/\\varrho}$. For a membrane with constant tension T and surface density σ, c=√(T/σ).",
+          "proof": "Take a rod element of length dx. The longitudinal elastic force is $EAu_x$, so the net end force is $E(Au_x)_x dx$. Its mass is $\\varrho A dx$; Newton's law gives the stated equation. Substitute $u=XT$ to obtain a self-adjoint eigenproblem, whose orthogonality weight is A. A free end has condition $AX\\prime=0$; where A is nonzero, this is equivalent to $X\\prime=0$.",
+          "example": {
+            "question": "For a free wedge rod whose area is proportional to x and whose tip is at x=0, which zeros determine the positive frequencies?",
+            "solution": "The finite radial solution is $X=J_0(kx)$. At the thick free end x=l, $X\\prime(l)=-kJ_1(kl)=0$, giving positive frequencies $\\omega_n=cj_{1n}/l$. There is also a zero-frequency rigid translation mode."
+          },
+          "memory": "First find how cross-sectional area depends on x, then choose the Bessel type. In a ring domain, keep both independent radial solutions."
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "5.1-1",
+      "section": "5.1",
+      "number": 1,
+      "page": 187,
+      "title": "The curl formula in orthogonal curvilinear coordinates",
+      "question": "For a vector $\\mathbf A(q_1,q_2,q_3)$, define the ith curl component as the right-hand-oriented circulation around an infinitesimal surface with normal $\\mathbf e_i$, divided by its area. Prove\n$$\\nabla\\times\\mathbf A=\\frac{\\partial_{q_2}(A_3h_3)-\\partial_{q_3}(A_2h_2)}{h_2h_3}\\mathbf e_1+\\frac{\\partial_{q_3}(A_1h_1)-\\partial_{q_1}(A_3h_3)}{h_3h_1}\\mathbf e_2+\\frac{\\partial_{q_1}(A_2h_2)-\\partial_{q_2}(A_1h_1)}{h_1h_2}\\mathbf e_3.$$",
+      "idea": "Take a tiny q₂–q₃ rectangle with normal e₁. Pair opposite edge integrals, subtract them, and make a first-order expansion.",
+      "hint": "An edge along qⱼ has length hⱼdqⱼ. The area normal to e₁ is h₂h₃dq₂dq₃.",
+      "solution": "For the $\\mathbf e_1$ component, traverse the rectangle in the positive $(\\mathbf e_2,\\mathbf e_3)$ orientation. The two q₃ edges contribute the net circulation\n$$[A_3h_3(q_2+dq_2,q_3)-A_3h_3(q_2,q_3)]dq_3=\\partial_{q_2}(A_3h_3)dq_2dq_3+o(dq_2dq_3).$$\nThe two q₂ edges are traversed in opposite directions and contribute $-\\partial_{q_3}(A_2h_2)dq_2dq_3$. Divide by the area $h_2h_3dq_2dq_3$ and let the surface shrink to obtain\n$$ (\\nabla\\times\\mathbf A)_1=\\frac{\\partial_{q_2}(A_3h_3)-\\partial_{q_3}(A_2h_2)}{h_2h_3}.$$\nCyclically permute $1\\to2\\to3\\to1$ for the other two components. Adding them along their unit basis vectors gives the required formula. A compact formal determinant is $\\frac1{h_1h_2h_3}\\det[(h_i\\mathbf e_i);(\\partial_{q_i});(h_iA_i)]$, with derivatives acting only on the last row.",
+      "answer": "Each curl component is the difference of two cross derivatives of the neighboring hA factors, divided by the corresponding area scale factors, as in the stated formula.",
+      "pattern": "Draw an oriented tiny rectangle → integrate along its four edges → pair and subtract opposite edges → divide by area → cyclically permute.",
+      "pitfall": "Aᵢ is a component along a unit basis vector. Each line integral needs hᵢ, and the loop orientation determines the signs.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-1",
+      "section": "5.2",
+      "number": 1,
+      "page": 208,
+      "title": "The value of a Legendre polynomial at −1",
+      "question": "Prove that a Legendre polynomial $P_l(x)$ of any order has value $P_l(-1)=(-1)^l$ at $x=-1$.",
+      "idea": "Use the generating function to obtain the endpoint values for every order at once.",
+      "hint": "Substitute x=−1 into (1−2xt+t²)⁻¹/².",
+      "solution": "The generating function is $\\sum_{l\\ge0}P_l(x)t^l=(1-2xt+t^2)^{-1/2}$. For $|t|<1$, substitute x=−1:\n$$\\sum_{l\\ge0}P_l(-1)t^l=(1+2t+t^2)^{-1/2}=\\frac1{1+t}=\\sum_{l\\ge0}(-1)^lt^l.$$\nBoth sides are analytic near t=0, where power-series coefficients are unique. Compare equal powers of t to get $P_l(-1)=(-1)^l$. Alternatively, combine $P_l(-x)=(-1)^lP_l(x)$ with $P_l(1)=1$.",
+      "answer": "$P_l(-1)=(-1)^l$.",
+      "pattern": "For endpoint values or parity, try substituting into the generating function and comparing equal powers.",
+      "pitfall": "Use the analytic square-root branch whose value at t=0 is 1. This is not permission to remove an absolute value from √(1+t)² for arbitrary real t.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-2",
+      "section": "5.2",
+      "number": 2,
+      "page": 208,
+      "title": "Five derivative recurrence relations for Legendre polynomials",
+      "question": "Prove textbook Eqs. (5.2.58)–(5.2.62):\n$$P_l=P_{l+1}\\prime-2xP_l\\prime+P_{l-1}\\prime;\\quad (2l+1)P_l=P_{l+1}\\prime-P_{l-1}\\prime;$$\n$$P_{l+1}\\prime=(l+1)P_l+xP_l\\prime;\\quad lP_l=xP_l\\prime-P_{l-1}\\prime;$$\n$$ (2l+1)xP_l\\prime=lP_{l+1}\\prime+(l+1)P_{l-1}\\prime.$$",
+      "idea": "Differentiate one generating function with respect to x and t. Prove the first three relations, then eliminate terms algebraically for the remaining two.",
+      "hint": "Set G=(1−2xt+t²)⁻¹/². Then Gₓ=tD⁻³/² and Gₜ=(x−t)D⁻³/².",
+      "solution": "Let $D=1-2xt+t^2$ and $G=\\sum P_lt^l$. Direct differentiation gives $G_x=tD^{-3/2}$ and $G_t=(x-t)D^{-3/2}$.\n\n1. Use $DG_x=tG$. Comparing the coefficient of $t^{l+1}$ gives $P_{l+1}\\prime-2xP_l\\prime+P_{l-1}\\prime=P_l$, Eq. (58).\n2. Use $(1-t^2)G_x=t(2tG_t+G)$. Comparing $t^{l+1}$ gives $P_{l+1}\\prime-P_{l-1}\\prime=(2l+1)P_l$, Eq. (59). Both sides of the generating-function identity equal $t(1-t^2)D^{-3/2}$.\n3. Use $(1-xt)G_x=tG+t^2G_t$. Comparing $t^{l+1}$ gives $P_{l+1}\\prime-xP_l\\prime=(l+1)P_l$, Eq. (60).\n4. Subtract (60) from (59): $lP_l=xP_l\\prime-P_{l-1}\\prime$, Eq. (61).\n5. Differentiate Bonnet's recurrence $(l+1)P_{l+1}=(2l+1)xP_l-lP_{l-1}$:\n$$ (2l+1)xP_l\\prime=(l+1)P_{l+1}\\prime+lP_{l-1}\\prime-(2l+1)P_l.$$\nEliminate the final term using (59) to obtain $lP_{l+1}\\prime+(l+1)P_{l-1}\\prime$, Eq. (62).\nRelations containing $P_{l-1}$ are normally written for $l\\ge1$. Check the low-order endpoints separately with $P_0=1,P_1=x$.",
+      "answer": "All five follow from generating-function coefficient comparison and Bonnet’s recurrence, as shown in the expanded proof.",
+      "pattern": "Introduce G → translate derivative recurrences into Gₓ and Gₜ identities → compare coefficients of equal powers.",
+      "pitfall": "The left side of (58) is P_l, not P_l′. Do not interchange l and l+1 on the right of (62).",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-3",
+      "section": "5.2",
+      "number": 3,
+      "page": 208,
+      "title": "Four polynomial expansions in Legendre polynomials",
+      "question": "Expand in the basis $P_l(x)$ on $[-1,1]$:\n1. $2x^3+3x+4$;\n2. $x^4+2x^3$;\n3. $x^3$;\n4. $1+x+2x^2+3x^3$.",
+      "idea": "A polynomial needs only finitely many modes. Solving the low-order Pₗ formulas for powers of x is quicker than integrating every coefficient.",
+      "hint": "Use P₀=1, P₁=x, P₂=(3x²−1)/2, P₃=(5x³−3x)/2, and P₄=(35x⁴−30x²+3)/8.",
+      "solution": "First solve for the powers:\n$$x=P_1,\\quad x^2=\\frac13P_0+\\frac23P_2,\\quad x^3=\\frac35P_1+\\frac25P_3,$$\n$$x^4=\\frac15P_0+\\frac47P_2+\\frac8{35}P_4.$$\nSubstitute into each polynomial and collect equal orders:\n1. $2x^3+3x+4=4P_0+\\frac{21}{5}P_1+\\frac45P_3$.\n2. $x^4+2x^3=\\frac15P_0+\\frac65P_1+\\frac47P_2+\\frac45P_3+\\frac8{35}P_4$.\n3. $x^3=\\frac35P_1+\\frac25P_3$.\n4. $1+x+2x^2+3x^3=\\frac53P_0+\\frac{14}{5}P_1+\\frac43P_2+\\frac65P_3$.\nCheck the leading-power coefficient and the value at x=1 in every result. For example, the coefficients in part 4 sum to 7, matching the original polynomial at 1.",
+      "answer": "(1) $4P_0+21P_1/5+4P_3/5$; (2) $P_0/5+6P_1/5+4P_2/7+4P_3/5+8P_4/35$; (3) $3P_1/5+2P_3/5$; (4) $5P_0/3+14P_1/5+4P_2/3+6P_3/5$.",
+      "pattern": "Finite polynomial → list low-order Pₗ through the same degree → work down from the highest power → check parity.",
+      "pitfall": "x³ is not P₃. Odd functions use only odd orders; even functions use only even orders.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-4",
+      "section": "5.2",
+      "number": 4,
+      "page": 208,
+      "title": "A grounded conducting sphere in a uniform electric field",
+      "question": "A grounded conducting sphere of radius a is placed in a uniform electric field of strength $E_0$. Find the exterior potential and electric field.",
+      "idea": "Choose the z axis along the applied field. The far-field potential is −E₀r cosθ; add one decaying l=1 term to satisfy the grounded surface.",
+      "hint": "Set Φ=(−E₀r+B/r²)cosθ and impose Φ(a)=0.",
+      "solution": "Take the applied field as $E_0\\mathbf e_z$ and choose the reference potential so that $\\Phi\\sim-E_0r\\cos\\theta$ far away. The l=1 part of the axisymmetric Laplace solution compatible with this far field is $(-E_0r+B/r^2)\\cos\\theta$. Grounding the sphere gives $-E_0a+B/a^2=0$, hence $B=E_0a^3$. By exterior uniqueness,\n$$\\Phi(r,\\theta)=-E_0\\left(r-\\frac{a^3}{r^2}\\right)\\cos\\theta,\\quad r\\ge a.$$\nUse $\\mathbf E=-\\nabla\\Phi$ and differentiate:\n$$E_r=E_0\\left(1+\\frac{2a^3}{r^3}\\right)\\cos\\theta,\\quad E_\\theta=-E_0\\left(1-\\frac{a^3}{r^3}\\right)\\sin\\theta,\\quad E_\\phi=0.$$\nAt r=a, the tangential field is zero and the normal field is $3E_0\\cos\\theta$. At infinity, the spherical components return to those of the uniform applied field.",
+      "answer": "$\\Phi=-E_0(r-a^3/r^2)\\cos\\theta$, $E_r=E_0(1+2a^3/r^3)\\cos\\theta$, and $E_\\theta=-E_0(1-a^3/r^3)\\sin\\theta$.",
+      "pattern": "The far field fixes the growing mode → the conductor boundary fixes the decaying mode → take the negative gradient.",
+      "pitfall": "Eθ=−(1/r)∂θΦ: do not omit 1/r. The far-field potential does not tend to zero.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-5",
+      "section": "5.2",
+      "number": 5,
+      "page": 208,
+      "title": "The potential of a uniformly charged circular ring",
+      "question": "A thin circular ring of radius R carries a uniform total charge Q. Find its potential throughout space.",
+      "idea": "Place the ring in the equatorial plane. The Coulomb integral is direct; the Legendre addition theorem gives interior and exterior multipole expansions.",
+      "hint": "Averaging Pₗ(cosγ) over the source azimuth gives Pₗ(0)Pₗ(cosθ).",
+      "solution": "Place the ring in z=0 with its center at the origin. Set the potential to zero at infinity and denote the permittivity by ε. A source point is $\\mathbf r\\prime=R(\\cos\\phi\\prime,\\sin\\phi\\prime,0)$ with $dq=Qd\\phi\\prime/(2\\pi)$. At every point except the ideal thin ring itself,\n$$\\Phi(r,\\theta)=\\frac{Q}{8\\pi^2\\varepsilon}\\int_0^{2\\pi}\\frac{d\\phi\\prime}{\\sqrt{r^2+R^2-2rR\\sin\\theta\\cos\\phi\\prime}}.$$\nFor r≠R, expand the Coulomb kernel as $|\\mathbf r-\\mathbf r\\prime|^{-1}=\\sum_{l\\ge0}r_<^l r_>^{-l-1}P_l(\\cos\\gamma)$. The addition theorem shows that the azimuthal average retains only m=0, giving\n$$\\boxed{\\Phi=\\frac{Q}{4\\pi\\varepsilon}\\sum_{l=0}^\\infty\\frac{r_<^l}{r_>^{l+1}}P_l(0)P_l(\\cos\\theta)}.$$\nHere $r_<=\\min(r,R),r_>=\\max(r,R)$. Odd orders vanish: $P_{2n+1}(0)=0$, while $P_{2n}(0)=(-1)^n(2n)!/[2^{2n}(n!)^2]$. Thus the interior uses $r^{2n}/R^{2n+1}$ and the exterior uses $R^{2n}/r^{2n+1}$. On the axis θ=0, direct integration gives $\\Phi=Q/[4\\pi\\varepsilon\\sqrt{r^2+R^2}]$, consistent with the series. The ideal line-charge potential diverges on the ring itself. At non-ring points with r=R, use the original integral or an appropriate limit.",
+      "answer": "Use the Coulomb integral or $\\frac{Q}{4\\pi\\varepsilon}\\sum r_<^lr_>^{-l-1}P_l(0)P_l(\\cos\\theta)$. Only even orders remain.",
+      "pattern": "Fix the source geometry and potential reference → expand the Coulomb kernel with the generating function → average over the source angle → use the correct interior/exterior radial powers.",
+      "pitfall": "Q/(4πε√(z²+R²)) is only the axis formula; it is not the potential everywhere in space.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-6",
+      "section": "5.2",
+      "number": 6,
+      "page": 208,
+      "title": "Interior and exterior potentials of a divided conducting spherical shell",
+      "question": "A conducting spherical shell of radius R is divided by a thin insulating ring at $\\theta=\\theta_0$. The upper part is grounded and the lower part is held at potential U. Find the interior and exterior potentials.",
+      "idea": "The boundary is an angular step function. Expand it in Legendre polynomials, then multiply the same surface coefficients by the interior and exterior radial factors.",
+      "hint": "Let μ₀=cosθ₀. The boundary is f(μ)=U for −1≤μ<μ₀ and 0 for μ₀<μ≤1.",
+      "solution": "Write $\\mu=\\cos\\theta,\\mu_0=\\cos\\theta_0$. Treat the insulating ring as zero-width. Away from the dividing line the surface potential is $f(\\mu)=U$ for $\\mu<\\mu_0$, and 0 for $\\mu>\\mu_0$. Expand $f=\\sum a_lP_l$, giving\n$$a_0=\\frac U2(1+\\mu_0),\\qquad a_l=\\frac{U(2l+1)}2\\int_{-1}^{\\mu_0}P_l(\\mu)d\\mu=\\frac U2[P_{l+1}(\\mu_0)-P_{l-1}(\\mu_0)],\\ l\\ge1.$$\nThe last step uses $(2l+1)P_l=P_{l+1}\\prime-P_{l-1}\\prime$; the endpoint difference at −1 vanishes.\nRequire finiteness at the center inside and zero potential at infinity outside. Then\n$$\\Phi_{\\rm in}=\\sum_{l=0}^\\infty a_l(r/R)^lP_l(\\cos\\theta),\\qquad\\Phi_{\\rm out}=\\sum_{l=0}^\\infty a_l(R/r)^{l+1}P_l(\\cos\\theta).$$\nOn the two open boundary regions the values return to 0 and U. At the jump line, the Legendre series gives the one-sided average U/2, describing the limit of an ideal zero-width gap. If the two parts are exactly hemispheres, set θ₀=π/2 and μ₀=0 as a special case.",
+      "answer": "Use the interior/exterior expansions above, with $a_0=U(1+\\cos\\theta_0)/2$ and $a_l=U[P_{l+1}(\\cos\\theta_0)-P_{l-1}(\\cos\\theta_0)]/2$.",
+      "pattern": "Step boundary → identify the integration interval → compute surface coefficients → attach the interior/exterior powers to the same coefficients.",
+      "pitfall": "μ=cosθ decreases as θ increases, so the integration limits are easy to reverse. The exterior needs zero potential at infinity.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-7",
+      "section": "5.2",
+      "number": 7,
+      "page": 208,
+      "title": "An exterior Robin boundary and resonant parameters",
+      "question": "Solve $\\nabla^2u=0$ for $r>R$, with $[u+h\\,\\partial_ru]_{r=R}=5\\cos3\\theta$, where h is constant.",
+      "idea": "First split the angular data into P₁ and P₃. Differentiating each radial power produces a different Robin factor.",
+      "hint": "5cos3θ=8P₃(cosθ)−3P₁(cosθ).",
+      "solution": "**An additional condition is needed:** the original problem does not state the behavior at infinity. Here we use the standard exterior decay condition $u\\to0$. Without it, the answer is not unique.\nSet $\\mu=\\cos\\theta$. Then $5\\cos3\\theta=5(4\\mu^3-3\\mu)=8P_3(\\mu)-3P_1(\\mu)$. The decaying expansion $u=\\sum a_l(R/r)^{l+1}P_l(\\mu)$ gives at r=R\n$$[u+hu_r]_{r=R}=\\sum a_l\\left[1-\\frac{h(l+1)}R\\right]P_l(\\mu).$$\nIf $h\\ne R/2,R/4$, one axisymmetric particular solution is\n$$u=-\\frac{3(R/r)^2}{1-2h/R}P_1(\\mu)+\\frac{8(R/r)^4}{1-4h/R}P_3(\\mu).$$\nIf h=R/2 or R/4, a nonzero forcing coefficient meets a zero denominator, so no decaying solution exists. If $h=R/(n+1)$ with n≠1,3, this particular solution still exists, but any decaying homogeneous spherical harmonic of order n may be added: $C(R/r)^{n+1}P_n$ in the axisymmetric class, or $Y_n^m$ for arbitrary m in the general class. The solution is therefore nonunique. Apart from these discrete resonance values, the decay condition makes the solution unique. The given derivative is +∂r. The outward normal of the exterior region at its inner sphere is actually −eᵣ; do not change the sign written in the problem.",
+      "answer": "The nonresonant decaying solution is $-3(R/r)^2P_1/(1-2h/R)+8(R/r)^4P_3/(1-4h/R)$. There is no solution at h=R/2,R/4; other h=R/(n+1) values allow homogeneous freedom.",
+      "pattern": "Split angular modes → differentiate each radial power → divide by its Robin factor → check zero denominators and infinity.",
+      "pitfall": "cos3θ is not P₃. Do not omit the exceptional resonant h values.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made.",
+      "errata": "The original problem omits an infinity condition. This solution assumes decay and discusses resonance, nonexistence, and nonuniqueness when the Robin parameter is $h=R/(n+1)$."
+    },
+    {
+      "id": "5.2-8",
+      "section": "5.2",
+      "number": 8,
+      "page": 208,
+      "title": "Steady temperature in a thick spherical shell with mixed angular modes",
+      "question": "A uniform thick spherical shell has inner radius $R_1$ and outer radius $R_2$, with no heat sources or sinks. The inner temperature is $2(1-\\cos\\theta)$ and the outer temperature is $\\sin\\theta\\sin\\phi$. Find its steady temperature.",
+      "idea": "The inner data contain l=0 and l=1,m=0. The outer data are a real l=1 spherical harmonic. Build radial interpolation functions for each order.",
+      "hint": "For each l construct Fₗ(R₁)=1,Fₗ(R₂)=0 and Gₗ(R₁)=0,Gₗ(R₂)=1.",
+      "solution": "Let a=R₁ and b=R₂, with 0<a<b. The constant $1$ is an l=0 harmonic; $\\cos\\theta$ and $\\sin\\theta\\sin\\phi$ are both l=1. Define\n$$F_l(r)=\\frac{r^l-b^{2l+1}r^{-l-1}}{a^l-b^{2l+1}a^{-l-1}},\\qquad G_l(r)=\\frac{r^l-a^{2l+1}r^{-l-1}}{b^l-a^{2l+1}b^{-l-1}}.$$\nBoth solve the radial equation. At the inner and outer boundaries their values are (1,0) and (0,1), respectively. Therefore\n$$\\boxed{u(r,\\theta,\\phi)=2F_0(r)-2F_1(r)\\cos\\theta+G_1(r)\\sin\\theta\\sin\\phi}.$$\nExplicitly, $F_0=a(b-r)/[r(b-a)]$. At r=a, G₁=0 and F₀=F₁=1, giving $2-2\\cos\\theta$. At r=b, F₀=F₁=0 and G₁=1, giving the outer boundary data. Each term is harmonic; Dirichlet uniqueness makes this the unique steady solution.",
+      "answer": "$u=2F_0-2F_1\\cos\\theta+G_1\\sin\\theta\\sin\\phi$, with F and G defined in the expanded solution.",
+      "pattern": "Group the data by spherical-harmonic order → combine the two radial powers into boundary interpolation functions → add the modes.",
+      "pitfall": "A thick shell does not contain the origin, so retain both radial powers. A φ-dependent term cannot be represented entirely by an axisymmetric Legendre expansion.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.2-9",
+      "section": "5.2",
+      "number": 9,
+      "page": 208,
+      "title": "Harmonic extension of quadratic data on a sphere",
+      "question": "A uniform ball of radius R has surface temperature $3\\sin^2\\theta\\cos^2\\phi$. Find the steady interior temperature.",
+      "idea": "The boundary is 3x²/R². Split the quadratic polynomial into a constant harmonic and a traceless quadratic harmonic polynomial.",
+      "hint": "The sphere average of 3sin²θcos²φ is 1; the remainder has l=2.",
+      "solution": "Set Cartesian x=r sinθ cosφ. Since $\\Delta x^2=2$ and $\\Delta r^2=6$, the quadratic polynomial $3x^2-r^2$ is harmonic. Thus the boundary $3x^2/R^2$ has the harmonic extension\n$$u=1+\\frac{3x^2-r^2}{R^2}=1+\\frac{r^2}{R^2}\\big(3\\sin^2\\theta\\cos^2\\phi-1\\big).$$\nIt is finite at the center, gives the prescribed temperature at r=R, and has zero Laplacian. To express this in spherical harmonics, use $\\cos^2\\phi=(1+\\cos2\\phi)/2$:\n$$3\\sin^2\\theta\\cos^2\\phi=1-P_2(\\cos\\theta)+\\frac32\\sin^2\\theta\\cos2\\phi,$$\nBoth nonconstant terms have l=2, so multiply both by (r/R)² to obtain the same answer. The center temperature is 1, also the sphere average.",
+      "answer": "$u=1+(r/R)^2[3\\sin^2\\theta\\cos^2\\phi-1]$.",
+      "pattern": "For low-degree surface polynomials, find the constant average and the traceless harmonic remainder, then attach the corresponding rˡ factor.",
+      "pitfall": "The direct guess u=3(r/R)²sin²θcos²φ is not harmonic. Subtract r²/R² and add the constant 1.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.3-1",
+      "section": "5.3",
+      "number": 1,
+      "page": 228,
+      "title": "Steady cylinder temperature with a ρ² bottom boundary",
+      "question": "A uniform cylinder has radius $\\rho_0$ and height h. Its top and side are held at zero temperature, while the bottom has temperature $f(\\rho)=\\rho^2$. Find the steady temperature.",
+      "idea": "Put the bottom at z=0. Satisfy the homogeneous side first using zeros of J₀, then choose the axial factor to make the top zero automatically.",
+      "hint": "Use J₀(j₀ₙρ/a)sinh[kₙ(h−z)]/sinh(kₙh).",
+      "solution": "Let a=ρ₀ and 0<z<h. The axisymmetric Laplace equation is $u_{\\rho\\rho}+u_\\rho/\\rho+u_{zz}=0$. Choose $J_0(k_n\\rho)$ with $k_n=j_{0n}/a$ to satisfy the zero side boundary and remain finite at the axis. Choose axial factor $\\sinh[k_n(h-z)]/\\sinh(k_nh)$, whose bottom and top values are 1 and 0. Thus\n$$u=\\sum_{n=1}^\\infty A_nJ_0(j_{0n}\\rho/a)\\frac{\\sinh[j_{0n}(h-z)/a]}{\\sinh(j_{0n}h/a)}.$$\nWeighted orthogonality gives\n$$A_n=\\frac{2}{a^2J_1(j)^2}\\int_0^a\\rho^3J_0(j\\rho/a)d\\rho,\\quad j=j_{0n}.$$\nIntegrate by parts using $(xJ_1)\\prime=xJ_0$ and $(x^2J_2)\\prime=x^2J_1$. The integral becomes $a^4[J_1(j)/j-2J_2(j)/j^2]$. Since $J_2(j)=2J_1(j)/j$,\n$$A_n=\\frac{2a^2(j_{0n}^2-4)}{j_{0n}^3J_1(j_{0n})}.$$\nAt z=0 the expansion recovers ρ². The bottom and side assign conflicting temperatures at their common edge: a² from the bottom and 0 from the side. Interpret the conditions on each open face and through interior limits; do not require continuity at that edge.",
+      "answer": "Use the Bessel–hyperbolic-sine series above, with $A_n=2a^2(j_{0n}^2-4)/(j_{0n}^3J_1(j_{0n}))$.",
+      "pattern": "Satisfy the homogeneous side → use positive J₀ zeros → satisfy the opposite end face axially → project the nonzero bottom data with weight ρ.",
+      "pitfall": "The norm contains a²/2, and the integral is ρ³J₀, not ρ²J₀. Incompatible edge values must be interpreted on the open faces.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.3-2",
+      "section": "5.3",
+      "number": 2,
+      "page": 228,
+      "title": "Steady cylinder temperature with a constant-temperature side",
+      "question": "A uniform cylinder has radius $\\rho_0$ and height h. Its two ends are held at zero temperature and its side at $u_0$. Find the steady temperature.",
+      "idea": "Use sine modes to satisfy the two ends first, then use I₀ for the radial equation and the sine expansion of the constant side value.",
+      "hint": "The z mode is sin(nπz/h); the radial equation is R″+R′/ρ−(nπ/h)²R=0.",
+      "solution": "Let a=ρ₀. Set $u=R(\\rho)\\sin(n\\pi z/h)$. The radial equation is the modified Bessel equation. Finiteness on the axis excludes $K_0$, leaving the normalized radial solution $I_0(n\\pi\\rho/h)/I_0(n\\pi a/h)$. On the side, expand the constant in a sine series:\n$$b_n=\\frac2h\\int_0^h u_0\\sin(n\\pi z/h)dz=\\frac{2u_0}{n\\pi}[1-(-1)^n].$$\nTherefore\n$$u(\\rho,z)=\\frac{4u_0}{\\pi}\\sum_{p=0}^\\infty\\frac1{2p+1}\\frac{I_0((2p+1)\\pi\\rho/h)}{I_0((2p+1)\\pi a/h)}\\sin\\frac{(2p+1)\\pi z}{h}.$$\nEvery term vanishes on both ends and satisfies Laplace's equation. On the open side 0<z<h, the series returns to u₀. Conflicting temperatures at the end/side edges form an ideal discontinuous boundary; the interior solution remains determined.",
+      "answer": "Use the I₀–sine series displayed above, containing only odd n.",
+      "pattern": "Both ends zero → sine eigenvalues → modified Bessel radial function → sine projection of the side data.",
+      "pitfall": "The radial function is I₀ this time, not J₀. A cylindrical shape alone does not always imply ordinary Bessel functions.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.3-3",
+      "section": "5.3",
+      "number": 3,
+      "page": 228,
+      "title": "A cylinder with convective cooling on its side",
+      "question": "A uniform cylinder has radius $\\rho_0$ and height h. Its top temperature is $f(\\rho)$, its bottom is at zero, and its side cools freely into zero-temperature air. Find the steady temperature.",
+      "idea": "Newton’s cooling law gives a Robin side condition. Find the corresponding J₀ eigenvalues, then project the top temperature.",
+      "hint": "Introduce β=surface heat-transfer coefficient/thermal conductivity. The side condition is uρ+βu=0.",
+      "solution": "The problem does not give the cooling strength. Denote thermal conductivity by K and surface heat-transfer coefficient by H, and set $\\beta=H/K\\ge0$. The outward side normal is +eρ. Newton's law $-Ku_\\rho=Hu$ gives $u_\\rho(a,z)+\\beta u(a,z)=0$, with a=ρ₀. Taking $R_n=J_0(k_n\\rho)$ gives\n$$-k_nJ_1(k_na)+\\beta J_0(k_na)=0.$$\nFor $\\beta>0$, take all positive roots kₙ. The axial factor $\\sinh(k_nz)/\\sinh(k_nh)$ is zero on the bottom and one on the top. Hence\n$$u=\\sum_{n=1}^\\infty c_nJ_0(k_n\\rho)\\frac{\\sinh(k_nz)}{\\sinh(k_nh)},$$\n$$c_n=\\frac{\\int_0^a\\rho f(\\rho)J_0(k_n\\rho)d\\rho}{N_n},\\quad N_n=\\frac{a^2}{2}[J_0(k_na)^2+J_1(k_na)^2].$$\nThe norm follows from a Bessel integral identity. The same Robin boundary makes different k modes orthogonal with weight ρ. For β=0, the side is insulated: in addition to the positive J₁ zeros, there is a k=0 mode. Include $c_0z/h$, where $c_0=2\\int_0^a\\rho f(\\rho)d\\rho/a^2$. As β→∞, the eigenvalue condition tends to J₀(kₙa)=0.",
+      "answer": "The Robin roots satisfy $k_nJ_1(k_na)=\\beta J_0(k_na)$. Use the J₀–sinh series above with coefficients projected using weight ρ.",
+      "pattern": "Translate the physical cooling law into a Robin condition with the correct outward-normal sign → find the roots and norm → project the boundary data.",
+      "pitfall": "Free cooling is neither a zero-temperature boundary nor insulation. Keep β as a parameter if the problem does not specify it.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made.",
+      "errata": "A free-cooling boundary requires the surface heat-transfer parameter. If its value is not given, retain the Robin parameter in the eigenvalue equation instead of replacing the condition by zero temperature."
+    },
+    {
+      "id": "5.4-1",
+      "section": "5.4",
+      "number": 1,
+      "page": 235,
+      "title": "Heat diffusion in a cylinder with mixed boundaries",
+      "question": "A uniform cylinder has radius $\\rho_0$ and height h. The bottom and side are held at $u_0$, the top is insulated, and the initial temperature is $u_0+f(\\rho)g(z)$. Find the temperature as a function of time.",
+      "idea": "Subtract the constant u₀, then use radial Dirichlet and axial Dirichlet–Neumann eigenfunctions.",
+      "hint": "Use sinλz at the bottom. Zero derivative at the top gives λ=(m+1/2)π/h.",
+      "solution": "Let a=ρ₀ and let D be thermal diffusivity. Set v=u−u₀. Then $v_t=D\\Delta v$, $v(a,z,t)=v(\\rho,0,t)=0$, and $v_z(\\rho,h,t)=0$. The radial mode is $J_0(k_n\\rho)$ with $k_n=j_{0n}/a$; the axial mode is $\\sin(\\lambda_mz)$ with $\\lambda_m=(m+\\tfrac12)\\pi/h$ for m=0,1,….\nExpand the two factors of the initial data separately:\n$$F_n=\\frac{2}{a^2J_1(j_{0n})^2}\\int_0^a\\rho f(\\rho)J_0(j_{0n}\\rho/a)d\\rho,$$\n$$G_m=\\frac2h\\int_0^hg(z)\\sin(\\lambda_mz)dz.$$\nInsert the heat-equation time factor:\n$$\\boxed{u=u_0+\\sum_{n=1}^\\infty\\sum_{m=0}^\\infty F_nG_mJ_0(k_n\\rho)\\sin(\\lambda_mz)e^{-D(k_n^2+\\lambda_m^2)t}}.$$\nEach term satisfies the three spatial boundary conditions. At t=0, the product of the two expansions restores f g; as t→∞, the temperature approaches u₀. If initial and boundary values disagree at an edge or at t=0, interpret the formula through interior L² initial data and the solution for t>0.",
+      "answer": "Use the double eigenfunction expansion above. The axial sine modes are half-integer, with decay rate $D[(j_{0n}/a)^2+((m+1/2)\\pi/h)^2]$.",
+      "pattern": "Subtract the steady state → find eigenvalues in both directions → project each initial-data factor → add exponentially decaying modes.",
+      "pitfall": "An insulated top means v_z=0, not v=0. Integer nπ/h axial values would be wrong.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.4-2",
+      "section": "5.4",
+      "number": 2,
+      "page": 235,
+      "title": "Cooling a ball with uniform initial temperature",
+      "question": "A uniform conducting ball of radius R initially has temperature $u_0$. Its surface is held at zero temperature. Find the interior temperature as a function of time.",
+      "idea": "For spherical symmetry, v=ru reduces the equation to one-dimensional heat flow. A sine expansion avoids a separate spherical-Bessel coefficient calculation.",
+      "hint": "vₜ=Dvᵣᵣ, with v(0,t)=v(R,t)=0 and v(r,0)=u₀r.",
+      "solution": "The spherically symmetric heat equation is $u_t=D(u_{rr}+2u_r/r)$. Set v=ru to obtain $v_t=Dv_{rr}$. Finiteness at the center implies v(0,t)=0; the zero surface temperature gives v(R,t)=0. Expand\n$$v=\\sum_{n\\ge1}b_n\\sin(n\\pi r/R)e^{-Dn^2\\pi^2t/R^2},$$\n$$b_n=\\frac2R\\int_0^Ru_0r\\sin(n\\pi r/R)dr=\\frac{2u_0R}{n\\pi}(-1)^{n+1}.$$\nThus for 0<r<R and t>0,\n$$u(r,t)=\\frac{2u_0R}{\\pi r}\\sum_{n=1}^\\infty\\frac{(-1)^{n+1}}n\\sin\\frac{n\\pi r}{R}e^{-Dn^2\\pi^2t/R^2}.$$\nEquivalently, write $2u_0\\sum(-1)^{n+1}j_0(n\\pi r/R)e^{-Dn^2\\pi^2t/R^2}$. At the center take the continuous limit:\n$$u(0,t)=2u_0\\sum_{n=1}^\\infty(-1)^{n+1}e^{-Dn^2\\pi^2t/R^2}.$$\nAs t→0⁺, every interior point returns to u₀, while r=R is zero for t>0. Treat the jump between the initial surface temperature and the suddenly cooled boundary through this limiting interpretation.",
+      "answer": "Use the sine/r series, or the equivalent j₀ series, above. The slowest decay rate is Dπ²/R².",
+      "pattern": "Spherical symmetry → multiply by r to remove the first derivative → solve a one-dimensional heat equation with zero ends → divide by r and take the center limit separately.",
+      "pitfall": "Do not directly substitute r=0 into the 1/r expression. The final temperature has no singularity.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.4-3",
+      "section": "5.4",
+      "number": 3,
+      "page": 235,
+      "title": "Cooling a ball whose initial temperature contains cosθ",
+      "question": "A uniform conducting ball of radius R initially has temperature $f(r)\\cos\\theta$. It is placed in ice water, keeping the surface at zero temperature. Find the interior temperature evolution.",
+      "idea": "The initial data contain only the l=1 spherical harmonic. Diffusion does not mix angular orders, so expand the radial part in j₁ and its positive zeros.",
+      "hint": "j₁(x)=sin x/x²−cos x/x. The boundary equation j₁(αₙ)=0 is equivalent to tanαₙ=αₙ.",
+      "solution": "Since $\\cos\\theta=P_1(\\cos\\theta)$, set $u=V(r,t)\\cos\\theta$. The heat equation becomes $V_t=D[V_{rr}+2V_r/r-2V/r^2]$. The finite spatial solution is $j_1(kr)$. Zero surface temperature requires $k_n=\\alpha_n/R$, where $\\alpha_n>0$ is a positive zero of $j_1$; equivalently $\\tan\\alpha_n=\\alpha_n$, excluding 0.\n$$u(r,\\theta,t)=\\cos\\theta\\sum_{n=1}^\\infty A_nj_1(\\alpha_nr/R)e^{-D\\alpha_n^2t/R^2}.$$\nProject the initial radial temperature with weight r²:\n$$A_n=\\frac{\\int_0^Rr^2f(r)j_1(\\alpha_nr/R)dr}{\\int_0^Rr^2j_1(\\alpha_nr/R)^2dr}=\\frac{2}{R^3j_2(\\alpha_n)^2}\\int_0^Rr^2f(r)j_1(\\alpha_nr/R)dr.$$\nThe norm uses spherical-Bessel orthogonality. Each term vanishes linearly with r at the center and is zero at the sphere; the complete expansion restores the initial data. Continuity of the initial temperature at the center requires at least $f(r)\\to0$. For smoothness, a common sufficient condition is $f(r)=O(r)$ with an appropriate smooth odd-power expansion. The problem gives no regularity assumption on f; discontinuous data can still be interpreted as an L² heat-equation initial condition.",
+      "answer": "Only l=1, j₁ modes occur. Their coefficients are given above, and tanα=α determines the positive eigenvalues.",
+      "pattern": "Identify the initial angular order l → choose j_l → use the zero surface value to find positive roots → expand with weight r².",
+      "pitfall": "cosθ is not spherically symmetric. Do not use j₀ roots nπ, and α=0 is not a nonzero l=1 eigenmode.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.5-1",
+      "section": "5.5",
+      "number": 1,
+      "page": 238,
+      "title": "Longitudinal vibration of a free wedge-shaped slender rod",
+      "question": "A uniform-material wedge-shaped slender rod has length l, small constant width ε, and thick-end height h. The x axis runs along the rod, with its sharp tip at x=0. Both ends are free, the initial velocity is zero, and the initial displacement is f(x). Find its longitudinal vibration.",
+      "idea": "The wedge area is proportional to x, giving an order-zero Bessel spatial equation. The thick free end selects J₁ zeros. Include the rigid zero mode.",
+      "hint": "A(x)=εhx/l; the self-adjoint spatial weight is x and the finite solution is J₀(kx).",
+      "solution": "Let E be Young's modulus and ϱ the material density, so c=√(E/ϱ). The wedge area is $A(x)=\\varepsilon hx/l$. Force balance on a rod element gives\n$$u_{tt}=c^2\\frac1A(Au_x)_x=c^2\\left(u_{xx}+\\frac1xu_x\\right),\\quad0<x<l.$$\nThe free-end condition is $EAu_x=0$. Separate $u=XT$. The positive-frequency spatial equation is $X\\prime\\prime+X\\prime/x+k^2X=0$. At the tip choose the finite, zero-force solution $J_0(kx)$ and exclude $Y_0$. At the thick end, $X\\prime(l)=0$ gives $J_1(kl)=0$. Let αₙ be the nth positive J₁ zero. Then Xₙ=J₀(αₙx/l) and ωₙ=cαₙ/l. The k=0 constant spatial mode represents translation of the entire rod.\nZero initial velocity removes all sine-in-time coefficients and the linear-time term of the zero mode. Therefore\n$$u(x,t)=A_0+\\sum_{n=1}^\\infty A_nJ_0(\\alpha_nx/l)\\cos(c\\alpha_nt/l),$$\n$$A_0=\\frac2{l^2}\\int_0^lxf(x)dx,\\qquad A_n=\\frac{2}{l^2J_0(\\alpha_n)^2}\\int_0^lxf(x)J_0(\\alpha_nx/l)dx.$$\nHere $\\int_0^lxJ_0(\\alpha_nx/l)^2dx=l^2[J_0(\\alpha_n)^2+J_1(\\alpha_n)^2]/2=l^2J_0(\\alpha_n)^2/2$. The overall area factor εh/l cancels from both the equation and projection coefficients. With both ends free, the mass-weighted mean displacement A₀ stays constant, giving another check on the result.",
+      "answer": "$u=A_0+\\sum A_nJ_0(\\alpha_nx/l)\\cos(c\\alpha_nt/l)$, where αₙ are positive J₁ zeros and the projection weight is x.",
+      "pattern": "Find A(x) → derive the self-adjoint longitudinal equation → impose finite/free endpoint conditions → include the zero mode → project with weight A.",
+      "pitfall": "The wedge has A∝x, unlike the cone A∝x² discussed in the text. Do not substitute spherical j₀ or weight r².",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    },
+    {
+      "id": "5.5-2",
+      "section": "5.5",
+      "number": 2,
+      "page": 238,
+      "title": "Normal modes and frequencies of a fixed annular membrane",
+      "question": "A taut annular membrane has fixed inner and outer edges of radii $\\rho_1,\\rho_2$. Find its normal modes and natural frequencies.",
+      "idea": "Angular periodicity requires integer m. The annular radial domain needs both Jₘ and Yₘ. The two fixed circles give a zero-determinant eigenvalue equation.",
+      "hint": "First build Rₘ(kρ)=Jₘ(kρ)Yₘ(kρ₁)−Yₘ(kρ)Jₘ(kρ₁), which is automatically zero at ρ₁.",
+      "solution": "Let T be membrane tension per unit length and σ its surface density. Then c=√(T/σ) and $u_{tt}=c^2\\Delta_{2D}u$. Set $u=R(\\rho)\\Phi(\\phi)T_*(t)$. Angular periodicity gives $\\Phi=A\\cos m\\phi+B\\sin m\\phi$ with $m=0,1,\\ldots$. The radial equation is\n$$R\\prime\\prime+\\rho^{-1}R\\prime+(k^2-m^2/\\rho^2)R=0,$$\nso $R=CJ_m(k\\rho)+DY_m(k\\rho)$. Both fixed edges require a nonzero solution of the coefficient equations, so their determinant must vanish:\n$$J_m(k\\rho_1)Y_m(k\\rho_2)-Y_m(k\\rho_1)J_m(k\\rho_2)=0.$$\nLet kₘₙ be its nth positive root. Choose\n$$R_{mn}(\\rho)=J_m(k_{mn}\\rho)Y_m(k_{mn}\\rho_1)-Y_m(k_{mn}\\rho)J_m(k_{mn}\\rho_1).$$\nThe normal modes are therefore\n$$u_{mn}=R_{mn}(\\rho)[A\\cos m\\phi+B\\sin m\\phi]\\cos(ck_{mn}t+\\delta),$$\nwith angular frequency $\\omega_{mn}=ck_{mn}$ and ordinary frequency $\\nu_{mn}=ck_{mn}/(2\\pi)$. For m=0, the angular part is constant. For m≥1, sine and cosine give twofold degeneracy. The two fixed boundaries exclude any nontrivial k=0 mode; this can also be shown by an energy integral.",
+      "answer": "The positive roots obey the Jₘ/Yₘ determinant equation above. ωₘₙ=√(T/σ)kₘₙ, and each mode is the radial combination times cos mφ or sin mφ.",
+      "pattern": "Periodic angular functions → two Bessel radial solutions → determinant from two boundaries → positive roots give frequencies → check degeneracy.",
+      "pitfall": "The annulus does not contain ρ=0, so retain Yₘ. Angular frequency differs from frequency in hertz by a factor 2π.",
+      "verification": "The problem statement was checked against the textbook exercise page. The solution was independently derived and analytically checked against the equation, boundary conditions, and initial conditions. No claim of question-by-question verification against instructor answers is made."
+    }
+  ]
+}

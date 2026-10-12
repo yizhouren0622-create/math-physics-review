@@ -1,0 +1,274 @@
+{
+  "4.1-1": {
+    "zh": {
+      "goal": "证明这些函数没有多余的一项：任何一项都不能由其余项凑出。",
+      "recognize": "看到“函数组线性独立”，先算 W。W 是把函数及其各阶导数排成方阵后的行列式。",
+      "steps": [
+        "先写出前几项：1、x、x²/2；按次数从小到大排列。",
+        "第一行放函数，第二行放一阶导数，依次写到 N 阶导数。",
+        "次数比求导阶数小的项变成 0；对角线全部是 1，所以 W=1。",
+        "W 不为 0，齐次线性方程组只有零系数解，因此函数组独立。"
+      ],
+      "check": {
+        "question": "1、x、x²/2 的 W 是几？",
+        "answer": "是 1；三阶方阵的对角元全是 1。"
+      }
+    },
+    "en": {
+      "goal": "Prove that none of these functions is redundant: no one is a combination of the others.",
+      "recognize": "For linear independence, calculate W: the determinant whose rows contain successive derivatives.",
+      "steps": [
+        "Write the first functions: 1, x, x²/2, ordered by increasing degree.",
+        "Place the functions in row one, their first derivatives in row two, and continue through derivative order N.",
+        "A derivative beyond the polynomial degree is zero. Every diagonal entry is 1, so W=1.",
+        "A nonzero determinant forces all coefficients in a zero linear combination to vanish."
+      ],
+      "check": {
+        "question": "What is W for 1, x, x²/2?",
+        "answer": "It is 1; the three diagonal entries of the 3×3 matrix are all 1."
+      }
+    }
+  },
+  "4.1-2": {
+    "zh": {
+      "goal": "分清“W=0”能证明到哪里，避免证明一个缺条件的命题。",
+      "recognize": "W=0 适合对 y₁/y₂ 求导，但只有 y₂ 不为 0 时才能这样除。",
+      "steps": [
+        "先限定在 y₂ 不为 0 的连通区间，写出商的导数。",
+        "把导数分子认成 −W；W=0 就说明比值是常数。",
+        "若要跨过 y₂ 的零点，补充两函数是同一正规齐次方程的解，再用初值唯一性。",
+        "检查题干若只说任意光滑函数，就说明反例：左右两侧各放一个光滑凸起，W=0 却不成比例。"
+      ],
+      "check": {
+        "question": "y₂ 恒为 0 时，能总写 y₁=c y₂ 吗？",
+        "answer": "不能。若 y₁ 不恒为 0，右边始终为 0；不过这一对函数仍然线性相关。"
+      }
+    },
+    "en": {
+      "goal": "Identify exactly what W=0 proves, rather than prove a statement with missing assumptions.",
+      "recognize": "W=0 suggests differentiating y₁/y₂, but division requires y₂ to be nonzero.",
+      "steps": [
+        "Work first on a connected interval where y₂ does not vanish and differentiate the quotient.",
+        "Recognize the numerator as −W. If W=0, the quotient is constant.",
+        "To cross zeros of y₂, assume both solve the same regular homogeneous equation and use uniqueness of initial data.",
+        "If the question allows arbitrary smooth functions, give the counterexample with separate smooth bumps on the two sides."
+      ],
+      "check": {
+        "question": "If y₂ is identically zero, can we always write y₁=c y₂?",
+        "answer": "No. A nonzero y₁ cannot equal the zero right side, although the pair is still linearly dependent."
+      }
+    }
+  },
+  "4.1-3": {
+    "zh": {
+      "goal": "从原方程推出正确的 W 公式，并找出 C/p 所需条件。",
+      "recognize": "题目给了最高阶系数 p，先除以 p；真正进入 W 公式的是一阶导系数 q/p。",
+      "steps": [
+        "在 p 不为 0 的区间，把 y″ 写成 −(q/p)y′−(r/p)y。",
+        "对 W=y₁y₂′−y₁′y₂ 求导，再代入上式；含 r 的项抵消。",
+        "解 W′=−(q/p)W，得到指数积分公式。",
+        "只有 q=p′ 时，积分才化成 ln|p|，从而 W=C/p；否则给出反例。"
+      ],
+      "check": {
+        "question": "y″+y′=0 中，W 是常数吗？",
+        "answer": "通常不是；它满足 W′=−W，所以 W=Ce^(−x)。"
+      }
+    },
+    "en": {
+      "goal": "Derive the correct formula for W and find the assumption needed for C/p.",
+      "recognize": "Divide by the leading coefficient p first. The coefficient used in Abel’s formula is q/p.",
+      "steps": [
+        "Where p is nonzero, express y″ as −(q/p)y′−(r/p)y.",
+        "Differentiate W=y₁y₂′−y₁′y₂ and substitute; all r terms cancel.",
+        "Solve W′=−(q/p)W to get the exponential-integral formula.",
+        "Only if q=p′ does the integral become ln|p|, yielding W=C/p. Otherwise provide a counterexample."
+      ],
+      "check": {
+        "question": "Is W constant for y″+y′=0?",
+        "answer": "Not generally. It satisfies W′=−W, so W=Ce^(−x)."
+      }
+    }
+  },
+  "4.2-1": {
+    "zh": {
+      "goal": "用递推找到 Hermite 多项式，并分清何时级数会停止。",
+      "recognize": "x=0 处最高阶系数是 1，可直接用普通幂级数；递推每次跳两个次数。",
+      "steps": [
+        "设 y=a₀+a₁x+a₂x²+⋯，求导后代入，把相同 x 次数放一起。",
+        "由 xᵏ 系数为 0，求出 aₖ₊₂=(2k+1−λ)aₖ/[(k+2)(k+1)]。",
+        "想要 n 次多项式，就令 k=n 时分子为 0，得到 λ=2n+1。",
+        "只保留与 n 同奇偶的链，另一链设为 0；最后让最高次系数为 2ⁿ。"
+      ],
+      "check": {
+        "question": "要得到二次 Hermite 多项式，应取 λ 为几？",
+        "answer": "λ=5；归一化后 H₂=4x²−2。"
+      }
+    },
+    "en": {
+      "goal": "Use the recurrence to find Hermite polynomials and see exactly when the series stops.",
+      "recognize": "The leading coefficient is 1 at x=0, so an ordinary power series works. The recurrence jumps two powers at a time.",
+      "steps": [
+        "Set y=a₀+a₁x+a₂x²+⋯, differentiate, substitute, and collect the same powers of x.",
+        "Set the coefficient of xᵏ to zero to obtain aₖ₊₂=(2k+1−λ)aₖ/[(k+2)(k+1)].",
+        "For degree n, make the numerator vanish at k=n: λ=2n+1.",
+        "Keep the chain with n’s parity, set the other chain to zero, and normalize the leading coefficient to 2ⁿ."
+      ],
+      "check": {
+        "question": "Which λ gives a quadratic Hermite polynomial?",
+        "answer": "λ=5, and the normalized result is H₂=4x²−2."
+      }
+    }
+  },
+  "4.2-2": {
+    "zh": {
+      "goal": "建立 Chebyshev 方程的偶数、奇数两条解。",
+      "recognize": "x=0 是常点，含 x²y″ 和 xy′，它们正好保持幂次，因此递推连接 aₖ 与 aₖ₊₂。",
+      "steps": [
+        "设普通幂级数；将 −x²y″−xy′ 的 xᵏ 系数合成 −k²aₖ。",
+        "得到 aₖ₊₂=(k²−n²)aₖ/[(k+2)(k+1)]。",
+        "分别从 a₀、a₁ 起步写偶数链、奇数链；整数 n 时同奇偶链终止。",
+        "用 x=sin t 将方程化成 yₜₜ+n²y=0 检查；n=0 时第二解要单独写成 arcsin x。"
+      ],
+      "check": {
+        "question": "n=2 时，哪一条链会停止？",
+        "answer": "偶数链；k=2 时递推分子为 0。"
+      }
+    },
+    "en": {
+      "goal": "Build the even and odd solution chains of Chebyshev’s equation.",
+      "recognize": "Zero is an ordinary point. The factors x²y″ and xy′ preserve powers, so the recurrence links aₖ to aₖ₊₂.",
+      "steps": [
+        "Use an ordinary series and combine the xᵏ coefficients of −x²y″−xy′ into −k²aₖ.",
+        "Obtain aₖ₊₂=(k²−n²)aₖ/[(k+2)(k+1)].",
+        "Start one chain at a₀ and the other at a₁. For integer n, the matching-parity chain terminates.",
+        "Check with x=sin t, which gives yₜₜ+n²y=0. For n=0, write the second solution separately as arcsin x."
+      ],
+      "check": {
+        "question": "For n=2, which chain terminates?",
+        "answer": "The even chain: its recurrence numerator vanishes at k=2."
+      }
+    }
+  },
+  "4.2-3": {
+    "zh": {
+      "goal": "把一个看似陌生的方程变成可逐项计算的超几何级数。",
+      "recognize": "x=0 处最高阶系数为 0，普通级数可能漏解；用带额外指数 xʳ 的 Frobenius 形式。",
+      "steps": [
+        "先乘 −1，把 x(x−1) 改成 x(1−x)，避免之后符号出错。",
+        "设 y=xʳΣdₖxᵏ；最低次项给 r=0、1−c。",
+        "对每个 r 用递推逐项产生 dₖ；这两条链就是两支超几何级数。",
+        "若 c 为整数，先检查分母和独立性；不能直接照抄两支公式，需由一支解做降阶积分。"
+      ],
+      "check": {
+        "question": "为什么 c=1 要特别处理？",
+        "answer": "两指标都是 0，通常需要含对数的第二解；两支常规公式不能保证独立。"
+      }
+    },
+    "en": {
+      "goal": "Turn an unfamiliar equation into a series that can be calculated coefficient by coefficient.",
+      "recognize": "The leading coefficient vanishes at zero. An ordinary series may miss a solution, so include the extra exponent xʳ.",
+      "steps": [
+        "Multiply by −1 first to change x(x−1) to x(1−x) and control the signs.",
+        "Set y=xʳΣdₖxᵏ. The lowest power gives r=0 and 1−c.",
+        "For each r, use the recurrence to generate dₖ. These are the two hypergeometric series.",
+        "If c is an integer, check denominators and independence. Obtain a second solution by reduction of order when the two formulas fail."
+      ],
+      "check": {
+        "question": "Why does c=1 need special care?",
+        "answer": "Both indicial roots are zero; the second solution often contains a logarithm, and the usual pair need not be independent."
+      }
+    }
+  },
+  "4.2-4": {
+    "zh": {
+      "goal": "求合流超几何方程的两支解，并知道何时需要对数。",
+      "recognize": "它比上一题少一个分子因子；x=0 仍是正则奇点，所以继续用 Frobenius 法。",
+      "steps": [
+        "设 y=xʳΣdₖxᵏ，最低次给 r=0、1−c。",
+        "把每个 r 代入递推 dₖ₊₁=(k+r+a)dₖ/[(k+r+1)(k+r+c)]。",
+        "c 非整数时直接形成两支 M 函数；注意 x^(1−c) 的分支。",
+        "c 为整数时改用 y₂=y₁∫eˣx^(−c)/y₁² dx；积分中的 1/x 会产生 ln x。",
+        "若 a=−n，检查分母后说明一支可在 n 次停止。"
+      ],
+      "check": {
+        "question": "a=−2 时哪一级可能终止？",
+        "answer": "k=2 时分子 k+a=0，解析链可能终止为二次多项式。"
+      }
+    },
+    "en": {
+      "goal": "Find both confluent hypergeometric solutions and recognize when logarithms are needed.",
+      "recognize": "Compared with the Gauss equation, the recurrence has one numerator factor. Zero is still regular singular, so use Frobenius.",
+      "steps": [
+        "Set y=xʳΣdₖxᵏ; the lowest power gives r=0 and 1−c.",
+        "Insert each r into dₖ₊₁=(k+r+a)dₖ/[(k+r+1)(k+r+c)].",
+        "For noninteger c, these give two M-function solutions. Choose a branch of x^(1−c).",
+        "For integer c, use y₂=y₁∫eˣx^(−c)/y₁² dx; a 1/x term produces ln x.",
+        "If a=−n and the denominators allow it, one solution stops at degree n."
+      ],
+      "check": {
+        "question": "At which step may a=−2 terminate the analytic series?",
+        "answer": "At k=2, because k+a=0; the solution may become a quadratic polynomial."
+      }
+    }
+  },
+  "4.2-5": {
+    "zh": {
+      "goal": "在 x=1 附近找出一个解析解和一个对数解。",
+      "recognize": "展开中心在奇点 x=1，不在 0；先换变量 t=x−1，才能正确比较最低次幂。",
+      "steps": [
+        "令 t=x−1，并将方程整理成 t(t+2)yₜₜ+2(t+1)yₜ−l(l+1)y=0。",
+        "用 tʳ 级数求指标，得到重复的 r=0；先取 d₀=1 求第一支递推。",
+        "写出解析支 y₁；整数 l 时它终止为 Legendre 多项式。",
+        "用 y₂=y₁∫1/[(1−x²)y₁²]dx 找第二支；x=1 附近的 1/(x−1) 项产生对数。"
+      ],
+      "check": {
+        "question": "重复指标 r=0 能证明有两支普通幂级数吗？",
+        "answer": "不能；本题第二支通常含 ln|x−1|。"
+      }
+    },
+    "en": {
+      "goal": "Find an analytic solution and a logarithmic solution near x=1.",
+      "recognize": "The expansion center is the singular point x=1. Set t=x−1 before comparing lowest powers.",
+      "steps": [
+        "Put t=x−1 and obtain t(t+2)yₜₜ+2(t+1)yₜ−l(l+1)y=0.",
+        "Use a tʳ series. The repeated root is r=0; set d₀=1 to derive the first recurrence.",
+        "Write the analytic solution y₁. For integer l, it terminates as a Legendre polynomial.",
+        "Use y₂=y₁∫1/[(1−x²)y₁²]dx. The 1/(x−1) term generates the logarithm."
+      ],
+      "check": {
+        "question": "Does the repeated root r=0 guarantee two ordinary power-series solutions?",
+        "answer": "No. The second solution here generally contains ln|x−1|."
+      }
+    }
+  },
+  "4.2-6": {
+    "zh": {
+      "goal": "找到 Laguerre 多项式，并按本题要求调整倍数。",
+      "recognize": "这是 a=−λ、c=1 的合流超几何方程；重复指标意味着还要说明第二支对数解。",
+      "steps": [
+        "用 xʳ 级数得到重复根 r=0，再求 aₖ₊₁=(k−λ)aₖ/(k+1)²。",
+        "要 n 次多项式，就令 λ=n，使 n 次后的系数为 0。",
+        "最高次系数是 a₀(−1)ⁿ/n!；题目要求 (−1)ⁿ，所以取 a₀=n!。",
+        "据递推写出 L₁、L₂、L₃；第二支用降阶积分补全。"
+      ],
+      "check": {
+        "question": "本题 L₂ 的常数项为什么是 2，而常见表格是 1？",
+        "answer": "本题最高次系数规定为 1，因此把常见的二次 Laguerre 多项式整体乘以 2!=2。"
+      }
+    },
+    "en": {
+      "goal": "Find Laguerre polynomials and scale them to the convention required here.",
+      "recognize": "This is the confluent hypergeometric equation with a=−λ, c=1. The repeated root also requires discussion of a logarithmic second solution.",
+      "steps": [
+        "A Frobenius series gives the repeated root r=0 and aₖ₊₁=(k−λ)aₖ/(k+1)².",
+        "For degree n, set λ=n so all coefficients after degree n vanish.",
+        "The leading coefficient is a₀(−1)ⁿ/n!. Set a₀=n! to obtain the required coefficient (−1)ⁿ.",
+        "Write L₁, L₂, L₃ from the recurrence, and complete the second solution by reduction of order."
+      ],
+      "check": {
+        "question": "Why is the constant term of L₂ here 2, while common tables show 1?",
+        "answer": "The required leading coefficient is 1. The common quadratic Laguerre polynomial is therefore multiplied by 2!=2."
+      }
+    }
+  }
+}

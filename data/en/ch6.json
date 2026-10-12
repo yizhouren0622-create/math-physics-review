@@ -1,0 +1,188 @@
+{
+  "chapter": 6,
+  "title": "Green-function methods",
+  "sections": [
+    {
+      "id": "6.1",
+      "title": "Fundamental solutions of the Laplacian",
+      "page": 239,
+      "concepts": [
+        {
+          "id": "fundamental",
+          "title": "Green functions: the response to a point source",
+          "explain": "Imagine building a general source from many tiny point sources. First find the response to one unit point source, then add the responses by integration. This chapter follows the textbook convention $\\Delta G=\\delta$; with the alternative convention $-\\Delta G=\\delta$, every Green function changes its overall sign.",
+          "formula": "\\Delta G_d=\\delta,\\qquad G_1=\\frac{|x-x_0|}{2},\\quad G_2=\\frac{\\ln|\\mathbf r-\\mathbf r_0|}{2\\pi},\\quad G_3=-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}",
+          "conditions": "The equality holds in the sense of distributions: the point source is included, while the function is harmonic away from it. An unbounded domain also needs a condition at infinity. In one dimension any affine function may be added; in two dimensions the logarithm needs a reference length.",
+          "proof": "In three dimensions, a spherically symmetric harmonic function has the form $A+B/r$. On a small sphere around the source, $\\int\\Delta G\\,dV=\\oint\\partial_rG\\,dS=-4\\pi B$. A unit source means this flux must be 1, giving $B=-1/(4\\pi)$. In two dimensions the outward flux is $2\\pi r\\partial_rG=1$; integrating gives $\\ln r/(2\\pi)$. In one dimension, integrating across the source requires a derivative jump of 1. The left and right derivatives of $|x-x_0|/2$ are exactly $-1/2,1/2$.",
+          "example": {
+            "question": "Why is $1/(4\\pi r)$ the wrong sign for this chapter's fundamental solution?",
+            "solution": "Its outward flux through a small sphere is $-1$, so it satisfies $\\Delta[1/(4\\pi r)]=-\\delta$. Before using a memorized formula, write down the signs in the operator and the point source."
+          },
+          "memory": "One dimension: a V-shaped line. Two dimensions: a logarithm. Three dimensions: an inverse distance. Check the sign with flux."
+        }
+      ]
+    },
+    {
+      "id": "6.2",
+      "title": "Dirichlet problems and the image method",
+      "page": 242,
+      "concepts": [
+        {
+          "id": "dirichlet",
+          "title": "Dirichlet Green functions and boundary integrals",
+          "explain": "A Green function must produce one unit point source and satisfy a zero boundary condition. An image source is an imaginary helper placed outside the region being solved. Its job is to cancel the boundary value; it must not introduce another singularity inside the region.",
+          "formula": "u(\\mathbf r)=\\int_VG(\\mathbf r,\\mathbf r\\prime)f(\\mathbf r\\prime)\\,dV\\prime+\\int_{\\partial V}\\varphi(\\mathbf r\\prime)\\partial_{n\\prime}G(\\mathbf r,\\mathbf r\\prime)\\,dS\\prime",
+          "conditions": "$\\Delta_{r\\prime}G=\\delta(\\mathbf r\\prime-\\mathbf r)$, $G|_{\\partial V}=0$, $\\Delta u=f$, and $u|_{\\partial V}=\\varphi$. Here n′ points out of the region. An exterior domain also needs suitable conditions at infinity.",
+          "proof": "Start with Green's second identity, $\\int_V(u\\Delta G-G\\Delta u)=\\oint(u\\partial_nG-G\\partial_nu)$. Insert the point-source equation and the zero Dirichlet condition for G. The left side becomes $u(\\mathbf r)-\\int Gf$; only $\\oint\\varphi\\partial_nG$ remains on the right. Move the source integral to the right to obtain the formula. For a rigorous treatment of the singularity, remove a small sphere around the source and then let its radius tend to zero.",
+          "example": {
+            "question": "How do we construct the Green function for a unit point source in the upper half-space with zero boundary values?",
+            "solution": "Put the source at $(x_0,y_0,z_0)$, $y_0>0$, and its image at $(x_0,-y_0,z_0)$. Choose $G=-1/(4\\pi R)+1/(4\\pi R_*)$. On the plane, the two distances are equal, so the boundary value is zero. The image is outside the upper half-space, leaving only the real point source inside."
+          },
+          "memory": "Check the operator, then the boundary, then infinity. The surface integral uses the outward normal."
+        }
+      ]
+    },
+    {
+      "id": "6.3",
+      "title": "Green functions for different boundary conditions",
+      "page": 246,
+      "concepts": [
+        {
+          "id": "neumann",
+          "title": "Neumann compatibility, the arbitrary constant, and Robin boundaries",
+          "explain": "Prescribing the normal derivative does not fix the overall constant in u. Before solving, check that the total source equals the total outward boundary flux. In a bounded domain, a Green function cannot satisfy both $\\Delta G=\\delta$ and zero normal derivative everywhere.",
+          "formula": "\\int_V f\\,dV=\\oint_{\\partial V}g\\,dS,\\qquad \\Delta G_N=\\delta-\\frac1{|V|},\\quad\\partial_nG_N=0",
+          "conditions": "The domain is connected and bounded, with $\\Delta u=f$ and $\\partial_nu=g$. For the modified Neumann Green function, impose $\\int_VG_N=0$ to fix its constant. Alternatively, keep $\\Delta G=\\delta$ and give G a compatible nonzero boundary flux. For a Robin condition, check whether the homogeneous problem has a nonzero solution.",
+          "proof": "Integrate $\\Delta u=f$ and apply the divergence theorem to obtain the compatibility condition. If two solutions have identical Neumann data, their difference w satisfies $\\Delta w=0,\\partial_nw=0$. Integration by parts gives $\\int|\\nabla w|^2=0$, so w is constant. If we incorrectly require $\\Delta G=\\delta,\\partial_nG=0$, integration gives $1=0$. Subtracting $1/|V|$ makes the total source zero and removes the contradiction. Green's identity then determines $u-\\bar u$; the mean value must still be specified.",
+          "example": {
+            "question": "Does $u\\prime\\prime=1$ on $(0,L)$ with $u\\prime(0)=u\\prime(L)=0$ have a solution?",
+            "solution": "No. Integrating gives $u\\prime(L)-u\\prime(0)=L$, but the boundary data make the left side 0. If the second condition is changed to $u\\prime(L)=L$, a solution is $u=x^2/2+C$. One additional value is still needed to fix C."
+          },
+          "memory": "For flux-only boundaries, check the total balance first. Adding a constant does not change the flux."
+        }
+      ]
+    },
+    {
+      "id": "6.4",
+      "title": "Green functions of the Helmholtz operator",
+      "page": 248,
+      "concepts": [
+        {
+          "id": "helmholtz",
+          "title": "Helmholtz fundamental solutions and radiation conditions",
+          "explain": "For a time-harmonic wave, the radial fundamental solution is a spherical wave divided by distance. Both signs in the exponential satisfy the same point-source equation. The radiation condition selects one sign, and the time factor tells us which wave is outgoing.",
+          "formula": "(\\Delta+k^2)G_\\pm=\\delta,\\qquad G_\\pm(R)=-\\frac{e^{\\pm ikR}}{4\\pi R}",
+          "conditions": "$k>0$ in uniform, unbounded three-dimensional space. With the time factor $e^{-i\\omega t}$, $e^{+ikR}/R$ is outgoing and satisfies $R(\\partial_RG-ikG)\\to0$. If the time factor is $e^{+i\\omega t}$, the outgoing/incoming names are reversed.",
+          "proof": "Away from the source, set $v=RG$. The radial equation becomes $v\\prime\\prime+k^2v=0$, so $G=(Ae^{ikR}+Be^{-ikR})/R$. Near the origin, both $G_\\pm$ have the form $-1/(4\\pi R)+O(1)$. Their outward flux through a small sphere tends to 1, while $k^2\\int G\\to0$, so each produces a unit δ source. The radiation condition chooses the required wave from these two possibilities.",
+          "example": {
+            "question": "Why is checking the differential equation only for $R>0$ insufficient?",
+            "solution": "Any constant multiple of $e^{ikR}/R$ satisfies the homogeneous equation away from the source. The small-sphere flux is also needed to show that the point-source coefficient is exactly 1."
+          },
+          "memory": "Multiply the radial function by R to get a harmonic-oscillator equation. Use flux to fix the δ coefficient."
+        }
+      ]
+    },
+    {
+      "id": "6.5",
+      "title": "Green functions of the wave equation",
+      "page": 252,
+      "concepts": [
+        {
+          "id": "retarded",
+          "title": "Retarded Green functions and causal response",
+          "explain": "A wave travels at a finite speed. The response observed now comes from what the source did $R/c$ earlier. A retarded solution is causal: it cannot respond before the source acts or before the signal arrives.",
+          "formula": "G_{\\rm ret}=\\frac{\\delta(t-t\\prime-R/c)}{4\\pi c^2R},\\qquad R=|\\mathbf r-\\mathbf r\\prime|",
+          "conditions": "Here the operator is $\\partial_t^2-c^2\\Delta$ in unbounded three-dimensional space, with zero initial response. For the operator $c^{-2}\\partial_t^2-\\Delta$, multiply the Green function by $c^2$. Nonzero initial displacement or velocity requires an additional homogeneous initial-value solution.",
+          "proof": "Take a spatial Fourier transform. The point-source response satisfies $\\widehat G_{tt}+c^2|\\mathbf k|^2\\widehat G=\\delta(t-t\\prime)$. Its causal solution is $H(\\tau)\\sin(c|\\mathbf k|\\tau)/(c|\\mathbf k|)$: the function is continuous, while its time derivative jumps by 1 at τ=0. The three-dimensional inverse transform gives $\\delta(\\tau-R/c)/(4\\pi c^2R)$. In the source integral, δ automatically picks out the retarded time.",
+          "example": {
+            "question": "A source $f(\\mathbf r,t)=\\delta(\\mathbf r)H(t)$ starts acting continuously at the origin at t=0. What is the response with zero initial data?",
+            "solution": "$u(R,t)=H(t-R/c)/(4\\pi c^2R)$. For t<R/c the signal has not arrived; afterward the response has the stated static strength. At the source itself, interpret the expression as a distribution."
+          },
+          "memory": "Choose the causal direction; replace the source time t by t−R/c; check the c² factor in the operator."
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "6.1-1",
+      "section": "6.1",
+      "number": 1,
+      "page": 242,
+      "title": "The Laplacian fundamental solution on the whole line",
+      "question": "Find the Green function of the Laplacian on the unbounded one-dimensional line.",
+      "idea": "Split the line at the source. Solve the homogeneous equation on each side, then join the two pieces using continuity and a derivative jump.",
+      "hint": "Integrate $G\\prime\\prime=\\delta(x-x_0)$ across the source to get $G\\prime(x_0+)-G\\prime(x_0-)=1$.",
+      "solution": "1. Away from the source, $G\\prime\\prime=0$, so G is affine on each side. A jump in G itself would produce δ′ in its second derivative. The equation contains only δ, so G must be continuous.\n\n2. Choose a symmetric, translation-invariant fundamental solution $G=A|x-x_0|+B$. Its left and right derivatives are −A and A. Their jump is 2A, which must equal 1; therefore A=1/2. Choose the reference constant B=0.\n\n3. In the distributional sense, $(|x-x_0|/2)\\prime=\\operatorname{sgn}(x-x_0)/2$. Differentiating once more gives δ, completing the check.\n\n4. Any homogeneous solution may be added: $G=|x-x_0|/2+Ax+B$. No such one-dimensional fundamental solution tends to zero at both ends: zero slopes at both ends cannot produce a unit jump. Without extra conditions, the solution is not unique.",
+      "answer": "$G(x,x_0)=|x-x_0|/2$ is the standard symmetric fundamental solution; an arbitrary $Ax+B$ may be added.",
+      "pattern": "State the sign convention → solve in two pieces away from the source → require continuity to avoid δ′ → integrate to find the derivative jump → identify the homogeneous freedom.",
+      "pitfall": "Do not copy the negative sign from three dimensions: $-|x-x_0|/2$ satisfies $-G\\prime\\prime=\\delta$.",
+      "errata": "The whole-line problem does not specify uniqueness conditions. The standard fundamental solution is a normalization choice; imposing decay at both ends would be impossible.",
+      "verification": "Independently derived from the textbook problem; the corresponding instructor answer image was not available."
+    },
+    {
+      "id": "6.2-1",
+      "section": "6.2",
+      "number": 1,
+      "page": 246,
+      "title": "The Dirichlet solution of Poisson’s equation in the upper half-space",
+      "question": "Solve $\\Delta u=f(\\mathbf r)$ in the three-dimensional half-space $y>0$, with $u(x,0,z)=\\varphi(x,z)$.",
+      "idea": "Reflect the source across the plane with the opposite sign. Then use Green’s identity to separate the volume-source term from the boundary Poisson kernel.",
+      "hint": "The outward boundary normal is $-\\mathbf e_y$; therefore $\\partial_{n\\prime}$ is not $+\\partial_{y\\prime}$.",
+      "solution": "Let the observation point be $\\mathbf r=(x,y,z)$, the source point $\\mathbf r\\prime=(\\xi,\\eta,\\zeta)$ with η>0, and the image point $(\\xi,-\\eta,\\zeta)$. Write\n$$R=\\sqrt{(x-\\xi)^2+(y-\\eta)^2+(z-\\zeta)^2},\\quad R_* =\\sqrt{(x-\\xi)^2+(y+\\eta)^2+(z-\\zeta)^2}.$$\n\nChoose $G=-1/(4\\pi R)+1/(4\\pi R_*)$. The real-source coefficient ensures $\\Delta_{r\\prime}G=\\delta$. The image singularity is outside the domain. When η=0, R=R*, giving G=0. The function decays at infinity.\n\nGreen's second identity gives $u=\\int_{\\eta>0}Gf\\,dV\\prime+\\int_{\\eta=0}\\varphi\\partial_{n\\prime}G\\,dS\\prime$. Differentiate the two terms on η=0 to obtain\n$$\\partial_{n\\prime}G=-\\partial_\\eta G=\\frac{y}{2\\pi[(x-\\xi)^2+y^2+(z-\\zeta)^2]^{3/2}}.$$\n\nThus\n$$u(x,y,z)=-\\frac1{4\\pi}\\int_{\\eta>0}\\left(\\frac1R-\\frac1{R_*}\\right)f(\\xi,\\eta,\\zeta)\\,d\\xi d\\eta d\\zeta+\\frac{y}{2\\pi}\\int_{\\mathbb R^2}\\frac{\\varphi(\\xi,\\zeta)}{[(x-\\xi)^2+y^2+(z-\\zeta)^2]^{3/2}}\\,d\\xi d\\zeta.$$\n\nCheck the result: the volume term satisfies Poisson's equation and vanishes on the plane. The boundary kernel is positive, integrates to 1 over the plane, and concentrates at the observation point as y→0⁺. For continuous φ, the integral tends to φ. For example, f=0 and φ=C immediately give u=C. The formula requires convergence of the integrals and a chosen class of bounded/decaying solutions or specified far-field behavior that eliminates extra terms at infinity.",
+      "answer": "The solution is the volume-source integral above plus the half-space Poisson integral, whose boundary kernel is $P=y/(2\\pi[(x-\\xi)^2+y^2+(z-\\zeta)^2]^{3/2})$.",
+      "pattern": "Draw the reflected point → subtract the image fundamental solution → check the boundary and interior source → calculate the outward normal derivative → apply Green’s formula → test a constant boundary value.",
+      "pitfall": "The real-source fundamental solution has a negative inverse-distance sign, but the boundary kernel is positive. Without a far-field condition, harmonic functions such as cy can be added while keeping the zero plane boundary, destroying uniqueness.",
+      "errata": "The problem specifies only the plane boundary. An unbounded domain also needs acceptable far-field behavior and convergent integrals; otherwise the solution is not unique.",
+      "verification": "Independently derived from the textbook problem; the corresponding instructor answer image was not available."
+    },
+    {
+      "id": "6.2-2",
+      "section": "6.2",
+      "number": 2,
+      "page": 246,
+      "title": "The Poisson integral formula inside a disk",
+      "question": "Solve $\\Delta u=0$ inside a disk of radius a, with $u(a,\\theta)=f(\\theta)$.",
+      "idea": "Use inversion in the circle to construct the two-dimensional Dirichlet Green function, then calculate its boundary normal derivative.",
+      "hint": "The two-dimensional fundamental solution is logarithmic. Invert the source point to $\\mathbf r_0^*=a^2\\mathbf r_0/|\\mathbf r_0|^2$.",
+      "solution": "1. Let the observation point be $\\mathbf r_0=(\\rho,\\theta)$, 0<ρ<a, and let $\\mathbf s$ be the integration point. Choose the two-dimensional Green function\n$$G(\\mathbf s,\\mathbf r_0)=\\frac1{2\\pi}\\ln\\frac{a|\\mathbf s-\\mathbf r_0|}{\\rho|\\mathbf s-\\mathbf r_0^*|},\\qquad \\mathbf r_0^*=\\frac{a^2}{\\rho^2}\\mathbf r_0.$$\nOn |s|=a, $|\\mathbf s-\\mathbf r_0^*|=(a/\\rho)|\\mathbf s-\\mathbf r_0|$, so G=0. The inverted point lies outside the disk; only the unit real source lies inside.\n\n2. The outward normal points toward increasing |s|. Set |s|=s and $\\psi=\\theta\\prime-\\theta$. Differentiate both logarithmic distances radially and then set s=a:\n$$\\left.\\partial_nG\\right|_{s=a}=\\frac{a^2-\\rho^2}{2\\pi a(a^2+\\rho^2-2a\\rho\\cos\\psi)}.$$\n\n3. There is no volume source. The boundary arc element is $ds=a\\,d\\theta\\prime$, so Green's formula gives\n$$u(\\rho,\\theta)=\\frac1{2\\pi}\\int_0^{2\\pi}\\frac{a^2-\\rho^2}{a^2+\\rho^2-2a\\rho\\cos(\\theta-\\theta\\prime)}f(\\theta\\prime)\\,d\\theta\\prime.$$\n\n4. At ρ=0, take the limit to get the center mean value $u(0)=(2\\pi)^{-1}\\int f$, without using an image point at infinity. The Fourier expansion of the kernel is $1+2\\sum_{n\\ge1}(\\rho/a)^n\\cos n(\\theta-\\theta\\prime)$. Every term is harmonic inside the disk and the kernel integrates to 2π. The radial boundary limit restores continuous f; at a jump, it gives the mean of the two one-sided limits.\n\n5. Test $f=\\cos m\\theta$. Orthogonality immediately gives $u=(\\rho/a)^m\\cos m\\theta$, agreeing with separation of variables.",
+      "answer": "$u(\\rho,\\theta)=\\frac1{2\\pi}\\int_0^{2\\pi}\\frac{a^2-\\rho^2}{a^2+\\rho^2-2a\\rho\\cos(\\theta-\\theta\\prime)}f(\\theta\\prime)\\,d\\theta\\prime$. The center value is the boundary mean.",
+      "pattern": "Invert to locate the image → adjust the logarithmic constant to make the boundary zero → calculate the outward derivative → multiply by the arc element → test a constant or a single Fourier mode.",
+      "pitfall": "The boundary derivative contains 1/a and the arc element contains a. They cancel in the final formula; dropping either factor gives incorrect dimensions.",
+      "errata": null,
+      "verification": "Independently derived from the textbook problem; the corresponding instructor answer image was not available."
+    },
+    {
+      "id": "6.2-3",
+      "section": "6.2",
+      "number": 3,
+      "page": 246,
+      "title": "The Dirichlet Green function outside a sphere",
+      "question": "Use the image method to find the Green function for the first boundary-value problem of Poisson’s equation outside a sphere of radius a. Compare it with Example 5.2.2.",
+      "idea": "Invert the exterior real source into the sphere. The ratio of the two distances on the sphere determines the image strength.",
+      "hint": "If the real source is at distance b>a from the center, its image lies at distance a²/b and has strength ratio −a/b.",
+      "solution": "Put the sphere center at the origin. Let the real source $\\mathbf r_0$ satisfy b=|r₀|>a. Its inverted image $\\mathbf r_0^*=a^2\\mathbf r_0/b^2$ lies inside the sphere. Set\n$$G(\\mathbf r,\\mathbf r_0)=-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}+\\frac{a}{4\\pi b|\\mathbf r-\\mathbf r_0^*|}.$$\n\nOn the sphere |r|=a, $|\\mathbf r-\\mathbf r_0^*|=(a/b)|\\mathbf r-\\mathbf r_0|$, so the terms cancel. The negative inverse-distance real-source term gives $\\Delta_rG=\\delta(\\mathbf r-\\mathbf r_0)$. The image lies outside the region being solved and introduces no interior point source. As r→∞, G→0, satisfying exterior decay. The exterior Dirichlet uniqueness theorem therefore identifies this as the required Green function.\n\nCompare with Example 5.2.2. For a real exterior electric charge q in permittivity ε₀, the physical Poisson equation must be $\\Delta\\Phi=-(q/\\varepsilon_0)\\delta$. Hence\n$$\\Phi=-\\frac q{\\varepsilon_0}G=\\frac q{4\\pi\\varepsilon_0}\\left[\\frac1{|\\mathbf r-\\mathbf r_0|}-\\frac{a/b}{|\\mathbf r-\\mathbf r_0^*|}\\right].$$\nThe image charge is $q_*=-qa/b$ at $\\mathbf r_0^*$. This is the image potential for the grounded conducting sphere in Example 5.2.2. That example uses a Legendre expansion mode by mode; the image method satisfies the boundary in one construction. Uniqueness explains why both methods agree.\n\nCheck the leading far field: $\\Phi\\sim[q(1-a/b)]/(4\\pi\\varepsilon_0r)$, corresponding to the algebraic sum of the real and image charges. If a uniform field or constant potential is prescribed at infinity, add the appropriate harmonic solution separately.",
+      "answer": "$G=-1/(4\\pi|\\mathbf r-\\mathbf r_0|)+a/(4\\pi b|\\mathbf r-\\mathbf r_0^*|)$, $\\mathbf r_0^*=a^2\\mathbf r_0/b^2$. The physical image charge is $-qa/b$.",
+      "pattern": "Invert to find the location → use the sphere-distance ratio for the coefficient → check real-source normalization → check the boundary and infinity → compare potentials using Φ=−qG/ε₀.",
+      "pitfall": "For an exterior sphere, the image must be inside the sphere. The image term in G is positive, but the physical image charge is negative because Φ=−qG/ε₀.",
+      "errata": "The point-source sign in Example 5.2.2, Eq. (5.2.97), is inconsistent with its positive-charge Coulomb potential. Use the physical convention $\\Delta\\Phi=-\\rho_e/\\varepsilon_0$ when comparing, while retaining this chapter's convention $\\Delta G=\\delta$.",
+      "verification": "Independently derived from the textbook problem; the corresponding instructor answer image was not available."
+    },
+    {
+      "id": "6.4-1",
+      "section": "6.4",
+      "number": 1,
+      "page": 251,
+      "title": "Verifying both Helmholtz point-source fundamental solutions",
+      "question": "Prove that both functions $G(r)$ in textbook Eq. (6.4.8), namely $G_\\pm(r)=-e^{\\pm i\\omega r}/(4\\pi r)$, satisfy the corresponding inhomogeneous equation $(\\Delta+\\omega^2)G_\\pm=\\delta(\\mathbf r)$.",
+      "idea": "Check two separate things: the homogeneous equation away from the source, and the δ normalization at the source.",
+      "hint": "For a radial function, $\\Delta g=(rg)\\prime\\prime/r$ when r>0. The small-sphere flux determines the δ coefficient.",
+      "solution": "1. For r>0, set $v_\\pm=rG_\\pm=-e^{\\pm i\\omega r}/(4\\pi)$. Direct differentiation gives $v_\\pm\\prime\\prime=-\\omega^2v_\\pm$, so $\\Delta G_\\pm+\\omega^2G_\\pm=0$.\n\n2. Near r=0, expand: $G_\\pm=-1/(4\\pi r)\\mp i\\omega/(4\\pi)+O(r)$. Both have the same singular leading term. Thus $\\partial_rG_\\pm=1/(4\\pi r^2)+O(1)$, and on a sphere of radius ε,\n$$\\oint_{r=\\varepsilon}\\partial_rG_\\pm\\,dS=1+O(\\varepsilon^2)\\to1.$$\nAlso $\\omega^2\\int_{r<\\varepsilon}G_\\pm\\,dV=O(\\varepsilon^2)\\to0$.\n\n3. The operator therefore produces a unit point source at the origin and zero elsewhere. More rigorously, take a smooth compactly supported test function ψ and integrate by parts in the region with a small sphere removed. The inner-boundary limit leaves only ψ(0), giving $\\langle(\\Delta+\\omega^2)G_\\pm,\\psi\\rangle=\\psi(0)$. Both functions satisfy the required distributional equation.\n\n4. Their difference $G_+-G_-=-i\\sin(\\omega r)/(2\\pi r)$ has a finite limit at the origin and satisfies the homogeneous equation. The equation alone cannot select the sign; a radiation condition is needed. With the time factor $e^{-i\\omega t}$, + is outgoing. If the textbook uses $e^{+i\\omega t}$, the outgoing/incoming names are reversed.",
+      "answer": "Both functions satisfy $(\\Delta+\\omega^2)G=\\delta$: each solves the homogeneous equation away from the source and has small-sphere flux tending to 1.",
+      "pattern": "Multiply the radial function by r → differentiate twice to check the homogeneous equation → expand the singular part → fix the δ coefficient by flux → state the radiation condition.",
+      "pitfall": "A calculation only for r>0 cannot prove an inhomogeneous point-source equation. Outgoing/incoming names depend on the time convention, not just on the spatial exponential.",
+      "errata": null,
+      "verification": "Independently derived from the textbook problem; the corresponding instructor answer image was not available."
+    }
+  ]
+}

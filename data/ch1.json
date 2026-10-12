@@ -406,7 +406,7 @@
       "solution": "$\\rho u_\\rho=v_\\phi$ 对 $\\rho$ 求导得 $u_\\rho+\\rho u_{\\rho\\rho}=v_{\\phi\\rho}$。由 $v_\\rho=-u_\\phi/\\rho$ 得 $v_{\\rho\\phi}=-u_{\\phi\\phi}/\\rho$。混合导数相等，乘 $\\rho$ 即得 $\\rho u_\\rho+\\rho^2u_{\\rho\\rho}+u_{\\phi\\phi}=0$。\n\n交换 $u,v$ 并利用另一条 C–R，完全同样得到 $\\rho^2v_{\\rho\\rho}+\\rho v_\\rho+v_{\\phi\\phi}=0$。",
       "answer": "$u_{\\rho\\rho}+u_\\rho/\\rho+u_{\\phi\\phi}/\\rho^2=0$；$v$ 同理。",
       "pattern": "C–R 乘半径 → 两次求导 → 混合导数抵消。",
-      "pitfall": "求导时 $1/\rho$ 不是常数；结论在 $\rho>0$ 使用。",
+      "pitfall": "求导时 $1/\\rho$ 不是常数；结论在 $\\rho>0$ 使用。",
       "subparts": 1,
       "errata": null,
       "verification": "按教材页面转录，独立推导；未标作教师审定答案。"

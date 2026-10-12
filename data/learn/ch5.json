@@ -1,0 +1,566 @@
+{
+  "5.1-1": {
+    "zh": {
+      "goal": "从“沿小圈走一周的积分”推出旋度公式，不用硬背整个行列式。",
+      "recognize": "旋度衡量局部绕圈趋势。题目给的是环量定义，就先只证一个分量，其余换下标即可。",
+      "steps": [
+        "先选法线为 $\\mathbf e_1$ 的小矩形，它的边沿 $q_2,q_3$，面积为 $h_2h_3dq_2dq_3$。",
+        "沿 $q_3$ 的两条边相减，第一笔写 $\\partial_{q_2}(A_3h_3)dq_2dq_3$。",
+        "沿 $q_2$ 的两条边方向相反，写 $-\\partial_{q_3}(A_2h_2)dq_2dq_3$。",
+        "把两项相加再除面积，得到第 1 分量；循环换下标得到另两分量。"
+      ],
+      "check": {
+        "question": "为什么线积分里出现 $A_3h_3$，不能只写 $A_3$？",
+        "answer": "因为实际线元是 $h_3dq_3$，不是 $dq_3$；尺度因子把坐标变化换成实际长度。"
+      }
+    },
+    "en": {
+      "goal": "Derive the curl formula from circulation around a small loop, without memorizing the whole determinant.",
+      "recognize": "Curl measures a local tendency to circulate. Since the problem defines it by circulation, prove one component first and then cycle the indices.",
+      "steps": [
+        "Choose a small rectangle normal to $\\mathbf e_1$, with edges along $q_2,q_3$ and area $h_2h_3dq_2dq_3$.",
+        "Subtract the two $q_3$ edge integrals. Your first term is $\\partial_{q_2}(A_3h_3)dq_2dq_3$.",
+        "The two $q_2$ edges have opposite orientations, giving $-\\partial_{q_3}(A_2h_2)dq_2dq_3$.",
+        "Add the terms and divide by area for component 1; cycle the indices for the other two."
+      ],
+      "check": {
+        "question": "Why does the line integral contain $A_3h_3$, rather than just $A_3$?",
+        "answer": "The physical line element is $h_3dq_3$, not $dq_3$. The scale factor converts coordinate change to actual length."
+      }
+    }
+  },
+  "5.2-1": {
+    "zh": {
+      "goal": "一次证明所有阶数在 −1 处的值。",
+      "recognize": "要证明“任意阶”的端点值，生成函数最省力：它把每个 $P_l$ 放在不同的 $t^l$ 系数里。",
+      "steps": [
+        "先写生成函数 $\\sum P_l(x)t^l=(1-2xt+t^2)^{-1/2}$。",
+        "第一笔代入 x=−1，根号里成为 $(1+t)^2$，在 $|t|<1$ 的分支下得到 $1/(1+t)$。",
+        "把它展开成 $1-t+t^2-t^3+\\cdots$，比较 $t^l$ 的系数。",
+        "写出 $P_l(-1)=(-1)^l$，再用 $P_0=1,P_1=x$ 检查前两阶。"
+      ],
+      "check": {
+        "question": "$P_3(-1)$ 是 1 还是 −1？",
+        "answer": "−1，因为 3 是奇数。"
+      }
+    },
+    "en": {
+      "goal": "Prove the value at −1 for every order at once.",
+      "recognize": "For an endpoint value of every order, try a generating function: it stores each $P_l$ as the coefficient of a different $t^l$.",
+      "steps": [
+        "Write $\\sum P_l(x)t^l=(1-2xt+t^2)^{-1/2}$.",
+        "First substitute x=−1. The expression under the square root becomes $(1+t)^2$, giving $1/(1+t)$ on the branch for $|t|<1$.",
+        "Expand as $1-t+t^2-t^3+\\cdots$ and compare the coefficients of $t^l$.",
+        "Conclude $P_l(-1)=(-1)^l$; check the first two orders using $P_0=1,P_1=x$."
+      ],
+      "check": {
+        "question": "Is $P_3(-1)$ equal to 1 or −1?",
+        "answer": "−1, because 3 is odd."
+      }
+    }
+  },
+  "5.2-2": {
+    "zh": {
+      "goal": "用一个生成函数组织五个递推式，知道每个式子从哪来。",
+      "recognize": "同时出现 $P_l$、相邻阶和导数，说明要对生成函数分别求 x、t 导数，再比较系数。",
+      "steps": [
+        "设 $D=1-2xt+t^2$，第一笔算 $G_x=tD^{-3/2}$、$G_t=(x-t)D^{-3/2}$。",
+        "先用 $DG_x=tG$；把两边展开后，只收集 $t^{l+1}$，得到第一个递推式。",
+        "再按详解的两个恒等式比较同一阶系数，得到第 2、3 式。",
+        "第 2 式减第 3 式得第 4 式；对 Bonnet 递推求导并消去 $P_l$ 得第 5 式。",
+        "用 l=1 及 $P_0=1,P_1=x,P_2=(3x^2-1)/2$ 检查符号。"
+      ],
+      "check": {
+        "question": "比较 $t^{l+1}$ 系数时，$tG$ 中贡献的是 $P_l$ 还是 $P_{l+1}$？",
+        "answer": "$P_l$，因为外面的 t 把 $t^l$ 提高了一次。"
+      }
+    },
+    "en": {
+      "goal": "Organize all five recurrences with one generating function and see where each one comes from.",
+      "recognize": "Neighboring orders and derivatives suggest taking x and t derivatives of the generating function, then comparing coefficients.",
+      "steps": [
+        "Set $D=1-2xt+t^2$. First calculate $G_x=tD^{-3/2}$ and $G_t=(x-t)D^{-3/2}$.",
+        "Use $DG_x=tG$ first. Expand both sides and collect only $t^{l+1}$ to get the first relation.",
+        "Use the next two identities in the full solution and compare the same power to get relations 2 and 3.",
+        "Subtract relation 3 from 2 for relation 4. Differentiate Bonnet’s recurrence and eliminate $P_l$ for relation 5.",
+        "Check signs at l=1 using $P_0=1,P_1=x,P_2=(3x^2-1)/2$."
+      ],
+      "check": {
+        "question": "When comparing $t^{l+1}$, does $tG$ contribute $P_l$ or $P_{l+1}$?",
+        "answer": "$P_l$: the outside t raises $t^l$ by one power."
+      }
+    }
+  },
+  "5.2-3": {
+    "zh": {
+      "goal": "把四个普通多项式改写成 Legendre 基底，掌握快速换基方法。",
+      "recognize": "输入是低次多项式，输出也是有限项；不用先做一大串正交积分，先反解 $x^2,x^3,x^4$。",
+      "steps": [
+        "写 $P_2=(3x^2-1)/2$，第一笔反解 $x^2=(P_0+2P_2)/3$。",
+        "同样从 $P_3,P_4$ 反解 $x^3,x^4$；奇次只用奇阶，偶次只用偶阶。",
+        "第 1、3 问代入 $x^3$，第 2 问同时代入 $x^4,x^3$，第 4 问代入 $x^2,x^3$。",
+        "合并同阶系数，再把 x=1 代入两边；每个 $P_l(1)=1$，所以系数和应等于原多项式在 1 的值。"
+      ],
+      "check": {
+        "question": "$x^3$ 展开中可以出现 $P_2$ 吗？",
+        "answer": "不可以。$x^3$ 是奇函数，$P_2$ 是偶函数；结果只有 $P_1,P_3$。"
+      }
+    },
+    "en": {
+      "goal": "Rewrite all four ordinary polynomials in the Legendre basis using a quick change-of-basis method.",
+      "recognize": "A low-degree polynomial needs only finitely many terms. Instead of many orthogonality integrals, first solve for $x^2,x^3,x^4$.",
+      "steps": [
+        "Write $P_2=(3x^2-1)/2$ and first solve $x^2=(P_0+2P_2)/3$.",
+        "Likewise solve the $P_3,P_4$ formulas for $x^3,x^4$. Odd powers use odd orders; even powers use even orders.",
+        "Use the $x^3$ formula in parts 1 and 3; use both $x^4,x^3$ in part 2 and $x^2,x^3$ in part 4.",
+        "Collect equal orders and test x=1. Since every $P_l(1)=1$, the coefficient sum must equal the original polynomial at 1."
+      ],
+      "check": {
+        "question": "Can the expansion of $x^3$ contain $P_2$?",
+        "answer": "No. $x^3$ is odd and $P_2$ is even; only $P_1,P_3$ occur."
+      }
+    }
+  },
+  "5.2-4": {
+    "zh": {
+      "goal": "先求球外电势，再用负梯度得到电场。",
+      "recognize": "匀强场的电势含 $r\\cos\\theta$，角度就是 $P_1$；因此只需要 l=1 的两个径向幂，不必写整个无穷级数。",
+      "steps": [
+        "取 z 轴沿外场。第一笔写 $\\Phi=(-E_0r+B/r^2)\\cos\\theta$，增长项已由远场固定。",
+        "代 r=a，并用接地 $\\Phi=0$，解出 $B=E_0a^3$。",
+        "算 $E_r=-\\partial_r\\Phi$ 和 $E_\\theta=-(1/r)\\partial_\\theta\\Phi$，方位分量为零。",
+        "在球面检查切向场为零；在无穷远检查恢复原匀强场。"
+      ],
+      "check": {
+        "question": "球面上的 $E_\\theta$ 应是多少？",
+        "answer": "0。导体表面在静电平衡时没有切向电场。"
+      }
+    },
+    "en": {
+      "goal": "Find the exterior potential, then take its negative gradient to find the field.",
+      "recognize": "A uniform-field potential contains $r\\cos\\theta$, whose angular factor is $P_1$. Only the two l=1 radial powers are needed, not an infinite series.",
+      "steps": [
+        "Choose the z axis along the field. First write $\\Phi=(-E_0r+B/r^2)\\cos\\theta$; the far field already fixes the growing term.",
+        "Set r=a and impose grounding, $\\Phi=0$, to find $B=E_0a^3$.",
+        "Calculate $E_r=-\\partial_r\\Phi$ and $E_\\theta=-(1/r)\\partial_\\theta\\Phi$; the azimuthal component is zero.",
+        "Check zero tangential field on the sphere and recovery of the applied uniform field at infinity."
+      ],
+      "check": {
+        "question": "What should $E_\\theta$ be on the sphere?",
+        "answer": "0. A conductor in electrostatic equilibrium has no tangential surface field."
+      }
+    }
+  },
+  "5.2-5": {
+    "zh": {
+      "goal": "把圆环每一小段电荷的贡献相加，得到整个空间的电势。",
+      "recognize": "给的是连续电荷分布，先写库仑积分最可靠。若要用本章方法，再把距离倒数展开成 Legendre 级数。",
+      "steps": [
+        "把环放在 z=0。第一笔写 $dq=Qd\\phi\\prime/(2\\pi)$，再写观察点到源点的距离。",
+        "代入 $d\\Phi=dq/(4\\pi\\varepsilon R_{\\rm distance})$，对一圈积分；这已经是空间电势的有效表达式。",
+        "为求级数，按观察点在 r<R 还是 r>R 选择小半径与大半径，展开库仑核。",
+        "对源角平均后得到 $P_l(0)P_l(\\cos\\theta)$；奇阶为零，只留下偶阶。",
+        "用轴线上 $Q/(4\\pi\\varepsilon\\sqrt{r^2+R^2})$ 检查，注意轴上公式不能套到任意点。"
+      ],
+      "check": {
+        "question": "为什么展开里没有 l=1 项？",
+        "answer": "因为 $P_1(0)=0$；上下对称的圆环没有这一奇阶模态。"
+      }
+    },
+    "en": {
+      "goal": "Add the potential contributions of all small charge elements around the ring to find the potential throughout space.",
+      "recognize": "For a continuous charge distribution, start with the Coulomb integral. To use this chapter’s method, then expand the inverse distance in Legendre modes.",
+      "steps": [
+        "Put the ring in z=0. First write $dq=Qd\\phi\\prime/(2\\pi)$ and the distance from the source element to the observation point.",
+        "Insert them into $d\\Phi=dq/(4\\pi\\varepsilon R_{\\rm distance})$ and integrate around the ring. This already gives a valid spatial potential.",
+        "For a series, distinguish r<R from r>R, identify the smaller/larger radius, and expand the Coulomb kernel.",
+        "Averaging over the source angle gives $P_l(0)P_l(\\cos\\theta)$. Odd orders vanish, leaving only even orders.",
+        "Check against $Q/(4\\pi\\varepsilon\\sqrt{r^2+R^2})$ on the axis; this axis-only formula cannot be used at arbitrary points."
+      ],
+      "check": {
+        "question": "Why is there no l=1 term?",
+        "answer": "Because $P_1(0)=0$. The ring’s reflection symmetry eliminates this odd-order mode."
+      }
+    }
+  },
+  "5.2-6": {
+    "zh": {
+      "goal": "用同一套球面系数同时构造球内与球外电势。",
+      "recognize": "球面分区恒定，边界就是角度阶跃。第一关是找对 $\\mu=\\cos\\theta$ 的积分区间，之后做 Legendre 投影。",
+      "steps": [
+        "令 $\\mu_0=\\cos\\theta_0$。第一笔写下部对应 $-1\\le\\mu<\\mu_0$，因此系数积分从 −1 到 $\\mu_0$。",
+        "先算常数项 $a_0=U(1+\\mu_0)/2$，它等于表面电势的平均值。",
+        "对 l≥1，用 Legendre 导数递推把积分变成 $U[P_{l+1}(\\mu_0)-P_{l-1}(\\mu_0)]/2$。",
+        "球内每项乘 $(r/R)^l$，球外乘 $(R/r)^{l+1}$；系数不变。",
+        "检查 r=R 回到阶跃边界，球心有限、无穷远趋零；分界线上级数给 U/2。"
+      ],
+      "check": {
+        "question": "若上下恰好各半球，常数系数 $a_0$ 是多少？",
+        "answer": "U/2，因为 $\\mu_0=0$，也因为半个球面为 U、半个为 0。"
+      }
+    },
+    "en": {
+      "goal": "Use one set of surface coefficients to build both interior and exterior potentials.",
+      "recognize": "Piecewise constant values on a sphere form an angular step. First identify the correct interval in $\\mu=\\cos\\theta$, then project onto Legendre polynomials.",
+      "steps": [
+        "Set $\\mu_0=\\cos\\theta_0$. First note that the lower part is $-1\\le\\mu<\\mu_0$, so coefficient integrals run from −1 to $\\mu_0$.",
+        "Calculate $a_0=U(1+\\mu_0)/2$ first; it is the surface-average potential.",
+        "For l≥1, use the derivative recurrence to evaluate the integral as $U[P_{l+1}(\\mu_0)-P_{l-1}(\\mu_0)]/2$.",
+        "Multiply each interior mode by $(r/R)^l$ and each exterior mode by $(R/r)^{l+1}$, using the same coefficients.",
+        "Check the step boundary at r=R, finiteness at the center, and decay at infinity. The series gives U/2 on the dividing line."
+      ],
+      "check": {
+        "question": "For two exact hemispheres, what is $a_0$?",
+        "answer": "U/2: $\\mu_0=0$, and half the surface has value U while half has value 0."
+      }
+    }
+  },
+  "5.2-7": {
+    "zh": {
+      "goal": "求出球外衰减解，并识别哪些 h 会使题目无解或不唯一。",
+      "recognize": "边界含 u 和导数，是 Robin 条件。每个角模态都会有自己的分母；分母为零时必须停下来讨论。",
+      "steps": [
+        "先补充 $u\\to0$ 的远场条件。第一笔把 $5\\cos3\\theta$ 改写成 $8P_3-3P_1$。",
+        "对每阶写 $a_l(R/r)^{l+1}P_l$；在 r=R 求导，边界系数成为 $a_l[1-h(l+1)/R]$。",
+        "分别把 l=1 和 l=3 的边界系数设为 −3、8，非零分母时直接解出 $a_1,a_3$。",
+        "若 h=R/2 或 R/4，非零右端遇到零系数，因此无衰减解。",
+        "若 h=R/(n+1) 且 n≠1,3，右端对应阶为零，但能任加该阶齐次解，因此不唯一。"
+      ],
+      "check": {
+        "question": "h=R/3 对应哪一阶共振？本题是无解还是不唯一？",
+        "answer": "n=2；该阶边界强迫为零，所以有解但不唯一，可加任意二阶衰减球谐。"
+      }
+    },
+    "en": {
+      "goal": "Find the decaying exterior solution and identify h values that cause nonexistence or nonuniqueness.",
+      "recognize": "A boundary involving u and its derivative is Robin. Each angular mode has its own denominator; when it is zero, stop and examine compatibility.",
+      "steps": [
+        "First impose $u\\to0$ at infinity. Your first calculation is $5\\cos3\\theta=8P_3-3P_1$.",
+        "Write each mode as $a_l(R/r)^{l+1}P_l$. Differentiating at r=R gives boundary coefficient $a_l[1-h(l+1)/R]$.",
+        "Set the l=1 and l=3 coefficients to −3 and 8. Solve for $a_1,a_3$ when the denominators are nonzero.",
+        "At h=R/2 or R/4, a nonzero right side meets a zero coefficient, so no decaying solution exists.",
+        "At h=R/(n+1) with n≠1,3, that forcing mode is zero but an arbitrary homogeneous mode can be added, so the solution is nonunique."
+      ],
+      "check": {
+        "question": "For h=R/3, which order resonates? Is the problem unsolvable or nonunique?",
+        "answer": "Order n=2. Its forcing coefficient is zero, so solutions exist but are nonunique: add any decaying order-two spherical harmonic."
+      }
+    }
+  },
+  "5.2-8": {
+    "zh": {
+      "goal": "让每个角度成分各自满足内外两个球面的温度，再相加。",
+      "recognize": "球壳不含球心，所以增长幂和衰减幂都能保留。边界还含 φ，不能只用轴对称公式。",
+      "steps": [
+        "第一笔拆内边界为 $2\\times1-2\\cos\\theta$，外边界为 $\\sin\\theta\\sin\\phi$：前者含 l=0,1，后者为 l=1。",
+        "每个 l 都用 $r^l,r^{-l-1}$ 拼出两个插值函数：$F_l$ 在内外取 1、0，$G_l$ 在内外取 0、1。",
+        "写 $u=2F_0-2F_1\\cos\\theta+G_1\\sin\\theta\\sin\\phi$。",
+        "把 r=a 和 r=b 分别代入，逐项检查内外边界；这比展开全部系数更易核对。"
+      ],
+      "check": {
+        "question": "为什么球壳里不能一开始删掉 $r^{-l-1}$？",
+        "answer": "因为 r=0 不在求解区域内，它在球心发散并不会破坏壳内解；两个边界也需要两种径向解。"
+      }
+    },
+    "en": {
+      "goal": "Make each angular component satisfy both spherical boundaries, then add them.",
+      "recognize": "A shell excludes the center, so both radial powers are allowed. The data also depend on φ, so an axisymmetric formula alone is insufficient.",
+      "steps": [
+        "First split the inner data as $2\\times1-2\\cos\\theta$ and the outer data as $\\sin\\theta\\sin\\phi$. The inner data use l=0,1; the outer data use l=1.",
+        "For each l combine $r^l,r^{-l-1}$ into two interpolation functions: $F_l$ takes values 1,0 at the inner/outer boundaries, and $G_l$ takes 0,1.",
+        "Write $u=2F_0-2F_1\\cos\\theta+G_1\\sin\\theta\\sin\\phi$.",
+        "Substitute r=a and r=b separately and check each boundary term. This is easier to verify than expanding every coefficient."
+      ],
+      "check": {
+        "question": "Why must we not discard $r^{-l-1}$ at the start of a shell problem?",
+        "answer": "The point r=0 is outside the region, so divergence there does not harm the shell solution. Two radial solutions are also needed for two boundaries."
+      }
+    }
+  },
+  "5.2-9": {
+    "zh": {
+      "goal": "把球面二次函数变成球内调和函数，避免复杂球谐积分。",
+      "recognize": "看到 $\\sin^2\\theta\\cos^2\\phi$，先换成 x²/r²。低次多项式可用直接算拉普拉斯找调和组合。",
+      "steps": [
+        "第一笔写 $x=r\\sin\\theta\\cos\\phi$，因此球面边界是 $3x^2/R^2$。",
+        "算 $\\Delta(3x^2)=6$，$\\Delta r^2=6$，相减得 $3x^2-r^2$ 的拉普拉斯为零。",
+        "在球内取 $u=1+(3x^2-r^2)/R^2$；常数 1 补回球面上减掉的部分。",
+        "代 r=R 检查边界，再代 r=0 得中心温度 1。"
+      ],
+      "check": {
+        "question": "直接猜 $u=3x^2/R^2$ 为什么不对？",
+        "answer": "其拉普拉斯为 $6/R^2$，不是零；稳态无源温度必须调和。"
+      }
+    },
+    "en": {
+      "goal": "Turn quadratic sphere data into an interior harmonic function without complicated spherical-harmonic integrals.",
+      "recognize": "When you see $\\sin^2\\theta\\cos^2\\phi$, first convert it to x²/r². For low-degree polynomials, calculate the Laplacian directly to find a harmonic combination.",
+      "steps": [
+        "First write $x=r\\sin\\theta\\cos\\phi$, so the sphere boundary is $3x^2/R^2$.",
+        "Calculate $\\Delta(3x^2)=6$ and $\\Delta r^2=6$. Their difference $3x^2-r^2$ is harmonic.",
+        "Choose $u=1+(3x^2-r^2)/R^2$ inside. The constant 1 restores what was subtracted on the sphere.",
+        "Set r=R to check the boundary, then r=0 to find center temperature 1."
+      ],
+      "check": {
+        "question": "Why is the direct guess $u=3x^2/R^2$ wrong?",
+        "answer": "Its Laplacian is $6/R^2$, not zero. A steady source-free temperature must be harmonic."
+      }
+    }
+  },
+  "5.3-1": {
+    "zh": {
+      "goal": "用满足零侧面和零顶面的模态，拼出底面的 ρ² 温度。",
+      "recognize": "侧面先齐次，径向选 $J_0$ 零点；底面不为零，用带 ρ 的积分求每个模态的分量。",
+      "steps": [
+        "令 a=ρ₀。第一笔写 $k_n=j_{0n}/a$，使 $J_0(k_na)=0$，自动满足侧面。",
+        "乘轴向因子 $\\sinh[k_n(h-z)]/\\sinh(k_nh)$，它在底面为 1、顶面为 0。",
+        "底面展开 ρ²，投影时再乘权 ρ，因此分子是 $\\int_0^a\\rho^3J_0(k_n\\rho)d\\rho$。",
+        "用 Bessel 递推积分并除范数，得到详解中的 $A_n$；最后相加所有模态。",
+        "检查两开面边界；底面与侧面棱边给了不同温度，不要强求那里连续。"
+      ],
+      "check": {
+        "question": "为什么系数分子的幂是 ρ³，而不是 ρ²？",
+        "answer": "底面函数贡献 ρ²，柱坐标正交权再贡献 ρ，相乘为 ρ³。"
+      }
+    },
+    "en": {
+      "goal": "Combine modes that vanish on the side and top to reproduce the bottom temperature ρ².",
+      "recognize": "Satisfy the homogeneous side first using $J_0$ zeros. The nonzero bottom data determine each coefficient through an integral with weight ρ.",
+      "steps": [
+        "Set a=ρ₀. First write $k_n=j_{0n}/a$, so $J_0(k_na)=0$ automatically satisfies the side.",
+        "Multiply by $\\sinh[k_n(h-z)]/\\sinh(k_nh)$, which is 1 on the bottom and 0 on the top.",
+        "Expand the bottom function ρ². Projection adds weight ρ, so the numerator is $\\int_0^a\\rho^3J_0(k_n\\rho)d\\rho$.",
+        "Use Bessel recurrence integrals and divide by the norm to obtain the stated $A_n$; then sum all modes.",
+        "Check the open faces. Their edge temperatures disagree, so continuity at the common edge is not required."
+      ],
+      "check": {
+        "question": "Why is the coefficient numerator proportional to ρ³ rather than ρ²?",
+        "answer": "The bottom function contributes ρ² and the cylindrical orthogonality weight contributes another ρ, giving ρ³."
+      }
+    }
+  },
+  "5.3-2": {
+    "zh": {
+      "goal": "让上下底面先变成零，再由恒温侧面确定系数。",
+      "recognize": "两端同为零，先用正弦最简单。代回方程后径向是修正 Bessel 方程，不能沿用上一题的 J₀。",
+      "steps": [
+        "第一笔选 $\\sin(n\\pi z/h)$，它在 z=0,h 都为零。",
+        "代入 Laplace 方程，得到 $R\\prime\\prime+R\\prime/\\rho-(n\\pi/h)^2R=0$，轴线有限选 $I_0$。",
+        "把径向除以 $I_0(n\\pi a/h)$，保证侧面径向因子为 1。",
+        "对侧面常数 $u_0$ 做正弦积分，偶数 n 系数为零、奇数系数为 $4u_0/(n\\pi)$。",
+        "相加奇数模态，检查开侧面为 $u_0$、上下底面为零。"
+      ],
+      "check": {
+        "question": "为什么只剩奇数 n？",
+        "answer": "系数含 $1-(-1)^n$，n 为偶数时它等于 0。"
+      }
+    },
+    "en": {
+      "goal": "Satisfy the two zero end faces first, then use the constant side value to determine coefficients.",
+      "recognize": "Both ends are zero, so start with sine modes. Substitution gives a modified Bessel radial equation; the previous problem’s J₀ choice cannot be copied.",
+      "steps": [
+        "First choose $\\sin(n\\pi z/h)$, which is zero at z=0,h.",
+        "Substitute into Laplace’s equation to get $R\\prime\\prime+R\\prime/\\rho-(n\\pi/h)^2R=0$. Finiteness at the axis selects $I_0$.",
+        "Divide the radial factor by $I_0(n\\pi a/h)$ so it equals 1 on the side.",
+        "Take the sine projection of constant $u_0$. Even n coefficients vanish; odd n coefficients are $4u_0/(n\\pi)$.",
+        "Sum the odd modes and check $u_0$ on the open side and zero on both ends."
+      ],
+      "check": {
+        "question": "Why do only odd n remain?",
+        "answer": "The coefficient contains $1-(-1)^n$, which is 0 for even n."
+      }
+    }
+  },
+  "5.3-3": {
+    "zh": {
+      "goal": "把“自由冷却”翻译成可计算的边界条件，再展开顶面温度。",
+      "recognize": "自由冷却表示表面通过空气散热：热流与表面温度差成正比。这是 Robin 条件，不是直接把温度设为零。",
+      "steps": [
+        "第一笔写散热律 $-Ku_\\rho=Hu$，令 $\\beta=H/K$，整理为 $u_\\rho+\\beta u=0$。",
+        "代 $J_0(k\\rho)$，求导后得到根方程 $kJ_1(ka)=\\beta J_0(ka)$。",
+        "用 $\\sinh(kz)/\\sinh(kh)$ 让下底为零、上底径向因子不变。",
+        "用权 ρ 把 $f(\\rho)$ 投影到这些 Robin 模态，范数同时含 $J_0^2+J_1^2$。",
+        "若 β=0，侧面绝热，还要补 k=0 的 $c_0z/h$；未给 β 数值就保留它。"
+      ],
+      "check": {
+        "question": "H=0 时侧面是零温还是绝热？",
+        "answer": "绝热。边界变成 $u_\\rho=0$，没有热量通过侧面。"
+      }
+    },
+    "en": {
+      "goal": "Translate “free cooling” into a calculable boundary condition, then expand the top data.",
+      "recognize": "Convective cooling means outward heat flux is proportional to the surface–air temperature difference. This is Robin data, not a prescribed zero surface temperature.",
+      "steps": [
+        "First write $-Ku_\\rho=Hu$. Set $\\beta=H/K$ to obtain $u_\\rho+\\beta u=0$.",
+        "Insert $J_0(k\\rho)$ and differentiate to get the root equation $kJ_1(ka)=\\beta J_0(ka)$.",
+        "Use $\\sinh(kz)/\\sinh(kh)$ to make the bottom zero while preserving the radial top factor.",
+        "Project $f(\\rho)$ onto these Robin modes using weight ρ. The norm contains both $J_0^2+J_1^2$.",
+        "For β=0 the side is insulated; include the k=0 term $c_0z/h$. Keep β symbolic if no value is supplied."
+      ],
+      "check": {
+        "question": "When H=0, is the side at zero temperature or insulated?",
+        "answer": "Insulated. The condition becomes $u_\\rho=0$, so no heat flows through the side."
+      }
+    }
+  },
+  "5.4-1": {
+    "zh": {
+      "goal": "把初始温度分解成空间图案，让每个图案按自己的速度衰减。",
+      "recognize": "边界含共同常温 $u_0$，先减掉它。底面零值、顶面零导数是一对混合边界，所以轴向是半整数正弦。",
+      "steps": [
+        "第一笔设 $v=u-u_0$，这样侧面、底面都为零，顶面仍满足 $v_z=0$。",
+        "径向取 $J_0(j_{0n}\\rho/a)$；轴向先写 $\\sin(\\lambda z)$，顶面要求 $\\cos(\\lambda h)=0$，得 $\\lambda=(m+1/2)\\pi/h$。",
+        "初值是 $f(\\rho)g(z)$，分别做径向带 ρ 投影和轴向正弦投影，系数相乘。",
+        "每项乘热衰减 $e^{-D(k_n^2+\\lambda_m^2)t}$，最后加回 $u_0$。",
+        "检查 t→∞ 只剩 $u_0$，并核对顶面导数而不是顶面值。"
+      ],
+      "check": {
+        "question": "顶面绝热能不能用 $\\lambda=\\pi/h$ 的最低正弦模态？",
+        "answer": "不能；它在顶面导数不为零。最低允许值是 $\\lambda=\\pi/(2h)$。"
+      }
+    },
+    "en": {
+      "goal": "Split the initial temperature into spatial patterns, each decaying at its own rate.",
+      "recognize": "The boundaries share constant $u_0$, so subtract it first. A zero bottom value and zero top derivative form mixed boundaries, giving half-integer sine modes.",
+      "steps": [
+        "First set $v=u-u_0$. The side and bottom become zero, and the top still satisfies $v_z=0$.",
+        "Use radial $J_0(j_{0n}\\rho/a)$. For axial $\\sin(\\lambda z)$, the top requires $\\cos(\\lambda h)=0$, hence $\\lambda=(m+1/2)\\pi/h$.",
+        "The initial data factor as $f(\\rho)g(z)$. Project radially with weight ρ and axially onto sines, then multiply the coefficients.",
+        "Multiply every mode by $e^{-D(k_n^2+\\lambda_m^2)t}$ and add $u_0$ back.",
+        "Check that only $u_0$ remains as t→∞, and verify the top derivative rather than its value."
+      ],
+      "check": {
+        "question": "Can the lowest sine mode use $\\lambda=\\pi/h$ for an insulated top?",
+        "answer": "No: its derivative is nonzero at the top. The lowest allowed value is $\\lambda=\\pi/(2h)$."
+      }
+    }
+  },
+  "5.4-2": {
+    "zh": {
+      "goal": "把球对称冷却问题变成已经熟悉的一维零端热方程。",
+      "recognize": "初温和边界都不含角度，所以球对称。球方程中的 $2u_r/r$ 可用乘 r 消掉，这是本题捷径。",
+      "steps": [
+        "第一笔设 $v=ru$，把方程化成 $v_t=Dv_{rr}$。",
+        "球心 u 有限意味着 v(0)=0；表面零温意味着 v(R)=0，所以选 $\\sin(n\\pi r/R)$。",
+        "初值不是常数：v(r,0)=$u_0r$。对这个函数做正弦积分，得到 $b_n$。",
+        "每项乘 $e^{-Dn^2\\pi^2t/R^2}$ 后除以 r，得到 u。",
+        "中心值要取 $\\sin(kr)/r\\to k$ 的极限，不能直接代 0/0。"
+      ],
+      "check": {
+        "question": "令 v=ru 后，v 的初值是 $u_0$ 还是 $u_0r$？",
+        "answer": "$u_0r$。换变量时初值也必须同时换。"
+      }
+    },
+    "en": {
+      "goal": "Turn spherically symmetric cooling into the familiar one-dimensional heat equation with zero ends.",
+      "recognize": "Neither the initial data nor the boundary depends on angle, so the problem is spherically symmetric. Multiplying by r removes the term $2u_r/r$.",
+      "steps": [
+        "First set $v=ru$ to obtain $v_t=Dv_{rr}$.",
+        "Finite u at the center implies v(0)=0, and zero surface temperature implies v(R)=0. Choose $\\sin(n\\pi r/R)$.",
+        "The new initial value is not constant: v(r,0)=$u_0r$. Take the sine projection of this function to find $b_n$.",
+        "Multiply each term by $e^{-Dn^2\\pi^2t/R^2}$ and divide by r to recover u.",
+        "At the center use the limit $\\sin(kr)/r\\to k$ instead of directly substituting into 0/0."
+      ],
+      "check": {
+        "question": "After setting v=ru, is the initial value of v $u_0$ or $u_0r$?",
+        "answer": "$u_0r$. Initial data must be transformed along with the dependent variable."
+      }
+    }
+  },
+  "5.4-3": {
+    "zh": {
+      "goal": "先识别初温的角度阶数，再用正确的球 Bessel 模态描述冷却。",
+      "recognize": "$\\cos\\theta=P_1$ 提示 l=1，不是球对称的 l=0。扩散保留角阶，所以只需求这一阶的径向系数。",
+      "steps": [
+        "第一笔写 $u=V(r,t)\\cos\\theta$，代入后径向方程多出 $-2V/r^2$。",
+        "有限径向解选 $j_1(kr)$；球面零温给 $j_1(kR)=0$。",
+        "设正根为 αₙ，则 $\\tan\\alpha_n=\\alpha_n$。排除 α=0，它不产生有效的这一阶模态。",
+        "按球体径向体积权 $r^2$ 投影 f(r)，再乘 $e^{-D\\alpha_n^2t/R^2}$ 和 $\\cos\\theta$。",
+        "核对球心每项趋零；若要求初温在中心连续，也要有 $f(r)\\to0$。"
+      ],
+      "check": {
+        "question": "为什么不能直接使用上一题的根 nπ？",
+        "answer": "上一题是 l=0 的 $j_0$，本题是 l=1 的 $j_1$，它们的零点不同。"
+      }
+    },
+    "en": {
+      "goal": "Identify the angular order first, then describe cooling with the correct spherical-Bessel modes.",
+      "recognize": "$\\cos\\theta=P_1$ signals l=1, not the spherically symmetric l=0 case. Diffusion preserves angular order, so only this order’s radial coefficients are needed.",
+      "steps": [
+        "First set $u=V(r,t)\\cos\\theta$. Substitution adds the radial term $-2V/r^2$.",
+        "Choose the finite radial solution $j_1(kr)$. Zero surface temperature requires $j_1(kR)=0$.",
+        "Call its positive roots αₙ: $\\tan\\alpha_n=\\alpha_n$. Exclude α=0, which does not give a valid nonzero mode of this order.",
+        "Project f(r) with the spherical radial volume weight $r^2$, then multiply by $e^{-D\\alpha_n^2t/R^2}$ and $\\cos\\theta$.",
+        "Check that every mode vanishes at the center. Continuous initial data there also need $f(r)\\to0$."
+      ],
+      "check": {
+        "question": "Why can we not use the previous problem’s roots nπ?",
+        "answer": "That problem uses l=0 and $j_0$; this one uses l=1 and $j_1$, whose zeros differ."
+      }
+    }
+  },
+  "5.5-1": {
+    "zh": {
+      "goal": "根据楔杆截面找出振型、频率和不振动的整体平移部分。",
+      "recognize": "不要只看到“变粗细杆”就套锥杆公式。楔杆宽度恒定、高度正比 x，所以面积正比 x，正交权也是 x。",
+      "steps": [
+        "第一笔写 $A(x)=\\varepsilon hx/l$，代入力学方程得到 $u_{tt}=c^2(u_{xx}+u_x/x)$。",
+        "分离后选有限解 $J_0(kx)$。粗端自由给 $X\\prime(l)=0$，求导得到 $J_1(kl)=0$。",
+        "用 J₁ 正根确定频率 $\\omega_n=c\\alpha_n/l$，时间取余弦，因为初速度为零。",
+        "另外补常数零模态 $A_0$，它是整杆平移，不是振动。",
+        "把初位移 f(x) 按权 x 投影；用质量加权平均位移保持不变来验算。"
+      ],
+      "check": {
+        "question": "若初位移始终等于常数 C、初速度为零，之后会怎样？",
+        "answer": "整杆一直平移了 C，只有零模态 $A_0=C$，没有振动模态。"
+      }
+    },
+    "en": {
+      "goal": "Use the wedge area to find its shapes, frequencies, and nonoscillating rigid-translation part.",
+      "recognize": "Do not copy a cone formula just because the rod tapers. The wedge width is constant and its height is proportional to x, so its area and orthogonality weight are proportional to x.",
+      "steps": [
+        "First write $A(x)=\\varepsilon hx/l$. Force balance gives $u_{tt}=c^2(u_{xx}+u_x/x)$.",
+        "After separation, choose finite $J_0(kx)$. The thick free end requires $X\\prime(l)=0$, so differentiation gives $J_1(kl)=0$.",
+        "Positive J₁ roots give $\\omega_n=c\\alpha_n/l$. Use cosine time factors because the initial velocity is zero.",
+        "Include the constant zero mode $A_0$: it represents whole-rod translation, not oscillation.",
+        "Project f(x) with weight x. Check that the mass-weighted mean displacement stays constant."
+      ],
+      "check": {
+        "question": "If the initial displacement is constant C and initial velocity is zero, what happens afterward?",
+        "answer": "The rod stays translated by C. Only the zero mode $A_0=C$ remains; no oscillatory modes are excited."
+      }
+    }
+  },
+  "5.5-2": {
+    "zh": {
+      "goal": "用内外两圈固定条件求出允许频率，理解环形膜与圆膜的区别。",
+      "recognize": "环域不含原点，因此 Jₘ、Yₘ 两个解都能用。两个固定边界要求线性方程有非零解，于是出现行列式。",
+      "steps": [
+        "第一笔把角度写成 $\\cos m\\phi,\\sin m\\phi$，周期性要求 m 为非负整数。",
+        "径向写 $CJ_m(k\\rho)+DY_m(k\\rho)$，不要删掉 Yₘ。",
+        "分别代 $\\rho_1,\\rho_2$ 的零位移条件，令系数行列式为零，求正根 $k_{mn}$。",
+        "用详解的径向组合自动满足内圈，再用根方程保证外圈也为零。",
+        "频率先写角频率 $\\omega=ck$；若问赫兹再除 $2\\pi$。m≥1 有两种角向振型。"
+      ],
+      "check": {
+        "question": "为什么圆膜常丢掉 Yₘ，环形膜却不能？",
+        "answer": "圆膜含原点，要排除那里发散的解；环形膜从 $\\rho_1>0$ 开始，不包含发散点。"
+      }
+    },
+    "en": {
+      "goal": "Use the two fixed circles to find allowed frequencies and see how an annular membrane differs from a disk.",
+      "recognize": "The annulus excludes the origin, so both Jₘ and Yₘ are allowed. Two fixed boundaries require a nonzero solution of a linear system, leading to a determinant equation.",
+      "steps": [
+        "First choose angular factors $\\cos m\\phi,\\sin m\\phi$. Periodicity requires a nonnegative integer m.",
+        "Write the radial solution as $CJ_m(k\\rho)+DY_m(k\\rho)$; keep Yₘ.",
+        "Impose zero displacement at $\\rho_1,\\rho_2$. Set the coefficient determinant to zero and find its positive roots $k_{mn}$.",
+        "Use the radial combination in the full solution to satisfy the inner circle automatically; the root equation then satisfies the outer circle.",
+        "Write angular frequency $\\omega=ck$ first. Divide by $2\\pi$ for hertz. For m≥1 there are two angular shapes."
+      ],
+      "check": {
+        "question": "Why is Yₘ often discarded for a disk but not for an annulus?",
+        "answer": "A disk includes the origin, where the diverging solution must be excluded. An annulus starts at $\\rho_1>0$ and does not contain that singular point."
+      }
+    }
+  }
+}

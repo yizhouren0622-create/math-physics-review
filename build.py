@@ -3,6 +3,7 @@ import json, re, html, shutil
 from pathlib import Path
 import markdown
 from latex2mathml.converter import convert
+import reader
 
 ROOT=Path(__file__).resolve().parent
 DATA=ROOT/'data'
@@ -11,7 +12,7 @@ exams=json.loads((DATA/'exams.json').read_text()) if (DATA/'exams.json').exists(
 sources=json.loads((DATA/'sources.json').read_text()) if (DATA/'sources.json').exists() else {}
 failures=[]
 def esc(x):return html.escape(str(x),quote=True)
-def md(x):
+def render_md(x):
     if not x:return ''
     tokens=[]
     def math(m):
@@ -20,6 +21,7 @@ def md(x):
         try:
             rendered=convert(latex,display='block' if block else 'inline')
             if block:rendered='<div class="equation" tabindex="0">'+rendered+'</div>'
+            else:rendered='<span class="inline-equation">'+rendered+'</span>'
         except Exception as e:
             failures.append((latex,str(e)))
             rendered='<code class="math-error">'+esc(latex)+'</code>'
@@ -31,18 +33,21 @@ def md(x):
         if t.startswith('<div'):s=s.replace('<p>'+key+'</p>',t)
         s=s.replace(key,t)
     return s
+def md(x):return reader.bilingual_md(x,render_md) if x else ''
+introductions=json.loads((DATA/'introductions.json').read_text())
+for intro in introductions.values():reader.register(intro['zh'],intro['en'])
 def equation(x):return md('$$'+x+'$$')
 def details(label,body,kind=''):
     return f'<details class="reveal {kind}"><summary>{esc(label)}<span aria-hidden="true">＋</span></summary><div class="reveal-body">{md(body)}</div></details>'
 
-nav=[('index.html','学习总览','◈'),('chapter-1.html','知识点与证明','∑'),('exercises.html','课后习题全解','⌘'),('exams.html','模拟考场','◷'),('memory.html','记忆与回顾','◇'),('sources.html','资料与勘误','↗')]
+nav=[('beginner.html','从这里开始','→'),('index.html','学习总览','◈'),('chapter-1.html','知识点与证明','∑'),('exercises.html','课后习题全解','⌘'),('exams.html','模拟考场','◷'),('memory.html','记忆与回顾','◇'),('sources.html','资料与勘误','↗')]
 def page(filename,title,content,active='',description=''):
     links=''.join(f'<a href="{href}"'+(' class="active" aria-current="page"' if active==href else '')+f'><span aria-hidden="true">{symbol}</span>{label}</a>' for href,label,symbol in nav)
     chapterlinks=''.join(f'<a href="chapter-{c["chapter"]}.html"><span>{c["chapter"]:02d}</span>{esc(c["title"])}</a>' for c in chapters)
-    out=f'''<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#f6f5f0"><meta name="description" content="{esc(description or '上海大学姜颖《数学物理方法》复习：知识点、展开证明、例题、全书习题解析和自编模拟卷。')}"><title>{esc(title)} · 数学物理复习</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/site.css"></head><body>
+    out=f'''<!doctype html><html lang="zh-CN" data-language="zh" data-size="comfortable" data-contrast="high"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"><meta name="theme-color" content="#f6f5f0"><meta name="description" content="{esc(description or '上海大学姜颖《数学物理方法》复习：知识点、展开证明、例题、全书习题解析和自编模拟卷。')}"><title>{esc(title)} · 数学物理复习</title><link rel="icon" href="assets/icon.svg" type="image/svg+xml"><script src="assets/preferences.js?v=20261012-2"></script><link rel="stylesheet" href="assets/site.css?v=20261012-2"></head><body>
 <a class="skip" href="#main">跳到正文</a><aside class="sidebar" id="sidebar"><a class="brand" href="index.html"><span class="brand-mark">ψ</span><span>数学物理方法<small>理解 · 记忆 · 解题</small></span></a><p class="nav-label">复习工作台</p><nav aria-label="主要导航">{links}</nav><p class="nav-label chapter-label">教材章节</p><nav class="chapter-nav" aria-label="章节导航">{chapterlinks}</nav><div class="sidebar-foot"><span class="online-dot"></span> 静态网页 · 可离线阅读<small>姜颖教材 · 上海大学</small></div></aside>
-<div class="workspace"><header class="topbar"><button class="menu-btn" type="button" aria-label="打开导航" aria-controls="sidebar" aria-expanded="false">☰</button><span class="breadcrumb">数学物理方法 <span>/</span> {esc(title)}</span><div class="top-actions"><a href="search.html" class="search-link">⌕ <span>搜索知识点与题号</span> <kbd>/</kbd></a><button type="button" class="print-btn" aria-label="打印当前页">打印</button></div></header><main id="main">{content}</main><footer>按教材章节组织 · 解析与模拟卷独立编写 · <a href="sources.html">参考来源与修订记录</a><span>学习记录仅保存在当前浏览器</span></footer></div><div id="toast" role="status" aria-live="polite"></div><script src="assets/site.js" defer></script></body></html>'''
-    (ROOT/filename).write_text(out)
+<div class="workspace"><header class="topbar"><button class="menu-btn" type="button" aria-label="打开导航" aria-controls="sidebar" aria-expanded="false">☰</button><span class="breadcrumb">数学物理方法 <span>/</span> {esc(title)}</span><div class="top-actions"><a href="search.html" class="search-link">⌕ <span>搜索知识点与题号</span> <kbd>/</kbd></a><button type="button" class="print-btn" aria-label="打印当前页">打印</button></div></header><main id="main">{reader.controls()}{content}</main><footer>按教材章节组织 · 解析与模拟卷独立编写 · <a href="sources.html">参考来源与修订记录</a><span>学习记录仅保存在当前浏览器</span></footer></div><div id="toast" role="status" aria-live="polite"></div><script src="assets/ui-data.js?v=20261012-2" defer></script><script src="assets/reader.js?v=20261012-2" defer></script><script src="assets/site.js?v=20261012-2" defer></script></body></html>'''
+    (ROOT/filename).write_text(reader.localize(out))
 
 def heading(kicker,title,subtitle='',extra=''):
     return f'<div class="page-heading"><p class="eyebrow">{esc(kicker)}</p><h1>{esc(title)}</h1><p class="subtitle">{esc(subtitle)}</p>{extra}</div>'
@@ -50,11 +55,11 @@ def heading(kicker,title,subtitle='',extra=''):
 def concept_card(item,chapter=None):
     ident=f'c{chapter}-{item["id"]}' if chapter else item['id']
     example=item.get('example',{})
-    return f'''<article class="concept card" id="{esc(ident)}" data-memory-id="{esc(ident)}"><div class="card-eyebrow">知识点 <span class="tag">理解后再记忆</span></div><h3>{esc(item['title'])}</h3>{md(item.get('explain',''))}{equation(item['formula']) if item.get('formula') else ''}<div class="conditions"><strong>使用条件</strong>{md(item.get('conditions',''))}</div>{details('展开证明 / 推导',item.get('proof',''))}{details('做一道简单例题',example.get('question','')+'\n\n**解答**\n\n'+example.get('solution',''))}<div class="memory-note"><span>记忆线索</span>{md(item.get('memory',''))}</div><button type="button" class="text-btn mark-memory" data-id="{esc(ident)}">加入记忆回顾</button></article>'''
+    return f'''<article class="concept card" id="{esc(ident)}" data-memory-id="{esc(ident)}"><div class="card-eyebrow">知识点 <span class="tag">理解后再记忆</span></div><h3>{esc(item['title'])}</h3><div class="plain-intro"><strong>先用一句话理解</strong>{md(introductions[item['id']]['zh'])}</div>{details('再看数学表述',item.get('explain',''))}{equation(item['formula']) if item.get('formula') else ''}<div class="conditions"><strong>使用条件</strong>{md(item.get('conditions',''))}</div>{details('展开证明 / 推导',item.get('proof',''))}{details('做一道简单例题',example.get('question','')+'\n\n**解答**\n\n'+example.get('solution',''))}<div class="memory-note"><span>记忆线索</span>{md(item.get('memory',''))}</div><button type="button" class="text-btn mark-memory" data-id="{esc(ident)}">加入记忆回顾</button></article>'''
 
 def exercise_card(e,c):
     ident=e['id'];err=e.get('errata')
-    return f'''<article class="exercise card" id="ex-{esc(ident)}" data-ex-id="{esc(ident)}"><div class="exercise-meta"><span class="pill">习题 {esc(e['section'])} · {e['number']}</span><span>教材 p.{e['page']} / PDF p.{e['page']+9}</span>{'<span class="tag errata-tag">条件 / 勘误</span>' if err else ''}</div><h3>{esc(e['title'])}</h3><div class="question">{md(e['question'])}</div>{'<div class="errata"><strong>读题注意</strong>'+md(err)+'</div>' if err else ''}<label class="scratch-label" for="note-{esc(ident)}">先写下你的思路</label><textarea class="scratch" id="note-{esc(ident)}" data-note="{esc(ident)}" rows="2" placeholder="我准备使用的定理、关键一步……（自动保存在本机）"></textarea>{details('提示：从哪里入手',e.get('hint') or e.get('idea',''),'hint')}{details('展开详细解析：思路 · 步骤 · 答案','**解题思路**\n\n'+e.get('idea','')+'\n\n**逐步解答**\n\n'+e['solution']+'\n\n**最终答案**\n\n'+e['answer'],'solution')}{details('这一类题的答题套路与易错点','**可复用步骤**\n\n'+e['pattern']+'\n\n**易错点**\n\n'+e['pitfall'],'pattern')}<div class="exercise-actions"><button type="button" data-progress="{esc(ident)}" data-state="review">↻ 需要复习</button><button type="button" data-progress="{esc(ident)}" data-state="mastered">✓ 已能独立完成</button><a href="#ex-{esc(ident)}" class="text-btn">题目链接</a></div></article>'''
+    return f'''<article class="exercise card" id="ex-{esc(ident)}" data-ex-id="{esc(ident)}"><div class="exercise-meta"><span class="pill">习题 {esc(e['section'])} · {e['number']}</span><span>教材 p.{e['page']} / PDF p.{e['page']+9}</span>{'<span class="tag errata-tag">条件 / 勘误</span>' if err else ''}</div><h3>{esc(e['title'])}</h3><div class="question">{md(e['question'])}</div>{'<div class="errata"><strong>读题注意</strong>'+md(err)+'</div>' if err else ''}<label class="scratch-label" for="note-{esc(ident)}">先写下你的思路</label><textarea class="scratch" id="note-{esc(ident)}" data-note="{esc(ident)}" rows="2" placeholder="我准备使用的定理、关键一步……（自动保存在本机）"></textarea>{reader.guided(ident,md)}{details('提示：从哪里入手',e.get('hint') or e.get('idea',''),'hint')}{details('查看完整计算与答案','**解题思路**\n\n'+e.get('idea','')+'\n\n**逐步解答**\n\n'+e['solution']+'\n\n**最终答案**\n\n'+e['answer'],'solution')}{details('这一类题的答题套路与易错点','**可复用步骤**\n\n'+e['pattern']+'\n\n**易错点**\n\n'+e['pitfall'],'pattern')}<div class="exercise-actions"><button type="button" data-progress="{esc(ident)}" data-state="review">↻ 需要复习</button><button type="button" data-progress="{esc(ident)}" data-state="mastered">✓ 已能独立完成</button><a href="#ex-{esc(ident)}" class="text-btn">题目链接</a></div></article>'''
 
 total=sum(len(c['exercises']) for c in chapters)
 concepts=[(c,x) for c in chapters for s in c['sections'] for x in s['concepts']]
@@ -64,7 +69,7 @@ for c,color in zip(chapters,colors):
     i=c['chapter'];first=c['sections'][0]['page'];count=len(c['exercises'])
     cards+=f'<a class="chapter-card {color}" href="chapter-{i}.html"><div><span class="chapter-number">{i:02d}</span><span class="chapter-count">{count} 道教材习题</span></div><h3>{esc(c["title"])}</h3><p>{" · ".join(esc(s["title"]) for s in c["sections"][:3])}</p><div class="chapter-progress" data-chapter="{i}"><i></i></div><div class="chapter-bottom"><span>从教材 p.{first} 开始</span><span aria-hidden="true">↗</span></div></a>'
 home=heading('SHU · MATHEMATICAL METHODS','把知识连起来，把题目做明白。','从概念出发，跟着推导理解公式，再用题目检验自己。')
-home+=f'''<section class="hero"><div><p class="eyebrow">你的复习，从这里开始</p><h2>先理解为什么，<br>再练习怎么做。</h2><p>证明和答案默认收起。给自己一点思考时间，<br class="desktop">需要时再展开下一步。</p><a class="primary-btn" href="chapter-1.html">开始第一章 <span>→</span></a><a class="hero-secondary" href="exercises.html">按题号查解析 ↗</a></div><div class="hero-math" aria-hidden="true"><span class="math-orbit orbit-a"></span><span class="math-orbit orbit-b"></span><span class="hero-sigma">∮</span><span class="math-label label-a">解析 · 变换</span><span class="math-label label-b">边界 · 本征值</span><span class="math-label label-c">一个方法，连接多种问题</span><div class="hero-equation">{equation(r'\oint_C f(z)\,dz=2\pi i\sum_k\operatorname{Res}_{z=z_k}f')}</div></div></section>
+home+=f'''<section class="hero"><div><p class="eyebrow">你的复习，从这里开始</p><h2>先理解为什么，<br>再练习怎么做。</h2><p>证明和答案默认收起。给自己一点思考时间，<br class="desktop">需要时再展开下一步。</p><a class="primary-btn" href="beginner.html">从零开始学 <span>→</span></a><a class="hero-secondary" href="exercises.html">按题号查解析 ↗</a></div><div class="hero-math" aria-hidden="true"><span class="math-orbit orbit-a"></span><span class="math-orbit orbit-b"></span><span class="hero-sigma">∮</span><span class="math-label label-a">解析 · 变换</span><span class="math-label label-b">边界 · 本征值</span><span class="math-label label-c">一个方法，连接多种问题</span><div class="hero-equation">{equation(r'\oint_C f(z)\,dz=2\pi i\sum_k\operatorname{Res}_{z=z_k}f')}</div></div></section>
 <section class="stats" aria-label="学习概览"><div><span>教材章节</span><strong>{len(chapters):02d}<small>章</small></strong></div><div><span>知识点与推导</span><strong>{len(concepts)}<small>组</small></strong></div><div><span>全部主编号习题</span><strong>{total}<small>道</small></strong></div><div><span>我已独立完成</span><strong id="mastered-count">0<small>道</small></strong></div></section>
 <div class="section-title"><div><p class="eyebrow">从教材到考试</p><h2>六章知识，逐步掌握</h2></div><a href="exercises.html">查看全部习题 →</a></div><section class="chapter-grid">{cards}</section>
 <section class="study-strip"><div class="strip-symbol">01 → 02 → 03</div><div><h3>建议这样复习</h3><p>先读知识点，合上证明试着复述；再独立做例题和课后题；最后限时做模拟卷，把卡住的题加入回顾。</p></div><a href="exams.html" class="outline-btn">进入模拟考场 →</a></section><section class="review-queue card"><div class="section-title"><h2>留给下一次的题</h2><a href="memory.html">打开记忆回顾 →</a></div><div id="review-list"><p class="muted">在习题下点击“需要复习”，这里就会显示你的回顾清单。</p></div></section>'''
@@ -92,7 +97,7 @@ h=heading('EXERCISE LIBRARY','每一道课后题，都有来路。',f'按教材�
 h+='<div class="notice">先做题，再看提示，最后核对过程。带“条件 / 勘误”的题目会说明原题的适用条件或需要修正的地方。</div><div class="filter-bar"><label for="exercise-search">查找题目</label><input id="exercise-search" type="search" placeholder="输入题号、方法或关键词，例如 3.1、留数、边界"><label for="chapter-filter">章节</label><select id="chapter-filter"><option value="">全部章节</option>'+''.join(f'<option value="{c["chapter"]}">第{c["chapter"]}章 {esc(c["title"])}</option>' for c in chapters)+'</select><label class="check-label"><input type="checkbox" id="review-filter">只看待复习</label></div><p id="filter-count" class="muted" aria-live="polite"></p><div class="exercise-index">'
 for c in chapters:
     for e in c['exercises']:
-        h+=f'<a class="exercise-row" data-chapter="{c["chapter"]}" data-id="{e["id"]}" data-search="{esc(e["id"]+" "+e["title"]+" "+e["question"])}" href="chapter-{c["chapter"]}.html#ex-{e["id"]}"><span class="row-number">{e["section"]} · {e["number"]}</span><div><strong>{esc(e["title"])}</strong><small>第{c["chapter"]}章 · 教材 p.{e["page"]}'+(' · 含条件说明 / 勘误' if e.get('errata') else '')+f'</small></div><span class="progress-badge" data-badge="{e["id"]}">未标记</span><span aria-hidden="true">↗</span></a>'
+        h+=f'<a class="exercise-row" data-chapter="{c["chapter"]}" data-id="{e["id"]}" data-search="{esc(e["id"]+" "+e["title"]+" "+e["question"]+" "+reader.tr(e["title"])+" "+reader.tr(e["question"]))}" href="chapter-{c["chapter"]}.html#ex-{e["id"]}"><span class="row-number">{e["section"]} · {e["number"]}</span><div><strong>{esc(e["title"])}</strong><small>第{c["chapter"]}章 · 教材 p.{e["page"]}'+(' · 含条件说明 / 勘误' if e.get('errata') else '')+f'</small></div><span class="progress-badge" data-badge="{e["id"]}">未标记</span><span aria-hidden="true">↗</span></a>'
 h+='</div><p id="empty-filter" hidden class="empty">没有符合条件的题目。试试更短的关键词或取消筛选。</p>'
 page('exercises.html','课后习题全解',h,'exercises.html')
 
@@ -134,11 +139,16 @@ for c in chapters:
     for s in c['sections']:
         for x in s['concepts']:index.append(dict(type='知识点',label=x['title'],text=x['explain']+' '+x.get('memory',''),url=f'chapter-{c["chapter"]}.html#c{c["chapter"]}-{x["id"]}',chapter=c['chapter']))
     for e in c['exercises']:index.append(dict(type='习题 '+e['id'],label=e['title'],text=e['question']+' '+e['pattern'],url=f'chapter-{c["chapter"]}.html#ex-{e["id"]}',chapter=c['chapter']))
-(ROOT/'assets/index-data.js').write_text('window.STUDY_INDEX='+json.dumps(index,ensure_ascii=False)+';\nwindow.STUDY_EXERCISES='+json.dumps([dict(id=e['id'],title=e['title'],chapter=c['chapter'],url=f'chapter-{c["chapter"]}.html#ex-{e["id"]}') for c in chapters for e in c['exercises']],ensure_ascii=False)+';')
+for item in index:
+    item.update(typeEn=reader.tr(item['type']),labelEn=reader.tr(item['label']),textEn=reader.tr(item['text']))
+(ROOT/'assets/index-data.js').write_text('window.STUDY_INDEX='+json.dumps(index,ensure_ascii=False)+';\nwindow.STUDY_EXERCISES='+json.dumps([dict(id=e['id'],title=e['title'],titleEn=reader.tr(e['title']),chapter=c['chapter'],url=f'chapter-{c["chapter"]}.html#ex-{e["id"]}') for c in chapters for e in c['exercises']],ensure_ascii=False)+';')
 page('search.html','搜索',heading('SEARCH','把不确定的地方，找出来。','支持题号、概念名称与解题方法关键词。')+'<div class="search-box"><label for="global-search">搜索本站</label><input id="global-search" type="search" placeholder="例如：2.4-3、傅里叶、勒让德、格林函数" autofocus></div><p class="muted" id="search-status" aria-live="polite">输入关键词开始搜索。</p><div id="search-results"></div>')
 
 manifest={'chapters':len(chapters),'exercises':total,'concepts':len(concepts),'exercise_ids':[e['id'] for c in chapters for e in c['exercises']],'exam_points':[sum(q['points'] for q in e['questions']) for e in exams],'formula_failures':failures}
 (ROOT/'data/coverage.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
 if failures:
     print(json.dumps(failures[:30],ensure_ascii=False,indent=2));raise SystemExit(f'{len(failures)} formula rendering errors')
+import beginner
+beginner.build(page,heading,md,reader)
+reader.finish()
 print(json.dumps({k:v for k,v in manifest.items() if k not in ['exercise_ids','formula_failures']},ensure_ascii=False))

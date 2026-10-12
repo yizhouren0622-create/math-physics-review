@@ -1,0 +1,207 @@
+{
+  "chapter": 4,
+  "title": "Second-order linear ordinary differential equations",
+  "sections": [
+    {
+      "id": "4.1",
+      "title": "Linear relations among solutions of second-order homogeneous ODEs",
+      "page": 165,
+      "concepts": [
+        {
+          "id": "4.1-wronskian",
+          "title": "The Wronskian and Abel’s formula",
+          "explain": "On a regular interval, the solution space of a second-order homogeneous linear equation is two-dimensional. The Wronskian $W=y_1y_2\\prime-y_1\\prime y_2$ tests whether two solutions form a basis. If $W\\ne0$ at one point, they are linearly independent throughout that regular interval.",
+          "formula": "W(x)=W(x_0)\\exp\\!\\left[-\\int_{x_0}^{x}P(t)\\,dt\\right]",
+          "conditions": "Use the standard form $y\\prime\\prime+P(x)y\\prime+Q(x)y=0$, where $P,Q$ are continuous on a connected interval. Both functions must solve this same equation.",
+          "proof": "Differentiate the definition: $W\\prime=y_1y_2\\prime\\prime-y_1\\prime\\prime y_2$. Substitute $y_i\\prime\\prime=-Py_i\\prime-Qy_i$. The $Q$ terms cancel, leaving $W\\prime=-PW$. Separating variables, or using an integrating factor for this first-order equation, gives Abel’s formula. If $W(x_0)=0$, the initial-data vectors are dependent. Uniqueness of the linear initial-value problem then makes the two solutions linearly dependent.",
+          "example": {
+            "question": "Can $e^x,e^{-x}$ form a fundamental solution set for $y\\prime\\prime-y=0$?",
+            "solution": "$W=e^x(-e^{-x})-e^x e^{-x}=-2\\ne0$, so they do form a fundamental set. The general solution is $C_1e^x+C_2e^{-x}$."
+          },
+          "memory": "First divide by the leading coefficient. Read off the coefficient of the first derivative; its integral enters the exponent with a minus sign."
+        }
+      ]
+    },
+    {
+      "id": "4.2",
+      "title": "Series solutions of second-order homogeneous ODEs",
+      "page": 167,
+      "concepts": [
+        {
+          "id": "4.2-frobenius",
+          "title": "Power series at ordinary points and Frobenius series at regular singular points",
+          "explain": "At an ordinary point, use $y=\\sum a_n(x-x_0)^n$. At a regular singular point, use $y=(x-x_0)^r\\sum a_n(x-x_0)^n$. The lowest power gives the indicial equation; the remaining powers give a recurrence. A special-function solution becomes a polynomial when the recurrence terminates.",
+          "formula": "y=(x-x_0)^r\\sum_{n=0}^{\\infty}a_n(x-x_0)^n,\\quad a_0\\ne0",
+          "conditions": "First write $y\\prime\\prime+P y\\prime+Qy=0$. The point is regular singular if $(x-x_0)P$ and $(x-x_0)^2Q$ are analytic there. Repeated indicial roots or roots differing by an integer require a check for logarithmic solutions.",
+          "proof": "Write $(x-x_0)P=p_0+p_1(x-x_0)+\\cdots$ and $(x-x_0)^2Q=q_0+q_1(x-x_0)+\\cdots$. After substitution, the coefficient of the lowest power is $a_0[r(r-1)+p_0r+q_0]$. Thus the indicial equation is $r(r-1)+p_0r+q_0=0$. Comparing each subsequent power gives the recurrence for $a_n$. Finding only the indicial roots does not finish the solution.",
+          "example": {
+            "question": "Find the indicial roots and solutions of $x^2y\\prime\\prime+xy\\prime-\\nu^2y=0$.",
+            "solution": "Substituting $y=x^r$ gives $r(r-1)+r-\\nu^2=r^2-\\nu^2=0$. For $\\nu\\ne0$, $y=C_1x^\\nu+C_2x^{-\\nu}$ (take $x>0$). For $\\nu=0$, the second solution is $\\ln x$."
+          },
+          "memory": "Use the lowest power to find exponents, compare equal powers to find the recurrence, and check logarithms when a denominator vanishes."
+        }
+      ]
+    },
+    {
+      "id": "4.3",
+      "title": "Second-order nonhomogeneous ODEs",
+      "page": 180,
+      "concepts": [
+        {
+          "id": "4.3-variation",
+          "title": "Variation of parameters",
+          "explain": "The general solution of a nonhomogeneous linear equation is the homogeneous general solution plus one particular solution. Replace the constants multiplying homogeneous solutions by functions. An extra auxiliary condition reduces the task to two integrations.",
+          "formula": "y_p=-y_1\\int\\frac{y_2f}{W}\\,dx+y_2\\int\\frac{y_1f}{W}\\,dx",
+          "conditions": "For $y\\prime\\prime+P y\\prime+Qy=f$, let $y_1,y_2$ be a homogeneous fundamental set with $W=y_1y_2\\prime-y_1\\prime y_2\\ne0$. If the equation is not in standard form, divide by the leading coefficient first.",
+          "proof": "Set $y_p=u_1y_1+u_2y_2$ and impose $u_1\\prime y_1+u_2\\prime y_2=0$. Substitution leaves $u_1\\prime y_1\\prime+u_2\\prime y_2\\prime=f$. Solving these two equations gives $u_1\\prime=-y_2f/W$ and $u_2\\prime=y_1f/W$. Integrate to obtain the displayed formula. Any integration constants are already included in the homogeneous general solution.",
+          "example": {
+            "question": "Find the general solution of $y\\prime\\prime+y=1$.",
+            "solution": "Take $y_1=\\cos x,y_2=\\sin x,W=1$. Then $y_p=-\\cos x\\int\\sin x\\,dx+\\sin x\\int\\cos x\\,dx=\\cos^2x+\\sin^2x=1$. Hence $y=C_1\\cos x+C_2\\sin x+1$."
+          },
+          "memory": "Solve the homogeneous equation first, then find a particular solution. Check standard form before integrating."
+        }
+      ]
+    }
+  ],
+  "exercises": [
+    {
+      "id": "4.1-1",
+      "section": "4.1",
+      "number": 1,
+      "page": 167,
+      "title": "Linear independence of normalized monomials",
+      "question": "Use the Wronskian to prove that $\\{x^n/n!,\\ n=0,1,\\ldots,N\\}$ is linearly independent.",
+      "idea": "Arrange the functions by increasing degree. Their derivatives form an upper-triangular matrix.",
+      "hint": "The kth derivative of a polynomial of degree less than k is zero.",
+      "solution": "Let $f_j=x^j/j!$ for $j=0,\\ldots,N$. Put the $i$th derivatives in row $i$. Then\n$$f_j^{(i)}=\\begin{cases}x^{j-i}/(j-i)!,&j\\ge i,\\\\0,&j<i.\\end{cases}$$\nThis matrix is upper triangular, and every diagonal entry is $f_i^{(i)}=1$. Therefore $W(f_0,\\ldots,f_N)=1$.\nIf $\\sum c_jf_j\\equiv0$, differentiating through orders $0,\\ldots,N$ at any one point gives a homogeneous linear system with determinant 1. Its only solution is $c_0=\\cdots=c_N=0$. The functions are therefore linearly independent.",
+      "answer": "$W=1$, so the functions are linearly independent.",
+      "pattern": "Order monomials by increasing degree. The derivative matrix becomes upper triangular, so multiply its diagonal entries.",
+      "pitfall": "There are N+1 functions, so the Wronskian is an (N+1)×(N+1) determinant. Include the constant function.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer."
+    },
+    {
+      "id": "4.1-2",
+      "section": "4.1",
+      "number": 2,
+      "page": 167,
+      "title": "When does an identically zero Wronskian imply dependence?",
+      "question": "If the Wronskian of two functions $y_1(x)$ and $y_2(x)$ is identically zero, prove that $y_1(x)=c y_2(x)$ for a constant $c$, so they are linearly dependent.",
+      "idea": "Check the assumptions first. Differentiate the quotient on a connected interval where y₂ is nonzero. For arbitrary smooth functions, the conclusion need not extend across common zeros.",
+      "hint": "Compute $(y_1/y_2)\\prime$. Then consider whether the argument can cross a point where the denominator is zero.",
+      "solution": "On a connected interval where $y_2\\ne0$,\n$$\\left(\\frac{y_1}{y_2}\\right)\\prime=\\frac{y_1\\prime y_2-y_1y_2\\prime}{y_2^2}=-\\frac{W}{y_2^2}=0,$$\nso $y_1=c y_2$. If the two functions solve the same regular second-order homogeneous linear equation, choose a point with $y_2(x_0)\\ne0$ and set $c=y_1(x_0)/y_2(x_0)$. The condition $W(x_0)=0$ also gives $y_1\\prime(x_0)=cy_2\\prime(x_0)$. Their difference has zero initial data, so uniqueness makes it zero on the whole regular interval.\n\n**Qualification of the question:** The original statement is false for arbitrary smooth functions. For example, on $(-1,1)$ let $y_1=e^{-1/x^2}$ for $x>0$ and zero otherwise; let $y_2=e^{-1/x^2}$ for $x<0$ and zero otherwise. Both are $C^\\infty$. Their supports do not overlap, so $W\\equiv0$, but the functions are not proportional. Also, if $y_2\\equiv0$ and $y_1\\not\\equiv0$, the pair is linearly dependent, but it cannot be written in the specific form $y_1=cy_2$.",
+      "answer": "The relation $y_1=cy_2$ holds on a connected interval where $y_2\\ne0$, or after adding the assumption “solutions of the same regular homogeneous ODE, with $y_2\\not\\equiv0$.” The version for arbitrary functions needs correction.",
+      "pattern": "For W=0, differentiate the quotient to get a local result. To extend across the full interval, justify uniqueness or analyticity.",
+      "pitfall": "A nonzero Wronskian proves independence. An identically zero Wronskian does not always prove dependence for arbitrary smooth functions.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer.",
+      "errata": "For arbitrary differentiable functions, $W\\equiv0$ need not imply linear dependence on the whole interval. An extra assumption, such as solving the same regular homogeneous equation, is needed. The solution gives both a counterexample and the corrected proof."
+    },
+    {
+      "id": "4.1-3",
+      "section": "4.1",
+      "number": 3,
+      "page": 167,
+      "title": "Abel’s formula and the condition missing from the textbook formula",
+      "question": "Prove that the Wronskian of $p(x)y\\prime\\prime+q(x)y\\prime+r(x)y=0$ is $L=C/p(x)$, where $C$ is constant.",
+      "idea": "Differentiate W directly to determine whether the proposed conclusion requires $q=p\\prime$.",
+      "hint": "Start with $W\\prime=y_1y_2\\prime\\prime-y_1\\prime\\prime y_2$, then eliminate second derivatives using the equation.",
+      "solution": "On a regular interval with $p\\ne0$, $y_i\\prime\\prime=-(q/p)y_i\\prime-(r/p)y_i$. Therefore\n$$W\\prime=-\\frac{q}{p}(y_1y_2\\prime-y_1\\prime y_2)=-\\frac{q}{p}W,$$\nand hence\n$$\\boxed{W=C\\exp\\!\\left(-\\int\\frac{q(x)}{p(x)}\\,dx\\right)}.$$\nThe formula $W=C/p$ holds only when $q=p\\prime$, so that the equation can be written $(py\\prime)\\prime+ry=0$. Equivalently, in this self-adjoint case, $(pW)\\prime=p\\prime W+pW\\prime=(p\\prime-q)W=0$.\n\n**Counterexample:** In $y\\prime\\prime+y\\prime=0$, $p=1,q=1$. The solutions $1,e^{-x}$ have $W=-e^{-x}$, which is not a constant $C/p=C$. Thus the original conclusion cannot be proved without adding $q=p\\prime$.",
+      "answer": "In general, $W=C e^{-\\int q/p\\,dx}$. If $q=p\\prime$, this reduces to $W=C/p$.",
+      "pattern": "First normalize the equation. Use W′=−(coefficient of the first derivative)W. Before using C/p, check self-adjoint form.",
+      "pitfall": "Do not confuse the leading coefficient p with the first-derivative coefficient q/p in standard form.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer.",
+      "errata": "The original statement lacks the condition $q=p\\prime$. The general Abel formula is $W=C\\exp(-\\int q/p\\,dx)$. Only the self-adjoint form gives $W=C/p$."
+    },
+    {
+      "id": "4.2-1",
+      "section": "4.2",
+      "number": 1,
+      "page": 180,
+      "title": "Hermite’s equation and terminating series",
+      "question": "Use a series near $x_0=0$ to solve $y\\prime\\prime-2xy\\prime+(\\lambda-1)y=0$. Determine when a solution becomes a polynomial. Normalize its leading term to $(2x)^n$ to obtain $H_n(x)$, and write the first three orders of Hermite polynomials.",
+      "idea": "Expand at an ordinary point. Even and odd coefficients form two separate recurrence chains. A chain becomes a polynomial when it stops at degree n.",
+      "hint": "Compare the coefficients of xᵏ to relate aₖ₊₂ to aₖ.",
+      "solution": "Set $y=\\sum_{k\\ge0}a_kx^k$. Substitute and collect equal powers:\n$$\\sum_{k\\ge0}\\big[(k+2)(k+1)a_{k+2}+(\\lambda-1-2k)a_k\\big]x^k=0.$$\nThus\n$$a_{k+2}=\\frac{2k+1-\\lambda}{(k+2)(k+1)}a_k.$$\nThe two independent solutions are determined by arbitrary $a_0$ and $a_1$:\n$$y=a_0\\left[1+\\frac{1-\\lambda}{2!}x^2+\\frac{(1-\\lambda)(5-\\lambda)}{4!}x^4+\\cdots\\right]+a_1\\left[x+\\frac{3-\\lambda}{3!}x^3+\\frac{(3-\\lambda)(7-\\lambda)}{5!}x^5+\\cdots\\right].$$\nBoth series converge for every finite x. A nonzero polynomial of degree n must have $\\lambda-1-2n=0$, namely $\\lambda=2n+1$ for $n=0,1,\\ldots$. Keep the recurrence chain with the same parity as n and set the other chain to zero to obtain the terminating solution.\nWith leading coefficient $2^n$, the polynomials are $H_0=1$, $H_1=2x$, $H_2=4x^2-2$, $H_3=8x^3-12x$. If “first three orders” starts at order one, the answer is $H_1,H_2,H_3$; the zeroth order is also shown to remove ambiguity.",
+      "answer": "A degree-n polynomial exists when $\\lambda=2n+1$. $H_0=1,H_1=2x,H_2=4x^2-2,H_3=8x^3-12x$.",
+      "pattern": "Find the recurrence → set its numerator to zero at the desired highest degree → retain the matching parity chain → normalize the leading coefficient.",
+      "pitfall": "The terminating parameter guarantees only one polynomial solution. The other part of the general solution is usually still an infinite series.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer."
+    },
+    {
+      "id": "4.2-2",
+      "section": "4.2",
+      "number": 2,
+      "page": 180,
+      "title": "Even and odd series for Chebyshev’s equation",
+      "question": "Use a series near $x_0=0$ to solve $(1-x^2)y\\prime\\prime-xy\\prime+n^2y=0$.",
+      "idea": "Zero is an ordinary point, and the recurrence links powers two apart. The substitution x=sin t also checks the result.",
+      "hint": "In the xᵏ coefficient, −x²y″−xy′ combines to give −k²aₖ.",
+      "solution": "Set $y=\\sum a_kx^k$. Comparing coefficients gives\n$$a_{k+2}=\\frac{k^2-n^2}{(k+2)(k+1)}a_k.$$\nTherefore\n$$y=a_0\\sum_{j=0}^{\\infty}\\frac{\\prod_{s=0}^{j-1}[(2s)^2-n^2]}{(2j)!}x^{2j}+a_1\\sum_{j=0}^{\\infty}\\frac{\\prod_{s=0}^{j-1}[(2s+1)^2-n^2]}{(2j+1)!}x^{2j+1},$$\nwhere an empty product is 1. The radius of convergence is generally 1. For an integer $n\\ge0$, the chain with the same parity as n terminates at degree n. Its normalized form is $T_n(x)$, with $T_n(\\cos t)=\\cos nt$.\nTo check this, set $x=\\sin t$. The chain rule gives $(1-x^2)y\\prime\\prime-xy\\prime=y_{tt}$, so the equation becomes $y_{tt}+n^2y=0$. For $n\\ne0$, the general solution is $C_1\\cos(n\\arcsin x)+C_2\\sin(n\\arcsin x)$; for $n=0$, it is $C_1+C_2\\arcsin x$.",
+      "answer": "The recurrence is $a_{k+2}=(k^2-n^2)a_k/[(k+2)(k+1)]$. The even and odd series together form the local general solution.",
+      "pattern": "For an equation containing 1−x², first try an ordinary-point series. Check special-function expressions with x=sin t or cos t.",
+      "pitfall": "When n=0, the sine expression vanishes and cannot serve as the second independent solution. Take the appropriate limit to obtain arcsin x.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer."
+    },
+    {
+      "id": "4.2-3",
+      "section": "4.2",
+      "number": 3,
+      "page": 180,
+      "title": "Frobenius series for the hypergeometric equation",
+      "question": "Use a series near $x_0=0$ to solve $x(x-1)y\\prime\\prime+[(1+a+b)x-c]y\\prime+aby=0$.",
+      "idea": "Zero is a regular singular point. Multiply by −1 to get the standard Gauss equation. Its indicial roots are 0 and 1−c.",
+      "hint": "Use y=xʳΣaₖxᵏ. The coefficient of the lowest power is r(r+c−1).",
+      "solution": "Rewrite as $x(1-x)y\\prime\\prime+[c-(a+b+1)x]y\\prime-aby=0$. Substitute $y=x^r\\sum_{k\\ge0}d_kx^k$. The lowest power gives\n$$r(r+c-1)=0,$$\nand the remaining coefficients give\n$$d_{k+1}=\\frac{(k+r+a)(k+r+b)}{(k+r+1)(k+r+c)}d_k.$$\nDefine $(a)_k=a(a+1)\\cdots(a+k-1)$. For $c\\notin\\mathbb Z$,\n$$y=C_1\\,{}_2F_1(a,b;c;x)+C_2x^{1-c}{}_2F_1(a-c+1,b-c+1;2-c;x),$$\nwhere ${}_2F_1(a,b;c;x)=\\sum_{k\\ge0}(a)_k(b)_k x^k/[(c)_k k!]$ for $|x|<1$. Choose one branch of $x^{1-c}$.\nFor integer c, the indicial roots coincide or differ by an integer. These two expressions may be undefined or dependent, so they cannot be used blindly. Obtain one nonzero solution $y_1$ from the recurrence. The standard-form coefficient $P=c/x+(c-a-b-1)/(1-x)$ then gives\n$$y_2=y_1\\int\\frac{x^{-c}(1-x)^{c-a-b-1}}{y_1^2}\\,dx.$$\nOn a local interval where $y_1\\ne0$, this gives the second solution. Expanding the integral produces any necessary logarithmic terms and also handles degenerate parameters.",
+      "answer": "For generic parameters, the two Gauss hypergeometric series give the general solution. For integer c, use the recurrence and a reduction-of-order integral to obtain the second solution.",
+      "pattern": "Correct the standard-form signs → derive the indicial equation → find the recurrence → identify Pochhammer coefficients → check denominator parameters and integer root differences.",
+      "pitfall": "The original leading factor is x(x−1), so multiply by −1 first. If c is a nonpositive integer, the denominator of the usual first series may vanish.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer."
+    },
+    {
+      "id": "4.2-4",
+      "section": "4.2",
+      "number": 4,
+      "page": 180,
+      "title": "The confluent hypergeometric equation",
+      "question": "Solve $xy\\prime\\prime+(c-x)y\\prime-ay=0$ near $x=0$.",
+      "idea": "Use Frobenius again, but now the recurrence numerator has only one linear factor.",
+      "hint": "The roots are again 0 and 1−c, and aₖ₊₁=(k+r+a)aₖ/[(k+r+1)(k+r+c)].",
+      "solution": "Take $y=x^r\\sum d_kx^k$. Substitution gives $r(r+c-1)=0$ and\n$$d_{k+1}=\\frac{k+r+a}{(k+r+1)(k+r+c)}d_k.$$\nDefine $M(a,c,x)={}_1F_1(a;c;x)=\\sum_{k\\ge0}(a)_kx^k/[(c)_k k!]$. When $c\\notin\\mathbb Z$,\n$$y=C_1M(a,c,x)+C_2x^{1-c}M(a-c+1,2-c,x).$$\nThese series converge for every finite x when the denominator parameters avoid poles. A branch of $x^{1-c}$ must be chosen.\nFor integer c, check the repeated roots and recurrence denominators. After finding one solution $y_1$, the standard-form coefficient $P=c/x-1$ gives\n$$y_2=y_1\\int e^x x^{-c}y_1^{-2}\\,dx.$$\nA term in $x^{-1}$ in the integrand’s Laurent expansion generates $\\ln x$. This formula also applies to special terminating parameters. If $a=-n$, $n\\ge0$, and the denominators permit it, one solution terminates at degree n.",
+      "answer": "For noninteger c, $y=C_1{}_1F_1(a;c;x)+C_2x^{1-c}{}_1F_1(a-c+1;2-c;x)$. Use reduction of order for resonant parameters.",
+      "pattern": "The confluent recurrence has one rising factor divided by two factors. For integer c, always check resonance.",
+      "pitfall": "A negative integer a gives termination, not a positive integer. Integrating the standard-form coefficient P=c/x−1 produces the eˣ factor.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer."
+    },
+    {
+      "id": "4.2-5",
+      "section": "4.2",
+      "number": 5,
+      "page": 180,
+      "title": "Expansion of Legendre’s equation near x=1",
+      "question": "Solve $(1-x^2)y\\prime\\prime-2xy\\prime+l(l+1)y=0$ near $x=1$.",
+      "idea": "Move the singular point to zero. The indicial root 0 is repeated. One solution is an ordinary series; the second generally contains a logarithm.",
+      "hint": "Put t=x−1 to obtain t(t+2)yₜₜ+2(t+1)yₜ−l(l+1)y=0.",
+      "solution": "Let $t=x-1$. After multiplying by −1, the equation is $t(t+2)y_{tt}+2(t+1)y_t-l(l+1)y=0$. Set $y=t^r\\sum d_kt^k$. The indicial equation is $2r^2=0$, so $r=0$ is repeated. For the first solution, take $d_0=1$. Comparing tᵏ terms gives\n$$d_{k+1}=\\frac{l(l+1)-k(k+1)}{2(k+1)^2}d_k,$$\nso\n$$y_1=\\sum_{k=0}^{\\infty}\\frac{(-l)_k(l+1)_k}{(k!)^2}\\left(\\frac{1-x}{2}\\right)^k={}_2F_1\\!\\left(-l,l+1;1;\\frac{1-x}{2}\\right).$$\nThe series is analytic for $|x-1|<2$, up to the other singular point x=−1. For nonnegative integer l, it terminates and becomes $P_l(x)$. The first-derivative coefficient in standard form is $P=-2x/(1-x^2)$, giving $e^{-\\int Pdx}=1/(1-x^2)$ up to a constant factor. Thus\n$$y_2=y_1\\int\\frac{dx}{(1-x^2)y_1(x)^2}.$$\nSince $y_1(1)=1$, the integrand starts with $-1/[2(x-1)]$ near x=1. Hence $y_2=-\\tfrac12y_1\\ln|x-1|+$ an analytic term. The local general solution is $C_1y_1+C_2y_2$. For example, l=0 gives $y_1=1$ and $y_2=\\frac12\\ln|(1+x)/(1-x)|$.",
+      "answer": "The analytic solution is $P_l(x)={}_2F_1(-l,l+1;1;(1-x)/2)$. The other solution is given by the reduction-of-order integral above and generally contains a logarithm.",
+      "pattern": "Shift the singular point → find the repeated indicial root → obtain one solution → use the Wronskian or reduction of order to construct the logarithmic solution.",
+      "pitfall": "At x=1, an ordinary power series centered at zero cannot establish that two solutions are analytic at x=1.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer.",
+      "errata": "The public reference image does not provide the complete second solution, and its recurrence must include the preceding coefficient. The solution supplies the logarithmic Frobenius solution and the reduction-of-order integral."
+    },
+    {
+      "id": "4.2-6",
+      "section": "4.2",
+      "number": 6,
+      "page": 180,
+      "title": "Laguerre’s equation and the textbook normalization",
+      "question": "Solve $xy\\prime\\prime+(1-x)y\\prime+\\lambda y=0$ near $x=0$. Determine the parameter values giving polynomial solutions. Normalize the leading term to $(-x)^n$ to obtain $L_n(x)$, and write its first three orders.",
+      "idea": "This is the confluent hypergeometric equation with a=−λ and c=1. The indicial root 0 is repeated, and the analytic solution may terminate.",
+      "hint": "The recurrence is aₖ₊₁=(k−λ)aₖ/(k+1)². The textbook’s leading coefficient differs from the usual Lₙ convention by n!.",
+      "solution": "Set $y=x^r\\sum a_kx^k$. The lowest term is $r^2a_0x^{r-1}$, so the repeated root is $r=0$. The analytic solution has recurrence\n$$a_{k+1}=\\frac{k-\\lambda}{(k+1)^2}a_k,\\qquad y_1=a_0\\sum_{k=0}^{\\infty}\\frac{(-\\lambda)_k}{(k!)^2}x^k.$$\nReduction of order gives $y_2=y_1\\int\\frac{e^x}{x y_1^2}\\,dx$. For $a_0\\ne0$, this integral contains a logarithmic term. If $\\lambda=n=0,1,\\ldots$, the recurrence numerator becomes zero at degree n and the analytic solution terminates. Its leading coefficient is $a_0(-1)^n/n!$. The required leading term is $(-x)^n$, so choose $a_0=n!$.\nThus, with the textbook normalization,\n$$L_n(x)=n!\\sum_{k=0}^{n}(-1)^k\\binom nk\\frac{x^k}{k!},$$\nand $L_0=1$, $L_1=1-x$, $L_2=x^2-4x+2$, $L_3=-x^3+9x^2-18x+6$. Standard mathematical tables divide these polynomials by n!. Here we follow the leading-coefficient convention explicitly required in the question.",
+      "answer": "$\\lambda=n\\in\\mathbb N_0$. In the textbook convention, $L_1=1-x,L_2=x^2-4x+2,L_3=-x^3+9x^2-18x+6$, with $L_0=1$.",
+      "pattern": "Set the recurrence numerator to zero to find the allowed parameter. Then use the leading coefficient to determine the overall scale.",
+      "pitfall": "Do not copy the common normalization $L_2=1-2x+x^2/2$ without checking the required leading coefficient.",
+      "verification": "The question was checked against the original textbook page. The solution is independently derived; no claim is made that it matches the teacher’s answer.",
+      "errata": "The required leading term $(-x)^n$ differs from the common Laguerre convention by a factor $n!$. These are different normalizations and must not be mixed."
+    }
+  ]
+}
