@@ -13,10 +13,10 @@
           "explain": "波动方程来自“质量×加速度＝受力”。弦横振动波速为 $c=\\sqrt{T/\\rho}$，杆纵振动波速为 $c=\\sqrt{Y/\\rho}$。固定端给位移条件，自由端给应力或斜率条件。",
           "formula": "u_{tt}=c^2u_{xx},\\qquad u=\\sum_n\\left(A_n\\cos\\omega_nt+B_n\\sin\\omega_nt\\right)X_n(x)",
           "conditions": "线性小振幅、均匀材料；每个边界类型要选择对应的本征函数。",
-          "proof": "令 $u=XT$，分离为 $X''+\\lambda X=0$、$T''+c^2\\lambda T=0$。固定两端使 $X_n=\\sin(n\\pi x/l)$，$\\omega_n=cn\\pi/l$。用初始位移投影给 $A_n$，初速度投影除以 $\\omega_n$ 给 $B_n$。",
+          "proof": "先从力学得到方程：弦段质量为 $\\rho\\,dx$，小斜率下张力的横向合力为 $T u_{xx}dx$，故 $\\rho u_{tt}=Tu_{xx}$。因此 $c=\\sqrt{T/\\rho}$；杆纵振动用应力 $Yu_x$ 做同样的平衡，得到 $c=\\sqrt{Y/\\rho}$。\n\n以两端固定为例，令 $u=X(x)\\Theta(t)$，代入并分离：$X''/X=\\Theta''/(c^2\\Theta)=-\\lambda$。于是 $X''+\\lambda X=0$、$\\Theta''+c^2\\lambda\\Theta=0$；固定端要求 $X(0)=X(l)=0$，选出 $X_n=\\sin(n\\pi x/l)$、$\\lambda_n=(n\\pi/l)^2$。\n\n时间解为 $A_n\\cos\\omega_nt+B_n\\sin\\omega_nt$，$\\omega_n=cn\\pi/l$。由 $u(x,0)=\\varphi(x)$，将等式乘 $X_n$ 积分并用 $\\int_0^lX_n^2dx=l/2$，得 $A_n=\\frac2l\\int_0^l\\varphi X_n dx$。对时间求导再令 $t=0$，得到 $B_n=\\frac2{l\\omega_n}\\int_0^l vX_n dx$。\n\n这给出可操作的本征展开推导。自由端改为零应力条件，空间基和频率也要重选；不能直接沿用固定端正弦。级数是否可逐项求导取决于初值正则性；仅能量初值时按能量解理解。",
           "example": {
             "question": "两端固定弦的初始位移为 $\\sin(\\pi x/l)$，初速度零，求振动。",
-            "solution": "只有第一模态：$u(x,t)=\\sin(\\pi x/l)\\cos(c\\pi t/l)$。代回 $u_{tt}=c^2u_{xx}$，端点及两初值均成立。"
+            "solution": "初位移已是第一基函数 $X_1=\\sin(\\pi x/l)$，所以 $A_1=1$、其他 $A_n=0$。初速度为零给全部 $B_n=0$；因此 $u=\\sin(\\pi x/l)\\cos(c\\pi t/l)$。\n\n直接求导：$u_{tt}=-(c\\pi/l)^2u$、$u_{xx}=-(\\pi/l)^2u$，故 $u_{tt}=c^2u_{xx}$。令 $x=0,l$ 检查边界，再令 $t=0$ 检查位移和速度，两条初值分别成立。"
           },
           "memory": "位移决定余弦时间项，速度决定正弦时间项；边界先于系数。"
         },
@@ -26,10 +26,10 @@
           "explain": "无限弦的位移由两个反向传播的波叠加。初速度不是直接乘 t，而是在影响区间上积分。固定端半轴问题可以先奇延拓。",
           "formula": "u(x,t)=\\frac{\\varphi(x-ct)+\\varphi(x+ct)}2+\\frac1{2c}\\int_{x-ct}^{x+ct}v(s)\\,ds",
           "conditions": "$u_{tt}=c^2u_{xx}$，全轴、无外力；初值为位移 φ 和速度 v。经典解要求足够光滑。半轴固定端用奇延拓，绝热/自由端用偶延拓。",
-          "proof": "特征变量 ξ=x−ct、η=x+ct 令方程化为 $u_{\\xi\\eta}=0$，故 $u=F(\\xi)+H(\\eta)$。t=0 时 $F+H=\\varphi$、$c(H\\prime-F\\prime)=v$，积分解出两函数并相加，得到所列公式。对 t 求导并令 t=0 可直接核验 v。",
+          "proof": "引入特征坐标 $\\xi=x-ct$、$\\eta=x+ct$。链式法则给 $\\partial_x=\\partial_\\xi+\\partial_\\eta$、$\\partial_t=-c\\partial_\\xi+c\\partial_\\eta$，所以 $u_{tt}-c^2u_{xx}=-4c^2u_{\\xi\\eta}$，无源方程变为 $u_{\\xi\\eta}=0$。\n\n先对一个变量积分，再对另一个变量积分，得到 $u=F(\\xi)+G(\\eta)$。在 $t=0$，位移给 $F(x)+G(x)=\\varphi(x)$，速度给 $c[G'(x)-F'(x)]=v(x)$；再对位移等式求导，得到 $F'+G'=\\varphi'$。\n\n解这两个关于导数的方程：$F'=(\\varphi'-v/c)/2$、$G'=(\\varphi'+v/c)/2$。分别积分并把 $x-ct$、$x+ct$ 代入相加，积分常数由初位移合并，得到 $u=\\frac12[\\varphi(x-ct)+\\varphi(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v(s)ds$。\n\n积分端点求导给初速度项 $\\frac12[v(x+ct)+v(x-ct)]$，在 $t=0$ 恰为 $v(x)$；位移平均项的时间导数在零时相消。半轴固定端用奇延拓使边界值相消，自由端用偶延拓使空间导数相消；非零端点运动还需另加边界响应。",
           "example": {
             "question": "全轴初位移为 0、初速度为常数 V，位移如何变化？",
-            "solution": "$u=(2c)^{-1}\\int_{x-ct}^{x+ct}V\\,ds=Vt$。空间上均匀运动，所以 $u_{xx}=u_{tt}=0$，初速度正确。"
+            "solution": "因为 $\\varphi=0$、$v(s)=V$，只计算积分：$\\int_{x-ct}^{x+ct}Vds=V[(x+ct)-(x-ct)]=2cVt$，再除以 $2c$ 得 $u=Vt$。\n\n检查 $u_t=V$、$u_{tt}=0$、$u_{xx}=0$，初速度与波动方程均正确。这个例子中每点同速运动，才简化成速度乘时间；一般不均匀速度不能省略积分。"
           },
           "memory": "位移取两端平均；速度取中间面积除 2c。"
         },
@@ -39,10 +39,10 @@
           "explain": "空间边界齐次后，把外力和初值投影到相同本征函数上。每个模态都是一个受迫振子，共振时不能使用零分母的非共振公式。",
           "formula": "q_n\\prime\\prime+\\omega_n^2q_n=F_n(t),\\quad q_n=A_n\\cos\\omega_nt+B_n\\sin\\omega_nt+\\frac1{\\omega_n}\\int_0^tF_n(s)\\sin[\\omega_n(t-s)]ds",
           "conditions": "采用正交空间本征系，$\\omega_n>0$；$B_n=q_n\\prime(0)/\\omega_n$。零模态须单独解 $q_0\\prime\\prime=F_0$。阻尼项存在时要相应修改时间方程。",
-          "proof": "对空间本征展开代入方程并利用正交性，得到各 qₙ 方程。积分核 $\\sin\\omega_n(t-s)/\\omega_n$ 在 t=s 时为零、t 导数为 1，所以二次求导后产生 Fₙ(t)，且卷积项的两条初值均为零。",
+          "proof": "先将边界齐次化，再选满足 $X_n''+\\lambda_nX_n=0$ 的正交基。把 $u=\\sum q_nX_n$ 代入 $u_{tt}-c^2u_{xx}=f(x,t)$，乘 $X_n$ 积分并除以 $N_n=\\int X_n^2dx$，得 $q_n''+\\omega_n^2q_n=F_n(t)$，其中 $\\omega_n^2=c^2\\lambda_n$、$F_n=\\int fX_n dx/N_n$。\n\n对一个 $\\omega_n>0$ 的模态，定义零初值响应 $r_n(t)=\\frac1{\\omega_n}\\int_0^tF_n(s)\\sin[\\omega_n(t-s)]ds$。上限处正弦为零，所以 $r_n'=\\int_0^tF_n(s)\\cos[\\omega_n(t-s)]ds$。\n\n再求导，上限产生 $F_n(t)$，积分部分产生 $-\\omega_n^2r_n$，故 $r_n''+\\omega_n^2r_n=F_n$。两个积分在零时为空，所以 $r_n(0)=r_n'(0)=0$；再加 $A_n\\cos\\omega_nt+B_n\\sin\\omega_nt$ 来满足一般初值。\n\n这个卷积表达式在共振时仍有意义。若改用待定系数公式出现 $\\omega_n^2-\\Omega^2$ 分母，须单列 $\\Omega=\\omega_n$；零模态则直接积分 $q_0''=F_0$，不能除以零频率。",
           "example": {
             "question": "零初值，$q\\prime\\prime+\\omega^2q=F\\cos\\omega t$ 的共振响应是什么？",
-            "solution": "代入卷积或待定系数法得 $q=Ft\\sin\\omega t/(2\\omega)$。包络随 t 增长。直接求两次导数可核验强迫与零初值。"
+            "solution": "右端频率等于固有频率，试 $q_p=Ct\\sin\\omega t$。逐次求导得 $q_p'=C\\sin\\omega t+C\\omega t\\cos\\omega t$，$q_p''=2C\\omega\\cos\\omega t-C\\omega^2t\\sin\\omega t$。\n\n相加后 $q_p''+\\omega^2q_p=2C\\omega\\cos\\omega t$，故 $C=F/(2\\omega)$。该函数已满足 $q_p(0)=q_p'(0)=0$，所以 $q=Ft\\sin\\omega t/(2\\omega)$；增长的是线性包络，不是指数。"
           },
           "memory": "空间先正交投影，时间再解振子；遇零分母先检查共振。"
         }
@@ -59,10 +59,10 @@
           "explain": "热量守恒与傅里叶导热定律给热方程。无源热方程的各非零空间模态随时间指数衰减；保温边界保留零模态，固定零温边界没有零模态。",
           "formula": "u_t=\\kappa\\Delta u+s,\\qquad\\kappa=\\frac{k}{\\rho c}",
           "conditions": "均匀介质，$k$ 为导热系数、$\\rho c$ 为单位体积热容；外源 $s$ 已除以热容。",
-          "proof": "一维小段 $dx$ 的内能增加率为 $\\rho cS u_tdx$；两端净输入热率为 $kS[u_x(x+dx)-u_x(x)]$。除以 $Sdx$ 并取极限得 $\\rho c u_t=ku_{xx}+q$。分离变量使时间因子满足 $T'+\\kappa\\lambda T=0$，所以 $T=e^{-\\kappa\\lambda t}$。",
+          "proof": "令 $q$ 为单位体积产热率。杆段的储热率是 $\\rho cS u_tdx$；傅里叶热流向右为 $-kS u_x$，左端输入减右端输出给净导热输入 $kS[u_x(x+dx)-u_x(x)]$。\n\n热量守恒给 $\\rho cS u_tdx=kS u_{xx}dx+qSdx$。除以 $\\rho cSdx$ 得 $u_t=\\kappa u_{xx}+s$，其中 $\\kappa=k/(\\rho c)$、$s=q/(\\rho c)$；高维时 $u_{xx}$ 换成 $\\Delta u$。\n\n无源且齐次边界时，选空间基满足 $-\\Delta X_n=\\lambda_nX_n$，令一项为 $u_n=a_n(t)X_n$。代入得到 $a_n'=-\\kappa\\lambda_na_n$，故 $a_n(t)=a_n(0)e^{-\\kappa\\lambda_nt}$；热方程时间一阶，只需初始温度。\n\n固定零温边界在常见有界域中没有常数零模态，温度可衰减到零。全绝热边界允许 $X_0=1$、$\\lambda_0=0$，其平均温度不衰减；这与没有边界热量流出相一致。",
           "example": {
             "question": "两端零温杆初温 $\\sin(2\\pi x/l)$，求温度。",
-            "solution": "$u=e^{-4\\kappa\\pi^2t/l^2}\\sin(2\\pi x/l)$。空间二阶导数带来 $-(2\\pi/l)^2$，与时间衰减率相同。"
+            "solution": "两端零温的空间基是 $X_n=\\sin(n\\pi x/l)$，初温恰为 $X_2$，所以只保留系数 $a_2(0)=1$。$X_2''=-(2\\pi/l)^2X_2$，故 $a_2'=-4\\kappa\\pi^2a_2/l^2$。\n\n解得 $u=e^{-4\\kappa\\pi^2t/l^2}\\sin(2\\pi x/l)$。检查 $u_t=-4\\kappa\\pi^2u/l^2=\\kappa u_{xx}$，并检查指数在零时为 1、长时间趋于 0。"
           },
           "memory": "热方程时间一阶，初值只要一个；频率越高衰减越快。"
         },
@@ -72,10 +72,10 @@
           "explain": "无限域热核是随时间变宽的 Gaussian。半轴零温用反号镜像，半轴绝热用同号镜像。扩散影响尺度随 $\\sqrt t$ 增长。",
           "formula": "K(x,t)=\\frac{e^{-x^2/(4\\kappa t)}}{\\sqrt{4\\pi\\kappa t}},\\qquad u(x,t)=\\int_{\\mathbb R}K(x-\\xi,t)\\varphi(\\xi)\\,d\\xi",
           "conditions": "$u_t=\\kappa u_{xx}$、κ>0、t>0、无源全轴。初值按连续点极限或适当 Lᵖ 意义恢复。半轴边界必须先区分 Dirichlet 和 Neumann。",
-          "proof": "Fourier 变换给 $\\widehat u_t=-\\kappa k^2\\widehat u$，故 $\\widehat u=e^{-\\kappa k^2t}\\widehat\\varphi$。Gaussian 逆变换给 K，且 $\\int Kdx=1$。奇延拓在半轴化为 $K(x-\\xi)-K(x+\\xi)$，使 x=0 的值抵消；偶延拓化为加号，使 x=0 的导数抵消。",
+          "proof": "采用 $\\widehat u(k)=\\int_{\\mathbb R}u(x)e^{-ikx}dx$，逆变换带 $1/(2\\pi)$。充分衰减时分部积分给 $\\widehat{u_{xx}}=-k^2\\widehat u$，所以热方程化为 $\\widehat u_t=-\\kappa k^2\\widehat u$，得 $\\widehat u=e^{-\\kappa k^2t}\\widehat\\varphi$。\n\n高斯逆变换为 $K(x,t)=e^{-x^2/(4\\kappa t)}/\\sqrt{4\\pi\\kappa t}$。由变换乘积对应卷积，得到 $u(x,t)=\\int_{\\mathbb R}K(x-\\xi,t)\\varphi(\\xi)d\\xi$；这里是全轴无源解，有限区间不能直接忽略边界套用。\n\n令 $z=x/\\sqrt{4\\kappa t}$，有 $\\int Kdx=\\frac1{\\sqrt\\pi}\\int e^{-z^2}dz=1$。当 $t\\downarrow0$，核的质量集中于零而总量不变，因此在连续点恢复初值；脉冲初值则按分布意义恢复。\n\n半轴上分开正负轴积分：奇延拓得到 $\\int_0^\\infty[K(x-\\xi)-K(x+\\xi)]\\varphi(\\xi)d\\xi$，偶延拓改为加号。因为 $K$ 为偶函数，前者在零点的值抵消；因为 $K_x$ 为奇函数，后者在零点的空间一阶导数抵消。",
           "example": {
             "question": "初温为单位点脉冲，其总热量随时间改变吗？",
-            "solution": "温度为 K，总热量 $\\int Kdx=1$ 保持不变；峰值按 $t^{-1/2}$ 降低，宽度按 $\\sqrt{\\kappa t}$ 增大。"
+            "solution": "点脉冲初值 $\\varphi=\\delta$ 使卷积抽样为 $u=K$。总热量的归一化积分是 $\\int_{\\mathbb R}Kdx=1$，所以峰值降低并不表示热量消失。\n\n峰值在 $x=0$，为 $K(0,t)=1/\\sqrt{4\\pi\\kappa t}$；指数变化到数量级 1 时，$x^2/(4\\kappa t)\\sim1$，对应 $|x|\\sim2\\sqrt{\\kappa t}$。所以高度按 $t^{-1/2}$ 降、扩散尺度按 $\\sqrt{\\kappa t}$ 增。"
           },
           "memory": "热核总量为 1；零值边界相减，零导数边界相加。"
         },
@@ -85,10 +85,10 @@
           "explain": "直接分离变量要求齐次边界。先找一个满足边界的简单函数 h，再令 u=v+h。若边界随时间变，v 的方程通常出现新的源项。",
           "formula": "u=v+h,\\qquad v_t-\\kappa v_{xx}=f-(h_t-\\kappa h_{xx})",
           "conditions": "例如 $u(0,t)=A(t)$、$u(L,t)=B(t)$ 可选 $h=A+(B-A)x/L$。v 的边界为零，但初值必须同时减 h(x,0)。",
-          "proof": "把 u=v+h 逐项代入原方程，移项即可。由于 h 满足原边界，v 满足齐次边界。常值边界的线性 h 有 $h_t=h_{xx}=0$，不新增源；时变边界保留 $-h_t$，否则代回原方程会有残差。",
+          "proof": "若 $u(0,t)=A(t)$、$u(L,t)=B(t)$，先选能连接两端的直线 $h(x,t)=A(t)+[B(t)-A(t)]x/L$。定义 $v=u-h$，立刻得到 $v(0,t)=v(L,t)=0$；此时才适合使用零边界本征函数。\n\n原方程写成 $u_t-\\kappa u_{xx}=f$。代入 $u=v+h$ 并逐项移项，得 $v_t-\\kappa v_{xx}=f-h_t+\\kappa h_{xx}=f-(h_t-\\kappa h_{xx})$；不允许只改边界而不改方程。\n\n初值也要同时处理：若 $u(x,0)=\\varphi(x)$，则 $v(x,0)=\\varphi(x)-h(x,0)$。对连接直线有 $h_{xx}=0$；若边界随时间变，$h_t=A'+(B'-A')x/L$ 一般不为零，会变成新源项。\n\n边界为常数时 $h_t=h_{xx}=0$，线性提升不新增源。更一般地，若先找到满足恒定源和边界的稳态 $U$，减去 $U$ 还能同时消除源项；最后始终要把提升函数加回去。",
           "example": {
             "question": "两端保持 0 和 T，初温为 0 的细杆，稳态是什么？",
-            "solution": "$h=Tx/L$。令 v=u−h，v 两端零值、初值 −Tx/L，可作正弦展开并逐模态衰减。t→∞ 时 v→0，所以 u→Tx/L。"
+            "solution": "取 $h=Tx/L$，因此 $v_t=\\kappa v_{xx}$、两端零值、初值 $v(x,0)=-Tx/L$。正弦投影为 $b_n=-\\frac{2T}{L^2}\\int_0^Lx\\sin(n\\pi x/L)dx=2T(-1)^n/(n\\pi)$。\n\n所以 $u=Tx/L+\\sum_{n\\ge1}b_ne^{-\\kappa(n\\pi/L)^2t}\\sin(n\\pi x/L)$。每个非零模态都衰减，故稳态为 $Tx/L$。初温零与右端温度 $T$ 在初始角点不相容，初值按内部极限理解。"
           },
           "memory": "边界先减掉；初值也减掉；方程检查是否新增源。"
         }
@@ -105,10 +105,10 @@
           "explain": "稳态意味着时间不变，无源场满足拉普拉斯方程。矩形区域分离后，一个方向是三角函数，另一个方向是双曲函数；非齐次边界通过投影确定系数。",
           "formula": "\\Delta u=0,\\qquad X''+\\lambda X=0,\\quad Y''-\\lambda Y=0",
           "conditions": "无源矩形区域；用齐次边界所在方向决定正交基，再满足非齐次边界。",
-          "proof": "将 $u=XY$ 代入 $u_{xx}+u_{yy}=0$，得到 $X''/X=-Y''/Y=-\\lambda$。如果 $x=0,a$ 为零值，则 $\\lambda=(n\\pi/a)^2$、$X=\\sin(n\\pi x/a)$。若 $y=0$ 也为零值，$Y$ 取 $\\sinh(n\\pi y/a)$。",
+          "proof": "无源稳态不再随时间变化，满足 $u_{xx}+u_{yy}=0$。令 $u=X(x)Y(y)$，代入后分离得 $X''/X=-Y''/Y=-\\lambda$，所以一边满足 $X''+\\lambda X=0$，另一边满足 $Y''-\\lambda Y=0$。\n\n若左右两边为零，$X(0)=X(a)=0$ 选出 $X_n=\\sin(k_nx)$、$k_n=n\\pi/a$。对应 $Y_n''-k_n^2Y_n=0$，因此其一般解是 $C\\sinh(k_ny)+D\\cosh(k_ny)$，不是另一套普通正弦。\n\n底边为零使 $D=0$；顶边给 $f(x)$，应把竖向因子除以 $\\sinh(k_nb)$，使其在顶边为 1。再用 $f_n=\\frac2a\\int_0^af(x)\\sin(k_nx)dx$，得到 $u=\\sum f_n\\sin(k_nx)\\sinh(k_ny)/\\sinh(k_nb)$。\n\n检查时将顶边代入，看双曲比值是否消成 1。若非零边给的是导数，应归一其导数而非函数值；若几条边非零，可用线性叠加拆成多个单边问题，并检查角点数据是否相容。",
           "example": {
             "question": "矩形上仅顶边给 $u(x,b)=\\sin(\\pi x/a)$，其余三边为零。",
-            "solution": "$u=\\sin(\\pi x/a)\\sinh(\\pi y/a)/\\sinh(\\pi b/a)$；代入拉普拉斯方程，三零边和顶边同时满足。"
+            "solution": "顶边 $f(x)=\\sin(\\pi x/a)$ 已是第一模态，投影系数 $f_1=1$、其余为零，所以 $u=\\sin(\\pi x/a)\\sinh(\\pi y/a)/\\sinh(\\pi b/a)$。\n\n令 $k=\\pi/a$，有 $u_{xx}=-k^2u$、$u_{yy}=k^2u$，相加为零。在 $x=0,a$ 正弦为零，在 $y=0$ 双曲正弦为零，在 $y=b$ 分子分母相等；四边逐一核验完成。"
           },
           "memory": "先用齐次两边选正交基，再用双曲函数跨到非零边。"
         },
@@ -118,10 +118,10 @@
           "explain": "边界值不仅用来定系数，也决定解是否唯一。判断两种方法的结果是否相同，可以研究两解之差。",
           "formula": "\\Delta w=0,\\quad w|_{\\partial V}=0\\quad\\Longrightarrow\\quad w\\equiv0",
           "conditions": "有界连通域、足够正则的调和函数及 Dirichlet 边界。外域必须给无穷远条件。纯 Neumann 问题只确定到常数，且要有相容条件。",
-          "proof": "两解之差 w 满足齐次方程和零边界。Green 第一公式给 $\\int_V|\\nabla w|^2dV=\\oint w\\partial_nw-\\int w\\Delta w=0$，故 w 为常数，零边界再定为零。最大值原理也给上下界都为零。",
+          "proof": "若 $u_1,u_2$ 满足同一 Dirichlet 问题，令 $w=u_1-u_2$。由方程和边界的线性性，$\\Delta w=0$ 且 $w|_{\\partial V}=0$；证明唯一性就变成证明这个齐次问题只有零解。\n\n利用散度恒等式 $\\nabla\\cdot(w\\nabla w)=|\\nabla w|^2+w\\Delta w$，积分并用散度定理得到 $\\int_V|\\nabla w|^2dV=\\oint_{\\partial V}w\\partial_nw\\,dS-\\int_Vw\\Delta w\\,dV$。零边界使第一项为零，调和性使第二项为零。\n\n非负函数 $|\\nabla w|^2$ 的积分为零，足够正则时推出 $\\nabla w=0$；连通域内 $w$ 是常数，再由零边界定为零。若是纯 Neumann 边界，只能定到常数；还必须满足总通量相容条件。\n\n最大值原理给另一条判断途径：调和函数的球面平均等于中心值；若内部取得严格最大值，平均不可能仍等于该最大值，除非邻域都取相同值，连通性再使全域常值。这是平均值性质推出强最大值原理的核心思路，并非平均值性质本身的完整证明；外域还要给无穷远条件。",
           "example": {
             "question": "球面温度恒为 5，球内无热源，温度是否可能在中心更高？",
-            "solution": "常函数 5 已满足方程和边界，由唯一性只能为 5。最大值原理也排除内部超过边界最大值的稳态。"
+            "solution": "先试常函数 $u_*=5$：二阶导数全为零，所以 $\\Delta u_*=0$，并且球面上正好取 5。再令任意其他解与它的差为 $w=u-5$，便得到零边界调和问题。\n\n上面的能量论证给 $w=0$，故球内处处为 5。用最大值原理也可交叉检查 $\\max u\\le5$、$\\min u\\ge5$；中心更热会违反前者。"
           },
           "memory": "两解相减；能量为零；边界定常数。"
         }
@@ -138,10 +138,10 @@
           "explain": "不同边界下看似不同的级数，统一来自自伴本征值问题。权函数决定投影内积。实本征值依赖自伴边界；本征值非负还需要能量二次型非负，不能只看微分方程系数。",
           "formula": "(p y')'-q y+\\lambda w y=0,\\qquad\\langle f,g\\rangle_w=\\int_a^b w f\\overline g\\,dx",
           "conditions": "正则情形 $p>0,w>0$、$q$ 实，配实分离自伴边界；奇异端点需额外有限性/可积性条件。",
-          "proof": "用 $y_m$ 方程乘 $\\overline{y_n}$，减去共轭的 $y_n$ 方程乘 $y_m$，积分得 $(\\lambda_m-\\overline{\\lambda_n})\\int w y_m\\overline{y_n}=-[p(y_m'\\overline{y_n}-y_m\\overline{y_n'})]_a^b$。自伴边界使右端为零。取 $m=n$ 得本征值实；取不同本征值便得带权正交。",
+          "proof": "写第 $m$ 支方程 $(py_m')'-qy_m+\\lambda_mwy_m=0$。把它乘 $\\overline{y_n}$，再减去第 $n$ 支共轭方程乘 $y_m$；$q$ 为实数，所以含 $q$ 的项完全抵消。\n\n积分并把导数项合成边界项，得 $(\\lambda_m-\\overline{\\lambda_n})\\int_a^bwy_m\\overline{y_n}dx=-[p(y_m'\\overline{y_n}-y_m\\overline{y_n'})]_a^b$。实分离边界使右端为零：端点要么 $y=0$，要么 $y'$ 是同一实常数乘 $y$。\n\n先取 $m=n$，因 $w>0$ 且本征函数非零，$\\int_a^bw|y_n|^2dx>0$，所以 $\\lambda_n=\\overline{\\lambda_n}$。再取不同本征值，差不为零，只能有 $\\int_a^bwy_m\\overline{y_n}dx=0$，即带权正交。\n\n投影必须使用同一个权：$a_n=\\langle f,y_n\\rangle_w/\\langle y_n,y_n\\rangle_w$。实谱和正交性不等于非负谱；能量商的分子为 $\\int(p|y'|^2+q|y|^2)dx-[py'\\bar y]_a^b$，Robin 边界贡献可能为负。\n\n这里证明的是正则自伴问题的实谱与不同本征值正交。奇异端点须另证边界项消失；完备性、展开收敛等更强结论需要额外定理，不能只凭这条恒等式全部断言。",
           "example": {
             "question": "把 $xy''+(1-x)y'+ay=0$ 写成自伴形式。",
-            "solution": "乘 $e^{-x}$ 后得 $(xe^{-x}y')'+ae^{-x}y=0$，故 $p=xe^{-x}$、$q=0$、$w=e^{-x}$、$\\lambda=a$。"
+            "solution": "原式 $xy''+(1-x)y'+ay=0$ 的导数项还不是总导数。注意 $(xe^{-x})'=(1-x)e^{-x}$，于是两边乘 $e^{-x}$ 后，前两项就是 $(xe^{-x}y')'$。\n\n所以 $(xe^{-x}y')'+ae^{-x}y=0$，对照读出 $p=xe^{-x}$、$q=0$、$\\lambda=a$、$w=e^{-x}$。特别注意权是参数项系数 $e^{-x}$，不是 $xe^{-x}$；通常半轴的端点还须另加正则或可积条件。"
           },
           "memory": "先配导数项成 $(p y')'$；投影必须乘权函数。"
         }

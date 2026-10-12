@@ -1,5 +1,26 @@
 [
   {
+    "date": "2026-10-13",
+    "link": "exercises.html",
+    "label": "126 GUIDED ROUTES",
+    "zh": "全书126道题的入门路线均展开为5–9步，给出实际起手计算、中间式及自检，题内小问分别处理。中英文同步细化，保留主值、共振、零模态及原题缺条件的说明。",
+    "en": "Expand all 126 guided routes into 5–9 concrete steps, including starting calculations, intermediate expressions, and checks. Address subparts individually in both languages, retaining principal-value, resonance, zero-mode, and missing-condition explanations."
+  },
+  {
+    "date": "2026-10-13",
+    "link": "chapter-1.html",
+    "label": "38 CONCEPT CARDS",
+    "zh": "38张知识卡改写核心推导和简单例题，解释每一步的原因并展示代入、求导或积分。只给核心论证或调用先修定理的地方明确标出，不把形式展开当成完备性证明。",
+    "en": "Rewrite the core derivations and worked examples on all 38 concept cards, explaining each move and showing substitutions, derivatives, or integrals. Explicitly identify proof sketches and prerequisite theorems; formal expansions do not establish completeness."
+  },
+  {
+    "date": "2026-10-13",
+    "link": "beginner.html#skill-parts",
+    "label": "FOUNDATIONS / PAPER 3",
+    "zh": "新增分部积分、部分分式、正交投影、边界齐次化、级数递推、本征值六项基础短练习及可展开自测；相关题目可直接跳转。综合卷10题补方法选择、中间计算和核验。",
+    "en": "Add six short foundation practices with expandable checks: integration by parts, partial fractions, projection, boundary lifting, recurrences, and eigenvalues. Relevant exercises link directly to them. Expand all ten Paper 3 solutions with method choices, intermediate calculations, and verification."
+  },
+  {
     "date": "2026-10-12",
     "link": "chapter-1.html#ex-1.3-2",
     "label": "1.3-2",

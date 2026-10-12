@@ -13,10 +13,10 @@
           "explain": "Project one period of a function onto orthogonal sines and cosines. Each coefficient measures the amount of one frequency. Endpoint conditions tell us whether to use sine, cosine, or half-integer frequencies.",
           "formula": "f(x)\\sim\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}\\left(a_n\\cos\\frac{n\\pi x}{l}+b_n\\sin\\frac{n\\pi x}{l}\\right)",
           "conditions": "The period is $2l$. For a piecewise smooth function, the series converges to the function at continuity points and to the average of the one-sided limits at jumps.",
-          "proof": "Multiply both sides by $\\cos(m\\pi x/l)$ and integrate over $[-l,l]$. Different frequencies integrate to zero. The squared cosine at the same frequency integrates to $l$, giving $a_m=l^{-1}\\int_{-l}^l f(x)\\cos(m\\pi x/l)dx$. Similarly we obtain $b_m$; integration of the constant term gives $a_0$.",
+          "proof": "To extract one coefficient, use orthogonality on $[-l,l]$: $\\int_{-l}^l\\cos(n\\pi x/l)\\cos(m\\pi x/l)dx=0$ for $n\\ne m$, while the same-frequency squared integral is $l$. Product-to-sum identities verify these integrals.\n\nMultiply the expansion by $\\cos(m\\pi x/l)$ and integrate. Sines, the constant, and other frequencies vanish, leaving $a_ml$. Thus $a_m=\\frac1l\\int_{-l}^l f(x)\\cos(m\\pi x/l)dx$, $m\\ge1$.\n\nTo extract a sine coefficient, multiply by $\\sin(m\\pi x/l)$ instead, giving $b_m=\\frac1l\\int_{-l}^l f(x)\\sin(m\\pi x/l)dx$. Integrating the expansion itself gives $a_0=\\frac1l\\int_{-l}^l f(x)dx$; the constant is $a_0/2$.\n\nThis derives projection coefficients, not the convergence theorem. Apply orthogonality to finite sums and then pass to an appropriate square-integrable limit. Pointwise sums require the Fourier convergence theorem for piecewise smooth functions; jumps give the average of the side limits.",
           "example": {
             "question": "Expand $f(x)=x$ on $(-\\pi,\\pi)$.",
-            "solution": "The function is odd, so only sine terms remain. Since $b_n=\\frac2\\pi\\int_0^\\pi x\\sin nx\\,dx=2(-1)^{n+1}/n$, we obtain $x=2\\sum_{n\\ge1}(-1)^{n+1}\\sin nx/n$. At the endpoints of the periodic extension, the sum is $0$."
+            "solution": "Here $l=\\pi$. Since $f(x)=x$ is odd, multiplying by cosine stays odd, so $a_0=a_n=0$. Only sine coefficients remain.\n\nUse $b_n=\\frac2\\pi\\int_0^\\pi x\\sin(nx)dx$. With $u=x$ and $v=-\\cos(nx)/n$, the integral is $\\int_0^\\pi x\\sin(nx)dx=-\\pi(-1)^n/n$.\n\nThus $b_n=2(-1)^{n+1}/n$, giving $x=2\\sum_{n\\ge1}(-1)^{n+1}\\sin(nx)/n$ for $-\\pi<x<\\pi$. At the periodic seam, side limits $\\pi$ and $-\\pi$ average to zero."
           },
           "memory": "Check the period, then parity. Calculate projection integrals last."
         }
@@ -33,10 +33,10 @@
           "explain": "The Fourier transform splits a whole-line function into a continuous range of frequencies. Differentiation becomes multiplication by $ik$ in frequency space. A narrow pulse has a broad spectrum. Throughout this chapter, the forward transform has no prefactor and the inverse has $1/(2\\pi)$.",
           "formula": "F(k)=\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}dx,\\qquad f(x)=\\frac1{2\\pi}\\int_{-\\infty}^{\\infty}F(k)e^{ikx}dk",
           "conditions": "Usually require integrability or square integrability. Step functions, the sign function, and Coulomb potentials require distributions or regularization.",
-          "proof": "Integration by parts gives $\\int f^{\\prime}(x)e^{-ikx}dx=[fe^{-ikx}]_{-\\infty}^{\\infty}+ik\\int fe^{-ikx}dx$. When the boundary term vanishes, $\\mathcal F[f^{\\prime}]=ikF$. A change of variable in the definition also gives $\\mathcal F[f(ax)]=|a|^{-1}F(k/a)$.",
+          "proof": "We derive two useful properties here, rather than prove the full Fourier inversion theorem. Assume sufficient integrability of the function and derivative, and vanishing boundary terms at infinity.\n\nIntegrate $\\mathcal F[f^{\\prime}](k)=\\int f^{\\prime}(x)e^{-ikx}dx$ by parts: $\\int f^{\\prime}e^{-ikx}dx=[fe^{-ikx}]_{-\\infty}^{\\infty}+ik\\int fe^{-ikx}dx$. The derivative and integration-by-parts minus signs cancel.\n\nWith zero boundary term, $\\mathcal F[f^{\\prime}]=ikF$. Differentiating twice gives $(ik)^2F=-k^2F$, explaining why spatial differential equations simplify in frequency space.\n\nFor scaling, set $y=ax$, $a\\ne0$. If $a<0$, reversed integration limits cancel the sign in the differential. Hence $\\mathcal F[f(ax)](k)=|a|^{-1}F(k/a)$; retain the absolute value.",
           "example": {
             "question": "Find the transform of $f(x)=e^{-a|x|}$ for $a>0$.",
-            "solution": "Use evenness: $F=2\\int_0^\\infty e^{-ax}\\cos kx\\,dx=2\\operatorname{Re}(a-ik)^{-1}=2a/(a^2+k^2)$."
+            "solution": "The function $e^{-a|x|}$ is real and even. Cancel the sine imaginary part to get $F(k)=2\\int_0^\\infty e^{-ax}\\cos(kx)dx$.\n\nFirst integrate $\\int_0^\\infty e^{-(a-ik)x}dx=1/(a-ik)$, then take the real part. The upper-end exponential vanishes because $a>0$.\n\nRationalize as $1/(a-ik)=(a+ik)/(a^2+k^2)$, yielding $F(k)=2a/(a^2+k^2)$. Check that $F(0)=2/a$ equals the original area."
           },
           "memory": "Use a negative exponential for the forward transform and a positive one for the inverse. Keep track of $2\\pi$ in product and convolution formulas."
         },
@@ -46,10 +46,10 @@
           "explain": "The transform turns spatial derivatives into algebraic multiplication and convolutions into products. Before using a property, check the exponential sign and which side contains $2\\pi$.",
           "formula": "\\widehat{f\\prime}=ikF,\\quad\\widehat{f(x-a)}=e^{-ika}F,\\quad\\widehat{f*g}=FG,\\quad\\widehat{fg}=\\frac{F*G}{2\\pi}",
           "conditions": "The convention is $F(k)=\\int f(x)e^{-ikx}dx$ and $f(x)=(2\\pi)^{-1}\\int F(k)e^{ikx}dk$. For ordinary functions, require sufficient integrability, justified interchange of integrals, and vanishing integration-by-parts boundary terms. Distributional versions follow by definition.",
-          "proof": "For the derivative property, integrate $\\int f\\prime e^{-ikx}dx$ by parts. For a shift, set y=x−a. For convolution, write the double integral and set y=x−s; it separates into F(k)G(k). For the product property, substitute the inverse transform of f and interchange integrals to obtain $1/(2\\pi)$ times the convolution.",
+          "proof": "Differentiation: integrate $\\int f^{\\prime}(x)e^{-ikx}dx$ by parts. Under the required decay conditions, the boundary term vanishes and leaves $ikF(k)$.\n\nTranslation: set $y=x-a$, so $x=y+a$ and $e^{-ikx}=e^{-ika}e^{-iky}$. Pull out the factor independent of $y$ to obtain $e^{-ika}F(k)$.\n\nConvolution: write $(f*g)(x)=\\int f(s)g(x-s)ds$. In the double integral put $y=x-s$, splitting the exponential as $e^{-iks}e^{-iky}$. The two integrals separate into $F(k)G(k)$.\n\nProduct: substitute $f(x)=\\frac1{2\\pi}\\int F(q)e^{iqx}dq$ into the transform. After interchanging integrals, the inner one is $G(k-q)$, leaving $\\frac1{2\\pi}\\int F(q)G(k-q)dq$. Its prefactor comes from inversion.",
           "example": {
             "question": "Given $\\widehat{e^{-x^2}}=\\sqrt\\pi e^{-k^2/4}$, find the transform of $e^{-(x-a)^2}$.",
-            "solution": "This is a shift by a, giving $e^{-ika}\\sqrt\\pi e^{-k^2/4}$. The modulus is unchanged; the phase changes."
+            "solution": "Write $g(x)=e^{-(x-a)^2}$ as $f(x-a)$ with $f(x)=e^{-x^2}$. This identifies a translation without new integration.\n\nUse the known $F(k)=\\sqrt\\pi e^{-k^2/4}$ and multiply by the translation factor: $G(k)=e^{-ika}\\sqrt\\pi e^{-k^2/4}$.\n\nFor real translation $a$, $|e^{-ika}|=1$, so only phase changes. An extra real growth factor suggests that $i$ was omitted from the exponent."
           },
           "memory": "A spatial shift adds phase. A derivative multiplies by ik. A convolution becomes a product."
         }
@@ -66,10 +66,10 @@
           "explain": "Think of $\\delta$ as a sampling rule acting on test functions. It is not an ordinary function that can be manipulated pointwise as “infinite at one point.” Pulses with unit area and shrinking width can approach it.",
           "formula": "\\int\\delta(x-a)\\varphi(x)dx=\\varphi(a),\\qquad\\delta(g(x))=\\sum_{g(x_j)=0}\\frac{\\delta(x-x_j)}{|g^{\\prime}(x_j)|}",
           "conditions": "The second formula requires simple roots. The integration interval must contain the relevant roots.",
-          "proof": "Near each simple root, set $u=g(x)$. The change of variable gives $dx=du/|g^{\\prime}(x_j)|$. Apply the sampling property of $\\delta(u)$, then add the contributions from all roots.",
+          "proof": "A simple root matters because $g(x_j)=0$ and $g^{\\prime}(x_j)\\ne0$ allow a local inverse $x=x(u)$ with $u=g(x)$ and a finite inverse derivative.\n\nChanging variables inside a test-function integral introduces $1/|g^{\\prime}(x(u))|$. The absolute value accounts for orientation reversal near a root; do not divide by a signed derivative.\n\n$\\delta(u)$ samples at $u=0$, so this root contributes $\\varphi(x_j)/|g^{\\prime}(x_j)|$. Sum the contributions of all simple roots within the integration interval.\n\nFor a multiple root with $g^{\\prime}(x_j)=0$, the substitution fails; the formula cannot be used by dividing by zero. Roots outside the interval contribute nothing, while endpoint roots require a stated convention.",
           "example": {
             "question": "Evaluate $\\int_{-2}^2 (1+x^2)\\delta(x^2-1)dx$.",
-            "solution": "The roots are $\\pm1$ and both derivative magnitudes are $2$. Thus $\\delta(x^2-1)=[\\delta(x-1)+\\delta(x+1)]/2$, and the integral is $(2+2)/2=2$."
+            "solution": "Solve $x^2-1=0$ to get $x=\\pm1$, both inside $[-2,2]$.\n\nCalculate $g^{\\prime}(x)=2x$. Its absolute value is two at both roots, so $\\delta(x^2-1)=[\\delta(x-1)+\\delta(x+1)]/2$.\n\nFinally evaluate the weight $1+x^2$ at each root, obtaining two each time. The integral is $2/2+2/2=2$; keeping only the positive root loses half the result."
           },
           "memory": "Find the roots → divide by the absolute derivative → sample the remaining function."
         }
@@ -86,10 +86,10 @@
           "explain": "The Laplace transform uses only $t\\ge0$. Its decaying exponential allows a larger class of functions to be transformed and is especially useful for initial-value problems. Transforming a derivative automatically includes the initial values.",
           "formula": "F(p)=\\int_0^\\infty f(t)e^{-pt}dt,\\qquad\\mathcal L[f^{\\prime}]=pF-f(0^+)",
           "conditions": "$f$ is piecewise continuous and of exponential order. $\\operatorname{Re}p$ must exceed its growth rate.",
-          "proof": "Integration by parts gives $\\mathcal L[f^{\\prime}]=[fe^{-pt}]_0^\\infty+p\\int_0^\\infty fe^{-pt}dt=pF-f(0^+)$. Applying it again gives $\\mathcal L[f^{\\prime\\prime}]=p^2F-pf(0^+)-f^{\\prime}(0^+)$.",
+          "proof": "Begin with the definition. Assume suitable piecewise smoothness and exponential growth bounds for $f$ and the required derivatives, and take $\\operatorname{Re}p$ large enough to eliminate the boundary term at infinity.\n\nIntegration by parts in $\\int_0^\\infty f^{\\prime}(t)e^{-pt}dt$ gives $[fe^{-pt}]_0^\\infty+p\\int_0^\\infty fe^{-pt}dt$. The upper value is zero and the lower value $f(0^+)$ is subtracted, leaving $pF-f(0^+)$.\n\nApply the same formula to $f^{\\prime}$: $\\mathcal L[f^{\\prime\\prime}]=p\\mathcal L[f^{\\prime}]-f^{\\prime}(0^+)=p^2F-pf(0^+)-f^{\\prime}(0^+)$. Initial displacement and velocity have different factors.\n\nInitial-value terms are the boundary terms left by the lower integration limit. Write them explicitly before collecting the algebraic equation in an initial-value problem.",
           "example": {
             "question": "Find $\\mathcal L[t e^{2t}]$.",
-            "solution": "Start from $\\mathcal L[e^{2t}]=1/(p-2)$ and apply $\\mathcal L[tf]=-F^{\\prime}(p)$. The result is $1/(p-2)^2$ with convergence region $\\operatorname{Re}p>2$."
+            "solution": "Start from $\\mathcal L[e^{2t}]=1/(p-2)$, convergent for $\\operatorname{Re}p>2$.\n\nMultiplication by $t$ gives the negative transform derivative: $\\mathcal L[te^{2t}]=-\\frac d{dp}(p-2)^{-1}=(p-2)^{-2}$. The derivative minus sign cancels the property’s minus sign.\n\nAlternatively integrate $\\int_0^\\infty t e^{-(p-2)t}dt$ by parts to get the same result. The polynomial factor $t$ does not move the exponential convergence boundary."
           },
           "memory": "Multiplication by $t$ in time becomes a negative frequency derivative. Multiplication by an exponential shifts the frequency variable."
         }
@@ -106,10 +106,10 @@
           "explain": "Transform the differential equation and initial values together into an algebraic equation. Solve for the transformed function, then invert using partial fractions, shifts, or convolution.",
           "formula": "y^{\\prime\\prime}+ay^{\\prime}+by=f\\Longrightarrow(p^2+ap+b)Y=F+py(0)+y^{\\prime}(0)+ay(0)",
           "conditions": "Take the initial values at $0^+$. Encode piecewise forcing with step functions.",
-          "proof": "Substitute $\\mathcal L[y^{\\prime}]=pY-y(0)$ and $\\mathcal L[y^{\\prime\\prime}]=p^2Y-py(0)-y^{\\prime}(0)$, then collect every term containing $Y$. Linearity of the inverse transform recovers a solution of the original equation.",
+          "proof": "Name the unknown transform $Y=\\mathcal L[y]$ and the forcing transform $F=\\mathcal L[f]$. Write $\\mathcal L[y^{\\prime}]=pY-y(0)$ and $\\mathcal L[y^{\\prime\\prime}]=p^2Y-py(0)-y^{\\prime}(0)$ separately.\n\nAfter substitution in $y^{\\prime\\prime}+ay^{\\prime}+by=f$, the left side is $p^2Y-py(0)-y^{\\prime}(0)+apY-ay(0)+bY$. Keep terms containing $Y$ on the left and move the others right.\n\nThis gives $(p^2+ap+b)Y=F+py(0)+y^{\\prime}(0)+ay(0)$. It is algebraic; factor the denominator and use partial fractions, shifts, or convolution to invert.\n\nAfter inversion, check the equation, initial data, and any piecewise matching conditions. Injectivity and applicability of the transform justify the method; a formal inverse expression alone does not replace these checks.",
           "example": {
             "question": "Solve $y^{\\prime}+y=1,\\ y(0)=0$.",
-            "solution": "We have $(p+1)Y=1/p$, hence $Y=1/p-1/(p+1)$ and $y=1-e^{-t}$. Substitution gives $y^{\\prime}+y=1$, with zero initial value."
+            "solution": "Let $Y=\\mathcal L[y]$. Since $y(0)=0$, the transformed equation is $pY+Y=1/p$, giving $Y=1/[p(p+1)]$.\n\nDecompose as $Y=1/p-1/(p+1)$. The inverse terms are one and $e^{-t}$, giving $y=1-e^{-t}$.\n\nCheck $y(0)=0$ and $y^{\\prime}=e^{-t}$, hence $y^{\\prime}+y=e^{-t}+1-e^{-t}=1$. Both the equation and initial condition hold."
           },
           "memory": "Write derivative transforms and initial values first → solve for $Y$ → substitute back to check."
         }

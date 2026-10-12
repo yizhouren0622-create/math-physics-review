@@ -13,10 +13,10 @@
           "explain": "正交坐标的微小实际长度是 $ds_i=h_i dq_i$。梯度、散度与拉普拉斯算符中的尺度因子，分别来自长度、面积和体积的变化。",
           "formula": "\\nabla^2u=\\frac1{h_1h_2h_3}\\sum_{i=1}^3\\frac{\\partial}{\\partial q_i}\\left(\\frac{h_1h_2h_3}{h_i^2}\\frac{\\partial u}{\\partial q_i}\\right)",
           "conditions": "坐标正交且取右手方向；$h_i=|\\partial\\mathbf r/\\partial q_i|$，各分量指单位基矢上的物理分量。坐标奇点处用极限或正则性处理。",
-          "proof": "由 $du=\\sum u_{q_i}dq_i=\\nabla u\\cdot\\sum h_i\\mathbf e_i dq_i$ 得梯度分量 $u_{q_i}/h_i$。对小曲面盒应用高斯公式，i 方向两面的净流量为 $\\partial_{q_i}(A_i h_jh_k)dq_1dq_2dq_3$，除以体积 $h_1h_2h_3dq_1dq_2dq_3$ 得散度。令 $\\mathbf A=\\nabla u$ 即得所列拉普拉斯算符。",
+          "proof": "先从“函数改变量”求梯度。正交坐标中的位移为 $d\\mathbf r=\\sum_i h_i\\mathbf e_i dq_i$，而 $du=\\sum_i u_{q_i}dq_i=\\nabla u\\cdot d\\mathbf r$。比较每个 $dq_i$ 的系数，得到 $(\\nabla u)_i=u_{q_i}/h_i$；除以 $h_i$ 是把每单位坐标变化换成每单位实际长度的变化。\n\n再看一个小坐标盒。垂直于第 $i$ 个方向的面，其面积为 $h_jh_kdq_jdq_k$，其中 $i,j,k$ 互不相同。相对两面的外向通量相减，一阶项为 $\\partial_{q_i}(A_i h_jh_k)dq_1dq_2dq_3$：面面积随位置的变化也必须放进导数。\n\n三对面通量相加，再除盒子体积 $h_1h_2h_3dq_1dq_2dq_3$，小盒极限给 $\\nabla\\cdot\\mathbf A=(h_1h_2h_3)^{-1}\\sum_i\\partial_{q_i}(A_i h_jh_k)$。这就是“单位体积净流出量”；用 $h_jh_k=h_1h_2h_3/h_i$ 可统一三个方向。\n\n拉普拉斯就是梯度再取散度。把 $A_i=u_{q_i}/h_i$ 放进上一式，得到 $\\nabla^2u=(h_1h_2h_3)^{-1}\\sum_i\\partial_{q_i}[(h_1h_2h_3/h_i^2)u_{q_i}]$。这套推导针对正交坐标；在轴线或极点等坐标奇点，应先在普通点计算，再用有限性和连续极限解释。",
           "example": {
             "question": "由拉梅系数推出柱坐标的拉普拉斯算符。",
-            "solution": "柱坐标 $(\\rho,\\phi,z)$ 的 $h_\\rho=1,h_\\phi=\\rho,h_z=1$，代入得 $\\nabla^2u=\\rho^{-1}(\\rho u_\\rho)_\\rho+\\rho^{-2}u_{\\phi\\phi}+u_{zz}$。"
+            "solution": "柱坐标 $(\\rho,\\phi,z)$ 中，沿半径和高度的小长度就是 $d\\rho,dz$，沿角度的小弧长是 $\\rho\\,d\\phi$，所以 $h_\\rho=1,h_\\phi=\\rho,h_z=1$，乘积为 $\\rho$。\n\n三个导数括号中的系数依次为 $\\rho,1/\\rho,\\rho$。逐项写成 $\\nabla^2u=\\rho^{-1}[\\partial_\\rho(\\rho u_\\rho)+\\partial_\\phi(\\rho^{-1}u_\\phi)+\\partial_z(\\rho u_z)]$，再用 $\\rho$ 与 $\\phi,z$ 无关，得到 $\\rho^{-1}(\\rho u_\\rho)_\\rho+\\rho^{-2}u_{\\phi\\phi}+u_{zz}$。\n\n自检取 $u=\\rho^2=x^2+y^2$：径向项给 $\\rho^{-1}\\partial_\\rho(2\\rho^2)=4$，另两项为零，与直角坐标 $\\partial_x^2x^2+\\partial_y^2y^2=4$ 一致。"
           },
           "memory": "长度看 h，面积看两个 h，体积看三个 h。"
         }
@@ -33,10 +33,10 @@
           "explain": "球面边界最适合球谐函数。轴对称时角函数为 $P_l(\\cos\\theta)$；每一角模态只有两个径向幂 $r^l$ 与 $r^{-l-1}$。球内舍去奇异幂，球外衰减解舍去增长幂。",
           "formula": "u=\\sum_{l=0}^{\\infty}\\left(A_lr^l+B_lr^{-l-1}\\right)P_l(\\cos\\theta)",
           "conditions": "无源区域满足 $\\nabla^2u=0$；上述形式适用于轴对称。非轴对称需 $Y_l^m(\\theta,\\phi)$；外域须说明无穷远条件。",
-          "proof": "令 $u=R(r)\\Theta(\\theta)$，分离常数取 $l(l+1)$。角方程在 $x=\\cos\\theta$ 下为 Legendre 方程；两极有限性选 $l=0,1,\\ldots$ 及 $P_l$。径向方程 $(r^2R\\prime)\\prime-l(l+1)R=0$，试 $R=r^s$ 得 $s(s+1)=l(l+1)$，所以 $s=l,-l-1$。边界函数系数 $a_l=(2l+1)\\int_{-1}^1f(x)P_l(x)dx/2$ 来自正交性。",
+          "proof": "核心推导先限于轴对称、无源区域。令 $u=R(r)\\Theta(\\theta)$，代入球坐标 Laplace 方程并乘 $r^2/(R\\Theta)$，得 $(r^2R\\prime)\\prime/R+[(\\sin\\theta\\Theta\\prime)\\prime/(\\sin\\theta\\Theta)]=0$。一项只依赖 $r$、另一项只依赖 $\\theta$，所以分别为常数 $\\lambda$ 和 $-\\lambda$。\n\n令 $x=\\cos\\theta$，角方程化为 $[(1-x^2)\\Theta_x]_x+\\lambda\\Theta=0$。采用 Legendre 方程的正则本征结果：在两极有限的角模态取 $\\lambda=l(l+1)$、$\\Theta=P_l(x)$，$l=0,1,\\ldots$。这一步调用已知本征结果，不是仅靠形式分离便证明了所有函数的展开完备性。\n\n径向方程为 $(r^2R\\prime)\\prime-l(l+1)R=0$。试 $R=r^s$，得 $s(s+1)=l(l+1)$，因式分解为 $(s-l)(s+l+1)=0$，故每阶有 $r^l,r^{-l-1}$ 两种径向解。球内有限性删去负幂；球外若要求趋零，删去增长幂及常数阶的非零常数；球壳则通常两种都留。\n\n最后用边界确定幅值。若球面数据为 $f(x)=\\sum_l a_lP_l(x)$，乘 $P_m$ 并在 $[-1,1]$ 积分，正交式 $\\int_{-1}^1P_lP_mdx=2\\delta_{lm}/(2l+1)$ 只保留第 $m$ 项，因此 $a_l=(2l+1)\\int_{-1}^1f(x)P_l(x)dx/2$。非轴对称数据改用 $Y_l^m$，不能只保留 $P_l$。",
           "example": {
             "question": "半径 R 的球面温度为 $2+3\\cos\\theta$，求球内稳态温度。",
-            "solution": "边界仅有 $P_0$ 和 $P_1$。球心有限给 $u=2+3(r/R)\\cos\\theta$，代入 r=R 即满足边界，两个项均为调和函数。"
+            "solution": "先认出 $P_0=1,P_1(\\cos\\theta)=\\cos\\theta$，所以表面 $f=2P_0+3P_1$，只有 $a_0=2,a_1=3$ 非零。\n\n球内舍去 $r^{-l-1}$，并让每个径向因子在表面等于 1：第零阶用 1，第一阶用 $r/R$。于是 $u=2+3(r/R)\\cos\\theta$。\n\n代 $r=R$ 得 $2+3\\cos\\theta$，代 $r=0$ 得有限值 2。还可写 $u=2+3z/R$，其二阶偏导全部为零，因此确实调和。"
           },
           "memory": "角度先拆成 P 或 Y，区域再决定保留哪一个径向幂。"
         }
@@ -53,10 +53,10 @@
           "explain": "圆柱轴对称径向算符是 $R\\prime\\prime+R\\prime/\\rho$，本征函数为 $J_0(k\\rho)$，其正交权为 $\\rho$。侧面零温时 k 由 $J_0(ka)=0$ 决定；把上下底面先做正弦分解时，径向反而出现 $I_0$。",
           "formula": "\\int_0^a\\rho J_0(j_{0n}\\rho/a)J_0(j_{0m}\\rho/a)\\,d\\rho=\\frac{a^2}{2}J_1(j_{0n})^2\\delta_{nm}",
           "conditions": "圆柱包含轴线，排除 $Y_0$ 的轴线发散；$j_{0n}$ 为 $J_0$ 的第 n 个正零点。Robin 侧面要改本征方程。",
-          "proof": "径向方程可写为 $(\\rho R\\prime)\\prime+k^2\\rho R=0$。两不同本征解交叉相乘相减并积分，得 $(k_n^2-k_m^2)\\int_0^a\\rho R_nR_m d\\rho=[\\rho(R_nR_m\\prime-R_mR_n\\prime)]_0^a$，齐次同类边界令右端为零，因此带权正交。范数由 Bessel 递推积分得 $a^2[J_0(ka)^2+J_1(ka)^2]/2$，在 $J_0(ka)=0$ 时化为所列式。",
+          "proof": "侧面先做零值边界时，轴对称径向方程为 $R\\prime\\prime+R\\prime/\\rho+k^2R=0$，即 $(\\rho R\\prime)\\prime+k^2\\rho R=0$。轴线有限选 $R_n=J_0(k_n\\rho)$，侧面 $R_n(a)=0$ 决定 $k_n=j_{0n}/a$。方程里的 $\\rho R$ 已提示投影的权为 $\\rho$。\n\n取两个不同根，把第 $n$ 个方程乘 $R_m$、第 $m$ 个乘 $R_n$，相减后积分。乘积求导合并成边界项，得到 $(k_n^2-k_m^2)\\int_0^a\\rho R_nR_m d\\rho=[\\rho(R_nR_m\\prime-R_mR_n\\prime)]_0^a$。\n\n在 $\\rho=a$，两个函数都为零；在 $\\rho=0$，有限的 $J_0$ 及其导数使带 $\\rho$ 的边界项趋零。因此不同根的积分为零。相同的齐次 Robin 条件也能让边界项相消，但它会改变允许的根，不能仍用 $J_0$ 的零点。\n\n范数可直接由递推核查。用 $J_0\\prime=-J_1$、$J_1\\prime=J_0-J_1/x$ 求导，得到 $\\frac d{dx}\\{x^2[J_0(x)^2+J_1(x)^2]/2\\}=xJ_0(x)^2$。令 $x=k\\rho$ 积分，得 $\\int_0^a\\rho J_0(k\\rho)^2d\\rho=a^2[J_0(ka)^2+J_1(ka)^2]/2$；在 $J_0(ka)=0$ 时只剩 $a^2J_1(ka)^2/2$。\n\n选哪种 Bessel 函数取决于分离常数的符号。如果先用 $\\sin(n\\pi z/h)$ 满足两底零值，代回 Laplace 方程会得到 $R\\prime\\prime+R\\prime/\\rho-(n\\pi/h)^2R=0$，所以改用有限的 $I_0$。以上计算证明带权正交与范数；把一般边界展开还调用该本征函数系的完备性。",
           "example": {
             "question": "如何把常数 1 展开成零侧边界的圆柱径向本征函数？",
-            "solution": "$1=\\sum_{n\\ge1}c_nJ_0(j_{0n}\\rho/a)$，$c_n=\\frac{2}{a^2J_1(j)^2}\\int_0^a\\rho J_0(j\\rho/a)d\\rho=2/[jJ_1(j)]$。在开区间成立；端点值由级数边界条件决定。"
+            "solution": "写 $1=\\sum_{n\\ge1}c_nJ_0(j_{0n}\\rho/a)$。取 $j=j_{0n}$，带权投影给 $c_n=2\\int_0^a\\rho J_0(j\\rho/a)d\\rho/[a^2J_1(j)^2]$。\n\n用 $(xJ_1)\\prime=xJ_0$，积分为 $\\int_0^a\\rho J_0(j\\rho/a)d\\rho=a^2J_1(j)/j$。除范数后 $c_n=2/[jJ_1(j)]$；长度因子 $a^2$ 相消，系数无量纲。\n\n这个展开在 $0\\le\\rho<a$ 的内部按相应收敛意义恢复常数；在 $\\rho=a$ 每一项为零，所以不能要求级数在那里也等于 1。这是边界值与所选零侧模态在端点不一致，不是投影系数算错。"
           },
           "memory": "柱坐标积分带 ρ；侧面先齐次选 J，上下底先齐次常选 I。"
         }
@@ -73,10 +73,10 @@
           "explain": "热方程和波动方程分离变量后，共用 $\\nabla^2X+k^2X=0$ 的空间本征问题。热问题各模态按 $e^{-Dk^2t}$ 衰减；波动问题各模态以 $ck$ 振荡。球中角阶 l 的径向函数是球 Bessel 函数 $j_l(kr)$。",
           "formula": "u_{\\rm heat}=\\sum_n c_nX_ne^{-Dk_n^2t},\\qquad u_{\\rm wave}=\\sum_nX_n[A_n\\cos(ck_nt)+B_n\\sin(ck_nt)]",
           "conditions": "先把非齐次边界平移成齐次，空间本征算符需配合同类边界；系数按几何体积权重投影。D 为热扩散率，c 为波速。",
-          "proof": "设 $u=XT$，$u_t=D\\nabla^2u$ 给 $T\\prime/(DT)=\\nabla^2X/X=-k^2$，故 $T=e^{-Dk^2t}$。波动方程给 $T\\prime\\prime+c^2k^2T=0$。球坐标角分离出 $l(l+1)$ 后径向方程为 $R\\prime\\prime+2R\\prime/r+[k^2-l(l+1)/r^2]R=0$，有限解为 $j_l(kr)$。",
+          "proof": "以下讨论齐次边界、无源方程的模态。固定非零边界若能减去满足它的稳态调和解，剩余函数仍满足无源热方程；一般边界提升会产生源项，须另求受迫响应。再对一个模态写 $u=X(\\mathbf r)T(t)$。热方程给 $XT\\prime=DT\\Delta X$，除以 $DXT$ 得 $T\\prime/(DT)=\\Delta X/X=-k^2$：时变量与空间变量必须分别等于同一个常数。\n\n空间问题是 $\\Delta X+k^2X=0$，边界决定允许的 $k_n$。时间方程 $T\\prime=-Dk_n^2T$ 积分得 $T(t)=T(0)e^{-Dk_n^2t}$；所以较大的空间本征值衰减更快，正本征值模态不会指数增长。\n\n对波动方程 $u_{tt}=c^2\\Delta u$ 使用相同空间模态，则 $T\\prime\\prime+c^2k_n^2T=0$。解为 $A_n\\cos(ck_nt)+B_n\\sin(ck_nt)$；初位移的投影给 $A_n$，初速度的投影还要除以 $ck_n$ 才给 $B_n$。若存在 $k=0$ 模态，要另解常量或线性时间项，不能除以零。\n\n在球内再分离角度，第 $l$ 阶径向方程为 $R\\prime\\prime+2R\\prime/r+[k^2-l(l+1)/r^2]R=0$，球心有限选 $j_l(kr)$。定 $k_n$ 后，按球体径向权 $r^2$ 投影；圆柱则按 $\\rho$ 投影。这里采用空间本征展开的已知完备性，不能仅凭写出几个模态便断言恢复任意初值。",
           "example": {
             "question": "半径 R 的球、球面零温，球对称模态最慢衰减的时间尺度是多少？",
-            "solution": "l=0，$j_0(kR)=\\sin(kR)/(kR)=0$ 给 $k_1=\\pi/R$。最慢指数为 $e^{-D\\pi^2t/R^2}$，时间尺度 $\\tau=R^2/(D\\pi^2)$。"
+            "solution": "球对称表示 $l=0$，有限径向解为 $j_0(kr)=\\sin(kr)/(kr)$。表面零温要求 $j_0(kR)=0$，其正根给 $k_n=n\\pi/R$，$n=1,2,\\ldots$。\n\n最低本征值 $k_1^2=\\pi^2/R^2$，所以最慢模态的幅值按 $e^{-D\\pi^2t/R^2}$ 变化。令指数为 $-t/\\tau$，得 $\\tau=R^2/(D\\pi^2)$；一个 $\\tau$ 后幅值变成原来的 $1/e$。\n\n单位检查：$D$ 的单位是长度平方/时间，故 $R^2/D$ 是时间。半径加倍而材料不变时，$\\tau$ 变为 4 倍；若初值恰好没有第一模态，该具体解会由下一非零模态控制长期衰减。"
           },
           "memory": "同一空间模态：扩散看 k²，振动看 k。"
         }
@@ -93,10 +93,10 @@
           "explain": "几何形状会改变微分算符：截面积 $A(x)$ 的细杆纵振动满足 $u_{tt}=c^2A^{-1}(Au_x)_x$；楔杆 $A\\propto x$ 对应普通 Bessel，锥杆 $A\\propto x^2$ 对应球 Bessel。环形膜不包含原点，不能因 $Y_m$ 在零点发散就舍掉它。",
           "formula": "(A X\\prime)\\prime+k^2AX=0,\\qquad \\omega=ck",
           "conditions": "杆均匀材质、线弹性、小纵振动、细杆近似，$c=\\sqrt{E/\\varrho}$。膜张力 T、面密度 σ 恒定时 c=√(T/σ)。",
-          "proof": "取长 dx 的杆元，纵向弹性力为 $EAu_x$，两端净力 $E(Au_x)_x dx$；质量为 $\\varrho A dx$，牛顿定律给出所列方程。代入 $u=XT$ 后得自伴本征方程，因此正交权是 A；自由端条件是 $AX\\prime=0$，在 A 非零端等价于 $X\\prime=0$。",
+          "proof": "杆的方程先从受力推。长度 $dx$ 的杆元质量为 $\\varrho A(x)dx$，弹性轴向力为 $EAu_x$，两端净力为 $E(Au_x)_x dx$。牛顿定律相除得到 $u_{tt}=c^2A^{-1}(Au_x)_x$，其中 $c^2=E/\\varrho$；因此面积的变化不能省掉。\n\n分离 $u=XT$，选 $T\\prime\\prime+c^2k^2T=0$，空间式为 $(AX\\prime)\\prime+k^2AX=0$。两个不同根交叉相乘相减，得 $(k_n^2-k_m^2)\\int AX_nX_mdx=[A(X_nX_m\\prime-X_mX_n\\prime)]_{\\rm ends}$。固定端或无力自由端使边界项消失，所以投影权正是 $A(x)$。\n\n若 $A\\propto x^p$，空间方程变成 $X\\prime\\prime+(p/x)X\\prime+k^2X=0$。$p=1$ 得普通零阶 Bessel 方程，有限解为 $J_0(kx)$；$p=2$ 得球零阶方程，有限解为 $j_0(kx)$。自由条件本质是 $AX\\prime=0$；仅在 $A\\ne0$ 的端点才可直接约成 $X\\prime=0$，尖端需同时检查有限性与力的极限。\n\n环形膜的对应几何是 $\\rho_1<\\rho<\\rho_2$，不含原点。角周期给整数 $m$，径向方程为 $R\\prime\\prime+R\\prime/\\rho+(k^2-m^2/\\rho^2)R=0$，所以保留 $CJ_m(k\\rho)+DY_m(k\\rho)$。两固定圈给两个齐次线性方程，非零解要求 $J_m(k\\rho_1)Y_m(k\\rho_2)-Y_m(k\\rho_1)J_m(k\\rho_2)=0$，再由 $\\omega=ck$ 得频率；此处 $c=\\sqrt{T/\\sigma}$，$T$ 是每单位长度的张力。",
           "example": {
             "question": "一端尖、截面积正比于 x 的自由楔杆，其正频率由哪类零点给出？",
-            "solution": "有限径向解 $X=J_0(kx)$，粗端 x=l 自由给 $X\\prime(l)=-kJ_1(kl)=0$，故正频率 $\\omega_n=cj_{1n}/l$，另有零频刚体平移模态。"
+            "solution": "楔杆 $A\\propto x$，所以正频率空间式为 $X\\prime\\prime+X\\prime/x+k^2X=0$。尖端有限选 $X=J_0(kx)$；$Y_0$ 在尖端发散，舍去。\n\n粗端 $x=l$ 的面积不为零，自由条件化成 $X\\prime(l)=0$。求导得 $-kJ_1(kl)=0$；对 $k>0$，$J_1(kl)=0$，故 $k_n=j_{1n}/l$，$\\omega_n=cj_{1n}/l$。\n\n还要检查 $k=0$：$(xX\\prime)\\prime=0$ 的有限解是常数，表示整杆平移。它不属于 $J_1$ 的正零点列表；若两端自由，初位移的质量加权平均会进入这个零模态。"
           },
           "memory": "先算截面积随 x 的幂，再决定 Bessel 类型；环域保留两类解。"
         }

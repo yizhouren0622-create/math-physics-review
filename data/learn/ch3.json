@@ -4,10 +4,12 @@
       "goal": "从“拉一下再放手”写出整根弦之后怎样运动。",
       "recognize": "先区分拉弦和放手两个阶段。拉弦决定初始形状；放手后没有持续外力。",
       "steps": [
-        "先画三角形：顶点在 l/4，高度记为 h；用左右斜率产生的力求 h=3Fl/(16T)。",
-        "写下四项：波动方程、两个固定端位移为 0、三角形初位移、初速度为 0。",
-        "两个固定端选择 sin(nπx/l)；把三角形按两段积分投影，得到每个模式的振幅。",
-        "初速度为 0，所以时间部分只乘 cos(cnπt/l)；最后检查 t=0 是否恢复三角形。"
+        "令 $u(x,t)$ 为横向位移，$c=\\sqrt{T/\\rho}$ 为波速；放手后微段受力给 $\\rho u_{tt}=Tu_{xx}$。$F$ 只决定放手时的形状。",
+        "把拉点记为 $a=l/4$，高度记为 $h$。两侧斜率大小为 $h/a$ 与 $h/(l-a)$，故 $T[h/a+h/(l-a)]=F$，算得 $h=3Fl/(16T)$。",
+        "用两条直线写初形：$\\varphi=3Fx/(4T)$（$x\\le l/4$），$\\varphi=F(l-x)/(4T)$（$x\\ge l/4$）；再写 $u(0,t)=u(l,t)=0$ 和 $u_t(x,0)=0$，这就完成第(1)问。",
+        "第(2)问先选 $X_n=\\sin(k_nx)$，$k_n=n\\pi/l$（$n\\ge1$），因为它在两个端点都为零。每个空间模态对应时间方程 $q_n''+c^2k_n^2q_n=0$。",
+        "把投影积分在拉点拆开：$A_n=\\frac2l[\\int_0^{l/4}\\frac{3Fx}{4T}\\sin k_nx\\,dx+\\int_{l/4}^l\\frac{F(l-x)}{4T}\\sin k_nx\\,dx]$。用 $\\int x\\sin kx\\,dx=-x\\cos kx/k+\\sin kx/k^2$ 得 $A_n=\\frac{2Fl}{Tn^2\\pi^2}\\sin\\frac{n\\pi}4$。",
+        "零初速度去掉时间正弦项，得到 $u=\\sum_{n\\ge1}A_n\\sin(k_nx)\\cos(ck_nt)$。检查 $t=0$ 恢复两段直线，且每项在 $x=0,l$ 为零。"
       ],
       "check": {
         "question": "放手后方程右边还保留 F 吗？",
@@ -18,10 +20,12 @@
       "goal": "Find the motion of a string that is pulled aside and then released.",
       "recognize": "Separate the pulling stage from the free-motion stage. Pulling sets the initial shape; there is no sustained force after release.",
       "steps": [
-        "Draw the initial triangle with peak at l/4 and height h. Balance the two slope forces to get h=3Fl/(16T).",
-        "Write the wave equation, zero displacement at both fixed ends, triangular initial displacement, and zero initial velocity.",
-        "Choose sin(nπx/l) for two fixed ends. Project the triangle using two integrals, one on either side of its peak.",
-        "Zero initial velocity keeps only cos(cnπt/l) in time. Check that t=0 recovers the triangle."
+        "Let $u(x,t)$ be transverse displacement and $c=\\sqrt{T/\\rho}$ the wave speed. After release, force balance gives $\\rho u_{tt}=Tu_{xx}$. The earlier force $F$ only sets the initial shape.",
+        "Write the pulling point as $a=l/4$ and its height as $h$. The two slope magnitudes are $h/a$ and $h/(l-a)$, so $T[h/a+h/(l-a)]=F$ gives $h=3Fl/(16T)$.",
+        "Write the two straight pieces: $\\varphi=3Fx/(4T)$ for $x\\le l/4$ and $\\varphi=F(l-x)/(4T)$ for $x\\ge l/4$. Add $u(0,t)=u(l,t)=0$ and $u_t(x,0)=0$ to complete part (1).",
+        "For part (2), choose $X_n=\\sin(k_nx)$ with $k_n=n\\pi/l$ for $n\\ge1$, since both endpoint values vanish. Its time coefficient satisfies $q_n''+c^2k_n^2q_n=0$.",
+        "Split the projection at the pulling point: $A_n=\\frac2l[\\int_0^{l/4}\\frac{3Fx}{4T}\\sin k_nx\\,dx+\\int_{l/4}^l\\frac{F(l-x)}{4T}\\sin k_nx\\,dx]$. Using $\\int x\\sin kx\\,dx=-x\\cos kx/k+\\sin kx/k^2$ gives $A_n=\\frac{2Fl}{Tn^2\\pi^2}\\sin\\frac{n\\pi}4$.",
+        "Zero initial velocity removes the sine term in time, leaving $u=\\sum_{n\\ge1}A_n\\sin(k_nx)\\cos(ck_nt)$. At $t=0$ the series recovers the two straight pieces, and each term vanishes at $x=0,l$."
       ],
       "check": {
         "question": "Does F remain on the right side of the equation after release?",
@@ -34,11 +38,12 @@
       "goal": "求一端固定、另一端放开的压缩杆怎样回弹。",
       "recognize": "u 是相对未压缩杆的位移；压缩让位移为负。放开的端点不受力，所以给的是导数条件。",
       "steps": [
-        "均匀压缩 2e，先写初位移 u(x,0)=−2ex；静止释放给初速度 0。",
-        "写左端 u(0,t)=0，右端 uₓ(l,t)=0；波速用 c=√(Y/ρ)。",
-        "这组“固定—自由”条件选 sin(kₙx)，其中 kₙ=(n+1/2)π/l。",
-        "用初位移与 sin(kₙx) 相乘积分求振幅，再乘 cos(ckₙt) 并相加。",
-        "初始右端应变不满足刚撤力后的条件，这是瞬时释放造成的角点不相容；按能量解理解。"
+        "以未压缩杆为参考定义纵位移 $u$。杆长缩短 $2el$ 表示均匀应变 $u_x=-2e$；左端固定使积分常数为零，所以初位移为 $-2ex$。",
+        "轴力是 $N=YSu_x$，微段质量为 $\\rho S\\,dx$。由 $\\rho Su_{tt}=(YSu_x)_x$ 得 $u_{tt}=c^2u_{xx}$，$c=\\sqrt{Y/\\rho}$；截面积 $S$ 在波速中约掉。",
+        "第(1)问的条件为 $u(0,t)=0$、$u_x(l,t)=0$、$u(x,0)=-2ex$、$u_t(x,0)=0$。右端自由表示零轴力，不能写成右端位移为零。",
+        "第(2)问由 $X(0)=0$ 取 $X=\\sin kx$；再由 $X'(l)=k\\cos kl=0$ 得 $k_n=(n+1/2)\\pi/l$，$n=0,1,\\ldots$。",
+        "范数为 $\\int_0^l\\sin^2(k_nx)dx=l/2$，所以 $A_n=-\\frac{4e}l\\int_0^l x\\sin(k_nx)dx$。用 $\\cos k_nl=0$、$\\sin k_nl=(-1)^n$ 得 $A_n=-4e(-1)^n/(lk_n^2)$。",
+        "零初速度给 $u=\\sum_{n\\ge0}A_n\\sin(k_nx)\\cos(ck_nt)$。释放前的端点应变不是零，与释放后的边界在 $t=0$ 瞬间不相容；初形按内部极限或能量解恢复，不强求角点逐项求导。"
       ],
       "check": {
         "question": "右端自由应写 u(l,t)=0 吗？",
@@ -49,11 +54,12 @@
       "goal": "Find how a compressed rod rebounds when one end is fixed and the other is released.",
       "recognize": "u measures displacement from the undeformed rod. Compression gives negative displacement. A released end has zero force, so its condition concerns the derivative.",
       "steps": [
-        "Uniform strain −2e gives u(x,0)=−2ex. Release from rest gives zero initial velocity.",
-        "Use u(0,t)=0 at the fixed end and uₓ(l,t)=0 at the free end, with c=√(Y/ρ).",
-        "These fixed–free boundaries select sin(kₙx), where kₙ=(n+1/2)π/l.",
-        "Project the initial displacement onto sin(kₙx), then multiply each amplitude by cos(ckₙt) and add.",
-        "The initial end strain conflicts with the newly released boundary at the instant of release; use the energy-solution interpretation."
+        "Measure longitudinal displacement $u$ from the undeformed rod. A shortening of $2el$ means uniform strain $u_x=-2e$; the fixed left end sets the integration constant to zero, giving initial displacement $-2ex$.",
+        "The axial force is $N=YSu_x$, and a small segment has mass $\\rho S\\,dx$. Thus $\\rho Su_{tt}=(YSu_x)_x$ gives $u_{tt}=c^2u_{xx}$ with $c=\\sqrt{Y/\\rho}$; $S$ cancels from the speed.",
+        "The conditions for part (1) are $u(0,t)=0$, $u_x(l,t)=0$, $u(x,0)=-2ex$, and $u_t(x,0)=0$. A free right end means zero axial force, rather than zero displacement.",
+        "For part (2), $X(0)=0$ selects $X=\\sin kx$. The condition $X'(l)=k\\cos kl=0$ then gives $k_n=(n+1/2)\\pi/l$ for $n=0,1,\\ldots$.",
+        "The squared norm is $\\int_0^l\\sin^2(k_nx)dx=l/2$, so $A_n=-\\frac{4e}l\\int_0^l x\\sin(k_nx)dx$. With $\\cos k_nl=0$ and $\\sin k_nl=(-1)^n$, this becomes $A_n=-4e(-1)^n/(lk_n^2)$.",
+        "Zero initial velocity gives $u=\\sum_{n\\ge0}A_n\\sin(k_nx)\\cos(ck_nt)$. The pre-release endpoint strain is nonzero and conflicts with the new boundary at $t=0$; recover the initial shape by interior limits or an energy solution, without termwise differentiation at that corner."
       ],
       "check": {
         "question": "Does a free right end mean u(l,t)=0?",
@@ -66,11 +72,12 @@
       "goal": "求两端自由的压缩杆回弹，同时不漏掉整体平移。",
       "recognize": "两端都没有力，空间模式用余弦；余弦族里包含常数模式，代表整根杆一起移动。",
       "steps": [
-        "先约定中心不动，这样初位移是 e(l−2x)，两端位移差为 −2el。",
-        "两个边界都写 uₓ=0，初速度写 0。",
-        "把初位移投影到 1、cos(nπx/l) 上；平均值为 0，所以常数模式系数为 0。",
-        "积分后只有奇数 n 的系数不为 0，给它们乘 cos(cnπt/l) 后求和。",
-        "若题目没有固定中心位置，说明答案可再加任意常数，表示不改变变形的平移。"
+        "先固定参考位置：取杆中心不动，则均匀压缩的初位移是 $\\varphi(x)=e(l-2x)$。检查 $\\varphi(l)-\\varphi(0)=-2el$，确实使杆长缩短 $2el$。",
+        "第(1)问写 $u_{tt}=c^2u_{xx}$，$c=\\sqrt{Y/\\rho}$；两端都释放，所以 $u_x(0,t)=u_x(l,t)=0$，初速度为零。",
+        "第(2)问用余弦基 $X_n=\\cos(n\\pi x/l)$，并保留常数基 $X_0=1$。常数模态描述整根杆平移；本题初位移的平均值为零，因此该模态系数为零。",
+        "对 $n\\ge1$ 计算 $A_n=\\frac2l\\int_0^l e(l-2x)\\cos(n\\pi x/l)dx$。常数部分积分为零，$\\int_0^l x\\cos(k_nx)dx=[(-1)^n-1]/k_n^2$，故 $A_n=4el[1-(-1)^n]/(n^2\\pi^2)$。",
+        "偶数 $n$ 的系数为零；令 $n=2m+1$，把 $A_{2m+1}=8el/[(2m+1)^2\\pi^2]$ 乘上 $\\cos[(2m+1)\\pi x/l]\\cos[c(2m+1)\\pi t/l]$ 后求和。",
+        "若只给最终长度而没固定中心，可在解上加常数 $C$；它不改变应变和振动。释放瞬间的端点应变不相容按能量解理解，不能由角点不相容断言没有解。"
       ],
       "check": {
         "question": "为什么不能直接从 n=1 开始而不提常数模式？",
@@ -81,11 +88,12 @@
       "goal": "Find the recoil of a rod free at both ends without losing rigid translation.",
       "recognize": "Both ends have zero force, giving cosine modes. The cosine family includes a constant mode, representing movement of the whole rod.",
       "steps": [
-        "Fix the center by convention: initial displacement is e(l−2x), with endpoint difference −2el.",
-        "Set uₓ=0 at both ends and zero initial velocity.",
-        "Project onto 1 and cos(nπx/l). The initial mean is zero, so the constant mode has zero coefficient.",
-        "Only odd n survive the integrals. Multiply them by cos(cnπt/l) and sum.",
-        "If the center position is unspecified, allow an arbitrary added constant representing rigid translation."
+        "First choose a reference position with the rod center fixed. Uniform compression then gives $\\varphi(x)=e(l-2x)$; the difference $\\varphi(l)-\\varphi(0)=-2el$ confirms the required shortening.",
+        "For part (1), write $u_{tt}=c^2u_{xx}$ with $c=\\sqrt{Y/\\rho}$. Both ends are released, so $u_x(0,t)=u_x(l,t)=0$, and the initial velocity is zero.",
+        "For part (2), use $X_n=\\cos(n\\pi x/l)$ and retain the constant mode $X_0=1$. That mode represents rigid translation; its coefficient vanishes here because the initial displacement has zero average.",
+        "For $n\\ge1$, calculate $A_n=\\frac2l\\int_0^l e(l-2x)\\cos(n\\pi x/l)dx$. The constant part integrates to zero, while $\\int_0^l x\\cos(k_nx)dx=[(-1)^n-1]/k_n^2$, giving $A_n=4el[1-(-1)^n]/(n^2\\pi^2)$.",
+        "Even $n$ have zero coefficient. Set $n=2m+1$, then sum $A_{2m+1}=8el/[(2m+1)^2\\pi^2]$ times $\\cos[(2m+1)\\pi x/l]\\cos[c(2m+1)\\pi t/l]$.",
+        "If only the final length is prescribed, an arbitrary constant $C$ may be added to the solution; it changes neither strain nor vibration. Interpret the incompatible endpoint strain at release in the energy-solution sense."
       ],
       "check": {
         "question": "Why mention the constant mode instead of silently starting at n=1?",
@@ -98,10 +106,11 @@
       "goal": "把阻力正确放进弦的振动方程。",
       "recognize": "阻力与速度反向，所以其单位长度力是 −Ruₜ。先写牛顿第二定律，最后再整理符号。",
       "steps": [
-        "截取长 dx 的弦：质量是 ρdx，加速度是 uₜₜ。",
-        "张力差给 Tuₓₓdx，阻力给 −Ruₜdx；将两种力相加等于质量乘加速度。",
-        "除以 ρdx，得到 uₜₜ+(R/ρ)uₜ=(T/ρ)uₓₓ。",
-        "检查阻力做负功，能量应随时间减小；若得到增长，阻尼符号写反了。"
+        "截取长 $dx$ 的弦段，质量为 $\\rho\\,dx$，横向加速度为 $u_{tt}$，所以惯性项是 $\\rho\\,dx\\,u_{tt}$。",
+        "小斜率下，左右张力的横向分量差为 $T[u_x(x+dx,t)-u_x(x,t)]\\approx Tu_{xx}dx$。",
+        "单位长度阻力为 $-Ru_t$，因此整段阻力是 $-Ru_tdx$；负号表示阻力总与速度方向相反。",
+        "把两种力相加并除以 $\\rho dx$：$u_{tt}+(R/\\rho)u_t=(T/\\rho)u_{xx}$。若记 $c^2=T/\\rho$、$2\\gamma=R/\\rho$，就得到 $u_{tt}+2\\gamma u_t=c^2u_{xx}$。",
+        "用能量检查号：$E=\\frac12\\int(\\rho u_t^2+Tu_x^2)dx$；无边界功时 $E'=-R\\int u_t^2dx\\le0$。若得到能量增长，首先检查阻力项符号。"
       ],
       "check": {
         "question": "阻尼项移到方程左边后是正号还是负号？",
@@ -112,10 +121,11 @@
       "goal": "Place the resistance term correctly in a string’s vibration equation.",
       "recognize": "Resistance opposes velocity, so its force per unit length is −Ruₜ. Write Newton’s law before moving terms.",
       "steps": [
-        "Take a segment dx: mass is ρdx and acceleration is uₜₜ.",
-        "Add tension difference Tuₓₓdx and resistance −Ruₜdx, and equate them to mass times acceleration.",
-        "Divide by ρdx to obtain uₜₜ+(R/ρ)uₜ=(T/ρ)uₓₓ.",
-        "Check that resistance does negative work and energy decreases. Growth signals a wrong damping sign."
+        "Take a string segment of length $dx$. Its mass is $\\rho\\,dx$ and transverse acceleration is $u_{tt}$, giving inertial term $\\rho\\,dx\\,u_{tt}$.",
+        "At small slope, the transverse tension difference is $T[u_x(x+dx,t)-u_x(x,t)]\\approx Tu_{xx}dx$.",
+        "The drag per unit length is $-Ru_t$, so the segment drag is $-Ru_tdx$. The minus sign makes it oppose the velocity.",
+        "Add the two forces and divide by $\\rho dx$ to obtain $u_{tt}+(R/\\rho)u_t=(T/\\rho)u_{xx}$. Defining $c^2=T/\\rho$ and $2\\gamma=R/\\rho$ gives $u_{tt}+2\\gamma u_t=c^2u_{xx}$.",
+        "Check the sign using $E=\\frac12\\int(\\rho u_t^2+Tu_x^2)dx$. With no boundary work, $E'=-R\\int u_t^2dx\\le0$; energy growth would signal an incorrect drag sign."
       ],
       "check": {
         "question": "What sign does the damping term have on the left?",
@@ -128,11 +138,13 @@
       "goal": "把弹簧的作用变成边界条件，再算每个振动模式。",
       "recognize": "弹簧端既不是完全固定也不是完全自由。Robin 条件就是位移和它的导数同时出现的条件。",
       "steps": [
-        "先在右端平衡力：杆内力 YSuₓ 与弹簧恢复力 −ku 相等，得 uₓ+hu=0，h=k/(YS)。",
-        "左端固定选 X=sin(μx)；把它代入右端条件，得到 μcos(μl)+hsin(μl)=0。",
-        "每个正根 μₙ 给一个空间模式；根通常要数值求，不是 nπ/l。",
-        "算实际范数 Nₙ=∫sin²(μₙx)dx，再把初位移 −2ex 投影，不能直接套 l/2。",
-        "初速度为 0，给每个空间模式乘 cos(cμₙt)；用 k=0 的自由端极限检查。"
+        "设 $u$ 为杆纵位移，$c^2=Y/\\rho$。杆内的微段受力给 $u_{tt}=c^2u_{xx}$；左端固定给 $u(0,t)=0$。",
+        "右端弹簧力为 $-ku(l,t)$，与杆轴力 $YSu_x(l,t)$ 平衡。令 $h=k/(YS)$，得到 $u_x(l,t)+hu(l,t)=0$；配上初位移 $-2ex$、初速度零，完成第(1)问。",
+        "第(2)问先由左端条件取 $X=\\sin\\mu x$，再代右端条件，得到 $\\mu\\cos(\\mu l)+h\\sin(\\mu l)=0$。将其正根按大小记作 $\\mu_n$，无需硬求成整数倍 $\\pi/l$。",
+        "非整数频率需要实际范数：$N_n=\\int_0^l\\sin^2(\\mu_nx)dx=l/2-\\sin(2\\mu_nl)/(4\\mu_n)$。",
+        "初形投影为 $A_n=-\\frac{2e}{N_n}\\int_0^l x\\sin(\\mu_nx)dx=-\\frac{2e}{N_n}[-l\\cos(\\mu_nl)/\\mu_n+\\sin(\\mu_nl)/\\mu_n^2]$。",
+        "用根方程 $\\cos(\\mu_nl)=-h\\sin(\\mu_nl)/\\mu_n$ 化为 $A_n=-2e(1+hl)\\sin(\\mu_nl)/(\\mu_n^2N_n)$；然后写 $u=\\sum_nA_n\\sin(\\mu_nx)\\cos(c\\mu_nt)$。",
+        "令 $k=0$ 检查边界退化为自由端，频率成为半整数；令 $k$ 很大检查它趋近固定端。均匀初应变在撤去外力瞬间可能与新边界不相容，按能量解恢复初值。"
       ],
       "check": {
         "question": "为什么本题不能直接取 μₙ=nπ/l？",
@@ -143,11 +155,13 @@
       "goal": "Translate the spring force into a boundary condition, then calculate the vibration modes.",
       "recognize": "A spring end is neither perfectly fixed nor free. A Robin condition combines displacement and its derivative.",
       "steps": [
-        "Balance the right-end forces: rod force YSuₓ equals spring force −ku. Thus uₓ+hu=0 with h=k/(YS).",
-        "The fixed left end selects X=sin(μx). The right condition gives μcos(μl)+hsin(μl)=0.",
-        "Each positive root μₙ defines a spatial mode. The roots usually require numerical calculation and are not nπ/l.",
-        "Calculate the actual norm Nₙ=∫sin²(μₙx)dx, then project −2ex. Do not assume Nₙ=l/2.",
-        "Zero initial velocity gives cos(cμₙt). Check the k=0 free-end limit."
+        "Let $u$ be longitudinal displacement and $c^2=Y/\\rho$. Interior force balance gives $u_{tt}=c^2u_{xx}$, and the fixed left end gives $u(0,t)=0$.",
+        "The spring force $-ku(l,t)$ balances the rod force $YSu_x(l,t)$. Set $h=k/(YS)$ to obtain $u_x(l,t)+hu(l,t)=0$; initial displacement $-2ex$ and zero initial velocity complete part (1).",
+        "For part (2), the left condition selects $X=\\sin\\mu x$. Substituting into the right condition gives $\\mu\\cos(\\mu l)+h\\sin(\\mu l)=0$; label its positive roots $\\mu_n$ rather than forcing integer multiples of $\\pi/l$.",
+        "A noninteger frequency requires its actual squared norm: $N_n=\\int_0^l\\sin^2(\\mu_nx)dx=l/2-\\sin(2\\mu_nl)/(4\\mu_n)$.",
+        "Project the initial shape: $A_n=-\\frac{2e}{N_n}\\int_0^l x\\sin(\\mu_nx)dx=-\\frac{2e}{N_n}[-l\\cos(\\mu_nl)/\\mu_n+\\sin(\\mu_nl)/\\mu_n^2]$.",
+        "Use $\\cos(\\mu_nl)=-h\\sin(\\mu_nl)/\\mu_n$ to simplify to $A_n=-2e(1+hl)\\sin(\\mu_nl)/(\\mu_n^2N_n)$. Then write $u=\\sum_nA_n\\sin(\\mu_nx)\\cos(c\\mu_nt)$.",
+        "Setting $k=0$ recovers a free end and half-integer frequencies; large $k$ approaches a fixed end. Uniform initial strain may conflict with the new boundary at release, so recover the initial data in the energy-solution sense."
       ],
       "check": {
         "question": "Why can we not simply use μₙ=nπ/l?",
@@ -160,10 +174,11 @@
       "goal": "推导悬绳振动方程，理解为什么比均匀张力多一项。",
       "recognize": "越靠近绳顶，支撑的下段越重，张力越大；张力不是常数。",
       "steps": [
-        "先说明 x 从上端向下量；x 下方绳长 l−x，故 T(x)=ρg(l−x)。",
-        "写微段横向力差为 ∂ₓ(Tuₓ)dx，而不是 Tuₓₓdx。",
-        "代入牛顿定律 ρuₜₜ=∂ₓ(Tuₓ)，用乘积求导得到 g[(l−x)uₓₓ−uₓ]。",
-        "顶部固定写 u(0,t)=0；底部张力为 0，只要求 Tuₓ→0 和位移有限，不多加 uₓ(l,t)=0。"
+        "从上端向下取坐标 $x\\in[0,l]$，$u$ 表示水平小位移，$\\rho$ 是线密度。先把坐标画在图上，避免最后的一阶导数符号出错。",
+        "位置 $x$ 处张力承受下方长度 $l-x$ 的绳重，因此 $T(x)=\\rho g(l-x)$；下端 $T(l)=0$。",
+        "微段两端横向力差是 $[Tu_x](x+dx)-[Tu_x](x)$，不是 $T[u_x(x+dx)-u_x(x)]$，因为这里张力也随 $x$ 变化。",
+        "由 $\\rho u_{tt}=(Tu_x)_x$，展开乘积得 $u_{tt}=g[(l-x)u_{xx}-u_x]$；其中负号来自 $(l-x)'=-1$。",
+        "上端固定给 $u(0,t)=0$；下端要求位移有限且 $T(x)u_x\\to0$。因下端张力为零，不能再无依据地加上 $u_x(l,t)=0$；题目没给初值，只需建立方程。"
       ],
       "check": {
         "question": "乘积求导为什么会出现 −guₓ？",
@@ -174,10 +189,11 @@
       "goal": "Derive a hanging-rope equation and understand its extra term.",
       "recognize": "The upper rope supports more weight, so tension depends on position rather than staying constant.",
       "steps": [
-        "State that x is measured downward. The rope below x has length l−x, so T(x)=ρg(l−x).",
-        "Write the transverse force difference as ∂ₓ(Tuₓ)dx, not simply Tuₓₓdx.",
-        "Use ρuₜₜ=∂ₓ(Tuₓ) and the product rule to obtain g[(l−x)uₓₓ−uₓ].",
-        "Set u(0,t)=0 at the top. At the zero-tension bottom require Tuₓ→0 and finite displacement, without adding uₓ(l,t)=0."
+        "Measure $x\\in[0,l]$ downward from the top, let $u$ be small horizontal displacement, and let $\\rho$ be linear density. Fix this coordinate direction before determining derivative signs.",
+        "The tension at $x$ supports the weight of the length $l-x$ below it, so $T(x)=\\rho g(l-x)$ and $T(l)=0$.",
+        "The transverse force difference is $[Tu_x](x+dx)-[Tu_x](x)$, rather than $T[u_x(x+dx)-u_x(x)]$, because the tension itself varies with $x$.",
+        "From $\\rho u_{tt}=(Tu_x)_x$, expand the product to get $u_{tt}=g[(l-x)u_{xx}-u_x]$. The minus sign comes from $(l-x)'=-1$.",
+        "The fixed top gives $u(0,t)=0$. At the bottom, require finite displacement and $T(x)u_x\\to0$; zero tension does not justify an extra condition $u_x(l,t)=0$. No initial data are given, so the task is to establish the equation."
       ],
       "check": {
         "question": "Why does the product rule produce −guₓ?",
@@ -190,11 +206,12 @@
       "goal": "给旋转绳建立正确模型，先说清它往哪个方向振动。",
       "recognize": "旋转提供随位置变化的张力；竖直振动与旋转平面内振动的惯性项不同。",
       "steps": [
-        "从转轴向外量 x，积分外段所需向心力：T(x)=∫ₓˡρω²s ds。",
-        "算得 T=ρω²(l²−x²)/2，再求 (Tuₓ)ₓ；这里必须用乘积求导。",
-        "若 u 是竖直位移，直接用 ρuₜₜ=(Tuₓ)ₓ。",
-        "若 u 是随转坐标中的水平横位移，惯性为 uₜₜ−ω²u，方程右边需再加 ω²u。",
-        "写明采用哪一方向；固定轴端 u=0，自由端 Tuₓ→0 且位移有限。"
+        "沿水平平衡绳从转轴向外取 $x$，忽略重力和伸长。截取 $[x,l]$ 外段，其所需向心力为 $\\int_x^l\\rho\\omega^2s\\,ds$。",
+        "积分得到张力 $T(x)=\\rho\\omega^2(l^2-x^2)/2$。检查靠轴处最大、自由端为零，符合物理图像。",
+        "若 $u$ 是离开水平面的竖直位移，竖直方向没有离心项；写 $\\rho u_{tt}=(Tu_x)_x$。",
+        "用 $T'(x)=-\\rho\\omega^2x$ 展开，得到竖直横振动方程 $u_{tt}=\\frac{\\omega^2}{2}[(l^2-x^2)u_{xx}-2xu_x]$。",
+        "若题意改为随转坐标中、水平面内的横位移，横向惯性加速度是 $u_{tt}-\\omega^2u$；此时方程右边需再加 $\\omega^2u$。先说明振动方向，再选择公式。",
+        "两种模型均有 $u(0,t)=0$，自由端要求位移有限且 $Tu_x\\to0$。本题没指定振动平面，应把方向假设与答案一起写，不能默默选一个模型。"
       ],
       "check": {
         "question": "竖直小振动也要加 ω²u 吗？",
@@ -205,11 +222,12 @@
       "goal": "Build the rotating-rope model after specifying the direction of motion.",
       "recognize": "Rotation creates position-dependent tension. Vertical motion and in-plane motion have different inertial terms.",
       "steps": [
-        "Measure x outward and integrate the centripetal force required by the outer segment: T(x)=∫ₓˡρω²s ds.",
-        "Obtain T=ρω²(l²−x²)/2 and evaluate (Tuₓ)ₓ using the product rule.",
-        "For vertical displacement, use ρuₜₜ=(Tuₓ)ₓ directly.",
-        "For in-plane transverse displacement in rotating coordinates, inertia is uₜₜ−ω²u, so add ω²u on the right.",
-        "State the chosen direction. Set u=0 at the axis, with Tuₓ→0 and finite displacement at the free end."
+        "Measure $x$ outward along the horizontal equilibrium string, neglecting gravity and extension. The outer segment $[x,l]$ needs centripetal force $\\int_x^l\\rho\\omega^2s\\,ds$.",
+        "Integrating gives $T(x)=\\rho\\omega^2(l^2-x^2)/2$. It is largest near the axis and zero at the free tip, as expected.",
+        "If $u$ is vertical displacement out of the horizontal plane, there is no centrifugal term in that direction; write $\\rho u_{tt}=(Tu_x)_x$.",
+        "Expanding with $T'(x)=-\\rho\\omega^2x$ gives the vertical vibration equation $u_{tt}=\\frac{\\omega^2}{2}[(l^2-x^2)u_{xx}-2xu_x]$.",
+        "For an in-plane transverse displacement in rotating coordinates, the transverse inertial acceleration is $u_{tt}-\\omega^2u$; the equation then has an additional $\\omega^2u$ on the right. State the vibration direction before choosing the formula.",
+        "Both models have $u(0,t)=0$, with finite displacement and $Tu_x\\to0$ at the free tip. Since the plane is unspecified, include the direction assumption with the answer."
       ],
       "check": {
         "question": "Should vertical motion also have an added ω²u term?",
@@ -222,10 +240,11 @@
       "goal": "写出点质量两侧应该怎样连接。",
       "recognize": "弦不断开，所以位移相同；点质量需要加速，所以左右斜率一般不同。",
       "steps": [
-        "先写连续条件 u(x₀⁻,t)=u(x₀⁺,t)=u₀(t)。",
-        "单独画点质量受力：右侧横向力是 Tuₓ(x₀⁺)，左侧是 −Tuₓ(x₀⁻)。",
-        "两力相加等于 mu₀″，得到 T[uₓ]=mu₀″；规定方括号为右减左。",
-        "若有重力，位移相对静态下垂平衡形状定义；不要在扰动方程里重复加静重力。"
+        "把位移定义为相对静态平衡形状的扰动；若砝码受重力，静重力已在该平衡形状中抵消，不再加进扰动条件。",
+        "砝码和弦连接且不脱离，所以先写 $u(x_0^-,t)=u(x_0^+,t)=u_0(t)$；这里 $-$、$+$ 表示从左、右逼近。",
+        "右侧弦对砝码的横向力为 $Tu_x(x_0^+,t)$；左侧力方向相反，为 $-Tu_x(x_0^-,t)$。先分别列力，再相加。",
+        "用牛顿定律得到 $T[u_x(x_0^+,t)-u_x(x_0^-,t)]=m u_0''(t)$，这就是第二个衔接条件；左右两侧仍满足 $\\rho u_{tt}=Tu_{xx}$。",
+        "自检 $m=0$：斜率差变为零，恢复普通均匀弦的斜率连续；当 $m\\ne0$ 时，不能另外要求斜率连续，否则会错误强迫砝码加速度为零。"
       ],
       "check": {
         "question": "有点质量时还能要求左右斜率相等吗？",
@@ -236,10 +255,11 @@
       "goal": "Find how the two string pieces connect at a point mass.",
       "recognize": "The string remains attached, so displacement is continuous. Accelerating the mass generally requires a jump in slope.",
       "steps": [
-        "Write continuity: u(x₀⁻,t)=u(x₀⁺,t)=u₀(t).",
-        "Draw the point-mass forces: the right contribution is Tuₓ(x₀⁺), the left is −Tuₓ(x₀⁻).",
-        "Set their sum equal to mu₀″, giving T[uₓ]=mu₀″. Define the jump as right minus left.",
-        "If gravity is present, measure displacement from the sagging static equilibrium so static weight is not counted again."
+        "Define displacement relative to the static equilibrium shape. If gravity acts on the mass, its static contribution is already balanced in that shape and is not added again to the perturbation condition.",
+        "Since the mass remains attached to the string, first write $u(x_0^-,t)=u(x_0^+,t)=u_0(t)$. The signs $-$ and $+$ denote limits from the left and right.",
+        "The right string exerts transverse force $Tu_x(x_0^+,t)$, while the left force is $-Tu_x(x_0^-,t)$. List them separately before adding them.",
+        "Newton's law gives $T[u_x(x_0^+,t)-u_x(x_0^-,t)]=m u_0''(t)$, the second matching condition. Each side still satisfies $\\rho u_{tt}=Tu_{xx}$.",
+        "Check $m=0$: the slope jump vanishes, recovering slope continuity for an ordinary uniform string. For $m\\ne0$, imposing slope continuity would incorrectly force the mass acceleration to vanish."
       ],
       "check": {
         "question": "Can the left and right slopes still be required to agree?",
@@ -252,11 +272,12 @@
       "goal": "把锤击的总冲量转成初速度，再求弦的振动。",
       "recognize": "瞬间敲击来不及改变位移，却会改变速度。I 是总冲量，j 是每单位长度的冲量，二者不能混用。",
       "steps": [
-        "先说明假设锤面给均匀冲量：敲击区内 j=I/(2δ)，区外为 0。",
-        "用冲量等于动量变化，写初速度 v=j/ρ，初位移为 0。",
-        "固定两端用 sin(kₙx)，kₙ=nπ/l；只在敲击区积分求速度系数 Vₙ。",
-        "时间取 sin(ckₙt)，但其振幅是 Vₙ/(ckₙ)，因为对时间求导才能恢复 Vₙ。",
-        "令 δ 趋于 0 检查点冲量极限；若冲量不均匀，保留 j(x) 的投影积分。"
+        "瞬时锤击改变速度而来不及改变形状，所以 $u(x,0)=0$。用冲量动量关系 $\\rho u_t(x,0)=j(x)$，其中 $j(x)$ 是单位长度冲量。",
+        "题目只给总冲量 $\\int jdx=I$，还需分布假设。按均匀锤面，敲击区内 $j=I/(2\\delta)$、区外为零；区间应完全位于 $(0,l)$。",
+        "第(1)问写 $u_{tt}=c^2u_{xx}$、$u(0,t)=u(l,t)=0$，$c=\\sqrt{T/\\rho}$，并配上上述初位移和初速度。",
+        "第(2)问取 $k_n=n\\pi/l$，投影初速度：$V_n=\\frac{I}{\\rho l\\delta}\\int_{x_0-\\delta}^{x_0+\\delta}\\sin(k_nx)dx$。积分上下限给 $V_n=2I\\sin(k_nx_0)\\sin(k_n\\delta)/(\\rho l\\delta k_n)$。",
+        "零初位移使 $q_n(t)=B_n\\sin(ck_nt)$，而 $q_n'(0)=ck_nB_n=V_n$，所以还要除一次频率：$B_n=V_n/(ck_n)$。",
+        "写 $u=\\sum_{n\\ge1}[V_n/(ck_n)]\\sin(k_nx)\\sin(ck_nt)$。检查对 $t$ 求导后恢复速度系数 $V_n$；令 $\\delta\\to0$ 并用 $\\sin(k_n\\delta)/\\delta\\to k_n$，可检验点冲量极限。"
       ],
       "check": {
         "question": "为什么振幅还要除以 ckₙ？",
@@ -267,11 +288,12 @@
       "goal": "Convert a hammer’s total impulse into initial velocity, then solve the string motion.",
       "recognize": "An instantaneous strike changes velocity before it changes displacement. I is total impulse; j is impulse per unit length.",
       "steps": [
-        "State the uniform-strike assumption: j=I/(2δ) in the struck interval and zero elsewhere.",
-        "Impulse equals momentum change, giving v=j/ρ and zero initial displacement.",
-        "For fixed ends use sin(kₙx), kₙ=nπ/l. Integrate only over the struck interval to obtain velocity coefficients Vₙ.",
-        "Use sin(ckₙt) in time with amplitude Vₙ/(ckₙ), since differentiation must recover Vₙ.",
-        "Check δ→0 against a point impulse. For nonuniform impulse, keep the projection integral involving j(x)."
+        "An instantaneous strike changes velocity before the shape can change, so $u(x,0)=0$. Impulse balance gives $\\rho u_t(x,0)=j(x)$, where $j(x)$ is impulse per unit length.",
+        "Total impulse $\\int jdx=I$ alone does not specify its distribution. For a uniform hammer face, set $j=I/(2\\delta)$ inside the struck interval and zero outside; the interval must lie in $(0,l)$.",
+        "For part (1), write $u_{tt}=c^2u_{xx}$ and $u(0,t)=u(l,t)=0$, with $c=\\sqrt{T/\\rho}$, together with the initial displacement and velocity above.",
+        "For part (2), set $k_n=n\\pi/l$ and project the initial velocity: $V_n=\\frac{I}{\\rho l\\delta}\\int_{x_0-\\delta}^{x_0+\\delta}\\sin(k_nx)dx$. Evaluating the limits gives $V_n=2I\\sin(k_nx_0)\\sin(k_n\\delta)/(\\rho l\\delta k_n)$.",
+        "Zero initial displacement gives $q_n(t)=B_n\\sin(ck_nt)$. Since $q_n'(0)=ck_nB_n=V_n$, divide once more by the frequency: $B_n=V_n/(ck_n)$.",
+        "Write $u=\\sum_{n\\ge1}[V_n/(ck_n)]\\sin(k_nx)\\sin(ck_nt)$. Differentiating in time restores $V_n$; the limit $\\sin(k_n\\delta)/\\delta\\to k_n$ as $\\delta\\to0$ checks the point-impulse case."
       ],
       "check": {
         "question": "Why divide the displacement amplitude by ckₙ?",
@@ -284,11 +306,12 @@
       "goal": "把正方形膜的二维振动拆成许多熟悉的单模态振动。",
       "recognize": "四边固定，x 和 y 两个方向都用正弦；每个模式要用两个编号 m、n。",
       "steps": [
-        "写 $u_{tt}=c^2(u_{xx}+u_{yy})$，四边 $u=0$。设 $\\tau$ 是膜的单位长度张力（N/m），$\\sigma$ 是面密度（kg/m²），则 $c^2=\\tau/\\sigma$。",
-        "空间模式取 sin(mπx/a)sin(nπy/a)，把两个方向的平方波数相加。",
-        "得到频率 Ωₘₙ=(cπ/a)√(m²+n²)，不是按 m+n 相加。",
-        "把初位移做双重投影求 Aₘₙ；把初速度做双重投影后除以 Ωₘₙ 求 Bₘₙ。",
-        "将 Aₘₙcos(Ωₘₙt)+Bₘₙsin(Ωₘₙt) 乘空间模式后求和。"
+        "令 $\\tau$ 为膜的单位长度张力（N/m）、$\\sigma$ 为面密度（kg/m²），因此 $c^2=\\tau/\\sigma$。完整方程是 $u_{tt}=c^2(u_{xx}+u_{yy})$，四边 $u=0$，初位移 $\\varphi$、初速度 $v$。",
+        "因为 $x=0,a$ 与 $y=0,a$ 都固定，空间基取 $S_{mn}=\\sin(m\\pi x/a)\\sin(n\\pi y/a)$，$m,n\\ge1$。",
+        "对基函数求两次导数，得 $(\\partial_{xx}+\\partial_{yy})S_{mn}=-\\pi^2(m^2+n^2)S_{mn}/a^2$，所以 $\\Omega_{mn}=c\\pi\\sqrt{m^2+n^2}/a$。",
+        "每个方向的正弦范数是 $a/2$，相乘得到 $a^2/4$；故初位移系数 $A_{mn}=\\frac4{a^2}\\int_0^a\\int_0^a\\varphi S_{mn}\\,dxdy$。",
+        "先投影初速度得 $V_{mn}=\\frac4{a^2}\\iint vS_{mn}\\,dxdy$；时间项写 $A_{mn}\\cos\\Omega_{mn}t+B_{mn}\\sin\\Omega_{mn}t$，由初速度得 $B_{mn}=V_{mn}/\\Omega_{mn}$。",
+        "将所有 $(m,n)$ 项相加，并分别检查 $u(x,y,0)=\\varphi$、$u_t(x,y,0)=v$。频率包含平方和的平方根，不能把它写成 $m+n$；经典解还要求初值与固定边界相容。"
       ],
       "check": {
         "question": "m=n=1 的频率是多少？",
@@ -299,11 +322,12 @@
       "goal": "Split the square membrane’s two-dimensional motion into individual modes.",
       "recognize": "All four edges are fixed, so use a sine in each direction. Every mode needs two indices, m and n.",
       "steps": [
-        "Write $u_{tt}=c^2(u_{xx}+u_{yy})$ with $u=0$ on all four edges. Let $\\tau$ be membrane tension per unit length (N/m) and $\\sigma$ be areal density (kg/m²), so $c^2=\\tau/\\sigma$.",
-        "Choose sin(mπx/a)sin(nπy/a) and add the squared wavenumbers from both directions.",
-        "The frequency is Ωₘₙ=(cπ/a)√(m²+n²), not proportional to m+n.",
-        "Double-project the initial displacement for Aₘₙ. Double-project velocity and divide by Ωₘₙ for Bₘₙ.",
-        "Multiply Aₘₙcos(Ωₘₙt)+Bₘₙsin(Ωₘₙt) by the spatial mode and sum."
+        "Let $\\tau$ be membrane tension per unit length in N/m and $\\sigma$ be area density in kg/m², so $c^2=\\tau/\\sigma$. Use $u_{tt}=c^2(u_{xx}+u_{yy})$, zero displacement on all four edges, initial displacement $\\varphi$, and initial velocity $v$.",
+        "Since both opposite edges in each direction are fixed, choose $S_{mn}=\\sin(m\\pi x/a)\\sin(n\\pi y/a)$ for $m,n\\ge1$.",
+        "Differentiating twice gives $(\\partial_{xx}+\\partial_{yy})S_{mn}=-\\pi^2(m^2+n^2)S_{mn}/a^2$, so $\\Omega_{mn}=c\\pi\\sqrt{m^2+n^2}/a$.",
+        "Each sine has squared norm $a/2$, giving product norm $a^2/4$. Thus the initial displacement coefficient is $A_{mn}=\\frac4{a^2}\\int_0^a\\int_0^a\\varphi S_{mn}\\,dxdy$.",
+        "Project the initial velocity first: $V_{mn}=\\frac4{a^2}\\iint vS_{mn}\\,dxdy$. In $A_{mn}\\cos\\Omega_{mn}t+B_{mn}\\sin\\Omega_{mn}t$, the initial velocity requires $B_{mn}=V_{mn}/\\Omega_{mn}$.",
+        "Sum over all pairs $(m,n)$ and check $u(x,y,0)=\\varphi$ and $u_t(x,y,0)=v$ separately. The frequency contains the square root of a sum of squares, not $m+n$; a classical solution also requires compatible initial and boundary data."
       ],
       "check": {
         "question": "What is the frequency for m=n=1?",
@@ -316,11 +340,12 @@
       "goal": "把一道受迫偏微分方程化成一个受迫振子。",
       "recognize": "外力的空间形状正好是第二个固定端模式，所以其余空间模式不需要计算。",
       "steps": [
-        "直接设 u=q(t)sin(2πx/l)，让 q 代表这个形状的时间振幅。",
-        "代入方程，得到 q″+Ω²q=(A/ρ)sin(ωt)，Ω=2πc/l。",
-        "ω≠Ω 时先写正弦特解，再加齐次正弦项，确保 q(0)=q′(0)=0。",
-        "ω=Ω 时改用共振解或取极限，不能继续除以 Ω²−ω²。",
-        "最后把 q(t) 乘回空间正弦；检查 t=0 的位移和速度。"
+        "单位长度外力要除以线密度：$u_{tt}-c^2u_{xx}=(A/\\rho)\\sin(2\\pi x/l)\\sin\\omega t$，$c=\\sqrt{T/\\rho}$。两端固定，初位移与初速度均为零。",
+        "外力的空间形状恰是第二模态，因此只需设 $u=q(t)\\sin(2\\pi x/l)$。对 $x$ 求两次导数，得到 $q''+\\Omega^2q=(A/\\rho)\\sin\\omega t$，$\\Omega=2\\pi c/l$。",
+        "非共振 $\\omega\\ne\\Omega$ 时，试特解 $q_p=D\\sin\\omega t$；代入得 $(\\Omega^2-\\omega^2)D=A/\\rho$，故 $D=A/[\\rho(\\Omega^2-\\omega^2)]$。",
+        "加齐次项 $C\\cos\\Omega t+E\\sin\\Omega t$。$q(0)=0$ 给 $C=0$；$q'(0)=0$ 给 $E=-D\\omega/\\Omega$，所以 $q=D[\\sin\\omega t-(\\omega/\\Omega)\\sin\\Omega t]$。",
+        "共振 $\\omega=\\Omega>0$ 必须单列：试 $q_p=-At\\cos\\Omega t/(2\\rho\\Omega)$，再补初速度，得到 $q=A[\\sin\\Omega t-\\Omega t\\cos\\Omega t]/(2\\rho\\Omega^2)$。",
+        "最后乘回 $\\sin(2\\pi x/l)$。检查两个时间初值均为零；共振式含随 $t$ 增长的项，而非共振式不能在分母为零时直接使用。"
       ],
       "check": {
         "question": "仅写 q=A sin(ωt)/[ρ(Ω²−ω²)] 为什么不够？",
@@ -331,11 +356,12 @@
       "goal": "Reduce a forced PDE to one forced oscillator.",
       "recognize": "The force’s spatial shape is exactly the second fixed-end mode, so no other spatial modes need calculation.",
       "steps": [
-        "Set u=q(t)sin(2πx/l), where q is the shape’s time-dependent amplitude.",
-        "Substitution gives q″+Ω²q=(A/ρ)sin(ωt), with Ω=2πc/l.",
-        "For ω≠Ω, find a sine particular solution, then add a homogeneous sine term to enforce q(0)=q′(0)=0.",
-        "At ω=Ω, use the resonant solution or a limit; do not divide by Ω²−ω².",
-        "Multiply q(t) back by the spatial sine and check both initial data."
+        "Divide the force per unit length by the linear density: $u_{tt}-c^2u_{xx}=(A/\\rho)\\sin(2\\pi x/l)\\sin\\omega t$, with $c=\\sqrt{T/\\rho}$. Both ends are fixed and both initial data are zero.",
+        "The force has exactly the second spatial mode, so set $u=q(t)\\sin(2\\pi x/l)$. Differentiating twice in $x$ gives $q''+\\Omega^2q=(A/\\rho)\\sin\\omega t$, where $\\Omega=2\\pi c/l$.",
+        "For $\\omega\\ne\\Omega$, try $q_p=D\\sin\\omega t$. Substitution gives $(\\Omega^2-\\omega^2)D=A/\\rho$, so $D=A/[\\rho(\\Omega^2-\\omega^2)]$.",
+        "Add $C\\cos\\Omega t+E\\sin\\Omega t$. The condition $q(0)=0$ gives $C=0$, and $q'(0)=0$ gives $E=-D\\omega/\\Omega$, leaving $q=D[\\sin\\omega t-(\\omega/\\Omega)\\sin\\Omega t]$.",
+        "Treat resonance $\\omega=\\Omega>0$ separately. Try $q_p=-At\\cos\\Omega t/(2\\rho\\Omega)$, then correct the initial velocity to obtain $q=A[\\sin\\Omega t-\\Omega t\\cos\\Omega t]/(2\\rho\\Omega^2)$.",
+        "Finally multiply by $\\sin(2\\pi x/l)$. Check both zero initial data; the resonant expression has a term growing with $t$, and the nonresonant formula cannot be used with a zero denominator."
       ],
       "check": {
         "question": "Why is q=A sin(ωt)/[ρ(Ω²−ω²)] alone insufficient?",
@@ -348,11 +374,12 @@
       "goal": "计算某一点持续用力会激发弦上的哪些模式。",
       "recognize": "持续点力不同于瞬间冲量：这里力留在方程里，并用 δ(x−x₀) 表示集中在一点。",
       "steps": [
-        "写源项 Aδ(x−x₀)sin(ωt)/ρ，端点位移和两条初值都是 0。",
-        "展开 u=Σqₙ(t)sin(kₙx)；利用 δ 的抽样性质，积分直接给 sin(kₙx₀)。",
-        "得到每模态力 Fₙ=2A sin(kₙx₀)/(ρl)，再逐个解受迫振子。",
-        "若 ω 等于某个固有频率，单独替换该项为共振公式。",
-        "同时检查施力点是否恰在该模式节点；Fₙ=0 时即使频率匹配也不会激发它。"
+        "集中点力的总量为 $A\\sin\\omega t$，写成 $A\\delta(x-x_0)\\sin\\omega t$；因此 $u_{tt}-c^2u_{xx}=A\\delta(x-x_0)\\sin\\omega t/\\rho$，端点和初值均为零。",
+        "取 $k_n=n\\pi/l$、$\\Omega_n=ck_n$，写 $u=\\sum q_n(t)\\sin(k_nx)$。两端固定使每个空间基都自动满足边界。",
+        "把方程乘 $\\sin(k_nx)$ 积分并除以范数 $l/2$。利用 $\\int\\delta(x-x_0)\\sin(k_nx)dx=\\sin(k_nx_0)$，得到 $q_n''+\\Omega_n^2q_n=F_n\\sin\\omega t$，$F_n=2A\\sin(k_nx_0)/(\\rho l)$。",
+        "对每个非共振模态先取特解 $D_n\\sin\\omega t$，其中 $D_n=F_n/(\\Omega_n^2-\\omega^2)$；零初速度要求补上 $-D_n(\\omega/\\Omega_n)\\sin\\Omega_nt$。",
+        "若 $\\omega=\\Omega_N$，只把第 $N$ 项改成 $q_N=F_N[\\sin\\Omega_Nt-\\Omega_Nt\\cos\\Omega_Nt]/(2\\Omega_N^2)$；其他模态仍用非共振式。",
+        "将 $q_n\\sin(k_nx)$ 求和。若 $\\sin(k_Nx_0)=0$，则 $F_N=0$，即使频率相同也不会激发该共振；这是检查点力位置是否在模态节点的办法。"
       ],
       "check": {
         "question": "在 x₀=l/2 用力，会激发第二模态吗？",
@@ -363,11 +390,12 @@
       "goal": "Determine which string modes a sustained point force excites.",
       "recognize": "A sustained point force remains in the equation, unlike an instantaneous impulse. Use δ(x−x₀) to localize it.",
       "steps": [
-        "Use source Aδ(x−x₀)sin(ωt)/ρ with zero endpoint values and zero initial displacement and velocity.",
-        "Expand u=Σqₙ(t)sin(kₙx). Delta sampling makes the projection contain sin(kₙx₀).",
-        "The modal force is Fₙ=2A sin(kₙx₀)/(ρl). Solve one forced oscillator for each mode.",
-        "If ω matches a natural frequency, replace that mode by its resonant formula.",
-        "Also check whether the force point is a node. If Fₙ=0, frequency matching alone does not excite the mode."
+        "Represent the concentrated force by $A\\delta(x-x_0)\\sin\\omega t$. Thus $u_{tt}-c^2u_{xx}=A\\delta(x-x_0)\\sin\\omega t/\\rho$, with zero endpoint values and zero initial data.",
+        "Set $k_n=n\\pi/l$ and $\\Omega_n=ck_n$, then write $u=\\sum q_n(t)\\sin(k_nx)$. Every basis function satisfies the fixed-end conditions.",
+        "Multiply by $\\sin(k_nx)$, integrate, and divide by the squared norm $l/2$. Since $\\int\\delta(x-x_0)\\sin(k_nx)dx=\\sin(k_nx_0)$, obtain $q_n''+\\Omega_n^2q_n=F_n\\sin\\omega t$ with $F_n=2A\\sin(k_nx_0)/(\\rho l)$.",
+        "For each nonresonant mode, take $D_n\\sin\\omega t$ with $D_n=F_n/(\\Omega_n^2-\\omega^2)$. Zero initial velocity requires the extra term $-D_n(\\omega/\\Omega_n)\\sin\\Omega_nt$.",
+        "If $\\omega=\\Omega_N$, replace only mode $N$ by $q_N=F_N[\\sin\\Omega_Nt-\\Omega_Nt\\cos\\Omega_Nt]/(2\\Omega_N^2)$. All other modes retain the nonresonant expression.",
+        "Sum $q_n\\sin(k_nx)$. If $\\sin(k_Nx_0)=0$, then $F_N=0$ and that resonance is not excited even when the frequencies coincide; the force acts at a node of the mode."
       ],
       "check": {
         "question": "Does a force at x₀=l/2 excite the second mode?",
@@ -380,11 +408,13 @@
       "goal": "正确处理“力只加在杆端”的受迫振动。",
       "recognize": "端力是边界条件，不是整根杆都受的体力。用积分投影时要保留端点项。",
       "steps": [
-        "写杆内无源波动方程，左端 u=0，右端 YSuₓ=A sin(ωt)。",
-        "用固定—自由模式 sin(kₙx)，kₙ=(n+1/2)π/l；把方程乘模式后积分两次分部积分。",
-        "保留右端力贡献，得到模态力 Gₙ=2A(−1)ⁿ/(ρSl)。",
-        "按零初值受迫振子解每个 qₙ；共振项单独替换后乘回空间模式。",
-        "这些模式右端导数为 0，但级数不能在端点任意逐项求导；真实端力已由积分边界项保留。"
+        "杆内写 $u_{tt}=c^2u_{xx}$，$c^2=Y/\\rho$；左端 $u(0,t)=0$，右端轴力 $YSu_x(l,t)=A\\sin\\omega t$，两个初值为零。端力应放在边界，不能当成均匀体力。",
+        "选齐次固定—自由基 $X_n=\\sin(k_nx)$，$k_n=(n+1/2)\\pi/l$，记 $\\Omega_n=ck_n$。此时 $X_n'(l)=0$、$X_n(l)=(-1)^n$、范数为 $l/2$。",
+        "投影时保留边界项：$\\int_0^l u_{xx}X_n dx=[u_xX_n-uX_n']_0^l-k_n^2\\int_0^l uX_n dx$。左端项为零，右端留下 $u_x(l,t)(-1)^n$。",
+        "代入端力并除以 $l/2$，得 $q_n''+\\Omega_n^2q_n=G_n\\sin\\omega t$，$G_n=2A(-1)^n/(\\rho Sl)$；这里 $c^2/(YS)=1/(\\rho S)$。",
+        "非共振时写 $q_n=G_n[\\sin\\omega t-(\\omega/\\Omega_n)\\sin\\Omega_nt]/(\\Omega_n^2-\\omega^2)$；第二项专门保证 $q_n'(0)=0$。",
+        "若 $\\omega=\\Omega_N$，对应项改为 $G_N[\\sin\\Omega_Nt-\\Omega_Nt\\cos\\Omega_Nt]/(2\\Omega_N^2)$；最后求和 $u=\\sum_{n\\ge0}q_nX_n$。",
+        "该级数按能量或弱解理解，不能在右端逐项求导后把真实端力抹掉。若希望先得到齐次边界，可令 $u=w+xf(t)/(YS)$，再对 $w$ 展开。"
       ],
       "check": {
         "question": "能把 A sin(ωt) 直接作为杆内均匀源吗？",
@@ -395,11 +425,13 @@
       "goal": "Handle a rod force applied only at its endpoint.",
       "recognize": "An end force is a boundary condition, not a body force along the entire rod. Modal integration must retain its boundary term.",
       "steps": [
-        "Write the source-free wave equation inside the rod, u=0 on the left, and YSuₓ=A sin(ωt) on the right.",
-        "Use fixed–free modes sin(kₙx), kₙ=(n+1/2)π/l. Multiply by a mode and integrate by parts twice.",
-        "Retain the right-end force term to obtain Gₙ=2A(−1)ⁿ/(ρSl).",
-        "Solve each zero-initial-data forced oscillator, replace any resonant term, and multiply by its spatial mode.",
-        "Although each basis derivative is zero at the right end, endpoint termwise differentiation is not justified. The actual force is retained in the weak boundary term."
+        "In the rod, use $u_{tt}=c^2u_{xx}$ with $c^2=Y/\\rho$. The boundaries are $u(0,t)=0$ and $YSu_x(l,t)=A\\sin\\omega t$, and both initial data are zero. An end force belongs in the boundary condition.",
+        "Use the homogeneous fixed–free basis $X_n=\\sin(k_nx)$, where $k_n=(n+1/2)\\pi/l$, and set $\\Omega_n=ck_n$. Then $X_n'(l)=0$, $X_n(l)=(-1)^n$, and the squared norm is $l/2$.",
+        "Keep the boundary term in projection: $\\int_0^l u_{xx}X_n dx=[u_xX_n-uX_n']_0^l-k_n^2\\int_0^l uX_n dx$. The left term vanishes, while the right gives $u_x(l,t)(-1)^n$.",
+        "Substitute the end force and divide by $l/2$ to get $q_n''+\\Omega_n^2q_n=G_n\\sin\\omega t$, with $G_n=2A(-1)^n/(\\rho Sl)$; use $c^2/(YS)=1/(\\rho S)$.",
+        "Away from resonance, write $q_n=G_n[\\sin\\omega t-(\\omega/\\Omega_n)\\sin\\Omega_nt]/(\\Omega_n^2-\\omega^2)$. The second term ensures $q_n'(0)=0$.",
+        "If $\\omega=\\Omega_N$, replace that term by $G_N[\\sin\\Omega_Nt-\\Omega_Nt\\cos\\Omega_Nt]/(2\\Omega_N^2)$. Finally sum $u=\\sum_{n\\ge0}q_nX_n$.",
+        "Interpret this series as an energy or weak solution; termwise differentiation at the right endpoint must not erase the actual end force. Alternatively, set $u=w+xf(t)/(YS)$ to make the boundary homogeneous before expanding $w$."
       ],
       "check": {
         "question": "Can A sin(ωt) be inserted as a uniform interior source?",
@@ -412,10 +444,11 @@
       "goal": "判断无限弦上某一点何时开始受到冲击影响。",
       "recognize": "点冲量产生初速度 δ；达朗贝尔公式会把它在区间内积分，结果变成台阶而不是两个 δ。",
       "steps": [
-        "先用冲量动量关系写 uₜ(x,0)=(I/ρ)δ(x−x₀)，初位移为 0。",
-        "在达朗贝尔公式中只保留初速度积分，积分范围是 [x−ct,x+ct]。",
-        "若该区间包含 x₀，积分是 I/ρ；否则是 0。",
-        "再除以 2c，写成 I H(ct−|x−x₀|)/(2ρc)，解释左右波前以 c 传播。"
+        "无限弦没有两个端点。令 $c=\\sqrt{T/\\rho}$，初位移为零；点冲量的动量关系给 $u_t(x,0)=(I/\\rho)\\delta(x-x_0)$。",
+        "达朗贝尔公式的初位移部分为零，只剩 $u=\\frac1{2c}\\int_{x-ct}^{x+ct}u_t(s,0)ds=\\frac{I}{2\\rho c}\\int_{x-ct}^{x+ct}\\delta(s-x_0)ds$。",
+        "判断冲点是否在积分区间内：$x-ct<x_0<x+ct$ 等价于 $|x-x_0|<ct$。满足时 delta 积分为 1，位移为 $I/(2\\rho c)$。",
+        "若 $|x-x_0|>ct$，积分区间不含冲点，位移为零。因此 $u=\\frac{I}{2\\rho c}H(ct-|x-x_0|)$；$H$ 表示由 0 跳到 1 的阶跃函数。",
+        "波前为 $x=x_0\\pm ct$，左右速度大小都是 $c$。波前处可按对称正则化取半值；因为初速度含 delta，方程和初值按分布意义理解，不能要求处处经典可导。"
       ],
       "check": {
         "question": "距冲点 d 的位置多久后开始受影响？",
@@ -426,10 +459,11 @@
       "goal": "Find when a point on an infinite string first feels an impulse.",
       "recognize": "A point impulse gives delta initial velocity. D’Alembert’s integral turns it into a step, rather than two moving deltas.",
       "steps": [
-        "Use impulse–momentum balance: uₜ(x,0)=(I/ρ)δ(x−x₀), with zero initial displacement.",
-        "Keep only the velocity integral in d’Alembert’s formula, over [x−ct,x+ct].",
-        "The integral is I/ρ if that interval contains x₀, and zero otherwise.",
-        "Divide by 2c and write I H(ct−|x−x₀|)/(2ρc). The two fronts travel at speed c."
+        "An infinite string has no endpoint boundaries. Set $c=\\sqrt{T/\\rho}$ and zero initial displacement; point-impulse balance gives $u_t(x,0)=(I/\\rho)\\delta(x-x_0)$.",
+        "The initial-displacement part of the d'Alembert formula vanishes, leaving $u=\\frac1{2c}\\int_{x-ct}^{x+ct}u_t(s,0)ds=\\frac{I}{2\\rho c}\\int_{x-ct}^{x+ct}\\delta(s-x_0)ds$.",
+        "Determine whether the impulse point lies inside the integration interval: $x-ct<x_0<x+ct$ is equivalent to $|x-x_0|<ct$. Then the delta integral is 1 and the displacement is $I/(2\\rho c)$.",
+        "If $|x-x_0|>ct$, the interval misses the impulse point and the displacement is zero. Thus $u=\\frac{I}{2\\rho c}H(ct-|x-x_0|)$, where $H$ is the step function from 0 to 1.",
+        "The fronts are $x=x_0\\pm ct$, moving left and right with speed $c$. Symmetric regularization assigns half height at a front. Since the initial velocity is a delta, use distributional rather than everywhere classical derivatives."
       ],
       "check": {
         "question": "When does a location at distance d first respond?",
@@ -442,11 +476,13 @@
       "goal": "把半无限弦的初始运动和端点运动分开算，再叠加。",
       "recognize": "一个解负责初值，另一个解负责端位移。固定端反射用奇延拓；端点信号用传播延迟。",
       "steps": [
-        "把 φ 和 v 向负半轴作奇延拓；这样套全轴公式后，x=0 的值自动为 0。",
-        "用奇延拓初值写达朗贝尔解 u₁。",
-        "另写端点响应 u₂=H(t−x/c)g(t−x/c)：信号到 x 处需 x/c 时间。",
-        "将 u₁+u₂ 相加；若要写原正半轴函数，分 x>ct 和 x<ct 两区整理积分。",
-        "检查角点条件 g(0)=φ(0)；要求更光滑时还要 g′(0)=v(0)。"
+        "先把解拆成 $u=u_1+u_2$：$u_1$ 承担给定初值但端点为零，$u_2$ 承担端点 $g(t)$ 但初值为零。线性方程允许两部分相加。",
+        "将 $\\varphi,v$ 奇延拓到负轴，如 $\\varphi_o(-s)=-\\varphi(s)$（$s>0$）；这样达朗贝尔公式在 $x=0$ 的左右贡献相消。",
+        "写零端点部分 $u_1=\\frac12[\\varphi_o(x-ct)+\\varphi_o(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v_o(s)ds$。它在 $t=0$ 给回 $\\varphi(x)$ 和 $v(x)$。",
+        "端点信号到 $x$ 处需要时间 $x/c$，所以 $u_2=H(t-x/c)g(t-x/c)$。到达前为零，到达后读端点在较早时刻的位移。",
+        "当 $x>ct$，积分区间全在正轴，直接得到 $u=\\frac12[\\varphi(x-ct)+\\varphi(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v(s)ds$，此时端点信号尚未到达。",
+        "当 $0<x<ct$，用奇性处理负轴部分，得 $u=\\frac12[\\varphi(x+ct)-\\varphi(ct-x)]+\\frac1{2c}\\int_{ct-x}^{ct+x}v(s)ds+g(t-x/c)$。令 $x=0$ 检查前两项相消，只剩 $g(t)$。",
+        "若要求连续经典解，须检查 $g(0)=\\varphi(0)$；要求一阶光滑还须 $g'(0)=v(0)$。不相容时不能假装处处光滑，公式应作为带特征跳跃的弱解使用。"
       ],
       "check": {
         "question": "在 x>ct 时，端点驱动 g 已经影响到这里了吗？",
@@ -457,11 +493,13 @@
       "goal": "Separate the effects of initial motion and end motion, then add them.",
       "recognize": "One solution handles initial data and another handles the prescribed endpoint displacement. Odd extension handles fixed-end reflection; a delay handles boundary propagation.",
       "steps": [
-        "Oddly extend φ and v to the negative half-line so the full-line formula has zero value at x=0.",
-        "Use the extended data in d’Alembert’s formula to obtain u₁.",
-        "Add the boundary response u₂=H(t−x/c)g(t−x/c); travel to x takes time x/c.",
-        "Sum u₁+u₂. To use only positive-half-line functions, split into x>ct and x<ct and simplify the integrals.",
-        "Check g(0)=φ(0) at the corner. Greater smoothness also needs g′(0)=v(0)."
+        "Split $u=u_1+u_2$: let $u_1$ carry the prescribed initial data with a zero endpoint, and $u_2$ carry endpoint motion $g(t)$ with zero initial data. The equation is linear, so the parts can be added.",
+        "Extend $\\varphi$ and $v$ oddly to the negative axis, for example $\\varphi_o(-s)=-\\varphi(s)$ for $s>0$. The left and right contributions in the d'Alembert formula then cancel at $x=0$.",
+        "Write the zero-endpoint part as $u_1=\\frac12[\\varphi_o(x-ct)+\\varphi_o(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v_o(s)ds$. At $t=0$ it recovers $\\varphi(x)$ and $v(x)$.",
+        "The endpoint signal takes time $x/c$ to reach position $x$, so $u_2=H(t-x/c)g(t-x/c)$. Before arrival it is zero; afterward it uses the endpoint value at the delayed time.",
+        "If $x>ct$, the integration interval lies on the positive axis, giving $u=\\frac12[\\varphi(x-ct)+\\varphi(x+ct)]+\\frac1{2c}\\int_{x-ct}^{x+ct}v(s)ds$. The endpoint signal has not arrived.",
+        "If $0<x<ct$, oddness converts the negative-axis part to $u=\\frac12[\\varphi(x+ct)-\\varphi(ct-x)]+\\frac1{2c}\\int_{ct-x}^{ct+x}v(s)ds+g(t-x/c)$. At $x=0$, the first two terms cancel, leaving $g(t)$.",
+        "A continuous classical solution requires $g(0)=\\varphi(0)$; first-order smoothness also requires $g'(0)=v(0)$. With incompatible data, interpret the formula as a weak solution with characteristic jumps."
       ],
       "check": {
         "question": "Has the endpoint driving reached a point with x>ct?",
@@ -474,11 +512,12 @@
       "goal": "从半无限弦的端力求出向右传播的位移。",
       "recognize": "端力控制的是斜率，不能直接当位移。无限远无入射波时，只取向右传播的 w(t−x/c)。",
       "steps": [
-        "先约定正力方向，左端条件写 −Tuₓ(0,t)=A sin(ωt)。",
-        "设 s=t−x/c，u=w(s)；则 uₓ=−w′/c。",
-        "代入边界得 (T/c)w′=A sin(ωt)，用 w(0)=0 积分出 w。",
-        "得到 w=Ac[1−cos(ωt)]/(Tω)，将 t 换成 t−x/c。",
-        "乘 H(t−x/c) 使波到达之前为 0；核验左端导数确实给所需外力。"
+        "令 $c=\\sqrt{T/\\rho}$，从端点向右量 $x$。初位移、初速度为零，并选择没有从无穷远向左传来的入射波。",
+        "向右传播的解用延迟时间 $s=t-x/c$ 表示：到达后 $u=w(s)$，到达前 $u=0$。由链式法则 $u_x=-w'(s)/c$，该形式自动满足波动方程。",
+        "按题解的正端力方向，左端条件是 $-Tu_x(0,t)=A\\sin\\omega t$，即 $(T/c)w'(t)=A\\sin\\omega t$。若另选力的正方向，整体符号随之改变。",
+        "从 $0$ 积到 $s$ 并用 $w(0)=0$：$w(s)=\\frac{Ac}{T}\\int_0^s\\sin\\omega\\tau\\,d\\tau=\\frac{Ac}{T\\omega}(1-\\cos\\omega s)$，假定 $\\omega>0$。",
+        "乘上到达开关，得 $u=\\frac{Ac}{T\\omega}[1-\\cos\\omega(t-x/c)]H(t-x/c)$。利用 $T=\\rho c^2$，也可把前因子写成 $A/(\\rho c\\omega)$。",
+        "检查波前处 $w(0)=w'(0)=0$，因此没有额外位移或速度 delta；再算 $-Tu_x(0,t)=A\\sin\\omega t$。这两项检查同时验证传播延迟和端力符号。"
       ],
       "check": {
         "question": "为什么结果是 1−cos，而不是直接 sin？",
@@ -489,11 +528,12 @@
       "goal": "Find the displacement wave generated by a force at a half-infinite string’s end.",
       "recognize": "An end force controls slope, not displacement. With no incoming wave from infinity, take only w(t−x/c).",
       "steps": [
-        "State the force sign convention and write −Tuₓ(0,t)=A sin(ωt).",
-        "Set s=t−x/c and u=w(s), so uₓ=−w′/c.",
-        "The boundary gives (T/c)w′=A sin(ωt). Integrate with w(0)=0.",
-        "Obtain w=Ac[1−cos(ωt)]/(Tω), then replace t by t−x/c.",
-        "Multiply by H(t−x/c) for zero motion before arrival and verify the endpoint derivative."
+        "Set $c=\\sqrt{T/\\rho}$ and measure $x$ to the right from the endpoint. Both initial data are zero, and assume no incoming wave from infinity.",
+        "Express the right-traveling solution using delayed time $s=t-x/c$: after arrival $u=w(s)$, and before arrival $u=0$. The chain rule gives $u_x=-w'(s)/c$, and this form satisfies the wave equation.",
+        "With the positive force direction used in the solution, the left condition is $-Tu_x(0,t)=A\\sin\\omega t$, or $(T/c)w'(t)=A\\sin\\omega t$. Reversing the force convention reverses the overall sign.",
+        "Integrate from $0$ to $s$ using $w(0)=0$: $w(s)=\\frac{Ac}{T}\\int_0^s\\sin\\omega\\tau\\,d\\tau=\\frac{Ac}{T\\omega}(1-\\cos\\omega s)$, for $\\omega>0$.",
+        "Add the arrival switch to obtain $u=\\frac{Ac}{T\\omega}[1-\\cos\\omega(t-x/c)]H(t-x/c)$. Since $T=\\rho c^2$, the prefactor is also $A/(\\rho c\\omega)$.",
+        "At the front, $w(0)=w'(0)=0$, so no extra displacement or velocity delta appears. Also verify $-Tu_x(0,t)=A\\sin\\omega t$; these checks confirm both the delay and the force sign."
       ],
       "check": {
         "question": "Why does the result contain 1−cos instead of simply sin?",
@@ -506,11 +546,12 @@
       "goal": "求通电产生热量后，杆从初温走向稳态的过程。",
       "recognize": "有热源且端点不全为 0，先求最终稳态 U，再对差值 u−U 用正弦级数。",
       "steps": [
-        "一小段的电阻是 rdx/S，焦耳热率是 I²rdx/S；除以体积热容得到 q=I²r/(ρcS²)。",
-        "写 uₜ=κuₓₓ+q，κ=k/(ρc)，并带上给定端温与初温。",
-        "解 κU″+q=0，配两端温度，得到线性项加抛物线。",
-        "令 w=u−U；w 的两端为 0，初值是负的抛物线，不是原初温。",
-        "投影这个初值，只剩奇数正弦模式，并给每项乘 e^(−κkₙ²t)。"
+        "取长 $dx$ 的杆段。储热率是 $\\rho cS u_tdx$，导热净流入是 $kS u_{xx}dx$，电阻为 $r\\,dx/S$，所以焦耳产热率为 $I^2r\\,dx/S$。",
+        "相加并除以 $\\rho cSdx$，得 $u_t=\\kappa u_{xx}+q$，$\\kappa=k/(\\rho c)$、$q=I^2r/(\\rho cS^2)$。配上 $u(0,t)=0,u(l,t)=u_0,u(x,0)=u_0x/l$，完成第(1)问。",
+        "第(2)问先找稳态 $U$：$\\kappa U''+q=0$ 积分两次，再代两个端点，得 $U=u_0x/l+q x(l-x)/(2\\kappa)$。",
+        "令 $w=u-U$，源项与非零边界一起被消去：$w_t=\\kappa w_{xx}$、$w(0,t)=w(l,t)=0$，初温差 $w(x,0)=-q x(l-x)/(2\\kappa)$。",
+        "投影得到 $b_n=-\\frac{q}{\\kappa l}\\int_0^l x(l-x)\\sin(n\\pi x/l)dx=-\\frac{2ql^2[1-(-1)^n]}{\\kappa n^3\\pi^3}$。因此偶数项为零，奇数项系数为 $-4ql^2/(\\kappa n^3\\pi^3)$。",
+        "写 $u=U+\\sum_{n\\ge1}b_n e^{-\\kappa(n\\pi/l)^2t}\\sin(n\\pi x/l)$。检查 $t=0$ 时级数恰抵消稳态中的抛物线项，$t\\to\\infty$ 时留下 $U$；两端温度始终不变。"
       ],
       "check": {
         "question": "t 很大时温度还是原来的直线吗？",
@@ -521,11 +562,12 @@
       "goal": "Find how a current-carrying rod approaches its heated steady state.",
       "recognize": "With a heat source and nonzero boundary values, find the steady state U first, then expand u−U in sines.",
       "steps": [
-        "A segment has resistance rdx/S and Joule heating rate I²rdx/S. Divide by heat capacity to get q=I²r/(ρcS²).",
-        "Write uₜ=κuₓₓ+q, κ=k/(ρc), with the given endpoint and initial temperatures.",
-        "Solve κU″+q=0 using the endpoint temperatures: U is linear plus parabolic.",
-        "Set w=u−U. Its endpoints are zero and its initial data are the negative parabola, not the original temperature.",
-        "Project this difference: only odd sine modes remain, each multiplied by e^(−κkₙ²t)."
+        "Take a rod segment of length $dx$. Its heat storage rate is $\\rho cS u_tdx$, net conduction input is $kS u_{xx}dx$, and resistance is $r\\,dx/S$, giving Joule heating $I^2r\\,dx/S$.",
+        "Divide the heat balance by $\\rho cSdx$ to obtain $u_t=\\kappa u_{xx}+q$, with $\\kappa=k/(\\rho c)$ and $q=I^2r/(\\rho cS^2)$. Add $u(0,t)=0$, $u(l,t)=u_0$, and $u(x,0)=u_0x/l$ to complete part (1).",
+        "For part (2), first find the steady state $U$. Integrate $\\kappa U''+q=0$ twice and impose the two endpoint values to get $U=u_0x/l+q x(l-x)/(2\\kappa)$.",
+        "Set $w=u-U$ to remove both the source and the nonzero boundary: $w_t=\\kappa w_{xx}$, $w(0,t)=w(l,t)=0$, and $w(x,0)=-q x(l-x)/(2\\kappa)$.",
+        "Projection gives $b_n=-\\frac{q}{\\kappa l}\\int_0^l x(l-x)\\sin(n\\pi x/l)dx=-\\frac{2ql^2[1-(-1)^n]}{\\kappa n^3\\pi^3}$. Even terms vanish; odd terms have coefficient $-4ql^2/(\\kappa n^3\\pi^3)$.",
+        "Write $u=U+\\sum_{n\\ge1}b_n e^{-\\kappa(n\\pi/l)^2t}\\sin(n\\pi x/l)$. At $t=0$ the series cancels the parabolic part of $U$; as $t\\to\\infty$ only $U$ remains, while both endpoint temperatures stay fixed."
       ],
       "check": {
         "question": "Does the long-time temperature remain the original straight line?",
@@ -538,10 +580,11 @@
       "goal": "把剩余水化热正确换成热方程里的热源。",
       "recognize": "Q 是还没释放的能量，热方程需要每秒释放多少能量，也就是 −Qₜ。",
       "steps": [
-        "先解 Qₜ=−βQ，得到 Q=Q₀e^(−βt)。",
-        "取负导数，得到正的放热率 βQ₀e^(−βt)。",
-        "把它加进热守恒 ρcuₜ=kΔu+热源，再除以 ρc 得标准热方程。",
-        "说明没有初始温度和边界时只能建方程，不能唯一算出温度。"
+        "把 $Q$ 理解为尚未释放的单位体积水化热，而不是温度。由 $Q'=-\\beta Q$、$Q(0)=Q_0$，分离变量得 $Q(t)=Q_0e^{-\\beta t}$。",
+        "温度方程需要每单位时间释放多少热量，因此热源是 $q=-Q'=\\beta Q_0e^{-\\beta t}$。这里负号把储存量的减少变成正的放热率。",
+        "单位体积热容是 $\\rho c$；均匀材料的导热净流入率是 $k\\Delta u$。写局部守恒 $\\rho c u_t=k\\Delta u+q$。",
+        "除以 $\\rho c$ 得 $u_t=\\frac{k}{\\rho c}\\Delta u+\\frac{\\beta Q_0}{\\rho c}e^{-\\beta t}$。若初始储热随位置变化，将 $Q_0$ 改成 $Q_0(\\mathbf x)$ 即可。",
+        "检查绝热且空间均匀的极端情形：$u_t=q/(\\rho c)>0$，所以放热使温度上升。题目未给几何、温度初值和边界，不能继续声称有唯一温度解。"
       ],
       "check": {
         "question": "能把 Q₀e^(−βt) 直接作为功率密度吗？",
@@ -552,10 +595,11 @@
       "goal": "Convert remaining hydration energy into the source of a heat equation.",
       "recognize": "Q is unreleased energy. The heat equation needs energy released per second, which is −Qₜ.",
       "steps": [
-        "Solve Qₜ=−βQ to get Q=Q₀e^(−βt).",
-        "Take the negative derivative: the positive heat-release rate is βQ₀e^(−βt).",
-        "Insert it in ρcuₜ=kΔu+source, then divide by ρc for standard form.",
-        "Without initial temperature and boundaries, formulate only the equation; temperature is not uniquely determined."
+        "Interpret $Q$ as stored hydration heat per unit volume, rather than temperature. Solving $Q'=-\\beta Q$ with $Q(0)=Q_0$ gives $Q(t)=Q_0e^{-\\beta t}$.",
+        "The temperature equation needs heat released per unit time, so the source is $q=-Q'=\\beta Q_0e^{-\\beta t}$. The minus sign converts a decrease in stored heat into a positive release rate.",
+        "The heat capacity per unit volume is $\\rho c$, and net conduction input in a uniform material is $k\\Delta u$. Local conservation is $\\rho c u_t=k\\Delta u+q$.",
+        "Divide by $\\rho c$ to obtain $u_t=\\frac{k}{\\rho c}\\Delta u+\\frac{\\beta Q_0}{\\rho c}e^{-\\beta t}$. If stored heat varies spatially, replace $Q_0$ by $Q_0(\\mathbf x)$.",
+        "Check an insulated, spatially uniform case: $u_t=q/(\\rho c)>0$, so released heat raises the temperature. Without geometry, initial temperature, and boundary conditions, no unique temperature field can be determined."
       ],
       "check": {
         "question": "Can Q₀e^(−βt) itself be used as power density?",
@@ -568,10 +612,12 @@
       "goal": "把太阳入射和环境散热同时写进球面的边界条件。",
       "recognize": "边界条件来自表面通量平衡。球面不同位置接收的日照不同，背面没有直接入射。",
       "steps": [
-        "先定义外法向 n 和指向太阳的 s；吸收通量是 q₀max(0,n·s)。",
-        "外向导热通量是 −k∂ₙu；将它等于“向外散热−吸收日照”。",
-        "采用牛顿换热时散热是 h(u−θ)，得到 kuᵣ+h(u−θ)=入射通量。",
-        "若采用黑体辐射，换成 σ(u⁴−θ⁴)，温度必须用开尔文；题干未给模型时要明说假设。"
+        "在球面 $r=r_0$ 取外法向 $\\mathbf n$，令 $\\mathbf s$ 指向太阳，夹角为 $\\alpha$。只有迎光半球吸收日光，单位面积输入是 $J=q_0\\max(0,\\cos\\alpha)$。",
+        "傅里叶定律给外向导热流 $-k\\partial_nu=-ku_r$。把向环境的净散热记为 $R(u,\\theta)$，表面能量平衡是 $-ku_r=R-J$。",
+        "整理成便于考试书写的形式：$ku_r+R(u,\\theta)=q_0\\max(0,\\cos\\alpha)$。环境温度 $\\theta$ 进入散热律，不等于把表面温度直接固定为 $\\theta$。",
+        "若采用牛顿换热，写 $R=h(u-\\theta)$，得到线性 Robin 条件 $ku_r+h(u-\\theta)=J$；$h$ 是表面换热系数。",
+        "若采用理想黑体辐射且忽略对流，写 $R=\\sigma_{\\rm SB}(u^4-\\theta^4)$；此时温度必须用 Kelvin，边界是非线性的。",
+        "题干没给散热定律，应明确所选模型。检查阴面 $J=0$，检查无日照且 $u=\\theta$ 时净换热为零；不能把整个球面的入射量都写成 $q_0$。"
       ],
       "check": {
         "question": "球背面能否也写日照通量 q₀？",
@@ -582,10 +628,12 @@
       "goal": "Include both solar absorption and environmental heat loss in the sphere’s boundary.",
       "recognize": "The boundary follows from local surface flux balance. Sunlight varies over the sphere and does not directly hit the shaded side.",
       "steps": [
-        "Define outward normal n and sunward direction s. Absorbed flux is q₀max(0,n·s).",
-        "Outward conductive flux is −k∂ₙu. Set it equal to outward heat loss minus absorbed sunlight.",
-        "For Newton cooling, heat loss is h(u−θ), giving kuᵣ+h(u−θ)=incident flux.",
-        "For blackbody radiation use σ(u⁴−θ⁴) and kelvin temperatures. State the assumption because the question does not specify a model."
+        "On the sphere $r=r_0$, take outward normal $\\mathbf n$ and let $\\mathbf s$ point toward the sun, with angle $\\alpha$ between them. Only the illuminated hemisphere absorbs sunlight, with input $J=q_0\\max(0,\\cos\\alpha)$ per unit area.",
+        "Fourier's law gives outward conduction flux $-k\\partial_nu=-ku_r$. Calling net heat loss to the surroundings $R(u,\\theta)$, surface balance is $-ku_r=R-J$.",
+        "Rearrange to the exam-ready form $ku_r+R(u,\\theta)=q_0\\max(0,\\cos\\alpha)$. Ambient temperature $\\theta$ enters the loss law; it does not fix the surface temperature to $\\theta$.",
+        "For Newton cooling, use $R=h(u-\\theta)$ to obtain the linear Robin condition $ku_r+h(u-\\theta)=J$, where $h$ is the heat-transfer coefficient.",
+        "For ideal blackbody radiation without convection, use $R=\\sigma_{\\rm SB}(u^4-\\theta^4)$. Temperatures must be in Kelvin, and the boundary is nonlinear.",
+        "State the chosen loss model because the question does not specify one. Check $J=0$ on the dark side and zero net transfer when there is no sunlight and $u=\\theta$; the incident flux is not $q_0$ everywhere."
       ],
       "check": {
         "question": "Can the back of the sphere also receive flux q₀?",
@@ -598,11 +646,12 @@
       "goal": "用混合边界算细杆的降温。",
       "recognize": "左端零温控制值，右端绝热控制导数；这种组合选半整数正弦。",
       "steps": [
-        "先写 uₜ=κuₓₓ，u(0,t)=0，uₓ(l,t)=0，初温 x(l−x)。",
-        "解空间边界，取 kₙ=(n+1/2)π/l 和 sin(kₙx)，n 从 0 开始。",
-        "对 x(l−x) 做投影；两次分部积分后保留 4/(lkₙ³)−2(−1)ⁿ/kₙ² 两项。",
-        "每项乘 e^(−κkₙ²t) 后相加；长期全部降到 0。",
-        "初温在右端导数为 −l，与刚开始的绝热条件不相容；按内部或 L² 极限恢复初温。"
+        "第(1)问写 $u_t=\\kappa u_{xx}$，$\\kappa=k/(\\rho c)>0$；零温端给 $u(0,t)=0$，绝热端给 $u_x(l,t)=0$，初温为 $x(l-x)$。原书第4、5题题面相同，解也应相同。",
+        "第(2)问令 $u=X(x)T(t)$。$X(0)=0$ 选正弦，再由 $X'(l)=0$ 得 $k_n=(n+1/2)\\pi/l$，空间基为 $\\sin(k_nx)$，$n\\ge0$。",
+        "时间方程是 $T'=-\\kappa k_n^2T$，所以每项乘 $e^{-\\kappa k_n^2t}$；负号表示热扩散削弱温度差。",
+        "初温投影 $A_n=\\frac2l\\int_0^l f(x)\\sin(k_nx)dx$，$f=x(l-x)$。第一次分部积分的端点项为零，因为 $f(0)=f(l)=0$。",
+        "第二次分部积分用 $f'(l)=-l$、$f''=-2$：积分等于 $-l(-1)^n/k_n^2+2/k_n^3$，故 $A_n=4/(lk_n^3)-2(-1)^n/k_n^2$。",
+        "合成 $u=\\sum_{n\\ge0}A_n\\sin(k_nx)e^{-\\kappa k_n^2t}$。初温导数在右端不是零，初值按内部或 $L^2$ 极限恢复；$t>0$ 时绝热条件成立，长期所有模态衰减到零。"
       ],
       "check": {
         "question": "n=0 的波数为 0 吗？",
@@ -613,11 +662,12 @@
       "goal": "Find heat decay with mixed boundaries.",
       "recognize": "The left end prescribes temperature and the right prescribes its derivative. This combination selects half-integer sine modes.",
       "steps": [
-        "Write uₜ=κuₓₓ, u(0,t)=0, uₓ(l,t)=0, and initial temperature x(l−x).",
-        "Use kₙ=(n+1/2)π/l and sin(kₙx), starting at n=0.",
-        "Project x(l−x). Two integrations by parts give both terms 4/(lkₙ³)−2(−1)ⁿ/kₙ².",
-        "Multiply each mode by e^(−κkₙ²t) and sum. All modes eventually decay to zero.",
-        "The initial derivative −l conflicts with the insulated end at t=0. Recover the initial data by interior or L² limits."
+        "For part (1), write $u_t=\\kappa u_{xx}$ with $\\kappa=k/(\\rho c)>0$, boundaries $u(0,t)=0$ and $u_x(l,t)=0$, and initial temperature $x(l-x)$. Textbook questions 4 and 5 are identical and have the same solution.",
+        "For part (2), set $u=X(x)T(t)$. The condition $X(0)=0$ selects sine, and $X'(l)=0$ gives $k_n=(n+1/2)\\pi/l$, so the basis is $\\sin(k_nx)$ for $n\\ge0$.",
+        "The time equation is $T'=-\\kappa k_n^2T$, giving factor $e^{-\\kappa k_n^2t}$ for each mode. The negative sign represents decay of temperature differences.",
+        "Project the initial temperature using $A_n=\\frac2l\\int_0^l f(x)\\sin(k_nx)dx$, where $f=x(l-x)$. The first integration by parts has zero endpoint term because $f(0)=f(l)=0$.",
+        "A second integration by parts uses $f'(l)=-l$ and $f''=-2$, giving integral $-l(-1)^n/k_n^2+2/k_n^3$. Thus $A_n=4/(lk_n^3)-2(-1)^n/k_n^2$.",
+        "Assemble $u=\\sum_{n\\ge0}A_n\\sin(k_nx)e^{-\\kappa k_n^2t}$. The initial right-end derivative is nonzero, so recover initial data by interior or $L^2$ limits. The insulated condition holds for $t>0$, and all modes decay to zero eventually."
       ],
       "check": {
         "question": "Is the n=0 wavenumber zero?",
@@ -630,11 +680,12 @@
       "goal": "用混合边界算细杆的降温；确认这就是上一题的原书重复题。",
       "recognize": "左端零温控制值，右端绝热控制导数；这种组合选半整数正弦。",
       "steps": [
-        "先写 uₜ=κuₓₓ，u(0,t)=0，uₓ(l,t)=0，初温 x(l−x)。",
-        "解空间边界，取 kₙ=(n+1/2)π/l 和 sin(kₙx)，n 从 0 开始。",
-        "对 x(l−x) 做投影；两次分部积分后保留 4/(lkₙ³)−2(−1)ⁿ/kₙ² 两项。",
-        "每项乘 e^(−κkₙ²t) 后相加；长期全部降到 0。",
-        "初温在右端导数为 −l，与刚开始的绝热条件不相容；按内部或 L² 极限恢复初温。"
+        "第(1)问写 $u_t=\\kappa u_{xx}$，$\\kappa=k/(\\rho c)>0$；零温端给 $u(0,t)=0$，绝热端给 $u_x(l,t)=0$，初温为 $x(l-x)$。原书第4、5题题面相同，解也应相同。",
+        "第(2)问令 $u=X(x)T(t)$。$X(0)=0$ 选正弦，再由 $X'(l)=0$ 得 $k_n=(n+1/2)\\pi/l$，空间基为 $\\sin(k_nx)$，$n\\ge0$。",
+        "时间方程是 $T'=-\\kappa k_n^2T$，所以每项乘 $e^{-\\kappa k_n^2t}$；负号表示热扩散削弱温度差。",
+        "初温投影 $A_n=\\frac2l\\int_0^l f(x)\\sin(k_nx)dx$，$f=x(l-x)$。第一次分部积分的端点项为零，因为 $f(0)=f(l)=0$。",
+        "第二次分部积分用 $f'(l)=-l$、$f''=-2$：积分等于 $-l(-1)^n/k_n^2+2/k_n^3$，故 $A_n=4/(lk_n^3)-2(-1)^n/k_n^2$。",
+        "合成 $u=\\sum_{n\\ge0}A_n\\sin(k_nx)e^{-\\kappa k_n^2t}$。初温导数在右端不是零，初值按内部或 $L^2$ 极限恢复；$t>0$ 时绝热条件成立，长期所有模态衰减到零。"
       ],
       "check": {
         "question": "n=0 的波数为 0 吗？",
@@ -645,11 +696,12 @@
       "goal": "Find heat decay with mixed boundaries; this is the textbook duplicate of the preceding question.",
       "recognize": "The left end prescribes temperature and the right prescribes its derivative. This combination selects half-integer sine modes.",
       "steps": [
-        "Write uₜ=κuₓₓ, u(0,t)=0, uₓ(l,t)=0, and initial temperature x(l−x).",
-        "Use kₙ=(n+1/2)π/l and sin(kₙx), starting at n=0.",
-        "Project x(l−x). Two integrations by parts give both terms 4/(lkₙ³)−2(−1)ⁿ/kₙ².",
-        "Multiply each mode by e^(−κkₙ²t) and sum. All modes eventually decay to zero.",
-        "The initial derivative −l conflicts with the insulated end at t=0. Recover the initial data by interior or L² limits."
+        "For part (1), write $u_t=\\kappa u_{xx}$ with $\\kappa=k/(\\rho c)>0$, boundaries $u(0,t)=0$ and $u_x(l,t)=0$, and initial temperature $x(l-x)$. Textbook questions 4 and 5 are identical and have the same solution.",
+        "For part (2), set $u=X(x)T(t)$. The condition $X(0)=0$ selects sine, and $X'(l)=0$ gives $k_n=(n+1/2)\\pi/l$, so the basis is $\\sin(k_nx)$ for $n\\ge0$.",
+        "The time equation is $T'=-\\kappa k_n^2T$, giving factor $e^{-\\kappa k_n^2t}$ for each mode. The negative sign represents decay of temperature differences.",
+        "Project the initial temperature using $A_n=\\frac2l\\int_0^l f(x)\\sin(k_nx)dx$, where $f=x(l-x)$. The first integration by parts has zero endpoint term because $f(0)=f(l)=0$.",
+        "A second integration by parts uses $f'(l)=-l$ and $f''=-2$, giving integral $-l(-1)^n/k_n^2+2/k_n^3$. Thus $A_n=4/(lk_n^3)-2(-1)^n/k_n^2$.",
+        "Assemble $u=\\sum_{n\\ge0}A_n\\sin(k_nx)e^{-\\kappa k_n^2t}$. The initial right-end derivative is nonzero, so recover initial data by interior or $L^2$ limits. The insulated condition holds for $t>0$, and all modes decay to zero eventually."
       ],
       "check": {
         "question": "Is the n=0 wavenumber zero?",
@@ -662,10 +714,11 @@
       "goal": "直接读出已给模式的温度解，避免不必要的积分。",
       "recognize": "初温已经是固定端的正弦模式；保留原来的 3、2 系数，分别加各自的衰减。",
       "steps": [
-        "写两端零温热方程，取 κ=k/(ρc)。",
-        "识别第一项是 n=1，第二项是 n=3。",
-        "第一项乘 e^(−κπ²t/l²)，第三模态项乘 e^(−9κπ²t/l²)。",
-        "把两项相加，令 t=0 检查原初温；长期第一项占主导。"
+        "第(1)问写 $u_t=\\kappa u_{xx}$、$u(0,t)=u(l,t)=0$，初温为 $3\\sin(\\pi x/l)+2\\sin(3\\pi x/l)$；$\\kappa=k/(\\rho c)$。",
+        "两端零温的基为 $\\sin(n\\pi x/l)$。初温已经按这个基展开，所以第(2)问直接读出 $a_1=3$、$a_3=2$，其他系数为零，无需再积分。",
+        "第一模态满足 $q_1'=-\\kappa(\\pi/l)^2q_1$、$q_1(0)=3$，所以 $q_1=3e^{-\\kappa\\pi^2t/l^2}$。",
+        "第三模态满足 $q_3'=-\\kappa(3\\pi/l)^2q_3$、$q_3(0)=2$，所以 $q_3=2e^{-9\\kappa\\pi^2t/l^2}$；指数中的倍数来自频率平方。",
+        "合成 $u=q_1\\sin(\\pi x/l)+q_3\\sin(3\\pi x/l)$。检查 $t=0$ 恢复初温，两端恒为零；第三模态先衰减，长期由第一模态主导。"
       ],
       "check": {
         "question": "哪个模式衰减更快，快在指数的几倍？",
@@ -676,10 +729,11 @@
       "goal": "Read the temperature solution directly from the given modes.",
       "recognize": "The initial data already use the fixed-end sine modes. Keep coefficients 3 and 2 and attach each mode’s decay factor.",
       "steps": [
-        "Write the zero-end-temperature heat equation with κ=k/(ρc).",
-        "Identify n=1 in the first term and n=3 in the second.",
-        "Multiply the first by e^(−κπ²t/l²) and the third mode by e^(−9κπ²t/l²).",
-        "Add and set t=0 to check the data. The first mode dominates at long times."
+        "For part (1), write $u_t=\\kappa u_{xx}$, $u(0,t)=u(l,t)=0$, and initial temperature $3\\sin(\\pi x/l)+2\\sin(3\\pi x/l)$, with $\\kappa=k/(\\rho c)$.",
+        "The zero-temperature basis is $\\sin(n\\pi x/l)$. Since the initial data are already expanded in it, part (2) has $a_1=3$ and $a_3=2$, with all others zero; no projection integral is needed.",
+        "The first mode satisfies $q_1'=-\\kappa(\\pi/l)^2q_1$ and $q_1(0)=3$, giving $q_1=3e^{-\\kappa\\pi^2t/l^2}$.",
+        "The third mode satisfies $q_3'=-\\kappa(3\\pi/l)^2q_3$ and $q_3(0)=2$, giving $q_3=2e^{-9\\kappa\\pi^2t/l^2}$. The factor 9 comes from squaring the spatial frequency.",
+        "Combine $u=q_1\\sin(\\pi x/l)+q_3\\sin(3\\pi x/l)$. At $t=0$ it recovers the data and both ends remain zero; the third mode decays faster, leaving the first dominant at long times."
       ],
       "check": {
         "question": "Which mode decays faster, and by what rate factor?",
@@ -692,11 +746,12 @@
       "goal": "判断产热反馈能否战胜散热，找到临界长度。",
       "recognize": "温度越高产热越多，这是正反馈；每个模式的“产热增长率−扩散衰减率”决定它增大还是减小。",
       "steps": [
-        "先按单位长度写 Cuₜ=Kuₓₓ+βu，其中 C=ρcS，K=kS；不要先漏掉热容。",
-        "除以 C，定义 κ=K/C，γ=β/C；用正弦投影求初温系数 aₙ。",
-        "每个模式的时间因子是 e^([γ−κ(nπ/l)²]t)，检查括号正负。",
-        "n=1 最先增长，令 γ−κ(π/l)²=0，得 l_c=π√(κ/γ)。",
-        "超过临界只说明存在增长模式；初温也必须激发它，严格零初温仍为零。"
+        "题目的 $\\beta u$ 是单位长度产热率。先记单位长度热容 $C=\\rho cS$、导热参数 $K=kS$，写 $Cu_t=Ku_{xx}+\\beta u$，避免把有单位的 $\\beta$ 直接当增长率。",
+        "除以 $C$，令 $\\kappa=K/C$、$\\gamma=\\beta/C$，得到 $u_t=\\kappa u_{xx}+\\gamma u$。两端零温，初温 $\\varphi(x)$。",
+        "第(1)问将初温投影为 $a_n=\\frac2l\\int_0^l\\varphi(x)\\sin(n\\pi x/l)dx$，写 $u=\\sum q_n(t)\\sin(n\\pi x/l)$。",
+        "代入方程得到 $q_n'=[\\gamma-\\kappa(n\\pi/l)^2]q_n$，所以 $q_n=a_ne^{[\\gamma-\\kappa(n\\pi/l)^2]t}$。括号内就是该模态的净增长率。",
+        "第(2)问找最先增长的模态。$n=1$ 的扩散损失最小，令 $\\gamma-\\kappa(\\pi/l_c)^2=0$，得 $l_c=\\pi\\sqrt{\\kappa/\\gamma}=\\pi\\sqrt{kS/\\beta}$。",
+        "比较 $l$ 与 $l_c$：短于临界时全衰减，等于临界时第一模态不变，长于临界时存在增长模态。实际增长还要求相应 $a_n\\ne0$；严格零初温仍给零解。"
       ],
       "check": {
         "question": "l=l_c 时第一模式会指数增大吗？",
@@ -707,11 +762,12 @@
       "goal": "Decide whether heat-generation feedback overcomes diffusion and find the critical length.",
       "recognize": "Hotter material generates more heat. Each mode grows or decays according to generation rate minus diffusion decay rate.",
       "steps": [
-        "Use per-length balance Cuₜ=Kuₓₓ+βu with C=ρcS and K=kS; retain heat capacity.",
-        "Divide by C, define κ=K/C and γ=β/C, and sine-project the initial temperature for aₙ.",
-        "Each mode has factor e^([γ−κ(nπ/l)²]t). Inspect the sign of its exponent.",
-        "The n=1 mode grows first. Set γ−κ(π/l)²=0 to get l_c=π√(κ/γ).",
-        "Above threshold, growth requires a nonzero initial projection on a growing mode. Exactly zero initial data remain zero."
+        "The source $\\beta u$ is heat produced per unit length per unit time. Define heat capacity per unit length $C=\\rho cS$ and conduction parameter $K=kS$, then write $Cu_t=Ku_{xx}+\\beta u$ rather than treating $\\beta$ itself as a growth rate.",
+        "Divide by $C$ and set $\\kappa=K/C$ and $\\gamma=\\beta/C$, giving $u_t=\\kappa u_{xx}+\\gamma u$. Both endpoint temperatures are zero and the initial temperature is $\\varphi(x)$.",
+        "For part (1), project the initial data with $a_n=\\frac2l\\int_0^l\\varphi(x)\\sin(n\\pi x/l)dx$, and write $u=\\sum q_n(t)\\sin(n\\pi x/l)$.",
+        "Substitution gives $q_n'=[\\gamma-\\kappa(n\\pi/l)^2]q_n$, so $q_n=a_ne^{[\\gamma-\\kappa(n\\pi/l)^2]t}$. The bracket is that mode's net growth rate.",
+        "For part (2), find the first mode that can grow. Mode $n=1$ has the smallest diffusion loss; solving $\\gamma-\\kappa(\\pi/l_c)^2=0$ gives $l_c=\\pi\\sqrt{\\kappa/\\gamma}=\\pi\\sqrt{kS/\\beta}$.",
+        "Compare $l$ with $l_c$: below it all modes decay, at it the first is constant, and above it growing modes exist. Actual growth requires a nonzero coefficient in a growing mode; exactly zero initial data still give the zero solution."
       ],
       "check": {
         "question": "At l=l_c, does the first mode grow exponentially?",
@@ -724,11 +780,12 @@
       "goal": "计算绝热薄片如何把温度逐渐均匀化。",
       "recognize": "绝热控制法向导数，两个方向都选余弦；常数模式就是不会流失的平均温度。",
       "steps": [
-        "写二维热方程，四边的法向导数均为 0。",
-        "取 cos(mπx/a)cos(nπy/a)，m、n 都从 0 开始，包括只沿一个方向变化的模式。",
-        "投影初温求 Cₘₙ：某编号为 0 时范数不同，用 η₀=1、ηⱼ=2 统一写系数。",
-        "给每个模式乘 e^(−κπ²(m²+n²)t/a²) 并求和。",
-        "C₀₀ 不衰减，等于初始平均温度；用总热量守恒检查长期答案。"
+        "四边绝热表示法向导数为零：$u_x(0,y,t)=u_x(a,y,t)=0$、$u_y(x,0,t)=u_y(x,a,t)=0$；方程为 $u_t=\\kappa(u_{xx}+u_{yy})$。",
+        "每个方向选余弦并保留零频：$S_{mn}=\\cos(m\\pi x/a)\\cos(n\\pi y/a)$，$m,n\\ge0$。$m=0$ 或 $n=0$ 表示该方向温度不变化，不能删去。",
+        "常数基的范数为 $a$，非零余弦的范数为 $a/2$。令 $\\eta_0=1$、$\\eta_j=2$（$j>0$），用 $C_{mn}=\\frac{\\eta_m\\eta_n}{a^2}\\iint\\varphi S_{mn}\\,dxdy$ 统一写出投影。",
+        "两个方向的本征值相加，所以第 $(m,n)$ 模态随时间乘 $e^{-\\kappa\\pi^2(m^2+n^2)t/a^2}$。",
+        "合成 $u=\\sum_{m,n\\ge0}C_{mn}e^{-\\kappa\\pi^2(m^2+n^2)t/a^2}S_{mn}$。用 $t=0$ 检查初温，用余弦导数中的正弦检查四边通量为零。",
+        "只有 $(0,0)$ 模态不衰减，故长期温度为 $C_{00}=a^{-2}\\iint\\varphi\\,dxdy$。它是初始平均温度，与全绝热时总热量守恒相符。"
       ],
       "check": {
         "question": "长期温度一定是 0 吗？",
@@ -739,11 +796,12 @@
       "goal": "Calculate how an insulated plate becomes uniform in temperature.",
       "recognize": "Insulation prescribes normal derivatives, so use cosines in both directions. The constant mode is the conserved mean temperature.",
       "steps": [
-        "Write the two-dimensional heat equation with zero normal derivative on all four edges.",
-        "Use cos(mπx/a)cos(nπy/a), with both indices starting at zero, including modes varying in only one direction.",
-        "Project the initial temperature for Cₘₙ. Zero indices have different norms; use η₀=1 and ηⱼ=2.",
-        "Multiply each mode by e^(−κπ²(m²+n²)t/a²) and sum.",
-        "C₀₀ does not decay and equals the initial mean. Check the long-time answer using heat conservation."
+        "Insulation means zero normal derivative: $u_x(0,y,t)=u_x(a,y,t)=0$ and $u_y(x,0,t)=u_y(x,a,t)=0$. The equation is $u_t=\\kappa(u_{xx}+u_{yy})$.",
+        "Use cosines in each direction and retain zero frequencies: $S_{mn}=\\cos(m\\pi x/a)\\cos(n\\pi y/a)$ for $m,n\\ge0$. A zero index means no variation in that direction and must not be omitted.",
+        "The constant basis has squared norm $a$, while a nonzero cosine has norm $a/2$. Define $\\eta_0=1$ and $\\eta_j=2$ for $j>0$, then write $C_{mn}=\\frac{\\eta_m\\eta_n}{a^2}\\iint\\varphi S_{mn}\\,dxdy$.",
+        "The two spatial eigenvalues add, so mode $(m,n)$ has time factor $e^{-\\kappa\\pi^2(m^2+n^2)t/a^2}$.",
+        "Assemble $u=\\sum_{m,n\\ge0}C_{mn}e^{-\\kappa\\pi^2(m^2+n^2)t/a^2}S_{mn}$. Set $t=0$ to check the initial data; sine factors in the cosine derivatives verify zero flux on all edges.",
+        "Only mode $(0,0)$ does not decay, so the final temperature is $C_{00}=a^{-2}\\iint\\varphi\\,dxdy$, the initial average. This agrees with heat conservation under complete insulation."
       ],
       "check": {
         "question": "Must the long-time temperature be zero?",
@@ -756,11 +814,12 @@
       "goal": "从矩形顶边温度求整个矩形内的稳态温度。",
       "recognize": "这是无时间的 Laplace 方程。先满足三条零边，再用顶边来定每项系数。",
       "steps": [
-        "左右零值选择 sin(nπx/a)，记 kₙ=nπ/a。",
-        "另一个方向满足 Y″−kₙ²Y=0；底边零值选择 sinh(kₙy)。",
-        "除以 sinh(kₙb)，让这个因子到顶边 y=b 时等于 1。",
-        "将 f(x) 按正弦投影得 fₙ，乘归一化的双曲因子后求和。",
-        "若要四角也连续，检查 f(0)=f(a)=0；否则只能在边的内部按极限恢复数据。"
+        "左右两边温度为零，先沿 $x$ 选 $X_n=\\sin(k_nx)$，$k_n=n\\pi/a$；这一选择自动处理两条齐次边界。",
+        "把 $u=X_nY_n$ 代入 $u_{xx}+u_{yy}=0$，得到 $Y_n''-k_n^2Y_n=0$，所以 $Y_n=C\\sinh(k_ny)+D\\cosh(k_ny)$。",
+        "底边 $u(x,0)=0$ 令 $D=0$。把竖向函数归一化为 $R_n(y)=\\sinh(k_ny)/\\sinh(k_nb)$，使它在底边为零、顶边为 1。",
+        "将顶边数据展开为 $f(x)=\\sum f_n\\sin(k_nx)$，其中 $f_n=\\frac2a\\int_0^a f(s)\\sin(k_ns)ds$。积分中的 $s$ 是哑变量，避免与待求位置混淆。",
+        "写 $u=\\sum_{n\\ge1}f_nR_n(y)\\sin(k_nx)$；令 $y=b$ 时 $R_n=1$，恰好还原 $f$，另三边逐项为零。",
+        "若要求闭矩形上的连续解，还要检查 $f(0)=f(a)=0$，否则角点同时被要求取两个不同值。角点不相容时应只在边界内部按极限理解数据。"
       ],
       "check": {
         "question": "为什么用 sinh 而不是 cosh？",
@@ -771,11 +830,12 @@
       "goal": "Recover the steady temperature inside a rectangle from its top-edge data.",
       "recognize": "Laplace’s equation has no time variable. Satisfy the three zero edges first, then use the top edge to set coefficients.",
       "steps": [
-        "The zero side values select sin(nπx/a); set kₙ=nπ/a.",
-        "The other direction satisfies Y″−kₙ²Y=0. Zero at the bottom selects sinh(kₙy).",
-        "Divide by sinh(kₙb) so this factor equals 1 on the top edge.",
-        "Sine-project f(x) to obtain fₙ, multiply by the normalized hyperbolic factor, and sum.",
-        "Continuity at the corners requires f(0)=f(a)=0; otherwise recover data only in edge-interior limits."
+        "Since both vertical sides have zero temperature, choose $X_n=\\sin(k_nx)$ with $k_n=n\\pi/a$, automatically satisfying those homogeneous boundaries.",
+        "Substituting $u=X_nY_n$ into $u_{xx}+u_{yy}=0$ gives $Y_n''-k_n^2Y_n=0$, hence $Y_n=C\\sinh(k_ny)+D\\cosh(k_ny)$.",
+        "The bottom condition $u(x,0)=0$ sets $D=0$. Normalize the vertical factor as $R_n(y)=\\sinh(k_ny)/\\sinh(k_nb)$, which is zero at the bottom and one at the top.",
+        "Expand the top data as $f(x)=\\sum f_n\\sin(k_nx)$, where $f_n=\\frac2a\\int_0^a f(s)\\sin(k_ns)ds$. The dummy variable $s$ is distinct from the observation coordinate.",
+        "Write $u=\\sum_{n\\ge1}f_nR_n(y)\\sin(k_nx)$. At $y=b$, $R_n=1$ and the series recovers $f$, while the other three boundaries vanish term by term.",
+        "A continuous solution on the closed rectangle requires $f(0)=f(a)=0$; otherwise a corner is assigned two different values. With incompatible corners, interpret boundary values as limits along the interiors of edges."
       ],
       "check": {
         "question": "Why use sinh rather than cosh?",
@@ -788,11 +848,12 @@
       "goal": "求右边给导数、上下混合边界的矩形稳态场。",
       "recognize": "先找上下两条齐次边界对应的模式；右边给的是导数，归一化也必须对导数做。",
       "steps": [
-        "从 Y(0)=0、Y′(b)=0 得半整数模式 sin(μₙy)，μₙ=(n+1/2)π/b。",
-        "x 方向选 sinh(μₙx)，因为左边值要为 0。",
-        "将 f(y) 投影到这些半整数正弦上，得到 fₙ。",
-        "右边 x 导数是 μₙcosh(μₙa)，所以每项除以这个量，而不是除以 sinh。",
-        "求 uₓ 再令 x=a，检查分母抵消并恢复 f(y)。"
+        "先处理 $y$ 方向的齐次条件 $Y(0)=0$、$Y'(b)=0$：取 $Y=\\sin\\mu y$，再由 $\\cos\\mu b=0$ 得 $\\mu_n=(n+1/2)\\pi/b$，$n\\ge0$。",
+        "代入拉普拉斯方程得 $X_n''-\\mu_n^2X_n=0$。左边 $X_n(0)=0$ 排除余弦双曲项，只剩 $\\sinh(\\mu_nx)$。",
+        "右边给的是 $u_x$，所以先求导：$[\\sinh(\\mu_nx)]'=\\mu_n\\cosh(\\mu_nx)$。令 $R_n(x)=\\sinh(\\mu_nx)/[\\mu_n\\cosh(\\mu_na)]$，使 $R_n'(a)=1$。",
+        "把 $f(y)$ 投影到半整数正弦基：$f_n=\\frac2b\\int_0^b f(s)\\sin(\\mu_ns)ds$，其中范数是 $b/2$。",
+        "合成 $u=\\sum_{n\\ge0}f_nR_n(x)\\sin(\\mu_ny)$。对 $x$ 求导再令 $x=a$，检查分母完全消掉，得到 $f$ 的展开。",
+        "另外检查 $x=0$、$y=0$ 的函数值为零，$y=b$ 的导数为零。若误用 $\\sinh(\\mu_na)$ 作分母，得到的是右边位移归一化，不满足本题通量条件。"
       ],
       "check": {
         "question": "右边若给 uₓ=f，归一化分母应是什么？",
@@ -803,11 +864,12 @@
       "goal": "Solve a steady rectangle with prescribed right derivative and mixed top/bottom conditions.",
       "recognize": "Choose modes from the two homogeneous horizontal boundaries first. Because the right boundary specifies a derivative, normalize a derivative.",
       "steps": [
-        "Y(0)=0 and Y′(b)=0 give sin(μₙy), μₙ=(n+1/2)π/b.",
-        "Choose sinh(μₙx) in x because its left value must vanish.",
-        "Project f(y) onto these half-integer sine modes to obtain fₙ.",
-        "The right x derivative is μₙcosh(μₙa), so divide by that quantity, not by sinh.",
-        "Differentiate u in x and set x=a; the denominator cancels and recovers f(y)."
+        "First handle the homogeneous conditions $Y(0)=0$ and $Y'(b)=0$: choose $Y=\\sin\\mu y$, then $\\cos\\mu b=0$ gives $\\mu_n=(n+1/2)\\pi/b$ for $n\\ge0$.",
+        "The Laplace equation gives $X_n''-\\mu_n^2X_n=0$. The left condition $X_n(0)=0$ removes the hyperbolic cosine term, leaving $\\sinh(\\mu_nx)$.",
+        "The right boundary prescribes $u_x$, so differentiate first: $[\\sinh(\\mu_nx)]'=\\mu_n\\cosh(\\mu_nx)$. Define $R_n(x)=\\sinh(\\mu_nx)/[\\mu_n\\cosh(\\mu_na)]$ so that $R_n'(a)=1$.",
+        "Project $f(y)$ onto the half-integer sine basis: $f_n=\\frac2b\\int_0^b f(s)\\sin(\\mu_ns)ds$, using squared norm $b/2$.",
+        "Assemble $u=\\sum_{n\\ge0}f_nR_n(x)\\sin(\\mu_ny)$. Differentiate in $x$ and set $x=a$; the denominator cancels, leaving the expansion of $f$.",
+        "Also check zero values at $x=0$ and $y=0$, and zero derivative at $y=b$. A denominator $\\sinh(\\mu_na)$ would normalize the right value rather than the required flux."
       ],
       "check": {
         "question": "What denominator is required for uₓ=f at the right edge?",
@@ -820,11 +882,12 @@
       "goal": "处理两个非零边界：分成两道单边题再相加。",
       "recognize": "Laplace 方程是线性的，因此一部分只承担左边温度，另一部分只承担底边温度。",
       "steps": [
-        "令 u=v+w；v 左边为 Ay(b−y)、其余为 0，w 底边为 Bsin(πx/a)、其余为 0。",
-        "v 沿 y 用正弦；沿 x 用 sinh[nπ(a−x)/b]，以保证右边为 0。",
-        "投影左边抛物线，仅保留奇数模式，再按左端值归一化。",
-        "w 的底边已是单模态，直接用 sinh[π(b−y)/a]/sinh(πb/a)。",
-        "相加后逐边检查：在每条非零边上，另一部分必须恰好为 0。"
+        "用线性叠加 $u=v+w$：让 $v$ 只承担左边 $Ay(b-y)$，其余边为零；让 $w$ 只承担底边 $B\\sin(\\pi x/a)$，其余边为零。",
+        "左边驱动的部分沿 $y$ 用 $\\sin(n\\pi y/b)$；沿 $x$ 用 $\\sinh[n\\pi(a-x)/b]$，这样右边 $x=a$ 自动为零。再除以其左边值 $\\sinh(n\\pi a/b)$。",
+        "投影左边数据：$c_n=\\frac2b\\int_0^b Ay(b-y)\\sin(n\\pi y/b)dy=4Ab^2[1-(-1)^n]/(n^3\\pi^3)$。偶数项为零，奇数项为 $8Ab^2/(n^3\\pi^3)$。",
+        "因此 $v=\\sum_{n\\ge1}c_n\\frac{\\sinh[n\\pi(a-x)/b]}{\\sinh(n\\pi a/b)}\\sin(n\\pi y/b)$；若只写奇数和，令 $n=2m+1$。",
+        "底边数据已经是一个模态，无需积分。上边为零要求用 $b-y$，得到 $w=B\\frac{\\sinh[\\pi(b-y)/a]}{\\sinh(\\pi b/a)}\\sin(\\pi x/a)$。",
+        "最后相加并逐边核对：在左边 $w=0$，在底边 $v=0$，所以两部分不会干扰各自承担的数据；右边和顶边两部分都为零。"
       ],
       "check": {
         "question": "左边驱动的双曲函数为何用 a−x？",
@@ -835,11 +898,12 @@
       "goal": "Handle two nonzero boundaries by splitting into two single-edge problems.",
       "recognize": "Laplace’s equation is linear. One part carries only the left-edge data; the other carries only the bottom data.",
       "steps": [
-        "Set u=v+w. Give v left data Ay(b−y) and zero elsewhere; give w bottom data Bsin(πx/a) and zero elsewhere.",
-        "For v, use a sine in y and sinh[nπ(a−x)/b] in x so the right edge is zero.",
-        "Project the left parabola: only odd modes remain. Normalize each factor at the left edge.",
-        "The bottom data for w are one mode, so use sinh[π(b−y)/a]/sinh(πb/a) directly.",
-        "Add and check each edge. At every nonzero boundary, the other part must vanish."
+        "Split $u=v+w$ by linearity: let $v$ carry only the left data $Ay(b-y)$ with the other edges zero, and let $w$ carry only the bottom data $B\\sin(\\pi x/a)$.",
+        "For the left-driven part, use $\\sin(n\\pi y/b)$ in $y$ and $\\sinh[n\\pi(a-x)/b]$ in $x$, which vanishes at $x=a$. Divide by its left value $\\sinh(n\\pi a/b)$.",
+        "Project the left data: $c_n=\\frac2b\\int_0^b Ay(b-y)\\sin(n\\pi y/b)dy=4Ab^2[1-(-1)^n]/(n^3\\pi^3)$. Even terms vanish and odd terms equal $8Ab^2/(n^3\\pi^3)$.",
+        "Thus $v=\\sum_{n\\ge1}c_n\\frac{\\sinh[n\\pi(a-x)/b]}{\\sinh(n\\pi a/b)}\\sin(n\\pi y/b)$. For an odd-only sum, set $n=2m+1$.",
+        "The bottom data already form one mode, so no integral is needed. Zero top data require $b-y$, giving $w=B\\frac{\\sinh[\\pi(b-y)/a]}{\\sinh(\\pi b/a)}\\sin(\\pi x/a)$.",
+        "Add the parts and check each edge: $w=0$ on the left and $v=0$ on the bottom, so neither interferes with the other's prescribed data. Both vanish on the right and top."
       ],
       "check": {
         "question": "Why use a−x for the left-driven hyperbolic factor?",
@@ -852,10 +916,11 @@
       "goal": "把 Laguerre 方程改成总导数形式，并找到投影需要的权。",
       "recognize": "自伴形式把 y″、y′ 合在 (py′)′ 里；权函数是本征参数前的系数，不是 p。",
       "steps": [
-        "先试乘 e^(−x)，因为 (xe^(−x))′=(1−x)e^(−x)。",
-        "把前两项合成 (xe^(−x)y′)′。",
-        "和 (py′)′−qy+λwy=0 对照：p=xe^(−x)，q=0，λ=a，w=e^(−x)。",
-        "说明通常在 (0,∞) 使用；零点、无穷远还需选恰当边界行为，方程本身不决定完整谱。"
+        "目标是把 $xy''+(1-x)y'$ 合并成 $(py')'$。乘一个待求因子 $\\mu(x)$ 后，需要 $(\\mu x)'=\\mu(1-x)$。",
+        "展开等式：$x\\mu'+\\mu=\\mu-x\\mu$，所以 $\\mu'=-\\mu$；可取 $\\mu=e^{-x}$，正常数倍不会改变权的作用。",
+        "原方程乘 $e^{-x}$ 后，前两项正好是 $(xe^{-x}y')'$，因此自伴形式为 $(xe^{-x}y')'+ae^{-x}y=0$。",
+        "与 $(py')'-qy+\\lambda wy=0$ 对照：$p=xe^{-x}$、$q=0$、$\\lambda=a$、$w=e^{-x}$。权函数来自本征参数项，不能把 $p$ 当成权。",
+        "在通常区间 $(0,\\infty)$，$p,w$ 均为正；展开总导数可恢复原方程。要进一步讨论正交性或谱，还需选择端点正则/可积条件，单靠自伴化并未完成边界问题。"
       ],
       "check": {
         "question": "本题的权是 xe^(−x) 还是 e^(−x)？",
@@ -866,10 +931,11 @@
       "goal": "Convert Laguerre’s equation to a total-derivative form and identify the projection weight.",
       "recognize": "Self-adjoint form combines y″ and y′ into (py′)′. The weight is the coefficient of the eigenvalue parameter, not p.",
       "steps": [
-        "Try multiplying by e^(−x), since (xe^(−x))′=(1−x)e^(−x).",
-        "Combine the derivative terms into (xe^(−x)y′)′.",
-        "Compare with (py′)′−qy+λwy=0: p=xe^(−x), q=0, λ=a, w=e^(−x).",
-        "The usual interval is (0,∞). Appropriate behavior at zero and infinity is still needed to specify a spectrum."
+        "The goal is to combine $xy''+(1-x)y'$ into $(py')'$. After multiplying by an unknown factor $\\mu(x)$, require $(\\mu x)'=\\mu(1-x)$.",
+        "Expand to $x\\mu'+\\mu=\\mu-x\\mu$, hence $\\mu'=-\\mu$. Choose $\\mu=e^{-x}$; a positive constant multiple does not change the role of the weight.",
+        "Multiplying by $e^{-x}$ makes the first two terms exactly $(xe^{-x}y')'$, giving self-adjoint form $(xe^{-x}y')'+ae^{-x}y=0$.",
+        "Compare with $(py')'-qy+\\lambda wy=0$: $p=xe^{-x}$, $q=0$, $\\lambda=a$, and $w=e^{-x}$. Read the weight from the eigenvalue term, not from the derivative coefficient $p$.",
+        "On the usual interval $(0,\\infty)$, both $p$ and $w$ are positive. Expanding the total derivative recovers the equation. Orthogonality and spectra additionally require suitable endpoint conditions; self-adjoint rewriting alone is not a full boundary problem."
       ],
       "check": {
         "question": "Is the weight xe^(−x) or e^(−x)?",
@@ -882,10 +948,11 @@
       "goal": "把 Hermite 方程写成自伴形式，避免权函数差一个 2。",
       "recognize": "y′ 的系数 −2x 是 e^(−x²) 的对数导数，所以用高斯因子把导数项合并。",
       "steps": [
-        "乘 e^(−x²)，把前两项认成 (e^(−x²)y′)′。",
-        "若取 λ=2a，则权 w=e^(−x²)，p 也为 e^(−x²)，q=0。",
-        "若另取 λ=a，权要改成 2e^(−x²)；两种写法都可以，但不能混搭。",
-        "说明通常在全轴作带权积分，并要求端点行为使积分和边界项有意义。"
+        "为合并 $y''-2xy'$，寻找 $\\mu$ 使 $\\mu y''+\\mu' y'=\\mu(y''-2xy')$，故要求 $\\mu'/\\mu=-2x$。",
+        "积分 $\\ln\\mu=-x^2+C$，取 $\\mu=e^{-x^2}$。用 $\\mu'=-2x\\mu$ 检查符号。",
+        "将原方程乘该因子，得 $(e^{-x^2}y')'+2ae^{-x^2}y=0$，这就是所求自伴形式。",
+        "若定义 $\\lambda=2a$，则 $p=w=e^{-x^2}$、$q=0$；若坚持 $\\lambda=a$，权改为 $2e^{-x^2}$。参数和权必须一起选择，不能混用两套写法。",
+        "通常在全实轴使用内积 $\\int e^{-x^2}fg\\,dx$。高斯权让多项式乘积可积，但谱或正交性仍需说明无穷远边界项如何消失。"
       ],
       "check": {
         "question": "若 λ 定义为 a，w 能仍写 e^(−x²) 吗？",
@@ -896,10 +963,11 @@
       "goal": "Put Hermite’s equation in self-adjoint form without losing a factor of two.",
       "recognize": "The coefficient −2x is the logarithmic derivative of e^(−x²), so a Gaussian multiplier combines the derivatives.",
       "steps": [
-        "Multiply by e^(−x²) and identify the first two terms as (e^(−x²)y′)′.",
-        "If λ=2a, then w=e^(−x²), p=e^(−x²), and q=0.",
-        "If λ=a instead, use w=2e^(−x²). Both conventions work, but they must not be mixed.",
-        "The usual weighted integral is on the full line, with endpoint behavior making integrals and boundary terms meaningful."
+        "To combine $y''-2xy'$, seek $\\mu$ such that $\\mu y''+\\mu'y'=\\mu(y''-2xy')$. Thus $\\mu'/\\mu=-2x$.",
+        "Integrate to $\\ln\\mu=-x^2+C$ and choose $\\mu=e^{-x^2}$. Check the sign with $\\mu'=-2x\\mu$.",
+        "Multiply the equation by this factor to obtain the self-adjoint form $(e^{-x^2}y')'+2ae^{-x^2}y=0$.",
+        "If $\\lambda=2a$, then $p=w=e^{-x^2}$ and $q=0$. If $\\lambda=a$, use weight $2e^{-x^2}$ instead. Choose the parameter and weight consistently.",
+        "On the real line, use inner product $\\int e^{-x^2}fg\\,dx$. The Gaussian weight makes polynomial products integrable, but spectral or orthogonality arguments must still justify the vanishing boundary term at infinity."
       ],
       "check": {
         "question": "If λ is defined as a, can w still be e^(−x²)?",
@@ -912,11 +980,11 @@
       "goal": "推导 Chebyshev 正交时为什么要带倒平方根的权。",
       "recognize": "(1−x²) 的系数不会直接给权；先找乘子使导数项成为一个总导数。",
       "steps": [
-        "在 −1<x<1 乘以 1/√(1−x²)。",
-        "检查乘积求导：(√(1−x²)y′)′ 正好等于变换后的前两项。",
-        "读出 λ=n²，p=√(1−x²)，w=1/√(1−x²)。",
-        "用 x=cosθ 检查，w dx 变成 −dθ；这对应普通余弦的正交积分。",
-        "端点权发散但可积，不能仅因其发散就舍弃。"
+        "在 $-1<x<1$ 内找乘子 $\\mu$，使 $[\\mu(1-x^2)]'=-x\\mu$。展开得 $(1-x^2)\\mu'=x\\mu$。",
+        "积分 $\\mu'/\\mu=x/(1-x^2)$，得 $\\ln\\mu=-\\frac12\\ln(1-x^2)+C$，可取 $\\mu=(1-x^2)^{-1/2}$。",
+        "乘入方程并核对乘积导数：$(\\sqrt{1-x^2}y')'+n^2y/\\sqrt{1-x^2}=0$。",
+        "读出 $p=\\sqrt{1-x^2}$、$q=0$、$\\lambda=n^2$、$w=1/\\sqrt{1-x^2}$。$p$ 与 $w$ 互为倒数，在答题时应分开标注。",
+        "用 $x=\\cos\\theta$ 自检：$w\\,dx=-d\\theta$，所以带权积分转成普通三角积分。端点权虽发散但可积；端点属于奇异端点，不能直接套正则端点结论。"
       ],
       "check": {
         "question": "权与 p 是否相同？",
@@ -927,11 +995,11 @@
       "goal": "Derive the inverse-square-root weight in Chebyshev orthogonality.",
       "recognize": "The leading factor 1−x² does not directly identify the weight. First choose a multiplier that creates a total derivative.",
       "steps": [
-        "For −1<x<1, multiply by 1/√(1−x²).",
-        "Use the product rule to check that (√(1−x²)y′)′ equals the transformed derivative terms.",
-        "Read λ=n², p=√(1−x²), and w=1/√(1−x²).",
-        "Check with x=cosθ: w dx becomes −dθ, giving the usual cosine orthogonality integral.",
-        "The weight diverges at the endpoints but remains integrable, so divergence alone is not a reason to discard it."
+        "On $-1<x<1$, seek a multiplier satisfying $[\\mu(1-x^2)]'=-x\\mu$. Expanding gives $(1-x^2)\\mu'=x\\mu$.",
+        "Integrating $\\mu'/\\mu=x/(1-x^2)$ gives $\\ln\\mu=-\\frac12\\ln(1-x^2)+C$, so choose $\\mu=(1-x^2)^{-1/2}$.",
+        "Multiply the equation and check the product derivative to obtain $(\\sqrt{1-x^2}y')'+n^2y/\\sqrt{1-x^2}=0$.",
+        "Read off $p=\\sqrt{1-x^2}$, $q=0$, $\\lambda=n^2$, and $w=1/\\sqrt{1-x^2}$. Label $p$ and $w$ separately because they are reciprocals.",
+        "Check with $x=\\cos\\theta$: $w\\,dx=-d\\theta$, converting weighted integrals to ordinary trigonometric integrals. The weight diverges but is integrable at the singular endpoints, where regular-endpoint conclusions need care."
       ],
       "check": {
         "question": "Are the weight and p identical?",
@@ -944,11 +1012,13 @@
       "goal": "分清“本征值为实数”和“本征值非负”需要不同条件。",
       "recognize": "实 Robin 边界使边界的反对称项消失，但能量里的边界项不一定非负。题目第二问缺条件。",
       "steps": [
-        "先补正规条件 k>0、ρ>0，每端两边界系数不全为 0，保证有标准本征问题。",
-        "用方程乘共轭解，再减去共轭方程；实边界使端点项为 0，从而 λ=共轭λ。",
-        "再用分部积分推能量商；把边界项 −[ky′共轭y] 保留下来。",
-        "用 k=ρ=1、q=0、两端 y′−y=0、y=eˣ 验算，得到 λ=−1，直接否定原第二问。",
-        "写正确补充：Dirichlet/Neumann 或使整个能量二次型非负的 Robin 条件，才能保证非负谱。"
+        "先列适用条件：正则实谱证明需 $k>0$、$\\rho>0$，系数足够连续，且每端的两个边界系数不同时为零。原题只写非负可能退化，不能跳过这个检查。",
+        "第(1)问用原方程乘 $\\bar y$，共轭方程乘 $y$，再相减积分，得到 $(\\lambda-\\bar\\lambda)\\int_a^b\\rho|y|^2dx=-[k(y'\\bar y-y\\bar y')]_a^b$。",
+        "实边界条件使每个端点的括号为零：若是 Dirichlet 则 $y=0$；否则 $y'=c y$ 且 $c$ 为实数。因为非零本征函数的加权范数严格正，得 $\\lambda=\\bar\\lambda$。",
+        "第(2)问先不要删边界项。原方程乘 $\\bar y$ 积分分部，得 $\\lambda\\int\\rho|y|^2dx=\\int(k|y'|^2+q|y|^2)dx-[ky'\\bar y]_a^b$。",
+        "检验原命题的反例：取 $(0,1)$、$k=\\rho=1,q=0$，两端均为 $y'-y=0$。$y=e^x$ 满足边界，且 $y''+\\lambda y=0$ 给 $\\lambda=-1$，所以任意实 Robin 条件并不保证非负谱。",
+        "若两端为 Dirichlet 或 Neumann，边界项为零，才可由非负积分推出 $\\lambda\\ge0$。Robin 时边界贡献是 $k(b)(\\beta_1/\\beta_2)|y(b)|^2-k(a)(\\alpha_1/\\alpha_2)|y(a)|^2$，需另查符号。",
+        "答题结论分开写：标准非退化自伴条件下实谱成立；原题的非负谱命题缺条件，并给上述反例。补 $\\alpha_1/\\alpha_2\\le0$、$\\beta_1/\\beta_2\\ge0$ 等足够条件后可得到非负谱。"
       ],
       "check": {
         "question": "边界 y′−y=0 下，y=eˣ 对应 λ 是几？",
@@ -959,11 +1029,13 @@
       "goal": "Separate the assumptions for real eigenvalues from those for nonnegative eigenvalues.",
       "recognize": "Real Robin boundaries cancel the antisymmetric boundary term, but their energy contribution need not be nonnegative. Part (2) is missing a condition.",
       "steps": [
-        "Add regularity assumptions k>0, ρ>0, and a nonzero boundary-coefficient pair at each end.",
-        "Multiply the equation by the conjugate eigenfunction and subtract the conjugate equation. Real boundaries cancel endpoint terms, giving λ equal to its conjugate.",
-        "Integrate by parts for the energy quotient, retaining −[ky′ conjugate(y)].",
-        "Check k=ρ=1, q=0, y′−y=0 at both ends, and y=eˣ. This gives λ=−1 and disproves the original second claim.",
-        "State the corrected result: Dirichlet/Neumann conditions, or Robin conditions making the entire energy quadratic form nonnegative, ensure nonnegative eigenvalues."
+        "First state the assumptions: a regular real-spectrum proof needs $k>0$, $\\rho>0$, sufficiently continuous coefficients, and a nonzero boundary coefficient pair at each end. Mere nonnegativity can allow degeneracy.",
+        "For part (1), multiply the equation by $\\bar y$ and its conjugate by $y$, subtract, and integrate: $(\\lambda-\\bar\\lambda)\\int_a^b\\rho|y|^2dx=-[k(y'\\bar y-y\\bar y')]_a^b$.",
+        "Real separated conditions make each endpoint bracket zero: either $y=0$ or $y'=cy$ for a real constant $c$. The weighted norm of a nonzero eigenfunction is positive, so $\\lambda=\\bar\\lambda$.",
+        "For part (2), keep the boundary term. Multiplying by $\\bar y$ and integrating by parts gives $\\lambda\\int\\rho|y|^2dx=\\int(k|y'|^2+q|y|^2)dx-[ky'\\bar y]_a^b$.",
+        "Test the claim with $(0,1)$, $k=\\rho=1$, $q=0$, and $y'-y=0$ at both ends. The function $y=e^x$ satisfies the boundaries, and $y''+\\lambda y=0$ gives $\\lambda=-1$. Arbitrary real Robin conditions do not guarantee a nonnegative spectrum.",
+        "With Dirichlet or Neumann conditions, the boundary term vanishes and the nonnegative integral gives $\\lambda\\ge0$. For Robin conditions, the contribution is $k(b)(\\beta_1/\\beta_2)|y(b)|^2-k(a)(\\alpha_1/\\alpha_2)|y(a)|^2$, whose sign must be checked.",
+        "State the conclusions separately: real eigenvalues follow under regular nondegenerate self-adjoint assumptions, while the nonnegative-spectrum claim lacks conditions and has the counterexample above. Sufficient extra signs include $\\alpha_1/\\alpha_2\\le0$ and $\\beta_1/\\beta_2\\ge0$."
       ],
       "check": {
         "question": "With y′−y=0, what eigenvalue belongs to y=eˣ?",

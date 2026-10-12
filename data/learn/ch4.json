@@ -4,10 +4,11 @@
       "goal": "证明这些函数没有多余的一项：任何一项都不能由其余项凑出。",
       "recognize": "看到“函数组线性独立”，先算 W。W 是把函数及其各阶导数排成方阵后的行列式。",
       "steps": [
-        "先写出前几项：1、x、x²/2；按次数从小到大排列。",
-        "第一行放函数，第二行放一阶导数，依次写到 N 阶导数。",
-        "次数比求导阶数小的项变成 0；对角线全部是 1，所以 W=1。",
-        "W 不为 0，齐次线性方程组只有零系数解，因此函数组独立。"
+        "令 $f_j(x)=x^j/j!$，$j=0,1,\\ldots,N$。线性独立是指 $\\sum c_jf_j\\equiv0$ 时只能有所有 $c_j=0$，不是只检查某一个函数非零。",
+        "朗斯基矩阵第 $i$ 行放 $i$ 阶导数（$i=0,\\ldots,N$）。先写三列示例：$1,x,x^2/2$ 的各行是 $(1,x,x^2/2)$、$(0,1,x)$、$(0,0,1)$。",
+        "一般地，$j\\ge i$ 时 $f_j^{(i)}=x^{j-i}/(j-i)!$；$j<i$ 时次数已被求导耗尽，结果为零，所以矩阵是上三角。",
+        "对角元取 $i=j$，都是 $x^0/0!=1$；三角行列式等于对角元之积，因此 $W=1$，对所有 $x$ 都非零。",
+        "假设有零线性组合，在任意一点把该恒等式求导 $0$ 到 $N$ 次，得到系数为上述矩阵的齐次方程组。因为行列式为 1，只有零系数解，于是完成证明。"
       ],
       "check": {
         "question": "1、x、x²/2 的 W 是几？",
@@ -18,10 +19,11 @@
       "goal": "Prove that none of these functions is redundant: no one is a combination of the others.",
       "recognize": "For linear independence, calculate W: the determinant whose rows contain successive derivatives.",
       "steps": [
-        "Write the first functions: 1, x, x²/2, ordered by increasing degree.",
-        "Place the functions in row one, their first derivatives in row two, and continue through derivative order N.",
-        "A derivative beyond the polynomial degree is zero. Every diagonal entry is 1, so W=1.",
-        "A nonzero determinant forces all coefficients in a zero linear combination to vanish."
+        "Define $f_j(x)=x^j/j!$ for $j=0,1,\\ldots,N$. Linear independence means that $\\sum c_jf_j\\equiv0$ forces every $c_j=0$, rather than merely checking that the functions are nonzero.",
+        "Row $i$ of the Wronskian matrix contains derivatives of order $i$, for $i=0,\\ldots,N$. For example, $1,x,x^2/2$ give rows $(1,x,x^2/2)$, $(0,1,x)$, and $(0,0,1)$.",
+        "In general, $f_j^{(i)}=x^{j-i}/(j-i)!$ when $j\\ge i$, and it is zero when $j<i$. Derivatives beyond a polynomial's degree vanish, making the matrix upper triangular.",
+        "At $i=j$, every diagonal entry is $x^0/0!=1$. A triangular determinant is the product of its diagonal entries, so $W=1$ for every $x$.",
+        "If a linear combination is identically zero, evaluate it and its first $N$ derivatives at any point. The resulting homogeneous linear system has this matrix and determinant 1, so every coefficient is zero."
       ],
       "check": {
         "question": "What is W for 1, x, x²/2?",
@@ -34,10 +36,12 @@
       "goal": "分清“W=0”能证明到哪里，避免证明一个缺条件的命题。",
       "recognize": "W=0 适合对 y₁/y₂ 求导，但只有 y₂ 不为 0 时才能这样除。",
       "steps": [
-        "先限定在 y₂ 不为 0 的连通区间，写出商的导数。",
-        "把导数分子认成 −W；W=0 就说明比值是常数。",
-        "若要跨过 y₂ 的零点，补充两函数是同一正规齐次方程的解，再用初值唯一性。",
-        "检查题干若只说任意光滑函数，就说明反例：左右两侧各放一个光滑凸起，W=0 却不成比例。"
+        "先写 $W=y_1y_2'-y_1'y_2$。想研究 $y_1/y_2$，必须先选一个 $y_2\\ne0$ 的连通区间，否则除法没有意义。",
+        "在该区间求商导数：$(y_1/y_2)'=(y_1'y_2-y_1y_2')/y_2^2=-W/y_2^2=0$，故 $y_1/y_2=c$，即局部有 $y_1=cy_2$。",
+        "要在整个区间使用同一个 $c$，补充两函数是同一正则二阶齐次方程的解。选 $y_2(x_0)\\ne0$，令 $c=y_1(x_0)/y_2(x_0)$；$W(x_0)=0$ 同时给 $y_1'(x_0)=cy_2'(x_0)$。",
+        "差函数 $z=y_1-cy_2$ 满足同一个齐次方程，且 $z(x_0)=z'(x_0)=0$。由初值唯一性 $z\\equiv0$，这才把局部比例关系扩展到整个正则区间。",
+        "任意光滑函数没有这个唯一性保证：在 $x>0$ 放 $e^{-1/x^2}$、其余置零作 $y_1$；在 $x<0$ 放同式、其余置零作 $y_2$。两支支撑分离，$W\\equiv0$，却不成比例。",
+        "最后区分措辞：若 $y_2\\equiv0$、$y_1\\not\\equiv0$，两函数仍线性相关，但不能写 $y_1=cy_2$。原题对任意函数的全局表述缺条件，不能无条件证明。"
       ],
       "check": {
         "question": "y₂ 恒为 0 时，能总写 y₁=c y₂ 吗？",
@@ -48,10 +52,12 @@
       "goal": "Identify exactly what W=0 proves, rather than prove a statement with missing assumptions.",
       "recognize": "W=0 suggests differentiating y₁/y₂, but division requires y₂ to be nonzero.",
       "steps": [
-        "Work first on a connected interval where y₂ does not vanish and differentiate the quotient.",
-        "Recognize the numerator as −W. If W=0, the quotient is constant.",
-        "To cross zeros of y₂, assume both solve the same regular homogeneous equation and use uniqueness of initial data.",
-        "If the question allows arbitrary smooth functions, give the counterexample with separate smooth bumps on the two sides."
+        "Write $W=y_1y_2'-y_1'y_2$. To examine $y_1/y_2$, first work on a connected interval where $y_2\\ne0$, so division is defined.",
+        "There, differentiate the quotient: $(y_1/y_2)'=(y_1'y_2-y_1y_2')/y_2^2=-W/y_2^2=0$. Hence $y_1/y_2=c$ and locally $y_1=cy_2$.",
+        "To extend one constant $c$ across the full interval, assume both functions solve the same regular second-order homogeneous equation. At a point with $y_2(x_0)\\ne0$, set $c=y_1(x_0)/y_2(x_0)$; $W(x_0)=0$ also gives $y_1'(x_0)=cy_2'(x_0)$.",
+        "The difference $z=y_1-cy_2$ solves the same homogeneous equation with $z(x_0)=z'(x_0)=0$. Initial-value uniqueness gives $z\\equiv0$ throughout the regular interval.",
+        "Arbitrary smooth functions lack that uniqueness guarantee. Let $y_1=e^{-1/x^2}$ for $x>0$ and zero otherwise, and let $y_2=e^{-1/x^2}$ for $x<0$ and zero otherwise. Their separated supports give $W\\equiv0$, yet they are not proportional.",
+        "Finally distinguish the wording: if $y_2\\equiv0$ but $y_1\\not\\equiv0$, the pair is linearly dependent, yet $y_1=cy_2$ is impossible. The unrestricted global claim in the question needs extra assumptions."
       ],
       "check": {
         "question": "If y₂ is identically zero, can we always write y₁=c y₂?",
@@ -64,10 +70,11 @@
       "goal": "从原方程推出正确的 W 公式，并找出 C/p 所需条件。",
       "recognize": "题目给了最高阶系数 p，先除以 p；真正进入 W 公式的是一阶导系数 q/p。",
       "steps": [
-        "在 p 不为 0 的区间，把 y″ 写成 −(q/p)y′−(r/p)y。",
-        "对 W=y₁y₂′−y₁′y₂ 求导，再代入上式；含 r 的项抵消。",
-        "解 W′=−(q/p)W，得到指数积分公式。",
-        "只有 q=p′ 时，积分才化成 ln|p|，从而 W=C/p；否则给出反例。"
+        "先在 $p(x)\\ne0$ 的正则区间除以 $p$，得到 $y_i''=-(q/p)y_i'-(r/p)y_i$。这里一阶导系数是 $q/p$，不能直接当成 $p'/p$。",
+        "对 $W=y_1y_2'-y_1'y_2$ 求导，中间的 $y_1'y_2'$ 两项抵消，剩 $W'=y_1y_2''-y_1''y_2$。",
+        "代入两支的二阶导数，含 $r$ 的项相消，得到 $W'=-(q/p)W$。解这个一阶方程，得到一般阿贝尔公式 $W=C\\exp[-\\int(q/p)dx]$，也包含 $C=0$。",
+        "要得到题给 $C/p$，需要 $q=p'$；此时 $\\int(q/p)dx=\\ln|p|$，正常数或符号都可吸收进 $C$。等价地，$(pW)'=(p'-q)W=0$。",
+        "用反例检查缺条件：$y''+y'=0$ 中 $p=1,q=1$，解 $1,e^{-x}$ 的 $W=-e^{-x}$，并非常数。因此应写一般公式，并注明 $C/p$ 只适用于上述自伴条件。"
       ],
       "check": {
         "question": "y″+y′=0 中，W 是常数吗？",
@@ -78,10 +85,11 @@
       "goal": "Derive the correct formula for W and find the assumption needed for C/p.",
       "recognize": "Divide by the leading coefficient p first. The coefficient used in Abel’s formula is q/p.",
       "steps": [
-        "Where p is nonzero, express y″ as −(q/p)y′−(r/p)y.",
-        "Differentiate W=y₁y₂′−y₁′y₂ and substitute; all r terms cancel.",
-        "Solve W′=−(q/p)W to get the exponential-integral formula.",
-        "Only if q=p′ does the integral become ln|p|, yielding W=C/p. Otherwise provide a counterexample."
+        "On a regular interval where $p(x)\\ne0$, divide by $p$ to get $y_i''=-(q/p)y_i'-(r/p)y_i$. The first-derivative coefficient is $q/p$, not automatically $p'/p$.",
+        "Differentiate $W=y_1y_2'-y_1'y_2$. The two $y_1'y_2'$ terms cancel, leaving $W'=y_1y_2''-y_1''y_2$.",
+        "Substitute the second derivatives; the terms involving $r$ cancel, giving $W'=-(q/p)W$. Solving yields Abel's general formula $W=C\\exp[-\\int(q/p)dx]$, including $C=0$.",
+        "The requested $C/p$ requires $q=p'$. Then $\\int(q/p)dx=\\ln|p|$, and a constant factor or sign is absorbed into $C$. Equivalently, $(pW)'=(p'-q)W=0$.",
+        "Check the missing condition with $y''+y'=0$: here $p=1$, $q=1$, and solutions $1,e^{-x}$ have $W=-e^{-x}$, which is not constant. Give the general formula and state the extra self-adjoint condition for $C/p$."
       ],
       "check": {
         "question": "Is W constant for y″+y′=0?",
@@ -94,10 +102,13 @@
       "goal": "用递推找到 Hermite 多项式，并分清何时级数会停止。",
       "recognize": "x=0 处最高阶系数是 1，可直接用普通幂级数；递推每次跳两个次数。",
       "steps": [
-        "设 y=a₀+a₁x+a₂x²+⋯，求导后代入，把相同 x 次数放一起。",
-        "由 xᵏ 系数为 0，求出 aₖ₊₂=(2k+1−λ)aₖ/[(k+2)(k+1)]。",
-        "想要 n 次多项式，就令 k=n 时分子为 0，得到 λ=2n+1。",
-        "只保留与 n 同奇偶的链，另一链设为 0；最后让最高次系数为 2ⁿ。"
+        "因为最高阶系数在 $x=0$ 不为零，先用普通幂级数 $y=\\sum_{k\\ge0}a_kx^k$；$a_0=y(0)$、$a_1=y'(0)$ 是两支解的自由起点。",
+        "把 $y''$ 换指标为 $\\sum_{k\\ge0}(k+2)(k+1)a_{k+2}x^k$，而 $-2xy'=-\\sum_{k\\ge0}2ka_kx^k$；比较 $x^k$ 得 $a_{k+2}=(2k+1-\\lambda)a_k/[(k+2)(k+1)]$。",
+        "先算偶链 $a_2=(1-\\lambda)a_0/2$、$a_4=(5-\\lambda)a_2/12$；再算奇链 $a_3=(3-\\lambda)a_1/6$、$a_5=(7-\\lambda)a_3/20$。递推跨两格，所以偶数、奇数系数互不混合。",
+        "把偶链和奇链分别乘任意常数相加，得到一般级数解。递推比值随 $k$ 如 $2/k$ 衰减，因此两支对所有有限 $x$ 收敛。",
+        "若想在 $n$ 次终止，要求 $a_n\\ne0$ 但 $a_{n+2}=0$，故 $2n+1-\\lambda=0$，即 $\\lambda=2n+1$。选与 $n$ 同奇偶的一链，并把另一链的起始系数置零。",
+        "最高次系数规定为 $2^n$：$n=1$ 给 $H_1=2x$；$n=2$ 用 $a_2=-2a_0=4$ 得 $H_2=4x^2-2$；$n=3$ 用 $a_3=-2a_1/3=8$ 得 $H_3=8x^3-12x$，另列 $H_0=1$。",
+        "将其中一支代回方程自检，例如 $H_2$ 对应 $\\lambda=5$，有 $8-2x(8x)+4(4x^2-2)=0$。仅给参数条件而没把另一奇偶链置零，仍可能留下无限级数。"
       ],
       "check": {
         "question": "要得到二次 Hermite 多项式，应取 λ 为几？",
@@ -108,10 +119,13 @@
       "goal": "Use the recurrence to find Hermite polynomials and see exactly when the series stops.",
       "recognize": "The leading coefficient is 1 at x=0, so an ordinary power series works. The recurrence jumps two powers at a time.",
       "steps": [
-        "Set y=a₀+a₁x+a₂x²+⋯, differentiate, substitute, and collect the same powers of x.",
-        "Set the coefficient of xᵏ to zero to obtain aₖ₊₂=(2k+1−λ)aₖ/[(k+2)(k+1)].",
-        "For degree n, make the numerator vanish at k=n: λ=2n+1.",
-        "Keep the chain with n’s parity, set the other chain to zero, and normalize the leading coefficient to 2ⁿ."
+        "Since the leading coefficient is nonzero at $x=0$, start with $y=\\sum_{k\\ge0}a_kx^k$. The free starting values are $a_0=y(0)$ and $a_1=y'(0)$.",
+        "Reindex $y''$ as $\\sum_{k\\ge0}(k+2)(k+1)a_{k+2}x^k$, while $-2xy'=-\\sum_{k\\ge0}2ka_kx^k$. Comparing coefficients gives $a_{k+2}=(2k+1-\\lambda)a_k/[(k+2)(k+1)]$.",
+        "Compute the even chain $a_2=(1-\\lambda)a_0/2$, $a_4=(5-\\lambda)a_2/12$, and the odd chain $a_3=(3-\\lambda)a_1/6$, $a_5=(7-\\lambda)a_3/20$. The two-step recurrence keeps parity chains separate.",
+        "Add arbitrary multiples of the even and odd chains for the general series solution. The recurrence ratio decays like $2/k$, so both series converge for every finite $x$.",
+        "For a polynomial of degree $n$, require $a_n\\ne0$ and $a_{n+2}=0$, hence $\\lambda=2n+1$. Keep the parity chain matching $n$ and set the other chain's starting coefficient to zero.",
+        "Set the leading coefficient to $2^n$: for $n=1$, $H_1=2x$; for $n=2$, $a_2=-2a_0=4$ gives $H_2=4x^2-2$; for $n=3$, $a_3=-2a_1/3=8$ gives $H_3=8x^3-12x$. Also list $H_0=1$.",
+        "Check one polynomial directly: $H_2$ has $\\lambda=5$, and $8-2x(8x)+4(4x^2-2)=0$. The parameter condition alone does not remove the other parity chain, which can remain infinite."
       ],
       "check": {
         "question": "Which λ gives a quadratic Hermite polynomial?",
@@ -124,10 +138,12 @@
       "goal": "建立 Chebyshev 方程的偶数、奇数两条解。",
       "recognize": "x=0 是常点，含 x²y″ 和 xy′，它们正好保持幂次，因此递推连接 aₖ 与 aₖ₊₂。",
       "steps": [
-        "设普通幂级数；将 −x²y″−xy′ 的 xᵏ 系数合成 −k²aₖ。",
-        "得到 aₖ₊₂=(k²−n²)aₖ/[(k+2)(k+1)]。",
-        "分别从 a₀、a₁ 起步写偶数链、奇数链；整数 n 时同奇偶链终止。",
-        "用 x=sin t 将方程化成 yₜₜ+n²y=0 检查；n=0 时第二解要单独写成 arcsin x。"
+        "在 $x=0$ 最高阶系数 $1-x^2$ 非零，设 $y=\\sum_{k\\ge0}a_kx^k$。把 $y''$、$-x^2y''$、$-xy'$ 都换成同一个 $x^k$ 指标。",
+        "系数方程为 $(k+2)(k+1)a_{k+2}+[n^2-k(k-1)-k]a_k=0$；合并 $k(k-1)+k=k^2$，得 $a_{k+2}=(k^2-n^2)a_k/[(k+2)(k+1)]$。",
+        "偶链先算 $a_2=-n^2a_0/2$、$a_4=(4-n^2)a_2/12$；奇链先算 $a_3=(1-n^2)a_1/6$、$a_5=(9-n^2)a_3/20$。以 $a_0$、$a_1$ 为自由常数写两支之和。",
+        "若 $n$ 为非负整数，$k=n$ 时分子为零，与 $n$ 同奇偶的一支在 $n$ 次终止。另一支通常仍无限，归一化终止支可得 $T_n$，如 $n=2$ 取 $a_0=-1$ 得 $T_2=2x^2-1$。",
+        "若要核对级数，令 $x=\\sin t$。链式法则把 $(1-x^2)y''-xy'$ 变成 $y_{tt}$，所以 $n\\ne0$ 时可对照 $C_1\\cos(n\\arcsin x)+C_2\\sin(n\\arcsin x)$。",
+        "单列 $n=0$，此时 $y_{tt}=0$，解为 $C_1+C_2\\arcsin x$。普通级数一般只能保证 $|x|<1$，因为 $x=\\pm1$ 是方程奇点；终止多项式可超出这个圆域。"
       ],
       "check": {
         "question": "n=2 时，哪一条链会停止？",
@@ -138,10 +154,12 @@
       "goal": "Build the even and odd solution chains of Chebyshev’s equation.",
       "recognize": "Zero is an ordinary point. The factors x²y″ and xy′ preserve powers, so the recurrence links aₖ to aₖ₊₂.",
       "steps": [
-        "Use an ordinary series and combine the xᵏ coefficients of −x²y″−xy′ into −k²aₖ.",
-        "Obtain aₖ₊₂=(k²−n²)aₖ/[(k+2)(k+1)].",
-        "Start one chain at a₀ and the other at a₁. For integer n, the matching-parity chain terminates.",
-        "Check with x=sin t, which gives yₜₜ+n²y=0. For n=0, write the second solution separately as arcsin x."
+        "Since $1-x^2$ is nonzero at $x=0$, set $y=\\sum_{k\\ge0}a_kx^k$. Reindex $y''$, $-x^2y''$, and $-xy'$ using the same power $x^k$.",
+        "Coefficient comparison gives $(k+2)(k+1)a_{k+2}+[n^2-k(k-1)-k]a_k=0$. Since $k(k-1)+k=k^2$, obtain $a_{k+2}=(k^2-n^2)a_k/[(k+2)(k+1)]$.",
+        "Start the even chain with $a_2=-n^2a_0/2$ and $a_4=(4-n^2)a_2/12$, and the odd chain with $a_3=(1-n^2)a_1/6$ and $a_5=(9-n^2)a_3/20$. Their sum has free constants $a_0$ and $a_1$.",
+        "For a nonnegative integer $n$, the numerator vanishes at $k=n$, so the matching parity chain terminates at degree $n$. The other chain generally remains infinite. For example, $n=2$ with $a_0=-1$ gives $T_2=2x^2-1$.",
+        "To check the series, set $x=\\sin t$. The chain rule converts $(1-x^2)y''-xy'$ to $y_{tt}$, so for $n\\ne0$ compare with $C_1\\cos(n\\arcsin x)+C_2\\sin(n\\arcsin x)$.",
+        "Treat $n=0$ separately: $y_{tt}=0$ gives $C_1+C_2\\arcsin x$. A generic series is guaranteed only for $|x|<1$, since $x=\\pm1$ are singular points; a terminating polynomial extends farther."
       ],
       "check": {
         "question": "For n=2, which chain terminates?",
@@ -154,10 +172,13 @@
       "goal": "把一个看似陌生的方程变成可逐项计算的超几何级数。",
       "recognize": "x=0 处最高阶系数为 0，普通级数可能漏解；用带额外指数 xʳ 的 Frobenius 形式。",
       "steps": [
-        "先乘 −1，把 x(x−1) 改成 x(1−x)，避免之后符号出错。",
-        "设 y=xʳΣdₖxᵏ；最低次项给 r=0、1−c。",
-        "对每个 r 用递推逐项产生 dₖ；这两条链就是两支超几何级数。",
-        "若 c 为整数，先检查分母和独立性；不能直接照抄两支公式，需由一支解做降阶积分。"
+        "先乘 $-1$ 化为熟悉形式 $x(1-x)y''+[c-(a+b+1)x]y'-aby=0$。因最高阶系数在 $0$ 为零，不能只假设普通泰勒级数，应取 $y=x^r\\sum_{k\\ge0}d_kx^k$，$d_0\\ne0$。",
+        "收集最低次 $x^{r-1}$：系数为 $[r(r-1)+cr]d_0$，得指标方程 $r(r+c-1)=0$，两指标为 $r_1=0$、$r_2=1-c$。",
+        "其余幂次比较得 $d_{k+1}=(k+r+a)(k+r+b)d_k/[(k+r+1)(k+r+c)]$。第一步是 $d_1=(r+a)(r+b)d_0/[(r+1)(r+c)]$；每次使用前都检查分母。",
+        "在 $c\\notin\\mathbb Z$ 时，两指标可直接产生独立解。$r=0,d_0=1$ 给 $y_1=1+(ab/c)x+\\frac{a(a+1)b(b+1)}{2c(c+1)}x^2+\\cdots={}_2F_1(a,b;c;x)$。",
+        "代 $r=1-c$ 得 $y_2=x^{1-c}{}_2F_1(a-c+1,b-c+1;2-c;x)$，所以通解为 $C_1y_1+C_2y_2$，通常在 $|x|<1$ 使用，并固定 $x^{1-c}$ 的分支。",
+        "若 $c$ 为整数，两指标重合或差整数，上式可能相关或分母为零。先由递推求一支非零解 $y_1$，再在其不为零的局部区间用降阶，不能仍照抄两支超几何式。",
+        "标准式的一阶系数 $P=c/x+(c-a-b-1)/(1-x)$ 给 $y_2=y_1\\int x^{-c}(1-x)^{c-a-b-1}/y_1^2\\,dx$。展开积分时 $x^{-1}$ 项产生对数；这一步处理了整数参数的例外。"
       ],
       "check": {
         "question": "为什么 c=1 要特别处理？",
@@ -168,10 +189,13 @@
       "goal": "Turn an unfamiliar equation into a series that can be calculated coefficient by coefficient.",
       "recognize": "The leading coefficient vanishes at zero. An ordinary series may miss a solution, so include the extra exponent xʳ.",
       "steps": [
-        "Multiply by −1 first to change x(x−1) to x(1−x) and control the signs.",
-        "Set y=xʳΣdₖxᵏ. The lowest power gives r=0 and 1−c.",
-        "For each r, use the recurrence to generate dₖ. These are the two hypergeometric series.",
-        "If c is an integer, check denominators and independence. Obtain a second solution by reduction of order when the two formulas fail."
+        "Multiply by $-1$ to obtain $x(1-x)y''+[c-(a+b+1)x]y'-aby=0$. Since the leading coefficient vanishes at 0, use $y=x^r\\sum_{k\\ge0}d_kx^k$ with $d_0\\ne0$, rather than assuming only a Taylor series.",
+        "The lowest power $x^{r-1}$ has coefficient $[r(r-1)+cr]d_0$, giving indicial equation $r(r+c-1)=0$ and roots $r_1=0$, $r_2=1-c$.",
+        "The remaining coefficients give $d_{k+1}=(k+r+a)(k+r+b)d_k/[(k+r+1)(k+r+c)]$. In particular, $d_1=(r+a)(r+b)d_0/[(r+1)(r+c)]$; check denominators before using the recurrence.",
+        "For $c\\notin\\mathbb Z$, the two roots directly produce independent solutions. With $r=0,d_0=1$, obtain $y_1=1+(ab/c)x+\\frac{a(a+1)b(b+1)}{2c(c+1)}x^2+\\cdots={}_2F_1(a,b;c;x)$.",
+        "With $r=1-c$, obtain $y_2=x^{1-c}{}_2F_1(a-c+1,b-c+1;2-c;x)$. The general solution is $C_1y_1+C_2y_2$, usually for $|x|<1$, with a branch of $x^{1-c}$ fixed.",
+        "For integer $c$, the roots coincide or differ by an integer, so the displayed solutions may be dependent or undefined. First find one nonzero solution $y_1$ from the recurrence, then use reduction of order locally where it does not vanish.",
+        "The standard-form coefficient $P=c/x+(c-a-b-1)/(1-x)$ gives $y_2=y_1\\int x^{-c}(1-x)^{c-a-b-1}/y_1^2\\,dx$. A term $x^{-1}$ in the integrand produces a logarithm and handles the exceptional integer parameters."
       ],
       "check": {
         "question": "Why does c=1 need special care?",
@@ -184,11 +208,12 @@
       "goal": "求合流超几何方程的两支解，并知道何时需要对数。",
       "recognize": "它比上一题少一个分子因子；x=0 仍是正则奇点，所以继续用 Frobenius 法。",
       "steps": [
-        "设 y=xʳΣdₖxᵏ，最低次给 r=0、1−c。",
-        "把每个 r 代入递推 dₖ₊₁=(k+r+a)dₖ/[(k+r+1)(k+r+c)]。",
-        "c 非整数时直接形成两支 M 函数；注意 x^(1−c) 的分支。",
-        "c 为整数时改用 y₂=y₁∫eˣx^(−c)/y₁² dx；积分中的 1/x 会产生 ln x。",
-        "若 a=−n，检查分母后说明一支可在 n 次停止。"
+        "在 $xy''+(c-x)y'-ay=0$ 中，$x=0$ 是正则奇点，设 $y=x^r\\sum_{k\\ge0}d_kx^k$，$d_0\\ne0$。最低幂 $x^{r-1}$ 给 $r(r+c-1)=0$，所以 $r=0$ 或 $1-c$。",
+        "比较下一组幂次得到 $d_{k+1}=(k+r+a)d_k/[(k+r+1)(k+r+c)]$。递推跨一格，与普通点处的偶奇链不同。",
+        "$r=0,d_0=1$ 时，$d_1=a/c$、$d_2=a(a+1)/[2c(c+1)]$，故 $y_1=1+(a/c)x+\\frac{a(a+1)}{2c(c+1)}x^2+\\cdots=M(a,c,x)$，前提是分母允许。",
+        "当 $c\\notin\\mathbb Z$，代 $r=1-c$ 得 $y_2=x^{1-c}M(a-c+1,2-c,x)$。写通解 $C_1y_1+C_2y_2$，并选定幂函数的分支；两支内部的幂级数对所有有限 $x$ 收敛。",
+        "整数 $c$ 时先查指标差和递推分母，不直接套上一行。找到一支 $y_1$ 后，由标准式 $P=c/x-1$ 得 $y_2=y_1\\int e^xx^{-c}/y_1^2\\,dx$，在 $y_1\\ne0$ 的局部区间使用。",
+        "积分中 $x^{-1}$ 项会产生对数。另若 $a=-n$、$n\\ge0$ 且分母无阻碍，$k=n$ 的分子为零，解析支终止成多项式；用这一终止条件检查特殊参数。"
       ],
       "check": {
         "question": "a=−2 时哪一级可能终止？",
@@ -199,11 +224,12 @@
       "goal": "Find both confluent hypergeometric solutions and recognize when logarithms are needed.",
       "recognize": "Compared with the Gauss equation, the recurrence has one numerator factor. Zero is still regular singular, so use Frobenius.",
       "steps": [
-        "Set y=xʳΣdₖxᵏ; the lowest power gives r=0 and 1−c.",
-        "Insert each r into dₖ₊₁=(k+r+a)dₖ/[(k+r+1)(k+r+c)].",
-        "For noninteger c, these give two M-function solutions. Choose a branch of x^(1−c).",
-        "For integer c, use y₂=y₁∫eˣx^(−c)/y₁² dx; a 1/x term produces ln x.",
-        "If a=−n and the denominators allow it, one solution stops at degree n."
+        "For $xy''+(c-x)y'-ay=0$, zero is a regular singular point. Set $y=x^r\\sum_{k\\ge0}d_kx^k$ with $d_0\\ne0$. The lowest power gives $r(r+c-1)=0$, so $r=0$ or $1-c$.",
+        "Comparing the remaining powers gives $d_{k+1}=(k+r+a)d_k/[(k+r+1)(k+r+c)]$. This recurrence advances one coefficient at a time rather than separating parity chains.",
+        "With $r=0,d_0=1$, the first terms are $d_1=a/c$ and $d_2=a(a+1)/[2c(c+1)]$. Thus $y_1=1+(a/c)x+\\frac{a(a+1)}{2c(c+1)}x^2+\\cdots=M(a,c,x)$ when the denominators are allowed.",
+        "For $c\\notin\\mathbb Z$, the root $r=1-c$ gives $y_2=x^{1-c}M(a-c+1,2-c,x)$. Write $C_1y_1+C_2y_2$ and choose a branch for the power; the internal power series converge for all finite $x$.",
+        "For integer $c$, first check the root difference and recurrence denominators instead of blindly using the preceding formula. After finding $y_1$, standard coefficient $P=c/x-1$ gives $y_2=y_1\\int e^xx^{-c}/y_1^2\\,dx$ locally where $y_1\\ne0$.",
+        "An $x^{-1}$ term in that integral produces a logarithm. If $a=-n$ for $n\\ge0$ and denominators permit, the numerator vanishes at $k=n$ and the analytic series terminates as a polynomial."
       ],
       "check": {
         "question": "At which step may a=−2 terminate the analytic series?",
@@ -216,10 +242,13 @@
       "goal": "在 x=1 附近找出一个解析解和一个对数解。",
       "recognize": "展开中心在奇点 x=1，不在 0；先换变量 t=x−1，才能正确比较最低次幂。",
       "steps": [
-        "令 t=x−1，并将方程整理成 t(t+2)yₜₜ+2(t+1)yₜ−l(l+1)y=0。",
-        "用 tʳ 级数求指标，得到重复的 r=0；先取 d₀=1 求第一支递推。",
-        "写出解析支 y₁；整数 l 时它终止为 Legendre 多项式。",
-        "用 y₂=y₁∫1/[(1−x²)y₁²]dx 找第二支；x=1 附近的 1/(x−1) 项产生对数。"
+        "展开中心是 $x=1$，先令 $t=x-1$，把奇点移到 $t=0$。原方程乘 $-1$ 后成为 $t(t+2)y_{tt}+2(t+1)y_t-l(l+1)y=0$。",
+        "设 $y=t^r\\sum d_kt^k$。最低幂 $t^{r-1}$ 的系数是 $[2r(r-1)+2r]d_0=2r^2d_0$，所以指标 $r=0$ 为重根，预计第二支可能含对数。",
+        "第一支取 $d_0=1$，比较 $t^k$ 得 $d_{k+1}=[l(l+1)-k(k+1)]d_k/[2(k+1)^2]$；因此 $d_1=l(l+1)/2$、$d_2=[l(l+1)-2]d_1/8$。",
+        "把递推连续相乘，可写 $y_1={}_2F_1(-l,l+1;1;(1-x)/2)$。通常 $|x-1|<2$；若 $l$ 为非负整数，$k=l$ 时终止，得到 $P_l$，例如 $l=1$ 给 $1+t=x$。",
+        "为构造第二支，把原式除以 $1-x^2$，一阶系数是 $P=-2x/(1-x^2)$；计算 $e^{-\\int Pdx}=1/(1-x^2)$，常数倍可忽略。",
+        "降阶给 $y_2=y_1\\int dx/[(1-x^2)y_1^2]$。因为 $y_1(1)=1$、$1-x^2\\sim-2(x-1)$，被积函数首项是 $-1/[2(x-1)]$，故 $y_2=-\\frac12y_1\\ln|x-1|+$解析项。",
+        "写局部通解 $C_1y_1+C_2y_2$。用 $l=0$ 自检：$y_1=1$，积分为 $\\frac12\\ln|(1+x)/(1-x)|$，确实在 $x=1$ 出现对数而非第二个普通泰勒级数。"
       ],
       "check": {
         "question": "重复指标 r=0 能证明有两支普通幂级数吗？",
@@ -230,10 +259,13 @@
       "goal": "Find an analytic solution and a logarithmic solution near x=1.",
       "recognize": "The expansion center is the singular point x=1. Set t=x−1 before comparing lowest powers.",
       "steps": [
-        "Put t=x−1 and obtain t(t+2)yₜₜ+2(t+1)yₜ−l(l+1)y=0.",
-        "Use a tʳ series. The repeated root is r=0; set d₀=1 to derive the first recurrence.",
-        "Write the analytic solution y₁. For integer l, it terminates as a Legendre polynomial.",
-        "Use y₂=y₁∫1/[(1−x²)y₁²]dx. The 1/(x−1) term generates the logarithm."
+        "The expansion center is $x=1$, so set $t=x-1$ to move the singular point to zero. Multiplying by $-1$ gives $t(t+2)y_{tt}+2(t+1)y_t-l(l+1)y=0$.",
+        "Set $y=t^r\\sum d_kt^k$. The lowest power has coefficient $[2r(r-1)+2r]d_0=2r^2d_0$, so $r=0$ is a repeated root and the second solution may contain a logarithm.",
+        "For the first solution choose $d_0=1$. Coefficient comparison gives $d_{k+1}=[l(l+1)-k(k+1)]d_k/[2(k+1)^2]$, so $d_1=l(l+1)/2$ and $d_2=[l(l+1)-2]d_1/8$.",
+        "Multiplying the recurrence gives $y_1={}_2F_1(-l,l+1;1;(1-x)/2)$, usually for $|x-1|<2$. For nonnegative integer $l$, termination at $k=l$ gives $P_l$; for example, $l=1$ gives $1+t=x$.",
+        "To construct the second solution, divide by $1-x^2$ to get $P=-2x/(1-x^2)$. Then $e^{-\\int Pdx}=1/(1-x^2)$ up to an irrelevant constant factor.",
+        "Reduction of order gives $y_2=y_1\\int dx/[(1-x^2)y_1^2]$. Since $y_1(1)=1$ and $1-x^2\\sim-2(x-1)$, the leading integrand is $-1/[2(x-1)]$, giving $y_2=-\\frac12y_1\\ln|x-1|+$ analytic terms.",
+        "Write the local solution $C_1y_1+C_2y_2$. For $l=0$, check $y_1=1$ and $y_2=\\frac12\\ln|(1+x)/(1-x)|$, confirming a logarithmic rather than a second Taylor solution at $x=1$."
       ],
       "check": {
         "question": "Does the repeated root r=0 guarantee two ordinary power-series solutions?",
@@ -246,10 +278,13 @@
       "goal": "找到 Laguerre 多项式，并按本题要求调整倍数。",
       "recognize": "这是 a=−λ、c=1 的合流超几何方程；重复指标意味着还要说明第二支对数解。",
       "steps": [
-        "用 xʳ 级数得到重复根 r=0，再求 aₖ₊₁=(k−λ)aₖ/(k+1)²。",
-        "要 n 次多项式，就令 λ=n，使 n 次后的系数为 0。",
-        "最高次系数是 a₀(−1)ⁿ/n!；题目要求 (−1)ⁿ，所以取 a₀=n!。",
-        "据递推写出 L₁、L₂、L₃；第二支用降阶积分补全。"
+        "在 $xy''+(1-x)y'+\\lambda y=0$ 中取 $y=x^r\\sum a_kx^k$。最低幂系数为 $r^2a_0$，指标 $r=0$ 为重根，因此先找解析支，再单独构造第二支。",
+        "取 $r=0$ 比较 $x^k$，得 $(k+1)^2a_{k+1}+(\\lambda-k)a_k=0$，即 $a_{k+1}=(k-\\lambda)a_k/(k+1)^2$。",
+        "算前两步：$a_1=-\\lambda a_0$、$a_2=\\lambda(\\lambda-1)a_0/4$；所以 $y_1=a_0[1-\\lambda x+\\lambda(\\lambda-1)x^2/4+\\cdots]$，通项为 $a_0(-\\lambda)_k/(k!)^2$。",
+        "第二支用标准式一阶系数 $P=1/x-1$ 降阶：$y_2=y_1\\int e^x/(xy_1^2)dx$。$a_0\\ne0$ 时被积函数有与 $1/x$ 成正比的首项，所以一般含对数；局部通解为两支的线性组合。",
+        "多项式要求 $a_n\\ne0$ 而 $a_{n+1}=0$，故 $\\lambda=n\\in\\{0,1,\\ldots\\}$。这时最高次系数是 $a_0(-1)^n/n!$；题设要求 $(-1)^n$，所以必须取 $a_0=n!$。",
+        "按该起点逐项递推：$L_1=1-x$；$L_2$ 从 $a_0=2$ 得 $2,-4,1$，故 $L_2=x^2-4x+2$；$L_3$ 从 $a_0=6$ 得 $6,-18,9,-1$，故 $L_3=-x^3+9x^2-18x+6$，另有 $L_0=1$。",
+        "检查最高次恰为 $(-x)^n$。常用表格的标准 Laguerre 多项式还要将本题结果除以 $n!$；这只是归一化差异，不能直接抄表而改变题设。"
       ],
       "check": {
         "question": "本题 L₂ 的常数项为什么是 2，而常见表格是 1？",
@@ -260,10 +295,13 @@
       "goal": "Find Laguerre polynomials and scale them to the convention required here.",
       "recognize": "This is the confluent hypergeometric equation with a=−λ, c=1. The repeated root also requires discussion of a logarithmic second solution.",
       "steps": [
-        "A Frobenius series gives the repeated root r=0 and aₖ₊₁=(k−λ)aₖ/(k+1)².",
-        "For degree n, set λ=n so all coefficients after degree n vanish.",
-        "The leading coefficient is a₀(−1)ⁿ/n!. Set a₀=n! to obtain the required coefficient (−1)ⁿ.",
-        "Write L₁, L₂, L₃ from the recurrence, and complete the second solution by reduction of order."
+        "For $xy''+(1-x)y'+\\lambda y=0$, set $y=x^r\\sum a_kx^k$. The lowest coefficient is $r^2a_0$, so $r=0$ is repeated; find the analytic solution first and construct the second separately.",
+        "With $r=0$, coefficient comparison gives $(k+1)^2a_{k+1}+(\\lambda-k)a_k=0$, hence $a_{k+1}=(k-\\lambda)a_k/(k+1)^2$.",
+        "The first steps give $a_1=-\\lambda a_0$ and $a_2=\\lambda(\\lambda-1)a_0/4$. Thus $y_1=a_0[1-\\lambda x+\\lambda(\\lambda-1)x^2/4+\\cdots]$, with coefficient $a_0(-\\lambda)_k/(k!)^2$.",
+        "For the second solution, standard coefficient $P=1/x-1$ gives $y_2=y_1\\int e^x/(xy_1^2)dx$. When $a_0\\ne0$, the integrand has a leading term proportional to $1/x$ and generally produces a logarithm; the local general solution combines both branches.",
+        "A polynomial needs $a_n\\ne0$ and $a_{n+1}=0$, hence $\\lambda=n\\in\\{0,1,\\ldots\\}$. Its leading coefficient is $a_0(-1)^n/n!$; the required coefficient $(-1)^n$ therefore sets $a_0=n!$.",
+        "Iterate with this normalization: $L_1=1-x$; for $L_2$, starting at $a_0=2$ gives $2,-4,1$, hence $L_2=x^2-4x+2$; for $L_3$, starting at $a_0=6$ gives $6,-18,9,-1$, hence $L_3=-x^3+9x^2-18x+6$. Also $L_0=1$.",
+        "Check that the leading term is exactly $(-x)^n$. Standard tables divide these textbook polynomials by $n!$; that normalization difference must not silently change the requested answer."
       ],
       "check": {
         "question": "Why is the constant term of L₂ here 2, while common tables show 1?",

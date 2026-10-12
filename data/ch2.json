@@ -13,10 +13,10 @@
           "explain": "把一个周期内的函数投影到正交的正弦、余弦上；每个系数衡量对应频率的成分。端点条件决定用正弦、余弦还是半整数频率。",
           "formula": "f(x)\\sim\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}\\left(a_n\\cos\\frac{n\\pi x}{l}+b_n\\sin\\frac{n\\pi x}{l}\\right)",
           "conditions": "周期为 $2l$；分段光滑时，连续点收敛到函数值，跳跃点收敛到左右极限平均值。",
-          "proof": "两边乘 $\\cos(m\\pi x/l)$，在 $[-l,l]$ 积分。不同频率的积分为零，同频余弦平方积分为 $l$，因此 $a_m=l^{-1}\\int_{-l}^l f(x)\\cos(m\\pi x/l)dx$。同理得到 $b_m$；常数项用积分得到 $a_0$。",
+          "proof": "先理解“取出一个系数”：在 $[-l,l]$ 上，不同频率的乘积积分为零，例如 $\\int_{-l}^l\\cos(n\\pi x/l)\\cos(m\\pi x/l)dx=0$（$n\\ne m$）。同频的平方积分则为 $l$。这些等式可由积化和差逐项积分验证。\n\n将展开式两边乘 $\\cos(m\\pi x/l)$ 并积分。正弦项、常数项和其他频率都消失，只留下 $a_ml$。因此 $a_m=\\frac1l\\int_{-l}^l f(x)\\cos(m\\pi x/l)dx$，$m\\ge1$。\n\n要取正弦系数，就改乘 $\\sin(m\\pi x/l)$，得到 $b_m=\\frac1l\\int_{-l}^l f(x)\\sin(m\\pi x/l)dx$。直接积分原展开式则给 $a_0=\\frac1l\\int_{-l}^l f(x)dx$；常数项是 $a_0/2$。\n\n以上是系数的投影推导，不是收敛定理的证明。可先对有限和使用正交关系，再在平方可积意义下取极限；要判断某点的和，还需使用分段光滑函数的傅里叶收敛定理，跳跃点取左右平均。",
           "example": {
             "question": "将 $f(x)=x$ 在 $(-\\pi,\\pi)$ 展开。",
-            "solution": "奇函数只剩正弦项。$b_n=\\frac2\\pi\\int_0^\\pi x\\sin nx\\,dx=2(-1)^{n+1}/n$，故 $x=2\\sum_{n\\ge1}(-1)^{n+1}\\sin nx/n$，端点周期延拓处和为 $0$。"
+            "solution": "这里 $l=\\pi$。$f(x)=x$ 是奇函数，乘余弦仍为奇函数，所以 $a_0=a_n=0$；只需求正弦系数。\n\n$b_n=\\frac2\\pi\\int_0^\\pi x\\sin(nx)dx$。取 $u=x$、$v=-\\cos(nx)/n$，得到 $\\int_0^\\pi x\\sin(nx)dx=-\\pi(-1)^n/n$。\n\n因此 $b_n=2(-1)^{n+1}/n$，填回得 $x=2\\sum_{n\\ge1}(-1)^{n+1}\\sin(nx)/n$，$-\\pi<x<\\pi$。周期接缝两边极限为 $\\pi$ 与 $-\\pi$，端点级数和为零。"
           },
           "memory": "先看周期，再看奇偶；投影积分最后算。"
         }
@@ -33,10 +33,10 @@
           "explain": "傅里叶变换把全轴函数分解为连续频率。微分在频域变成乘 $ik$，局部窄脉冲对应宽频谱。本章统一正变换不带系数、逆变换带 $1/(2\\pi)$。",
           "formula": "F(k)=\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}dx,\\qquad f(x)=\\frac1{2\\pi}\\int_{-\\infty}^{\\infty}F(k)e^{ikx}dk",
           "conditions": "通常要求可积或平方可积；阶跃、符号函数和库仑势需按广义函数或正则化理解。",
-          "proof": "由分部积分，$\\int f^{\\prime}(x)e^{-ikx}dx=[fe^{-ikx}]_{-\\infty}^{\\infty}+ik\\int fe^{-ikx}dx$。边界项消失时 $\\mathcal F[f^{\\prime}]=ikF$。由定义换元还得 $\\mathcal F[f(ax)]=|a|^{-1}F(k/a)$。",
+          "proof": "下面推导两个常用性质，而不是完整证明傅里叶反演定理。先假设函数及导数足够可积，并且无穷远边界项消失，确保操作合法。\n\n在 $\\mathcal F[f^{\\prime}](k)=\\int f^{\\prime}(x)e^{-ikx}dx$ 中分部积分：$\\int f^{\\prime}e^{-ikx}dx=[fe^{-ikx}]_{-\\infty}^{\\infty}+ik\\int fe^{-ikx}dx$。负指数求导的负号与分部积分的负号相消。\n\n边界项为零后，剩下 $\\mathcal F[f^{\\prime}]=ikF$。再求一次导数就变成 $(ik)^2F=-k^2F$，这就是偏微分方程在频域变简单的原因。\n\n缩放时令 $y=ax$，$a\\ne0$。当 $a<0$，积分上下限反向，抵消微分元中的负号，因此 $\\mathcal F[f(ax)](k)=|a|^{-1}F(k/a)$。前面的绝对值不能遗漏。",
           "example": {
             "question": "求 $f(x)=e^{-a|x|}$ 的变换，$a>0$。",
-            "solution": "利用偶性：$F=2\\int_0^\\infty e^{-ax}\\cos kx\\,dx=2\\operatorname{Re}(a-ik)^{-1}=2a/(a^2+k^2)$。"
+            "solution": "函数 $e^{-a|x|}$ 为实偶函数，先消去正弦虚部：$F(k)=2\\int_0^\\infty e^{-ax}\\cos(kx)dx$。\n\n先积分指数 $\\int_0^\\infty e^{-(a-ik)x}dx=1/(a-ik)$，再取实部。因为 $a>0$，上端指数趋零。\n\n有理化得 $1/(a-ik)=(a+ik)/(a^2+k^2)$，故 $F(k)=2a/(a^2+k^2)$。检验 $F(0)=2/a$，正好等于原函数面积。"
           },
           "memory": "正变换负指数，逆变换正指数；乘积与卷积的 $2\\pi$ 别丢。"
         },
@@ -46,10 +46,10 @@
           "explain": "变换把空间微分变成代数乘法，把卷积变成乘积。使用性质前，先确认指数正负号和 $2\\pi$ 放在哪一侧。",
           "formula": "\\widehat{f\\prime}=ikF,\\quad\\widehat{f(x-a)}=e^{-ika}F,\\quad\\widehat{f*g}=FG,\\quad\\widehat{fg}=\\frac{F*G}{2\\pi}",
           "conditions": "规范为 $F(k)=\\int f(x)e^{-ikx}dx$、$f(x)=(2\\pi)^{-1}\\int F(k)e^{ikx}dk$。普通函数需有足够可积性、可换序且分部积分端点消失；分布情形按定义推广。",
-          "proof": "微分性质对 $\\int f\\prime e^{-ikx}dx$ 分部积分得到；平移令 y=x−a；卷积写成二重积分后令 y=x−s，即分离为 F(k)G(k)。乘积性质将 f 的逆变换代入，再换序得到 $1/(2\\pi)$ 倍卷积。",
+          "proof": "微分：对 $\\int f^{\\prime}(x)e^{-ikx}dx$ 分部积分，边界项消失后留下 $ikF(k)$；这一步要求相应衰减条件。\n\n平移：令 $y=x-a$，则 $x=y+a$，所以 $e^{-ikx}=e^{-ika}e^{-iky}$；与 $y$ 无关的因子提到积分外，得到 $e^{-ika}F(k)$。\n\n卷积：先写 $(f*g)(x)=\\int f(s)g(x-s)ds$。在二重积分中令 $y=x-s$，指数拆成 $e^{-iks}e^{-iky}$，因此两个积分分离为 $F(k)G(k)$。\n\n乘积：将 $f(x)=\\frac1{2\\pi}\\int F(q)e^{iqx}dq$ 代入变换，交换积分后，内层是 $G(k-q)$。留下 $\\frac1{2\\pi}\\int F(q)G(k-q)dq$。这里的系数来自逆变换。",
           "example": {
             "question": "已知 $\\widehat{e^{-x^2}}=\\sqrt\\pi e^{-k^2/4}$，求 $e^{-(x-a)^2}$ 的变换。",
-            "solution": "这是平移 a，故结果为 $e^{-ika}\\sqrt\\pi e^{-k^2/4}$；模不变而相位改变。"
+            "solution": "先把 $g(x)=e^{-(x-a)^2}$ 写成 $f(x-a)$，其中 $f(x)=e^{-x^2}$。这一步是识别平移，不是重新积分。\n\n取已知 $F(k)=\\sqrt\\pi e^{-k^2/4}$，乘上平移因子，得到 $G(k)=e^{-ika}\\sqrt\\pi e^{-k^2/4}$。\n\n实平移 $a$ 给 $|e^{-ika}|=1$，所以频谱模不变，只有相位改变。若算出额外的实增长因子，应检查指数中是否漏了 $i$。"
           },
           "memory": "空间平移加相位；微分乘 ik；卷积变乘积。"
         }
@@ -66,10 +66,10 @@
           "explain": "$\\delta$ 应看作作用在测试函数上的抽样规则，不能当作普通的“某点等于无穷大”的函数进行逐点运算。单位面积且不断变窄的脉冲可以逼近它。",
           "formula": "\\int\\delta(x-a)\\varphi(x)dx=\\varphi(a),\\qquad\\delta(g(x))=\\sum_{g(x_j)=0}\\frac{\\delta(x-x_j)}{|g^{\\prime}(x_j)|}",
           "conditions": "后一公式要求根为单根；积分区间须包含相应根。",
-          "proof": "在每个单根附近令 $u=g(x)$，换元时 $dx=du/|g^{\\prime}(x_j)|$，再利用 $\\delta(u)$ 的抽样性质。多个根的贡献相加。",
+          "proof": "先说明单根为什么重要。若 $g(x_j)=0$ 且 $g^{\\prime}(x_j)\\ne0$，在该根附近可以反解 $x=x(u)$，其中 $u=g(x)$；反函数的导数不会发散。\n\n在测试函数积分里换元，微分元带来 $1/|g^{\\prime}(x(u))|$。绝对值把根附近的方向反转也包括进去；不能直接除以带符号的导数。\n\n然后由 $\\delta(u)$ 在 $u=0$ 抽样，该根贡献为 $\\varphi(x_j)/|g^{\\prime}(x_j)|$。对所有位于积分区间内的单根相加，即得到公式。\n\n若出现重根 $g^{\\prime}(x_j)=0$，这个换元失效，不能把公式中的分母写成零后继续计算。根在区间外则不贡献；根在端点时还需说明约定。",
           "example": {
             "question": "计算 $\\int_{-2}^2 (1+x^2)\\delta(x^2-1)dx$。",
-            "solution": "根为 $\\pm1$，导数绝对值均为 $2$。因此 $\\delta(x^2-1)=[\\delta(x-1)+\\delta(x+1)]/2$，积分为 $(2+2)/2=2$。"
+            "solution": "先解 $x^2-1=0$，得到两根 $x=\\pm1$，都在 $[-2,2]$ 内。\n\n再算 $g^{\\prime}(x)=2x$，两根处导数绝对值都是二，所以 $\\delta(x^2-1)=[\\delta(x-1)+\\delta(x+1)]/2$。\n\n最后把权函数 $1+x^2$ 代到两根，分别得二。积分为 $2/2+2/2=2$；如果只找到正根，就会少算一半。"
           },
           "memory": "找根、除导数绝对值、再抽样。"
         }
@@ -86,10 +86,10 @@
           "explain": "拉普拉斯变换只看 $t\\ge0$，指数衰减因子使更多函数可变换，尤其适合初值问题。导数的变换会自动带入初值。",
           "formula": "F(p)=\\int_0^\\infty f(t)e^{-pt}dt,\\qquad\\mathcal L[f^{\\prime}]=pF-f(0^+)",
           "conditions": "$f$ 分段连续且为指数阶；$\\operatorname{Re}p$ 大于其增长率。",
-          "proof": "分部积分：$\\mathcal L[f^{\\prime}]=[fe^{-pt}]_0^\\infty+p\\int_0^\\infty fe^{-pt}dt=pF-f(0^+)$。再用一次得 $\\mathcal L[f^{\\prime\\prime}]=p^2F-pf(0^+)-f^{\\prime}(0^+)$。",
+          "proof": "从定义出发，假设 $f$ 及所需导数有适当的分段光滑性和指数增长界，并取 $\\operatorname{Re}p$ 足够大，使无穷远边界项消失。\n\n对 $\\int_0^\\infty f^{\\prime}(t)e^{-pt}dt$ 分部积分，得到 $[fe^{-pt}]_0^\\infty+p\\int_0^\\infty fe^{-pt}dt$。上限为零，下限需减去 $f(0^+)$，因此结果为 $pF-f(0^+)$。\n\n对 $f^{\\prime}$ 再用一次同一公式：$\\mathcal L[f^{\\prime\\prime}]=p\\mathcal L[f^{\\prime}]-f^{\\prime}(0^+)=p^2F-pf(0^+)-f^{\\prime}(0^+)$。初位移与初速度的系数不同。\n\n初值项不是额外记忆的补丁，它们正是积分下限留下的边界项。做初值题时先把这些项写全，再整理代数方程。",
           "example": {
             "question": "求 $\\mathcal L[t e^{2t}]$。",
-            "solution": "从 $\\mathcal L[e^{2t}]=1/(p-2)$ 出发，利用 $\\mathcal L[tf]=-F^{\\prime}(p)$，结果为 $1/(p-2)^2$，收敛域 $\\operatorname{Re}p>2$。"
+            "solution": "先从指数变换 $\\mathcal L[e^{2t}]=1/(p-2)$ 起步，收敛域为 $\\operatorname{Re}p>2$。\n\n时间乘 $t$ 对应像的负导数，所以 $\\mathcal L[te^{2t}]=-\\frac d{dp}(p-2)^{-1}=(p-2)^{-2}$。求导产生负号，再与性质的负号相消。\n\n也可直接算 $\\int_0^\\infty t e^{-(p-2)t}dt$，分部积分得到同一结果。额外的多项式 $t$ 不改变指数收敛边界。"
           },
           "memory": "时间乘 $t$，频域负求导；乘指数，频域平移。"
         }
@@ -106,10 +106,10 @@
           "explain": "把微分方程连同初值一次性变成代数方程，解出像函数后做部分分式、移位或卷积逆变换。",
           "formula": "y^{\\prime\\prime}+ay^{\\prime}+by=f\\Longrightarrow(p^2+ap+b)Y=F+py(0)+y^{\\prime}(0)+ay(0)",
           "conditions": "初值取 $0^+$；分段外力可以用阶跃函数编码。",
-          "proof": "分别代入 $\\mathcal L[y^{\\prime}]=pY-y(0)$ 和 $\\mathcal L[y^{\\prime\\prime}]=p^2Y-py(0)-y^{\\prime}(0)$，整理所有含 $Y$ 的项即可。逆变换线性性保证得到原方程的解。",
+          "proof": "先给未知像命名 $Y=\\mathcal L[y]$，外力像为 $F=\\mathcal L[f]$。分别写 $\\mathcal L[y^{\\prime}]=pY-y(0)$ 与 $\\mathcal L[y^{\\prime\\prime}]=p^2Y-py(0)-y^{\\prime}(0)$。\n\n代入 $y^{\\prime\\prime}+ay^{\\prime}+by=f$ 后，左边为 $p^2Y-py(0)-y^{\\prime}(0)+apY-ay(0)+bY$。把含 $Y$ 的项留在左边，其余移到右边。\n\n得到 $(p^2+ap+b)Y=F+py(0)+y^{\\prime}(0)+ay(0)$。这是代数方程；因式分解分母后，可用部分分式、平移或卷积逆变换。\n\n逆变换后仍要代回方程、初值以及分段接续条件。变换的单射性和适用条件保证这种求解法；仅仅“形式上反变换”不能替代这些检查。",
           "example": {
             "question": "解 $y^{\\prime}+y=1,\\ y(0)=0$。",
-            "solution": "$(p+1)Y=1/p$，故 $Y=1/p-1/(p+1)$，得到 $y=1-e^{-t}$。代回 $y^{\\prime}+y=1$ 且初值为零。"
+            "solution": "设 $Y=\\mathcal L[y]$。由 $y(0)=0$，方程变换为 $pY+Y=1/p$，故 $Y=1/[p(p+1)]$。\n\n分式拆为 $Y=1/p-1/(p+1)$，两项逆变换分别为一和 $e^{-t}$，所以 $y=1-e^{-t}$。\n\n检查 $y(0)=0$，且 $y^{\\prime}=e^{-t}$，所以 $y^{\\prime}+y=e^{-t}+1-e^{-t}=1$。初值和方程两项都满足。"
           },
           "memory": "先写导数变换和初值，再解 $Y$，最后代回核验。"
         }

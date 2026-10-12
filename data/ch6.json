@@ -13,10 +13,10 @@
           "explain": "把一般源分解成点源，先求算符对一个点源的响应，再积分叠加。本章采用教材约定 $\\Delta G=\\delta$；若改用 $-\\Delta G=\\delta$，所有格林函数整体变号。",
           "formula": "\\Delta G_d=\\delta,\\qquad G_1=\\frac{|x-x_0|}{2},\\quad G_2=\\frac{\\ln|\\mathbf r-\\mathbf r_0|}{2\\pi},\\quad G_3=-\\frac1{4\\pi|\\mathbf r-\\mathbf r_0|}",
           "conditions": "等式在分布意义成立，源点以外均为调和函数。无界域须额外说明无穷远条件；一维基本解还可加任意仿射函数，二维需约定对数中的参考长度。",
-          "proof": "三维球对称调和函数为 $A+B/r$。围绕源点的小球上，$\\int\\Delta G\\,dV=\\oint\\partial_rG\\,dS=-4\\pi B$，令其等于 1，得到 $B=-1/(4\\pi)$。二维环向通量为 $2\\pi r\\partial_rG=1$，积分得 $\\ln r/(2\\pi)$。一维对源点两侧积分得到导数跳跃 1，而 $|x-x_0|/2$ 的左右导数恰为 $-1/2,1/2$。",
+          "proof": "先固定符号 $\\Delta G=\\delta$。把源点附近任意小体积中的方程积分，右边总是 1；散度定理把左边变成边界外向通量，所以基本解的关键是“源点外调和，小球通量为 1”。下面给出三种维数的核心计算，点源等式按分布理解。\n\n三维令 $R=|\\mathbf r-\\mathbf r_0|$，球对称源外方程是 $(R^2G\\prime)\\prime=0$。积分得 $G=A+B/R$，于是 $G\\prime=-B/R^2$。乘球面积 $4\\pi R^2$ 得通量 $-4\\pi B=1$，所以 $B=-1/(4\\pi)$；取三维无穷远零值时 $A=0$。\n\n二维圆对称源外方程是 $(RG\\prime)\\prime=0$，积分得 $G=A+B\\ln R$。圆周外向通量为 $2\\pi RG\\prime=2\\pi B$，故 $B=1/(2\\pi)$。严格写成 $\\ln(R/R_*)/(2\\pi)$，其中参考长度 $R_*$ 只改变一个常数；二维对数基本解不能像三维那样在无穷远趋零。\n\n一维在源点两侧有 $G\\prime\\prime=0$，因此各为直线；函数连续以避免额外的 $\\delta\\prime$。跨源点积分给 $G\\prime(x_0+)-G\\prime(x_0-)=1$，对称选择 $G=|x-x_0|/2$ 的两斜率为 $1/2,-1/2$，正好符合。任意 $Ax+B$ 仍可加入；三种形式的符号由通量或斜率跳跃决定，不能靠记忆统一套负号。",
           "example": {
             "question": "为什么 $1/(4\\pi r)$ 不符合本章基本解的符号？",
-            "solution": "它在小球上的外向通量是 $-1$，因此满足 $\\Delta[1/(4\\pi r)]=-\\delta$。先写清算符与点源的正负号再套公式。"
+            "solution": "设候选为 $g(r)=1/(4\\pi r)$。在 $r>0$ 它确实调和，但这还没有判断它对应正点源还是负点源。\n\n径向导数 $g\\prime=-1/(4\\pi r^2)$，半径 $\\epsilon$ 球面上的通量为 $4\\pi\\epsilon^2g\\prime(\\epsilon)=-1$。因此 $\\Delta g=-\\delta$，不符合本章 $\\Delta G=+\\delta$。\n\n把它整体换号为 $G=-1/(4\\pi r)$，通量就变成 $+1$。若题目算符本来是 $-\\Delta$，则原来的正倒数又是正确选择；第一笔应始终先写算符约定。"
           },
           "memory": "一维折线、二维对数、三维倒数；先做通量检查正负号。"
         }
@@ -33,10 +33,10 @@
           "explain": "格林函数既要产生单位点源，还要满足齐次边界条件。镜像源放在求解区域之外，目的在于抵消边界值，不能在区域内部额外制造奇点。",
           "formula": "u(\\mathbf r)=\\int_VG(\\mathbf r,\\mathbf r\\prime)f(\\mathbf r\\prime)\\,dV\\prime+\\int_{\\partial V}\\varphi(\\mathbf r\\prime)\\partial_{n\\prime}G(\\mathbf r,\\mathbf r\\prime)\\,dS\\prime",
           "conditions": "$\\Delta_{r\\prime}G=\\delta(\\mathbf r\\prime-\\mathbf r)$，$G|_{\\partial V}=0$，$\\Delta u=f$，$u|_{\\partial V}=\\varphi$；n′ 是区域的外法向。外域另需足够的无穷远条件。",
-          "proof": "由第二格林公式 $\\int_V(u\\Delta G-G\\Delta u)=\\oint(u\\partial_nG-G\\partial_nu)$，代入点源与齐次 Dirichlet 边界，左边成为 $u(\\mathbf r)-\\int Gf$，右边仅剩 $\\oint\\varphi\\partial_nG$，移项即得。源点奇性可通过挖去小球再取极限严谨处理。",
+          "proof": "固定观察点 $\\mathbf r$，把带撇号的 $\\mathbf r\\prime$ 当积分变量。选 $\\Delta_{\\mathbf r\\prime}G=\\delta(\\mathbf r\\prime-\\mathbf r)$ 且 $G=0$ 于边界：前者保证读出观察点的值，后者用来消掉未知边界导数。这两个要求各有作用，缺一不可。\n\n从第二格林公式 $\\int_V(u\\Delta G-G\\Delta u)dV\\prime=\\oint_{\\partial V}(u\\partial_{n\\prime}G-G\\partial_{n\\prime}u)dS\\prime$ 出发。代入 $\\Delta u=f$，再用点源的取值性质 $\\int u(\\mathbf r\\prime)\\delta(\\mathbf r\\prime-\\mathbf r)dV\\prime=u(\\mathbf r)$，左边成为 $u(\\mathbf r)-\\int_VGf\\,dV\\prime$。\n\n在边界，$G=0$ 消掉原本不知道的 $\\partial_{n\\prime}u$ 项，已知 $u=\\varphi$ 则留下 $\\oint\\varphi\\partial_{n\\prime}G\\,dS\\prime$。把体源项移到右边，得到 $u=\\int_VGf\\,dV\\prime+\\oint\\varphi\\partial_{n\\prime}G\\,dS\\prime$；两项分别对应源与边界输入。\n\n这是可跟算的核心推导。严谨处理奇点时，先挖去观察点的小球，再分部积分并取球半径趋零；小球边界给出上述 $u(\\mathbf r)$。镜像法只是构造合适 $G$ 的办法，像点必须在域外；无界域还要检查无穷远边界项消失及积分收敛，法向始终取求解域的外法向。",
           "example": {
             "question": "上半空间、零边界、单位点源的格林函数如何构造？",
-            "solution": "令源点为 $(x_0,y_0,z_0)$，$y_0>0$，镜像点为 $(x_0,-y_0,z_0)$。取 $G=-1/(4\\pi R)+1/(4\\pi R_*)$。平面上两距离相等，边界为零；镜像点不在上半空间，因此域内只有真实点源。"
+            "solution": "真实源位于 $(x_0,y_0,z_0)$，$y_0>0$；镜像放在 $(x_0,-y_0,z_0)$。对观察点 $(x,y,z)$ 定义 $R^2=(x-x_0)^2+(y-y_0)^2+(z-z_0)^2$，$R_*^2=(x-x_0)^2+(y+y_0)^2+(z-z_0)^2$。\n\n取 $G=-1/(4\\pi R)+1/(4\\pi R_*)$。代 $y=0$ 时两个平方距离完全相同，所以 $G=0$；域内只有第一项的源点，第二项在整个上半空间调和。\n\n若还需要求给定平面值的解，就对积分变量的源点高度求导，外法向取向下，得到正核 $P=y/[2\\pi((x-\\xi)^2+y^2+(z-\\zeta)^2)^{3/2}]$。源项为零时 $u=\\int_{\\mathbb R^2}P\\varphi\\,d\\xi d\\zeta$；恒定 $\\varphi=C$ 时核积分为1，返回 $u=C$。"
           },
           "memory": "先对算符，再对边界，再对无穷远；表面积分用外法向。"
         }
@@ -53,10 +53,10 @@
           "explain": "给定法向导数并不确定整体常数。更关键的是源的总量必须等于流出边界的总通量。有界域中不能同时要求 $\\Delta G=\\delta$ 和处处零法向导数。",
           "formula": "\\int_V f\\,dV=\\oint_{\\partial V}g\\,dS,\\qquad \\Delta G_N=\\delta-\\frac1{|V|},\\quad\\partial_nG_N=0",
           "conditions": "域连通且有界，$\\Delta u=f$、$\\partial_nu=g$。修正型 Neumann 格林函数另用 $\\int_VG_N=0$ 固定常数；也可保持 $\\Delta G=\\delta$ 而给 G 非零的相容通量。Robin 条件应检查齐次问题是否有非零解。",
-          "proof": "对 $\\Delta u=f$ 积分并用散度定理，得到相容条件。若两个解有相同 Neumann 数据，其差 w 满足 $\\Delta w=0,\\partial_nw=0$；分部积分给 $\\int|\\nabla w|^2=0$，故仅差常数。若强令 $\\Delta G=\\delta,\\partial_nG=0$，积分得到 $1=0$；减去 $1/|V|$ 后总源量为零，矛盾解除。此时格林公式求得 $u-\\bar u$，仍需指定平均值。",
+          "proof": "第一步先做总量检查。把 $\\Delta u=f$ 在域内积分，散度定理给 $\\int_Vf\\,dV=\\oint_{\\partial V}\\partial_nu\\,dS=\\oint_{\\partial V}g\\,dS$。左边是全部源量，右边是全部外向通量；它们不相等时，不必继续求函数，因为任何解都不可能满足方程。\n\n再看为什么只差一个常数。若 $u_1,u_2$ 有同一源和同一 Neumann 边界，令 $w=u_1-u_2$，则 $\\Delta w=0,\\partial_nw=0$。分部积分给 $\\int_V|\\nabla w|^2dV=\\oint w\\partial_nw\\,dS-\\int_Vw\\Delta w\\,dV=0$；因此 $\\nabla w=0$，连通域中 $w$ 为常数。\n\n对格林函数也必须做同样的总量检查。若硬要求 $\\Delta G=\\delta$ 且 $\\partial_nG=0$，积分会得到 $1=0$，因此这种有界域构造不存在。把点源改为 $\\Delta G_N=\\delta-1/|V|$ 后，总源变为 $1-|V|/|V|=0$，才与零法向导数相容。\n\n还需用 $\\int_VG_NdV=0$ 固定格林函数自身的常数。格林公式中 $\\int u(\\delta-1/|V|)dV=u-\\bar u$，其中 $\\bar u=|V|^{-1}\\int_Vu\\,dV$，所以公式确定的是相对平均值；要确定绝对值，另给平均值或一个点的值。这里推导必要条件与常数自由度，存在性还采用相应椭圆边值问题理论。\n\nRobin 边界要另查齐次解。例如差函数满足 $\\partial_nw+\\alpha w=0$ 时，能量式变成 $\\int|\\nabla w|^2=-\\oint\\alpha w^2$。若 $\\alpha\\ge0$ 且在一部分边界严格为正，只能有 $w=0$；若系数变号或为负，可能出现共振，不能自动宣称唯一。纯 $\\alpha=0$ 又回到 Neumann 的常数自由度。",
           "example": {
             "question": "区间 $(0,L)$ 上 $u\\prime\\prime=1$、$u\\prime(0)=u\\prime(L)=0$ 有解吗？",
-            "solution": "无解。积分得 $u\\prime(L)-u\\prime(0)=L$，而边界给左边为 0。若改为 $u\\prime(L)=L$ 则有解 $u=x^2/2+C$，仍需给一个值固定 C。"
+            "solution": "在 $(0,L)$ 积分 $u\\prime\\prime=1$，得 $u\\prime(L)-u\\prime(0)=L$。题目给两端导数都为0，左边却是0；因 $L>0$，矛盾，故无解。\n\n若改成 $u\\prime(0)=0,u\\prime(L)=L$，总量检查通过。一次积分得 $u\\prime=x+C_1$，左端条件给 $C_1=0$；再积分得 $u=x^2/2+C_2$，右端条件也满足。\n\n常数 $C_2$ 仍任意，因为求导会消掉它。若再要求平均值为零，$L^{-1}\\int_0^Lu\\,dx=L^2/6+C_2=0$，才得到 $C_2=-L^2/6$；这说明额外的归一化具体在做什么。"
           },
           "memory": "纯通量边界：先算总量，再谈解；加常数不改变通量。"
         }
@@ -73,10 +73,10 @@
           "explain": "对空间简谐波，径向基本解是球面波除以距离。正负指数都满足同一个点源方程，区别来自辐射条件；判断出射和入射还必须说明时间因子。",
           "formula": "(\\Delta+k^2)G_\\pm=\\delta,\\qquad G_\\pm(R)=-\\frac{e^{\\pm ikR}}{4\\pi R}",
           "conditions": "$k>0$，三维无界均匀空间。在时间因子 $e^{-i\\omega t}$ 下，$e^{+ikR}/R$ 为出射波，满足 $R(\\partial_RG-ikG)\\to0$；若时间因子改为 $e^{+i\\omega t}$，命名反转。",
-          "proof": "源点外令 $v=RG$，径向方程化为 $v\\prime\\prime+k^2v=0$，所以 $G=(Ae^{ikR}+Be^{-ikR})/R$。每个 $G_\\pm$ 在原点附近均为 $-1/(4\\pi R)+O(1)$，小球外向通量趋于 1，且 $k^2\\int G\\to0$，因此产生单位 δ 源。辐射条件在这两类解中选择所需的一类。",
+          "proof": "设 $R$ 是到点源的距离。在 $R>0$ 处，径向方程为 $G\\prime\\prime+2G\\prime/R+k^2G=0$。令 $v=RG$，利用 $(RG)\\prime\\prime/R=G\\prime\\prime+2G\\prime/R$，方程变成 $v\\prime\\prime+k^2v=0$。\n\n这个常系数方程给 $v=Ae^{ikR}+Be^{-ikR}$，因此 $G=(Ae^{ikR}+Be^{-ikR})/R$。只在源点外算微分方程不能决定 $A,B$；它们控制波的方向和点源强度。\n\n在 $R\\to0$ 展开得 $G=(A+B)/R+O(1)$。外向小球通量趋于 $-4\\pi(A+B)$，而 $k^2\\int_{R<\\epsilon}GdV=O(\\epsilon^2)\\to0$，故单位点源要求 $A+B=-1/(4\\pi)$。分别取 $B=0$ 或 $A=0$，就得到两种 $G_\\pm=-e^{\\pm ikR}/(4\\pi R)$；结合源外方程，以挖球分部积分可得到完整分布等式。\n\n选择出射还需远场条件。在时间因子 $e^{-i\\omega t}$ 下，正指数的相位 $kR-\\omega t$ 随时间向更大的 $R$ 传播，所以它为出射；对它求导得 $\\partial_RG_+-ikG_+=e^{ikR}/(4\\pi R^2)$，故 $R(\\partial_RG_+-ikG_+)\\to0$。负指数则不满足这一出射条件。\n\n两种基本解之差为 $G_+-G_-=-i\\sin(kR)/(2\\pi R)$，在原点极限为 $-ik/(2\\pi)$，是没有点源的齐次解。于是“同一方程可有不同基本解”来自不同附加条件；若时间因子改成 $e^{+i\\omega t}$，入射、出射的称呼相反。",
           "example": {
             "question": "为什么只验 $R>0$ 的微分方程不足以证明基本解？",
-            "solution": "因为任何常数倍的 $e^{ikR}/R$ 在源点外都满足齐次方程。必须再用小球通量确定点源的系数为 1。"
+            "solution": "试取 $g_C(R)=Ce^{ikR}/R$，其中 $C$ 任意。在 $R>0$，令 $v=Rg_C=Ce^{ikR}$，有 $v\\prime\\prime+k^2v=0$，所以不管 $C$ 是多少，源外检查都会通过。\n\n但在源点 $g_C=C/R+O(1)$，所以小球通量是 $-4\\pi C$。取 $C=-1/(4\\pi)$ 才得到单位点源；若取 $C=-1/(2\\pi)$，点源强度会是 2。\n\n因此证明基本解要交两份结果：源点外方程为零，以及源点通量归一化为1。辐射条件是随后选择出射或入射的第三项检查，不能拿它代替归一化。"
           },
           "memory": "径向乘 R 变成简谐方程；δ 的系数用通量定。"
         }
@@ -93,10 +93,10 @@
           "explain": "波动信息以有限速度传播：观察点当前的响应，来自源点在 $R/c$ 之前的作用。推迟解要求响应不早于源的激发。",
           "formula": "G_{\\rm ret}=\\frac{\\delta(t-t\\prime-R/c)}{4\\pi c^2R},\\qquad R=|\\mathbf r-\\mathbf r\\prime|",
           "conditions": "此处算符为 $\\partial_t^2-c^2\\Delta$，三维无界空间，零初始响应。若算符写成 $c^{-2}\\partial_t^2-\\Delta$，格林函数相应乘 $c^2$；初始位移、速度不为零时要另加齐次初值解。",
-          "proof": "对空间作 Fourier 变换，点源响应满足 $\\widehat G_{tt}+c^2|\\mathbf k|^2\\widehat G=\\delta(t-t\\prime)$。因果解为 $H(\\tau)\\sin(c|\\mathbf k|\\tau)/(c|\\mathbf k|)$；其本身连续、时间导数在 τ=0 跳跃 1。三维逆变换得到 $\\delta(\\tau-R/c)/(4\\pi c^2R)$。将它与源积分，δ 自动选出推迟时刻。",
+          "proof": "以下是采用 Fourier 变换与分布恒等式的核心推导。令 $\\tau=t-t\\prime$，对空间使用 $G=(2\\pi)^{-3}\\int e^{i\\mathbf k\\cdot\\mathbf R}\\widehat G\\,d^3k$ 的逆变换约定。算符 $\\partial_t^2-c^2\\Delta$ 变为 $\\widehat G_{\\tau\\tau}+c^2|\\mathbf k|^2\\widehat G=\\delta(\\tau)$，即每个空间频率都是受瞬时单位冲击的振子。\n\n因果性要求 $\\tau<0$ 时为零。跨过零时刻积分，导数必须跳跃1；为避免 $\\delta\\prime$，函数本身连续。因此 $\\widehat G=H(\\tau)\\sin(cq\\tau)/(cq)$，其中 $q=|\\mathbf k|$。它在 $\\tau=0+$ 的值为0、导数为1，正好满足两个连接条件。\n\n逆变换时以 $\\mathbf R$ 为极轴，角积分为 $4\\pi\\sin(qR)/(qR)$。结合体积元 $q^2dq$，对 $R>0$ 得 $G=H(\\tau)/(2\\pi^2cR)\\int_0^\\infty\\sin(qR)\\sin(cq\\tau)dq$；两个分母中的 $q$ 正好抵掉体积元中的 $q^2$。\n\n使用分布恒等式 $\\int_0^\\infty\\sin(qR)\\sin(cq\\tau)dq=\\pi[\\delta(R-c\\tau)-\\delta(R+c\\tau)]/2$。当 $R>0,\\tau\\ge0$，第二项没有支撑；再用 $\\delta(R-c\\tau)=\\delta(\\tau-R/c)/c$，得到 $G_{\\rm ret}=\\delta(\\tau-R/c)/(4\\pi c^2R)$。此正弦积分不是通常意义的收敛积分；源点及传播前沿都按分布解释。\n\n把格林函数与源叠加，时间积分用 δ 选出 $t\\prime=t-R/c$，故零初始响应为 $u(\\mathbf r,t)=\\int f(\\mathbf r\\prime,t-R/c)/(4\\pi c^2R)dV\\prime$，并按源的起始时刻限制积分。若算符改为 $c^{-2}\\partial_t^2-\\Delta$，整体响应应乘 $c^2$；若初始位移或速度非零，另加齐次初值解。",
           "example": {
             "question": "原点从 t=0 开始持续施加源 $f(\\mathbf r,t)=\\delta(\\mathbf r)H(t)$，零初值响应是什么？",
-            "solution": "$u(R,t)=H(t-R/c)/(4\\pi c^2R)$。在 t<R/c 时尚未到达；到达后取上述静态强度。源点处需按分布理解。"
+            "solution": "将 $f(\\mathbf r\\prime,t\\prime)=\\delta(\\mathbf r\\prime)H(t\\prime)$ 代入时空卷积。空间 δ 把源点固定为原点，所以到观察点的距离为 $R$，剩 $u(R,t)=\\int_{-\\infty}^{\\infty}\\delta(t-t\\prime-R/c)H(t\\prime)dt\\prime/(4\\pi c^2R)$。\n\n时间 δ 选中 $t\\prime=t-R/c$，其对 $t\\prime$ 的导数绝对值为1，不额外产生 $c$。得到 $u(R,t)=H(t-R/c)/(4\\pi c^2R)$。\n\n若 $t<R/c$，阶跃为0，信号尚未到；若 $t>R/c$，阶跃为1，响应为 $1/(4\\pi c^2R)$。比如距离加倍，到达时间也加倍，抵达后的强度减半；在 $R=0$ 和恰好抵达的前沿仍需用分布或极限理解。"
           },
           "memory": "先选因果方向；把源的 t 换成 t−R/c；检查算符前的 c²。"
         }

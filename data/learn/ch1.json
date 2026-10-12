@@ -1,893 +1,1127 @@
 {
   "1.1-1": {
     "zh": {
-      "goal": "把每个结果写成“实数 + 实数乘 i”。",
-      "recognize": "分母里有 i，先乘共轭。共轭就是把 i 前的符号反过来，它能让分母变成实数。",
+      "goal": "把四个式子都化成 $a+bi$，再分别读出实部 $a$ 和虚部 $b$。",
+      "recognize": "分母含复数时乘共轭；连乘先分组；乘方可以反复平方。每次展开后都用 $i^2=-1$。",
       "steps": [
-        "先记住 $i^2=-1$。第(1)问分母有 $2-5i$，上下同乘 $2+5i$：这样分母变实数，分式值不变。",
-        "把第(1)问分子逐项乘开，得到 $3+22i$；分母是 $29$。所以实部是 $3/29$，虚部是 $22/29$，虚部不是 $22i/29$。",
-        "第(2)问先分别算两项：第一项上下乘 $3+4i$，第二项用 $1/i=-i$。得到 $(-1+2i)/5$ 与 $(3-2i)/5$，相加时虚部抵消。",
-        "第(3)问先乘前两个因子，$(1-i)(2-i)=1-3i$；再乘 $3-i$，得到 $-10i$。最后 $5/(-10i)=i/2$。",
-        "第(4)问分两次平方：$(1-i)^2=-2i$，再算 $(-2i)^2=-4$。结果没有 i 项，所以虚部为零。"
+        "第(1)问上下同乘 $2+5i$，分母成为 $(2-5i)(2+5i)=2^2+5^2=29$。",
+        "展开分子：$(4+i)(2+5i)=8+20i+2i+5i^2=3+22i$。因此结果是 $3/29+(22/29)i$。",
+        "第(2)问第一项乘 $3+4i$：分子为 $3+4i+6i+8i^2=-5+10i$，分母为 $25$，得到 $(-1+2i)/5$。",
+        "第二项用 $1/i=-i$：$(2+3i)/(5i)=(3-2i)/5$。把实部相加、虚部相加，得到 $2/5+0i$。",
+        "第(3)问先算 $(1-i)(2-i)=2-3i+i^2=1-3i$，再算 $(1-3i)(3-i)=3-10i+3i^2=-10i$。",
+        "把第(3)问化成 $5/(-10i)=(-1/2)(-i)=i/2$；实部为零，虚部为 $1/2$。",
+        "第(4)问算 $(1-i)^2=1-2i+i^2=-2i$，再平方得 $(-2i)^2=-4$。最后检查：虚部是 $i$ 的系数，答案中不能带 $i$。"
       ],
       "check": {
-        "question": "$(2-5i)(2+5i)$ 等于多少？",
-        "answer": "$29$。"
+        "question": "若结果是 $3/29+(22/29)i$，它的虚部是多少？",
+        "answer": "$22/29$；不是 $22i/29$。"
       }
     },
     "en": {
-      "goal": "Write each answer as a real number plus a real multiple of i.",
-      "recognize": "An i in the denominator suggests multiplying by its conjugate: reverse the sign before i to make the denominator real.",
+      "goal": "Reduce all four expressions to $a+bi$, then read off the real part $a$ and imaginary part $b$.",
+      "recognize": "Use a conjugate for complex denominators, group factors in products, and use repeated squaring for powers. Replace $i^2$ by $-1$ after each expansion.",
       "steps": [
-        "Remember $i^2=-1$. In part (1), multiply numerator and denominator by $2+5i$. This makes the denominator real without changing the fraction.",
-        "Expand the numerator in part (1) to get $3+22i$; the denominator is $29$. The real part is $3/29$ and the imaginary part is $22/29$, without the factor i.",
-        "In part (2), handle the fractions separately: multiply the first by the conjugate $3+4i$ and use $1/i=-i$ in the second. This gives $(-1+2i)/5$ and $(3-2i)/5$; their imaginary parts cancel.",
-        "For part (3), multiply the first factors: $(1-i)(2-i)=1-3i$. Multiplication by $3-i$ gives $-10i$. Finally, $5/(-10i)=i/2$.",
-        "For part (4), square twice: $(1-i)^2=-2i$, then $(-2i)^2=-4$. The result has no i term, so its imaginary part is zero."
+        "In part (1), multiply top and bottom by $2+5i$: $(2-5i)(2+5i)=2^2+5^2=29$.",
+        "Expand the numerator: $(4+i)(2+5i)=8+20i+2i+5i^2=3+22i$. The result is $3/29+(22/29)i$.",
+        "For the first fraction in part (2), use $3+4i$. The numerator is $3+4i+6i+8i^2=-5+10i$ and the denominator is $25$, giving $(-1+2i)/5$.",
+        "For the second fraction, use $1/i=-i$: $(2+3i)/(5i)=(3-2i)/5$. Add real and imaginary parts separately to obtain $2/5+0i$.",
+        "In part (3), first compute $(1-i)(2-i)=2-3i+i^2=1-3i$, then $(1-3i)(3-i)=3-10i+3i^2=-10i$.",
+        "Reduce part (3) to $5/(-10i)=(-1/2)(-i)=i/2$. Its real part is zero and imaginary part is $1/2$.",
+        "For part (4), calculate $(1-i)^2=1-2i+i^2=-2i$, then $(-2i)^2=-4$. Final check: an imaginary part is the coefficient of $i$, so it does not itself contain $i$."
       ],
       "check": {
-        "question": "What is $(2-5i)(2+5i)$?",
-        "answer": "$29$."
+        "question": "If the result is $3/29+(22/29)i$, what is its imaginary part?",
+        "answer": "$22/29$, without a factor of $i$."
       }
     }
   },
   "1.1-2": {
     "zh": {
-      "goal": "找出复数离原点多远，以及它指向哪个角度。",
-      "recognize": "题目是乘、除、乘方。用极形式更省事：长度相乘，角度相加。",
+      "goal": "把每个复数拆成“长度”和“方向”，给出模、主辐角及全部辐角。",
+      "recognize": "对 $x+iy$，模为 $\\sqrt{x^2+y^2}$，角度必须符合所在象限。乘除、乘方再使用极形式。",
       "steps": [
-        "模是“长度”，乘除时分别乘除；辐角是“方向”，乘除时分别相加相减。第(1)问的分子是 $(\\sqrt2,\\pi/4)$，分母是 $(4,-\\pi/3)$。",
-        "第(1)问算长度 $\\sqrt2/4$、方向 $\\pi/4-(-\\pi/3)=7\\pi/12$。减去负角会变成加，别漏掉括号。",
-        "第(2)问 $1-i$ 的长度是 $\\sqrt2$、方向是 $-\\pi/4$。三次方就把长度三次方、角度乘3，得到 $2\\sqrt2$ 与 $-3\\pi/4$。",
-        "第(3)问先直接乘开得 $1+i$，于是长度 $\\sqrt2$、方向 $\\pi/4$。第(4)问把 $\\sqrt3-i$ 写成 $2e^{-i\\pi/6}$，四次方给长度 $16$、方向 $-2\\pi/3$。",
-        "检查角度象限。主辐角只选 $(-\\pi,\\pi]$ 中一个；若题目要所有辐角，每个主辐角再加 $2k\\pi$，其中 $k$ 为整数。"
+        "第(1)问：$1+i$ 的模是 $\\sqrt2$、角是 $\\pi/4$；$2-2\\sqrt3 i$ 的模是 $\\sqrt{4+12}=4$、角是 $-\\pi/3$。",
+        "除法把模相除、角相减：第(1)问得到 $\\sqrt2/4$ 和 $\\pi/4-(-\\pi/3)=7\\pi/12$。这个角在第二象限。",
+        "第(2)问写 $1-i=\\sqrt2 e^{-i\\pi/4}$。三次方使模变为 $(\\sqrt2)^3=2\\sqrt2$，角变为 $3(-\\pi/4)=-3\\pi/4$。",
+        "第(3)问先乘开：$(1+2i)(3-i)/5=(3-i+6i-2i^2)/5=1+i$。所以模为 $\\sqrt2$、主辐角为 $\\pi/4$。",
+        "第(4)问写 $\\sqrt3-i=2e^{-i\\pi/6}$。四次方给出模 $2^4=16$、角 $4(-\\pi/6)=-2\\pi/3$。",
+        "以上四个角都已在 $(-\\pi,\\pi]$ 内，故都是主辐角。若要全部辐角，在各自的主辐角后加 $2k\\pi$，$k\\in\\mathbb Z$。"
       ],
       "check": {
-        "question": "复数相除时，两个辐角是相加还是相减？",
-        "answer": "分子的辐角减去分母的辐角。"
+        "question": "负角度一定不符合主辐角的要求吗？",
+        "answer": "不是。主辐角取 $(-\\pi,\\pi]$，例如 $-3\\pi/4$ 就符合。"
       }
     },
     "en": {
-      "goal": "Find each complex number's distance from the origin and direction angle.",
-      "recognize": "These are products, quotients, and powers. Polar form makes them simpler: multiply lengths and add angles.",
+      "goal": "Find the modulus, principal argument, and all arguments by separating length from direction.",
+      "recognize": "For $x+iy$, use modulus $\\sqrt{x^2+y^2}$ and an angle in the correct quadrant. Then use polar form for products, quotients, and powers.",
       "steps": [
-        "Modulus means length: multiply or divide lengths. Argument means direction: add or subtract angles. In part (1), the numerator has $(\\sqrt2,\\pi/4)$ and the denominator has $(4,-\\pi/3)$.",
-        "Part (1) gives length $\\sqrt2/4$ and angle $\\pi/4-(-\\pi/3)=7\\pi/12$. Keep the parentheses when subtracting a negative angle.",
-        "In part (2), $1-i$ has length $\\sqrt2$ and angle $-\\pi/4$. Cube the length and triple the angle: $2\\sqrt2$ and $-3\\pi/4$.",
-        "In part (3), expansion gives $1+i$, with length $\\sqrt2$ and angle $\\pi/4$. In part (4), write $\\sqrt3-i=2e^{-i\\pi/6}$; its fourth power has length $16$ and angle $-2\\pi/3$.",
-        "Check the quadrant. A principal argument is the one chosen in $(-\\pi,\\pi]$. For all arguments, add $2k\\pi$ with integer $k$."
+        "In part (1), $1+i$ has modulus $\\sqrt2$ and angle $\\pi/4$; $2-2\\sqrt3 i$ has modulus $\\sqrt{4+12}=4$ and angle $-\\pi/3$.",
+        "Divide moduli and subtract angles: part (1) gives $\\sqrt2/4$ and $\\pi/4-(-\\pi/3)=7\\pi/12$, an angle in quadrant II.",
+        "For part (2), write $1-i=\\sqrt2 e^{-i\\pi/4}$. Cubing gives modulus $(\\sqrt2)^3=2\\sqrt2$ and angle $3(-\\pi/4)=-3\\pi/4$.",
+        "In part (3), expand first: $(1+2i)(3-i)/5=(3-i+6i-2i^2)/5=1+i$. Its modulus is $\\sqrt2$ and principal argument is $\\pi/4$.",
+        "For part (4), write $\\sqrt3-i=2e^{-i\\pi/6}$. The fourth power has modulus $2^4=16$ and angle $4(-\\pi/6)=-2\\pi/3$.",
+        "All four angles already lie in $(-\\pi,\\pi]$, so they are principal arguments. For all arguments, add $2k\\pi$ to each one, with $k\\in\\mathbb Z$."
       ],
       "check": {
-        "question": "When dividing complex numbers, do you add or subtract their arguments?",
-        "answer": "Subtract the denominator argument from the numerator argument."
+        "question": "Is a negative angle necessarily invalid as a principal argument?",
+        "answer": "No. The interval is $(-\\pi,\\pi]$, so $-3\\pi/4$ is valid."
       }
     }
   },
   "1.1-3": {
     "zh": {
-      "goal": "把复数条件翻译成平面上的图形或区域。",
-      "recognize": "模就是距离；两个固定点的距离和固定，说明是椭圆。含辐角的条件可以变成实部、虚部的大小关系。",
+      "goal": "把三个复数条件改写成可以直接画出的平面方程或不等式。",
+      "recognize": "模是到某点的距离。辐角限制先改写成实部、虚部的限制，再把分式实数化。",
       "steps": [
-        "第一问把 $3i$、$-3i$ 标成焦点，距离和 $9$ 给出长半轴 $9/2$。",
-        "第二问先写成 $|z-(2-i)|\\le3$，直接读出圆心和半径。",
-        "第三问设 $z=x+iy$，把比值分母实数化；角在第一象限且小于 $\\pi/4$，就是 $0<\\Im w<\\Re w$。"
+        "第(1)问把 $3i$ 与 $-3i$ 标为 $(0,3)$ 与 $(0,-3)$。到这两点的距离和为 $9$，所以是竖直长轴的椭圆。",
+        "椭圆满足 $2a=9,c=3$，故 $a^2=81/4$、$b^2=a^2-c^2=45/4$。把较大的分母放在竖直坐标下：$x^2/(45/4)+y^2/(81/4)=1$。",
+        "第(2)问先改括号：$|z-2+i|=|z-(2-i)|$。于是圆心是 $(2,-1)$、半径是 $3$；因为有 $\\le$，圆周与内部都要保留。",
+        "第(3)问令 $z=x+iy$、$w=(z-i)/(z+i)$。分子分母同乘 $x-i(y+1)$，得到 $w=[x^2+y^2-1-2ix]/[x^2+(y+1)^2]$。",
+        "角在 $(0,\\pi/4)$，表示 $w$ 在第一象限且低于斜率为1的直线，所以 $0<\\operatorname{Im}w<\\operatorname{Re}w$。",
+        "分母为正时，两边同乘分母：$0<-2x<x^2+y^2-1$。第一段给 $x<0$，第二段配方给 $(x+1)^2+y^2>2$。",
+        "最后画左半平面与圆外部的交集，边界全部排除。核查 $z=-i$ 会使分母为零、$z=i$ 会使辐角无定义；它们都不满足最后的严格不等式。"
       ],
       "check": {
-        "question": "$|z-(2-i)|\\le3$ 的圆心是什么？",
-        "answer": "$(2,-1)$。"
+        "question": "为什么不能把 $\\operatorname{Im}w<\\operatorname{Re}w$ 单独当作辐角条件？",
+        "answer": "还必须有 $\\operatorname{Im}w>0$，才能限定到所需的第一象限区域。"
       }
     },
     "en": {
-      "goal": "Turn complex-number conditions into plane curves or regions.",
-      "recognize": "Modulus means distance. A fixed sum of distances to two points gives an ellipse. An argument restriction can be translated into real/imaginary inequalities.",
+      "goal": "Rewrite the three complex conditions as plane equations or inequalities that can be drawn.",
+      "recognize": "A modulus measures distance from a point. Turn an argument interval into inequalities for real and imaginary parts, then rationalize the quotient.",
       "steps": [
-        "In part (1), mark $3i$ and $-3i$ as foci. A distance sum of $9$ gives semimajor axis $9/2$.",
-        "In part (2), write $|z-(2-i)|\\le3$ and read off the center and radius.",
-        "In part (3), set $z=x+iy$ and make the quotient denominator real. An angle between zero and $\\pi/4$ means $0<\\Im w<\\Re w$."
+        "In part (1), mark $3i$ and $-3i$ at $(0,3)$ and $(0,-3)$. A distance sum of $9$ gives an ellipse with a vertical major axis.",
+        "Use $2a=9,c=3$, so $a^2=81/4$ and $b^2=a^2-c^2=45/4$. Put the larger denominator under the vertical coordinate: $x^2/(45/4)+y^2/(81/4)=1$.",
+        "For part (2), rewrite $|z-2+i|=|z-(2-i)|$. The center is $(2,-1)$ and radius is $3$; the sign $\\le$ includes both boundary and interior.",
+        "For part (3), set $z=x+iy$ and $w=(z-i)/(z+i)$. Multiply top and bottom by $x-i(y+1)$ to get $w=[x^2+y^2-1-2ix]/[x^2+(y+1)^2]$.",
+        "An angle in $(0,\\pi/4)$ puts $w$ in quadrant I below the line of slope one, so $0<\\operatorname{Im}w<\\operatorname{Re}w$.",
+        "Multiply by the positive denominator: $0<-2x<x^2+y^2-1$. The first inequality gives $x<0$; completing the square in the second gives $(x+1)^2+y^2>2$.",
+        "Draw the intersection of the left half-plane and the exterior of the circle, excluding every boundary. Check that $z=-i$ makes the denominator zero and $z=i$ makes the argument undefined; both are excluded by the final strict inequalities."
       ],
       "check": {
-        "question": "What is the center of $|z-(2-i)|\\le3$?",
-        "answer": "$(2,-1)$."
+        "question": "Why is $\\operatorname{Im}w<\\operatorname{Re}w$ alone insufficient?",
+        "answer": "We also need $\\operatorname{Im}w>0$ to select the required part of quadrant I."
       }
     }
   },
   "1.1-4": {
     "zh": {
-      "goal": "求出复幂的全部值，并把很多正弦的和压成一个公式。",
-      "recognize": "复指数必须先定义对数；连续角度的正弦和，可以借用等比数列求和。",
+      "goal": "求复幂的全部值，并从等比数列推导正弦和。",
+      "recognize": "复幂使用多值对数；正弦是复指数的虚部。先做容易求和的复指数，最后取虚部。",
       "steps": [
-        "第一问不要直接套实数幂规则。先写 $i^i=e^{i\\log i}$。",
-        "把 $\\log i=i(\\pi/2+2k\\pi)$ 代进去，保留所有整数 $k$。",
-        "第二问先求 $\\sum_{j=1}^n e^{ij\\phi}$ 的等比和，最后取虚部；$\\phi=2k\\pi$ 单独代原式。"
+        "第(1)问先写定义 $i^i=e^{i\\log i}$。因为 $|i|=1$、全部辐角为 $\\pi/2+2k\\pi$，所以 $\\log i=i(\\pi/2+2k\\pi)$。",
+        "将指数里的两个 $i$ 相乘，得到 $i^i=e^{-\\pi/2-2k\\pi}$，$k\\in\\mathbb Z$。所有值都是正实数；指定主值时才取 $k=0$。",
+        "第(2)问设 $q=e^{i\\phi}$。当 $q\\ne1$，等比数列给 $S=q+q^2+\\cdots+q^n=q(1-q^n)/(1-q)$。",
+        "使用 $1-e^{it}=-2ie^{it/2}\\sin(t/2)$，分别处理分子 $1-e^{in\\phi}$ 与分母 $1-e^{i\\phi}$。约去 $-2i$ 后得到 $S=e^{i(n+1)\\phi/2}\\sin(n\\phi/2)/\\sin(\\phi/2)$。",
+        "取 $S$ 的虚部：正弦和为 $\\sin(n\\phi/2)\\sin((n+1)\\phi/2)/\\sin(\\phi/2)$。其余因子都是实数，只有复指数贡献虚部。",
+        "若 $\\phi=2k\\pi$，分母为零，不能直接用分式。回原题，每个正弦都是零，和为零；另用 $n=1$ 核验公式能还原 $\\sin\\phi$。"
       ],
       "check": {
-        "question": "$\\log i$ 为什么含 $2k\\pi$？",
-        "answer": "因为转过任意整圈都表示同一个复数，但对数会记录这个角度。"
+        "question": "为什么 $i^i$ 不是只有一个值？",
+        "answer": "对数中的 $2k\\pi$ 经乘以 $i$ 后变成实指数 $-2k\\pi$，指数函数不会把这些差别消掉。"
       }
     },
     "en": {
-      "goal": "Find all values of a complex power and compress a sine sum into one formula.",
-      "recognize": "A complex power first needs a logarithm. Sines at successive angles can be collected using a geometric series.",
+      "goal": "Find every value of the complex power and derive the sine sum from a geometric series.",
+      "recognize": "Complex powers use a multivalued logarithm. A sine is the imaginary part of a complex exponential, so sum the exponentials first.",
       "steps": [
-        "For part (1), do not apply real-power rules directly. Write $i^i=e^{i\\log i}$.",
-        "Insert $\\log i=i(\\pi/2+2k\\pi)$ and retain every integer $k$.",
-        "For part (2), sum $\\sum_{j=1}^n e^{ij\\phi}$ geometrically, then take its imaginary part. Substitute into the original sum separately when $\\phi=2k\\pi$."
+        "In part (1), start with $i^i=e^{i\\log i}$. Since $|i|=1$ and its arguments are $\\pi/2+2k\\pi$, we have $\\log i=i(\\pi/2+2k\\pi)$.",
+        "Multiply the two factors of $i$ in the exponent: $i^i=e^{-\\pi/2-2k\\pi}$, $k\\in\\mathbb Z$. Every value is positive real; choose $k=0$ only when a principal value is requested.",
+        "For part (2), set $q=e^{i\\phi}$. If $q\\ne1$, the geometric sum is $S=q+q^2+\\cdots+q^n=q(1-q^n)/(1-q)$.",
+        "Use $1-e^{it}=-2ie^{it/2}\\sin(t/2)$ for both $1-e^{in\\phi}$ and $1-e^{i\\phi}$. Cancel $-2i$ to obtain $S=e^{i(n+1)\\phi/2}\\sin(n\\phi/2)/\\sin(\\phi/2)$.",
+        "Take the imaginary part of $S$: the sine sum is $\\sin(n\\phi/2)\\sin((n+1)\\phi/2)/\\sin(\\phi/2)$. The other factors are real, so only the exponential contributes an imaginary part.",
+        "If $\\phi=2k\\pi$, the denominator vanishes, so return to the original sum: every sine is zero. As another check, setting $n=1$ must recover $\\sin\\phi$."
       ],
       "check": {
-        "question": "Why does $\\log i$ contain $2k\\pi$?",
-        "answer": "Every full turn represents the same complex number, while the logarithm records the additional angle."
+        "question": "Why does $i^i$ have more than one value?",
+        "answer": "The logarithmic term $2k\\pi$ becomes a real exponent $-2k\\pi$ after multiplication by $i$, so exponentiation does not remove the difference."
       }
     }
   },
   "1.1-5": {
     "zh": {
-      "goal": "找出这个二次方程的两个复数根。",
-      "recognize": "三个连续幂相加，让人想到 $z^3-1=(z-1)(z^2+z+1)$。",
+      "goal": "列出二次方程的两个复数根，并检查变形有没有引入额外根。",
+      "recognize": "连续三个幂的和符合 $z^3-1=(z-1)(z^2+z+1)$；可先求单位根，再排除多出的根。",
       "steps": [
-        "把原式乘 $z-1$，变成 $z^3=1$。",
-        "在单位圆上列出三个等间隔根：角度是 $0,2\\pi/3,4\\pi/3$。",
-        "检查原方程：$z=1$ 不符合，所以删掉它，留下另外两个根。"
+        "把原方程乘 $z-1$，利用恒等式得到 $z^3-1=0$。记住：这样只能保证原根在新方程中，反过来还要检查。",
+        "写 $1=e^{2k\\pi i}$，所以 $z=e^{2k\\pi i/3}$。取 $k=0,1,2$ 就列全三个互异候选根。",
+        "候选根 $k=0$ 给 $z=1$；代回原式得 $1+1+1=3$，因此把它删掉。",
+        "将另外两个角写成直角坐标：$\\cos(2\\pi/3)=-1/2$、$\\sin(2\\pi/3)=\\sqrt3/2$，两根为 $(-1\\pm i\\sqrt3)/2$。",
+        "自检两根的和为 $-1$、积为 $1$，分别符合二次方程的韦达关系。也可直接用判别式 $1-4=-3$ 得到同样结果。"
       ],
       "check": {
-        "question": "$z=1$ 是原方程的根吗？",
-        "answer": "不是。代入得到 $3$，不等于零。"
+        "question": "乘 $z-1$ 后为什么多出了 $z=1$？",
+        "answer": "因为新增因子在 $z=1$ 等于零，乘积会为零，即使原来的因子不为零。"
       }
     },
     "en": {
-      "goal": "Find the two complex roots of this quadratic.",
-      "recognize": "Three consecutive powers suggest $z^3-1=(z-1)(z^2+z+1)$.",
+      "goal": "Find both complex roots and check whether a transformation introduced an extra root.",
+      "recognize": "Three consecutive powers fit $z^3-1=(z-1)(z^2+z+1)$. Find the cube roots of unity, then remove any extra root.",
       "steps": [
-        "Multiply by $z-1$ to obtain $z^3=1$.",
-        "List the three equally spaced unit-circle roots at angles $0,2\\pi/3,4\\pi/3$.",
-        "Check the original equation. The root $z=1$ fails, so remove it and retain the other two."
+        "Multiply the original equation by $z-1$ to get $z^3-1=0$. Every original root solves the new equation, but the converse still needs checking.",
+        "Write $1=e^{2k\\pi i}$, so $z=e^{2k\\pi i/3}$. Taking $k=0,1,2$ lists all three distinct candidates.",
+        "The candidate $k=0$ is $z=1$. Substitution into the original expression gives $1+1+1=3$, so discard it.",
+        "Convert the other two angles to Cartesian form: $\\cos(2\\pi/3)=-1/2$ and $\\sin(2\\pi/3)=\\sqrt3/2$, giving roots $(-1\\pm i\\sqrt3)/2$.",
+        "Check that the roots sum to $-1$ and multiply to $1$, as required by Vieta relations. The discriminant $1-4=-3$ gives the same roots directly."
       ],
       "check": {
-        "question": "Is $z=1$ a root of the original equation?",
-        "answer": "No. It gives $3$, not zero."
+        "question": "Why did multiplying by $z-1$ add the root $z=1$?",
+        "answer": "The added factor is zero at $z=1$, making the product zero even though the original factor is nonzero."
       }
     }
   },
   "1.2-1": {
     "zh": {
-      "goal": "找出哪些复数能代入原式，哪些必须排除。",
-      "recognize": "分母不能为零。含共轭和模时，先改写成两个实变量。",
+      "goal": "把分母为零的点找全，再把它们从复平面排除。",
+      "recognize": "有理表达式的定义域检查分母；含共轭或模时先设 $z=x+iy$，转成实变量条件。",
       "steps": [
-        "第一问分解 $z^2+9=(z-3i)(z+3i)$。",
-        "第二问设 $z=x+iy$，写出 $z+z^*=2x$ 和 $|z|^2=x^2+y^2$。",
-        "分别排除每个分母因子的零点：第一问是两个点，第二问是一条轴和一个圆周。"
+        "第(1)问分母分解为 $z^2+9=(z-3i)(z+3i)$。两个因子为零分别给 $z=3i,-3i$。",
+        "分子是常数1，没有别的限制。因此第(1)问定义域为 $\\mathbb C\\setminus\\{3i,-3i\\}$。",
+        "第(2)问写 $z=x+iy,z^*=x-iy$。相加得到 $z+z^*=2x$，所以第一个分母因子要求 $x\\ne0$。",
+        "再写 $|z|^2=x^2+y^2$。第二个分母因子要求 $4-x^2-y^2\\ne0$，即 $x^2+y^2\\ne4$。",
+        "把两个条件同时保留：$x\\ne0$ 且 $x^2+y^2\\ne4$。画图时删去整条虚轴和半径2的圆周；圆内、圆外其余点都可以。"
       ],
       "check": {
-        "question": "第二问的 $x=0$ 能保留吗？",
-        "answer": "不能。此时分母因子 $z+z^*$ 为零。"
+        "question": "第(2)问的分子在 $z=0$ 也为零，能否把原点保留？",
+        "answer": "不能。原表达式在分母为零处没有定义；分子为零并不能让 $0/0$ 自动有意义。"
       }
     },
     "en": {
-      "goal": "Identify the complex numbers that can be substituted into each expression.",
-      "recognize": "A denominator cannot be zero. Rewrite conjugates and moduli using two real variables.",
+      "goal": "Find every zero of each denominator and exclude those points from the complex plane.",
+      "recognize": "Check denominators for rational expressions. For conjugates or moduli, set $z=x+iy$ and translate the restrictions into real variables.",
       "steps": [
-        "Factor $z^2+9=(z-3i)(z+3i)$ in part (1).",
-        "In part (2), set $z=x+iy$ and use $z+z^*=2x$ and $|z|^2=x^2+y^2$.",
-        "Exclude the zero set of each denominator factor: two points in part (1), and an axis plus a circle in part (2)."
+        "In part (1), factor $z^2+9=(z-3i)(z+3i)$. The factors vanish at $z=3i,-3i$.",
+        "The numerator is the constant one and adds no restrictions. Thus the domain in part (1) is $\\mathbb C\\setminus\\{3i,-3i\\}$.",
+        "For part (2), write $z=x+iy,z^*=x-iy$. Then $z+z^*=2x$, so the first denominator factor requires $x\\ne0$.",
+        "Next use $|z|^2=x^2+y^2$. The second factor requires $4-x^2-y^2\\ne0$, or $x^2+y^2\\ne4$.",
+        "Keep both conditions: $x\\ne0$ and $x^2+y^2\\ne4$. Remove the entire imaginary axis and the circle of radius two; other interior and exterior points are allowed."
       ],
       "check": {
-        "question": "Can points with $x=0$ remain in the second domain?",
-        "answer": "No. The denominator factor $z+z^*$ is zero there."
+        "question": "The numerator in part (2) also vanishes at $z=0$. Can the origin remain in the domain?",
+        "answer": "No. The original expression is undefined wherever its denominator vanishes; a zero numerator does not automatically define $0/0$."
       }
     }
   },
   "1.2-2": {
     "zh": {
-      "goal": "把复数函数拆成看得见的实部 u 和虚部 v。",
-      "recognize": "题目要求 u+iv，就代入 $z=x+iy$，把所有 i 集中起来。",
+      "goal": "从两个复表达式中分别提取实部函数 $u(x,y)$ 和虚部函数 $v(x,y)$。",
+      "recognize": "多项式直接展开；指数先把指数分成实数部分和纯虚部分，再用欧拉公式。",
       "steps": [
-        "第一问先展开 $(x+iy)^3$，同时把 $zz^*$ 直接换成 $x^2+y^2$。",
-        "把不含 i 的项收成 u，i 的系数收成 v。",
-        "第二问先算 $iz=ix-y$，再写 $e^{ix}=\\cos x+i\\sin x$。"
+        "第(1)问设 $z=x+iy$，先算 $(x+iy)^2=x^2-y^2+2ixy$。",
+        "再乘 $x+iy$，合并实数项与 $i$ 项，得到 $z^3=x^3-3xy^2+i(3x^2y-y^3)$。",
+        "共轭乘积 $zz^*=(x+iy)(x-iy)=x^2+y^2$ 是实数。因此 $2zz^*-2$ 只加入实部。",
+        "读出第(1)问 $u=x^3-3xy^2+2x^2+2y^2-2$，$v=3x^2y-y^3$。检查 $y=0$ 时虚部确实为零。",
+        "第(2)问先算 $iz=i(x+iy)=-y+ix$，所以 $3e^{iz}=3e^{-y}e^{ix}=3e^{-y}(\\cos x+i\\sin x)$。",
+        "读出 $u=3e^{-y}\\cos x$、$v=3e^{-y}\\sin x$。在 $z=0$，两式给 $u=3,v=0$，与原式的值3一致。"
       ],
       "check": {
-        "question": "$iz$ 的实部是 x 还是 $-y$？",
-        "answer": "是 $-y$。"
+        "question": "$e^{i(x+iy)}$ 中哪个变量控制长度？",
+        "answer": "$y$，因为模为 $e^{-y}$；$x$ 控制角度。"
       }
     },
     "en": {
-      "goal": "Separate the function into its real part u and imaginary part v.",
-      "recognize": "A request for u+iv suggests substituting $z=x+iy$ and collecting i terms.",
+      "goal": "Extract the real function $u(x,y)$ and imaginary function $v(x,y)$ from both expressions.",
+      "recognize": "Expand polynomials directly. For exponentials, separate real and imaginary parts of the exponent before using Euler formula.",
       "steps": [
-        "In part (1), expand $(x+iy)^3$ and replace $zz^*$ directly by $x^2+y^2$.",
-        "Collect terms without i into u, and coefficients of i into v.",
-        "In part (2), first compute $iz=ix-y$, then use $e^{ix}=\\cos x+i\\sin x$."
+        "In part (1), set $z=x+iy$ and first compute $(x+iy)^2=x^2-y^2+2ixy$.",
+        "Multiply by $x+iy$ once more and collect real terms and terms containing $i$: $z^3=x^3-3xy^2+i(3x^2y-y^3)$.",
+        "The conjugate product $zz^*=(x+iy)(x-iy)=x^2+y^2$ is real, so $2zz^*-2$ contributes only to the real part.",
+        "Read off $u=x^3-3xy^2+2x^2+2y^2-2$ and $v=3x^2y-y^3$ for part (1). Check that the imaginary part vanishes when $y=0$.",
+        "In part (2), $iz=i(x+iy)=-y+ix$, hence $3e^{iz}=3e^{-y}e^{ix}=3e^{-y}(\\cos x+i\\sin x)$.",
+        "Read off $u=3e^{-y}\\cos x$ and $v=3e^{-y}\\sin x$. At $z=0$, these give $u=3,v=0$, matching the original value three."
       ],
       "check": {
-        "question": "Is the real part of $iz$ x or $-y$?",
-        "answer": "It is $-y$."
+        "question": "Which variable controls the modulus of $e^{i(x+iy)}$?",
+        "answer": "$y$, because the modulus is $e^{-y}$; $x$ controls the angle."
       }
     }
   },
   "1.2-3": {
     "zh": {
-      "goal": "找出绕一圈会让平方根变号的点，并说明怎样拼出单值曲面。",
-      "recognize": "平方根内有三个一次零点。绕一次零点会变号，所以还要检查无穷远。",
+      "goal": "找全有限与无穷远支点，并按割线说明双叶曲面怎样拼接。",
+      "recognize": "平方根绕奇数阶零点或极点一周会翻号。无穷远必须用 $w=1/z$ 另查，不能只看有限零点。",
       "steps": [
-        "先分解为 $3z(z-3i)(z+3i)$，标出三个有限支点。",
-        "令 $w=1/z$。观察 $w=0$ 绕圈时出现的半整数幂，确认无穷远也是支点。",
-        "把四个支点成对用不交叉割线连接；取两张割面，把每条割线两边交叉粘到另一张。"
+        "先分解根号内部：$3z(z^2+9)=3z(z-3i)(z+3i)$。有限零点为 $0,3i,-3i$，每个因子都只出现一次。",
+        "在任一零点 $a$ 附近，平方根含有 $(z-a)^{1/2}$。绕一周增加角度 $2\\pi$，因子乘 $e^{i\\pi}=-1$，故这三个点都是支点。",
+        "检查无穷远：令 $w=1/z$，得到 $f=\\sqrt3\\,w^{-3/2}\\sqrt{1+9w^2}$。最后一个根号在 $w=0$ 附近可选单值支。",
+        "绕 $w=0$ 一周，$w^{-3/2}$ 乘 $e^{-3\\pi i}=-1$，所以无穷远也必须列为支点。支点总共四个。",
+        "配对割线：把 $-3i$ 与 $0$ 用线段连接；从 $3i$ 沿正虚轴接到无穷远。两条割线不相交，把四个支点两两连接。",
+        "取两张相同的割面，分别承载平方根的正、负两个值。每条割线的一侧与另一张的相反侧交叉粘合；跨割线就换一叶。",
+        "自检：绕一个支点走一圈换叶、两圈回原叶；绕两个支点一圈翻号两次也回原叶。这说明双叶与割线拼接相容；曲面属为1。"
       ],
       "check": {
-        "question": "绕一个一次零点一圈，平方根的符号会怎样？",
-        "answer": "翻转。再绕一圈才恢复。"
+        "question": "为什么三次多项式的平方根还要检查无穷远？",
+        "answer": "令 $w=1/z$ 后出现半整数幂 $w^{-3/2}$，它绕零点会翻号，所以无穷远是支点。"
       }
     },
     "en": {
-      "goal": "Find where a circuit changes the square-root sign, then describe a single-valued surface.",
-      "recognize": "There are three simple zeros under the square root. A circuit around each reverses the sign, so infinity must also be checked.",
+      "goal": "Find finite and infinite branch points, then explain how cuts join the two sheets.",
+      "recognize": "A square root changes sign around a zero or pole of odd order. Check infinity separately with $w=1/z$.",
       "steps": [
-        "Factor the expression as $3z(z-3i)(z+3i)$ and mark its three finite branch points.",
-        "Set $w=1/z$. The half-integer power near $w=0$ shows that infinity is also a branch point.",
-        "Join paired branch points with disjoint cuts. Take two cut copies and join opposite banks to the other copy."
+        "Factor the radicand: $3z(z^2+9)=3z(z-3i)(z+3i)$. Its finite zeros are $0,3i,-3i$, each of order one.",
+        "Near any zero $a$, the square root contains $(z-a)^{1/2}$. One full turn adds $2\\pi$ and multiplies this factor by $e^{i\\pi}=-1$, making all three zeros branch points.",
+        "To inspect infinity, let $w=1/z$: $f=\\sqrt3\\,w^{-3/2}\\sqrt{1+9w^2}$. The last square root has a single-valued branch near $w=0$.",
+        "One turn around $w=0$ multiplies $w^{-3/2}$ by $e^{-3\\pi i}=-1$, so infinity is also a branch point. There are four branch points in total.",
+        "Choose paired cuts: a segment from $-3i$ to $0$, and a ray from $3i$ up the positive imaginary axis to infinity. These disjoint cuts pair the four branch points.",
+        "Take two identical cut sheets, carrying the two signs of the square root. Glue each bank of a cut to the opposite bank on the other sheet, so crossing a cut changes sheets.",
+        "Check that one turn around one branch point changes sheets and two turns return to the original sheet. A turn around two branch points also produces two sign changes. This is consistent with a two-sheeted surface, of genus one."
       ],
       "check": {
-        "question": "What happens to a square root after one circuit around a simple zero?",
-        "answer": "Its sign reverses; a second circuit restores it."
+        "question": "Why must infinity be checked for the square root of a cubic?",
+        "answer": "The substitution $w=1/z$ produces the half-integer power $w^{-3/2}$, which changes sign around zero, making infinity a branch point."
       }
     }
   },
   "1.3-1": {
     "zh": {
-      "goal": "分别回答“哪些点有复导数”和“哪些区域内解析”。",
-      "recognize": "含共轭或 x、y 的式子不能直接按 z 求导。先检查两条 C–R 方程。",
+      "goal": "分别区分“在哪些点可导”和“在哪些开区域解析”。",
+      "recognize": "先写 $f=u+iv$，用 $u_x=v_y,u_y=-v_x$。偏导连续时，满足两式的点可导；解析还要求邻域处处可导。",
       "steps": [
-        "先拆成 $f=u+iv$。两条 C–R 条件 $u_x=v_y$、$u_y=-v_x$ 必须同时成立；它们先帮你筛选“可能可导”的点。",
-        "第(1)问化成 $4x-2iy$，于是 $u_x=4,v_y=-2$，第一条就不成立，处处不可导。",
-        "第(2)问第一条给 $2x=-2x$，所以 $x=0$；第二条给 $-2y-2=-2+2y$，所以 $y=0$。偏导连续，原点可导，导数为 $2i$。",
-        "别在第(2)问停在“原点可导”。解析要求一个小圆盘内处处可导，而这里只有一个点，所以无处解析。",
-        "第(3)问 $z+1/z$ 只需排除没有定义的原点，其他地方解析。第(4)问是 $\\cos z$，整个复平面解析。"
+        "第(1)问 $z+3z^*=4x-2iy$，所以 $u_x=4,v_y=-2$。第一条 C–R 永远不成立，结论是无处可导，也无处解析。",
+        "第(2)问先求 $u_x=2x,v_y=-2x$，令二者相等得到 $x=0$。",
+        "再求 $u_y=-2y-2,v_x=2-2y$。由 $u_y=-v_x$ 得 $-2y-2=-2+2y$，所以 $y=0$。两条条件的交集只有原点。",
+        "第(2)问偏导是连续多项式，故原点确实可导，导数 $f\\prime(0)=u_x(0)+iv_x(0)=2i$。但任意小圆盘都包含其他点，所以没有解析区域。",
+        "第(3)问先排除无定义的 $z=0$。其余地方 $z$ 与 $1/z$ 都解析，因此和也解析，导数为 $1-1/z^2$。",
+        "第(4)问用恒等式 $\\cos(x+iy)=\\cos x\\cosh y-i\\sin x\\sinh y$ 认出 $f=\\cos z$。它在全平面解析，导数 $-\\sin z$。",
+        "最后把答案按“可导点、解析区域”两栏核对。尤其第(2)问只在一点可导，绝不能写成“原点解析”。"
       ],
       "check": {
-        "question": "只在原点可导，能叫作在原点解析吗？",
-        "answer": "不能。解析要求原点周围一个开邻域内处处可导。"
+        "question": "C–R 只在一个孤立点成立，能否推出这个点附近解析？",
+        "answer": "不能。还需在某个开邻域内每一点都可导；第(2)问就是反例。"
       }
     },
     "en": {
-      "goal": "Answer separately where the complex derivative exists and where the function is analytic.",
-      "recognize": "Conjugates or explicit x,y terms prevent direct differentiation as a function of z. Start with both C–R equations.",
+      "goal": "Distinguish points of differentiability from open regions of analyticity.",
+      "recognize": "Write $f=u+iv$ and use $u_x=v_y,u_y=-v_x$. With continuous partial derivatives, the equations give differentiability at a point; analyticity requires differentiability throughout a neighborhood.",
       "steps": [
-        "Write $f=u+iv$. Both Cauchy–Riemann equations, $u_x=v_y$ and $u_y=-v_x$, must hold. They first identify possible points of differentiability.",
-        "Part (1) becomes $4x-2iy$, so $u_x=4,v_y=-2$. The first equation fails everywhere: there are no differentiable points.",
-        "In part (2), the first equation gives $2x=-2x$, hence $x=0$. The second gives $-2y-2=-2+2y$, hence $y=0$. Continuous partial derivatives establish differentiability there, with derivative $2i$.",
-        "Do not stop at “differentiable at the origin” in part (2). Analyticity requires differentiability throughout a small open disk. A single point is not enough, so the function is nowhere analytic.",
-        "For part (3), $z+1/z$ is analytic wherever it is defined: exclude the origin. Part (4) is $\\cos z$, analytic on the whole plane."
+        "In part (1), $z+3z^*=4x-2iy$, so $u_x=4,v_y=-2$. The first C–R equation fails everywhere: the function is nowhere differentiable and nowhere analytic.",
+        "For part (2), compute $u_x=2x,v_y=-2x$. Equating them gives $x=0$.",
+        "Next compute $u_y=-2y-2,v_x=2-2y$. The equation $u_y=-v_x$ becomes $-2y-2=-2+2y$, so $y=0$. Only the origin satisfies both equations.",
+        "The partial derivatives in part (2) are continuous polynomials, so differentiability does hold at the origin, with $f\\prime(0)=u_x(0)+iv_x(0)=2i$. Every small disk contains other points, so no analytic region exists.",
+        "For part (3), first exclude the undefined point $z=0$. Elsewhere, both $z$ and $1/z$ are analytic, so their sum is analytic, with derivative $1-1/z^2$.",
+        "In part (4), the identity $\\cos(x+iy)=\\cos x\\cosh y-i\\sin x\\sinh y$ identifies $f=\\cos z$. It is analytic everywhere, with derivative $-\\sin z$.",
+        "Finally, check the answers as two separate lists: differentiability points and analytic regions. In particular, differentiability at the single point in part (2) does not mean analyticity there."
       ],
       "check": {
-        "question": "If a function is differentiable only at the origin, is it analytic there?",
-        "answer": "No. Analyticity requires differentiability throughout an open neighborhood."
+        "question": "If C–R holds only at one isolated point, does it imply analyticity nearby?",
+        "answer": "No. Differentiability must hold at every point of an open neighborhood; part (2) is a counterexample."
       }
     }
   },
   "1.3-2": {
     "zh": {
-      "goal": "判断是否存在一块开区域，让函数在里面每一点都可导。",
-      "recognize": "题目问解析性。只找到一个可导点不够：一个点周围还要有整片可导的邻域。",
+      "goal": "判断题给条件能否形成解析函数，而不把“某点可导”误认为“解析”。",
+      "recognize": "给完整函数时用 C–R；只给实部时，先检查必要条件 $u_{xx}+u_{yy}=0$，可以快速排除不可能情形。",
       "steps": [
-        "第(1)问先写 $u=3x^2+y^2-2,v=2xy$，计算四个一阶偏导。",
-        "C–R 两条式子给 $6x=2x$、$2y=-2y$，所以只有原点可导。单点不是开区域，因此无处解析。",
-        "第(2)问没有给虚部，先检查实部是否调和。算 $u_{xx}+u_{yy}=4$，不是0，所以不用继续找虚部：所求解析函数不存在。"
+        "第(1)问展开 $z^2=x^2-y^2+2ixy$、$zz^*=x^2+y^2$，得到 $u=3x^2+y^2-2,v=2xy$。",
+        "分别求偏导：$u_x=6x,v_y=2x,u_y=2y,v_x=2y$。C–R 变成 $6x=2x$ 与 $2y=-2y$，故只能有 $x=y=0$。",
+        "这些偏导连续，所以原点确实可导，导数 $u_x(0)+iv_x(0)=0$。但原点之外 C–R 不成立，任意开圆盘都不是处处可导。",
+        "因此第(1)问应写“只在原点可导、无处解析”。这已经回答题目的解析性问题；不能只写“不整函数”而遗漏局部判断。",
+        "第(2)问给 $u=x^2+y^2$，先求 $u_{xx}=2,u_{yy}=2$，相加得到 $u_{xx}+u_{yy}=4\\ne0$。",
+        "解析函数的实部必须调和，题给实部在任何地方都不满足这个必要条件，所以任何非空开区域内都不存在所求解析函数。此时不必继续积分求虚部。"
       ],
       "check": {
-        "question": "$x^2+y^2$ 的拉普拉斯 $u_{xx}+u_{yy}$ 等于多少？",
-        "answer": "$4$。"
+        "question": "“无处解析”和“不是整函数”，哪一个结论更强？",
+        "answer": "“无处解析”更强。不是整函数仍可能在某些开区域解析，例如 $1/z$ 在 $z\\ne0$ 处解析。"
       }
     },
     "en": {
-      "goal": "Decide whether there is an open region on which the function is differentiable at every point.",
-      "recognize": "The question is about analyticity. One differentiable point is not enough; an entire neighborhood must also consist of differentiable points.",
+      "goal": "Decide whether the conditions give an analytic function without confusing pointwise differentiability with analyticity.",
+      "recognize": "Use C–R for a complete function. If only the real part is supplied, first test the necessary condition $u_{xx}+u_{yy}=0$.",
       "steps": [
-        "For part (1), write $u=3x^2+y^2-2,v=2xy$ and compute the four first partial derivatives.",
-        "The Cauchy–Riemann equations give $6x=2x$ and $2y=-2y$. Only the origin is differentiable. A single point is not open, so the function is nowhere analytic.",
-        "Part (2) supplies no imaginary part. First test harmonicity of the real part: $u_{xx}+u_{yy}=4$, not zero. Stop there: the requested analytic function does not exist."
+        "In part (1), expand $z^2=x^2-y^2+2ixy$ and $zz^*=x^2+y^2$, giving $u=3x^2+y^2-2,v=2xy$.",
+        "Compute $u_x=6x,v_y=2x,u_y=2y,v_x=2y$. C–R becomes $6x=2x$ and $2y=-2y$, forcing $x=y=0$.",
+        "The partial derivatives are continuous, so the function is differentiable at the origin, with derivative $u_x(0)+iv_x(0)=0$. Away from the origin C–R fails, so no open disk consists entirely of differentiability points.",
+        "Thus the answer to part (1) is: differentiable only at the origin, nowhere analytic. This addresses analyticity; merely saying it is not entire omits the local question.",
+        "For part (2), $u=x^2+y^2$ gives $u_{xx}=2,u_{yy}=2$, hence $u_{xx}+u_{yy}=4\\ne0$.",
+        "The real part of an analytic function must be harmonic. Since this real part fails that necessary condition everywhere, no such analytic function exists on any nonempty open region. There is no need to integrate for an imaginary part."
       ],
       "check": {
-        "question": "What is $u_{xx}+u_{yy}$ for $u=x^2+y^2$?",
-        "answer": "$4$."
+        "question": "Which statement is stronger: nowhere analytic or not entire?",
+        "answer": "Nowhere analytic is stronger. A function that is not entire can still be analytic on some open regions; for example, $1/z$ is analytic where $z\\ne0$."
       }
     }
   },
   "1.3-3": {
     "zh": {
-      "goal": "已知实部或虚部，补出另一半，再用给定函数值定常数。",
-      "recognize": "解析函数的两半由 C–R 联系。积分一次后，别把剩下的未知函数误当成常数。",
+      "goal": "根据一个实部或虚部恢复解析函数，再用给定值确定常数。",
+      "recognize": "对一个变量积分时，另一变量要当常数；所以“积分常数”可以是另一变量的函数，再用另一条 C–R 确定。",
       "steps": [
-        "只对 y 积分时，“积分常数”可以是 x 的函数；只对 x 积分时也一样。这就是下面为什么先写 $g(x)$ 或 $g(y)$，再用另一条 C–R 来确定它。",
-        "第(1)问从 $v_y=2x$ 得 $v=2xy+g(x)$；再用 $v_x=2y$ 得 $g\\prime=0$。给定值把常数定为0，于是 $f=z^2$。",
-        "第(2)问已知虚部，改从 $u_x=v_y=e^x\\cos y$ 积分，得 $u=e^x\\cos y+g(y)$。另一条 C–R 让 g 为常数，$f(0)=0$ 给 $g=-1$。",
-        "第(3)问先分母实数化 $1/z=(x-iy)/(x^2+y^2)$，认出题给实部。另一半只能差一个纯虚常数，代 $f(2)=1/2$ 将它定为0。",
-        "第(4)问积分 $u_x=v_y=x-2y$，得 $u=x^2/2-2xy+g(y)$；再用 $u_y=-v_x$ 得 $g=-y^2/2+C$。代 $z=i$ 得 $C=3/2$。"
+        "第(1)问由 $v_y=u_x=2x$ 得 $v=2xy+g(x)$。再用 $v_x=-u_y=2y$，得到 $2y+g\\prime(x)=2y$，所以 $g=C$。",
+        "由 $f(0)=0$ 得第(1)问的 $C=0$。把 $u+iv=x^2-y^2+2ixy$ 认成 $(x+iy)^2$，故 $f=z^2$。",
+        "第(2)问由 $u_x=v_y=e^x\\cos y$ 得 $u=e^x\\cos y+g(y)$。用 $u_y=-v_x=-e^x\\sin y$ 得 $g\\prime(y)=0$。",
+        "第(2)问 $f=e^z+C$，而 $f(0)=1+C=0$，所以 $C=-1$，答案 $e^z-1$。",
+        "第(3)问实数化 $1/z=(x-iy)/(x^2+y^2)$，其虚部为 $-y/(x^2+y^2)$。因此可取 $f=1/z+iC$；由 $f(2)=1/2+iC=1/2$ 得 $C=0$。",
+        "第(4)问先求 $v_y=x-2y$，所以 $u_x=x-2y$，对 $x$ 积分得到 $u=x^2/2-2xy+g(y)$。",
+        "再用 $u_y=-v_x=-2x-y$，得到 $-2x+g\\prime(y)=-2x-y$，所以 $g=-y^2/2+C$。于是 $f=(1/2+i)z^2+C$。",
+        "第(4)问代 $z=i$，得到 $-1/2-i+C=1-i$，因此 $C=3/2$。逐个把初值代回自检；第(3)问还要注明 $z\\ne0$。"
       ],
       "check": {
-        "question": "对 y 积分时，为什么写 $g(x)$？",
-        "answer": "因为任何只依赖 x 的函数对 y 的导数都为零。"
+        "question": "对 $v_y=2x$ 关于 $y$ 积分，为什么写 $g(x)$ 而不能直接写常数？",
+        "answer": "任何只依赖 $x$ 的项对 $y$ 求导都为零；第二条 C–R 才能确定它是否为常数。"
       }
     },
     "en": {
-      "goal": "Recover the missing real or imaginary part, then fix the constant using the given function value.",
-      "recognize": "C–R links the two parts of an analytic function. After one integration, the leftover may still depend on the other variable.",
+      "goal": "Recover an analytic function from its real or imaginary part, then determine its constant from the given value.",
+      "recognize": "When integrating in one variable, hold the other fixed. The integration constant may therefore be a function of the other variable, determined by the second C–R equation.",
       "steps": [
-        "When integrating with respect to y, the integration constant may depend on x, and vice versa. Write $g(x)$ or $g(y)$ first, then use the other Cauchy–Riemann equation to determine it.",
-        "Part (1): integrate $v_y=2x$ to get $v=2xy+g(x)$. Then $v_x=2y$ gives $g\\prime=0$. The given value sets the constant to zero, giving $f=z^2$.",
-        "Part (2) gives the imaginary part. Integrate $u_x=v_y=e^x\\cos y$ to get $u=e^x\\cos y+g(y)$. The other equation makes g constant; $f(0)=0$ gives $g=-1$.",
-        "For part (3), rationalize $1/z=(x-iy)/(x^2+y^2)$ to recognize the real part. The analytic function can differ only by an imaginary constant. Use $f(2)=1/2$ to set it to zero.",
-        "Part (4): integrate $u_x=v_y=x-2y$ to get $u=x^2/2-2xy+g(y)$. Then $u_y=-v_x$ gives $g=-y^2/2+C$. Substituting $z=i$ gives $C=3/2$."
+        "In part (1), $v_y=u_x=2x$ gives $v=2xy+g(x)$. Then $v_x=-u_y=2y$ gives $2y+g\\prime(x)=2y$, so $g=C$.",
+        "The value $f(0)=0$ sets $C=0$ in part (1). Recognize $u+iv=x^2-y^2+2ixy$ as $(x+iy)^2$, so $f=z^2$.",
+        "In part (2), $u_x=v_y=e^x\\cos y$ gives $u=e^x\\cos y+g(y)$. The equation $u_y=-v_x=-e^x\\sin y$ then gives $g\\prime(y)=0$.",
+        "Part (2) gives $f=e^z+C$; since $f(0)=1+C=0$, we obtain $C=-1$ and answer $e^z-1$.",
+        "For part (3), rationalize $1/z=(x-iy)/(x^2+y^2)$; its imaginary part is $-y/(x^2+y^2)$. Thus $f=1/z+iC$, and $f(2)=1/2+iC=1/2$ sets $C=0$.",
+        "For part (4), $v_y=x-2y$ implies $u_x=x-2y$. Integrating in $x$ gives $u=x^2/2-2xy+g(y)$.",
+        "Next, $u_y=-v_x=-2x-y$ gives $-2x+g\\prime(y)=-2x-y$, so $g=-y^2/2+C$. Hence $f=(1/2+i)z^2+C$.",
+        "In part (4), substitute $z=i$: $-1/2-i+C=1-i$, so $C=3/2$. Check each prescribed value by substitution, and retain $z\\ne0$ in part (3)."
       ],
       "check": {
-        "question": "Why write $g(x)$ after integrating with respect to y?",
-        "answer": "Every function depending only on x has zero derivative with respect to y."
+        "question": "When integrating $v_y=2x$ in $y$, why use $g(x)$ instead of a fixed constant?",
+        "answer": "Any term depending only on $x$ has zero derivative in $y$. The second C–R equation determines whether that term is constant."
       }
     }
   },
   "1.3-4": {
     "zh": {
-      "goal": "把直角坐标的 C–R 方程改写成半径、角度的形式。",
-      "recognize": "坐标变了，导数要用链式法则连接起来。",
+      "goal": "把直角坐标 C–R 方程转换成极坐标形式，并看清每个因子从哪里来。",
+      "recognize": "写 $x=\rho\\cos\\phi,y=\rho\\sin\\phi$。先用链式法则展开偏导，再替换 C–R；不要把不同坐标的偏导直接相等。",
       "steps": [
-        "先写 $x=\\rho\\cos\\phi,y=\\rho\\sin\\phi$，算 $x_\\rho,y_\\rho,x_\\phi,y_\\phi$。",
-        "例如 $u_\\rho=u_x\\cos\\phi+u_y\\sin\\phi$，把另外三个导数也展开。",
-        "用 $u_x=v_y,u_y=-v_x$ 替换，比较两边；只在 $\\rho>0$ 除以半径。"
+        "先列坐标导数：$x_\\rho=\\cos\\phi,y_\\rho=\\sin\\phi,x_\\phi=-\\rho\\sin\\phi,y_\\phi=\\rho\\cos\\phi$。",
+        "链式法则给 $u_\\rho=u_x x_\\rho+u_y y_\\rho=u_x\\cos\\phi+u_y\\sin\\phi$。",
+        "另算 $v_\\phi=v_x x_\\phi+v_y y_\\phi=-\\rho v_x\\sin\\phi+\\rho v_y\\cos\\phi$。用 $v_x=-u_y,v_y=u_x$，得 $v_\\phi=\\rho(u_y\\sin\\phi+u_x\\cos\\phi)=\\rho u_\\rho$。",
+        "为第二条式子，展开 $v_\\rho=v_x\\cos\\phi+v_y\\sin\\phi=-u_y\\cos\\phi+u_x\\sin\\phi$。",
+        "再算 $u_\\phi=-\\rho u_x\\sin\\phi+\\rho u_y\\cos\\phi$。与上一步逐项比较，得到 $u_\\phi=-\\rho v_\\rho$。",
+        "在 $\\rho>0$ 时两式可除以 $\\rho$，得到 $u_\\rho=v_\\phi/\\rho$、$v_\\rho=-u_\\phi/\\rho$。原点的极角不唯一，所以不能在那里直接用这组带除法的式子。"
       ],
       "check": {
-        "question": "$x_\\phi$ 等于多少？",
-        "answer": "$-\\rho\\sin\\phi$。"
+        "question": "为什么 $v_\\phi$ 的展开式含 $\\rho$，而 $v_\\rho$ 不含这个额外因子？",
+        "answer": "因为 $x_\\phi=-\\rho\\sin\\phi,y_\\phi=\\rho\\cos\\phi$，而 $x_\\rho=\\cos\\phi,y_\\rho=\\sin\\phi$。"
       }
     },
     "en": {
-      "goal": "Rewrite Cartesian C–R in terms of radius and angle.",
-      "recognize": "A coordinate change requires the chain rule to connect the derivatives.",
+      "goal": "Convert Cartesian C–R equations into polar form and identify the source of every factor.",
+      "recognize": "Write $x=\rho\\cos\\phi,y=\rho\\sin\\phi$. Expand derivatives with the chain rule before applying C–R; derivatives in different coordinates cannot be equated directly.",
       "steps": [
-        "Write $x=\\rho\\cos\\phi,y=\\rho\\sin\\phi$ and find $x_\\rho,y_\\rho,x_\\phi,y_\\phi$.",
-        "For example, $u_\\rho=u_x\\cos\\phi+u_y\\sin\\phi$. Expand the other three derivatives as well.",
-        "Substitute $u_x=v_y,u_y=-v_x$ and compare the two sides. Divide by the radius only for $\\rho>0$."
+        "List the coordinate derivatives: $x_\\rho=\\cos\\phi,y_\\rho=\\sin\\phi,x_\\phi=-\\rho\\sin\\phi,y_\\phi=\\rho\\cos\\phi$.",
+        "The chain rule gives $u_\\rho=u_x x_\\rho+u_y y_\\rho=u_x\\cos\\phi+u_y\\sin\\phi$.",
+        "Separately, $v_\\phi=v_x x_\\phi+v_y y_\\phi=-\\rho v_x\\sin\\phi+\\rho v_y\\cos\\phi$. Use $v_x=-u_y,v_y=u_x$ to obtain $v_\\phi=\\rho(u_y\\sin\\phi+u_x\\cos\\phi)=\\rho u_\\rho$.",
+        "For the second identity, expand $v_\\rho=v_x\\cos\\phi+v_y\\sin\\phi=-u_y\\cos\\phi+u_x\\sin\\phi$.",
+        "Next compute $u_\\phi=-\\rho u_x\\sin\\phi+\\rho u_y\\cos\\phi$. Comparing term by term with the previous line gives $u_\\phi=-\\rho v_\\rho$.",
+        "For $\\rho>0$, divide by $\\rho$ to obtain $u_\\rho=v_\\phi/\\rho$ and $v_\\rho=-u_\\phi/\\rho$. The angle is not unique at the origin, so this divided form cannot be applied there directly."
       ],
       "check": {
-        "question": "What is $x_\\phi$?",
-        "answer": "$-\\rho\\sin\\phi$."
+        "question": "Why does the expansion for $v_\\phi$ contain an extra factor of $\\rho$, while $v_\\rho$ does not?",
+        "answer": "Because $x_\\phi=-\\rho\\sin\\phi,y_\\phi=\\rho\\cos\\phi$, whereas $x_\\rho=\\cos\\phi,y_\\rho=\\sin\\phi$."
       }
     }
   },
   "1.3-5": {
     "zh": {
-      "goal": "消掉虚部 v，留下只含实部 u 的二阶方程。",
-      "recognize": "上一题的极坐标 C–R 一边含 u、一边含 v。交叉求导能让 v 的混合导数互相抵消。",
+      "goal": "从极坐标 C–R 方程消去另一函数，分别得到 $u$ 和 $v$ 的拉普拉斯方程。",
+      "recognize": "目标含二阶偏导，所以对两条一阶 C–R 分别求导，并利用混合偏导可交换。全程取 $\rho>0$。",
       "steps": [
-        "先把第一条写成 $\\rho u_\\rho=v_\\phi$，对 $\\rho$ 求导。",
-        "把另一条写成 $\\rho v_\\rho=-u_\\phi$，对 $\\phi$ 求导。",
-        "利用 $v_{\\phi\\rho}=v_{\\rho\\phi}$ 消去 v，再整理；交换 u、v 得另一条方程。"
+        "从 $\\rho u_\\rho=v_\\phi$ 出发，对 $\\rho$ 求导。左侧用乘积法则，得 $u_\\rho+\\rho u_{\\rho\\rho}=v_{\\phi\\rho}$。",
+        "对另一式 $v_\\rho=-u_\\phi/\\rho$ 关于 $\\phi$ 求导。这里 $\\rho$ 固定，故 $v_{\\rho\\phi}=-u_{\\phi\\phi}/\\rho$。",
+        "解析函数具有所需的光滑性，所以 $v_{\\phi\\rho}=v_{\\rho\\phi}$。代入并乘 $\\rho$，得 $\\rho u_\\rho+\\rho^2u_{\\rho\\rho}=-u_{\\phi\\phi}$，移项即为 $u$ 方程。",
+        "现在单独推 $v$：从 $\\rho v_\\rho=-u_\\phi$ 关于 $\\rho$ 求导，得 $v_\\rho+\\rho v_{\\rho\\rho}=-u_{\\phi\\rho}$。",
+        "从 $u_\\rho=v_\\phi/\\rho$ 关于 $\\phi$ 求导，得 $u_{\\rho\\phi}=v_{\\phi\\phi}/\\rho$。交换混合偏导后代入上式。",
+        "乘 $\\rho$ 并移项，得到 $\\rho^2v_{\\rho\\rho}+\\rho v_\\rho+v_{\\phi\\phi}=0$。两式除以 $\\rho^2$ 后，都是极坐标形式 $h_{\\rho\\rho}+h_\\rho/\\rho+h_{\\phi\\phi}/\\rho^2=0$。"
       ],
       "check": {
-        "question": "对 $\\rho u_\\rho$ 求 $\\rho$ 导数能漏掉 $u_\\rho$ 吗？",
-        "answer": "不能。乘积法则给 $u_\\rho+\\rho u_{\\rho\\rho}$。"
+        "question": "对 $\\rho u_\\rho$ 关于 $\\rho$ 求导，为什么不能只写 $\\rho u_{\\rho\\rho}$？",
+        "answer": "因为 $\\rho$ 自己也在变化，乘积法则还会产生 $u_\\rho$。"
       }
     },
     "en": {
-      "goal": "Eliminate v and obtain a second-order equation involving only u.",
-      "recognize": "The polar C–R equations link u and v. Differentiating in opposite orders lets the mixed derivatives of v cancel.",
+      "goal": "Eliminate the other function from polar C–R to obtain the Laplace equations for both $u$ and $v$.",
+      "recognize": "The target contains second derivatives. Differentiate the first-order C–R equations and use equality of mixed derivatives, throughout with $\rho>0$.",
       "steps": [
-        "Write the first equation as $\\rho u_\\rho=v_\\phi$ and differentiate in $\\rho$.",
-        "Write the other as $\\rho v_\\rho=-u_\\phi$ and differentiate in $\\phi$.",
-        "Use $v_{\\phi\\rho}=v_{\\rho\\phi}$ to eliminate v, then rearrange. Exchange u and v for the second equation."
+        "Start with $\\rho u_\\rho=v_\\phi$ and differentiate in $\\rho$. The product rule gives $u_\\rho+\\rho u_{\\rho\\rho}=v_{\\phi\\rho}$.",
+        "Differentiate $v_\\rho=-u_\\phi/\\rho$ in $\\phi$. Since $\\rho$ is held fixed, $v_{\\rho\\phi}=-u_{\\phi\\phi}/\\rho$.",
+        "Analytic functions have the required smoothness, so $v_{\\phi\\rho}=v_{\\rho\\phi}$. Substitute and multiply by $\\rho$: $\\rho u_\\rho+\\rho^2u_{\\rho\\rho}=-u_{\\phi\\phi}$. Move the last term to obtain the equation for $u$.",
+        "Now derive the equation for $v$ explicitly. Differentiating $\\rho v_\\rho=-u_\\phi$ in $\\rho$ gives $v_\\rho+\\rho v_{\\rho\\rho}=-u_{\\phi\\rho}$.",
+        "Differentiate $u_\\rho=v_\\phi/\\rho$ in $\\phi$ to get $u_{\\rho\\phi}=v_{\\phi\\phi}/\\rho$. Substitute into the preceding equation after exchanging mixed derivatives.",
+        "Multiply by $\\rho$ and rearrange: $\\rho^2v_{\\rho\\rho}+\\rho v_\\rho+v_{\\phi\\phi}=0$. Dividing either equation by $\\rho^2$ gives the polar form $h_{\\rho\\rho}+h_\\rho/\\rho+h_{\\phi\\phi}/\\rho^2=0$."
       ],
       "check": {
-        "question": "Can the derivative of $\\rho u_\\rho$ omit $u_\\rho$?",
-        "answer": "No. The product rule gives $u_\\rho+\\rho u_{\\rho\\rho}$."
+        "question": "Why is the derivative of $\\rho u_\\rho$ in $\\rho$ not just $\\rho u_{\\rho\\rho}$?",
+        "answer": "Because $\\rho$ also varies; the product rule adds the term $u_\\rho$."
       }
     }
   },
   "1.3-6": {
     "zh": {
-      "goal": "证明两组等值线在正常交点处成直角。",
-      "recognize": "梯度是等值线的法向量，也就是垂直于曲线的方向。法向量互相垂直，就能推出切线互相垂直。",
+      "goal": "证明两族等值线在正则相交点切线垂直，并写明条件。",
+      "recognize": "等值线的梯度是法向量。先证明两个梯度垂直，再把法向量结论转成切线结论；必须排除梯度为零的临界点。",
       "steps": [
-        "写两法向量 $\\nabla u=(u_x,u_y)$、$\\nabla v=(v_x,v_y)$。",
-        "算点积 $u_xv_x+u_yv_y$，用 C–R 替换成两项抵消。",
-        "确认 $f\\prime\\ne0$，使梯度非零，才可谈确定的切线；临界点单独处理。"
+        "在交点写 $\\nabla u=(u_x,u_y)$、$\\nabla v=(v_x,v_y)$。若沿 $u=c_1$ 移动，微分关系是 $u_xdx+u_ydy=0$。",
+        "因此在 $\\nabla u\\ne0$ 时，$\\nabla u$ 垂直于 $u$ 等值线的切向量；对 $v$ 等值线同样有 $v_xdx+v_ydy=0$。",
+        "计算法向量内积：$\\nabla u\\cdot\\nabla v=u_xv_x+u_yv_y$。用 C–R 的 $u_x=v_y,u_y=-v_x$，得到 $v_yv_x-v_xv_y=0$。",
+        "要求 $f\\prime(z_0)\\ne0$。因为 $|f\\prime|^2=u_x^2+v_x^2=u_x^2+u_y^2=v_x^2+v_y^2$，这个条件保证两个梯度都不为零。",
+        "非零梯度保证局部有确定的光滑等值线。把两个法向量都旋转90度得到切向量；旋转保留内积，所以两条切线也垂直。",
+        "自检条件不能删除：$f=z^2$ 在原点有 $f\\prime(0)=0$，等值集会有多条相交支路；常函数的等值集甚至是整个区域，均不能直接谈唯一切线。"
       ],
       "check": {
-        "question": "法向量为零时，可以直接认定切线方向吗？",
-        "answer": "不可以，必须另作局部分析。"
+        "question": "内积为零是否自动说明两个等值集有互相垂直的唯一切线？",
+        "answer": "不自动成立。还要两个梯度非零；本题可用 $f\\prime(z_0)\\ne0$ 保证。"
       }
     },
     "en": {
-      "goal": "Prove that the two level-curve families meet at right angles at regular points.",
-      "recognize": "A gradient is normal to a level curve. Perpendicular nonzero normals imply perpendicular tangents.",
+      "goal": "Prove that the two families of level curves meet at right angles at regular intersection points, stating the condition.",
+      "recognize": "A gradient is normal to a level curve. Prove that the gradients are perpendicular, then transfer the result to tangents; exclude critical points with zero gradients.",
       "steps": [
-        "Write the normals $\\nabla u=(u_x,u_y)$ and $\\nabla v=(v_x,v_y)$.",
-        "Compute $u_xv_x+u_yv_y$ and substitute C–R so the terms cancel.",
-        "Check $f\\prime\\ne0$ so the gradients are nonzero and tangents are defined. Handle critical points separately."
+        "At the intersection, write $\\nabla u=(u_x,u_y)$ and $\\nabla v=(v_x,v_y)$. Motion along $u=c_1$ satisfies $u_xdx+u_ydy=0$.",
+        "When $\\nabla u\\ne0$, it is perpendicular to the tangent of the $u$ level curve. For the $v$ level curve, the corresponding relation is $v_xdx+v_ydy=0$.",
+        "Compute the normal dot product: $\\nabla u\\cdot\\nabla v=u_xv_x+u_yv_y$. C–R gives $u_x=v_y,u_y=-v_x$, reducing it to $v_yv_x-v_xv_y=0$.",
+        "Require $f\\prime(z_0)\\ne0$. Since $|f\\prime|^2=u_x^2+v_x^2=u_x^2+u_y^2=v_x^2+v_y^2$, both gradients are then nonzero.",
+        "Nonzero gradients guarantee well-defined smooth local level curves. Rotate both normal vectors by 90 degrees to obtain tangents. Rotation preserves dot products, so the tangents are perpendicular.",
+        "Check why the condition matters: for $f=z^2$, the origin has $f\\prime(0)=0$ and several level-set branches meet there. For a constant function, a level set can be an entire region. Neither case directly supplies a unique tangent."
       ],
       "check": {
-        "question": "Can a zero normal vector directly determine a tangent direction?",
-        "answer": "No. Separate local analysis is needed."
+        "question": "Does a zero gradient dot product automatically give unique perpendicular tangents to both level sets?",
+        "answer": "No. Both gradients must be nonzero; here $f\\prime(z_0)\\ne0$ ensures that."
       }
     }
   },
   "1.4-1": {
     "zh": {
-      "goal": "沿三条不同路线分别累计积分，比较结果。",
-      "recognize": "被积函数是 $\\Im z=y$，不是解析函数，所以必须真的沿路线算。",
+      "goal": "分别计算三条路径上的积分，亲眼看出相同端点不一定给相同积分。",
+      "recognize": "被积函数是 $\\operatorname{Im}z=y$，并不解析。每段路径写成 $z(t)$，同时算出 $y(t)$ 和 $dz=z\\prime(t)dt$。",
       "steps": [
-        "把 $dz$ 写成 $dx+i\\,dy$，积分就成 $y\\,dx+i y\\,dy$。",
-        "第一条路线水平段 y=0，贡献零；竖直段 x=2，只积分 $iy\\,dy$。",
-        "直线段可设 $z=(2+i)t$，$0\\le t\\le1$；折线路线逐段设参数再相加。"
+        "第(1)条路径先走实轴 $z=t,0\\le t\\le2$。这里 $y=0$，所以第一段积分为 $0$。",
+        "再走竖直段 $z=2+it,0\\le t\\le1$，有 $y=t,dz=i\\,dt$。因此积分为 $\\int_0^1 it\\,dt=i/2$，也是第(1)条路径总和。",
+        "第(2)条直线用 $z=(2+i)t,0\\le t\\le1$。它在 $t=0,1$ 分别到达两个端点，而且 $y=t,dz=(2+i)dt$。",
+        "将两项都代入积分：$\\int_0^1t(2+i)dt=(2+i)/2=1+i/2$。不能只代 $y$ 而漏掉 $dz$ 的方向因子。",
+        "第(3)条路径首段用 $z=(1+i)t,0\\le t\\le1$，给出 $\\int_0^1t(1+i)dt=(1+i)/2$。",
+        "末段用 $z=t+i,1\\le t\\le2$，有 $y=1,dz=dt$，积分为 $\\int_1^2dt=1$。相加得到 $3/2+i/2$。",
+        "自检三条路径端点都相同，但实部分别是 $0,1,3/2$。因此本题不能使用只看端点的原函数法。"
       ],
       "check": {
-        "question": "在 y=0 的水平段，被积函数是多少？",
-        "answer": "零，因此那一段积分也是零。"
+        "question": "竖直向上走时，为什么 $dz$ 不是 $dt$？",
+        "answer": "因为 $z=2+it$，对参数求导是 $z\\prime(t)=i$，所以 $dz=i\\,dt$。"
       }
     },
     "en": {
-      "goal": "Accumulate the integral along three separate routes and compare the results.",
-      "recognize": "The integrand is $\\Im z=y$, which is not analytic. The path must be calculated explicitly.",
+      "goal": "Compute the integral along all three paths and see how equal endpoints can give different values.",
+      "recognize": "The integrand $\\operatorname{Im}z=y$ is not analytic. Parameterize each segment as $z(t)$ and compute both $y(t)$ and $dz=z\\prime(t)dt$.",
       "steps": [
-        "Write $dz=dx+i\\,dy$, so the integrand becomes $y\\,dx+i y\\,dy$.",
-        "On the first route, the horizontal segment has y=0 and contributes zero. The vertical segment has x=2 and requires only $iy\\,dy$.",
-        "For the straight route use $z=(2+i)t$, $0\\le t\\le1$. Parameterize each segment of the other broken route and add."
+        "For path (1), first follow the real axis with $z=t,0\\le t\\le2$. Here $y=0$, so this segment contributes $0$.",
+        "On the vertical segment, use $z=2+it,0\\le t\\le1$, so $y=t,dz=i\\,dt$. Its integral is $\\int_0^1 it\\,dt=i/2$, also the total for path (1).",
+        "Parameterize path (2) by $z=(2+i)t,0\\le t\\le1$. It reaches the required endpoints at $t=0,1$, with $y=t,dz=(2+i)dt$.",
+        "Substitute both factors: $\\int_0^1t(2+i)dt=(2+i)/2=1+i/2$. Retain the direction factor from $dz$ as well as the value of $y$.",
+        "For the first segment of path (3), use $z=(1+i)t,0\\le t\\le1$, giving $\\int_0^1t(1+i)dt=(1+i)/2$.",
+        "For the final segment, use $z=t+i,1\\le t\\le2$, with $y=1,dz=dt$. Its integral is $\\int_1^2dt=1$, giving total $3/2+i/2$.",
+        "Check that all paths have the same endpoints, yet their real parts are $0,1,3/2$. An endpoint-only antiderivative method therefore does not apply here."
       ],
       "check": {
-        "question": "What is the integrand on a horizontal segment with y=0?",
-        "answer": "Zero, so that segment contributes zero."
+        "question": "Why is $dz$ not $dt$ on an upward vertical segment?",
+        "answer": "Because $z=2+it$ has derivative $z\\prime(t)=i$, so $dz=i\\,dt$."
       }
     }
   },
   "1.4-2": {
     "zh": {
-      "goal": "用端点变化和转过的角度计算圆弧积分。",
-      "recognize": "把 $(z+2)/z$ 拆成 $1+2/z$。这两项各有一个非常简单的几何意义。",
+      "goal": "用端点差与角度增量，把三段圆弧积分分别算出。",
+      "recognize": "把 $(z+2)/z$ 拆成 $1+2/z$。第一项只需要端点；第二项沿单位圆满足 $dz/z=i\\,dt$。",
       "steps": [
-        "先拆积分：第一项是终点减起点。",
-        "对第二项设 $z=e^{it}$，得到 $dz/z=i\\,dt$。",
-        "上半圆用 $t:0\\to\\pi$，下半圆用 $t:\\pi\\to2\\pi$；都是角度增加，不要误判方向。"
+        "单位圆参数化为 $z=e^{it}$，因此 $dz=ie^{it}dt$，约去 $e^{it}$ 后 $dz/z=i\\,dt$。",
+        "把积分写成 $I=(z_{\\rm end}-z_{\\rm start})+2i(t_{\\rm end}-t_{\\rm start})$。两部分分别代表端点差与角度增量。",
+        "第(1)问 $t:0\\to\\pi$，端点是 $1\\to-1$，所以 $I=(-1-1)+2i\\pi=-2+2\\pi i$。",
+        "第(2)问 $t:\\pi\\to2\\pi$，端点是 $-1\\to1$。角度仍然增加而不是减少，所以 $I=(1+1)+2i\\pi=2+2\\pi i$。",
+        "第(3)问绕整圈，端点差为零，角度增量 $2\\pi$，所以 $I=0+2i(2\\pi)=4\\pi i$。",
+        "自检前两段按顺序拼成整圈：$(-2+2\\pi i)+(2+2\\pi i)=4\\pi i$，与第(3)问一致。"
       ],
       "check": {
-        "question": "逆时针绕单位圆一周，$\\int dz/z$ 是多少？",
-        "answer": "$2\\pi i$。"
+        "question": "第(2)问为什么虚部贡献也是正的 $2\\pi i$？",
+        "answer": "因为参数角从 $\\pi$ 增至 $2\\pi$，增量是正的 $\\pi$，下半圆不等于顺时针。"
       }
     },
     "en": {
-      "goal": "Use endpoint changes and the angle swept to calculate circular-arc integrals.",
-      "recognize": "Split $(z+2)/z$ into $1+2/z$. Each part has a simple geometric meaning.",
+      "goal": "Compute the three arc integrals using endpoint differences and changes in angle.",
+      "recognize": "Split $(z+2)/z$ into $1+2/z$. The first term uses endpoints; on the unit circle, the second uses $dz/z=i\\,dt$.",
       "steps": [
-        "Split the integral. The first part is endpoint minus starting point.",
-        "For the second, set $z=e^{it}$ to obtain $dz/z=i\\,dt$.",
-        "Use $t:0\\to\\pi$ on the upper arc and $t:\\pi\\to2\\pi$ on the lower arc. Both increase the angle."
+        "Parameterize the unit circle by $z=e^{it}$. Then $dz=ie^{it}dt$, and cancellation gives $dz/z=i\\,dt$.",
+        "Write $I=(z_{\\rm end}-z_{\\rm start})+2i(t_{\\rm end}-t_{\\rm start})$. These terms represent the endpoint difference and angular change.",
+        "In part (1), $t:0\\to\\pi$ and the endpoints are $1\\to-1$, so $I=(-1-1)+2i\\pi=-2+2\\pi i$.",
+        "In part (2), $t:\\pi\\to2\\pi$ and the endpoints are $-1\\to1$. The angle still increases, giving $I=(1+1)+2i\\pi=2+2\\pi i$.",
+        "For the full circle in part (3), the endpoint difference is zero and the angular change is $2\\pi$, so $I=0+2i(2\\pi)=4\\pi i$.",
+        "Check by joining the first two arcs: $(-2+2\\pi i)+(2+2\\pi i)=4\\pi i$, agreeing with part (3)."
       ],
       "check": {
-        "question": "What is $\\int dz/z$ for one counterclockwise unit-circle circuit?",
-        "answer": "$2\\pi i$."
+        "question": "Why is the imaginary contribution in part (2) also positive $2\\pi i$?",
+        "answer": "The parameter angle increases from $\\pi$ to $2\\pi$, a positive increment of $\\pi$; a lower semicircle is not automatically clockwise."
       }
     }
   },
   "1.4-3": {
     "zh": {
-      "goal": "不用算出积分，直接证明它不会超过题给大小。",
-      "recognize": "题目只要上界。用“函数最大可能大小 × 路程长度”，即 ML 估计。",
+      "goal": "不求积分的精确值，只用弧长与函数模的上界证明两个估计。",
+      "recognize": "目标是绝对值上界，使用 $|\\int_Cf\\,dz|\\le ML$。分子求上界、分母求正下界，才能得到比值上界。",
       "steps": [
-        "半径 2、四分之一圆的弧长是 $L=\\pi$。",
-        "第一问分子 $|z-2|\\le4$，分母 $|z^4+1|\\ge16-1=15$。",
-        "因此第一问 $M\\le4/15$，再乘 L。第二问同样用 $|z+4|\\le6$、$|z^3-1|\\ge7$。"
+        "圆弧半径为 $2$，圆心角为 $\\pi/2$，所以弧长 $L=2(\\pi/2)=\\pi$。路径上每个点都满足 $|z|=2$。",
+        "第(1)问用三角不等式：$|z-2|\\le|z|+2=4$。这是分子的统一上界。",
+        "分母用反三角不等式：$|z^4+1|\\ge\\big||z|^4-1\\big|=16-1=15$。因此 $|(z-2)/(z^4+1)|\\le4/15$。",
+        "把 $M=4/15,L=\\pi$ 代入估计，得到第(1)问上界 $4\\pi/15$。",
+        "第(2)问同样分别估计：$|z+4|\\le2+4=6$，$|z^3-1|\\ge8-1=7$，所以比值模至多 $6/7$。",
+        "乘弧长得到 $|I|\\le(6/7)\\pi=6\\pi/7$。自检两问分母的下界都严格为正，因此估计过程没有除以零。"
       ],
       "check": {
-        "question": "分母需要找上界还是下界？",
-        "answer": "下界。分母越小，整个分式可能越大。"
+        "question": "为了给分式的模找上界，分母应取上界还是正下界？",
+        "answer": "取正下界；分母越小，比值的上界才越大、才安全。"
       }
     },
     "en": {
-      "goal": "Prove the integral cannot exceed a bound without finding its exact value.",
-      "recognize": "Only an upper bound is requested. Use maximum possible integrand size times path length: the ML estimate.",
+      "goal": "Prove both bounds using arc length and an upper bound for the integrand modulus, without finding exact integrals.",
+      "recognize": "For an absolute bound, use $|\\int_Cf\\,dz|\\le ML$. Bound the numerator above and the denominator below by a positive quantity.",
       "steps": [
-        "A radius-two quarter-circle has length $L=\\pi$.",
-        "In (1), $|z-2|\\le4$ and $|z^4+1|\\ge16-1=15$.",
-        "Thus $M\\le4/15$ and multiply by L. In (2), use $|z+4|\\le6$ and $|z^3-1|\\ge7$ in the same way."
+        "The arc has radius $2$ and angle $\\pi/2$, so $L=2(\\pi/2)=\\pi$. Every point on it satisfies $|z|=2$.",
+        "For part (1), the triangle inequality gives $|z-2|\\le|z|+2=4$, a uniform numerator bound.",
+        "For the denominator, use the reverse triangle inequality: $|z^4+1|\\ge\\big||z|^4-1\\big|=16-1=15$. Thus $|(z-2)/(z^4+1)|\\le4/15$.",
+        "Insert $M=4/15,L=\\pi$ into the estimate to obtain the bound $4\\pi/15$ in part (1).",
+        "For part (2), bound the factors separately: $|z+4|\\le2+4=6$ and $|z^3-1|\\ge8-1=7$, giving a modulus bound of $6/7$.",
+        "Multiply by the arc length: $|I|\\le(6/7)\\pi=6\\pi/7$. Both denominator bounds are strictly positive, so neither estimate divides by zero."
       ],
       "check": {
-        "question": "Does the denominator need an upper or lower bound?",
-        "answer": "A lower bound: a smaller denominator can make the quotient larger."
+        "question": "To bound a quotient modulus from above, should the denominator be bounded above or below?",
+        "answer": "Use a positive lower bound; replacing the denominator by a smaller positive value gives a valid upper bound."
       }
     }
   },
   "1.4-4": {
     "zh": {
-      "goal": "先选最短的方法，再算每个复积分。",
-      "recognize": "有起终点时先找原函数；闭路时先看圈内有没有分母零点。",
+      "goal": "先选原函数、柯西定理或留数公式，再逐小问计算六个积分。",
+      "recognize": "开路径且被积函数整解析时找原函数；闭路径先标出内部奇点，圆外奇点不计入。",
       "steps": [
-        "第一问用原函数 $z^3/3$，第二问用 $2\\sin(z/2)$，代终点减起点。",
-        "第三问把 $\\pm1$ 与半径 $1/2$ 比较：都在外，积分零。",
-        "剩下闭路逐个筛圈内极点；第五问直接匹配 $f(z)/z$ 的柯西公式，注意圆周都取正向。"
+        "先把六问分组：(1)(2)是端点积分；(3)检查是否内部解析；(4)(5)(6)只计算圆内奇点。闭路正向统一乘 $2\\pi i$。",
+        "第(1)问原函数为 $z^3/3$。端点代入得 $(1+i)^3/3$；先算 $(1+i)^2=2i$，再乘 $1+i$ 得 $(-2+2i)/3$。",
+        "第(2)问原函数为 $2\\sin(z/2)$。端点给 $2\\sin(\\pi/2+i)$；由 $\\sin(a+ib)=\\sin a\\cosh b+i\\cos a\\sinh b$，结果为 $2\\cosh1$。",
+        "第(3)问分母零点是 $\\pm1$，与圆心距离都是 $1>1/2$。圆内及圆周无奇点，所以柯西定理给积分 $0$。",
+        "第(4)问圆内含 $\\pm3i$。简单极点留数分别为 $\\sin(3i)/(6i)=\\sinh3/6$ 与 $\\sin(-3i)/(-6i)=\\sinh3/6$；相加再乘 $2\\pi i$ 得 $2\\pi i\\sinh3/3$。",
+        "第(5)问是柯西公式 $\\oint f(z)/(z-a)dz=2\\pi if(a)$，这里 $f=\\cos z,a=0$。所以结果 $2\\pi i\\cos0=2\\pi i$。",
+        "第(6)问圆心在 $i$，只包住 $i$；另一极点 $-i$ 距圆心为2。约去 $z-i$ 后代入：$r_i=(i^2-1)/(i+i)=i$，积分 $2\\pi i\\cdot i=-2\\pi$。",
+        "自检第(6)问结果是负实数，因为两个 $i$ 相乘为 $-1$；第(3)问不能因为分母有零点就计留数，必须先确认零点在圆内。"
       ],
       "check": {
-        "question": "第三问的两个极点都在圆外，闭路积分是多少？",
-        "answer": "零，因为整个圆内及圆周上解析。"
+        "question": "圆心为 $i$、半径为1时，$-i$ 在圆内吗？",
+        "answer": "不在，距离 $|-i-i|=2>1$。"
       }
     },
     "en": {
-      "goal": "Choose the shortest valid method before calculating each complex integral.",
-      "recognize": "For endpoint integrals, try an antiderivative. For closed contours, first locate denominator zeros relative to the contour.",
+      "goal": "Choose an antiderivative, Cauchy theorem, or a residue formula before computing each of the six integrals.",
+      "recognize": "For open paths with entire integrands, find an antiderivative. For closed curves, locate the interior singularities first; exterior poles contribute nothing.",
       "steps": [
-        "Use $z^3/3$ in (1) and $2\\sin(z/2)$ in (2), then subtract endpoint values.",
-        "In (3), compare $\\pm1$ with radius $1/2$. Both are outside, so the integral is zero.",
-        "For the other contours, select enclosed poles individually. In (5), directly match the Cauchy formula for $f(z)/z$. All circles are positive."
+        "Group the problems: (1) and (2) use endpoints; (3) tests analyticity inside; (4), (5), and (6) use only interior singularities. Positive closed contours use the factor $2\\pi i$.",
+        "For part (1), use the antiderivative $z^3/3$. Evaluate $(1+i)^3/3$: first $(1+i)^2=2i$, then multiply by $1+i$ to obtain $(-2+2i)/3$.",
+        "For part (2), use $2\\sin(z/2)$. The endpoint value is $2\\sin(\\pi/2+i)$; the identity $\\sin(a+ib)=\\sin a\\cosh b+i\\cos a\\sinh b$ gives $2\\cosh1$.",
+        "In part (3), the denominator zeros are $\\pm1$, both at distance $1>1/2$ from the center. The integrand is analytic on and inside the circle, so Cauchy theorem gives $0$.",
+        "Part (4) includes $\\pm3i$. Their simple-pole residues are $\\sin(3i)/(6i)=\\sinh3/6$ and $\\sin(-3i)/(-6i)=\\sinh3/6$. Sum and multiply by $2\\pi i$ to get $2\\pi i\\sinh3/3$.",
+        "Part (5) matches $\\oint f(z)/(z-a)dz=2\\pi if(a)$, with $f=\\cos z,a=0$. Thus the result is $2\\pi i\\cos0=2\\pi i$.",
+        "In part (6), the circle centered at $i$ contains only $i$; the pole $-i$ is two units from its center. Cancel $z-i$ and substitute: $r_i=(i^2-1)/(i+i)=i$, so the integral is $2\\pi i\\cdot i=-2\\pi$.",
+        "Check that part (6) is negative real because two factors of $i$ multiply to $-1$. In part (3), denominator zeros contribute only after verifying that they lie inside the circle."
       ],
       "check": {
-        "question": "What is the third integral when both poles are outside its circle?",
-        "answer": "Zero, since the integrand is analytic on and inside the circle."
+        "question": "Is $-i$ inside the circle of radius one centered at $i$?",
+        "answer": "No: the distance is $|-i-i|=2>1$."
       }
     }
   },
   "1.5-1": {
     "zh": {
-      "goal": "先找收敛圆，再判圆周上的点能不能收敛。",
-      "recognize": "题目给的是幂级数。系数的 n 次根控制半径；边界必须另外检查。",
+      "goal": "每个级数先求收敛半径，再单独判断边界能否加入收敛区域。",
+      "recognize": "根值或比值判别控制圆内、圆外；边界不能直接沿用判别结果，先检查通项是否趋零。",
       "steps": [
-        "第一问先认出中心是 1、系数是 $1/n$，根值趋 1，得到半径 1。",
-        "在边界写 $z-1=e^{i\\theta}$。$\\theta=0$ 是调和级数；其他角度可用 Dirichlet 判别。",
-        "第二至四问也先求半径，再看边界通项是否趋零；不趋零就立刻判发散。"
+        "第(1)问中心为1，系数 $a_n=1/n$。因为 $|a_n|^{1/n}=n^{-1/n}\\to1$，所以 $R=1$，$|z-1|<1$ 绝对收敛。",
+        "边界令 $z-1=e^{i\\theta}$。若 $\\theta=0$，即 $z=2$，得到发散的调和级数；否则等比部分和有界，$1/n$ 单调趋零，Dirichlet 判别给条件收敛。",
+        "第(2)问 $a_n=n^n$，根值为 $n\\to\\infty$，所以 $R=0$。唯一可能收敛的点是中心 $z=0$，在那里每项为零。",
+        "再核查第(2)问的非零点：通项模是 $(n|z|)^n$，最终越来越大，尤其不趋零，因此都发散。",
+        "第(3)问中心为 $i$，系数根值为 $1-1/n\\to1$，故 $R=1$。边界 $|z-i|=1$ 上，通项模 $(1-1/n)^n\\to e^{-1}\\ne0$。",
+        "第(3)问所有边界点都因通项不趋零而发散，所以收敛域严格是 $|z-i|<1$。",
+        "第(4)问用比值较容易：$a_n/a_{n+1}=(1+1/n)^n\\to e$，所以 $R=e$。先写圆内 $|z|<e$ 绝对收敛。",
+        "边界 $|z|=e$ 时，由 Stirling 公式 $n!\\sim\\sqrt{2\\pi n}(n/e)^n$，通项模 $n!e^n/n^n\\sim\\sqrt{2\\pi n}$，不趋零。因此第(4)问所有边界都排除。"
       ],
       "check": {
-        "question": "收敛半径为 1，能保证圆周也收敛吗？",
-        "answer": "不能。圆周要逐点判断。"
+        "question": "两个级数的半径同为1，它们的边界收敛情况一定相同吗？",
+        "answer": "不一定。第(1)问大部分边界点条件收敛，而第(3)问所有边界点都发散。"
       }
     },
     "en": {
-      "goal": "Find the convergence disk, then decide which boundary points converge.",
-      "recognize": "These are power series. The nth roots of their coefficients determine the radius; the boundary needs a separate test.",
+      "goal": "Find each convergence radius, then decide separately whether any boundary points belong to the convergence set.",
+      "recognize": "Root or ratio tests handle the interior and exterior. On the boundary, test the actual terms first; the radius alone does not settle convergence.",
       "steps": [
-        "In (1), identify center one and coefficient $1/n$. Its nth root tends to one, so the radius is one.",
-        "On the boundary, put $z-1=e^{i\\theta}$. At $\\theta=0$ this is the harmonic series; use Dirichlet for other angles.",
-        "For (2)–(4), also find the radius first, then test whether boundary terms approach zero. If not, the series diverges immediately."
+        "In part (1), the center is one and $a_n=1/n$. Since $|a_n|^{1/n}=n^{-1/n}\\to1$, we have $R=1$ and absolute convergence for $|z-1|<1$.",
+        "On the boundary, set $z-1=e^{i\\theta}$. If $\\theta=0$, then $z=2$ gives the divergent harmonic series. Otherwise the geometric partial sums are bounded and $1/n$ decreases to zero, so Dirichlet test gives conditional convergence.",
+        "For part (2), $a_n=n^n$ has root $n\\to\\infty$, so $R=0$. The only convergence point is the center $z=0$, where every term is zero.",
+        "Check nonzero points in part (2): the term modulus is $(n|z|)^n$, which eventually grows and does not tend to zero. Every such point diverges.",
+        "In part (3), the center is $i$ and the coefficient root is $1-1/n\\to1$, so $R=1$. On $|z-i|=1$, the term modulus is $(1-1/n)^n\\to e^{-1}\\ne0$.",
+        "Every boundary point in part (3) diverges because its terms do not tend to zero. The convergence set is exactly $|z-i|<1$.",
+        "For part (4), the ratio is easier: $a_n/a_{n+1}=(1+1/n)^n\\to e$, so $R=e$. First record absolute convergence for $|z|<e$.",
+        "On $|z|=e$, Stirling formula $n!\\sim\\sqrt{2\\pi n}(n/e)^n$ gives term modulus $n!e^n/n^n\\sim\\sqrt{2\\pi n}$, which does not tend to zero. Exclude every boundary point in part (4)."
       ],
       "check": {
-        "question": "Does radius one guarantee convergence on the circle?",
-        "answer": "No. Boundary points require separate tests."
+        "question": "If two series both have radius one, must their boundary behavior agree?",
+        "answer": "No. Most boundary points in part (1) converge conditionally, while every boundary point in part (3) diverges."
       }
     }
   },
   "1.5-2": {
     "zh": {
-      "goal": "围绕题目指定的点，把函数改写成正幂级数。",
-      "recognize": "中心不一定是零。先平移，让“离中心多远”成为新的变量。",
+      "goal": "将七个函数改写为中心变量的幂级数，并用最近奇点确定最大半径。",
+      "recognize": "先令 $w=z-z_0$；常见整函数用标准级数，有理式拆分后用 $1/(1-t)=\\sum_{n\\ge0}t^n$，并检查 $|t|<1$。",
       "steps": [
-        "“围绕中心展开”就是只使用 $w=z-z_0$ 的非负整数次幂。前3问中心都是0，直接写 $e^z$、$\\sin z$、$\\cosh z$ 的标准级数，半径都是无穷。",
-        "第(4)问先写成 $(z/4)/(1+z^2/4)$。把几何级数的小量选成 $-z^2/4$，要求它的模小于1，因此 $|z|<2$。",
-        "第(5)问中心不是0：设 $w=z-i$，拆成 $-1/(i+w)+1/(i-1+w)$。分别提常数 i 和 i−1，再按 w 展开；两个条件取交集 $|w|<1$。",
-        "第(6)问把 $\\sin z=z-z^3/6+\\cdots$ 与 $1/(1-z)=1+z+z^2+\\cdots$ 相乘。每个目标幂次只收集次数相加等于它的项，例如三次项是 $z^3-z^3/6$。",
-        "第(7)问先设 $w=z-1$，再拆分母为 $(z-i)(z+i)$ 后分别展开。收敛半径等于中心1到最近极点的距离 $\\sqrt2$；其他小问也用距离核验。"
+        "第(1)问 $e^z$ 在零点的各阶导数都是1，所以 $e^z=\\sum_{n\\ge0}z^n/n!$。它没有有限奇点，$R=\\infty$。",
+        "第(2)问正弦导数每四次循环，零点处偶阶导数为零、奇阶交替正负，得到 $\\sin z=\\sum_{n\\ge0}(-1)^nz^{2n+1}/(2n+1)!$，$R=\\infty$。",
+        "第(3)问用 $\\cosh z=(e^z+e^{-z})/2$。两指数的奇次项相消、偶次项相加，得到 $\\cosh z=\\sum_{n\\ge0}z^{2n}/(2n)!$，$R=\\infty$。",
+        "第(4)问改写为 $(z/4)/(1+z^2/4)$。取几何公比 $-z^2/4$，得到 $\\sum_{n\\ge0}(-1)^nz^{2n+1}/4^{n+1}$；条件 $|z^2/4|<1$ 给 $R=2$。",
+        "第(5)问令 $w=z-i$，先拆成 $-1/z+1/(z-1)$。使用 $1/(c+w)=\\sum_{n\\ge0}(-1)^nw^n/c^{n+1}$，分别取 $c=i,i-1$，得系数 $(-1)^n[(i-1)^{-n-1}-i^{-n-1}]$；两条件的交集是 $|w|<1$。",
+        "第(6)问把 $(z-z^3/6+z^5/120-\\cdots)$ 乘 $(1+z+z^2+\\cdots)$。按总次数收集：$z$、$z^2$ 系数均为1，$z^3,z^4$ 系数均为 $1-1/6=5/6$；一般 $z^k$ 系数是 $\\sum_{m=0}^{\\lfloor(k-1)/2\\rfloor}(-1)^m/(2m+1)!$。 最近奇点在 $z=1$，且 $\\sin1\\ne0$，故 $R=1$。",
+        "第(7)问先令 $w=z-1$，拆成 $[1/(z-i)-1/(z+i)]/(2i)$。这样每个分母都是“常数加 $w$”，可以继续用几何公式。",
+        "第(7)问两分母分别是 $(1-i)+w$ 与 $(1+i)+w$。套上面的几何公式，$w^n$ 系数为 $(-1)^n[(1-i)^{-n-1}-(1+i)^{-n-1}]/(2i)$，两者都要求 $|w|<\\sqrt2$，故 $R=\\sqrt2$。",
+        "自检每式的常数项必须等于中心处函数值。例如第(7)问在 $w=0$ 的常数项为 $1/2$，正好等于 $1/(1^2+1)$；第(5)问不能把以 $i$ 为中心的半径写成到原点以外任意点的距离。"
       ],
       "check": {
-        "question": "以 i 为中心时，新的小变量应该是什么？",
-        "answer": "$w=z-i$。"
+        "question": "为什么第(5)问的两个级数要取条件的交集？",
+        "answer": "因为相加后的级数要同时保证两部分都收敛，所以取较小半径 $\\min(1,\\sqrt2)=1$。"
       }
     },
     "en": {
-      "goal": "Write a positive-power series around the point specified in the question.",
-      "recognize": "The center need not be zero. Shift first so the new variable measures displacement from the center.",
+      "goal": "Expand all seven functions in powers about the specified center and find each maximal radius from the nearest singularity.",
+      "recognize": "First set $w=z-z_0$. Use standard series for entire functions and geometric series $1/(1-t)=\\sum_{n\\ge0}t^n$ for decomposed rational functions, checking $|t|<1$.",
       "steps": [
-        "Expand using nonnegative integer powers of $w=z-z_0$. In the first three parts the center is zero, so use the standard series for $e^z$, $\\sin z$, and $\\cosh z$, each with infinite radius.",
-        "In part (4), write $(z/4)/(1+z^2/4)$. The geometric-series ratio is $-z^2/4$. Its modulus must be below 1, giving $|z|<2$.",
-        "Part (5) is centered away from zero. Set $w=z-i$ and split into $-1/(i+w)+1/(i-1+w)$. Factor i and i−1 from the denominators, expand in w, and intersect the conditions to obtain $|w|<1$.",
-        "For part (6), multiply $\\sin z=z-z^3/6+\\cdots$ by $1/(1-z)=1+z+z^2+\\cdots$. Collect terms with the same total degree: the cubic term is $z^3-z^3/6$.",
-        "For part (7), set $w=z-1$, factor the denominator as $(z-i)(z+i)$, and expand its partial fractions. The nearest poles are distance $\\sqrt2$ from center 1; use pole distances to check the other radii too."
+        "In part (1), every derivative of $e^z$ at zero equals one, so $e^z=\\sum_{n\\ge0}z^n/n!$. There is no finite singularity and $R=\\infty$.",
+        "For part (2), sine derivatives cycle every four orders. Even derivatives vanish at zero and odd derivatives alternate in sign, giving $\\sin z=\\sum_{n\\ge0}(-1)^nz^{2n+1}/(2n+1)!$, with $R=\\infty$.",
+        "For part (3), use $\\cosh z=(e^z+e^{-z})/2$. Odd powers cancel and even powers add, giving $\\cosh z=\\sum_{n\\ge0}z^{2n}/(2n)!$, with $R=\\infty$.",
+        "Rewrite part (4) as $(z/4)/(1+z^2/4)$. The geometric ratio is $-z^2/4$, giving $\\sum_{n\\ge0}(-1)^nz^{2n+1}/4^{n+1}$. The condition $|z^2/4|<1$ gives $R=2$.",
+        "In part (5), set $w=z-i$ and decompose into $-1/z+1/(z-1)$. Use $1/(c+w)=\\sum_{n\\ge0}(-1)^nw^n/c^{n+1}$ with $c=i,i-1$, obtaining coefficient $(-1)^n[(i-1)^{-n-1}-i^{-n-1}]$. The conditions intersect in $|w|<1$.",
+        "For part (6), multiply $(z-z^3/6+z^5/120-\\cdots)$ by $(1+z+z^2+\\cdots)$. Collect total degrees: coefficients of $z,z^2$ are one, while those of $z^3,z^4$ are $1-1/6=5/6$. In general the coefficient of $z^k$ is $\\sum_{m=0}^{\\lfloor(k-1)/2\\rfloor}(-1)^m/(2m+1)!$. The nearest singularity is $z=1$, with $\\sin1\\ne0$, so $R=1$.",
+        "For part (7), set $w=z-1$ and decompose into $[1/(z-i)-1/(z+i)]/(2i)$. Each denominator is now a constant plus $w$, ready for the geometric formula.",
+        "The two denominators in part (7) are $(1-i)+w$ and $(1+i)+w$. The same geometric formula gives the coefficient $(-1)^n[(1-i)^{-n-1}-(1+i)^{-n-1}]/(2i)$ for $w^n$. Both require $|w|<\\sqrt2$, so $R=\\sqrt2$.",
+        "Check that each constant term equals the function value at its center. For part (7), the constant term at $w=0$ is $1/2$, matching $1/(1^2+1)$. For part (5), measure the radius from the center $i$ to the nearest singularity."
       ],
       "check": {
-        "question": "What new variable should you use for a center at i?",
-        "answer": "$w=z-i$."
+        "question": "Why must the two conditions in part (5) be intersected?",
+        "answer": "Both component series must converge before they can be added, so choose the smaller radius $\\min(1,\\sqrt2)=1$."
       }
     }
   },
   "1.5-3": {
     "zh": {
-      "goal": "在给定圆环内，选择能收敛的正幂或负幂展开。",
-      "recognize": "区域决定哪一个比值小于 1。不是看到分母就统一按 z 的正幂展开。",
+      "goal": "按给定环域选择正幂或负幂展开，并识别原书第(6)问的区域问题。",
+      "recognize": "几何级数的公比必须小于1：靠近中心时用正幂，外域时先提取变量再用倒数幂。每个展开式都须附适用区域。",
       "steps": [
-        "第一问写 $1/(4z-z^2)=(1/4z)/(1-z/4)$，因为 $|z/4|<1$。",
-        "第三问区域是 $|z|>1$，所以先提 z，再按 $1/z$ 展开。",
-        "第六问先拆部分分式；原书 $|z|>1$ 含极点 2，必须分为 $1<|z|<2$ 和 $|z|>2$，不能跨极点。"
+        "第(1)问写 $1/(4z-z^2)=(1/4z)/(1-z/4)$，公比为 $z/4$。因此展开为 $\\sum_{n\\ge0}z^{n-1}/4^{n+1}$，条件正是 $0<|z|<4$。",
+        "第(2)问在正弦级数中把变量换成 $1/z^2$，再乘 $z^2$：$\\sum_{n\\ge0}(-1)^nz^{-4n}/(2n+1)!=1-1/(6z^4)+\\cdots$。正弦级数处处收敛，故只需 $z\\ne0$。",
+        "第(3)问区域在单位圆外，改用 $1/z$：$1/(1+z)=z^{-1}/(1+z^{-1})=\\sum_{n\\ge0}(-1)^nz^{-n-1}$，条件 $|z|>1$。",
+        "第(4)问令 $w=z-2$，函数变为 $(w+2)/(w^2-1)$。提取 $w^2$ 后公比为 $w^{-2}$，展开成 $\\sum_{n\\ge0}(w^{-2n-1}+2w^{-2n-2})$，适用 $|w|>1$。",
+        "第(5)问把 $e^z=1+z+z^2/2+\\cdots$ 与 $1/(1+z^2)=1-z^2+z^4-\\cdots$ 相乘，最后除以 $z$。开头为 $z^{-1}+1-z/2-5z^2/6+13z^3/24+\\cdots$，适用 $0<|z|<1$。",
+        "若要第(5)问通项，令两项次数满足 $j+2k=p$，所以 $j=p-2k$。$z^{p-1}$ 的系数是 $\\sum_{k=0}^{\\lfloor p/2\\rfloor}(-1)^k/(p-2k)!$，不能只把相同编号的项相乘。",
+        "第(6)问先拆成 $-1/(z-1)+2/(z-2)$。令 $w=z-1$，得到 $-1/w-2/(1-w)=-w^{-1}-2\\sum_{n\\ge0}w^n$，适用 $0<|w|<1$。",
+        "原书另给的 $|z|>1$ 含有极点2，必须分开。在 $1<|z|<2$，两部分给 $-\\sum_{n\\ge0}z^{-n-1}-\\sum_{n\\ge0}z^n/2^n$；在 $|z|>2$，两部分都用负幂，得到 $\\sum_{n\\ge0}(2^{n+1}-1)z^{-n-1}$。",
+        "最后逐个圈出几何公比，核对其模小于1。第(6)问的第二组展开不能跨过 $|z|=2$；某些圆周点虽非极点，也不能自动加入该洛朗级数的环域。"
       ],
       "check": {
-        "question": "$|z|>1$ 时，应把 z 还是 $1/z$ 当作小量？",
-        "answer": "$1/z$。"
+        "question": "为什么不能给出一个在整个 $|z|>1$ 有效的第(6)问洛朗展开？",
+        "answer": "因为 $z=2$ 是该区域内真实极点，而洛朗级数在自己的整个开环域内表示解析函数。"
       }
     },
     "en": {
-      "goal": "Choose convergent positive- or negative-power expansions in the specified rings.",
-      "recognize": "The region tells you which ratio has modulus below one. Do not expand every denominator in positive powers of z.",
+      "goal": "Choose positive or negative powers for the requested annulus and identify the region issue in textbook part (6).",
+      "recognize": "The geometric ratio must have modulus below one. Near the center use positive powers; in an exterior region first factor out the variable and use reciprocal powers. State a region for every expansion.",
       "steps": [
-        "In (1), write $1/(4z-z^2)=(1/4z)/(1-z/4)$ because $|z/4|<1$.",
-        "In (3), $|z|>1$, so factor out z and expand in $1/z$.",
-        "In (6), split partial fractions first. The textbook region $|z|>1$ contains the pole two, so split it into $1<|z|<2$ and $|z|>2$."
+        "For part (1), write $1/(4z-z^2)=(1/4z)/(1-z/4)$ with ratio $z/4$. The expansion is $\\sum_{n\\ge0}z^{n-1}/4^{n+1}$, valid for $0<|z|<4$.",
+        "In part (2), substitute $1/z^2$ into the sine series and multiply by $z^2$: $\\sum_{n\\ge0}(-1)^nz^{-4n}/(2n+1)!=1-1/(6z^4)+\\cdots$. The sine series converges everywhere, so only $z\\ne0$ is required.",
+        "Part (3) is outside the unit circle, so use $1/z$: $1/(1+z)=z^{-1}/(1+z^{-1})=\\sum_{n\\ge0}(-1)^nz^{-n-1}$, valid for $|z|>1$.",
+        "For part (4), set $w=z-2$, giving $(w+2)/(w^2-1)$. Factor out $w^2$ and use ratio $w^{-2}$ to get $\\sum_{n\\ge0}(w^{-2n-1}+2w^{-2n-2})$, valid for $|w|>1$.",
+        "For part (5), multiply $e^z=1+z+z^2/2+\\cdots$ by $1/(1+z^2)=1-z^2+z^4-\\cdots$, then divide by $z$. The first terms are $z^{-1}+1-z/2-5z^2/6+13z^3/24+\\cdots$, valid for $0<|z|<1$.",
+        "To obtain the general coefficient in part (5), set the total degree $j+2k=p$, so $j=p-2k$. The coefficient of $z^{p-1}$ is $\\sum_{k=0}^{\\lfloor p/2\\rfloor}(-1)^k/(p-2k)!$. A product of series must collect all pairs of matching total degree.",
+        "For part (6), decompose into $-1/(z-1)+2/(z-2)$. With $w=z-1$, this becomes $-1/w-2/(1-w)=-w^{-1}-2\\sum_{n\\ge0}w^n$, valid for $0<|w|<1$.",
+        "The textbook region $|z|>1$ contains the pole at two and must be split. On $1<|z|<2$, the two parts give $-\\sum_{n\\ge0}z^{-n-1}-\\sum_{n\\ge0}z^n/2^n$. On $|z|>2$, both use negative powers, giving $\\sum_{n\\ge0}(2^{n+1}-1)z^{-n-1}$.",
+        "Finally identify every geometric ratio and check that its modulus is below one. The second group in part (6) cannot cross $|z|=2$; regular points on that circle cannot automatically be added to these Laurent annuli."
       ],
       "check": {
-        "question": "For $|z|>1$, is z or $1/z$ the small variable?",
-        "answer": "$1/z$."
+        "question": "Why can part (6) not have one Laurent expansion valid throughout $|z|>1$?",
+        "answer": "The region contains the genuine pole $z=2$, while a Laurent series represents an analytic function throughout its open annulus."
       }
     }
   },
   "1.5-4": {
     "zh": {
-      "goal": "把所有可能的收敛圆域、圆环都找全，而不只找一组级数。",
-      "recognize": "每遇到一圈极点，展开方式就可能改变。先列奇点距离，才不会漏域。",
+      "goal": "先按奇点到中心的距离划分所有最大圆域、环域，再分别展开四个函数。",
+      "recognize": "对因子 $1/(w-a)$：$|w|<|a|$ 时写成 $-a^{-1}/(1-w/a)$；$|w|>|a|$ 时写成 $w^{-1}/(1-a/w)$。区域决定用哪一种。",
       "steps": [
-        "第一问的两个极点都离零点 1，所以只有内域和外域两种。",
-        "第二问中心是 2；令 $w=z-2$ 后，极点距离是 1 和 2。",
-        "按相邻距离列域，再对每个分式选择正幂或负幂；同一半径上的极点只算一条分界圆。"
+        "每小问先列中心变量 $w=z-z_0$ 与奇点距离。距离的不同数值就是分界半径；不能把奇点之间任意划分出的区域当作最大环域。",
+        "第(1)问两极点模都为1。利用 $f=(1-z)/(1-z^3)$，内域 $|z|<1$ 得 $\\sum_{n\\ge0}(z^{3n}-z^{3n+1})$；外域先提倒数，$|z|>1$ 得 $\\sum_{n\\ge0}(z^{-3n-2}-z^{-3n-3})$。",
+        "第(2)问令 $w=z-2$，极点在 $w=-1,2$。拆成 $-1/[3(w+1)]+4/[3(w-2)]$，所以边界半径为1与2。",
+        "第(2)问三域依次写：$|w|<1$ 用 $-\\frac13\\sum(-1)^nw^n-\\frac23\\sum w^n/2^n$；$1<|w|<2$ 仅第一项换成 $-\\frac13\\sum(-1)^nw^{-n-1}$；$|w|>2$ 两项合为 $\\frac13\\sum[2^{n+2}-(-1)^n]w^{-n-1}$。这里每个求和都取 $n\\ge0$。",
+        "第(3)问设 $A=1/(1+2i)$，拆成 $A/(z-1)-A/(z+2i)$。极点距中心分别为1、2，故仍有内、中、外三域。",
+        "第(3)问内域为 $-A\\sum z^n-\\frac A{2i}\\sum(-z/(2i))^n$；中域仅第一项换成 $A\\sum z^{-n-1}$；外域两项合成 $A\\sum[1-(-2i)^n]z^{-n-1}$。三个区域依次是 $|z|<1$、$1<|z|<2$、$|z|>2$，求和均取 $n\\ge0$。",
+        "第(4)问先核对部分分式 $f=1/(z-2)-2/(z^2+1)$。奇点 $\\pm i,2$ 给距离1与2；第二项在内域用公比 $-z^2$，外于单位圆时用公比 $-z^{-2}$。",
+        "第(4)问内域为 $-\\sum z^n/2^{n+1}-2\\sum(-1)^nz^{2n}$；中域仅第二项换为 $-2\\sum(-1)^nz^{-2n-2}$；外域再把第一项换为 $\\sum2^nz^{-n-1}$。区域依次是 $|z|<1$、$1<|z|<2$、$|z|>2$，求和均取 $n\\ge0$。",
+        "自检每个区域内的所有公比都小于1，并任取区域中一点代入前几项看是否趋近原函数。注意外域级数的最低非零幂可能因两项抵消而推迟，例如第(3)问的 $z^{-1}$ 系数为零。"
       ],
       "check": {
-        "question": "两个极点都离中心 1，需要两条分界圆吗？",
-        "answer": "不需要。它们在同一条半径 1 的圆上。"
+        "question": "中间环域 $1<|z|<2$ 为什么会同时出现正幂与负幂？",
+        "answer": "因为距中心1的因子要作外域展开，而距中心2的因子仍作内域展开；两项采用不同的小公比。"
       }
     },
     "en": {
-      "goal": "Find every possible convergence disk or annulus, rather than only one series.",
-      "recognize": "Crossing a circle containing poles changes the possible expansion. List singularity distances before starting.",
+      "goal": "Divide the plane into maximal disks and annuli using distances from the center to singularities, then expand each function.",
+      "recognize": "For $1/(w-a)$, use $-a^{-1}/(1-w/a)$ if $|w|<|a|$, and $w^{-1}/(1-a/w)$ if $|w|>|a|$. The region determines the form.",
       "steps": [
-        "In (1), both poles are distance one from zero, so only an interior and an exterior region exist.",
-        "In (2), the center is two. Set $w=z-2$; the pole distances are one and two.",
-        "List regions between adjacent distances, then choose positive or negative powers for each fraction. Poles at the same radius make one boundary circle."
+        "For each part, list the center variable $w=z-z_0$ and the singularity distances. Distinct distances determine boundary radii; use these to find maximal annuli.",
+        "In part (1), both poles have modulus one. Use $f=(1-z)/(1-z^3)$: for $|z|<1$, obtain $\\sum_{n\\ge0}(z^{3n}-z^{3n+1})$; after factoring reciprocal powers, for $|z|>1$, obtain $\\sum_{n\\ge0}(z^{-3n-2}-z^{-3n-3})$.",
+        "In part (2), set $w=z-2$. The poles are $w=-1,2$ and the decomposition is $-1/[3(w+1)]+4/[3(w-2)]$, giving boundary radii one and two.",
+        "For part (2), use $-\\frac13\\sum(-1)^nw^n-\\frac23\\sum w^n/2^n$ on $|w|<1$. On $1<|w|<2$, replace only the first term by $-\\frac13\\sum(-1)^nw^{-n-1}$. On $|w|>2$, combine both into $\\frac13\\sum[2^{n+2}-(-1)^n]w^{-n-1}$. Every sum here has $n\\ge0$.",
+        "In part (3), set $A=1/(1+2i)$ and decompose into $A/(z-1)-A/(z+2i)$. The pole distances are one and two, again giving inner, middle, and outer regions.",
+        "For part (3), the inner expression is $-A\\sum z^n-\\frac A{2i}\\sum(-z/(2i))^n$. In the middle region replace only the first term by $A\\sum z^{-n-1}$. Outside, combine into $A\\sum[1-(-2i)^n]z^{-n-1}$. The regions are $|z|<1$, $1<|z|<2$, and $|z|>2$, with every sum over $n\\ge0$.",
+        "For part (4), first check $f=1/(z-2)-2/(z^2+1)$. The poles $\\pm i,2$ give radii one and two. Use ratio $-z^2$ in the second term inside the unit circle, and $-z^{-2}$ outside it.",
+        "For part (4), the inner expression is $-\\sum z^n/2^{n+1}-2\\sum(-1)^nz^{2n}$. In the middle region replace only the second term by $-2\\sum(-1)^nz^{-2n-2}$. Outside, also replace the first term by $\\sum2^nz^{-n-1}$. The regions are $|z|<1$, $1<|z|<2$, and $|z|>2$, with every sum over $n\\ge0$.",
+        "Check that every geometric ratio has modulus below one in its region. At a sample point, the first terms should approach the original function. Cancellations can remove leading exterior powers; for example, the $z^{-1}$ coefficient in part (3) is zero."
       ],
       "check": {
-        "question": "Do two poles at distance one require two boundary circles?",
-        "answer": "No. They lie on the same radius-one circle."
+        "question": "Why can both positive and negative powers appear in the middle annulus $1<|z|<2$?",
+        "answer": "The factor with pole distance one needs an exterior expansion, while the factor with pole distance two still needs an interior expansion. Their small ratios are different."
       }
     }
   },
   "1.5-5": {
     "zh": {
-      "goal": "找到奇点，并判断是能补上的洞、极点，还是本性奇点。",
-      "recognize": "分类看局部展开的负幂：没有、有限个、无限个，对应三种类型。",
+      "goal": "先找可能奇点，再按洛朗负幂数量判断类型；分母为零不自动等于极点。",
+      "recognize": "没有负幂是可去；有限个负幂的最低次为 $-m$ 是 $m$ 阶极点；无限多个负幂是本性奇点。先确认奇点孤立。",
       "steps": [
-        "第一问先找 $z^2+9$ 的零点，再检查指数分子在那里不为零。",
-        "第三问展开 $\\sin z=z-z^3/6+\\cdots$，除以 z 后没有负幂，可补值 1。",
-        "第二、四问展开复合正弦或指数，观察无限多负幂不会被有限乘方消掉。"
+        "第(1)问分解 $z^2+9=(z-3i)(z+3i)$。两处分子 $e^{\\pm3i}$ 都不为零，所以没有约消，$\\pm3i$ 均为一级极点。",
+        "第(2)问令 $w=z-1$，写 $\\sin(1/w)=w^{-1}-w^{-3}/3!+w^{-5}/5!-\\cdots$。负幂无穷多个，因此 $z=1$ 是本性奇点。",
+        "第(3)问先展开分子再除 $z$：$\\sin z/z=1-z^2/6+z^4/120-\\cdots$。没有负幂，原点是可去奇点，连续补值应为 $f(0)=1$。",
+        "第(4)问展开 $e^{1/z}$ 后乘 $z^2$：$z^2e^{1/z}=z^2+z+1/2+1/(6z)+1/(24z^2)+\\cdots$。从第四项起有无限多个负幂，所以0仍是本性奇点。",
+        "检查“所有有限奇点”是否列全：指数和正弦本身是整函数，除上述分母零点或内部倒数无定义点外，没有其他有限奇点。",
+        "最后对比第(3)(4)问：乘一个有限次幂可以消去有限个负幂，却不能消去无限多个负幂，这就是二者类型不同的原因。"
       ],
       "check": {
-        "question": "$\\sin z/z$ 在零点补什么值？",
-        "answer": "$1$。"
+        "question": "为什么 $z^2e^{1/z}$ 乘了 $z^2$ 仍不是可去奇点？",
+        "answer": "因为 $e^{1/z}$ 有无限多个负幂，乘 $z^2$ 只把幂次整体提高2，仍留下无限多个负幂。"
       }
     },
     "en": {
-      "goal": "Locate singularities and distinguish removable holes, poles, and essential singularities.",
-      "recognize": "Inspect the local negative powers: none, finitely many, or infinitely many give the three types.",
+      "goal": "Locate candidate singularities and classify them by Laurent negative powers; a zero denominator does not automatically mean a pole.",
+      "recognize": "No negative powers means removable; finitely many with lowest degree $-m$ means a pole of order $m$; infinitely many means essential. First ensure the singularity is isolated.",
       "steps": [
-        "In (1), find zeros of $z^2+9$ and check that the exponential numerator is nonzero there.",
-        "In (3), expand $\\sin z=z-z^3/6+\\cdots$. Division by z leaves no negative powers; add value one.",
-        "In (2) and (4), expand the composite sine or exponential. A finite power cannot remove infinitely many negative powers."
+        "For part (1), factor $z^2+9=(z-3i)(z+3i)$. The numerator values $e^{\\pm3i}$ are nonzero, so neither zero cancels; both $\\pm3i$ are simple poles.",
+        "In part (2), put $w=z-1$: $\\sin(1/w)=w^{-1}-w^{-3}/3!+w^{-5}/5!-\\cdots$. Infinitely many negative powers make $z=1$ an essential singularity.",
+        "For part (3), expand the numerator before dividing by $z$: $\\sin z/z=1-z^2/6+z^4/120-\\cdots$. There are no negative powers, so zero is removable and the extension is $f(0)=1$.",
+        "For part (4), expand $e^{1/z}$ and multiply by $z^2$: $z^2e^{1/z}=z^2+z+1/2+1/(6z)+1/(24z^2)+\\cdots$. Infinitely many negative powers remain, so zero is still essential.",
+        "Check completeness: exponential and sine are entire, so there are no further finite singularities beyond the listed denominator zeros and points where the reciprocal argument is undefined.",
+        "Compare parts (3) and (4): multiplying by a finite power can remove finitely many negative powers but cannot remove infinitely many. This explains their different types."
       ],
       "check": {
-        "question": "What value removes the hole in $\\sin z/z$ at zero?",
-        "answer": "$1$."
+        "question": "Why does multiplication by $z^2$ not make the singularity of $z^2e^{1/z}$ removable?",
+        "answer": "Because $e^{1/z}$ has infinitely many negative powers. Multiplying by $z^2$ raises every exponent by two but leaves infinitely many negative ones."
       }
     }
   },
   "1.6-1": {
     "zh": {
-      "goal": "只取展开中 $z^{-1}$ 的系数，不必把整个级数算完。",
-      "recognize": "留数就是负一次幂的系数。先反推哪个原始项会变成负一次。",
+      "goal": "只找每个展开式中 $z^{-1}$ 的系数，不把其他负幂当成留数。",
+      "recognize": "留数是负一次项系数。对指数、正弦、余弦先展开；乘一个幂只会把所有次数平移。",
       "steps": [
-        "留数只要 $z^{-1}$ 的系数。第(1)问写 $z^{-1}(1-z+\\cdots)$，常数1乘 $z^{-1}$，所以留数是1。",
-        "第(2)问写 $z[1-1/(2z^2)+\\cdots]$，目标项是 $-1/(2z)$，所以留数 $-1/2$。",
-        "第(3)问 $z-\\sin z$ 从三次幂开始，除以 z 后没有负幂，留数0。第(4)问两个指数的常数相消，剩下的一次项 $i(a-b)z$ 除以 $z^2$，留数为 $i(a-b)$。",
-        "第(5)问先看奇偶性：$\\cot z$ 是奇函数，再除以奇函数 $z^3$ 后变成偶函数，只能有偶次幂，所以没有 $z^{-1}$。",
-        "第(6)问外面有 $z^2$，所以指数级数里要找 $z^{-3}$。它来自 $n=3$，系数 $1/3!$，因此留数 $1/6$。"
+        "先锁定目标：$\\operatorname{Res}_{0}f=[z^{-1}]f$。因此不必把整个级数算完，只展开到可能产生负一次项的位置。",
+        "第(1)问 $1/(z+z^2)=z^{-1}/(1+z)=z^{-1}(1-z+z^2-\\cdots)$。第一项就是 $z^{-1}$，系数为1。",
+        "第(2)问 $z\\cos(1/z)=z[1-1/(2z^2)+1/(24z^4)-\\cdots]=z-1/(2z)+\\cdots$。取负一次项系数 $-1/2$。",
+        "第(3)问先算 $z-\\sin z=z^3/6-z^5/120+\\cdots$，再除 $z$ 得 $z^2/6-z^4/120+\\cdots$。没有负一次项，留数为0。",
+        "第(4)问除数是 $z^2$，因此只需分子的一次项。两指数常数项相消：$e^{iaz}-e^{ibz}=i(a-b)z+O(z^2)$，所以留数为 $i(a-b)$。",
+        "第(5)问 $\\cot z$ 是奇函数，除以奇函数 $z^3$ 后成为偶函数。洛朗展开只有偶次幂，例如 $z^{-4}-z^{-2}/3-1/45+\\cdots$，所以没有 $z^{-1}$，留数为0。",
+        "第(6)问 $z^2e^{1/z}=\\sum_{n\\ge0}z^{2-n}/n!$。要求 $2-n=-1$，解得 $n=3$，于是所需系数为 $1/3!=1/6$。",
+        "自检第(3)(5)问都留数为零，但奇点类型不同：第(3)问可去，第(5)问有四阶极点。留数为零并不表示没有奇点。"
       ],
       "check": {
-        "question": "第六问需要 $e^{1/z}$ 的哪一项？",
-        "answer": "$z^{-3}/3!$，乘 $z^2$ 后得到 $z^{-1}/6$。"
+        "question": "$z^2e^{1/z}$ 为什么取 $n=3$ 而不是 $n=1$？",
+        "answer": "因为乘 $z^2$ 后幂次是 $2-n$；要取 $z^{-1}$，必须解 $2-n=-1$。"
       }
     },
     "en": {
-      "goal": "Extract only the $z^{-1}$ coefficient instead of computing the entire series.",
-      "recognize": "A residue is the coefficient of power minus one. Work backward to the original term that produces it.",
+      "goal": "Find only the coefficient of $z^{-1}$ in each expansion, without mistaking other negative powers for the residue.",
+      "recognize": "A residue is the coefficient of the power minus one. Expand exponentials, sines, and cosines first; multiplication by a power shifts every exponent.",
       "steps": [
-        "A residue is the coefficient of $z^{-1}$. Part (1) is $z^{-1}(1-z+\\cdots)$; the constant 1 contributes residue 1.",
-        "In part (2), write $z[1-1/(2z^2)+\\cdots]$. The target term is $-1/(2z)$, so the residue is $-1/2$.",
-        "In part (3), $z-\\sin z$ starts at degree three; division by z leaves no negative powers, so the residue is zero. In part (4), constants cancel and the linear term $i(a-b)z$ divided by $z^2$ gives residue $i(a-b)$.",
-        "For part (5), use parity: $\\cot z$ and $z^3$ are odd, so their quotient is even. Its Laurent series has only even powers and no $z^{-1}$ term.",
-        "Part (6) has an outside factor $z^2$, so find $z^{-3}$ in the exponential series. It occurs at $n=3$, with coefficient $1/3!$, giving residue $1/6$."
+        "Fix the target: $\\operatorname{Res}_{0}f=[z^{-1}]f$. There is no need for a complete series; retain only terms that can produce the power minus one.",
+        "In part (1), $1/(z+z^2)=z^{-1}/(1+z)=z^{-1}(1-z+z^2-\\cdots)$. The first term is $z^{-1}$, with coefficient one.",
+        "For part (2), $z\\cos(1/z)=z[1-1/(2z^2)+1/(24z^4)-\\cdots]=z-1/(2z)+\\cdots$. Read off the coefficient $-1/2$.",
+        "In part (3), first $z-\\sin z=z^3/6-z^5/120+\\cdots$; division by $z$ gives $z^2/6-z^4/120+\\cdots$. There is no term of degree minus one, so the residue is zero.",
+        "The divisor in part (4) is $z^2$, so only the numerator linear term is needed. The constants cancel: $e^{iaz}-e^{ibz}=i(a-b)z+O(z^2)$, giving residue $i(a-b)$.",
+        "In part (5), $\\cot z$ is odd; division by the odd function $z^3$ makes the quotient even. Its Laurent series has only even powers, for example $z^{-4}-z^{-2}/3-1/45+\\cdots$, so there is no $z^{-1}$ and the residue is zero.",
+        "In part (6), $z^2e^{1/z}=\\sum_{n\\ge0}z^{2-n}/n!$. Solve $2-n=-1$ to get $n=3$, so the coefficient is $1/3!=1/6$.",
+        "Check that parts (3) and (5) both have zero residue but different singularity types: removable in (3), a fourth-order pole in (5). Zero residue does not mean absence of a singularity."
       ],
       "check": {
-        "question": "Which term of $e^{1/z}$ is needed in part (6)?",
-        "answer": "$z^{-3}/3!$; multiplying by $z^2$ gives $z^{-1}/6$."
+        "question": "Why does $z^2e^{1/z}$ require $n=3$ rather than $n=1$?",
+        "answer": "After multiplication by $z^2$, the exponent is $2-n$. To obtain $z^{-1}$ we must solve $2-n=-1$."
       }
     }
   },
   "1.6-2": {
     "zh": {
-      "goal": "把闭路积分化成圈内几个留数的加法。",
-      "recognize": "留数定理只数圈内奇点。先筛位置，后算系数，能省掉圈外的计算。",
+      "goal": "每问按“找内部奇点、算留数、相加乘 $2\\pi i$”完成闭路积分。",
+      "recognize": "圆周正向为逆时针。单极点用约去因子后的极限；二阶极点用一次导数；本性奇点用级数取负一次系数。",
       "steps": [
-        "第一问分母因式分解，找出 0 和 $1/2$，都在单位圆内。",
-        "对每个简单极点用“分子值 ÷ 分母导数值”；高阶极点用求导或局部展开。",
-        "第五问特别用到圆心 3，而非原点；各留数相加后统一乘 $2\\pi i$。"
+        "第(1)问分母 $2z^2-z=z(2z-1)$，圆内有 $0,1/2$。约去零因子得到 $r_0=(1)/(-1)=-1$；另用分母导数 $4z-1$ 得 $r_{1/2}=2/1=2$。",
+        "第(1)问留数和 $-1+2=1$，所以积分为 $2\\pi i$。第(2)问 $\\sin(1/z)=z^{-1}-z^{-3}/6+\\cdots$，唯一奇点0的留数也为1，积分同样是 $2\\pi i$。",
+        "第(3)问圆内奇点为 $0,1,-1$。在0，只需分子乘积的三次项：$(z+z^3/6+\\cdots)(1+z^2+\\cdots)$ 中 $z^3$ 系数为 $1+1/6=7/6$，除 $z^4$ 后即是留数。",
+        "第(3)问在 $\\pm1$ 用 $r_a=\\sinh a/[a^4(-2a)]$，两处都为 $-\\sinh1/2$。所以积分 $2\\pi i(7/6-\\sinh1)$。",
+        "第(4)问只有1处二阶极点。去掉 $(z-1)^2$ 后求一次导数：$r_1=(e^{-z})\\prime|_{z=1}=-e^{-1}$，积分为 $-2\\pi i/e$。",
+        "第(5)问候选奇点 $0,3,-3$ 到圆心3的距离是 $3,0,6$，只有3在内。约去 $z-3$ 后，$r_3=e^3/[3^2(3+3)]=e^3/54$，积分为 $\\pi i e^3/27$。",
+        "第(6)问 $\\sin z=0$ 在 $z=k\\pi$，单位圆内只有0。由于 $\\sin z=z-z^3/6+\\cdots$，倒数平方给 $1/\\sin^2z=z^{-2}+1/3+O(z^2)$，没有负一次项，积分为0。",
+        "自检圆周上没有任何奇点，留数定理才能直接用；第(4)问的负号来自指数求导，第(6)问有极点但留数为零。"
       ],
       "check": {
-        "question": "圆外极点的留数要加入这条围道的和吗？",
-        "answer": "不要，只加圈内的。"
+        "question": "二阶极点的留数需要求几次导数、除以几阶阶乘？",
+        "answer": "求一次导数，除以 $1!$，不是除以 $2!$。"
       }
     },
     "en": {
-      "goal": "Turn each closed-contour integral into a sum of enclosed residues.",
-      "recognize": "The residue theorem counts only singularities inside the contour. Select locations before calculating coefficients.",
+      "goal": "For each closed contour, find its interior singularities, compute residues, then sum and multiply by $2\\pi i$.",
+      "recognize": "A positive circle is counterclockwise. Cancel a factor for a simple pole, differentiate once for a double pole, and extract a Laurent coefficient for an essential singularity.",
       "steps": [
-        "In (1), factor the denominator to find zero and $1/2$. Both lie inside the unit circle.",
-        "For each simple pole, divide the numerator value by the denominator derivative. For higher orders, differentiate or use a local series.",
-        "In (5), use center three, not the origin. Sum the enclosed residues and multiply once by $2\\pi i$."
+        "In part (1), $2z^2-z=z(2z-1)$ gives interior poles $0,1/2$. Cancellation gives $r_0=(1)/(-1)=-1$; the denominator derivative $4z-1$ gives $r_{1/2}=2/1=2$.",
+        "The residue sum in part (1) is $-1+2=1$, so its integral is $2\\pi i$. In part (2), $\\sin(1/z)=z^{-1}-z^{-3}/6+\\cdots$ has its only singularity at zero with residue one, giving the same integral $2\\pi i$.",
+        "Part (3) contains $0,1,-1$. At zero only the cubic coefficient of $(z+z^3/6+\\cdots)(1+z^2+\\cdots)$ matters. It is $1+1/6=7/6$, which becomes the residue after division by $z^4$.",
+        "At $\\pm1$ in part (3), use $r_a=\\sinh a/[a^4(-2a)]$. Both residues are $-\\sinh1/2$, so the integral is $2\\pi i(7/6-\\sinh1)$.",
+        "Part (4) has only a double pole at one. Remove $(z-1)^2$ and differentiate once: $r_1=(e^{-z})\\prime|_{z=1}=-e^{-1}$, giving integral $-2\\pi i/e$.",
+        "In part (5), the distances from candidate poles $0,3,-3$ to center three are $3,0,6$, so only three lies inside. Cancel $z-3$: $r_3=e^3/[3^2(3+3)]=e^3/54$, yielding $\\pi i e^3/27$.",
+        "For part (6), $\\sin z=0$ at $z=k\\pi$; only zero lies inside the unit circle. From $\\sin z=z-z^3/6+\\cdots$, the reciprocal square is $1/\\sin^2z=z^{-2}+1/3+O(z^2)$, with no power minus one, so the integral is zero.",
+        "Check that no singularity lies on a contour before applying the residue theorem directly. The minus sign in part (4) comes from differentiating the exponential; part (6) has a pole with zero residue."
       ],
       "check": {
-        "question": "Do residues outside the circle enter this contour\\'s sum?",
-        "answer": "No. Add only enclosed residues."
+        "question": "For a double pole, how many derivatives and which factorial are needed?",
+        "answer": "One derivative, divided by $1!$, not $2!$."
       }
     }
   },
   "1.6-3": {
     "zh": {
-      "goal": "算有限点留数，再谨慎判断无穷远留数能否定义。",
-      "recognize": "无穷远留数不是直接代入无穷大；它是外域 $z^{-1}$ 系数的相反数，而且要求无穷远孤立。",
+      "goal": "列出每个有限孤立奇点的留数，并检查无穷远是否孤立、能否使用总留数为零。",
+      "recognize": "有限奇点只有有限个时，可由 $r_\\infty=-\\sum r_a$ 求无穷远留数。若极点无穷多个且逃向无穷远，则无穷远不孤立，不能套这条求和。",
       "steps": [
-        "先列有限奇点。第一问在 -1 是二阶极点，去掉 $(z+1)^2$ 后对 $\\sin3z$ 求一次导数。",
-        "有限奇点只有有限个时，可用全部留数和为零得到无穷远留数，或直接做外域展开。",
-        "第五问先化成 $2z/\\cos2z$，发现极点无限伸向无穷远：这时无穷远不孤立，不能硬算一个留数。"
+        "第(1)问在 $-1$ 是二阶极点，去掉分母后求导：$r_{-1}=(\\sin3z)\\prime|_{-1}=3\\cos3$。其余有限点解析，所以 $r_\\infty=-3\\cos3$；无穷远为孤立本性奇点。",
+        "第(2)问先列 $0,\\pm2i$。在 $a=\\pm2i$，分母 $z^2(z^2+4)$ 的导数为 $2a^3$，所以 $r_{2i}=ie^{-i/2}/16$、$r_{-2i}=-ie^{i/2}/16$。",
+        "第(2)问外域写 $f=z^{-4}(1+4z^{-2})^{-1}e^{1/z}$，只含 $z^{-4}$ 及更低幂，所以 $r_\\infty=0$。于是 $r_0=-(r_{2i}+r_{-2i})=-\\sin(1/2)/8$，不必硬算本性奇点的无限级数乘积。",
+        "第(3)问分母 $z(z-2)$，约去对应因子给 $r_0=-1/2,r_2=3/2$。两者相加为1，所以 $r_\\infty=-1$。注意无穷远虽可去，留数仍可非零。",
+        "第(4)问令 $w=z-2$，把 $z^3$ 写成 $w^3+6w^2+12w+8$。与 $\\cos(1/w)=1-1/(2w^2)+1/(24w^4)-\\cdots$ 相乘，负一次项只来自 $w^3/(24w^4)$ 与 $-12w/(2w^2)$。",
+        "因此第(4)问 $r_2=1/24-6=-143/24$。只有这一个有限奇点，故 $r_\\infty=143/24$；在无穷远 $f\\sim z^3$，所以那里是三阶极点。",
+        "第(5)问先化为 $2z/\\cos2z$。解 $\\cos2z=0$ 得 $z_k=\\pi/4+k\\pi/2$，分母导数为 $-2\\sin2z_k=-2(-1)^k$，所以 $r_{z_k}=(-1)^{k+1}z_k$。这些极点趋于无穷远，故无穷远留数在孤立奇点意义下不定义。",
+        "第(6)问在 $-1$ 是 $n$ 阶极点。去掉 $(z+1)^n$ 后求 $n-1$ 次导数：$d^{n-1}z^{2n}/dz^{n-1}=(2n)!z^{n+1}/(n+1)!$，还要除以 $(n-1)!$。",
+        "代 $z=-1$ 得 $r_{-1}=(-1)^{n+1}\\binom{2n}{n-1}$。唯一有限留数取负即 $r_\\infty=(-1)^n\\binom{2n}{n-1}$。用 $n=1$ 检查：$z^2/(z+1)=z-1+1/(z+1)$，有限留数确为1。"
       ],
       "check": {
-        "question": "无穷远可去，能推出无穷远留数一定为零吗？",
-        "answer": "不能。例如第三问外域有 $1/z$ 项，无穷远留数为 $-1$。"
+        "question": "为什么第(3)问无穷远可去却有 $r_\\infty=-1$？",
+        "answer": "无穷远留数是 $-f(1/w)/w^2$ 在 $w=0$ 的负一次系数，不是单看 $f(1/w)$ 是否有负幂。"
       }
     },
     "en": {
-      "goal": "Find finite residues and carefully decide whether a residue at infinity is defined.",
-      "recognize": "The residue at infinity is the negative exterior $z^{-1}$ coefficient, not a substitution of infinity. Infinity must first be isolated.",
+      "goal": "Find residues at every finite isolated singularity, then check whether infinity is isolated before using the total-residue relation.",
+      "recognize": "With only finitely many finite singularities, use $r_\\infty=-\\sum r_a$. If infinitely many poles escape to infinity, infinity is not isolated and that shortcut does not apply.",
       "steps": [
-        "List finite singularities. In (1), -1 is second order: remove $(z+1)^2$ and differentiate $\\sin3z$ once.",
-        "With finitely many finite singularities, use the zero total-residue sum to get the infinity residue, or expand directly outside.",
-        "In (5), simplify to $2z/\\cos2z$. Its poles extend indefinitely, so infinity is not isolated and no standard residue can be assigned."
+        "In part (1), the double pole at $-1$ has residue $r_{-1}=(\\sin3z)\\prime|_{-1}=3\\cos3$. All other finite points are analytic, so $r_\\infty=-3\\cos3$. Infinity is an isolated essential singularity.",
+        "In part (2), list $0,\\pm2i$. At $a=\\pm2i$, the derivative of $z^2(z^2+4)$ is $2a^3$, giving $r_{2i}=ie^{-i/2}/16$ and $r_{-2i}=-ie^{i/2}/16$.",
+        "For part (2), the exterior form $f=z^{-4}(1+4z^{-2})^{-1}e^{1/z}$ contains only powers $z^{-4}$ and lower, so $r_\\infty=0$. Therefore $r_0=-(r_{2i}+r_{-2i})=-\\sin(1/2)/8$, avoiding an infinite series product at the essential singularity.",
+        "In part (3), the denominator is $z(z-2)$. Cancel the relevant factors to get $r_0=-1/2,r_2=3/2$. Their sum is one, so $r_\\infty=-1$. Infinity is removable but its residue can still be nonzero.",
+        "In part (4), set $w=z-2$ and expand $z^3=w^3+6w^2+12w+8$. Multiply by $\\cos(1/w)=1-1/(2w^2)+1/(24w^4)-\\cdots$. Only $w^3/(24w^4)$ and $-12w/(2w^2)$ contribute to degree minus one.",
+        "Thus part (4) has $r_2=1/24-6=-143/24$. It is the only finite singularity, so $r_\\infty=143/24$. Since $f\\sim z^3$ at infinity, infinity is a pole of order three.",
+        "For part (5), rewrite as $2z/\\cos2z$. The zeros of $\\cos2z$ are $z_k=\\pi/4+k\\pi/2$, with denominator derivative $-2\\sin2z_k=-2(-1)^k$. Hence $r_{z_k}=(-1)^{k+1}z_k$. These poles approach infinity, so an isolated-singularity residue at infinity is undefined.",
+        "Part (6) has a pole of order $n$ at $-1$. Remove $(z+1)^n$ and take $n-1$ derivatives: $d^{n-1}z^{2n}/dz^{n-1}=(2n)!z^{n+1}/(n+1)!$. Then divide by $(n-1)!$.",
+        "Substitute $z=-1$ to obtain $r_{-1}=(-1)^{n+1}\\binom{2n}{n-1}$. Negating the only finite residue gives $r_\\infty=(-1)^n\\binom{2n}{n-1}$. Check $n=1$: $z^2/(z+1)=z-1+1/(z+1)$ indeed has finite residue one."
       ],
       "check": {
-        "question": "Does removability at infinity force its residue to be zero?",
-        "answer": "No. Part (3) has an exterior $1/z$ term and residue $-1$ at infinity."
+        "question": "Why can infinity be removable in part (3) while $r_\\infty=-1$?",
+        "answer": "The infinity residue is the coefficient of degree minus one in $-f(1/w)/w^2$ at $w=0$; it is not determined just by negative powers of $f(1/w)$."
       }
     }
   },
   "1.7-1": {
     "zh": {
-      "goal": "用复平面算有理函数的实积分，同时分清普通积分和主值。",
-      "recognize": "先看实轴是否有极点。单实极点会让普通反常积分发散，不能先套留数求出一个“答案”。",
+      "goal": "逐问判断普通积分是否收敛，再计算积分或另行说明的主值。",
+      "recognize": "在上半平面闭合有理函数围道。无实极点时全轴积分是 $2\\pi i$ 乘上半平面留数和；有实单极点时普通积分发散，只有另取主值才可加 $i\\pi$ 乘实极点留数和。偶函数的半轴积分再除以2。",
       "steps": [
-        "每小问先把分母因式分解，标出实轴和上半平面极点。",
-        "没有实极点时闭合上半圆；第一问只留 $i$，留数 $1/(2i)$。",
-        "有实极点的第四、五、七问先说明普通积分发散，再对称挖孔算主值。偶函数的半轴结果最后除 2。"
+        "先约定实极点两侧对称挖孔的主值。小上半圆是顺时针，贡献 $-i\\pi r_a$，移项后 $\\operatorname{PV}\\int_{\\mathbb R}f=2\\pi i\\sum_{\\operatorname{Im}a>0}r_a+i\\pi\\sum_{a\\in\\mathbb R}r_a$。本题各大圆弧都因有理函数衰减而趋零。",
+        "第(1)问上半平面只有 $i$，$r_i=1/(2i)$，故积分 $2\\pi i/(2i)=\\pi$。",
+        "第(2)问先算全轴。两留数为 $r_i=(-1)/(2i\\cdot3)=i/6$、$r_{2i}=(-4)/(4i\\cdot(-3))=-i/3$，和为 $-i/6$；全轴结果 $\\pi/3$，偶函数半轴结果 $\\pi/6$。",
+        "第(3)问上极点 $a=e^{i\\pi/4},b=e^{3i\\pi/4}$，每个留数为 $1/(4a)$ 或 $1/(4b)$。和为 $-i/(2\\sqrt2)$，所以全轴为 $\\pi/\\sqrt2$，半轴为 $\\pi/(2\\sqrt2)$。",
+        "第(4)问有实极点 $-1,-2$，先写普通积分发散。部分分式 $1/(x+1)-1/(x+2)$ 给实留数 $1,-1$，上半平面无极点，所以另取的主值为 $i\\pi(1-1)=0$。",
+        "第(5)问实极点 $\\pm3$ 使普通积分发散，实留数和为0。分式中的可积部分为 $-9/[169(z^2+4)]+4/[13(z^2+4)^2]$，在 $2i$ 的留数为 $-9/[169(4i)]-(8/13)/(4i)^3=5i/1352$。乘 $2\\pi i$ 得主值 $-5\\pi/676$；实极点项的主值贡献为零。",
+        "第(6)问上半平面根是 $e^{i\\pi/6},i,e^{5i\\pi/6}$，和为 $2i$。因 $a^6=-1$，每个留数 $1/(6a^5)=-a/6$，总留数 $-i/3$；全轴 $2\\pi/3$，半轴 $\\pi/3$。",
+        "第(7)问实极点 $\\pm1$ 使普通积分发散。实留数 $1/10,1/2$；上极点 $a=-1+i$ 有 $r_a=a/[(a^2-1)(2a+2)]=-3/10+i/10$。代主值公式得 $2\\pi i(-3/10+i/10)+i\\pi(1/10+1/2)=-\\pi/5$，虚部恰好抵消。",
+        "第(8)问缩放 $x=\\sqrt3t,dx=\\sqrt3dt$，得到 $I=3^{-3/2}\\int_0^\\infty dt/(1+t^4)$。令 $t=1/u$ 可把后一积分变成第(3)问的 $u^2/(1+u^4)$，所以结果 $3^{-3/2}\\pi/(2\\sqrt2)=\\pi/(6\\sqrt6)$。"
       ],
       "check": {
-        "question": "第五问有 $x=\\pm3$ 的单极点，普通积分收敛吗？",
-        "answer": "不收敛；给出的有限数是另行定义的主值。"
+        "question": "第(4)问主值为0，是否能写“原反常积分等于0”？",
+        "answer": "不能。普通反常积分在实极点两边须分别收敛，它不收敛；对称抵消得到的是另一个定义下的主值。"
       }
     },
     "en": {
-      "goal": "Use complex contours for rational real integrals while distinguishing ordinary integrals from principal values.",
-      "recognize": "Check real-axis poles first. A simple real pole makes the ordinary improper integral divergent; do not apply residues and label the number an ordinary integral.",
+      "goal": "First decide whether each ordinary improper integral converges, then compute it or its explicitly stated principal value.",
+      "recognize": "Close the rational contour in the upper half-plane. Without real poles the full-line integral is $2\\pi i$ times the upper residues. Real simple poles make the ordinary integral divergent; for a separately defined principal value, add $i\\pi$ times the real-pole residues. Halve only even full-line integrals.",
       "steps": [
-        "Factor each denominator and mark poles on the real axis and in the upper half-plane.",
-        "With no real poles, close above. In (1), retain only i, whose residue is $1/(2i)$.",
-        "In (4), (5), and (7), state divergence first, then define symmetric exclusions for the principal value. Finally halve whole-line values for even half-line problems."
+        "Define principal values by symmetric holes around each real pole. A clockwise upper indentation contributes $-i\\pi r_a$, so $\\operatorname{PV}\\int_{\\mathbb R}f=2\\pi i\\sum_{\\operatorname{Im}a>0}r_a+i\\pi\\sum_{a\\in\\mathbb R}r_a$. Rational decay makes all large arcs vanish here.",
+        "In part (1), the only upper pole is $i$, with $r_i=1/(2i)$, giving $2\\pi i/(2i)=\\pi$.",
+        "For part (2), compute the full line first. Residues are $r_i=(-1)/(2i\\cdot3)=i/6$ and $r_{2i}=(-4)/(4i\\cdot(-3))=-i/3$, summing to $-i/6$. The full-line value is $\\pi/3$; evenness gives the half-line value $\\pi/6$.",
+        "In part (3), the upper poles are $a=e^{i\\pi/4},b=e^{3i\\pi/4}$, with residues $1/(4a),1/(4b)$. Their sum is $-i/(2\\sqrt2)$, giving full-line value $\\pi/\\sqrt2$ and half-line value $\\pi/(2\\sqrt2)$.",
+        "Part (4) has real poles $-1,-2$, so state first that the ordinary integral diverges. The decomposition $1/(x+1)-1/(x+2)$ gives real residues $1,-1$ and no upper poles; its separately defined principal value is $i\\pi(1-1)=0$.",
+        "In part (5), the real poles $\\pm3$ make the ordinary integral divergent and their residues sum to zero. The integrable part of the partial fractions is $-9/[169(z^2+4)]+4/[13(z^2+4)^2]$. Its residue at $2i$ is $-9/[169(4i)]-(8/13)/(4i)^3=5i/1352$. Multiplication by $2\\pi i$ gives principal value $-5\\pi/676$; the real-pole terms contribute zero principal value.",
+        "For part (6), the upper roots are $e^{i\\pi/6},i,e^{5i\\pi/6}$, summing to $2i$. Since $a^6=-1$, each residue is $1/(6a^5)=-a/6$, giving total $-i/3$, full-line value $2\\pi/3$, and half-line value $\\pi/3$.",
+        "Part (7) has real poles $\\pm1$, so the ordinary integral diverges. Their residues are $1/10,1/2$. At upper pole $a=-1+i$, $r_a=a/[(a^2-1)(2a+2)]=-3/10+i/10$. The principal-value formula gives $2\\pi i(-3/10+i/10)+i\\pi(1/10+1/2)=-\\pi/5$; the imaginary terms cancel.",
+        "In part (8), scale $x=\\sqrt3t,dx=\\sqrt3dt$ to get $I=3^{-3/2}\\int_0^\\infty dt/(1+t^4)$. The substitution $t=1/u$ converts the remaining integral into part (3), with numerator $u^2$. Thus the value is $3^{-3/2}\\pi/(2\\sqrt2)=\\pi/(6\\sqrt6)$."
       ],
       "check": {
-        "question": "Does the ordinary integral in (5) converge despite simple poles at $x=\\pm3$?",
-        "answer": "No. Its finite reported value is a separately defined principal value."
+        "question": "If the principal value in part (4) is zero, can the original improper integral be called zero?",
+        "answer": "No. An ordinary improper integral requires separate convergence on the two sides of each real pole, which fails. Symmetric cancellation defines a different quantity, the principal value."
       }
     }
   },
   "1.7-2": {
     "zh": {
-      "goal": "把正弦、余弦积分变成一个容易用留数算的复积分。",
-      "recognize": "$e^{ikz}$ 在合适半平面衰减，而 $\\cos(kz)$ 本身不这样衰减，所以先用指数。",
+      "goal": "把振荡实积分换成复指数围道积分，再正确取实部、虚部和半轴因子。",
+      "recognize": "对正频率 $k$，用 $e^{ikz}$ 在上半平面衰减，先算全轴 $J=\\int e^{ikx}R(x)dx=2\\pi i\\sum r_a$。余弦取实部、正弦取虚部；只有原实被积函数为偶函数时才除以2。",
       "steps": [
-        "第一问改算 $e^{2iz}/(z^2+4)^2$ 的全轴积分，上半平面只有二阶极点 $2i$。",
-        "去掉 $(z-2i)^2$ 后求一次导数，乘 $2\\pi i$，再取实部。",
-        "正弦题取虚部；平移分母要保留极点的实部带来的相位；只有偶函数半轴题才除 2。"
+        "第(1)问用 $e^{2iz}/[(z-2i)^2(z+2i)^2]$。二阶留数是 $e^{2iz}[2i/(z+2i)^2-2/(z+2i)^3]$ 在 $2i$ 的值，即 $-5ie^{-4}/32$。乘 $2\\pi i$ 得全轴余弦值 $5\\pi e^{-4}/16$；偶函数半轴为 $5\\pi e^{-4}/32$。",
+        "第(2)问对 $e^{iz}/z$ 向上挖开原点。小弧贡献 $-i\\pi$，围道内部无极点，所以全轴主值 $J=i\\pi$。取虚部并用 $\\sin x/x$ 的偶性，半轴积分 $\\pi/2$；原点用极限补成1，无穷远由 Dirichlet 判别收敛。",
+        "第(3)问先用偶性，再分部积分：$I=2[-\\sin^2x/x]_0^\\infty+2\\int_0^\\infty\\sin2x/x\\,dx$。边界项为零，令 $u=2x$ 后后一积分等于第(2)问的 $\\pi/2$，故 $I=\\pi$。",
+        "第(4)问用 $ze^{2iz}/(z^2+3)$，上极点 $i\\sqrt3$ 的留数是 $e^{-2\\sqrt3}/2$。因此 $J=i\\pi e^{-2\\sqrt3}$，取虚部并除以2，得到 $\\pi e^{-2\\sqrt3}/2$；这里 $x\\sin2x$ 是偶函数。",
+        "第(5)问拆成 $[1/(x^2+4)-1/(x^2+9)]/5$。基本积分由上极点 $ia$ 给 $\\int_0^\\infty\\cos x/(x^2+a^2)dx=\\pi e^{-a}/(2a)$，所以 $I=(\\pi/5)(e^{-2}/4-e^{-3}/6)=\\pi(3e^{-2}-2e^{-3})/60$。",
+        "第(6)问分母为 $(z+2)^2+1$，上极点 $a=-2+i$。用留数 $e^{2ia}/(2i)$ 得 $J=\\pi e^{-2}e^{-4i}$；展开相位后取虚部为 $-\\pi e^{-2}\\sin4$。积分本来就是全轴，不能再除以2。",
+        "第(7)问上极点 $a=-1+i$，得到 $J=\\pi(-1+i)e^{-1-i}$。乘开 $(-1+i)(\\cos1-i\\sin1)$，虚部为 $\\sin1+\\cos1$，因此 $I=\\pi e^{-1}(\\sin1+\\cos1)$。",
+        "第(8)问上极点 $a=-2+i$，分子 $a+1=-1+i$，得到 $J=\\pi(-1+i)e^{-1-2i}$。乘开后取实部 $\\sin2-\\cos2$，所以 $I=\\pi e^{-1}(\\sin2-\\cos2)$。第(7)(8)问在无穷远都是条件收敛的振荡积分。",
+        "第(9)问上极点 $a=-4+3i$，分母导数为 $6i$，所以 $J=2\\pi i\\,e^{ia}/(6i)=(\\pi/3)e^{-3-4i}$。取虚部得到 $-\\pi e^{-3}\\sin4/3$；指数中的平移量决定相位符号。"
       ],
       "check": {
-        "question": "正弦积分应取复积分的实部还是虚部？",
-        "answer": "虚部，因为 $e^{ikx}=\\cos kx+i\\sin kx$。"
+        "question": "遇到 $\\sin kx$ 应先计算 $\\sin kz$ 的围道积分吗？",
+        "answer": "通常先计算 $e^{ikz}$ 再取虚部；$\\sin kz$ 同时含增长与衰减的指数，不能直接使用同一衰减理由。"
       }
     },
     "en": {
-      "goal": "Turn sine and cosine integrals into a complex integral suited to residues.",
-      "recognize": "$e^{ikz}$ decays in the appropriate half-plane; $\\cos(kz)$ alone does not. Start with the exponential.",
+      "goal": "Convert oscillatory real integrals into exponential contour integrals, then extract the correct component and half-line factor.",
+      "recognize": "For positive frequency $k$, $e^{ikz}$ decays in the upper half-plane. First compute $J=\\int e^{ikx}R(x)dx=2\\pi i\\sum r_a$. Cosine requires the real part and sine the imaginary part; divide by two only when the original real integrand is even.",
       "steps": [
-        "In (1), calculate the whole-line integral of $e^{2iz}/(z^2+4)^2$. Its only upper pole is second-order $2i$.",
-        "Remove $(z-2i)^2$, differentiate once, multiply by $2\\pi i$, then take the real part.",
-        "For sine, take the imaginary part. Retain phases caused by horizontal pole shifts. Halve only even half-line integrands."
+        "For part (1), use $e^{2iz}/[(z-2i)^2(z+2i)^2]$. The double-pole residue is $e^{2iz}[2i/(z+2i)^2-2/(z+2i)^3]$ at $2i$, namely $-5ie^{-4}/32$. Multiplying by $2\\pi i$ gives full-line cosine value $5\\pi e^{-4}/16$; evenness gives half-line value $5\\pi e^{-4}/32$.",
+        "For part (2), indent above zero for $e^{iz}/z$. The small arc contributes $-i\\pi$ and no poles lie inside, so the full-line principal value is $J=i\\pi$. Take the imaginary part and use evenness of $\\sin x/x$ to obtain $\\pi/2$ on the half-line. The origin extends to value one, and Dirichlet test gives convergence at infinity.",
+        "For part (3), use evenness and integration by parts: $I=2[-\\sin^2x/x]_0^\\infty+2\\int_0^\\infty\\sin2x/x\\,dx$. The boundary term vanishes. With $u=2x$, the remaining integral is the $\\pi/2$ from part (2), so $I=\\pi$.",
+        "In part (4), use $ze^{2iz}/(z^2+3)$. The residue at $i\\sqrt3$ is $e^{-2\\sqrt3}/2$, so $J=i\\pi e^{-2\\sqrt3}$. Its imaginary part divided by two is $\\pi e^{-2\\sqrt3}/2$; the numerator $x\\sin2x$ is even.",
+        "For part (5), decompose into $[1/(x^2+4)-1/(x^2+9)]/5$. The upper pole $ia$ gives $\\int_0^\\infty\\cos x/(x^2+a^2)dx=\\pi e^{-a}/(2a)$, hence $I=(\\pi/5)(e^{-2}/4-e^{-3}/6)=\\pi(3e^{-2}-2e^{-3})/60$.",
+        "In part (6), the denominator is $(z+2)^2+1$ and the upper pole is $a=-2+i$. The residue $e^{2ia}/(2i)$ gives $J=\\pi e^{-2}e^{-4i}$; taking the imaginary part yields $-\\pi e^{-2}\\sin4$. The original integral is already over the full line, so do not halve it.",
+        "For part (7), the upper pole $a=-1+i$ gives $J=\\pi(-1+i)e^{-1-i}$. Expanding $(-1+i)(\\cos1-i\\sin1)$ gives imaginary part $\\sin1+\\cos1$, so $I=\\pi e^{-1}(\\sin1+\\cos1)$.",
+        "In part (8), the upper pole is $a=-2+i$ and its numerator is $a+1=-1+i$, giving $J=\\pi(-1+i)e^{-1-2i}$. Its real part has factor $\\sin2-\\cos2$, so $I=\\pi e^{-1}(\\sin2-\\cos2)$. Parts (7) and (8) are conditionally convergent oscillatory integrals at infinity.",
+        "For part (9), the upper pole is $a=-4+3i$ and the denominator derivative is $6i$, so $J=2\\pi i\\,e^{ia}/(6i)=(\\pi/3)e^{-3-4i}$. Its imaginary part is $-\\pi e^{-3}\\sin4/3$. The horizontal shift determines the phase sign."
       ],
       "check": {
-        "question": "For a sine integral, which part of the complex integral is needed?",
-        "answer": "The imaginary part, since $e^{ikx}=\\cos kx+i\\sin kx$."
+        "question": "For $\\sin kx$, should one directly integrate $\\sin kz$ over a semicircular contour?",
+        "answer": "Usually compute with $e^{ikz}$ and take its imaginary part. The function $\\sin kz$ contains both growing and decaying exponentials, so the same decay argument does not apply directly."
       }
     }
   },
   "1.7-3": {
     "zh": {
-      "goal": "把一个周期的三角积分变成单位圆上的有理函数积分。",
-      "recognize": "积分区间是一整圈，令 $z=e^{i\\theta}$ 就能把三角函数变成 z 的代数式。",
+      "goal": "用单位圆代换和一个经留数推导的余弦积分公式，处理六个三角积分。",
+      "recognize": "全周期三角式令 $z=e^{i\theta}$，有 $d\theta=dz/(iz)$、$\\sin\theta=(z-z^{-1})/(2i)$、$\\cos\theta=(z+z^{-1})/2$。先降幂再代换常能减少计算。",
       "steps": [
-        "先写 $d\\theta=dz/(iz)$、$\\sin\\theta=(z-z^{-1})/(2i)$、$\\cos\\theta=(z+z^{-1})/2$。",
-        "第一问整理得到分母 $2z^2+5iz-2$；两个根中只有 $-i/2$ 在单位圆内。",
-        "多角项先降幂再换角；变成两周期时，把区间变化与微分因子一起算，最后求圈内留数。"
+        "第(1)问代换后为 $\\oint dz/(2z^2+5iz-2)$。两根 $-i/2,-2i$ 中只有 $-i/2$ 在单位圆内，留数 $1/[4(-i/2)+5i]=1/(3i)$，结果 $2\\pi/3$。",
+        "为后面建立模板：对 $a>|b|,b\\ne0$，设 $D=\\sqrt{a^2-b^2}$、$q=(a-D)/b$。代换后 $\\int_0^{2\\pi}e^{im\\phi}/(a-b\\cos\\phi)d\\phi$ 成为 $\\oint2z^m/[i(-bz^2+2az-b)]dz$，$m=0,1,2,\\ldots$。",
+        "模板分母两根是 $q,q^{-1}$，仅 $|q|<1$ 的根在内。分母在 $q$ 的导数为 $2iD$，留数 $q^m/(iD)$，所以取实部得 $A_m(a,b)=\\int_0^{2\\pi}\\frac{\\cos(m\\phi)}{a-b\\cos\\phi}d\\phi=2\\pi q^m/D$；虚部为零。",
+        "第(2)问降幂成 $1+\\sin^2\\theta=(3-\\cos2\\theta)/2$。令 $\\phi=2\\theta$ 后会走两周期，用周期性归并得 $2A_0(3,1)=4\\pi/\\sqrt8=\\sqrt2\\pi$。",
+        "第(3)问 $\\cos^2(3\\theta)=(1+\\cos6\\theta)/2$，同样令 $\\phi=2\\theta$，得到 $[A_0(5,4)+A_3(5,4)]/2$。这里 $D=3,q=1/2$，所以结果 $(\\pi/3)(1+1/8)=3\\pi/8$。",
+        "第(4)问的函数在四个象限积分相同；全周期再平移 $\\theta$ 一个 $\\pi/2$，就变成第(2)问。因此四分之一周期结果为 $\\sqrt2\\pi/4=\\pi/(2\\sqrt2)$。",
+        "第(5)问先除多项式，得到 $(1-u^2)/(3+2u)=-u/2+3/4-5/[4(3+2u)]$，其中 $u=\\cos\\theta$。全周期余弦项为0，最后一项用 $A_0(3,-2)=2\\pi/\\sqrt5$，合计 $3\\pi/2-5\\pi/(2\\sqrt5)=\\pi(3-\\sqrt5)/2$。",
+        "第(6)问先扩成全周期，原积分是其一半。单位圆代换给全周期积分 $[(-1)^n/(i2^{2n})]\\oint(z^2-1)^{2n}/z^{2n+1}dz$，所以只需要分子的 $z^{2n}$ 系数。",
+        "二项式展开中选 $n$ 个 $z^2$，其余 $n$ 个选 $-1$，所以该系数是 $(-1)^n\\binom{2n}{n}$。乘留数因子并除以2，得 $\\pi\\binom{2n}{n}/4^n=\\pi(2n)!/[2^{2n}(n!)^2]$；用 $n=1$ 检查为 $\\pi/2$。"
       ],
       "check": {
-        "question": "第一问的 $-2i$ 在单位圆内吗？",
-        "answer": "不在，因为模为 2，大于 1。"
+        "question": "令 $\\phi=2\\theta$ 后从0积分到 $4\\pi$，能否直接把上限改成 $2\\pi$？",
+        "answer": "不能直接改。需先利用被积函数的 $2\\pi$ 周期，把两周期积分写为一周期积分的2倍，再合并 $d\\theta=d\\phi/2$ 的因子。"
       }
     },
     "en": {
-      "goal": "Turn a full-period trigonometric integral into a rational integral on the unit circle.",
-      "recognize": "A full angular cycle suggests $z=e^{i\\theta}$, which replaces trigonometry by algebra in z.",
+      "goal": "Use the unit-circle substitution and a residue-derived cosine integral formula to evaluate six trigonometric integrals.",
+      "recognize": "For a full period, set $z=e^{i\theta}$, with $d\theta=dz/(iz)$, $\\sin\theta=(z-z^{-1})/(2i)$, and $\\cos\theta=(z+z^{-1})/2$. Power-reduction identities can simplify the substitution.",
       "steps": [
-        "Write $d\\theta=dz/(iz)$, $\\sin\\theta=(z-z^{-1})/(2i)$, and $\\cos\\theta=(z+z^{-1})/2$.",
-        "In (1), simplify to denominator $2z^2+5iz-2$. Of its two roots, only $-i/2$ is inside the unit circle.",
-        "Reduce powers before changing a multiple angle. Handle the changed interval together with its differential factor, then calculate enclosed residues."
+        "Part (1) becomes $\\oint dz/(2z^2+5iz-2)$. Of its roots $-i/2,-2i$, only $-i/2$ is inside. The residue is $1/[4(-i/2)+5i]=1/(3i)$, giving $2\\pi/3$.",
+        "For the remaining parts, take $a>|b|,b\\ne0$ and define $D=\\sqrt{a^2-b^2}$, $q=(a-D)/b$. Substitution turns $\\int_0^{2\\pi}e^{im\\phi}/(a-b\\cos\\phi)d\\phi$ into $\\oint2z^m/[i(-bz^2+2az-b)]dz$, with $m=0,1,2,\\ldots$.",
+        "The template denominator roots are $q,q^{-1}$; only $|q|<1$ is inside. Its derivative at $q$ is $2iD$, giving residue $q^m/(iD)$. The real part is therefore $A_m(a,b)=\\int_0^{2\\pi}\\frac{\\cos(m\\phi)}{a-b\\cos\\phi}d\\phi=2\\pi q^m/D$, and the imaginary part is zero.",
+        "For part (2), use $1+\\sin^2\\theta=(3-\\cos2\\theta)/2$. The substitution $\\phi=2\\theta$ covers two periods; periodicity gives $2A_0(3,1)=4\\pi/\\sqrt8=\\sqrt2\\pi$.",
+        "In part (3), $\\cos^2(3\\theta)=(1+\\cos6\\theta)/2$. With $\\phi=2\\theta$, obtain $[A_0(5,4)+A_3(5,4)]/2$. Since $D=3,q=1/2$, the result is $(\\pi/3)(1+1/8)=3\\pi/8$.",
+        "In part (4), all four quadrants contribute equally. Shifting the full-period integral by $\\pi/2$ turns it into part (2), so the quarter-period value is $\\sqrt2\\pi/4=\\pi/(2\\sqrt2)$.",
+        "For part (5), divide polynomials to get $(1-u^2)/(3+2u)=-u/2+3/4-5/[4(3+2u)]$, where $u=\\cos\\theta$. The cosine term integrates to zero, and $A_0(3,-2)=2\\pi/\\sqrt5$ gives total $3\\pi/2-5\\pi/(2\\sqrt5)=\\pi(3-\\sqrt5)/2$.",
+        "For part (6), first extend to a full period; the original integral is half of it. Unit-circle substitution gives $[(-1)^n/(i2^{2n})]\\oint(z^2-1)^{2n}/z^{2n+1}dz$, so only the numerator coefficient of $z^{2n}$ is needed.",
+        "Choose $n$ factors of $z^2$ and $n$ factors of $-1$ in the binomial expansion, giving coefficient $(-1)^n\\binom{2n}{n}$. Apply the residue factor and halve to get $\\pi\\binom{2n}{n}/4^n=\\pi(2n)!/[2^{2n}(n!)^2]$. For $n=1$, this correctly gives $\\pi/2$."
       ],
       "check": {
-        "question": "Is $-2i$ inside the unit circle in part (1)?",
-        "answer": "No. Its modulus is two, greater than one."
+        "question": "After $\\phi=2\\theta$ changes the upper limit to $4\\pi$, can it simply be replaced by $2\\pi$?",
+        "answer": "Not directly. Use the integrand period $2\\pi$ to replace two periods by twice one period, then combine with the Jacobian $d\\theta=d\\phi/2$."
       }
     }
   },
   "1.7-4": {
     "zh": {
-      "goal": "选一个能把两条直线积分联系起来的扇形，求出原积分。",
-      "recognize": "分母有三次幂。转 $2\\pi/3$ 后，z 的三次方不变，两条射线因此使用同一实积分。",
+      "goal": "选择能让两条射线上的分母相同的扇形围道，解出原半轴积分。",
+      "recognize": "分母含 $z^3$，把角度转过 $2\\pi/3$ 就有 $(te^{2\\pi i/3})^3=t^3$。这使回程积分只差一个方向与相位因子。",
       "steps": [
-        "取开角 $2\\pi/3$ 的逆时针扇形，标出唯一内部极点 $e^{i\\pi/3}$。",
-        "斜射线设 $z=te^{2\\pi i/3}$，回程 t 从 R 到 0，所以它贡献负的相位倍数。",
-        "证明圆弧积分趋零，再从 $(1-e^{2\\pi i/3})I=2\\pi i\\,\\mathrm{Res}$ 解出 I。"
+        "先确认普通积分收敛：0附近函数有界，无穷远按 $x^{-3}$ 衰减。记 $I_R=\\int_0^Rdx/(1+x^3)$。",
+        "取逆时针扇形围道：实轴从0到 $R$，大圆弧转到角度 $2\\pi/3$，再沿斜射线回到0，且 $R>1$。",
+        "解 $z^3=-1$，扇形内部唯一根为 $a=e^{i\\pi/3}$。它是单极点，留数 $r_a=1/(3a^2)=e^{-2\\pi i/3}/3$。",
+        "估计大弧：$|1+z^3|\\ge R^3-1$、弧长 $2\\pi R/3$，所以弧积分模至多 $2\\pi R/[3(R^3-1)]\\to0$。",
+        "斜射线令 $z=te^{2\\pi i/3}$，注意 $t$ 从 $R$ 减到0。于是 $dz=e^{2\\pi i/3}dt$、$z^3=t^3$，回程积分为 $-e^{2\\pi i/3}I_R$。",
+        "把三段相加用留数定理，再令 $R\\to\\infty$：$(1-e^{2\\pi i/3})I=(2\\pi i/3)e^{-2\\pi i/3}$。这里回程负号决定左侧是相减。",
+        "用 $1-e^{2\\pi i/3}=\\sqrt3e^{-i\\pi/6}$ 除掉左侧因子。相位 $i e^{-2\\pi i/3}e^{i\\pi/6}=1$，得到 $I=2\\pi/(3\\sqrt3)$；结果正实，与原被积函数为正一致。"
       ],
       "check": {
-        "question": "回程射线为什么有负号？",
-        "answer": "因为参数从 R 减到 0，与原积分从 0 到 R 方向相反。"
+        "question": "扇形回程为什么有负号？",
+        "answer": "参数 $t$ 从 $R$ 走到0；把积分限改成 $0\\to R$ 会产生负号。"
       }
     },
     "en": {
-      "goal": "Choose a sector that relates its two straight-ray integrals and solve for the original integral.",
-      "recognize": "The denominator contains a cube. Rotation by $2\\pi/3$ leaves that cube unchanged, so the two rays use the same real integral.",
+      "goal": "Choose a sector whose two rays give the same denominator, then solve for the original half-line integral.",
+      "recognize": "Because the denominator contains $z^3$, rotation by $2\\pi/3$ gives $(te^{2\\pi i/3})^3=t^3$. The returning integral differs only by direction and a phase factor.",
       "steps": [
-        "Use a counterclockwise sector of angle $2\\pi/3$ and mark its only enclosed pole $e^{i\\pi/3}$.",
-        "On the return ray, set $z=te^{2\\pi i/3}$. The parameter runs from R to zero, giving a negative phase multiple.",
-        "Show that the arc vanishes, then solve $(1-e^{2\\pi i/3})I=2\\pi i\\,\\mathrm{Res}$ for I."
+        "First verify convergence: the function is bounded near zero and decays as $x^{-3}$ at infinity. Set $I_R=\\int_0^Rdx/(1+x^3)$.",
+        "Use a counterclockwise sector: from zero to $R$ on the real axis, around the arc to angle $2\\pi/3$, then back to zero on the slanted ray, with $R>1$.",
+        "Solve $z^3=-1$. The only pole inside the sector is $a=e^{i\\pi/3}$, a simple pole with $r_a=1/(3a^2)=e^{-2\\pi i/3}/3$.",
+        "Bound the large arc using $|1+z^3|\\ge R^3-1$ and length $2\\pi R/3$. Its integral modulus is at most $2\\pi R/[3(R^3-1)]\\to0$.",
+        "On the slanted ray use $z=te^{2\\pi i/3}$ with $t$ decreasing from $R$ to zero. Since $dz=e^{2\\pi i/3}dt$ and $z^3=t^3$, the returning integral is $-e^{2\\pi i/3}I_R$.",
+        "Add the three segments, apply the residue theorem, and let $R\\to\\infty$: $(1-e^{2\\pi i/3})I=(2\\pi i/3)e^{-2\\pi i/3}$. The returning direction makes the two ray terms subtract.",
+        "Divide by $1-e^{2\\pi i/3}=\\sqrt3e^{-i\\pi/6}$. The phase satisfies $i e^{-2\\pi i/3}e^{i\\pi/6}=1$, giving $I=2\\pi/(3\\sqrt3)$, positive real as required by the positive integrand."
       ],
       "check": {
-        "question": "Why does the return ray carry a minus sign?",
-        "answer": "Its parameter runs from R down to zero, opposite to the original integral."
+        "question": "Why is there a minus sign on the returning ray?",
+        "answer": "The parameter runs from $R$ to zero; reversing its limits to $0\\to R$ adds a minus sign."
       }
     }
   },
   "1.7-5": {
     "zh": {
-      "goal": "把一直振荡的积分转成会衰减的高斯积分。",
-      "recognize": "指数 $iz^2$ 在角度 $\\pi/4$ 的射线上变成负实数，振荡就变成衰减。",
+      "goal": "把振荡积分转到衰减的斜射线，得到实部和虚部相等的菲涅耳积分。",
+      "recognize": "平方相位 $iz^2$ 在角度 $\\pi/4$ 上变成负实数。函数虽没有极点，留数定理仍可用：围道总积分为零，再比较两条射线。",
       "steps": [
-        "先合并成 $\\int_0^\\infty e^{ix^2}dx$，最终再取实部和虚部。",
-        "在斜射线上设 $z=te^{i\\pi/4}$，得到 $e^{iz^2}=e^{-t^2}$，且 $dz=e^{i\\pi/4}dt$。",
-        "函数是整函数，所以围道总积分为零。证明连接圆弧趋零后，使用高斯积分 $\\sqrt\\pi/2$。"
+        "先说明收敛：令 $u=x^2$，尾积分变为 $\\frac12\\int u^{-1/2}e^{iu}du$。振荡部分的原函数有界、$u^{-1/2}$ 单调趋零，Dirichlet 判别保证收敛。",
+        "对整函数 $e^{iz^2}$ 取扇形围道：实轴从0到 $R$，圆弧转至 $\\pi/4$，斜射线回0。没有奇点，三段积分之和为0。",
+        "斜射线写 $z=te^{i\\pi/4}$，于是 $iz^2=-t^2$、$dz=e^{i\\pi/4}dt$。因为回程 $t:R\\to0$，该段等于 $-e^{i\\pi/4}\\int_0^Re^{-t^2}dt$。",
+        "在圆弧令 $z=Re^{i\\theta}$，模是 $|e^{iz^2}|=e^{-R^2\\sin2\\theta}$。对 $0\\le\\theta\\le\\pi/4$，用 $\\sin2\\theta\\ge4\\theta/\\pi$，弧积分模至多 $R\\int_0^{\\pi/4}e^{-4R^2\\theta/\\pi}d\\theta\\le\\pi/(4R)\\to0$。",
+        "令 $R\\to\\infty$，零围道积分变成 $\\int_0^\\infty e^{ix^2}dx=e^{i\\pi/4}\\int_0^\\infty e^{-t^2}dt$。斜射线积分已变成不振荡的高斯积分。",
+        "若需回忆高斯值，记 $G=\\int_{\\mathbb R}e^{-t^2}dt>0$。平方并转极坐标得 $G^2=2\\pi\\int_0^\\infty re^{-r^2}dr=\\pi$，所以半轴积分为 $\\sqrt\\pi/2$。",
+        "用 $e^{i\\pi/4}=(1+i)/\\sqrt2$，得到复积分 $\\sqrt\\pi(1+i)/(2\\sqrt2)$。分别取实部和虚部，两个所求积分都为 $\\sqrt\\pi/(2\\sqrt2)$；相等来自该相位的实虚部相等。"
       ],
       "check": {
-        "question": "旋转后能忘掉 dz 的相位吗？",
-        "answer": "不能。$e^{i\\pi/4}$ 正是最后实部、虚部同时出现的原因。"
+        "question": "为什么圆弧上不能只用 $|e^{iz^2}|\\le1$ 来证明积分趋零？",
+        "answer": "因为弧长随 $R$ 增大，仅给 $O(R)$ 上界。必须使用角度方向的指数衰减，才能得到 $\\pi/(4R)\\to0$。"
       }
     },
     "en": {
-      "goal": "Convert an oscillating integral into a decaying Gaussian integral.",
-      "recognize": "On the ray at angle $\\pi/4$, the exponent $iz^2$ becomes negative real, turning oscillation into decay.",
+      "goal": "Rotate the oscillatory integral onto a decaying ray to obtain the equal real and imaginary Fresnel integrals.",
+      "recognize": "The quadratic phase $iz^2$ becomes negative real on the ray of angle $\\pi/4$. With no poles, the residue theorem says the contour integral is zero, allowing the two rays to be compared.",
       "steps": [
-        "Combine the problems into $\\int_0^\\infty e^{ix^2}dx$. Take real and imaginary parts at the end.",
-        "On the slanted ray use $z=te^{i\\pi/4}$. Then $e^{iz^2}=e^{-t^2}$ and $dz=e^{i\\pi/4}dt$.",
-        "The integrand is entire, so the contour integral is zero. Prove the connecting arc vanishes, then use the Gaussian integral $\\sqrt\\pi/2$."
+        "First establish convergence. With $u=x^2$, a tail becomes $\\frac12\\int u^{-1/2}e^{iu}du$. The oscillatory factor has a bounded primitive and $u^{-1/2}$ decreases to zero, so Dirichlet test applies.",
+        "For the entire function $e^{iz^2}$, follow the real axis from zero to $R$, an arc to angle $\\pi/4$, and the ray back to zero. There are no singularities, so the three integrals sum to zero.",
+        "On the ray, write $z=te^{i\\pi/4}$. Then $iz^2=-t^2$ and $dz=e^{i\\pi/4}dt$. The return direction $t:R\\to0$ gives $-e^{i\\pi/4}\\int_0^Re^{-t^2}dt$.",
+        "On the arc, set $z=Re^{i\\theta}$, giving $|e^{iz^2}|=e^{-R^2\\sin2\\theta}$. For $0\\le\\theta\\le\\pi/4$, use $\\sin2\\theta\\ge4\\theta/\\pi$. The arc modulus is at most $R\\int_0^{\\pi/4}e^{-4R^2\\theta/\\pi}d\\theta\\le\\pi/(4R)\\to0$.",
+        "Let $R\\to\\infty$ to obtain $\\int_0^\\infty e^{ix^2}dx=e^{i\\pi/4}\\int_0^\\infty e^{-t^2}dt$. The ray integral is now a nonoscillatory Gaussian integral.",
+        "To recover the Gaussian value, set $G=\\int_{\\mathbb R}e^{-t^2}dt>0$. Squaring and using polar coordinates gives $G^2=2\\pi\\int_0^\\infty re^{-r^2}dr=\\pi$, so the half-line integral is $\\sqrt\\pi/2$.",
+        "Use $e^{i\\pi/4}=(1+i)/\\sqrt2$ to get $\\sqrt\\pi(1+i)/(2\\sqrt2)$. Its real and imaginary parts both equal $\\sqrt\\pi/(2\\sqrt2)$, because that phase has equal real and imaginary parts."
       ],
       "check": {
-        "question": "Can the phase factor in dz be dropped after rotation?",
-        "answer": "No. The factor $e^{i\\pi/4}$ produces both final real and imaginary parts."
+        "question": "Why is the estimate $|e^{iz^2}|\\le1$ insufficient to prove the arc integral vanishes?",
+        "answer": "The arc length grows with $R$, giving only an $O(R)$ bound. The angular exponential decay is needed to obtain $\\pi/(4R)\\to0$."
       }
     }
   }

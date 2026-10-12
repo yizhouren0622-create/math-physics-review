@@ -4,10 +4,12 @@
       "goal": "找到一个函数：除源点外不弯曲，在源点产生一个单位点源。",
       "recognize": "“一维拉普拉斯”就是二阶导数。δ 表示集中在一个点、总量为 1 的源，所以从源点两侧分别求解。",
       "steps": [
-        "先写 $G\\prime\\prime=\\delta(x-x_0)$。在 $x<x_0$ 和 $x>x_0$ 两边都令二阶导数为 0，得到两段直线。",
-        "两段直线在源点接上。若函数本身跳跃，会多出题目没有的 δ′。",
-        "对源点附近积分：右斜率减左斜率必须等于 1。对称选择 $G=A|x-x_0|$，所以 $2A=1$。",
-        "写出 $G=|x-x_0|/2$。最后注明还可加 $Ax+B$，题目没给额外条件，不能说只有这一个。"
+        "先写本章符号约定：$G\\prime\\prime(x,x_0)=\\delta(x-x_0)$。$x_0$ 是源点，$\\delta$ 表示总量为 1、集中在源点的源；不要照搬三维基本解的负号。",
+        "在源点以外 $\\delta=0$，所以 $G\\prime\\prime=0$。积分两次得到 $G_-(x)=a_-x+b_-$（$x<x_0$）、$G_+(x)=a_+x+b_+$（$x>x_0$）：两边都必须是直线。",
+        "两条直线在 $x_0$ 连续相接：$a_-x_0+b_-=a_+x_0+b_+$。原因是函数值的跳跃会在二阶导数中制造 $\\delta\\prime$，而题目只要求 $\\delta$。",
+        "跨过源点积分：$\\int_{x_0-\\epsilon}^{x_0+\\epsilon}G\\prime\\prime dx=\\int\\delta dx=1$。令 $\\epsilon\\to0$ 得右斜率减左斜率 $a_+-a_-=1$；这是点源强度的检查式。",
+        "选择关于源点对称、源点值为零的规范形式 $G=C|x-x_0|$。左右斜率分别为 $-C,C$，所以 $2C=1$，得到 $G=|x-x_0|/2$。",
+        "最后补上非唯一性：任意 $Ax+B$ 的二阶导数为零，因此也可加到 $G$ 上。没有额外条件时不能声称唯一；也不能要求两端都衰减，否则无法保持单位斜率跳跃。"
       ],
       "check": {
         "question": "把 $G$ 改成 $-|x-x_0|/2$，右斜率减左斜率是多少？",
@@ -18,10 +20,12 @@
       "goal": "Find a function that is straight away from the source and creates one unit point source at the source.",
       "recognize": "In one dimension, the Laplacian is the second derivative. δ means a source concentrated at one point with total strength 1, so solve on the two sides separately.",
       "steps": [
-        "Write $G\\prime\\prime=\\delta(x-x_0)$. For both $x<x_0$ and $x>x_0$, set the second derivative to zero: each piece is a straight line.",
-        "Join the lines continuously. A jump in G itself would create a δ′ term that the equation does not contain.",
-        "Integrate across the source: right slope minus left slope must be 1. For the symmetric choice $G=A|x-x_0|$, this gives $2A=1$.",
-        "Write $G=|x-x_0|/2$. State that $Ax+B$ may also be added; without extra conditions, this choice is not unique."
+        "State this chapter’s convention: $G\\prime\\prime(x,x_0)=\\delta(x-x_0)$. The source is at $x_0$, and $\\delta$ has unit total strength concentrated there. Do not import the negative sign of the three-dimensional fundamental solution.",
+        "Away from the source, $\\delta=0$, so $G\\prime\\prime=0$. Integrate twice to obtain $G_-(x)=a_-x+b_-$ for $x<x_0$ and $G_+(x)=a_+x+b_+$ for $x>x_0$. Both pieces are straight lines.",
+        "Join the lines continuously at $x_0$: $a_-x_0+b_-=a_+x_0+b_+$. A jump in the function itself would create a $\\delta\\prime$ in its second derivative, whereas the equation contains only $\\delta$.",
+        "Integrate across the source: $\\int_{x_0-\\epsilon}^{x_0+\\epsilon}G\\prime\\prime dx=\\int\\delta dx=1$. Letting $\\epsilon\\to0$ gives the slope jump $a_+-a_-=1$. This equation checks the point-source strength.",
+        "Choose the symmetric normalization $G=C|x-x_0|$, with zero value at the source. Its left and right slopes are $-C,C$, so $2C=1$ and $G=|x-x_0|/2$.",
+        "State the nonuniqueness: any $Ax+B$ has zero second derivative and may be added to $G$. Without extra conditions, uniqueness cannot be claimed. Decay at both ends is also impossible with the required unit slope jump."
       ],
       "check": {
         "question": "For $G=-|x-x_0|/2$, what is the right slope minus the left slope?",
@@ -34,11 +38,14 @@
       "goal": "把“区域内有源”和“平面上给温度”两种影响分开算，再相加。",
       "recognize": "边界是平面，先想镜像法：把源点照镜子放到平面另一侧，让两项在平面上抵消。Dirichlet 就是给出函数值。",
       "steps": [
-        "把源点 $(\\xi,\\eta,\\zeta)$ 反射到 $(\\xi,-\\eta,\\zeta)$，写出到两个点的距离 $R,R_*$。",
-        "按本章 $\\Delta G=\\delta$ 的符号，先写 $G=-1/(4\\pi R)+1/(4\\pi R_*)$。在平面上验两距离相等。",
-        "边界外法线朝下，故求 $-\\partial_\\eta G$。代入 η=0 得到正的边界核。",
-        "把 $Gf$ 对上半空间积分，把边界核乘 $\\varphi$ 对平面积分，然后相加。",
-        "用 $f=0,\\varphi=1$ 检查应得 $u=1$；说明积分收敛和远场条件。"
+        "把观察点记为 $(x,y,z)$、积分源点记为 $(\\xi,\\eta,\\zeta)$，两者都在上半空间。令 $R^2=(x-\\xi)^2+(y-\\eta)^2+(z-\\zeta)^2$，先分清哪组变量要被积分。",
+        "将源点反射到平面下方 $(\\xi,-\\eta,\\zeta)$，记 $R_*^2=(x-\\xi)^2+(y+\\eta)^2+(z-\\zeta)^2$。写 $G=-1/(4\\pi R)+1/(4\\pi R_*)$：真实源为负倒数，像项反号。",
+        "检查 $G$：$\\eta=0$ 时 $R=R_*$，因此平面值为零；像点在域外，不添加域内奇点；真实源仍满足 $\\Delta_{\\mathbf r\\prime}G=\\delta$。无穷远的衰减用于选定所需解类。",
+        "用第二格林公式分开两种输入：$u=\\int_{\\eta>0}Gf\\,dV\\prime+\\int_{\\eta=0}\\varphi\\partial_{n\\prime}G\\,dS\\prime$。第一项来自域内源 $f$，第二项来自边界值 $\\varphi$。",
+        "边界外法线朝下，故 $\\partial_{n\\prime}=-\\partial_\\eta$。先算 $\\partial_\\eta(1/R)=(y-\\eta)/R^3$、$\\partial_\\eta(1/R_*)=-(y+\\eta)/R_*^3$；两个符号不同是关键。",
+        "令 $\\eta=0$，两距离均为 $s=\\sqrt{(x-\\xi)^2+y^2+(z-\\zeta)^2}$，得到 $\\partial_{n\\prime}G=y/(2\\pi s^3)>0$。这就是上半空间的 Poisson 边界核。",
+        "代回公式，$u=-\\frac1{4\\pi}\\int_{\\eta>0}(1/R-1/R_*)f(\\xi,\\eta,\\zeta)d\\xi d\\eta d\\zeta+\\frac y{2\\pi}\\int_{\\mathbb R^2}\\varphi(\\xi,\\zeta)s^{-3}d\\xi d\\zeta$。体积分与平面积分不要混用积分元。",
+        "自检 $f=0,\\varphi=C$：核的平面积分为 $y\\int_0^\\infty q(q^2+y^2)^{-3/2}dq=1$，故 $u=C$。一般应用还需积分收敛，并指定有界或所需远场行为；否则可加 $cy$ 等零平面边界的调和解。"
       ],
       "check": {
         "question": "这里边界上的外法线是向上还是向下？",
@@ -49,11 +56,14 @@
       "goal": "Separate the influence of interior sources from the prescribed plane values, then add them.",
       "recognize": "A plane boundary suggests the image method: reflect the source to the other side so the two terms cancel on the plane. Dirichlet means the function value is prescribed.",
       "steps": [
-        "Reflect $(\\xi,\\eta,\\zeta)$ to $(\\xi,-\\eta,\\zeta)$ and write the two distances $R,R_*$.",
-        "With this chapter’s convention $\\Delta G=\\delta$, write $G=-1/(4\\pi R)+1/(4\\pi R_*)$. Check that the distances match on the plane.",
-        "The outward normal points downward, so calculate $-\\partial_\\eta G$. Setting η=0 produces a positive boundary kernel.",
-        "Integrate $Gf$ over the upper half-space and the kernel times $\\varphi$ over the plane, then add the results.",
-        "Test $f=0,\\varphi=1$: the answer should be $u=1$. State convergence and far-field conditions."
+        "Denote the observation point by $(x,y,z)$ and the integration source by $(\\xi,\\eta,\\zeta)$, both in the upper half-space. Define $R^2=(x-\\xi)^2+(y-\\eta)^2+(z-\\zeta)^2$ and identify the integration variables.",
+        "Reflect the source below the plane to $(\\xi,-\\eta,\\zeta)$ and define $R_*^2=(x-\\xi)^2+(y+\\eta)^2+(z-\\zeta)^2$. Write $G=-1/(4\\pi R)+1/(4\\pi R_*)$: the real source has a negative reciprocal, and the image has the opposite sign.",
+        "Check $G$: at $\\eta=0$, $R=R_*$, so its plane value is zero. The image is outside the domain and adds no interior singularity; the real source still gives $\\Delta_{\\mathbf r\\prime}G=\\delta$. Decay at infinity selects the required solution class.",
+        "Use Green’s second identity to separate the inputs: $u=\\int_{\\eta>0}Gf\\,dV\\prime+\\int_{\\eta=0}\\varphi\\partial_{n\\prime}G\\,dS\\prime$. The first contribution comes from the interior source $f$, and the second from boundary values $\\varphi$.",
+        "The boundary normal points downward, so $\\partial_{n\\prime}=-\\partial_\\eta$. Compute $\\partial_\\eta(1/R)=(y-\\eta)/R^3$ and $\\partial_\\eta(1/R_*)=-(y+\\eta)/R_*^3$. Their different signs are essential.",
+        "Set $\\eta=0$. Both distances become $s=\\sqrt{(x-\\xi)^2+y^2+(z-\\zeta)^2}$, giving $\\partial_{n\\prime}G=y/(2\\pi s^3)>0$. This is the half-space Poisson boundary kernel.",
+        "Substitute into the representation: $u=-\\frac1{4\\pi}\\int_{\\eta>0}(1/R-1/R_*)f(\\xi,\\eta,\\zeta)d\\xi d\\eta d\\zeta+\\frac y{2\\pi}\\int_{\\mathbb R^2}\\varphi(\\xi,\\zeta)s^{-3}d\\xi d\\zeta$. Keep the volume and plane integration measures distinct.",
+        "Check $f=0,\\varphi=C$: the plane integral of the kernel is $y\\int_0^\\infty q(q^2+y^2)^{-3/2}dq=1$, so $u=C$. General use requires convergent integrals and a boundedness or far-field condition; otherwise harmonic terms such as $cy$ can be added without changing the plane data."
       ],
       "check": {
         "question": "Does the outward normal point upward or downward on this boundary?",
@@ -66,11 +76,14 @@
       "goal": "根据整圈边界值，算出圆盘内部任意点的值。",
       "recognize": "题目给圆周上的函数值、内部没有源：用圆盘 Poisson 公式。推导公式时，圆的“镜像”用反演，不是平面反射。",
       "steps": [
-        "先标出内部点到圆心距离 $\\rho<a$。反演点位于同一射线上，距离为 $a^2/\\rho$，所以在圆外。",
-        "用二维对数基本解构造 $G$，利用圆周上的距离比例，让 $G=0$。",
-        "沿圆周向外求导，再乘弧长元 $a\\,d\\theta\\prime$。注意导数中的 $1/a$ 正好消掉。",
-        "代入边界 $f(\\theta\\prime)$ 得 Poisson 积分。若在圆心，直接取边界平均。",
-        "试算 $f=\\cos\\theta$，应得 $u=(\\rho/a)\\cos\\theta$。"
+        "设观察点为 $\\mathbf r_0=(\\rho,\\theta)$，先取 $0<\\rho<a$；边界积分角记为 $\\theta\\prime$。圆内没有体源，所以最终只需边界项，不需 $\\int Gf\\,dV$。",
+        "圆的镜像使用反演：$\\mathbf r_0^*=a^2\\mathbf r_0/\\rho^2$，到圆心距离为 $a^2/\\rho>a$，因此像点在圆外，不会引入域内额外源。",
+        "二维基本解是 $\\ln|\\mathbf s-\\mathbf r_0|/(2\\pi)$。构造 $G=(2\\pi)^{-1}\\ln[a|\\mathbf s-\\mathbf r_0|/(\\rho|\\mathbf s-\\mathbf r_0^*|)]$；圆周上距离比为 $|\\mathbf s-\\mathbf r_0^*|=(a/\\rho)|\\mathbf s-\\mathbf r_0|$，故对数内为 1，$G=0$。",
+        "准备求外法向导数。令积分点半径为 $s$、$\\psi=\\theta\\prime-\\theta$，有 $d^2=s^2+\\rho^2-2s\\rho\\cos\\psi$，所以 $\\partial_s\\ln d=(s-\\rho\\cos\\psi)/d^2$。",
+        "像点项把 $\\rho$ 换成 $a^2/\\rho$。在 $s=a$ 用 $d_*^2=(a^2/\\rho^2)d^2$ 相减，得到 $\\partial_nG=(a^2-\\rho^2)/[2\\pi a(a^2+\\rho^2-2a\\rho\\cos\\psi)]$。",
+        "格林公式是 $u=\\int_{\\partial V}f\\partial_nG\\,ds$。弧长元为 $ds=a\\,d\\theta\\prime$，正好消去导数中的 $1/a$，得到 $u=\\frac1{2\\pi}\\int_0^{2\\pi}\\frac{a^2-\\rho^2}{a^2+\\rho^2-2a\\rho\\cos(\\theta-\\theta\\prime)}f(\\theta\\prime)d\\theta\\prime$。",
+        "圆心单独取极限：$\\rho\\to0$ 时分式变成 1，故 $u(0)=(2\\pi)^{-1}\\int_0^{2\\pi}f(\\theta\\prime)d\\theta\\prime$。不需要真的把反演点写到无穷远。",
+        "自检两个边界：若 $f=C$，核积分给 $u=C$；若 $f=\\cos\\theta$，利用核展开 $1+2\\sum_{n\\ge1}(\\rho/a)^n\\cos n(\\theta-\\theta\\prime)$，正交性只留 $n=1$，得 $u=(\\rho/a)\\cos\\theta$。连续点回到 $f$，跳跃点按两侧平均理解。"
       ],
       "check": {
         "question": "边界温度恒为 3，圆心温度是多少？",
@@ -81,11 +94,14 @@
       "goal": "Compute the value at any interior point from the values around the whole circle.",
       "recognize": "The function is prescribed on a circle and there is no interior source: use the disk Poisson formula. To derive it, the circular image is obtained by inversion, not plane reflection.",
       "steps": [
-        "Mark the interior radius $\\rho<a$. The inverted point lies on the same ray at radius $a^2/\\rho$, outside the disk.",
-        "Build G from the two-dimensional logarithmic fundamental solution, using the circle-distance ratio to make $G=0$ on the boundary.",
-        "Differentiate outward and multiply by the arc element $a\\,d\\theta\\prime$. Its a cancels the $1/a$ in the derivative.",
-        "Insert $f(\\theta\\prime)$ into the Poisson integral. At the center, take the boundary average directly.",
-        "Test $f=\\cos\\theta$: the answer should be $u=(\\rho/a)\\cos\\theta$."
+        "Let the observation point be $\\mathbf r_0=(\\rho,\\theta)$, initially with $0<\\rho<a$, and call the boundary integration angle $\\theta\\prime$. There is no interior source, so the final representation needs only a boundary term, not $\\int Gf\\,dV$.",
+        "The circular image uses inversion: $\\mathbf r_0^*=a^2\\mathbf r_0/\\rho^2$. Its distance from the center is $a^2/\\rho>a$, so it lies outside and adds no interior source.",
+        "The two-dimensional fundamental solution is $\\ln|\\mathbf s-\\mathbf r_0|/(2\\pi)$. Construct $G=(2\\pi)^{-1}\\ln[a|\\mathbf s-\\mathbf r_0|/(\\rho|\\mathbf s-\\mathbf r_0^*|)]$. On the circle, $|\\mathbf s-\\mathbf r_0^*|=(a/\\rho)|\\mathbf s-\\mathbf r_0|$, so the logarithm has argument 1 and $G=0$.",
+        "Prepare the outward normal derivative. Let the integration radius be $s$ and $\\psi=\\theta\\prime-\\theta$. Then $d^2=s^2+\\rho^2-2s\\rho\\cos\\psi$, so $\\partial_s\\ln d=(s-\\rho\\cos\\psi)/d^2$.",
+        "For the image term, replace $\\rho$ by $a^2/\\rho$. At $s=a$, use $d_*^2=(a^2/\\rho^2)d^2$ and subtract the derivatives to get $\\partial_nG=(a^2-\\rho^2)/[2\\pi a(a^2+\\rho^2-2a\\rho\\cos\\psi)]$.",
+        "Green’s formula is $u=\\int_{\\partial V}f\\partial_nG\\,ds$. The arc element $ds=a\\,d\\theta\\prime$ cancels the derivative’s $1/a$, giving $u=\\frac1{2\\pi}\\int_0^{2\\pi}\\frac{a^2-\\rho^2}{a^2+\\rho^2-2a\\rho\\cos(\\theta-\\theta\\prime)}f(\\theta\\prime)d\\theta\\prime$.",
+        "Take the center as a separate limit. As $\\rho\\to0$, the fraction becomes 1, so $u(0)=(2\\pi)^{-1}\\int_0^{2\\pi}f(\\theta\\prime)d\\theta\\prime$. No explicit image point at infinity is needed.",
+        "Check two boundary data sets: if $f=C$, kernel normalization gives $u=C$; if $f=\\cos\\theta$, expand the kernel as $1+2\\sum_{n\\ge1}(\\rho/a)^n\\cos n(\\theta-\\theta\\prime)$. Orthogonality leaves only $n=1$, giving $u=(\\rho/a)\\cos\\theta$. Boundary limits recover $f$ at continuous points and the two-sided average at jumps."
       ],
       "check": {
         "question": "If the boundary temperature is constantly 3, what is the center temperature?",
@@ -98,11 +114,13 @@
       "goal": "在球外放一个真实源，用球内的像源把球面值抵消。",
       "recognize": "“球外、球面零值”提示球反演镜像。求的是 G，先守住 $\\Delta G=\\delta$；转成电势时才乘 $-q/\\varepsilon_0$。",
       "steps": [
-        "设真实源到球心距离为 $b>a$。第一笔先算像点位置：$\\mathbf r_0^*=a^2\\mathbf r_0/b^2$。",
-        "球面上像点距离是真实距离的 $a/b$ 倍；因此给像项系数 $a/b$，让两项恰好相消。",
-        "写 $G=-1/(4\\pi R)+(a/b)/(4\\pi R_*)$，检查真实源归一化、球面零值和无穷远衰减。",
-        "与电势比较时用 $\\Phi=-qG/\\varepsilon_0$，得到像电荷 $q_*=-qa/b$。",
-        "不要照抄教材例题中有冲突的点源符号；物理正电荷满足 $\\Delta\\Phi=-\\rho_e/\\varepsilon_0$。"
+        "设球心为原点、半径 $a$，真实源点 $\\mathbf r_0$ 到球心距离 $b=|\\mathbf r_0|>a$。先牢记求解域是球外：用于抵消边界的像点必须放在球内。",
+        "作球反演 $\\mathbf r_0^*=a^2\\mathbf r_0/b^2$。像点到球心距离为 $a^2/b<a$。记 $R=|\\mathbf r-\\mathbf r_0|$、$R_*=|\\mathbf r-\\mathbf r_0^*|$。",
+        "在球面 $|\\mathbf r|=a$，平方距离直接给 $R_*^2=(a^2/b^2)R^2$，即 $R_*=(a/b)R$。试取 $G=-1/(4\\pi R)+C/(4\\pi R_*)$；令球面值为零，得到 $C=a/b$。",
+        "写出 $G=-1/(4\\pi R)+a/(4\\pi bR_*)$。负倒数在真实源处产生 $+\\delta$；像点在域外，其项在球外处处调和，所以 $\\Delta_{\\mathbf r}G=\\delta(\\mathbf r-\\mathbf r_0)$。",
+        "补查无穷远：两个距离都约为 $r$，所以 $G=O(1/r)\\to0$。点源强度、球面零值、无穷远衰减三项一起确定这个 Dirichlet 格林函数。",
+        "与教材电势例题比较时，物理方程是 $\\Delta\\Phi=-(q/\\varepsilon_0)\\delta$，不是 $+\\delta$。因此乘 $-q/\\varepsilon_0$：$\\Phi=q[1/R-(a/b)/R_*]/(4\\pi\\varepsilon_0)$，像电荷为 $q_*=-qa/b$。",
+        "自检 $b=2a$：像点半径 $a/2$、像电荷 $-q/2$。再查远场 $\\Phi\\sim q(1-a/b)/(4\\pi\\varepsilon_0r)$，等效总电量正好是 $q+q_*$；与 Legendre 法结果一致由唯一性保证。"
       ],
       "check": {
         "question": "若 $b=2a$，像点半径和像电荷各是多少？",
@@ -113,11 +131,13 @@
       "goal": "Use an image inside the sphere to cancel the boundary value produced by a real source outside.",
       "recognize": "“Outside a sphere, zero sphere boundary” suggests inversion. We are finding G, so first keep $\\Delta G=\\delta$; multiply by $-q/\\varepsilon_0$ only when converting to electric potential.",
       "steps": [
-        "Let the source radius be $b>a$. First calculate the image location: $\\mathbf r_0^*=a^2\\mathbf r_0/b^2$.",
-        "On the sphere the image distance is $a/b$ times the real-source distance, so choose image coefficient $a/b$ for exact cancellation.",
-        "Write $G=-1/(4\\pi R)+(a/b)/(4\\pi R_*)$. Check source normalization, zero sphere value, and decay at infinity.",
-        "Compare with electric potential using $\\Phi=-qG/\\varepsilon_0$, which gives image charge $q_*=-qa/b$.",
-        "Do not copy the conflicting source sign in the textbook example: a positive electric charge obeys $\\Delta\\Phi=-\\rho_e/\\varepsilon_0$."
+        "Place the sphere center at the origin, with radius $a$, and let the real source $\\mathbf r_0$ satisfy $b=|\\mathbf r_0|>a$. The domain is outside the sphere, so the cancelling image must lie inside it.",
+        "Invert the source: $\\mathbf r_0^*=a^2\\mathbf r_0/b^2$. Its distance from the center is $a^2/b<a$. Define $R=|\\mathbf r-\\mathbf r_0|$ and $R_*=|\\mathbf r-\\mathbf r_0^*|$.",
+        "On $|\\mathbf r|=a$, squared distances give $R_*^2=(a^2/b^2)R^2$, hence $R_*=(a/b)R$. Try $G=-1/(4\\pi R)+C/(4\\pi R_*)$. Requiring zero surface value gives $C=a/b$.",
+        "Thus $G=-1/(4\\pi R)+a/(4\\pi bR_*)$. The negative reciprocal produces $+\\delta$ at the real source. The image lies outside the domain, so its term is harmonic throughout the exterior; therefore $\\Delta_{\\mathbf r}G=\\delta(\\mathbf r-\\mathbf r_0)$.",
+        "Check infinity: both distances are asymptotic to $r$, so $G=O(1/r)\\to0$. The source normalization, zero surface value, and decay together identify this Dirichlet Green function.",
+        "For comparison with the electrostatic example, the physical equation is $\\Delta\\Phi=-(q/\\varepsilon_0)\\delta$, rather than $+\\delta$. Multiply by $-q/\\varepsilon_0$: $\\Phi=q[1/R-(a/b)/R_*]/(4\\pi\\varepsilon_0)$. The image charge is $q_*=-qa/b$.",
+        "Check $b=2a$: the image radius is $a/2$ and its charge is $-q/2$. Also check $\\Phi\\sim q(1-a/b)/(4\\pi\\varepsilon_0r)$ at infinity: the effective total charge is $q+q_*$. Uniqueness ensures agreement with the Legendre solution."
       ],
       "check": {
         "question": "If $b=2a$, what are the image radius and image charge?",
@@ -130,11 +150,14 @@
       "goal": "证明指数正负两种函数都能产生同一个单位点源。",
       "recognize": "看到“证明基本解”，要做两项检查：源点外算方程，源点处算总通量。只做第一项还不够。",
       "steps": [
-        "对 r>0 令 $v=rG$，先算 $v\\prime\\prime=-\\omega^2v$，这样避开复杂的球坐标二阶导数。",
-        "得到源点外 $(\\Delta+\\omega^2)G=0$。这只能说明没有普通体源。",
-        "在 r=0 附近展开 $e^{\\pm i\\omega r}$，两种 G 的首项都是 $-1/(4\\pi r)$。",
-        "对半径 ε 的小球算通量：$4\\pi\\varepsilon^2\\partial_rG\\to1$；另一个体积分项趋零，所以点源强度为 1。",
-        "最后写明：辐射条件选择正负号；用哪个时间因子，会影响“出射”的命名。"
+        "先分成两个必须完成的任务：$r>0$ 时验证没有普通体源；$r=0$ 时验证点源总量为 1。题中函数是式 (6.4.15)，所要满足的方程是式 (6.4.8)。",
+        "对正、负两号同时令 $v_\\pm=rG_\\pm=-e^{\\pm i\\omega r}/(4\\pi)$。求两次导数：$(\\pm i\\omega)^2=-\\omega^2$，所以 $v_\\pm\\prime\\prime=-\\omega^2v_\\pm$。",
+        "球对称函数在 $r>0$ 满足 $\\Delta G=(rG)\\prime\\prime/r$。于是 $(\\Delta+\\omega^2)G_\\pm=(v_\\pm\\prime\\prime+\\omega^2v_\\pm)/r=0$。这一步尚未检查源点。",
+        "在源点附近用 $e^{\\pm i\\omega r}=1\\pm i\\omega r+O(r^2)$，得到 $G_\\pm=-1/(4\\pi r)\\mp i\\omega/(4\\pi)+O(r)$。两个符号有相同的倒数奇异主部。",
+        "对半径 $\\epsilon$ 的小球，$\\partial_rG_\\pm=1/(4\\pi r^2)+O(1)$。乘球面积 $4\\pi\\epsilon^2$，得外向通量 $\\oint\\partial_rG_\\pm dS=1+O(\\epsilon^2)\\to1$。",
+        "还要检查算符中的另一项。因为 $G_\\pm=O(1/r)$，$\\omega^2\\int_{r<\\epsilon}G_\\pm dV=O(\\int_0^\\epsilon r\\,dr)=O(\\epsilon^2)\\to0$。所以它不会改变单位点源强度。",
+        "把结论写成分布等式 $(\\Delta+\\omega^2)G_\\pm=\\delta$。严格表达是对任意光滑紧支试验函数 $\\psi$，挖去小球后分部积分，内边界极限留下 $\\psi(0)$；即该算符作用结果与单位点源完全相同。",
+        "最后区分“都是基本解”和“选择哪种波”：$G_+-G_-=-i\\sin(\\omega r)/(2\\pi r)$ 在原点有限，是齐次解。需用辐射条件选符号；时间因子为 $e^{-i\\omega t}$ 时正空间指数为出射，改用相反时间因子时称呼反转。"
       ],
       "check": {
         "question": "如果把 G 整体乘 2，源点外方程还成立吗？它还是单位点源吗？",
@@ -145,11 +168,14 @@
       "goal": "Prove that both exponential signs produce the same unit point source.",
       "recognize": "For “verify a fundamental solution”, perform two checks: the equation away from the source and the total flux at the source. The first check alone is insufficient.",
       "steps": [
-        "For r>0 set $v=rG$. First compute $v\\prime\\prime=-\\omega^2v$, avoiding a longer radial Laplacian calculation.",
-        "This gives $(\\Delta+\\omega^2)G=0$ away from the source. It only rules out an ordinary volume source there.",
-        "Expand $e^{\\pm i\\omega r}$ near r=0. Both G functions start with $-1/(4\\pi r)$.",
-        "Calculate flux through a sphere of radius ε: $4\\pi\\varepsilon^2\\partial_rG\\to1$. The other volume integral tends to zero, so the point-source strength is 1.",
-        "State that the radiation condition chooses the sign; the time factor affects which sign is called outgoing."
+        "Split the proof into two required tasks: verify zero ordinary source for $r>0$, then verify unit point-source strength at $r=0$. The functions are from equation (6.4.15), and the target equation is (6.4.8).",
+        "For both signs set $v_\\pm=rG_\\pm=-e^{\\pm i\\omega r}/(4\\pi)$. Differentiate twice: $(\\pm i\\omega)^2=-\\omega^2$, hence $v_\\pm\\prime\\prime=-\\omega^2v_\\pm$.",
+        "For a radial function at $r>0$, $\\Delta G=(rG)\\prime\\prime/r$. Thus $(\\Delta+\\omega^2)G_\\pm=(v_\\pm\\prime\\prime+\\omega^2v_\\pm)/r=0$. The source point has not yet been checked.",
+        "Near the source, use $e^{\\pm i\\omega r}=1\\pm i\\omega r+O(r^2)$ to get $G_\\pm=-1/(4\\pi r)\\mp i\\omega/(4\\pi)+O(r)$. Both signs have the same singular reciprocal term.",
+        "On a small sphere of radius $\\epsilon$, $\\partial_rG_\\pm=1/(4\\pi r^2)+O(1)$. Multiply by the area $4\\pi\\epsilon^2$ to obtain outward flux $\\oint\\partial_rG_\\pm dS=1+O(\\epsilon^2)\\to1$.",
+        "Check the other operator term too. Since $G_\\pm=O(1/r)$, $\\omega^2\\int_{r<\\epsilon}G_\\pm dV=O(\\int_0^\\epsilon r\\,dr)=O(\\epsilon^2)\\to0$. It does not alter the unit point-source strength.",
+        "State the distributional equality $(\\Delta+\\omega^2)G_\\pm=\\delta$. Precisely, for any smooth compactly supported test function $\\psi$, integrate by parts after removing a small ball. The inner-boundary limit leaves $\\psi(0)$, exactly the action of a unit point source.",
+        "Finally distinguish being a fundamental solution from selecting a wave. The difference $G_+-G_-=-i\\sin(\\omega r)/(2\\pi r)$ is finite at the origin and solves the homogeneous equation. A radiation condition selects the sign. With time factor $e^{-i\\omega t}$, the positive spatial exponent is outgoing; the opposite time convention reverses the labels."
       ],
       "check": {
         "question": "If G is multiplied by 2, does the equation away from the source still hold? Is the source still a unit source?",

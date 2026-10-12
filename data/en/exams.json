@@ -185,7 +185,7 @@
         "topic": "Harmonic conjugate",
         "question": "An analytic function has real part $e^x\\cos y$ and satisfies $f(0)=1+2i$. Find $f(z)$.",
         "hint": "Recognize $e^z$, or integrate the Cauchy–Riemann equations.",
-        "solution": "From $v_y=u_x=e^x\\cos y$ we get $v=e^x\\sin y+C(x)$. Then $v_x=-u_y=e^x\\sin y$ implies $C\\prime=0$. Thus $f=e^z+iC$; the specified value gives $C=2$, so $f=e^z+2i$.",
+        "solution": "**Choose the method.** The real part is $u=e^x\\cos y$ and the imaginary part $v$ is unknown. Use Cauchy–Riemann equations $v_y=u_x$, $v_x=-u_y$. First calculate $u_x=e^x\\cos y$ and $u_y=-e^x\\sin y$.\n\n**Retain the integration function.** Integrate $v_y=e^x\\cos y$ in $y$ to obtain $v=e^x\\sin y+C(x)$. Since $x$ was held fixed, the integration constant may depend on $x$.\n\n**Use the other equation.** $v_x=e^x\\sin y+C^{\\prime}(x)$ must equal $-u_y=e^x\\sin y$. Hence $C^{\\prime}=0$ and $C$ is a real constant.\n\n**Use the value and check.** $f=u+iv=e^z+iC$; $f(0)=1+iC=1+2i$ fixes $C=2$, giving $f=e^z+2i$. Its real part is the stated $u$.",
         "rubric": "Cauchy–Riemann integration: 4 points; constant: 3 points; analytic function: 3 points."
       },
       {
@@ -195,7 +195,7 @@
         "topic": "Singularity classification",
         "question": "Classify the singularity of $f(z)=(e^z-1-z)/z^3$ at the origin and find its residue.",
         "hint": "Expand the numerator through the cubic term. The denominator alone does not determine the pole order.",
-        "solution": "We have $e^z-1-z=z^2/2+z^3/6+\\cdots$, hence $f=1/(2z)+1/6+z/24+\\cdots$. The origin is a simple pole and its residue is $1/2$.",
+        "solution": "**Expand the numerator first.** $e^z=1+z+z^2/2+z^3/6+z^4/24+\\cdots$. Subtracting the constant and linear terms leaves degree two as the lowest nonzero power.\n\n**Then divide.** $(e^z-1-z)/z^3=1/(2z)+1/6+z/24+\\cdots$. The numerator cancels two powers from the cubic denominator.\n\n**Read both answers.** The only negative power is $z^{-1}$, so the origin is a simple pole. Its residue is the coefficient $1/2$. Equivalently, $\\lim_{z\\to0}zf(z)=1/2\\ne0$.",
         "rubric": "Series: 4 points; pole order: 3 points; residue: 3 points."
       },
       {
@@ -205,7 +205,7 @@
         "topic": "Translation rule",
         "question": "Let $a>0$ and $b\\in\\mathbb R$. Given $\\mathcal F[e^{-a|x|}]=2a/(a^2+k^2)$, find the transform of $e^{-a|x-b|}$ using kernel $e^{-ikx}$.",
         "hint": "Substitute $t=x-b$ and track the resulting phase factor.",
-        "solution": "We have $x=t+b$, so $e^{-ikx}=e^{-ikb}e^{-ikt}$. Thus $F(k)=e^{-ikb}2a/(a^2+k^2)$. Translation preserves the transform’s magnitude and changes its phase. The phase sign follows from the chosen kernel.",
+        "solution": "**Recognize translation.** Let $f(x)=e^{-a|x|}$; the target is $g(x)=f(x-b)$, translating the whole graph by $b$.\n\n**Check the sign by substitution.** Set $t=x-b$, so $x=t+b$ and $e^{-ikx}=e^{-ikb}e^{-ikt}$. The translation factor is independent of $t$ and leaves the integral.\n\n**Use the known transform.** $G(k)=e^{-ikb}2a/(a^2+k^2)$. Real $b$ and $k$ give $|e^{-ikb}|=1$, changing only phase. Setting $b=0$ recovers the original transform.",
         "rubric": "Substitution: 3 points; phase sign: 3 points; result and interpretation: 4 points."
       },
       {
@@ -215,7 +215,7 @@
         "topic": "Heaviside step",
         "question": "Solve $y\\prime+y=H(t-2)$, $y(0)=0$.",
         "hint": "The right-hand side transforms to $e^{-2s}/s$. Use the time-delay rule when inverting.",
-        "solution": "We have $(s+1)Y=e^{-2s}/s$, hence $Y=e^{-2s}[1/s-1/(s+1)]$. The inverse transform is $y=H(t-2)[1-e^{-(t-2)}]$. For $t<2$ the solution is zero; for $t>2$ it satisfies the forced equation. At $t=2$ the solution is continuous, so its first derivative contains no additional delta term.",
+        "solution": "**Keep the delay in the transform.** Let $Y=\\mathcal L[y]$. The derivative gives $sY-y(0)=sY$ and the step gives $e^{-2s}/s$, hence $(s+1)Y=e^{-2s}/s$.\n\n**Find the undelayed response.** Decompose $1/[s(s+1)]=1/s-1/(s+1)$, whose original is $g(t)=1-e^{-t}$.\n\n**Delay the entire function.** $e^{-2s}G(s)$ corresponds to $H(t-2)g(t-2)$, giving $y=H(t-2)[1-e^{-(t-2)}]$. Shift the time inside the brackets too.\n\n**Check the pieces.** For $t<2$, $y=0$; for $t>2$, $y^{\\prime}+y=1$. Since $g(0)=0$, the solution is continuous at switching and its first derivative has no extra delta term.",
         "rubric": "Transformed equation: 4 points; partial fractions and delay: 4 points; continuity: 2 points."
       },
       {
@@ -225,7 +225,7 @@
         "topic": "Traveling waves",
         "question": "On an infinite string $u_{tt}=c^2u_{xx}$, with initial displacement $\\phi(x)=e^{-x^2}$ and zero initial velocity, find and interpret the solution.",
         "hint": "Split the initial displacement into two traveling waves, each with half the amplitude.",
-        "solution": "D’Alembert’s formula is $u=[\\phi(x-ct)+\\phi(x+ct)]/2+(1/(2c))\\int_{x-ct}^{x+ct}\\psi(s)ds$. Here $\\psi=0$, giving $u=\\frac12[e^{-(x-ct)^2}+e^{-(x+ct)^2}]$. The first term travels right at speed $c$, and the second travels left. Setting $t=0$ recovers the displacement; their time derivatives cancel initially.",
+        "solution": "**Let the domain select the method.** An infinite string with prescribed initial data suits d’Alembert’s formula. Denote initial displacement by $\\phi$ and velocity by $\\psi$.\n\n**Insert zero initial velocity.** $u=[\\phi(x-ct)+\\phi(x+ct)]/2+(1/(2c))\\int_{x-ct}^{x+ct}\\psi(s)ds$. Here $\\psi=0$, so the integral vanishes.\n\n**Write and interpret the solution.** $u=\\tfrac12[e^{-(x-ct)^2}+e^{-(x+ct)^2}]$. The first peak is at $x=ct$ and moves right; the second is at $x=-ct$ and moves left, each with half amplitude.\n\n**Check initial data.** At $t=0$ the terms sum to $e^{-x^2}$. Their time derivatives carry chain-rule factors $-c$ and $c$ and cancel. Each traveling wave satisfies the wave equation.",
         "rubric": "Formula: 4 points; substitution: 3 points; directions and initial conditions: 3 points."
       },
       {
@@ -235,7 +235,7 @@
         "topic": "Neumann boundary conditions",
         "question": "A rod $0<x<L$ obeys $u_t=\\kappa u_{xx}$ with $\\kappa>0$, is insulated at both ends, and starts from $u(x,0)=T_0+A\\cos(2\\pi x/L)$. Find its temperature and long-time limit.",
         "hint": "Use cosine modes. The constant mode has eigenvalue zero.",
-        "solution": "The spatial eigenvalue for $\\cos(2\\pi x/L)$ is $(2\\pi/L)^2$. The constant mode does not decay. Thus $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$. At both ends $u_x=0$. As $t\\to\\infty$, we have $u\\to T_0$: this is the conserved mean temperature.",
+        "solution": "**Read the boundary first.** Insulation means $u_x(0,t)=u_x(L,t)=0$, selecting cosines. A constant is also a valid mode; retain the average temperature $T_0$.\n\n**Only two modes are needed.** The initial profile is already $T_0+A\\cos(2\\pi x/L)$, so set $u=T_0+q(t)\\cos(2\\pi x/L)$. Two spatial derivatives give factor $-(2\\pi/L)^2$.\n\n**Solve the time coefficient.** The heat equation gives $q^{\\prime}=-4\\kappa\\pi^2q/L^2$ with $q(0)=A$, so $u=T_0+A e^{-4\\kappa\\pi^2t/L^2}\\cos(2\\pi x/L)$.\n\n**Check long-time behavior.** Since $\\kappa>0$, the nonconstant term decays and $u\\to T_0$. The cosine has zero average, so the rod’s mean temperature remains $T_0$ throughout.",
         "rubric": "Basis and zero mode: 3 points; solution: 4 points; limit and meaning: 3 points."
       },
       {
@@ -245,7 +245,7 @@
         "topic": "Wronskian",
         "question": "For $y\\prime\\prime+2y\\prime+y=0$ and the given solutions $y_1=e^{-x},y_2=xe^{-x}$, calculate $W=y_1y_2\\prime-y_1\\prime y_2$ and check Abel’s formula.",
         "hint": "The coefficient of $y\\prime$ is 2, so $W=C e^{-2x}$.",
-        "solution": "We have $y_1\\prime=-e^{-x}$ and $y_2\\prime=(1-x)e^{-x}$, hence $W=(1-x)e^{-2x}+xe^{-2x}=e^{-2x}$. Abel’s formula $W\\prime=-2W$ gives $W=C e^{-2x}$; using $W(0)=1$ yields $C=1$. Since $W\\ne0$, the two solutions are linearly independent.",
+        "solution": "**Differentiate first.** $y_1^{\\prime}=-e^{-x}$. The product rule gives $y_2^{\\prime}=e^{-x}-xe^{-x}=(1-x)e^{-x}$.\n\n**Use the stated determinant order.** $W=y_1y_2^{\\prime}-y_1^{\\prime}y_2=(1-x)e^{-2x}+xe^{-2x}=e^{-2x}$. Subtracting the negative second term gives a plus.\n\n**Check independently with Abel’s formula.** The first-derivative coefficient is two, so $W^{\\prime}=-2W$ and $W=C e^{-2x}$. Directly, $W(0)=1$, hence $C=1$, consistent with the determinant.\n\n**Interpret the result.** For every finite real $x$, $W\\ne0$. The two solutions are independent and form a fundamental solution pair for the second-order equation.",
         "rubric": "Derivatives and Wronskian: 4 points; Abel check: 4 points; independence: 2 points."
       },
       {
@@ -255,7 +255,7 @@
         "topic": "Spherical functions",
         "question": "Expand $x^2$ on $[-1,1]$ in Legendre polynomials and evaluate $\\int_{-1}^1x^2P_2(x)dx$.",
         "hint": "Use $P_2=(3x^2-1)/2$ and the norm $2/(2l+1)$.",
-        "solution": "The definitions give $x^2=P_0/3+2P_2/3$. Multiply by $P_2$ and integrate. Orthogonality eliminates the $P_0$ term, leaving $(2/3)\\cdot[2/(2\\cdot2+1)]=4/15$. Direct integration of $(3x^4-x^2)/2$ checks the result.",
+        "solution": "**Express the power in the requested basis.** Use $P_0(x)=1$ and $P_2(x)=(3x^2-1)/2$. Solve for $x^2$ to obtain $x^2=P_0/3+2P_2/3$.\n\n**Multiply by the target polynomial and integrate.** $\\int x^2P_2=\\tfrac13\\int P_0P_2+\\tfrac23\\int P_2^2$, all over $[-1,1]$. Orthogonality makes the first term zero.\n\n**Insert the squared norm.** $\\int_{-1}^1P_2^2dx=2/(2\\cdot2+1)=2/5$, giving $(2/3)(2/5)=4/15$. The expansion coefficient $2/3$ is not itself the integral.\n\n**Check directly.** Integrating $x^2P_2=(3x^4-x^2)/2$ gives $[3(2/5)-2/3]/2=4/15$, agreeing with projection.",
         "rubric": "Expansion: 4 points; orthogonality and norm: 3 points; result: 3 points."
       },
       {
@@ -265,7 +265,7 @@
         "topic": "Bessel eigenfunctions",
         "question": "A circular membrane of radius $a$ obeys $u_{tt}=c^2\\nabla^2u$, has a fixed edge, and is axisymmetric and bounded at the center. Find its radial eigenfunctions and natural angular frequencies. For initial shape $A J_0(j_{0,1}r/a)$ and zero initial velocity, find its motion.",
         "hint": "Discard $Y_0$ at the center. The edge requires $J_0(ka)=0$.",
-        "solution": "The axisymmetric radial equation is $R\\prime\\prime+R\\prime/r+k^2R=0$. Its bounded solution is $J_0(kr)$. Let $j_{0,n}$ be the $n$-th positive zero of $J_0$. Then $R_n=J_0(j_{0,n}r/a)$ and $\\omega_n=cj_{0,n}/a$. The given shape excites only the first radial mode, giving $u=A J_0(j_{0,1}r/a)\\cos(cj_{0,1}t/a)$.",
+        "solution": "**Use symmetry to remove the angular variable.** The radial equation is $R^{\\prime\\prime}+R^{\\prime}/r+k^2R=0$, with solutions $J_0(kr)$ and $Y_0(kr)$. Boundedness at the center removes $Y_0$.\n\n**Let the boundary select frequencies.** The fixed rim requires $J_0(ka)=0$. With $j_{0,n}$ the $n$th positive zero of $J_0$, $k_n=j_{0,n}/a$ and $R_n=J_0(j_{0,n}r/a)$.\n\n**Pair space with time.** The time equation is $q_n^{\\prime\\prime}+c^2k_n^2q_n=0$, giving natural angular frequency $\\omega_n=ck_n=cj_{0,n}/a$. Ordinary frequency is this divided by $2\\pi$.\n\n**Use the single-mode data.** Only the first radial mode is present initially. Zero initial velocity removes the time sine, giving $u=A J_0(j_{0,1}r/a)\\cos(cj_{0,1}t/a)$. Check the rim at $r=a$ and initial shape at $t=0$.",
         "rubric": "Radial equation: 3 points; zeros and frequencies: 4 points; single-mode solution: 3 points."
       },
       {
@@ -275,7 +275,7 @@
         "topic": "Fundamental solution",
         "question": "Solve $-\\nabla^2u=q\\delta(\\mathbf r-\\mathbf r_0)$ with decay at infinity. Check normalization using the flux through a small sphere.",
         "hint": "Use $\\nabla^2(1/r)=-4\\pi\\delta$. The outward radial derivative is negative.",
-        "solution": "Let $R=|\\mathbf r-\\mathbf r_0|$. Then $u=q/(4\\pi R)$, harmonic away from the source. On a small sphere of radius $\\varepsilon$ centered at the source, $\\partial_nu=-q/(4\\pi\\varepsilon^2)$, hence $-\\int_{S_\\varepsilon}\\partial_nu\\,dS=q$. This matches the integrated source strength. The solution also decays at infinity.",
+        "solution": "**Fix the sign first.** Since $\\nabla^2(1/R)=-4\\pi\\delta$ and the operator is the negative Laplacian, try $u=C/R$ with $R=|\\mathbf r-\\mathbf r_0|$.\n\n**Determine the constant by flux.** Integrate over a radius-$\\varepsilon$ ball centered at the source. The divergence theorem gives $-\\int_{S_\\varepsilon}\\partial_nu\\,dS=q$.\n\n**Insert the radial derivative and area.** The outward derivative is $\\partial_nu=-C/\\varepsilon^2$ and the area is $4\\pi\\varepsilon^2$. Hence $4\\pi C=q$ and $u=q/(4\\pi R)$; the two minus signs cancel.\n\n**Check the regions.** Outside the source, $1/R$ is harmonic and decays at infinity. Verify the delta at the source through integration or distributions, not ordinary pointwise second derivatives.",
         "rubric": "Solution and constant: 4 points; flux check: 4 points; source-free region and infinity: 2 points."
       }
     ]

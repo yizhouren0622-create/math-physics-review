@@ -90,12 +90,29 @@ def localize(document):
 def controls():
  return '''<section class="reader-controls" aria-label="阅读设置"><label>语言<select id="reading-language"><option value="zh">中文</option><option value="en">English</option><option value="both">中英对照</option></select></label><label>字号<select id="reading-size"><option value="comfortable">舒适 · 22px</option><option value="large">大字 · 26px</option><option value="largest">特大 · 30px</option></select></label><label>对比度<select id="reading-contrast"><option value="high">高对比</option><option value="soft">柔和</option></select></label><p>设置自动记住，所有页面通用。</p></section>'''
 
+def prerequisite_links(ident):
+ section=ident.split('-')[0]
+ skills=[]
+ if section=='2.1':skills=['parts','projection']
+ elif section=='2.2':skills=['parts']
+ elif ident=='2.4-5' or section=='2.5':skills=['fractions']
+ elif ident in ['3.2-1','3.3-3']:skills=['lifting','projection']
+ elif ident in ['3.1-1','3.1-2','3.1-3','3.1-5','3.1-9','3.1-10','3.1-11','3.1-12','3.1-13','3.2-4','3.2-5','3.2-6','3.2-7','3.2-8'] or section=='3.3':skills=['eigenvalues','projection']
+ elif section=='4.2':skills=['recurrence']
+ elif section=='5.2' and ident!='5.2-9':skills=['projection']
+ elif ident=='5.5-2':skills=['eigenvalues']
+ elif section in ['5.3','5.4','5.5']:skills=['eigenvalues','projection']
+ labels={'parts':('分部积分','Integration by parts'),'fractions':('部分分式','Partial fractions'),'projection':('正交投影','Orthogonal projection'),'lifting':('边界齐次化','Homogeneous boundaries'),'recurrence':('级数递推','Series recurrences'),'eigenvalues':('边界与本征值','Boundaries and eigenvalues')}
+ if not skills:return ''
+ links=' · '.join('<a href="beginner.html#skill-'+key+'">'+pair(*labels[key])+'</a>' for key in skills)
+ return '<p class="prerequisite-links">'+pair('基础运算卡住时，先补这一项：','If the basic calculation is unfamiliar, practice:')+' '+links+'</p>'
+
 def guided(ident,md):
  if ident not in learn:raise ValueError('Missing beginner guide '+ident)
  x=learn[ident];z=x['zh'];e=x['en']
  def bm(a,b):register(a,b);return md(a)
  steps=''.join('<li class="guided-step">'+bm(a,b)+'</li>' for a,b in zip(z['steps'],e['steps']))
- return '<div class="problem-entry"><strong>'+pair('这道题要你做什么','What are you trying to find?')+'</strong>'+bm(z['goal'],e['goal'])+'<strong>'+pair('看到什么，就想到这个方法','Clue → choice of method')+'</strong>'+bm(z['recognize'],e['recognize'])+'</div><details class="reveal guided"><summary>'+pair('不会做？带我一步一步做','Guide me, one step at a time')+'<span aria-hidden="true">＋</span></summary><div class="reveal-body"><p class="guide-counter" aria-live="polite"></p><ol class="guided-steps">'+steps+'</ol><div class="guide-controls"><button type="button" class="guide-prev">'+pair('上一步','Previous')+'</button><button type="button" class="guide-next primary-btn">'+pair('下一步','Next step')+'</button><button type="button" class="guide-all">'+pair('显示全部步骤','Show all steps')+'</button></div><div class="self-check"><strong>'+pair('停一下，试着回答','Pause and check')+'</strong>'+bm(z['check']['question'],e['check']['question'])+'<details class="reveal"><summary>'+pair('核对这个小问题','Check this answer')+'</summary><div class="reveal-body">'+bm(z['check']['answer'],e['check']['answer'])+'</div></details></div></div></details>'
+ return '<div class="problem-entry"><strong>'+pair('这道题要你做什么','What are you trying to find?')+'</strong>'+bm(z['goal'],e['goal'])+'<strong>'+pair('看到什么，就想到这个方法','Clue → choice of method')+'</strong>'+bm(z['recognize'],e['recognize'])+prerequisite_links(ident)+'</div><details class="reveal guided"><summary>'+pair('不会做？带我一步一步做','Guide me, one step at a time')+'<span aria-hidden="true">＋</span></summary><div class="reveal-body"><p class="guide-counter" aria-live="polite"></p><ol class="guided-steps">'+steps+'</ol><div class="guide-controls"><button type="button" class="guide-prev">'+pair('上一步','Previous')+'</button><button type="button" class="guide-next primary-btn">'+pair('下一步','Next step')+'</button><button type="button" class="guide-all">'+pair('显示全部步骤','Show all steps')+'</button></div><div class="self-check"><strong>'+pair('停一下，试着回答','Pause and check')+'</strong>'+bm(z['check']['question'],e['check']['question'])+'<details class="reveal"><summary>'+pair('核对这个小问题','Check this answer')+'</summary><div class="reveal-body">'+bm(z['check']['answer'],e['check']['answer'])+'</div></details></div></div></details>'
 
 def finish():
  (ROOT/'assets/ui-data.js').write_text('window.REVIEW_TRANSLATIONS='+json.dumps(json.loads(ui_path.read_text()),ensure_ascii=False)+';')

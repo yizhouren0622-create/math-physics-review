@@ -74,7 +74,7 @@ for n in range(1,7):
  for ident,g in guides.items():
   for language in ['zh','en']:
    assert g[language]['goal'] and g[language]['recognize']
-   assert 3<=len(g[language]['steps'])<=5
+   assert 5<=len(g[language]['steps'])<=9,(ident,language,'Expected 5–9 concrete steps')
    assert g[language]['check']['question'] and g[language]['check']['answer']
   assert len(g['zh']['steps'])==len(g['en']['steps'])
 assert not json.loads((ROOT/'data/untranslated.json').read_text()),'Untranslated visible prose'
@@ -91,5 +91,6 @@ for p in (ROOT/'data/learn').glob('*.json'):
   elif isinstance(x,str):
    assert not re.search(r'\\\\(?=[A-Za-z])',x),(p.name,'Doubled TeX command escape')
    assert '(1/2'+chr(92)+'pi)' not in x,(p.name,'Ambiguous inverse-transform coefficient')
+   assert x.count('$')%2==0,(p.name,'Unclosed guide formula delimiter')
  check_guide_strings(json.loads(p.read_text()))
 print('Guided self-check formula escapes and normalization notation passed.')
