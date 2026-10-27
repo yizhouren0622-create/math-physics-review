@@ -118,3 +118,23 @@ for n in range(1,7):
    same_math(problem['zh'],problem['en']);same_math(problem['en'],problem['zh'])
 assert set(practice)==set(concept_chapters) and len(practice)==38,'Transfer practice coverage mismatch'
 print('38 bilingual transfer problems, hints, solutions and textbook links passed.')
+
+# Worked examples are rewritten as short, explicit beginner calculations.
+examples=json.loads((ROOT/'data/examples.json').read_text())
+assert set(examples)==set(concept_chapters) and len(examples)==38,'Worked-example coverage mismatch'
+for ident,example in examples.items():
+ assert example['chapter']==concept_chapters[ident],(ident,'wrong example chapter')
+ for language in ['zh','en']:
+  content=example[language]
+  assert all(content.get(field) for field in ['question','given','goal','steps','check']),(ident,language)
+  assert 3<=len(content['steps'])<=6,(ident,language,'expected 3–6 worked steps')
+  assert 2<=len(content['check'])<=3,(ident,language,'expected 2–3 checks')
+  for step in content['steps']:
+   assert all(step.get(field) for field in ['title','why','work']),(ident,language,'incomplete worked step')
+  check_guide_strings(content)
+ assert len(example['zh']['steps'])==len(example['en']['steps'])
+ assert len(example['zh']['check'])==len(example['en']['check'])
+ assert not re.search(r'[\u3400-\u9fff]',json.dumps(example['en'],ensure_ascii=False)),(ident,'Chinese in English example')
+ same_math(example['zh'],example['en']);same_math(example['en'],example['zh'])
+assert all(f'c{chapter}-{ident}' in docs[f'chapter-{chapter}.html'].ids for ident,chapter in concept_chapters.items())
+print('38 beginner worked examples with explicit calculations and bilingual checks passed.')

@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import reader
+import teaching
 
 problems=json.loads((Path(__file__).resolve().parent/'data/practice.json').read_text())
 for problem in problems.values():
@@ -30,7 +31,7 @@ def render(concept_id,chapter,md):
         reader.pair('我的起手步骤与计算','My first step and calculation'),
         '</label><textarea class="scratch" id="'+note_id+'" data-note="practice-'+ident+'" rows="2"></textarea>',
         hints,
-        reveal('展开完整解答','Open the full solution',zh['solution'],en['solution'],'transfer-solution'),
+        teaching.compact_solution('展开分步完整解答','Open the full step-by-step solution',zh['solution'],md,css_class='transfer-solution'),
         reveal('怎样检查，哪里容易错','Check your result and common mistakes',zh['check'],en['check'],'transfer-check'),
         '<button type="button" class="outline-btn" data-close-practice>',
         reader.pair('收起提示与答案','Close hints and solution'),

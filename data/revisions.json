@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-10-26",
+    "link": "chapter-1.html#c1-polar",
+    "label": "BEGINNER-FIRST SOLUTIONS",
+    "zh": "把38张知识卡的简单例题统一改成“题目—已知—目标—为什么这样做—具体计算—自检”，逐行补足代入、求导、积分和验算。126道教材题在答案之前直接显示目标和选法理由，5–9步引导每次只做一个动作；完整解答、证明、变式题和模拟卷答案也拆成短计算块。",
+    "en": "Rebuild all 38 worked examples as Problem, Given, Goal, Why, Calculation, and Check, with substitutions, derivatives, integrals, and verification shown line by line. Each of the 126 textbook exercises now shows its goal and method clue before the answer and presents a 5–9-step one-action-at-a-time walkthrough. Full solutions, proofs, transfer problems, and mock-exam answers are also split into short calculation blocks."
+  },
+  {
     "date": "2026-10-13",
     "link": "chapter-1.html#try-c1-polar",
     "label": "38 TRANSFER PRACTICES",

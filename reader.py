@@ -107,12 +107,22 @@ def prerequisite_links(ident):
  links=' · '.join('<a href="beginner.html#skill-'+key+'">'+pair(*labels[key])+'</a>' for key in skills)
  return '<p class="prerequisite-links">'+pair('基础运算卡住时，先补这一项：','If the basic calculation is unfamiliar, practice:')+' '+links+'</p>'
 
+def guide_overview(ident,md):
+ if ident not in learn:raise ValueError('Missing beginner guide '+ident)
+ x=learn[ident];z=x['zh'];e=x['en']
+ def bm(a,b):register(a,b);return md(a)
+ return '<div class="problem-map"><div><strong>'+pair('这道题到底要什么','What must you find?')+'</strong>'+bm(z['goal'],e['goal'])+'</div><div><strong>'+pair('凭什么选这个方法','Why this method?')+'</strong>'+bm(z['recognize'],e['recognize'])+'</div></div>'+prerequisite_links(ident)
+
+def _short_lines(text,english=False):
+ if english:return re.sub(r'(?<=[.!?])\s+(?=[A-Z])','\n\n',text)
+ return re.sub(r'(?<=[。！？])\s*','\n\n',text).strip()
+
 def guided(ident,md):
  if ident not in learn:raise ValueError('Missing beginner guide '+ident)
  x=learn[ident];z=x['zh'];e=x['en']
  def bm(a,b):register(a,b);return md(a)
- steps=''.join('<li class="guided-step">'+bm(a,b)+'</li>' for a,b in zip(z['steps'],e['steps']))
- return '<div class="problem-entry"><strong>'+pair('这道题要你做什么','What are you trying to find?')+'</strong>'+bm(z['goal'],e['goal'])+'<strong>'+pair('看到什么，就想到这个方法','Clue → choice of method')+'</strong>'+bm(z['recognize'],e['recognize'])+prerequisite_links(ident)+'</div><details class="reveal guided"><summary>'+pair('不会做？带我一步一步做','Guide me, one step at a time')+'<span aria-hidden="true">＋</span></summary><div class="reveal-body"><p class="guide-counter" aria-live="polite"></p><ol class="guided-steps">'+steps+'</ol><div class="guide-controls"><button type="button" class="guide-prev">'+pair('上一步','Previous')+'</button><button type="button" class="guide-next primary-btn">'+pair('下一步','Next step')+'</button><button type="button" class="guide-all">'+pair('显示全部步骤','Show all steps')+'</button></div><div class="self-check"><strong>'+pair('停一下，试着回答','Pause and check')+'</strong>'+bm(z['check']['question'],e['check']['question'])+'<details class="reveal"><summary>'+pair('核对这个小问题','Check this answer')+'</summary><div class="reveal-body">'+bm(z['check']['answer'],e['check']['answer'])+'</div></details></div></div></details>'
+ steps=''.join('<li class="guided-step"><div class="guide-step-label">'+pair(f'第 {i} 步',f'Step {i}')+'</div><div class="guide-step-work"><strong>'+pair('现在只做这一件事','Do only this now')+'</strong>'+bm(_short_lines(a),_short_lines(b,True))+'</div></li>' for i,(a,b) in enumerate(zip(z['steps'],e['steps']),1))
+ return '<details class="reveal guided"><summary>'+pair('零基础逐步讲解：一次只做一步','Beginner walkthrough: one step at a time')+'<span aria-hidden="true">＋</span></summary><div class="reveal-body"><p class="guide-intro">'+pair('先不要抄最终答案。看完当前一步，在纸上写完，再点“下一步”。','Do not copy the final answer. Complete the current step on paper before choosing Next step.')+'</p><p class="guide-counter" aria-live="polite"></p><ol class="guided-steps">'+steps+'</ol><div class="guide-controls"><button type="button" class="guide-prev">'+pair('上一步','Previous')+'</button><button type="button" class="guide-next primary-btn">'+pair('下一步','Next step')+'</button><button type="button" class="guide-all">'+pair('显示全部步骤','Show all steps')+'</button></div><div class="self-check"><strong>'+pair('做完先别看答案，自己检查','Check your work before opening the answer')+'</strong>'+bm(z['check']['question'],e['check']['question'])+'<details class="reveal"><summary>'+pair('核对这个小问题','Check this answer')+'</summary><div class="reveal-body">'+bm(z['check']['answer'],e['check']['answer'])+'</div></details></div></div></details>'
 
 def finish():
  (ROOT/'assets/ui-data.js').write_text('window.REVIEW_TRANSLATIONS='+json.dumps(json.loads(ui_path.read_text()),ensure_ascii=False)+';')

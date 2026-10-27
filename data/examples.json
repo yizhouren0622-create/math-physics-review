@@ -1,0 +1,2668 @@
+{
+  "polar": {
+    "chapter": 1,
+    "zh": {
+      "question": "求方程 $z^3=8i$ 的全部复数根。",
+      "given": "$z$ 是待求复数，$i$ 是虚数单位。右端 $8i$ 的模为 $8$、辐角为 $\\pi/2$ 加整圈。",
+      "goal": "找出三个互不相同的根，并写成直角坐标形式。",
+      "steps": [
+        {
+          "title": "把右端写成极形式",
+          "why": "复数乘方会把模乘方、把辐角相乘，所以先改写右端。",
+          "work": "$8i=8e^{i(\\pi/2+2k\\pi)}$，其中 $k\\in\\mathbb Z$ 表示任意整圈。"
+        },
+        {
+          "title": "设未知数的极形式",
+          "why": "这样可以分别比较等式两边的模和辐角。",
+          "work": "令 $z=re^{i\\theta}$，其中 $r\\ge0$ 是模、$\\theta$ 是辐角，则 $z^3=r^3e^{i3\\theta}$。"
+        },
+        {
+          "title": "分别解模和辐角",
+          "why": "两个非零复数相等时，模相等，辐角相差整圈。",
+          "work": "由 $r^3=8$ 得 $r=2$；由 $3\\theta=\\pi/2+2k\\pi$ 得 $\\theta=\\pi/6+2k\\pi/3$。"
+        },
+        {
+          "title": "列出三个不同的根",
+          "why": "辐角每增加 $2\\pi/3$ 得到一个新根，三个以后开始重复。",
+          "work": "取 $k=0,1,2$，得到 $z=2e^{i\\pi/6}=\\sqrt3+i$、$z=2e^{5i\\pi/6}=-\\sqrt3+i$、$z=2e^{3i\\pi/2}=-2i$。"
+        }
+      ],
+      "check": [
+        "三个根的模都是 $2$，立方后的模都是 $2^3=8$。",
+        "三个辐角乘以 $3$ 后都与 $\\pi/2$ 相差 $2\\pi$ 的整数倍。",
+        "直接代入第三个根可得 $(-2i)^3=8i$。"
+      ]
+    },
+    "en": {
+      "question": "Find every complex root of $z^3=8i$.",
+      "given": "$z$ is the unknown complex number, and $i$ is the imaginary unit. The modulus of $8i$ is $8$, and its argument is $\\pi/2$ plus whole turns.",
+      "goal": "Find the three distinct roots and write them in Cartesian form.",
+      "steps": [
+        {
+          "title": "Write the right side in polar form",
+          "why": "A complex power raises the modulus and multiplies the argument, so first rewrite the right side.",
+          "work": "$8i=8e^{i(\\pi/2+2k\\pi)}$, where $k\\in\\mathbb Z$ represents any whole number of turns."
+        },
+        {
+          "title": "Give the unknown a polar form",
+          "why": "This lets us compare the moduli and arguments separately.",
+          "work": "Let $z=re^{i\\theta}$, where $r\\ge0$ is the modulus and $\\theta$ is an argument; then $z^3=r^3e^{i3\\theta}$."
+        },
+        {
+          "title": "Solve for modulus and argument",
+          "why": "Equal nonzero complex numbers have equal moduli and arguments differing by whole turns.",
+          "work": "From $r^3=8$, obtain $r=2$; from $3\\theta=\\pi/2+2k\\pi$, obtain $\\theta=\\pi/6+2k\\pi/3$."
+        },
+        {
+          "title": "List the three distinct roots",
+          "why": "Each increase of $2\\pi/3$ gives a new root, and the values repeat after three roots.",
+          "work": "For $k=0,1,2$, the roots are $z=2e^{i\\pi/6}=\\sqrt3+i$, $z=2e^{5i\\pi/6}=-\\sqrt3+i$, and $z=2e^{3i\\pi/2}=-2i$."
+        }
+      ],
+      "check": [
+        "All three roots have modulus $2$, so their cubes have modulus $2^3=8$.",
+        "Multiplying each argument by $3$ gives $\\pi/2$ plus an integer multiple of $2\\pi$.",
+        "Direct substitution of the third root gives $(-2i)^3=8i$."
+      ]
+    }
+  },
+  "branch": {
+    "chapter": 1,
+    "zh": {
+      "question": "$\\sqrt{z^2-1}$ 在哪些点有支点？无穷远是不是支点？",
+      "given": "$z$ 是复变量。绕支点一圈后，选定的函数值不能回到原值。",
+      "goal": "找出有限支点，并单独判断无穷远。",
+      "steps": [
+        {
+          "title": "分解根号内的式子",
+          "why": "平方根在奇数阶零点附近会出现半整数次幂。",
+          "work": "$z^2-1=(z-1)(z+1)$，所以根号内在 $z=1$ 和 $z=-1$ 处各有一个一阶零点。"
+        },
+        {
+          "title": "检查两个有限零点",
+          "why": "局部的一次因子开平方后会在绕行一圈时变号。",
+          "work": "在 $z=1$ 附近，函数含 $(z-1)^{1/2}$；在 $z=-1$ 附近，函数含 $(z+1)^{1/2}$，因此有限支点是 $z=\\pm1$。"
+        },
+        {
+          "title": "把无穷远移到原点",
+          "why": "令倒数变量趋于零，就能用普通局部分析判断无穷远。",
+          "work": "令 $w=1/z$，则 $\\sqrt{z^2-1}=w^{-1}\\sqrt{1-w^2}$；无穷远对应 $w=0$。"
+        },
+        {
+          "title": "判断无穷远",
+          "why": "整数次幂绕一圈不变号，解析且非零的根号也可固定一个分支。",
+          "work": "在 $w=0$ 附近，$\\sqrt{1-w^2}$ 可取解析分支，而 $w^{-1}$ 是整数次幂，所以无穷远不是支点。"
+        }
+      ],
+      "check": [
+        "绕 $z=1$ 或 $z=-1$ 一圈时，相应平方根因子变号。",
+        "绕 $w=0$ 一圈时，$w^{-1}$ 回到原值，因此无穷远没有分支交换。",
+        "可沿 $[-1,1]$ 取割线，把两个有限支点连接起来。"
+      ]
+    },
+    "en": {
+      "question": "Where are the branch points of $\\sqrt{z^2-1}$, and is infinity a branch point?",
+      "given": "$z$ is a complex variable. After one circuit around a branch point, a chosen value cannot return to itself.",
+      "goal": "Find the finite branch points and test infinity separately.",
+      "steps": [
+        {
+          "title": "Factor the expression under the root",
+          "why": "A square root develops a half-integer power near a zero of odd order.",
+          "work": "$z^2-1=(z-1)(z+1)$, so the expression under the root has simple zeros at $z=1$ and $z=-1$."
+        },
+        {
+          "title": "Test the two finite zeros",
+          "why": "The square root of a local linear factor changes sign after one circuit.",
+          "work": "Near $z=1$, the function contains $(z-1)^{1/2}$; near $z=-1$, it contains $(z+1)^{1/2}$, so the finite branch points are $z=\\pm1$."
+        },
+        {
+          "title": "Move infinity to the origin",
+          "why": "Making a reciprocal variable tend to zero turns the test at infinity into an ordinary local test.",
+          "work": "Let $w=1/z$; then $\\sqrt{z^2-1}=w^{-1}\\sqrt{1-w^2}$, and infinity corresponds to $w=0$."
+        },
+        {
+          "title": "Decide what happens at infinity",
+          "why": "An integer power does not change sign after a circuit, and the nonzero square root can use one analytic branch.",
+          "work": "Near $w=0$, choose an analytic branch of $\\sqrt{1-w^2}$; since $w^{-1}$ is an integer power, infinity is not a branch point."
+        }
+      ],
+      "check": [
+        "A circuit around $z=1$ or $z=-1$ changes the sign of the corresponding square-root factor.",
+        "A circuit around $w=0$ returns $w^{-1}$ to its original value, so no sheets exchange at infinity.",
+        "A valid branch cut is $[-1,1]$, which joins the two finite branch points."
+      ]
+    }
+  },
+  "cr": {
+    "chapter": 1,
+    "zh": {
+      "question": "已知解析函数 $f(z)=u(x,y)+iv(x,y)$ 的实部为 $u=x^2-y^2$，且 $f(0)=0$，求 $f(z)$。",
+      "given": "$z=x+iy$，$u$ 和 $v$ 分别是实部与虚部。解析函数满足 $u_x=v_y$ 和 $u_y=-v_x$。",
+      "goal": "先求调和共轭 $v$，再把结果写成 $z$ 的函数。",
+      "steps": [
+        {
+          "title": "求实部的偏导",
+          "why": "柯西–黎曼方程把已知的 $u$ 与未知的 $v$ 联系起来。",
+          "work": "由 $u=x^2-y^2$ 得 $u_x=2x$、$u_y=-2y$。"
+        },
+        {
+          "title": "用第一条方程积分",
+          "why": "由 $v_y=u_x$ 可以先沿 $y$ 方向恢复 $v$。",
+          "work": "$v_y=2x$，对 $y$ 积分得 $v=2xy+g(x)$；$g(x)$ 是积分时可能漏下的任意函数。"
+        },
+        {
+          "title": "用第二条方程定函数",
+          "why": "另一条柯西–黎曼方程会消除多余的 $g(x)$。",
+          "work": "$v_x=2y+g'(x)=-u_y=2y$，所以 $g'(x)=0$，即 $g(x)=C$。"
+        },
+        {
+          "title": "使用初值并合并",
+          "why": "初值决定最后的实常数 $C$。",
+          "work": "由 $f(0)=0$ 得 $C=0$，于是 $f=x^2-y^2+i(2xy)=(x+iy)^2=z^2$。"
+        }
+      ],
+      "check": [
+        "结果 $f=z^2$ 的实部确实是 $x^2-y^2$。",
+        "把 $z=0$ 代入得到 $f(0)=0$。",
+        "所得 $v=2xy$ 满足 $v_y=2x=u_x$ 和 $v_x=2y=-u_y$。"
+      ]
+    },
+    "en": {
+      "question": "An analytic function $f(z)=u(x,y)+iv(x,y)$ has real part $u=x^2-y^2$ and satisfies $f(0)=0$; find $f(z)$.",
+      "given": "$z=x+iy$, and $u$ and $v$ are the real and imaginary parts. An analytic function satisfies $u_x=v_y$ and $u_y=-v_x$.",
+      "goal": "Find the harmonic conjugate $v$, then write the result as a function of $z$.",
+      "steps": [
+        {
+          "title": "Differentiate the real part",
+          "why": "The Cauchy–Riemann equations connect the known function $u$ to the unknown function $v$.",
+          "work": "From $u=x^2-y^2$, obtain $u_x=2x$ and $u_y=-2y$."
+        },
+        {
+          "title": "Integrate the first equation",
+          "why": "The equation $v_y=u_x$ lets us integrate first in the $y$ direction and recover $v$.",
+          "work": "$v_y=2x$, so integration with respect to $y$ gives $v=2xy+g(x)$; $g(x)$ is the arbitrary function left by the integration."
+        },
+        {
+          "title": "Use the second equation",
+          "why": "The other Cauchy–Riemann equation removes the extra freedom in $g(x)$.",
+          "work": "$v_x=2y+g'(x)=-u_y=2y$, so $g'(x)=0$ and hence $g(x)=C$."
+        },
+        {
+          "title": "Apply the initial value and combine",
+          "why": "The initial value determines the remaining real constant $C$.",
+          "work": "From $f(0)=0$, obtain $C=0$; therefore $f=x^2-y^2+i(2xy)=(x+iy)^2=z^2$."
+        }
+      ],
+      "check": [
+        "The real part of $f=z^2$ is exactly $x^2-y^2$.",
+        "Substitution of $z=0$ gives $f(0)=0$.",
+        "The result $v=2xy$ satisfies $v_y=2x=u_x$ and $v_x=2y=-u_y$."
+      ]
+    }
+  },
+  "harmonic": {
+    "chapter": 1,
+    "zh": {
+      "question": "对 $f(z)=z^2=u(x,y)+iv(x,y)$，说明 $u$ 与 $v$ 的等值线为什么在非原点处互相垂直。",
+      "given": "$z=x+iy$。等值线的梯度是它的法向量，两个非零法向量内积为零时两条曲线垂直。",
+      "goal": "算出两个梯度并检验它们的内积。",
+      "steps": [
+        {
+          "title": "分离实部和虚部",
+          "why": "等值线分别由 $u$ 和 $v$ 决定，必须先把它们写出来。",
+          "work": "$f(z)=(x+iy)^2=x^2-y^2+i(2xy)$，所以 $u=x^2-y^2$、$v=2xy$。"
+        },
+        {
+          "title": "计算两个梯度",
+          "why": "梯度给出每族等值线在该点的法向方向。",
+          "work": "$\\nabla u=(u_x,u_y)=(2x,-2y)$，$\\nabla v=(v_x,v_y)=(2y,2x)$。"
+        },
+        {
+          "title": "计算内积",
+          "why": "内积为零正是两个法向量正交的代数判据。",
+          "work": "$\\nabla u\\cdot\\nabla v=(2x)(2y)+(-2y)(2x)=4xy-4xy=0$。"
+        },
+        {
+          "title": "排除退化点",
+          "why": "零向量没有方向，不能拿来判断曲线切线。",
+          "work": "当 $(x,y)\\ne(0,0)$ 时，$|\\nabla u|=|\\nabla v|=2\\sqrt{x^2+y^2}>0$，因此两族等值线互相垂直。"
+        }
+      ],
+      "check": [
+        "在 $(1,0)$ 处，两法向量分别为 $(2,0)$ 和 $(0,2)$。",
+        "在原点两梯度都为零，所以结论必须写成“在非原点处”。",
+        "$u$ 与 $v$ 都满足二维拉普拉斯方程，符合解析函数实虚部的性质。"
+      ]
+    },
+    "en": {
+      "question": "For $f(z)=z^2=u(x,y)+iv(x,y)$, explain why the level curves of $u$ and $v$ are perpendicular away from the origin.",
+      "given": "$z=x+iy$. The gradient of a level curve is its normal, and two curves are perpendicular when their nonzero normals have zero dot product.",
+      "goal": "Compute the two gradients and test their dot product.",
+      "steps": [
+        {
+          "title": "Separate real and imaginary parts",
+          "why": "The two level-curve families are defined by $u$ and $v$, so first write both functions explicitly.",
+          "work": "$f(z)=(x+iy)^2=x^2-y^2+i(2xy)$, so $u=x^2-y^2$ and $v=2xy$."
+        },
+        {
+          "title": "Compute both gradients",
+          "why": "Each gradient gives the normal direction of its level curve at the point.",
+          "work": "$\\nabla u=(u_x,u_y)=(2x,-2y)$ and $\\nabla v=(v_x,v_y)=(2y,2x)$."
+        },
+        {
+          "title": "Take the dot product",
+          "why": "A zero dot product is the algebraic test for perpendicular normal vectors.",
+          "work": "$\\nabla u\\cdot\\nabla v=(2x)(2y)+(-2y)(2x)=4xy-4xy=0$."
+        },
+        {
+          "title": "Exclude the degenerate point",
+          "why": "A zero vector has no direction and cannot determine a curve tangent.",
+          "work": "When $(x,y)\\ne(0,0)$, $|\\nabla u|=|\\nabla v|=2\\sqrt{x^2+y^2}>0$, so the two level-curve families are perpendicular."
+        }
+      ],
+      "check": [
+        "At $(1,0)$, the two normal vectors are $(2,0)$ and $(0,2)$.",
+        "At the origin both gradients vanish, so the conclusion must say 'away from the origin.'",
+        "Both $u$ and $v$ satisfy the two-dimensional Laplace equation, as real and imaginary parts of an analytic function should."
+      ]
+    }
+  },
+  "cauchy": {
+    "chapter": 1,
+    "zh": {
+      "question": "沿圆 $|z|=2$ 逆时针计算 $\\displaystyle\\oint_{|z|=2}\\frac{e^z}{z^3}\\,dz$。",
+      "given": "积分路径包围 $z=0$。高阶柯西公式为 $\\displaystyle\\oint_C\\frac{f(z)}{(z-a)^{n+1}}\\,dz=\\frac{2\\pi i}{n!}f^{(n)}(a)$。",
+      "goal": "识别导数阶数并算出积分。",
+      "steps": [
+        {
+          "title": "匹配公式的分母",
+          "why": "导数阶数由分母指数减一得到。",
+          "work": "$z^3=(z-0)^{2+1}$，所以 $a=0$、$n=2$，分子取 $f(z)=e^z$。"
+        },
+        {
+          "title": "计算需要的导数",
+          "why": "公式要求的是二阶导数在圆内点 $a=0$ 的值。",
+          "work": "$f'(z)=e^z$、$f''(z)=e^z$，因此 $f''(0)=1$。"
+        },
+        {
+          "title": "代入高阶柯西公式",
+          "why": "路径逆时针且 $z=0$ 在圆内，可以直接使用正号公式。",
+          "work": "$\\displaystyle\\oint_{|z|=2}\\frac{e^z}{z^3}\\,dz=\\frac{2\\pi i}{2!}f''(0)=\\frac{2\\pi i}{2}=\\pi i$。"
+        }
+      ],
+      "check": [
+        "$e^z/z^3=z^{-3}+z^{-2}+\\frac12z^{-1}+\\cdots$，负一次幂系数是 $1/2$。",
+        "用留数检查得到 $2\\pi i\\times(1/2)=\\pi i$。",
+        "若把 $z^3$ 误认成三阶导数，会多算一阶。"
+      ]
+    },
+    "en": {
+      "question": "Along $|z|=2$, evaluate $\\displaystyle\\oint_{|z|=2}\\frac{e^z}{z^3}\\,dz$ counterclockwise.",
+      "given": "The contour encloses $z=0$. The generalized Cauchy formula is $\\displaystyle\\oint_C\\frac{f(z)}{(z-a)^{n+1}}\\,dz=\\frac{2\\pi i}{n!}f^{(n)}(a)$.",
+      "goal": "Identify the derivative order and evaluate the integral.",
+      "steps": [
+        {
+          "title": "Match the denominator to the formula",
+          "why": "The derivative order is one less than the denominator exponent.",
+          "work": "$z^3=(z-0)^{2+1}$, so $a=0$, $n=2$, and the numerator function is $f(z)=e^z$."
+        },
+        {
+          "title": "Compute the required derivative",
+          "why": "The formula needs the second derivative at the enclosed point $a=0$.",
+          "work": "$f'(z)=e^z$ and $f''(z)=e^z$, so $f''(0)=1$."
+        },
+        {
+          "title": "Substitute into Cauchy's formula",
+          "why": "The contour is counterclockwise and $z=0$ is inside, so the formula has its positive sign.",
+          "work": "$\\displaystyle\\oint_{|z|=2}\\frac{e^z}{z^3}\\,dz=\\frac{2\\pi i}{2!}f''(0)=\\frac{2\\pi i}{2}=\\pi i$."
+        }
+      ],
+      "check": [
+        "$e^z/z^3=z^{-3}+z^{-2}+\\frac12z^{-1}+\\cdots$, whose coefficient of the minus-first power is $1/2$.",
+        "The residue check gives $2\\pi i\\times(1/2)=\\pi i$.",
+        "Treating $z^3$ as a third derivative would introduce one derivative too many."
+      ]
+    }
+  },
+  "laurent": {
+    "chapter": 1,
+    "zh": {
+      "question": "在区域 $|z|>1$ 中，把 $\\displaystyle\\frac1{1+z}$ 展开成洛朗级数。",
+      "given": "几何级数 $\\displaystyle\\frac1{1+q}=\\sum_{n=0}^{\\infty}(-1)^nq^n$ 只在 $|q|<1$ 时成立。",
+      "goal": "选出在给定区域内小于 $1$ 的展开变量，并写明收敛域。",
+      "steps": [
+        {
+          "title": "根据区域选择小量",
+          "why": "$|z|>1$ 时 $z$ 不小，但 $z^{-1}$ 的模小于一。",
+          "work": "$|z|>1\\Rightarrow|z^{-1}|<1$，所以要用 $z^{-1}$ 作几何级数的变量。"
+        },
+        {
+          "title": "从分母提出 $z$",
+          "why": "提出 $z$ 后，分母就变成含小量 $z^{-1}$ 的形式。",
+          "work": "$\\displaystyle\\frac1{1+z}=\\frac{z^{-1}}{1+z^{-1}}$。"
+        },
+        {
+          "title": "套用几何级数",
+          "why": "现在公比的模小于一，展开条件已经满足。",
+          "work": "$\\displaystyle\\frac1{1+z}=z^{-1}\\sum_{n=0}^{\\infty}(-1)^nz^{-n}=\\sum_{n=0}^{\\infty}(-1)^nz^{-n-1}$。"
+        },
+        {
+          "title": "写出前几项和区域",
+          "why": "前几项能看清幂次与正负号，收敛域是答案的一部分。",
+          "work": "$\\displaystyle\\frac1{1+z}=z^{-1}-z^{-2}+z^{-3}-z^{-4}+\\cdots$，收敛域为 $|z|>1$。"
+        }
+      ],
+      "check": [
+        "取 $z=2$，级数成为 $1/2-1/4+1/8-\\cdots=1/3$。",
+        "原函数在 $z=-1$ 有奇点，所以以原点展开时边界半径应为 $1$。",
+        "所得级数只有负幂，符合外部区域 $|z|>1$ 的洛朗展开。"
+      ]
+    },
+    "en": {
+      "question": "In the region $|z|>1$, expand $\\displaystyle\\frac1{1+z}$ as a Laurent series.",
+      "given": "The geometric series $\\displaystyle\\frac1{1+q}=\\sum_{n=0}^{\\infty}(-1)^nq^n$ is valid only when $|q|<1$.",
+      "goal": "Choose an expansion variable whose modulus is below $1$ in the stated region, and give the convergence region.",
+      "steps": [
+        {
+          "title": "Choose the small quantity from the region",
+          "why": "When $|z|>1$, the quantity $z$ is not small, but the modulus of $z^{-1}$ is below one.",
+          "work": "$|z|>1\\Rightarrow|z^{-1}|<1$, so use $z^{-1}$ as the geometric-series variable."
+        },
+        {
+          "title": "Factor $z$ from the denominator",
+          "why": "After factoring $z$, the denominator contains the small quantity $z^{-1}$.",
+          "work": "$\\displaystyle\\frac1{1+z}=\\frac{z^{-1}}{1+z^{-1}}$."
+        },
+        {
+          "title": "Apply the geometric series",
+          "why": "The new ratio has modulus below one, so the expansion condition now holds.",
+          "work": "$\\displaystyle\\frac1{1+z}=z^{-1}\\sum_{n=0}^{\\infty}(-1)^nz^{-n}=\\sum_{n=0}^{\\infty}(-1)^nz^{-n-1}$."
+        },
+        {
+          "title": "Show the first terms and region",
+          "why": "The first terms display the powers and signs, and the convergence region belongs in the answer.",
+          "work": "$\\displaystyle\\frac1{1+z}=z^{-1}-z^{-2}+z^{-3}-z^{-4}+\\cdots$, with convergence region $|z|>1$."
+        }
+      ],
+      "check": [
+        "At $z=2$, the series becomes $1/2-1/4+1/8-\\cdots=1/3$.",
+        "The original function is singular at $z=-1$, so an expansion about the origin should have boundary radius $1$.",
+        "The series contains only negative powers, as expected for the outer region $|z|>1$."
+      ]
+    }
+  },
+  "singularity": {
+    "chapter": 1,
+    "zh": {
+      "question": "判断 $\\displaystyle\\frac{\\sin z}{z}$ 在 $z=0$ 处的奇点类型，并给出可解析延拓时的补值。",
+      "given": "分子和分母在 $z=0$ 都为零，不能只看分母就判断极点。",
+      "goal": "用局部级数判断是否存在负幂，并求极限值。",
+      "steps": [
+        {
+          "title": "展开分子",
+          "why": "泰勒级数能直接显示零点阶数和局部幂次。",
+          "work": "$\\sin z=z-\\frac{z^3}{3!}+\\frac{z^5}{5!}-\\cdots$。"
+        },
+        {
+          "title": "逐项除以 $z$",
+          "why": "约去共同的一阶零点后，就能看出是否还有发散项。",
+          "work": "$\\displaystyle\\frac{\\sin z}{z}=1-\\frac{z^2}{3!}+\\frac{z^4}{5!}-\\cdots$。"
+        },
+        {
+          "title": "判断奇点类型",
+          "why": "洛朗级数没有负幂时，孤立奇点可以通过补值去掉。",
+          "work": "展开式没有任何负幂，且 $\\displaystyle\\lim_{z\\to0}\\frac{\\sin z}{z}=1$，所以 $z=0$ 是可去奇点。"
+        },
+        {
+          "title": "写出延拓值",
+          "why": "把缺失点补成极限值后，级数在原点仍然解析。",
+          "work": "定义 $f(0)=1$，则延拓后的 $f(z)$ 在整个复平面解析。"
+        }
+      ],
+      "check": [
+        "补值后的级数首项为 $1$，所以函数在 $z=0$ 连续。",
+        "展开中没有 $(z-0)^{-1}$ 或更低幂，因此不是极点也不是本性奇点。",
+        "沿实轴取极限也得到 $\\displaystyle\\lim_{x\\to0}\\frac{\\sin x}{x}=1$。"
+      ]
+    },
+    "en": {
+      "question": "Classify the singularity of $\\displaystyle\\frac{\\sin z}{z}$ at $z=0$, and give the value for an analytic extension if one exists.",
+      "given": "Both numerator and denominator vanish at $z=0$, so the denominator alone cannot identify a pole.",
+      "goal": "Use a local series to test for negative powers and find the limiting value.",
+      "steps": [
+        {
+          "title": "Expand the numerator",
+          "why": "The Taylor series directly displays the zero order and all local powers.",
+          "work": "$\\sin z=z-\\frac{z^3}{3!}+\\frac{z^5}{5!}-\\cdots$."
+        },
+        {
+          "title": "Divide each term by $z$",
+          "why": "After canceling the common simple zero, we can see whether any divergent terms remain.",
+          "work": "$\\displaystyle\\frac{\\sin z}{z}=1-\\frac{z^2}{3!}+\\frac{z^4}{5!}-\\cdots$."
+        },
+        {
+          "title": "Classify the singularity",
+          "why": "When the Laurent series has no negative powers, the isolated singularity can be removed by filling in a value.",
+          "work": "There are no negative powers, and $\\displaystyle\\lim_{z\\to0}\\frac{\\sin z}{z}=1$, so $z=0$ is removable."
+        },
+        {
+          "title": "State the extension value",
+          "why": "Filling in the limiting value keeps the power series analytic at the origin.",
+          "work": "Define $f(0)=1$; the extended $f(z)$ is then analytic on the entire complex plane."
+        }
+      ],
+      "check": [
+        "The extended series begins with $1$, so the function is continuous at $z=0$.",
+        "No term $(z-0)^{-1}$ or lower occurs, so the point is neither a pole nor an essential singularity.",
+        "The real-axis limit also gives $\\displaystyle\\lim_{x\\to0}\\frac{\\sin x}{x}=1$."
+      ]
+    }
+  },
+  "residue": {
+    "chapter": 1,
+    "zh": {
+      "question": "求 $\\displaystyle f(z)=\\frac{e^z}{(z-1)^2}$ 在 $z=1$ 处的留数。",
+      "given": "$z=1$ 是二阶极点。若 $a$ 是 $m$ 阶极点，则 $\\displaystyle\\operatorname{Res}_{z=a}f=\\frac1{(m-1)!}\\left[\\frac{d^{m-1}}{dz^{m-1}}(z-a)^mf(z)\\right]_{z=a}$。",
+      "goal": "正确使用二阶极点公式，找出负一次幂的系数。",
+      "steps": [
+        {
+          "title": "确定极点阶数",
+          "why": "阶数决定要乘回多少因子以及求几次导数。",
+          "work": "分母是 $(z-1)^2$，而 $e^1\\ne0$，所以 $a=1$、$m=2$。"
+        },
+        {
+          "title": "乘回极点因子",
+          "why": "这样会留下在 $z=1$ 附近解析的函数。",
+          "work": "$g(z)=(z-1)^2f(z)=e^z$。"
+        },
+        {
+          "title": "求一次导数并代入",
+          "why": "$m-1=1$，因此二阶极点只要求一次导数。",
+          "work": "$\\displaystyle\\operatorname{Res}_{z=1}f=\\frac{g'(1)}{1!}=\\frac{e^1}{1}=e$。"
+        }
+      ],
+      "check": [
+        "$e^z=e[1+(z-1)+\\frac{(z-1)^2}{2!}+\\cdots]$。",
+        "除以 $(z-1)^2$ 后，$(z-1)^{-1}$ 的系数正是 $e$。",
+        "公式分母是 $(m-1)!=1!$，不是 $2!$。"
+      ]
+    },
+    "en": {
+      "question": "Find the residue of $\\displaystyle f(z)=\\frac{e^z}{(z-1)^2}$ at $z=1$.",
+      "given": "$z=1$ is a second-order pole. If $a$ is a pole of order $m$, then $\\displaystyle\\operatorname{Res}_{z=a}f=\\frac1{(m-1)!}\\left[\\frac{d^{m-1}}{dz^{m-1}}(z-a)^mf(z)\\right]_{z=a}$.",
+      "goal": "Apply the second-order pole formula correctly and find the coefficient of the minus-first power.",
+      "steps": [
+        {
+          "title": "Identify the pole order",
+          "why": "The order determines how many factors to cancel and how many derivatives to take.",
+          "work": "The denominator is $(z-1)^2$ and $e^1\\ne0$, so $a=1$ and $m=2$."
+        },
+        {
+          "title": "Cancel the pole factor",
+          "why": "This leaves a function analytic near $z=1$.",
+          "work": "$g(z)=(z-1)^2f(z)=e^z$."
+        },
+        {
+          "title": "Differentiate once and substitute",
+          "why": "Because $m-1=1$, a second-order pole requires only one derivative.",
+          "work": "$\\displaystyle\\operatorname{Res}_{z=1}f=\\frac{g'(1)}{1!}=\\frac{e^1}{1}=e$."
+        }
+      ],
+      "check": [
+        "$e^z=e[1+(z-1)+\\frac{(z-1)^2}{2!}+\\cdots]$.",
+        "After division by $(z-1)^2$, the coefficient of $(z-1)^{-1}$ is exactly $e$.",
+        "The denominator in the formula is $(m-1)!=1!$, not $2!$."
+      ]
+    }
+  },
+  "contour": {
+    "chapter": 1,
+    "zh": {
+      "question": "计算 $\\displaystyle I=\\int_{-\\infty}^{\\infty}\\frac{dx}{x^2+a^2}$，其中 $a>0$。",
+      "given": "把实变量换成复变量 $z$，并取上半平面半圆围道。圆弧半径记为 $R$，最后令 $R\\to\\infty$。",
+      "goal": "找出围道内的极点，证明大圆弧积分消失，再用留数定理求 $I$。",
+      "steps": [
+        {
+          "title": "分解分母",
+          "why": "因式分解能直接显示复平面中的极点位置。",
+          "work": "$z^2+a^2=(z-ia)(z+ia)$，所以极点是 $z=ia$ 和 $z=-ia$。"
+        },
+        {
+          "title": "选择围道内的极点",
+          "why": "$a>0$ 时只有 $z=ia$ 位于上半平面。",
+          "work": "上半圆围道只包围 $z=ia$，而 $z=-ia$ 在下半平面外。"
+        },
+        {
+          "title": "计算留数",
+          "why": "$z=ia$ 是一阶极点，可以约去对应的一次因子后代入。",
+          "work": "$\\displaystyle\\operatorname{Res}_{z=ia}\\frac1{z^2+a^2}=\\left.\\frac1{z+ia}\\right|_{z=ia}=\\frac1{2ia}$。"
+        },
+        {
+          "title": "估计大圆弧",
+          "why": "只有证明圆弧部分趋于零，围道积分才能化成原实积分。",
+          "work": "在 $|z|=R>a$ 上，$|z^2+a^2|\\ge R^2-a^2$，故圆弧积分的模不超过 $\\displaystyle\\frac{\\pi R}{R^2-a^2}\\to0$。"
+        },
+        {
+          "title": "使用留数定理",
+          "why": "令 $R\\to\\infty$ 后，闭合围道中只剩实轴积分。",
+          "work": "$\\displaystyle I=2\\pi i\\operatorname{Res}_{z=ia}\\frac1{z^2+a^2}=2\\pi i\\cdot\\frac1{2ia}=\\frac\\pi a$。"
+        }
+      ],
+      "check": [
+        "被积函数在实轴上为正，所以结果 $\\pi/a$ 也应为正。",
+        "令 $a=1$，得到熟悉的 $\\displaystyle\\int_{-\\infty}^{\\infty}\\frac{dx}{1+x^2}=\\pi$。",
+        "量纲上，被积函数积分后的量纲是 $1/a$，与 $\\pi/a$ 一致。"
+      ]
+    },
+    "en": {
+      "question": "Evaluate $\\displaystyle I=\\int_{-\\infty}^{\\infty}\\frac{dx}{x^2+a^2}$, where $a>0$.",
+      "given": "Replace the real variable by the complex variable $z$ and use an upper-half-plane semicircular contour. Let the arc radius be $R$, then take $R\\to\\infty$.",
+      "goal": "Find the pole inside the contour, prove that the large-arc integral vanishes, and use the residue theorem to find $I$.",
+      "steps": [
+        {
+          "title": "Factor the denominator",
+          "why": "Factoring directly displays the pole locations in the complex plane.",
+          "work": "$z^2+a^2=(z-ia)(z+ia)$, so the poles are $z=ia$ and $z=-ia$."
+        },
+        {
+          "title": "Select the enclosed pole",
+          "why": "Because $a>0$, only $z=ia$ lies in the upper half-plane.",
+          "work": "The upper semicircular contour encloses $z=ia$, while $z=-ia$ lies outside in the lower half-plane."
+        },
+        {
+          "title": "Compute the residue",
+          "why": "$z=ia$ is a simple pole, so cancel its linear factor and substitute.",
+          "work": "$\\displaystyle\\operatorname{Res}_{z=ia}\\frac1{z^2+a^2}=\\left.\\frac1{z+ia}\\right|_{z=ia}=\\frac1{2ia}$."
+        },
+        {
+          "title": "Bound the large arc",
+          "why": "The contour integral becomes the original real integral only after the arc term is shown to vanish.",
+          "work": "On $|z|=R>a$, $|z^2+a^2|\\ge R^2-a^2$, so the arc integral has modulus at most $\\displaystyle\\frac{\\pi R}{R^2-a^2}\\to0$."
+        },
+        {
+          "title": "Apply the residue theorem",
+          "why": "After $R\\to\\infty$, only the real-axis integral remains in the closed contour.",
+          "work": "$\\displaystyle I=2\\pi i\\operatorname{Res}_{z=ia}\\frac1{z^2+a^2}=2\\pi i\\cdot\\frac1{2ia}=\\frac\\pi a$."
+        }
+      ],
+      "check": [
+        "The real integrand is positive, so the result $\\pi/a$ should also be positive.",
+        "For $a=1$, this gives the familiar result $\\displaystyle\\int_{-\\infty}^{\\infty}\\frac{dx}{1+x^2}=\\pi$.",
+        "Dimensionally, the integral has units of $1/a$, matching $\\pi/a$."
+      ]
+    }
+  },
+  "dispersion": {
+    "chapter": 1,
+    "zh": {
+      "question": "判断 $f(z)=1/(z+i)$ 是否满足上半平面色散关系所需的解析性与衰减条件，并在 $x=0$ 检查实部、虚部公式的符号。",
+      "given": "在实轴上写 $f(x)=u(x)+iv(x)$。采用 $u(x)=\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{v(t)}{t-x}\\,dt$ 和 $v(x)=-\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{u(t)}{t-x}\\,dt$。",
+      "goal": "先检查函数条件，再用 $x=0$ 的直接积分核对两个符号。",
+      "steps": [
+        {
+          "title": "找出极点位置",
+          "why": "上半平面内不能有极点，否则不能直接使用该色散关系。",
+          "work": "$f(z)=1/(z+i)$ 的唯一极点满足 $z+i=0$，即 $z=-i$，它位于下半平面。"
+        },
+        {
+          "title": "检查无穷远衰减",
+          "why": "足够快的衰减能让闭合围道的大圆弧部分消失。",
+          "work": "当 $|z|\\to\\infty$ 时，$f(z)=O(1/z)$；色散积分中的 $f(z)/(z-x)=O(1/z^2)$。"
+        },
+        {
+          "title": "分离实部和虚部",
+          "why": "两个色散公式分别使用 $u$ 与 $v$，所以先把它们显式写出。",
+          "work": "$f(x)=\\frac1{x+i}=\\frac{x-i}{x^2+1}$，故 $u(x)=\\frac{x}{x^2+1}$、$v(x)=-\\frac1{x^2+1}$。"
+        },
+        {
+          "title": "检查实部公式",
+          "why": "在 $x=0$ 时，被积函数的奇偶性可以立刻给出主值。",
+          "work": "$\\displaystyle\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{v(t)}t\\,dt=-\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{dt}{t(t^2+1)}=0=u(0)$。"
+        },
+        {
+          "title": "检查虚部公式",
+          "why": "第二式前面的负号必须通过实际代入确认。",
+          "work": "$\\displaystyle-\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{u(t)}t\\,dt=-\\frac1\\pi\\int_{-\\infty}^{\\infty}\\frac{dt}{t^2+1}=-1=v(0)$。"
+        }
+      ],
+      "check": [
+        "极点 $z=-i$ 不在上半平面，所以解析性条件满足。",
+        "$u(x)$ 是奇函数、$v(x)$ 是偶函数，和分解结果一致。",
+        "在 $x=0$ 得到 $u(0)=0$、$v(0)=-1$，两条公式的符号都吻合。"
+      ]
+    },
+    "en": {
+      "question": "Determine whether $f(z)=1/(z+i)$ satisfies the analyticity and decay conditions for upper-half-plane dispersion relations, and check the signs of the real- and imaginary-part formulas at $x=0$.",
+      "given": "On the real axis, write $f(x)=u(x)+iv(x)$. Use $u(x)=\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{v(t)}{t-x}\\,dt$ and $v(x)=-\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{u(t)}{t-x}\\,dt$.",
+      "goal": "Check the function conditions first, then verify both signs by direct integration at $x=0$.",
+      "steps": [
+        {
+          "title": "Locate the pole",
+          "why": "The upper half-plane must contain no pole if this dispersion relation is to be used directly.",
+          "work": "The only pole of $f(z)=1/(z+i)$ satisfies $z+i=0$, so $z=-i$, which lies in the lower half-plane."
+        },
+        {
+          "title": "Check decay at infinity",
+          "why": "Sufficient decay makes the large-arc contribution of the closed contour vanish.",
+          "work": "As $|z|\\to\\infty$, $f(z)=O(1/z)$; the dispersion integrand satisfies $f(z)/(z-x)=O(1/z^2)$."
+        },
+        {
+          "title": "Separate real and imaginary parts",
+          "why": "The two dispersion formulas use $u$ and $v$ separately, so first write them explicitly.",
+          "work": "$f(x)=\\frac1{x+i}=\\frac{x-i}{x^2+1}$, hence $u(x)=\\frac{x}{x^2+1}$ and $v(x)=-\\frac1{x^2+1}$."
+        },
+        {
+          "title": "Check the real-part formula",
+          "why": "At $x=0$, parity immediately evaluates the principal value.",
+          "work": "$\\displaystyle\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{v(t)}t\\,dt=-\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{dt}{t(t^2+1)}=0=u(0)$."
+        },
+        {
+          "title": "Check the imaginary-part formula",
+          "why": "Direct substitution must confirm the minus sign in the second formula.",
+          "work": "$\\displaystyle-\\frac1\\pi\\operatorname{PV}\\int_{-\\infty}^{\\infty}\\frac{u(t)}t\\,dt=-\\frac1\\pi\\int_{-\\infty}^{\\infty}\\frac{dt}{t^2+1}=-1=v(0)$."
+        }
+      ],
+      "check": [
+        "The pole $z=-i$ is outside the upper half-plane, so the analyticity condition holds.",
+        "$u(x)$ is odd and $v(x)$ is even, matching the decomposition.",
+        "At $x=0$, the results are $u(0)=0$ and $v(0)=-1$, so both formula signs agree."
+      ]
+    }
+  },
+  "2.1-core": {
+    "chapter": 2,
+    "zh": {
+      "question": "把 $f(x)=x$ 在区间 $(-\\pi,\\pi)$ 上展开成傅里叶级数。",
+      "given": "采用 $f(x)=\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}[a_n\\cos(nx)+b_n\\sin(nx)]$。系数在 $(-\\pi,\\pi)$ 上计算。",
+      "goal": "利用奇偶性减少积分，再算出所有非零系数。",
+      "steps": [
+        {
+          "title": "先看奇偶性",
+          "why": "奇偶性可以不用积分就消去一半系数。",
+          "work": "$f(x)=x$ 是奇函数，所以 $a_0=0$，并且 $a_n=\\frac1\\pi\\int_{-\\pi}^{\\pi}x\\cos(nx)\\,dx=0$。"
+        },
+        {
+          "title": "写出正弦系数",
+          "why": "$x\\sin(nx)$ 是偶函数，可把对称区间积分化成两倍半区间积分。",
+          "work": "$\\displaystyle b_n=\\frac1\\pi\\int_{-\\pi}^{\\pi}x\\sin(nx)\\,dx=\\frac2\\pi\\int_0^\\pi x\\sin(nx)\\,dx$。"
+        },
+        {
+          "title": "做分部积分",
+          "why": "积分中含有 $x$ 乘三角函数，分部积分可以去掉 $x$。",
+          "work": "$\\displaystyle\\int_0^\\pi x\\sin(nx)\\,dx=\\left[-\\frac{x\\cos(nx)}n\\right]_0^\\pi+\\frac1n\\int_0^\\pi\\cos(nx)\\,dx=-\\frac{\\pi(-1)^n}{n}$。"
+        },
+        {
+          "title": "得到系数",
+          "why": "把刚算出的积分乘回系数公式中的 $2/\\pi$。",
+          "work": "$\\displaystyle b_n=\\frac2\\pi\\left[-\\frac{\\pi(-1)^n}{n}\\right]=\\frac{2(-1)^{n+1}}n$。"
+        },
+        {
+          "title": "写出最终级数",
+          "why": "只有正弦项非零，把 $b_n$ 代回原展开式即可。",
+          "work": "$\\displaystyle x=2\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}n\\sin(nx)$，其中 $-\\pi<x<\\pi$；在端点级数收敛到 $0$。"
+        }
+      ],
+      "check": [
+        "右端只含正弦项，因此它是奇函数，与 $f(x)=x$ 一致。",
+        "取 $n=1$ 得 $b_1=2$，直接计算 $\\frac2\\pi\\int_0^\\pi x\\sin x\\,dx$ 也等于 $2$。",
+        "周期接缝两侧极限为 $\\pi$ 和 $-\\pi$，平均值是 $0$。"
+      ]
+    },
+    "en": {
+      "question": "Expand $f(x)=x$ in a Fourier series on $(-\\pi,\\pi)$.",
+      "given": "Use $f(x)=\\frac{a_0}{2}+\\sum_{n=1}^{\\infty}[a_n\\cos(nx)+b_n\\sin(nx)]$. Compute the coefficients on $(-\\pi,\\pi)$.",
+      "goal": "Use parity to reduce the integrations, then compute every nonzero coefficient.",
+      "steps": [
+        {
+          "title": "Check parity first",
+          "why": "Parity removes half the coefficients without integration.",
+          "work": "$f(x)=x$ is odd, so $a_0=0$ and $a_n=\\frac1\\pi\\int_{-\\pi}^{\\pi}x\\cos(nx)\\,dx=0$."
+        },
+        {
+          "title": "Write the sine coefficient",
+          "why": "$x\\sin(nx)$ is even, so a symmetric-interval integral becomes twice the half-interval integral.",
+          "work": "$\\displaystyle b_n=\\frac1\\pi\\int_{-\\pi}^{\\pi}x\\sin(nx)\\,dx=\\frac2\\pi\\int_0^\\pi x\\sin(nx)\\,dx$."
+        },
+        {
+          "title": "Integrate by parts",
+          "why": "The integrand is $x$ times a trigonometric function, so integration by parts removes $x$.",
+          "work": "$\\displaystyle\\int_0^\\pi x\\sin(nx)\\,dx=\\left[-\\frac{x\\cos(nx)}n\\right]_0^\\pi+\\frac1n\\int_0^\\pi\\cos(nx)\\,dx=-\\frac{\\pi(-1)^n}{n}$."
+        },
+        {
+          "title": "Obtain the coefficient",
+          "why": "Multiply the integral just found by the factor $2/\\pi$ in the coefficient formula.",
+          "work": "$\\displaystyle b_n=\\frac2\\pi\\left[-\\frac{\\pi(-1)^n}{n}\\right]=\\frac{2(-1)^{n+1}}n$."
+        },
+        {
+          "title": "Write the final series",
+          "why": "Only sine terms remain, so substitute $b_n$ into the original expansion.",
+          "work": "$\\displaystyle x=2\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}n\\sin(nx)$ for $-\\pi<x<\\pi$; at the endpoints the series converges to $0$."
+        }
+      ],
+      "check": [
+        "The right side contains only sine terms, so it is odd like $f(x)=x$.",
+        "For $n=1$, $b_1=2$, and direct calculation of $\\frac2\\pi\\int_0^\\pi x\\sin x\\,dx$ also gives $2$.",
+        "The periodic seam has side limits $\\pi$ and $-\\pi$, whose average is $0$."
+      ]
+    }
+  },
+  "2.2-core": {
+    "chapter": 2,
+    "zh": {
+      "question": "在约定 $F(k)=\\displaystyle\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}\\,dx$ 下，求 $f(x)=e^{-a|x|}$ 的傅里叶变换，其中 $a>0$。",
+      "given": "$a>0$ 保证函数在无穷远衰减。$k$ 是实频率变量。",
+      "goal": "利用偶性把积分减半，再算出显式的频谱。",
+      "steps": [
+        {
+          "title": "利用函数的偶性",
+          "why": "偶函数乘正弦得到奇函数，虚部在对称区间积分为零。",
+          "work": "$f(x)$ 是实偶函数，因此 $F(k)=2\\int_0^\\infty e^{-ax}\\cos(kx)\\,dx$。"
+        },
+        {
+          "title": "改成复指数积分",
+          "why": "指数函数容易直接积分，最后只需取实部。",
+          "work": "$\\displaystyle\\int_0^\\infty e^{-ax}\\cos(kx)\\,dx=\\operatorname{Re}\\int_0^\\infty e^{-(a-ik)x}\\,dx$。"
+        },
+        {
+          "title": "计算指数积分",
+          "why": "$a>0$ 使上限处的指数趋于零。",
+          "work": "$\\displaystyle\\int_0^\\infty e^{-(a-ik)x}\\,dx=\\left[-\\frac{e^{-(a-ik)x}}{a-ik}\\right]_0^\\infty=\\frac1{a-ik}$。"
+        },
+        {
+          "title": "取实部并乘二",
+          "why": "有理化后可以直接读出实部。",
+          "work": "$\\displaystyle\\frac1{a-ik}=\\frac{a+ik}{a^2+k^2}$，所以 $F(k)=\\frac{2a}{a^2+k^2}$。"
+        }
+      ],
+      "check": [
+        "$F(k)$ 是实偶函数，符合实偶原函数的变换性质。",
+        "$F(0)=2/a$，等于 $\\displaystyle\\int_{-\\infty}^{\\infty}e^{-a|x|}\\,dx=2/a$。",
+        "当 $|k|\\to\\infty$ 时 $F(k)\\to0$，符合可积函数频谱衰减的预期。"
+      ]
+    },
+    "en": {
+      "question": "Under the convention $F(k)=\\displaystyle\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}\\,dx$, find the Fourier transform of $f(x)=e^{-a|x|}$, where $a>0$.",
+      "given": "$a>0$ ensures decay at infinity. $k$ is the real frequency variable.",
+      "goal": "Use evenness to halve the work, then compute the spectrum explicitly.",
+      "steps": [
+        {
+          "title": "Use evenness",
+          "why": "An even function times sine is odd, so the imaginary part integrates to zero on a symmetric interval.",
+          "work": "$f(x)$ is real and even, so $F(k)=2\\int_0^\\infty e^{-ax}\\cos(kx)\\,dx$."
+        },
+        {
+          "title": "Use a complex exponential integral",
+          "why": "The exponential is easy to integrate, and only its real part is needed afterward.",
+          "work": "$\\displaystyle\\int_0^\\infty e^{-ax}\\cos(kx)\\,dx=\\operatorname{Re}\\int_0^\\infty e^{-(a-ik)x}\\,dx$."
+        },
+        {
+          "title": "Evaluate the exponential integral",
+          "why": "$a>0$ makes the exponential vanish at the upper limit.",
+          "work": "$\\displaystyle\\int_0^\\infty e^{-(a-ik)x}\\,dx=\\left[-\\frac{e^{-(a-ik)x}}{a-ik}\\right]_0^\\infty=\\frac1{a-ik}$."
+        },
+        {
+          "title": "Take the real part and double",
+          "why": "Rationalizing makes the real part visible immediately.",
+          "work": "$\\displaystyle\\frac1{a-ik}=\\frac{a+ik}{a^2+k^2}$, so $F(k)=\\frac{2a}{a^2+k^2}$."
+        }
+      ],
+      "check": [
+        "$F(k)$ is real and even, as expected for a real even original function.",
+        "$F(0)=2/a$, equal to $\\displaystyle\\int_{-\\infty}^{\\infty}e^{-a|x|}\\,dx=2/a$.",
+        "As $|k|\\to\\infty$, $F(k)\\to0$, as expected for the spectrum of an integrable function."
+      ]
+    }
+  },
+  "fourier-rules": {
+    "chapter": 2,
+    "zh": {
+      "question": "已知 $\\widehat{e^{-x^2}}=\\sqrt\\pi e^{-k^2/4}$，求 $g(x)=e^{-(x-a)^2}$ 的傅里叶变换。",
+      "given": "采用 $\\widehat f(k)=\\displaystyle\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}\\,dx$，并设 $a$ 为实常数。",
+      "goal": "识别平移并得到含相位因子的频谱。",
+      "steps": [
+        {
+          "title": "识别原函数和平移",
+          "why": "题目已给标准高斯的变换，不需要重新完成高斯积分。",
+          "work": "令 $f(x)=e^{-x^2}$，则 $g(x)=f(x-a)$，表示图像向右平移 $a$。"
+        },
+        {
+          "title": "从定义换元",
+          "why": "换元能看清平移如何变成指数因子。",
+          "work": "$\\displaystyle G(k)=\\int_{-\\infty}^{\\infty}f(x-a)e^{-ikx}\\,dx$；令 $u=x-a$，则 $x=u+a$、$dx=du$。"
+        },
+        {
+          "title": "提出与积分无关的因子",
+          "why": "$e^{-ika}$ 不含积分变量，可以移到积分号外。",
+          "work": "$\\displaystyle G(k)=e^{-ika}\\int_{-\\infty}^{\\infty}f(u)e^{-iku}\\,du=e^{-ika}F(k)$。"
+        },
+        {
+          "title": "代入已知高斯变换",
+          "why": "把题目给出的 $F(k)$ 直接放入平移公式。",
+          "work": "$\\displaystyle G(k)=e^{-ika}\\sqrt\\pi e^{-k^2/4}$。"
+        }
+      ],
+      "check": [
+        "$|e^{-ika}|=1$，所以平移前后频谱的模相同。",
+        "令 $a=0$，结果退化为 $\\sqrt\\pi e^{-k^2/4}$。",
+        "令 $k=0$，得到 $G(0)=\\sqrt\\pi$，与高斯函数的总面积不随平移改变一致。"
+      ]
+    },
+    "en": {
+      "question": "Given $\\widehat{e^{-x^2}}=\\sqrt\\pi e^{-k^2/4}$, find the Fourier transform of $g(x)=e^{-(x-a)^2}$.",
+      "given": "Use $\\widehat f(k)=\\displaystyle\\int_{-\\infty}^{\\infty}f(x)e^{-ikx}\\,dx$, and let $a$ be real.",
+      "goal": "Recognize the translation and obtain the spectrum with its phase factor.",
+      "steps": [
+        {
+          "title": "Identify the original function and shift",
+          "why": "The transform of the standard Gaussian is already given, so the Gaussian integral need not be repeated.",
+          "work": "Let $f(x)=e^{-x^2}$; then $g(x)=f(x-a)$, which shifts the graph right by $a$."
+        },
+        {
+          "title": "Substitute in the definition",
+          "why": "A substitution shows exactly how the translation becomes an exponential factor.",
+          "work": "$\\displaystyle G(k)=\\int_{-\\infty}^{\\infty}f(x-a)e^{-ikx}\\,dx$; let $u=x-a$, so $x=u+a$ and $dx=du$."
+        },
+        {
+          "title": "Take out the constant factor",
+          "why": "$e^{-ika}$ contains no integration variable, so it can be moved outside the integral.",
+          "work": "$\\displaystyle G(k)=e^{-ika}\\int_{-\\infty}^{\\infty}f(u)e^{-iku}\\,du=e^{-ika}F(k)$."
+        },
+        {
+          "title": "Insert the known Gaussian transform",
+          "why": "Substitute the supplied $F(k)$ into the translation formula.",
+          "work": "$\\displaystyle G(k)=e^{-ika}\\sqrt\\pi e^{-k^2/4}$."
+        }
+      ],
+      "check": [
+        "$|e^{-ika}|=1$, so translation leaves the spectrum magnitude unchanged.",
+        "For $a=0$, the result reduces to $\\sqrt\\pi e^{-k^2/4}$.",
+        "For $k=0$, $G(0)=\\sqrt\\pi$, consistent with translation preserving the total area of a Gaussian."
+      ]
+    }
+  },
+  "2.3-core": {
+    "chapter": 2,
+    "zh": {
+      "question": "计算 $\\displaystyle\\int_{-2}^{2}(1+x^2)\\delta(x^2-1)\\,dx$。",
+      "given": "若 $g(x_i)=0$ 且 $g'(x_i)\\ne0$，则 $\\displaystyle\\delta(g(x))=\\sum_i\\frac{\\delta(x-x_i)}{|g'(x_i)|}$。只保留积分区间内的根。",
+      "goal": "找全零点，计算导数权重，再使用抽样性质。",
+      "steps": [
+        {
+          "title": "求根号内函数的零点",
+          "why": "$\\delta(g(x))$ 只会在 $g(x)=0$ 的位置产生贡献。",
+          "work": "令 $g(x)=x^2-1$，解 $g(x)=0$ 得 $x_1=1$、$x_2=-1$，两点都在 $[-2,2]$ 内。"
+        },
+        {
+          "title": "计算每个根的权重",
+          "why": "复合变量的 $\\delta$ 函数必须除以导数绝对值。",
+          "work": "$g'(x)=2x$，所以 $|g'(1)|=2$、$|g'(-1)|=2$。"
+        },
+        {
+          "title": "展开复合 $\\delta$ 函数",
+          "why": "把它写成普通点质量后即可逐点抽样。",
+          "work": "$\\displaystyle\\delta(x^2-1)=\\frac{\\delta(x-1)}2+\\frac{\\delta(x+1)}2$。"
+        },
+        {
+          "title": "代入两个抽样点",
+          "why": "每个 $\\delta$ 项把权函数 $1+x^2$ 取在自己的根上。",
+          "work": "$\\displaystyle\\int_{-2}^{2}(1+x^2)\\delta(x^2-1)\\,dx=\\frac{1+1^2}{2}+\\frac{1+(-1)^2}{2}=1+1=2$。"
+        }
+      ],
+      "check": [
+        "两个根都在积分区间内，不能漏掉 $x=-1$。",
+        "两个权重都含 $|g'(x_i)|=2$，绝对值保证权重为正。",
+        "被积权函数在两个根处都等于 $2$，最终两个贡献相等。"
+      ]
+    },
+    "en": {
+      "question": "Evaluate $\\displaystyle\\int_{-2}^{2}(1+x^2)\\delta(x^2-1)\\,dx$.",
+      "given": "If $g(x_i)=0$ and $g'(x_i)\\ne0$, then $\\displaystyle\\delta(g(x))=\\sum_i\\frac{\\delta(x-x_i)}{|g'(x_i)|}$. Keep only roots inside the integration interval.",
+      "goal": "Find every root, compute the derivative weights, and apply the sampling property.",
+      "steps": [
+        {
+          "title": "Find the zeros of the inner function",
+          "why": "$\\delta(g(x))$ contributes only where $g(x)=0$.",
+          "work": "Let $g(x)=x^2-1$; solving $g(x)=0$ gives $x_1=1$ and $x_2=-1$, both inside $[-2,2]$."
+        },
+        {
+          "title": "Compute the weight at each root",
+          "why": "A composite $\\delta$ function must be divided by the absolute derivative.",
+          "work": "$g'(x)=2x$, so $|g'(1)|=2$ and $|g'(-1)|=2$."
+        },
+        {
+          "title": "Expand the composite $\\delta$ function",
+          "why": "Writing it as ordinary point masses makes direct sampling possible.",
+          "work": "$\\displaystyle\\delta(x^2-1)=\\frac{\\delta(x-1)}2+\\frac{\\delta(x+1)}2$."
+        },
+        {
+          "title": "Evaluate at both sampling points",
+          "why": "Each $\\delta$ term evaluates the weight $1+x^2$ at its own root.",
+          "work": "$\\displaystyle\\int_{-2}^{2}(1+x^2)\\delta(x^2-1)\\,dx=\\frac{1+1^2}{2}+\\frac{1+(-1)^2}{2}=1+1=2$."
+        }
+      ],
+      "check": [
+        "Both roots lie in the integration interval, so $x=-1$ must not be omitted.",
+        "Both weights contain $|g'(x_i)|=2$, and the absolute value keeps them positive.",
+        "The weight function equals $2$ at both roots, so the two final contributions are equal."
+      ]
+    }
+  },
+  "2.4-core": {
+    "chapter": 2,
+    "zh": {
+      "question": "求 $\\mathcal L[te^{2t}]$，并写出收敛条件。",
+      "given": "拉普拉斯变换定义为 $F(p)=\\mathcal L[f(t)]=\\displaystyle\\int_0^\\infty e^{-pt}f(t)\\,dt$。性质为 $\\mathcal L[tf(t)]=-F'(p)$。",
+      "goal": "从指数函数的已知变换出发，用求导性质得到答案。",
+      "steps": [
+        {
+          "title": "先变换指数函数",
+          "why": "$te^{2t}$ 是在 $e^{2t}$ 前乘了 $t$，所以先求后者的变换。",
+          "work": "$\\displaystyle F(p)=\\mathcal L[e^{2t}]=\\int_0^\\infty e^{-(p-2)t}\\,dt=\\frac1{p-2}$，条件为 $\\operatorname{Re}p>2$。"
+        },
+        {
+          "title": "使用乘 $t$ 的性质",
+          "why": "时域乘 $t$ 对应像函数对 $p$ 求导并加负号。",
+          "work": "$\\displaystyle\\mathcal L[te^{2t}]=-F'(p)=-\\frac d{dp}(p-2)^{-1}$。"
+        },
+        {
+          "title": "完成求导",
+          "why": "幂函数求导产生的负号会与性质中的负号抵消。",
+          "work": "$\\displaystyle\\frac d{dp}(p-2)^{-1}=-(p-2)^{-2}$，所以 $\\displaystyle\\mathcal L[te^{2t}]=\\frac1{(p-2)^2}$。"
+        },
+        {
+          "title": "保留收敛条件",
+          "why": "多项式因子 $t$ 不会改变由指数增长率决定的收敛边界。",
+          "work": "最终结果是 $\\displaystyle\\mathcal L[te^{2t}]=\\frac1{(p-2)^2}$，仍要求 $\\operatorname{Re}p>2$。"
+        }
+      ],
+      "check": [
+        "直接令 $q=p-2$，可得 $\\displaystyle\\int_0^\\infty te^{-qt}\\,dt=1/q^2$。",
+        "当实数 $p>2$ 时，结果为正，符合正被积函数。",
+        "若漏掉性质中的负号，会得到错误的负结果。"
+      ]
+    },
+    "en": {
+      "question": "Find $\\mathcal L[te^{2t}]$ and state its convergence condition.",
+      "given": "The Laplace transform is $F(p)=\\mathcal L[f(t)]=\\displaystyle\\int_0^\\infty e^{-pt}f(t)\\,dt$. The relevant property is $\\mathcal L[tf(t)]=-F'(p)$.",
+      "goal": "Start from the known transform of an exponential and use the differentiation property.",
+      "steps": [
+        {
+          "title": "Transform the exponential first",
+          "why": "$te^{2t}$ is $e^{2t}$ multiplied by $t$, so first transform the exponential alone.",
+          "work": "$\\displaystyle F(p)=\\mathcal L[e^{2t}]=\\int_0^\\infty e^{-(p-2)t}\\,dt=\\frac1{p-2}$, with condition $\\operatorname{Re}p>2$."
+        },
+        {
+          "title": "Use the multiplication-by-$t$ property",
+          "why": "Multiplication by $t$ in the time domain means differentiating with respect to $p$ and adding a minus sign.",
+          "work": "$\\displaystyle\\mathcal L[te^{2t}]=-F'(p)=-\\frac d{dp}(p-2)^{-1}$."
+        },
+        {
+          "title": "Carry out the derivative",
+          "why": "The minus sign from differentiating the power cancels the minus sign in the property.",
+          "work": "$\\displaystyle\\frac d{dp}(p-2)^{-1}=-(p-2)^{-2}$, so $\\displaystyle\\mathcal L[te^{2t}]=\\frac1{(p-2)^2}$."
+        },
+        {
+          "title": "Keep the convergence condition",
+          "why": "The polynomial factor $t$ does not change the boundary set by exponential growth.",
+          "work": "The final result is $\\displaystyle\\mathcal L[te^{2t}]=\\frac1{(p-2)^2}$, still requiring $\\operatorname{Re}p>2$."
+        }
+      ],
+      "check": [
+        "Setting $q=p-2$ directly gives $\\displaystyle\\int_0^\\infty te^{-qt}\\,dt=1/q^2$.",
+        "For real $p>2$, the result is positive, as the positive integrand requires.",
+        "Omitting the minus sign in the property would produce an incorrect negative answer."
+      ]
+    }
+  },
+  "2.5-core": {
+    "chapter": 2,
+    "zh": {
+      "question": "用拉普拉斯变换解初值问题 $y'(t)+y(t)=1$，$y(0)=0$。",
+      "given": "设 $Y(p)=\\mathcal L[y(t)]$。使用 $\\mathcal L[y']=pY(p)-y(0)$ 和 $\\mathcal L[1]=1/p$。",
+      "goal": "把微分方程变成代数方程，求出 $Y(p)$，再作逆变换。",
+      "steps": [
+        {
+          "title": "对方程逐项变换",
+          "why": "拉普拉斯变换把导数变成含 $p$ 的代数项，并自动带入初值。",
+          "work": "$\\mathcal L[y']+\\mathcal L[y]=\\mathcal L[1]$ 给出 $pY(p)-y(0)+Y(p)=1/p$。"
+        },
+        {
+          "title": "代入初值并解 $Y$",
+          "why": "使用 $y(0)=0$ 后只剩一个关于 $Y(p)$ 的一次代数方程。",
+          "work": "$pY+Y=1/p$，所以 $(p+1)Y=1/p$，从而 $\\displaystyle Y(p)=\\frac1{p(p+1)}$。"
+        },
+        {
+          "title": "作部分分式分解",
+          "why": "拆成变换表中的基本形式后才能直接逆变换。",
+          "work": "$\\displaystyle\\frac1{p(p+1)}=\\frac A p+\\frac B{p+1}$；由 $1=A(p+1)+Bp$ 得 $A=1$、$B=-1$。"
+        },
+        {
+          "title": "逐项逆变换",
+          "why": "$1/p$ 和 $1/(p+1)$ 分别对应常数函数和衰减指数。",
+          "work": "$Y(p)=1/p-1/(p+1)$，因此 $y(t)=1-e^{-t}$。"
+        },
+        {
+          "title": "代回原方程",
+          "why": "逆变换后必须同时检查微分方程和初值。",
+          "work": "$y'(t)=e^{-t}$，所以 $y'+y=e^{-t}+1-e^{-t}=1$，并且 $y(0)=1-1=0$。"
+        }
+      ],
+      "check": [
+        "把 $t=0$ 代入得到 $y(0)=0$，初值满足。",
+        "把 $y=1-e^{-t}$ 代入左端得到恒等的 $1$。",
+        "当 $t\\to\\infty$ 时 $y(t)\\to1$，与方程的稳定平衡值一致。"
+      ]
+    },
+    "en": {
+      "question": "Use the Laplace transform to solve the initial-value problem $y'(t)+y(t)=1$, $y(0)=0$.",
+      "given": "Let $Y(p)=\\mathcal L[y(t)]$. Use $\\mathcal L[y']=pY(p)-y(0)$ and $\\mathcal L[1]=1/p$.",
+      "goal": "Turn the differential equation into an algebraic equation, solve for $Y(p)$, and invert the transform.",
+      "steps": [
+        {
+          "title": "Transform each term",
+          "why": "The Laplace transform turns the derivative into an algebraic term in $p$ and includes the initial value automatically.",
+          "work": "$\\mathcal L[y']+\\mathcal L[y]=\\mathcal L[1]$ gives $pY(p)-y(0)+Y(p)=1/p$."
+        },
+        {
+          "title": "Insert the initial value and solve for $Y$",
+          "why": "After using $y(0)=0$, only a linear algebraic equation for $Y(p)$ remains.",
+          "work": "$pY+Y=1/p$, so $(p+1)Y=1/p$ and therefore $\\displaystyle Y(p)=\\frac1{p(p+1)}$."
+        },
+        {
+          "title": "Use partial fractions",
+          "why": "Splitting the expression into standard table entries makes inversion immediate.",
+          "work": "$\\displaystyle\\frac1{p(p+1)}=\\frac A p+\\frac B{p+1}$; from $1=A(p+1)+Bp$, obtain $A=1$ and $B=-1$."
+        },
+        {
+          "title": "Invert term by term",
+          "why": "$1/p$ and $1/(p+1)$ correspond to a constant and a decaying exponential.",
+          "work": "$Y(p)=1/p-1/(p+1)$, so $y(t)=1-e^{-t}$."
+        },
+        {
+          "title": "Substitute into the original problem",
+          "why": "After inversion, both the differential equation and the initial value must be checked.",
+          "work": "$y'(t)=e^{-t}$, so $y'+y=e^{-t}+1-e^{-t}=1$, and $y(0)=1-1=0$."
+        }
+      ],
+      "check": [
+        "Substituting $t=0$ gives $y(0)=0$, so the initial value holds.",
+        "Substituting $y=1-e^{-t}$ into the left side gives the constant $1$.",
+        "As $t\\to\\infty$, $y(t)\\to1$, matching the stable equilibrium value of the equation."
+      ]
+    }
+  },
+  "3.1-core": {
+    "chapter": 3,
+    "zh": {
+      "question": "长度为 $l$ 的弦两端固定，满足 $u_{tt}=c^2u_{xx}$。已知 $u(x,0)=\\sin(\\pi x/l)$、$u_t(x,0)=0$，求 $u(x,t)$。",
+      "given": "这里 $u(x,t)$ 是弦的位移，$c$ 是波速；固定端表示 $u(0,t)=u(l,t)=0$。",
+      "goal": "写出满足方程、边界和两条初始条件的 $u(x,t)$。",
+      "steps": [
+        {
+          "title": "选空间波形",
+          "why": "两端固定时，$\\sin(n\\pi x/l)$ 在 $x=0,l$ 都为零，所以它自动满足边界。",
+          "work": "初始位移正好是第一项 $X_1(x)=\\sin(\\pi x/l)$，因此只需保留 $n=1$。"
+        },
+        {
+          "title": "写时间因子",
+          "why": "对第 $n$ 个波形，时间因子满足 $T_n''+\\omega_n^2T_n=0$，其中 $\\omega_n=cn\\pi/l$。",
+          "work": "取 $n=1$ 得 $T_1(t)=A_1\\cos(c\\pi t/l)+B_1\\sin(c\\pi t/l)$。"
+        },
+        {
+          "title": "代初始位移",
+          "why": "令 $t=0$ 可以直接确定余弦项的系数。",
+          "work": "$u(x,0)=A_1\\sin(\\pi x/l)=\\sin(\\pi x/l)$，所以 $A_1=1$。"
+        },
+        {
+          "title": "代初始速度",
+          "why": "对时间求导后令 $t=0$，可以确定正弦项的系数。",
+          "work": "$u_t(x,0)=B_1(c\\pi/l)\\sin(\\pi x/l)=0$，所以 $B_1=0$；最终 $u(x,t)=\\sin(\\pi x/l)\\cos(c\\pi t/l)$。"
+        }
+      ],
+      "check": [
+        "边界：代入 $x=0,l$，都有 $u=0$。",
+        "初值：代入 $t=0$ 得 $u(x,0)=\\sin(\\pi x/l)$，再求导得 $u_t(x,0)=0$。",
+        "方程：$u_{tt}=-(c\\pi/l)^2u$，$u_{xx}=-(\\pi/l)^2u$，所以 $u_{tt}=c^2u_{xx}$。"
+      ]
+    },
+    "en": {
+      "question": "A string of length $l$ is fixed at both ends and satisfies $u_{tt}=c^2u_{xx}$. Given $u(x,0)=\\sin(\\pi x/l)$ and $u_t(x,0)=0$, find $u(x,t)$.",
+      "given": "Here $u(x,t)$ is the string displacement and $c$ is the wave speed; fixed ends mean $u(0,t)=u(l,t)=0$.",
+      "goal": "Write the $u(x,t)$ that satisfies the equation, the boundary conditions, and both initial conditions.",
+      "steps": [
+        {
+          "title": "Choose the spatial mode",
+          "why": "For fixed ends, $\\sin(n\\pi x/l)$ vanishes at $x=0,l$, so it satisfies the boundary conditions automatically.",
+          "work": "The initial displacement is exactly the first mode $X_1(x)=\\sin(\\pi x/l)$, so only $n=1$ is needed."
+        },
+        {
+          "title": "Write the time factor",
+          "why": "For mode $n$, the time factor satisfies $T_n''+\\omega_n^2T_n=0$, where $\\omega_n=cn\\pi/l$.",
+          "work": "With $n=1$, $T_1(t)=A_1\\cos(c\\pi t/l)+B_1\\sin(c\\pi t/l)$."
+        },
+        {
+          "title": "Use the displacement",
+          "why": "Setting $t=0$ determines the coefficient of the cosine term directly.",
+          "work": "$u(x,0)=A_1\\sin(\\pi x/l)=\\sin(\\pi x/l)$, so $A_1=1$."
+        },
+        {
+          "title": "Use the velocity",
+          "why": "Differentiate in time and then set $t=0$ to determine the sine coefficient.",
+          "work": "$u_t(x,0)=B_1(c\\pi/l)\\sin(\\pi x/l)=0$, so $B_1=0$; hence $u(x,t)=\\sin(\\pi x/l)\\cos(c\\pi t/l)$."
+        }
+      ],
+      "check": [
+        "Boundary: at $x=0,l$, one gets $u=0$.",
+        "Initial data: at $t=0$, $u(x,0)=\\sin(\\pi x/l)$, and differentiation gives $u_t(x,0)=0$.",
+        "Equation: $u_{tt}=-(c\\pi/l)^2u$ and $u_{xx}=-(\\pi/l)^2u$, so $u_{tt}=c^2u_{xx}$."
+      ]
+    }
+  },
+  "dalambert": {
+    "chapter": 3,
+    "zh": {
+      "question": "全轴波动方程 $u_{tt}=c^2u_{xx}$ 的初位移为 $\\varphi(x)=0$，初速度为常数 $v(x)=V$。求 $u(x,t)$。",
+      "given": "这里 $c>0$ 是波速，$V$ 是常数；全轴表示 $-\\infty<x<\\infty$，没有端点边界。",
+      "goal": "用达朗贝尔公式算出 $u(x,t)$，并说明为什么结果与 $x$ 无关。",
+      "steps": [
+        {
+          "title": "写出公式",
+          "why": "全轴、无外力的初值问题可以直接使用达朗贝尔公式。",
+          "work": "$u(x,t)=\\dfrac{\\varphi(x-ct)+\\varphi(x+ct)}2+\\dfrac1{2c}\\int_{x-ct}^{x+ct}v(s)\\,ds$。"
+        },
+        {
+          "title": "处理位移项",
+          "why": "已知初位移处处为零，所以公式的前半部分消失。",
+          "work": "$\\varphi(x-ct)=\\varphi(x+ct)=0$，因此 $\\dfrac{\\varphi(x-ct)+\\varphi(x+ct)}2=0$。"
+        },
+        {
+          "title": "计算速度积分",
+          "why": "初速度是常数，积分就是“常数乘区间长度”。",
+          "work": "$\\int_{x-ct}^{x+ct}V\\,ds=V[(x+ct)-(x-ct)]=2cVt$。"
+        },
+        {
+          "title": "得到结果",
+          "why": "把积分除以公式中的 $2c$，所有与 $x$ 有关的端点项正好相消。",
+          "work": "$u(x,t)=\\dfrac{2cVt}{2c}=Vt$；每一点具有相同初速度，所以位移不随 $x$ 改变。"
+        }
+      ],
+      "check": [
+        "初值：$u(x,0)=0$，并且 $u_t(x,0)=V$。",
+        "方程：$u_{tt}=0$ 且 $u_{xx}=0$，所以 $u_{tt}=c^2u_{xx}$。",
+        "量纲：$Vt$ 是“速度乘时间”，量纲确实是位移。"
+      ]
+    },
+    "en": {
+      "question": "For the full-line wave equation $u_{tt}=c^2u_{xx}$, the initial displacement is $\\varphi(x)=0$ and the initial velocity is the constant $v(x)=V$. Find $u(x,t)$.",
+      "given": "Here $c>0$ is the wave speed and $V$ is constant; the full line means $-\\infty<x<\\infty$, with no endpoint boundary.",
+      "goal": "Use d'Alembert's formula to compute $u(x,t)$ and explain why the result is independent of $x$.",
+      "steps": [
+        {
+          "title": "Write the formula",
+          "why": "The full-line initial-value problem with no forcing can be solved directly by d'Alembert's formula.",
+          "work": "$u(x,t)=\\dfrac{\\varphi(x-ct)+\\varphi(x+ct)}2+\\dfrac1{2c}\\int_{x-ct}^{x+ct}v(s)\\,ds$."
+        },
+        {
+          "title": "Handle displacement",
+          "why": "The initial displacement is zero everywhere, so the first part of the formula vanishes.",
+          "work": "$\\varphi(x-ct)=\\varphi(x+ct)=0$, hence $\\dfrac{\\varphi(x-ct)+\\varphi(x+ct)}2=0$."
+        },
+        {
+          "title": "Evaluate the velocity integral",
+          "why": "Because the initial velocity is constant, the integral is the constant times the interval length.",
+          "work": "$\\int_{x-ct}^{x+ct}V\\,ds=V[(x+ct)-(x-ct)]=2cVt$."
+        },
+        {
+          "title": "Obtain the answer",
+          "why": "Divide the integral by the $2c$ in the formula; the endpoint terms involving $x$ cancel.",
+          "work": "$u(x,t)=\\dfrac{2cVt}{2c}=Vt$; every point has the same initial velocity, so the displacement does not depend on $x$."
+        }
+      ],
+      "check": [
+        "Initial data: $u(x,0)=0$ and $u_t(x,0)=V$.",
+        "Equation: $u_{tt}=0$ and $u_{xx}=0$, so $u_{tt}=c^2u_{xx}$.",
+        "Units: $Vt$ is velocity times time, so it has the units of displacement."
+      ]
+    }
+  },
+  "forcing": {
+    "chapter": 3,
+    "zh": {
+      "question": "设 $\\omega>0$，求零初值问题 $q''+\\omega^2q=F\\cos\\omega t$、$q(0)=q'(0)=0$ 的解。",
+      "given": "这里 $q(t)$ 是一个模态的振幅，$\\omega$ 是固有角频率，$F$ 是常数外力振幅。",
+      "goal": "算出共振响应 $q(t)$，并看清线性增长因子从哪里出现。",
+      "steps": [
+        {
+          "title": "识别共振",
+          "why": "外力 $F\\cos\\omega t$ 的频率与方程的固有频率 $\\omega$ 相同，普通的余弦试解会与齐次解重复。",
+          "work": "把试解多乘一个 $t$，令 $q_p(t)=Ct\\sin\\omega t$。"
+        },
+        {
+          "title": "求一阶导数",
+          "why": "方程含 $q''$，所以要按乘积求导法则连续求导两次。",
+          "work": "$q_p'(t)=C\\sin\\omega t+C\\omega t\\cos\\omega t$。"
+        },
+        {
+          "title": "求二阶导数",
+          "why": "再次求导时，两处都会产生 $C\\omega\\cos\\omega t$。",
+          "work": "$q_p''(t)=2C\\omega\\cos\\omega t-C\\omega^2t\\sin\\omega t$。"
+        },
+        {
+          "title": "代回定系数",
+          "why": "代回后，含 $t\\sin\\omega t$ 的两项会相消，只剩与外力同形的余弦项。",
+          "work": "$q_p''+\\omega^2q_p=2C\\omega\\cos\\omega t=F\\cos\\omega t$，所以 $C=F/(2\\omega)$。"
+        },
+        {
+          "title": "检查零初值",
+          "why": "若特解已经满足零初值，就不需要再添加齐次项。",
+          "work": "$q_p(0)=0$ 且 $q_p'(0)=0$，因此 $q(t)=\\dfrac{F}{2\\omega}t\\sin\\omega t$。"
+        }
+      ],
+      "check": [
+        "代回：由上面的导数可得 $q''+\\omega^2q=F\\cos\\omega t$。",
+        "初值：$q(0)=0$，并且 $q'(0)=0$。",
+        "形状：振荡仍为 $\\sin\\omega t$，但包络 $Ft/(2\\omega)$ 随时间线性增大。"
+      ]
+    },
+    "en": {
+      "question": "Let $\\omega>0$. Solve the zero-initial-data problem $q''+\\omega^2q=F\\cos\\omega t$ with $q(0)=q'(0)=0$.",
+      "given": "Here $q(t)$ is one modal amplitude, $\\omega$ is its natural angular frequency, and $F$ is the constant forcing amplitude.",
+      "goal": "Compute the resonant response $q(t)$ and see exactly where the linearly growing factor comes from.",
+      "steps": [
+        {
+          "title": "Recognize resonance",
+          "why": "The forcing $F\\cos\\omega t$ has the same frequency as the natural frequency $\\omega$, so an ordinary cosine trial duplicates a homogeneous solution.",
+          "work": "Multiply the trial by $t$ and set $q_p(t)=Ct\\sin\\omega t$."
+        },
+        {
+          "title": "Differentiate once",
+          "why": "The equation contains $q''$, so apply the product rule twice in succession.",
+          "work": "$q_p'(t)=C\\sin\\omega t+C\\omega t\\cos\\omega t$."
+        },
+        {
+          "title": "Differentiate twice",
+          "why": "On differentiating again, two terms each produce $C\\omega\\cos\\omega t$.",
+          "work": "$q_p''(t)=2C\\omega\\cos\\omega t-C\\omega^2t\\sin\\omega t$."
+        },
+        {
+          "title": "Substitute and solve",
+          "why": "After substitution, the two $t\\sin\\omega t$ terms cancel, leaving a cosine term matching the forcing.",
+          "work": "$q_p''+\\omega^2q_p=2C\\omega\\cos\\omega t=F\\cos\\omega t$, so $C=F/(2\\omega)$."
+        },
+        {
+          "title": "Check the initial data",
+          "why": "If the particular solution already has zero initial data, no homogeneous correction is needed.",
+          "work": "$q_p(0)=0$ and $q_p'(0)=0$, hence $q(t)=\\dfrac{F}{2\\omega}t\\sin\\omega t$."
+        }
+      ],
+      "check": [
+        "Substitution: the derivatives above give $q''+\\omega^2q=F\\cos\\omega t$.",
+        "Initial data: $q(0)=0$ and $q'(0)=0$.",
+        "Shape: the oscillation is still $\\sin\\omega t$, while its envelope $Ft/(2\\omega)$ grows linearly in time."
+      ]
+    }
+  },
+  "3.2-core": {
+    "chapter": 3,
+    "zh": {
+      "question": "长度为 $l$ 的细杆满足 $u_t=\\kappa u_{xx}$，两端保持零温。若 $u(x,0)=\\sin(2\\pi x/l)$，求 $u(x,t)$。",
+      "given": "这里 $u(x,t)$ 是温度，$\\kappa>0$ 是热扩散率；零温边界为 $u(0,t)=u(l,t)=0$。",
+      "goal": "求温度 $u(x,t)$，并看出这个空间波形的衰减速度。",
+      "steps": [
+        {
+          "title": "识别空间模态",
+          "why": "零温两端对应正弦基 $\\sin(n\\pi x/l)$，每一项都自动满足端点条件。",
+          "work": "$\\sin(2\\pi x/l)$ 就是 $n=2$ 的模态，所以设 $u(x,t)=a_2(t)\\sin(2\\pi x/l)$。"
+        },
+        {
+          "title": "计算空间二阶导数",
+          "why": "热方程右边含 $u_{xx}$，二阶导数会给出模态的衰减系数。",
+          "work": "$u_{xx}=-(2\\pi/l)^2a_2(t)\\sin(2\\pi x/l)$。"
+        },
+        {
+          "title": "得到时间方程",
+          "why": "把 $u_t$ 和 $u_{xx}$ 代入后，可约去共同的正弦因子。",
+          "work": "$a_2'(t)=-\\kappa(2\\pi/l)^2a_2(t)=-4\\kappa\\pi^2a_2(t)/l^2$。"
+        },
+        {
+          "title": "解衰减方程",
+          "why": "方程 $a_2'=-\\alpha a_2$ 的解是指数衰减，初温给出 $a_2(0)=1$。",
+          "work": "$a_2(t)=e^{-4\\kappa\\pi^2t/l^2}$，因此 $u(x,t)=e^{-4\\kappa\\pi^2t/l^2}\\sin(2\\pi x/l)$。"
+        }
+      ],
+      "check": [
+        "边界：代入 $x=0,l$，都有 $u=0$。",
+        "初值：代入 $t=0$，指数为 $1$，故 $u(x,0)=\\sin(2\\pi x/l)$。",
+        "方程：$u_t=-4\\kappa\\pi^2u/l^2$ 且 $u_{xx}=-4\\pi^2u/l^2$，所以 $u_t=\\kappa u_{xx}$。"
+      ]
+    },
+    "en": {
+      "question": "A thin rod of length $l$ satisfies $u_t=\\kappa u_{xx}$, and both ends are held at zero temperature. If $u(x,0)=\\sin(2\\pi x/l)$, find $u(x,t)$.",
+      "given": "Here $u(x,t)$ is temperature and $\\kappa>0$ is thermal diffusivity; the zero-temperature boundaries are $u(0,t)=u(l,t)=0$.",
+      "goal": "Find the temperature $u(x,t)$ and identify the decay rate of this spatial mode.",
+      "steps": [
+        {
+          "title": "Identify the spatial mode",
+          "why": "Zero-temperature ends correspond to the sine basis $\\sin(n\\pi x/l)$, whose terms satisfy both endpoint conditions automatically.",
+          "work": "$\\sin(2\\pi x/l)$ is the mode $n=2$, so set $u(x,t)=a_2(t)\\sin(2\\pi x/l)$."
+        },
+        {
+          "title": "Differentiate in space",
+          "why": "The right side of the heat equation contains $u_{xx}$, and this second derivative supplies the modal decay coefficient.",
+          "work": "$u_{xx}=-(2\\pi/l)^2a_2(t)\\sin(2\\pi x/l)$."
+        },
+        {
+          "title": "Obtain the time equation",
+          "why": "After substituting $u_t$ and $u_{xx}$, cancel their common sine factor.",
+          "work": "$a_2'(t)=-\\kappa(2\\pi/l)^2a_2(t)=-4\\kappa\\pi^2a_2(t)/l^2$."
+        },
+        {
+          "title": "Solve the decay equation",
+          "why": "The equation $a_2'=-\\alpha a_2$ has an exponential decay solution, and the initial temperature gives $a_2(0)=1$.",
+          "work": "$a_2(t)=e^{-4\\kappa\\pi^2t/l^2}$, hence $u(x,t)=e^{-4\\kappa\\pi^2t/l^2}\\sin(2\\pi x/l)$."
+        }
+      ],
+      "check": [
+        "Boundary: at $x=0,l$, one gets $u=0$.",
+        "Initial value: at $t=0$, the exponential is $1$, so $u(x,0)=\\sin(2\\pi x/l)$.",
+        "Equation: $u_t=-4\\kappa\\pi^2u/l^2$ and $u_{xx}=-4\\pi^2u/l^2$, so $u_t=\\kappa u_{xx}$."
+      ]
+    }
+  },
+  "heat-kernel": {
+    "chapter": 3,
+    "zh": {
+      "question": "全轴热方程 $u_t=\\kappa u_{xx}$ 的初温是单位点脉冲 $u(x,0)=\\delta(x)$。求 $u(x,t)$，并判断总热量是否改变。",
+      "given": "这里 $\\kappa>0$ 是热扩散率，$\\delta(x)$ 表示总量为 $1$、集中在 $x=0$ 的点脉冲。",
+      "goal": "写出热核 $u(x,t)$，算出 $\\int_{-\\infty}^{\\infty}u(x,t)\\,dx$，并读出峰值和扩散尺度。",
+      "steps": [
+        {
+          "title": "写出热核",
+          "why": "点脉冲与热核卷积时只会抽取热核本身。",
+          "work": "$u(x,t)=K(x,t)=\\dfrac1{\\sqrt{4\\pi\\kappa t}}e^{-x^2/(4\\kappa t)}$，其中 $t>0$。"
+        },
+        {
+          "title": "计算总量",
+          "why": "总热量是对空间积分；用变量替换可把它化成标准高斯积分。",
+          "work": "令 $z=x/\\sqrt{4\\kappa t}$，则 $\\int_{-\\infty}^{\\infty}K(x,t)\\,dx=\\dfrac1{\\sqrt\\pi}\\int_{-\\infty}^{\\infty}e^{-z^2}\\,dz=1$。"
+        },
+        {
+          "title": "读取峰值",
+          "why": "指数在 $x=0$ 时最大，所以温度峰值位于原脉冲位置。",
+          "work": "$K(0,t)=1/\\sqrt{4\\pi\\kappa t}$，因此峰值按 $t^{-1/2}$ 降低。"
+        },
+        {
+          "title": "读取扩散宽度",
+          "why": "指数不太小时需有 $x^2/(4\\kappa t)$ 约为 $1$，这给出热量主要分布的距离。",
+          "work": "$x^2/(4\\kappa t)\\sim1$ 给出 $|x|\\sim2\\sqrt{\\kappa t}$，所以分布随时间变宽。"
+        }
+      ],
+      "check": [
+        "守恒：$\\int_{-\\infty}^{\\infty}u(x,t)\\,dx=1$，与单位初始总量相同。",
+        "方程：直接求导可得 $K_t=\\kappa K_{xx}$。",
+        "趋势：峰值 $t^{-1/2}$ 降低而宽度 $\\sqrt{t}$ 增大，两者配合保持总量不变。"
+      ]
+    },
+    "en": {
+      "question": "For the full-line heat equation $u_t=\\kappa u_{xx}$, the initial temperature is the unit point impulse $u(x,0)=\\delta(x)$. Find $u(x,t)$ and decide whether the total heat changes.",
+      "given": "Here $\\kappa>0$ is thermal diffusivity, and $\\delta(x)$ denotes a point impulse of total amount $1$ concentrated at $x=0$.",
+      "goal": "Write the heat kernel $u(x,t)$, compute $\\int_{-\\infty}^{\\infty}u(x,t)\\,dx$, and read off its peak and diffusion scale.",
+      "steps": [
+        {
+          "title": "Write the heat kernel",
+          "why": "Convolving a point impulse with the heat kernel returns the heat kernel itself.",
+          "work": "$u(x,t)=K(x,t)=\\dfrac1{\\sqrt{4\\pi\\kappa t}}e^{-x^2/(4\\kappa t)}$, where $t>0$."
+        },
+        {
+          "title": "Compute the total amount",
+          "why": "Total heat is the spatial integral; a substitution turns it into the standard Gaussian integral.",
+          "work": "Let $z=x/\\sqrt{4\\kappa t}$; then $\\int_{-\\infty}^{\\infty}K(x,t)\\,dx=\\dfrac1{\\sqrt\\pi}\\int_{-\\infty}^{\\infty}e^{-z^2}\\,dz=1$."
+        },
+        {
+          "title": "Read off the peak",
+          "why": "The exponential is largest at $x=0$, so the temperature peak remains at the original impulse location.",
+          "work": "$K(0,t)=1/\\sqrt{4\\pi\\kappa t}$, so the peak falls like $t^{-1/2}$."
+        },
+        {
+          "title": "Read off the width",
+          "why": "For a non-negligible exponential, $x^2/(4\\kappa t)$ must be about $1$, which gives the main spreading distance.",
+          "work": "$x^2/(4\\kappa t)\\sim1$ gives $|x|\\sim2\\sqrt{\\kappa t}$, so the distribution widens with time."
+        }
+      ],
+      "check": [
+        "Conservation: $\\int_{-\\infty}^{\\infty}u(x,t)\\,dx=1$, equal to the unit initial amount.",
+        "Equation: direct differentiation gives $K_t=\\kappa K_{xx}$.",
+        "Trend: the peak falls like $t^{-1/2}$ while the width grows like $\\sqrt{t}$, and together they preserve the total amount."
+      ]
+    }
+  },
+  "lifting": {
+    "chapter": 3,
+    "zh": {
+      "question": "细杆 $0<x<L$ 满足 $u_t=\\kappa u_{xx}$，端点温度为 $u(0,t)=0$、$u(L,t)=T$，初温 $u(x,0)=0$。求 $u(x,t)$ 及其稳态。",
+      "given": "这里 $T$ 是常数端点温度，$\\kappa>0$ 是热扩散率；初始角点 $(L,0)$ 的数据不相容，初值按杆内部理解。",
+      "goal": "先把非齐次边界变成零边界，再求 $u(x,t)$ 并取 $t\\to\\infty$。",
+      "steps": [
+        {
+          "title": "选边界函数",
+          "why": "先找一个简单函数单独承担两端温度，剩余未知量就能使用正弦展开。",
+          "work": "取 $h(x)=Tx/L$，它满足 $h(0)=0$、$h(L)=T$，并且 $h''(x)=0$。"
+        },
+        {
+          "title": "换成零边界",
+          "why": "令 $v=u-h$ 后，$h$ 吸收了非零端点值。",
+          "work": "$v_t=\\kappa v_{xx}$，$v(0,t)=v(L,t)=0$，而 $v(x,0)=-Tx/L$。"
+        },
+        {
+          "title": "投影初值",
+          "why": "零边界使用 $\\sin(n\\pi x/L)$；系数由正交积分给出。",
+          "work": "$b_n=\\dfrac2L\\int_0^L(-Tx/L)\\sin(n\\pi x/L)\\,dx=-\\dfrac{2T}{L^2}I_n$，其中 $I_n=\\int_0^Lx\\sin(n\\pi x/L)\\,dx$。"
+        },
+        {
+          "title": "算清积分",
+          "why": "分部积分能把 $I_n$ 化成端点值，避免跳过符号。",
+          "work": "$I_n=\\left[-\\dfrac{Lx}{n\\pi}\\cos(n\\pi x/L)+\\dfrac{L^2}{n^2\\pi^2}\\sin(n\\pi x/L)\\right]_0^L=-\\dfrac{L^2(-1)^n}{n\\pi}$，故 $b_n=\\dfrac{2T(-1)^n}{n\\pi}$。"
+        },
+        {
+          "title": "组合并取极限",
+          "why": "每个正弦模态按自己的热方程因子衰减，最后只留下边界函数。",
+          "work": "$u(x,t)=\\dfrac{Tx}{L}+\\sum_{n=1}^{\\infty}\\dfrac{2T(-1)^n}{n\\pi}e^{-\\kappa(n\\pi/L)^2t}\\sin(n\\pi x/L)$，且 $u(x,t)\\to Tx/L$。"
+        }
+      ],
+      "check": [
+        "边界：正弦项在 $x=0,L$ 为零，所以 $u(0,t)=0$、$u(L,t)=T$。",
+        "方程：$Tx/L$ 的二阶导数为零，每个级数项都满足 $u_t=\\kappa u_{xx}$。",
+        "稳态：当 $t\\to\\infty$ 时所有指数项趋于零，只剩 $Tx/L$。"
+      ]
+    },
+    "en": {
+      "question": "A thin rod on $0<x<L$ satisfies $u_t=\\kappa u_{xx}$, with endpoint temperatures $u(0,t)=0$ and $u(L,t)=T$, and initial temperature $u(x,0)=0$. Find $u(x,t)$ and its steady state.",
+      "given": "Here $T$ is the constant endpoint temperature and $\\kappa>0$ is thermal diffusivity; the data conflict at the initial corner $(L,0)$, so interpret the initial value inside the rod.",
+      "goal": "First turn the nonhomogeneous boundary into zero boundary data, then find $u(x,t)$ and take $t\\to\\infty$.",
+      "steps": [
+        {
+          "title": "Choose a boundary function",
+          "why": "First find a simple function that carries both endpoint temperatures, so the remaining unknown can use a sine expansion.",
+          "work": "Take $h(x)=Tx/L$; it satisfies $h(0)=0$, $h(L)=T$, and $h''(x)=0$."
+        },
+        {
+          "title": "Create zero boundaries",
+          "why": "After setting $v=u-h$, the function $h$ absorbs the nonzero endpoint value.",
+          "work": "$v_t=\\kappa v_{xx}$, $v(0,t)=v(L,t)=0$, and $v(x,0)=-Tx/L$."
+        },
+        {
+          "title": "Project the initial value",
+          "why": "Zero boundary data use $\\sin(n\\pi x/L)$, and orthogonality gives each coefficient.",
+          "work": "$b_n=\\dfrac2L\\int_0^L(-Tx/L)\\sin(n\\pi x/L)\\,dx=-\\dfrac{2T}{L^2}I_n$, where $I_n=\\int_0^Lx\\sin(n\\pi x/L)\\,dx$."
+        },
+        {
+          "title": "Evaluate the integral",
+          "why": "Integration by parts reduces $I_n$ to endpoint values and makes the sign explicit.",
+          "work": "$I_n=\\left[-\\dfrac{Lx}{n\\pi}\\cos(n\\pi x/L)+\\dfrac{L^2}{n^2\\pi^2}\\sin(n\\pi x/L)\\right]_0^L=-\\dfrac{L^2(-1)^n}{n\\pi}$, hence $b_n=\\dfrac{2T(-1)^n}{n\\pi}$."
+        },
+        {
+          "title": "Combine and take the limit",
+          "why": "Each sine mode decays by its heat-equation factor, so only the boundary function remains at long times.",
+          "work": "$u(x,t)=\\dfrac{Tx}{L}+\\sum_{n=1}^{\\infty}\\dfrac{2T(-1)^n}{n\\pi}e^{-\\kappa(n\\pi/L)^2t}\\sin(n\\pi x/L)$, and $u(x,t)\\to Tx/L$."
+        }
+      ],
+      "check": [
+        "Boundary: every sine term vanishes at $x=0,L$, so $u(0,t)=0$ and $u(L,t)=T$.",
+        "Equation: the second derivative of $Tx/L$ is zero, and every series term satisfies $u_t=\\kappa u_{xx}$.",
+        "Steady state: as $t\\to\\infty$, all exponential terms vanish, leaving $Tx/L$."
+      ]
+    }
+  },
+  "3.3-core": {
+    "chapter": 3,
+    "zh": {
+      "question": "在矩形 $0<x<a$、$0<y<b$ 内解 $u_{xx}+u_{yy}=0$。边界为 $u(0,y)=u(a,y)=u(x,0)=0$，$u(x,b)=\\sin(\\pi x/a)$。",
+      "given": "这里 $u(x,y)$ 是稳定场；三条边为零，只有顶边给出一个正弦分布。",
+      "goal": "用分离变量求出 $u(x,y)$，并逐边检查四个边界条件。",
+      "steps": [
+        {
+          "title": "分离变量",
+          "why": "矩形边界与乘积形状相配，设 $u=X(x)Y(y)$ 可把偏微分方程拆成两个常微分方程。",
+          "work": "$X''/X=-Y''/Y=-\\lambda$，所以 $X''+\\lambda X=0$、$Y''-\\lambda Y=0$。"
+        },
+        {
+          "title": "满足左右边",
+          "why": "$X(0)=X(a)=0$ 选出正弦本征函数和离散波数。",
+          "work": "$X_n(x)=\\sin(n\\pi x/a)$，波数为 $k_n=n\\pi/a$。"
+        },
+        {
+          "title": "满足底边",
+          "why": "$Y(0)=0$ 要去掉双曲余弦，只留下在零点为零的双曲正弦。",
+          "work": "$Y_n(y)=C_n\\sinh(k_ny)$；把顶边归一化后写成 $Y_n(y)=\\sinh(k_ny)/\\sinh(k_nb)$。"
+        },
+        {
+          "title": "匹配顶边",
+          "why": "顶边数据本身就是 $n=1$ 的正弦，所以其他模态系数全为零。",
+          "work": "取 $k_1=\\pi/a$，得到 $u(x,y)=\\sin(\\pi x/a)\\dfrac{\\sinh(\\pi y/a)}{\\sinh(\\pi b/a)}$。"
+        }
+      ],
+      "check": [
+        "方程：令 $k=\\pi/a$，则 $u_{xx}=-k^2u$、$u_{yy}=k^2u$，两者相加为零。",
+        "三条零边：在 $x=0,a$ 时正弦为零，在 $y=0$ 时 $\\sinh(0)=0$。",
+        "顶边：令 $y=b$，分子分母相同，得到 $u(x,b)=\\sin(\\pi x/a)$。"
+      ]
+    },
+    "en": {
+      "question": "In the rectangle $0<x<a$, $0<y<b$, solve $u_{xx}+u_{yy}=0$. The boundaries are $u(0,y)=u(a,y)=u(x,0)=0$ and $u(x,b)=\\sin(\\pi x/a)$.",
+      "given": "Here $u(x,y)$ is a steady field; three sides are zero, and only the top side has a sine profile.",
+      "goal": "Use separation of variables to find $u(x,y)$ and check all four boundary conditions one by one.",
+      "steps": [
+        {
+          "title": "Separate variables",
+          "why": "The rectangular boundaries fit a product form, so setting $u=X(x)Y(y)$ splits the partial differential equation into two ordinary differential equations.",
+          "work": "$X''/X=-Y''/Y=-\\lambda$, so $X''+\\lambda X=0$ and $Y''-\\lambda Y=0$."
+        },
+        {
+          "title": "Satisfy the side boundaries",
+          "why": "$X(0)=X(a)=0$ selects sine eigenfunctions and discrete wave numbers.",
+          "work": "$X_n(x)=\\sin(n\\pi x/a)$, with wave number $k_n=n\\pi/a$."
+        },
+        {
+          "title": "Satisfy the bottom boundary",
+          "why": "$Y(0)=0$ removes the hyperbolic cosine and leaves the hyperbolic sine, which vanishes at zero.",
+          "work": "$Y_n(y)=C_n\\sinh(k_ny)$; after normalization at the top, write $Y_n(y)=\\sinh(k_ny)/\\sinh(k_nb)$."
+        },
+        {
+          "title": "Match the top boundary",
+          "why": "The top data is already the sine mode $n=1$, so every other modal coefficient is zero.",
+          "work": "With $k_1=\\pi/a$, one gets $u(x,y)=\\sin(\\pi x/a)\\dfrac{\\sinh(\\pi y/a)}{\\sinh(\\pi b/a)}$."
+        }
+      ],
+      "check": [
+        "Equation: let $k=\\pi/a$; then $u_{xx}=-k^2u$ and $u_{yy}=k^2u$, so their sum is zero.",
+        "Three zero sides: the sine vanishes at $x=0,a$; at $y=0$, one has $\\sinh(0)=0$.",
+        "Top side: setting $y=b$ makes numerator and denominator equal, giving $u(x,b)=\\sin(\\pi x/a)$."
+      ]
+    }
+  },
+  "uniqueness": {
+    "chapter": 3,
+    "zh": {
+      "question": "球域 $\\Omega$ 内没有热源，故 $\\Delta u=0$；球面 $\\partial\\Omega$ 上温度恒为 $u=5$。球心温度能否高于 $5$？",
+      "given": "这里 $u$ 是稳定温度，$\\Delta$ 是拉普拉斯算子；边界上每一点都给出同一个数值。",
+      "goal": "先找到一个解，再用唯一性或最大值原理判断球内全部温度。",
+      "steps": [
+        {
+          "title": "先试常数解",
+          "why": "边界值是常数，最简单的候选就是把这个常数延伸到整个球内。",
+          "work": "令 $u_*(x)=5$，则 $\\Delta u_*=0$，并且在 $\\partial\\Omega$ 上有 $u_*=5$。"
+        },
+        {
+          "title": "构造解的差",
+          "why": "要证明没有别的解，把任意解与已知解相减就得到零边界问题。",
+          "work": "令 $w=u-u_*$，则 $\\Delta w=0$，且在 $\\partial\\Omega$ 上 $w=0$。"
+        },
+        {
+          "title": "使用能量恒等式",
+          "why": "零边界会让分部积分的边界项消失，从而控制梯度。",
+          "work": "$\\int_\\Omega|\\nabla w|^2\\,dV=\\int_{\\partial\\Omega}w\\,\\partial_nw\\,dS-\\int_\\Omega w\\Delta w\\,dV=0$。"
+        },
+        {
+          "title": "得出唯一解",
+          "why": "非负函数 $|\\nabla w|^2$ 的积分为零，只能有 $\\nabla w=0$；再用零边界确定常数。",
+          "work": "$w=0$，所以 $u(x)=5$ 在整个 $\\Omega$ 内成立，球心也只能是 $5$。"
+        }
+      ],
+      "check": [
+        "代回：常函数 $u=5$ 的所有二阶导数为零，所以 $\\Delta u=0$。",
+        "边界：在 $\\partial\\Omega$ 上仍有 $u=5$。",
+        "最大值原理：$\\max_\\Omega u\\le5$ 且 $\\min_\\Omega u\\ge5$，与 $u=5$ 一致。"
+      ]
+    },
+    "en": {
+      "question": "There is no heat source in the ball $\\Omega$, so $\\Delta u=0$; the temperature on the sphere $\\partial\\Omega$ is the constant $u=5$. Can the center temperature exceed $5$?",
+      "given": "Here $u$ is steady temperature and $\\Delta$ is the Laplacian; every point of the boundary is assigned the same value.",
+      "goal": "First find one solution, then use uniqueness or the maximum principle to determine the temperature everywhere inside the ball.",
+      "steps": [
+        {
+          "title": "Try a constant solution",
+          "why": "Because the boundary value is constant, the simplest candidate extends that constant throughout the ball.",
+          "work": "Set $u_*(x)=5$; then $\\Delta u_*=0$, and on $\\partial\\Omega$ one has $u_*=5$."
+        },
+        {
+          "title": "Form the difference",
+          "why": "To rule out another solution, subtract the known solution from any solution and obtain a zero-boundary problem.",
+          "work": "Let $w=u-u_*$; then $\\Delta w=0$, and on $\\partial\\Omega$ one has $w=0$."
+        },
+        {
+          "title": "Use the energy identity",
+          "why": "The zero boundary makes the boundary term from integration by parts vanish, which controls the gradient.",
+          "work": "$\\int_\\Omega|\\nabla w|^2\\,dV=\\int_{\\partial\\Omega}w\\,\\partial_nw\\,dS-\\int_\\Omega w\\Delta w\\,dV=0$."
+        },
+        {
+          "title": "Conclude uniqueness",
+          "why": "The nonnegative function $|\\nabla w|^2$ has zero integral, so $\\nabla w=0$; the zero boundary then fixes the constant.",
+          "work": "$w=0$, so $u(x)=5$ throughout $\\Omega$, and the center value is $5$."
+        }
+      ],
+      "check": [
+        "Substitution: every second derivative of the constant function $u=5$ is zero, so $\\Delta u=0$.",
+        "Boundary: on $\\partial\\Omega$, one still has $u=5$.",
+        "Maximum principle: $\\max_\\Omega u\\le5$ and $\\min_\\Omega u\\ge5$, consistent with $u=5$."
+      ]
+    }
+  },
+  "3.4-core": {
+    "chapter": 3,
+    "zh": {
+      "question": "在 $x>0$ 上，把 $xy''+(1-x)y'+ay=0$ 写成施图姆–刘维尔自伴形式。",
+      "given": "目标标准形为 $(py')'+(\\lambda w-q)y=0$；其中 $p$ 是导数项系数，$w$ 是权函数。",
+      "goal": "找出乘子，并明确写出 $p(x)$、$q(x)$、$w(x)$ 和 $\\lambda$。",
+      "steps": [
+        {
+          "title": "观察总导数",
+          "why": "要把前两项合成 $(py')'$，$y''$ 的系数和 $y'$ 的系数必须分别是 $p$ 和 $p'$。",
+          "work": "因为 $(xe^{-x})'=(1-x)e^{-x}$，乘上 $e^{-x}$ 后正好出现所需的一对系数。"
+        },
+        {
+          "title": "乘上因子",
+          "why": "对原方程每一项都乘 $e^{-x}$，解集不变，因为 $e^{-x}>0$。",
+          "work": "$xe^{-x}y''+(1-x)e^{-x}y'+ae^{-x}y=0$。"
+        },
+        {
+          "title": "合并导数项",
+          "why": "乘积求导公式给出 $(xe^{-x}y')'=xe^{-x}y''+(1-x)e^{-x}y'$。",
+          "work": "因此方程变为 $(xe^{-x}y')'+ae^{-x}y=0$。"
+        },
+        {
+          "title": "对照标准形",
+          "why": "把参数 $a$ 放在 $\\lambda w$ 的位置，就能逐项读出四个量。",
+          "work": "$p(x)=xe^{-x}$、$q(x)=0$、$w(x)=e^{-x}$、$\\lambda=a$。"
+        }
+      ],
+      "check": [
+        "展开：$(xe^{-x}y')'=xe^{-x}y''+(1-x)e^{-x}y'$，与乘因子后的前两项相同。",
+        "除回：自伴方程除以 $e^{-x}$ 后恢复 $xy''+(1-x)y'+ay=0$。",
+        "正性：在 $x>0$ 上，$p(x)=xe^{-x}>0$ 且 $w(x)=e^{-x}>0$。"
+      ]
+    },
+    "en": {
+      "question": "On $x>0$, put $xy''+(1-x)y'+ay=0$ into Sturm–Liouville self-adjoint form.",
+      "given": "The target standard form is $(py')'+(\\lambda w-q)y=0$; here $p$ is the derivative coefficient and $w$ is the weight function.",
+      "goal": "Find the multiplier and state $p(x)$, $q(x)$, $w(x)$, and $\\lambda$ explicitly.",
+      "steps": [
+        {
+          "title": "Look for a total derivative",
+          "why": "To combine the first two terms into $(py')'$, the coefficients of $y''$ and $y'$ must be $p$ and $p'$, respectively.",
+          "work": "Because $(xe^{-x})'=(1-x)e^{-x}$, multiplication by $e^{-x}$ creates exactly the required pair of coefficients."
+        },
+        {
+          "title": "Apply the multiplier",
+          "why": "Multiply every term by $e^{-x}$; the solution set is unchanged because $e^{-x}>0$.",
+          "work": "$xe^{-x}y''+(1-x)e^{-x}y'+ae^{-x}y=0$."
+        },
+        {
+          "title": "Combine derivative terms",
+          "why": "The product rule gives $(xe^{-x}y')'=xe^{-x}y''+(1-x)e^{-x}y'$.",
+          "work": "Thus the equation becomes $(xe^{-x}y')'+ae^{-x}y=0$."
+        },
+        {
+          "title": "Match the standard form",
+          "why": "Place the parameter $a$ in the position of $\\lambda w$, and then read off all four quantities.",
+          "work": "$p(x)=xe^{-x}$, $q(x)=0$, $w(x)=e^{-x}$, and $\\lambda=a$."
+        }
+      ],
+      "check": [
+        "Expansion: $(xe^{-x}y')'=xe^{-x}y''+(1-x)e^{-x}y'$, matching the first two multiplied terms.",
+        "Divide back: dividing the self-adjoint equation by $e^{-x}$ recovers $xy''+(1-x)y'+ay=0$.",
+        "Positivity: on $x>0$, $p(x)=xe^{-x}>0$ and $w(x)=e^{-x}>0$."
+      ]
+    }
+  },
+  "4.1-wronskian": {
+    "chapter": 4,
+    "zh": {
+      "question": "判断 $y_1=e^x$、$y_2=e^{-x}$ 能否组成方程 $y''-y=0$ 的基本解组，并写出通解。",
+      "given": "基本解组需要同时满足两件事：每个函数都是方程的解，而且两者线性无关。",
+      "goal": "通过代回和朗斯基行列式 $W$ 完成判断，再写出所有解。",
+      "steps": [
+        {
+          "title": "先验算两个解",
+          "why": "朗斯基只检验函数是否独立，不能代替“它们确实满足方程”的检查。",
+          "work": "$y_1''-y_1=e^x-e^x=0$，$y_2''-y_2=e^{-x}-e^{-x}=0$。"
+        },
+        {
+          "title": "列出一阶导数",
+          "why": "二阶方程的朗斯基由函数及其一阶导数组成。",
+          "work": "$y_1'=e^x$，$y_2'=-e^{-x}$。"
+        },
+        {
+          "title": "计算朗斯基",
+          "why": "只要某点有 $W\\ne0$，两个解就在整个区间上线性无关。",
+          "work": "$W=y_1y_2'-y_1'y_2=e^x(-e^{-x})-e^xe^{-x}=-2$。"
+        },
+        {
+          "title": "写出通解",
+          "why": "二阶齐次线性方程有两个独立解时，它们的线性组合给出全部解。",
+          "work": "因为 $W=-2\\ne0$，基本解组成立，通解为 $y=C_1e^x+C_2e^{-x}$。"
+        }
+      ],
+      "check": [
+        "代回：$e^x$ 和 $e^{-x}$ 分别满足 $y''-y=0$。",
+        "独立性：$W=-2$ 处处非零。",
+        "阿贝尔公式：本题标准式的 $P(x)=0$，所以 $W'= -P(x)W=0$，与常数朗斯基一致。"
+      ]
+    },
+    "en": {
+      "question": "Decide whether $y_1=e^x$ and $y_2=e^{-x}$ form a fundamental solution set for $y''-y=0$, and write the general solution.",
+      "given": "A fundamental solution set must meet two conditions: each function solves the equation, and the two functions are linearly independent.",
+      "goal": "Use substitution and the Wronskian $W$ to decide, then write every solution.",
+      "steps": [
+        {
+          "title": "Verify both solutions",
+          "why": "The Wronskian tests independence only; it does not replace checking that the functions solve the equation.",
+          "work": "$y_1''-y_1=e^x-e^x=0$ and $y_2''-y_2=e^{-x}-e^{-x}=0$."
+        },
+        {
+          "title": "List first derivatives",
+          "why": "For a second-order equation, the Wronskian uses the functions and their first derivatives.",
+          "work": "$y_1'=e^x$ and $y_2'=-e^{-x}$."
+        },
+        {
+          "title": "Compute the Wronskian",
+          "why": "If $W\\ne0$ at one point, the two solutions are linearly independent throughout the interval.",
+          "work": "$W=y_1y_2'-y_1'y_2=e^x(-e^{-x})-e^xe^{-x}=-2$."
+        },
+        {
+          "title": "Write the general solution",
+          "why": "When a second-order homogeneous linear equation has two independent solutions, their linear combinations give all solutions.",
+          "work": "Because $W=-2\\ne0$, the set is fundamental and the general solution is $y=C_1e^x+C_2e^{-x}$."
+        }
+      ],
+      "check": [
+        "Substitution: both $e^x$ and $e^{-x}$ satisfy $y''-y=0$.",
+        "Independence: $W=-2$ is nonzero everywhere.",
+        "Abel's formula: the standard equation has $P(x)=0$, so $W'= -P(x)W=0$, consistent with a constant Wronskian."
+      ]
+    }
+  },
+  "4.2-frobenius": {
+    "chapter": 4,
+    "zh": {
+      "question": "在 $x>0$ 上求欧拉方程 $x^2y''+xy'-\\nu^2y=0$ 的指标根和通解，其中 $\\nu\\ge0$。",
+      "given": "这是正则奇点型方程；幂函数试解 $y=x^r$ 会把微分方程变成关于 $r$ 的代数方程。",
+      "goal": "分别处理 $\\nu>0$ 和重根 $\\nu=0$，写出完整通解。",
+      "steps": [
+        {
+          "title": "代入幂函数",
+          "why": "欧拉方程中每项含相同的总幂次，所以 $y=x^r$ 能把 $x$ 因子统一。",
+          "work": "$y'=rx^{r-1}$，$y''=r(r-1)x^{r-2}$。"
+        },
+        {
+          "title": "求指标根",
+          "why": "代入后提取非零因子 $x^r$，其系数必须为零。",
+          "work": "$[r(r-1)+r-\\nu^2]x^r=(r^2-\\nu^2)x^r=0$，所以 $r_1=\\nu$、$r_2=-\\nu$。"
+        },
+        {
+          "title": "处理不同根",
+          "why": "当 $\\nu>0$ 时两根不同，对应两个候选解。",
+          "work": "$y_1=x^\\nu$、$y_2=x^{-\\nu}$，且 $W=y_1y_2'-y_1'y_2=-2\\nu/x\\ne0$。"
+        },
+        {
+          "title": "写不同根通解",
+          "why": "朗斯基非零说明两个解独立，可以组成二阶方程的基本解组。",
+          "work": "当 $\\nu>0$ 时，$y=C_1x^\\nu+C_2x^{-\\nu}$。"
+        },
+        {
+          "title": "处理重根",
+          "why": "当 $\\nu=0$ 时两根重合，只保留 $1$ 不够，需要直接积分寻找第二解。",
+          "work": "方程变为 $(xy')'=0$，所以 $xy'=C_2$，再积分得 $y=C_1+C_2\\ln x$。"
+        }
+      ],
+      "check": [
+        "不同根：把 $x^\\nu$ 或 $x^{-\\nu}$ 代回，都得到 $(r^2-\\nu^2)x^r=0$。",
+        "独立性：当 $\\nu>0$ 时，$W=-2\\nu/x\\ne0$。",
+        "重根：$y=\\ln x$ 有 $y'=1/x$、$y''=-1/x^2$，代入 $x^2y''+xy'=0$。"
+      ]
+    },
+    "en": {
+      "question": "On $x>0$, find the indicial roots and general solution of the Euler equation $x^2y''+xy'-\\nu^2y=0$, where $\\nu\\ge0$.",
+      "given": "This is a regular-singular-type equation; the power trial $y=x^r$ changes the differential equation into an algebraic equation for $r$.",
+      "goal": "Treat $\\nu>0$ and the repeated-root case $\\nu=0$ separately, and write the complete general solution.",
+      "steps": [
+        {
+          "title": "Substitute a power",
+          "why": "Every term in an Euler equation has the same total power, so $y=x^r$ aligns all powers of $x$.",
+          "work": "$y'=rx^{r-1}$ and $y''=r(r-1)x^{r-2}$."
+        },
+        {
+          "title": "Find the indicial roots",
+          "why": "After substitution, factor out the nonzero factor $x^r$; its coefficient must vanish.",
+          "work": "$[r(r-1)+r-\\nu^2]x^r=(r^2-\\nu^2)x^r=0$, so $r_1=\\nu$ and $r_2=-\\nu$."
+        },
+        {
+          "title": "Handle distinct roots",
+          "why": "When $\\nu>0$, the roots are distinct and give two candidate solutions.",
+          "work": "$y_1=x^\\nu$ and $y_2=x^{-\\nu}$, with $W=y_1y_2'-y_1'y_2=-2\\nu/x\\ne0$."
+        },
+        {
+          "title": "Write the distinct-root solution",
+          "why": "The nonzero Wronskian shows that the two solutions are independent and form a fundamental set for the second-order equation.",
+          "work": "For $\\nu>0$, $y=C_1x^\\nu+C_2x^{-\\nu}$."
+        },
+        {
+          "title": "Handle the repeated root",
+          "why": "When $\\nu=0$, the roots coincide; retaining only $1$ is insufficient, so integrate directly to find the second solution.",
+          "work": "The equation becomes $(xy')'=0$, so $xy'=C_2$, and another integration gives $y=C_1+C_2\\ln x$."
+        }
+      ],
+      "check": [
+        "Distinct roots: substituting $x^\\nu$ or $x^{-\\nu}$ gives $(r^2-\\nu^2)x^r=0$.",
+        "Independence: when $\\nu>0$, $W=-2\\nu/x\\ne0$.",
+        "Repeated root: $y=\\ln x$ has $y'=1/x$ and $y''=-1/x^2$, which gives $x^2y''+xy'=0$."
+      ]
+    }
+  },
+  "4.3-variation": {
+    "chapter": 4,
+    "zh": {
+      "question": "用常数变易法求非齐次方程 $y''+y=1$ 的通解。",
+      "given": "先解对应齐次方程，再把常数系数改为函数；本题右端为 $f(x)=1$。",
+      "goal": "算出一个特解 $y_p$，再与齐次通解相加。",
+      "steps": [
+        {
+          "title": "求齐次基本解",
+          "why": "常数变易法从对应齐次方程的两个独立解开始。",
+          "work": "$y''+y=0$ 的基本解可取 $y_1=\\cos x$、$y_2=\\sin x$。"
+        },
+        {
+          "title": "计算朗斯基",
+          "why": "变易公式的分母是 $W$，先算清它可避免后面漏掉符号。",
+          "work": "$W=y_1y_2'-y_1'y_2=\\cos^2x+\\sin^2x=1$。"
+        },
+        {
+          "title": "求变化系数",
+          "why": "对标准式 $y''+P y'+Qy=f$，有 $u_1'=-y_2f/W$、$u_2'=y_1f/W$。",
+          "work": "$u_1'=-\\sin x$、$u_2'=\\cos x$，可取 $u_1=\\cos x$、$u_2=\\sin x$。"
+        },
+        {
+          "title": "组成特解",
+          "why": "把变化系数乘回对应基本解，得到一个非齐次特解。",
+          "work": "$y_p=u_1y_1+u_2y_2=\\cos^2x+\\sin^2x=1$。"
+        },
+        {
+          "title": "写出通解",
+          "why": "非齐次方程的全部解等于一个特解加齐次方程的全部解。",
+          "work": "$y=C_1\\cos x+C_2\\sin x+1$。"
+        }
+      ],
+      "check": [
+        "特解：$y_p=1$ 给出 $y_p''+y_p=0+1=1$。",
+        "齐次项：$C_1\\cos x+C_2\\sin x$ 代入 $y''+y$ 后为零。",
+        "合并：因此任意 $C_1,C_2$ 都满足原方程 $y''+y=1$。"
+      ]
+    },
+    "en": {
+      "question": "Use variation of parameters to find the general solution of $y''+y=1$.",
+      "given": "First solve the corresponding homogeneous equation, then replace its constant coefficients by functions; here the right side is $f(x)=1$.",
+      "goal": "Compute one particular solution $y_p$, then add it to the homogeneous general solution.",
+      "steps": [
+        {
+          "title": "Find homogeneous solutions",
+          "why": "Variation of parameters begins with two independent solutions of the corresponding homogeneous equation.",
+          "work": "A fundamental set for $y''+y=0$ is $y_1=\\cos x$ and $y_2=\\sin x$."
+        },
+        {
+          "title": "Compute the Wronskian",
+          "why": "The denominator in the variation formulas is $W$, so computing it first prevents a later sign error.",
+          "work": "$W=y_1y_2'-y_1'y_2=\\cos^2x+\\sin^2x=1$."
+        },
+        {
+          "title": "Find the varying coefficients",
+          "why": "For the standard form $y''+P y'+Qy=f$, one has $u_1'=-y_2f/W$ and $u_2'=y_1f/W$.",
+          "work": "$u_1'=-\\sin x$ and $u_2'=\\cos x$, so choose $u_1=\\cos x$ and $u_2=\\sin x$."
+        },
+        {
+          "title": "Build a particular solution",
+          "why": "Multiply each varying coefficient by its matching fundamental solution to obtain a particular solution.",
+          "work": "$y_p=u_1y_1+u_2y_2=\\cos^2x+\\sin^2x=1$."
+        },
+        {
+          "title": "Write the general solution",
+          "why": "Every solution of the nonhomogeneous equation is one particular solution plus every homogeneous solution.",
+          "work": "$y=C_1\\cos x+C_2\\sin x+1$."
+        }
+      ],
+      "check": [
+        "Particular term: $y_p=1$ gives $y_p''+y_p=0+1=1$.",
+        "Homogeneous terms: substituting $C_1\\cos x+C_2\\sin x$ into $y''+y$ gives zero.",
+        "Combination: therefore every $C_1,C_2$ satisfies the original equation $y''+y=1$."
+      ]
+    }
+  },
+  "5.1-lame": {
+    "chapter": 5,
+    "zh": {
+      "question": "由拉梅系数一步步推出柱坐标中的拉普拉斯算符。",
+      "given": "柱坐标为 $(\\rho,\\phi,z)$，位置矢量满足 $d\\mathbf r=\\mathbf e_\\rho d\\rho+\\mathbf e_\\phi\\rho\\,d\\phi+\\mathbf e_zdz$。正交坐标的通式为 $\\nabla^2u=\\frac1{h_1h_2h_3}\\sum_i\\partial_{q_i}[(h_1h_2h_3/h_i^2)\\partial_{q_i}u]$。",
+      "goal": "求出 $\\nabla^2u$ 在 $(\\rho,\\phi,z)$ 中的具体形式。",
+      "steps": [
+        {
+          "title": "读出长度因子",
+          "why": "拉梅系数表示坐标增加一单位时，实际长度增加多少。",
+          "work": "由三个实际小长度 $d\\rho,\\rho\\,d\\phi,dz$ 得 $h_\\rho=1$、$h_\\phi=\\rho$、$h_z=1$，所以 $h_\\rho h_\\phi h_z=\\rho$。"
+        },
+        {
+          "title": "代入径向项",
+          "why": "先逐项代入，可以避免把三个尺度因子混在一起。",
+          "work": "径向括号中的系数是 $\\rho/h_\\rho^2=\\rho$，因此这一项为 $\\rho^{-1}\\partial_\\rho(\\rho\\,\\partial_\\rho u)$。"
+        },
+        {
+          "title": "代入角向项",
+          "why": "角向实际长度含有 $\\rho$，这里最容易漏掉一个平方。",
+          "work": "角向系数是 $\\rho/h_\\phi^2=1/\\rho$，故角向项为 $\\rho^{-1}\\partial_\\phi(\\rho^{-1}\\partial_\\phi u)=\\rho^{-2}\\partial_\\phi^2u$。"
+        },
+        {
+          "title": "代入轴向项",
+          "why": "轴向尺度因子为常数，所以它应退化成熟悉的二阶导数。",
+          "work": "轴向系数是 $\\rho/h_z^2=\\rho$，故轴向项为 $\\rho^{-1}\\partial_z(\\rho\\,\\partial_zu)=\\partial_z^2u$。"
+        },
+        {
+          "title": "合并三项",
+          "why": "拉普拉斯算符就是三个正交方向贡献的和。",
+          "work": "最终得到 $\\nabla^2u=\\rho^{-1}\\partial_\\rho(\\rho\\,\\partial_\\rho u)+\\rho^{-2}\\partial_\\phi^2u+\\partial_z^2u$。"
+        }
+      ],
+      "check": [
+        "取 $u=\\rho^2$，公式给 $\\rho^{-1}\\partial_\\rho(2\\rho^2)=4$，与 $u=x^2+y^2$ 的直角坐标结果一致。",
+        "若 $u$ 只依赖 $z$，公式只剩 $\\partial_z^2u$，符合一维情形。",
+        "角向项前应为 $1/\\rho^2$；若只有 $1/\\rho$，量纲就不是 $u/$长度$^2$。"
+      ]
+    },
+    "en": {
+      "question": "Derive the cylindrical-coordinate Laplacian from the scale factors, one step at a time.",
+      "given": "The coordinates are $(\\rho,\\phi,z)$, with $d\\mathbf r=\\mathbf e_\\rho d\\rho+\\mathbf e_\\phi\\rho\\,d\\phi+\\mathbf e_zdz$. For orthogonal coordinates, $\\nabla^2u=\\frac1{h_1h_2h_3}\\sum_i\\partial_{q_i}[(h_1h_2h_3/h_i^2)\\partial_{q_i}u]$.",
+      "goal": "Find the explicit form of $\\nabla^2u$ in $(\\rho,\\phi,z)$.",
+      "steps": [
+        {
+          "title": "Read the scale factors",
+          "why": "A scale factor tells us the physical length produced by one coordinate increment.",
+          "work": "The three physical increments $d\\rho,\\rho\\,d\\phi,dz$ give $h_\\rho=1$, $h_\\phi=\\rho$, and $h_z=1$, so $h_\\rho h_\\phi h_z=\\rho$."
+        },
+        {
+          "title": "Substitute the radial term",
+          "why": "Substituting one direction at a time prevents the three factors from being mixed up.",
+          "work": "The radial bracket coefficient is $\\rho/h_\\rho^2=\\rho$, so this term is $\\rho^{-1}\\partial_\\rho(\\rho\\,\\partial_\\rho u)$."
+        },
+        {
+          "title": "Substitute the angular term",
+          "why": "The angular physical length contains $\\rho$, so a missing square is common here.",
+          "work": "The angular coefficient is $\\rho/h_\\phi^2=1/\\rho$, hence the term is $\\rho^{-1}\\partial_\\phi(\\rho^{-1}\\partial_\\phi u)=\\rho^{-2}\\partial_\\phi^2u$."
+        },
+        {
+          "title": "Substitute the axial term",
+          "why": "The axial scale factor is constant, so this part should reduce to an ordinary second derivative.",
+          "work": "The axial coefficient is $\\rho/h_z^2=\\rho$, hence the term is $\\rho^{-1}\\partial_z(\\rho\\,\\partial_zu)=\\partial_z^2u$."
+        },
+        {
+          "title": "Combine the terms",
+          "why": "The Laplacian is the sum of the three orthogonal-direction contributions.",
+          "work": "Therefore $\\nabla^2u=\\rho^{-1}\\partial_\\rho(\\rho\\,\\partial_\\rho u)+\\rho^{-2}\\partial_\\phi^2u+\\partial_z^2u$."
+        }
+      ],
+      "check": [
+        "For $u=\\rho^2$, the formula gives $\\rho^{-1}\\partial_\\rho(2\\rho^2)=4$, matching the Cartesian result for $u=x^2+y^2$.",
+        "If $u$ depends only on $z$, only $\\partial_z^2u$ remains, as in the one-dimensional case.",
+        "The angular coefficient must be $1/\\rho^2$; with only $1/\\rho$, the units would not be $u/$length$^2$."
+      ]
+    }
+  },
+  "5.2-solid-harmonics": {
+    "chapter": 5,
+    "zh": {
+      "question": "半径为 $R$ 的球面温度是 $2+3\\cos\\theta$，求球内的稳态温度。",
+      "given": "球内无热源，所以 $\\nabla^2u=0$；温度与方位角无关。球面边界为 $u(R,\\theta)=2+3\\cos\\theta$。",
+      "goal": "求在 $0\\le r\\le R$ 内有限的 $u(r,\\theta)$。",
+      "steps": [
+        {
+          "title": "拆成角向模态",
+          "why": "球内 Laplace 方程的轴对称角函数是 Legendre 多项式。",
+          "work": "因为 $P_0(\\cos\\theta)=1$、$P_1(\\cos\\theta)=\\cos\\theta$，边界写成 $2P_0(\\cos\\theta)+3P_1(\\cos\\theta)$。"
+        },
+        {
+          "title": "选择径向解",
+          "why": "第 $l$ 阶有 $r^l$ 和 $r^{-l-1}$ 两支；球心有限要求删掉负幂。",
+          "work": "保留 $l=0$ 的常数径向因子和 $l=1$ 的 $r$；为使球面上的因子等于 $1$，分别取 $1$ 和 $r/R$。"
+        },
+        {
+          "title": "沿用边界系数",
+          "why": "径向因子在 $r=R$ 时都等于 $1$，所以边界展开系数不需要再改变。",
+          "work": "零阶贡献为 $2\\cdot1\\cdot P_0=2$，一阶贡献为 $3(r/R)P_1=3(r/R)\\cos\\theta$。"
+        },
+        {
+          "title": "写出答案",
+          "why": "把两个非零模态相加即可得到满足同一线性方程的解。",
+          "work": "因此 $u(r,\\theta)=2+3(r/R)\\cos\\theta$。"
+        }
+      ],
+      "check": [
+        "代入 $r=R$ 得 $u(R,\\theta)=2+3\\cos\\theta$，边界完全恢复。",
+        "利用 $r\\cos\\theta=z$，可写成 $u=2+3z/R$，它的所有二阶偏导之和为零。",
+        "在 $r=0$ 时 $u=2$，没有出现 $1/r$ 型发散。"
+      ]
+    },
+    "en": {
+      "question": "A sphere of radius $R$ has surface temperature $2+3\\cos\\theta$. Find the steady temperature inside.",
+      "given": "There is no heat source inside, so $\\nabla^2u=0$, and the temperature is independent of azimuth. The boundary condition is $u(R,\\theta)=2+3\\cos\\theta$.",
+      "goal": "For $0\\le r\\le R$, find the finite solution $u(r,\\theta)$.",
+      "steps": [
+        {
+          "title": "Split angular modes",
+          "why": "The axisymmetric angular functions for the Laplace equation in a ball are Legendre polynomials.",
+          "work": "Since $P_0(\\cos\\theta)=1$ and $P_1(\\cos\\theta)=\\cos\\theta$, write the boundary data as $2P_0(\\cos\\theta)+3P_1(\\cos\\theta)$."
+        },
+        {
+          "title": "Choose radial solutions",
+          "why": "Order $l$ has branches $r^l$ and $r^{-l-1}$; finiteness at the center removes the negative power.",
+          "work": "For $l=0$, keep the constant factor; for $l=1$, keep $r$. Normalize them to equal $1$ on the sphere by using $1$ and $r/R$."
+        },
+        {
+          "title": "Keep boundary coefficients",
+          "why": "At $r=R$, both radial factors equal $1$, so the boundary expansion coefficients stay unchanged.",
+          "work": "The order-zero contribution is $2\\cdot1\\cdot P_0=2$, and the order-one contribution is $3(r/R)P_1=3(r/R)\\cos\\theta$."
+        },
+        {
+          "title": "Write the answer",
+          "why": "Adding the two nonzero modes gives another solution of the same linear equation.",
+          "work": "Therefore $u(r,\\theta)=2+3(r/R)\\cos\\theta$."
+        }
+      ],
+      "check": [
+        "Setting $r=R$ gives $u(R,\\theta)=2+3\\cos\\theta$, exactly reproducing the boundary data.",
+        "Using $r\\cos\\theta=z$, write $u=2+3z/R$; the sum of its second derivatives is zero.",
+        "At $r=0$, $u=2$, so no $1/r$ singularity appears."
+      ]
+    }
+  },
+  "5.3-bessel": {
+    "chapter": 5,
+    "zh": {
+      "question": "把常数函数 $1$ 展开为圆柱零侧边界的径向本征函数。",
+      "given": "$j_{0n}$ 是 $J_0$ 的第 $n$ 个正零点，本征函数为 $J_0(j_{0n}\\rho/a)$。其带权范数为 $\\int_0^a\\rho J_0(j_{0n}\\rho/a)^2d\\rho=a^2J_1(j_{0n})^2/2$。",
+      "goal": "在 $1=\\sum_{n\\ge1}c_nJ_0(j_{0n}\\rho/a)$ 中求 $c_n$。",
+      "steps": [
+        {
+          "title": "做带权投影",
+          "why": "圆柱径向本征函数的正交权是 $\\rho$，普通积分会给错系数。",
+          "work": "两边乘 $\\rho J_0(j_{0m}\\rho/a)$ 并从 $0$ 积到 $a$，正交性给 $c_m=\\frac{\\int_0^a\\rho J_0(j_{0m}\\rho/a)d\\rho}{a^2J_1(j_{0m})^2/2}$。"
+        },
+        {
+          "title": "换成无量纲变量",
+          "why": "令变量进入标准 Bessel 恒等式，积分会立刻变成一个边界值。",
+          "work": "记 $j=j_{0m}$ 并令 $x=j\\rho/a$，则 $\\rho d\\rho=a^2x dx/j^2$，所以分子为 $\\frac{a^2}{j^2}\\int_0^j xJ_0(x)dx$。"
+        },
+        {
+          "title": "算出分子",
+          "why": "恒等式 $(xJ_1(x))'=xJ_0(x)$ 直接给出原函数。",
+          "work": "$\\frac{a^2}{j^2}\\int_0^j xJ_0(x)dx=\\frac{a^2}{j^2}[xJ_1(x)]_0^j=\\frac{a^2J_1(j)}{j}$。"
+        },
+        {
+          "title": "除以范数",
+          "why": "投影系数等于该模态的内积除以该模态自身的内积。",
+          "work": "$c_m=\\frac{a^2J_1(j)/j}{a^2J_1(j)^2/2}=\\frac{2}{jJ_1(j)}$，因此 $c_n=\\frac{2}{j_{0n}J_1(j_{0n})}$。"
+        },
+        {
+          "title": "说明边界点",
+          "why": "所有基函数在侧壁都为零，而被展开的常数在侧壁等于一。",
+          "work": "级数在 $0\\le\\rho<a$ 的内部恢复 $1$；在 $\\rho=a$，每一项都含 $J_0(j_{0n})=0$，所以端点值为 $0$。"
+        }
+      ],
+      "check": [
+        "$a^2$ 在分子和范数中相消，因此 $c_n$ 无量纲，符合常数函数的展开。",
+        "把 $c_n$ 代回投影式，右边变成 $[2/(jJ_1(j))][a^2J_1(j)^2/2]=a^2J_1(j)/j$，正好等于分子。",
+        "不要用无权正交；本题积分中必须保留 $\\rho d\\rho$。"
+      ]
+    },
+    "en": {
+      "question": "Expand the constant function $1$ in the radial eigenfunctions for a cylindrical zero side boundary.",
+      "given": "$j_{0n}$ is a positive zero of $J_0$, with index $n$, and the eigenfunction is $J_0(j_{0n}\\rho/a)$. Its weighted norm is $\\int_0^a\\rho J_0(j_{0n}\\rho/a)^2d\\rho=a^2J_1(j_{0n})^2/2$.",
+      "goal": "In $1=\\sum_{n\\ge1}c_nJ_0(j_{0n}\\rho/a)$, find $c_n$.",
+      "steps": [
+        {
+          "title": "Take a weighted projection",
+          "why": "The cylindrical radial eigenfunctions use weight $\\rho$; an unweighted integral gives the wrong coefficient.",
+          "work": "Multiply by $\\rho J_0(j_{0m}\\rho/a)$ and integrate from $0$ to $a$. Orthogonality gives $c_m=\\frac{\\int_0^a\\rho J_0(j_{0m}\\rho/a)d\\rho}{a^2J_1(j_{0m})^2/2}$."
+        },
+        {
+          "title": "Use a dimensionless variable",
+          "why": "Putting the variable into a standard Bessel identity turns the integral into a boundary value.",
+          "work": "Set $j=j_{0m}$ and $x=j\\rho/a$. Then $\\rho d\\rho=a^2x dx/j^2$, so the numerator is $\\frac{a^2}{j^2}\\int_0^j xJ_0(x)dx$."
+        },
+        {
+          "title": "Evaluate the numerator",
+          "why": "The identity $(xJ_1(x))'=xJ_0(x)$ supplies the antiderivative directly.",
+          "work": "$\\frac{a^2}{j^2}\\int_0^j xJ_0(x)dx=\\frac{a^2}{j^2}[xJ_1(x)]_0^j=\\frac{a^2J_1(j)}{j}$."
+        },
+        {
+          "title": "Divide by the norm",
+          "why": "A projection coefficient is the inner product with the mode divided by the mode's squared norm.",
+          "work": "$c_m=\\frac{a^2J_1(j)/j}{a^2J_1(j)^2/2}=\\frac{2}{jJ_1(j)}$, so $c_n=\\frac{2}{j_{0n}J_1(j_{0n})}$."
+        },
+        {
+          "title": "Explain the boundary point",
+          "why": "Every basis function vanishes on the side wall, while the expanded constant equals one there.",
+          "work": "In the interior $0\\le\\rho<a$, the series recovers $1$. At $\\rho=a$, every term contains $J_0(j_{0n})=0$, so its endpoint value is $0$."
+        }
+      ],
+      "check": [
+        "The factors $a^2$ cancel between numerator and norm, so $c_n$ is dimensionless, as required for expanding a constant.",
+        "Substituting $c_n$ into the projection gives $[2/(jJ_1(j))][a^2J_1(j)^2/2]=a^2J_1(j)/j$, exactly the numerator.",
+        "Do not use unweighted orthogonality; the measure must contain $\\rho d\\rho$."
+      ]
+    }
+  },
+  "5.4-heat-modes": {
+    "chapter": 5,
+    "zh": {
+      "question": "半径为 $R$ 的球面保持零温，球对称温度的最慢衰减时间是多少？",
+      "given": "球内热方程为 $u_t=D\\nabla^2u$，其中 $D>0$ 是热扩散率。球面满足 $u(R,t)=0$，并只考虑球对称模态。",
+      "goal": "找出最小正本征值 $k_1$，再求时间尺度 $\\tau$。",
+      "steps": [
+        {
+          "title": "写球对称径向解",
+          "why": "球对称对应角阶 $l=0$，球心有限的 Helmholtz 径向解只有球 Bessel 函数。",
+          "work": "$X(r)=j_0(kr)=\\frac{\\sin(kr)}{kr}$；当 $r\\to0$ 时，$\\sin(kr)/(kr)\\to1$，所以它在球心有限。"
+        },
+        {
+          "title": "使用球面边界",
+          "why": "齐次边界只允许使径向函数在 $r=R$ 为零的离散波数。",
+          "work": "$X(R)=0$ 给出 $\\sin(kR)=0$，因此 $k_n=n\\pi/R$，其中 $n=1,2,\\ldots$。"
+        },
+        {
+          "title": "选择最慢模态",
+          "why": "热模态按 $e^{-Dk_n^2t}$ 衰减，$k_n$ 越小，衰减越慢。",
+          "work": "最小正波数为 $k_1=\\pi/R$，对应时间因子 $e^{-D\\pi^2t/R^2}$。"
+        },
+        {
+          "title": "读出时间尺度",
+          "why": "把指数写成标准形式 $e^{-t/\\tau}$，就能直接读出特征时间。",
+          "work": "比较 $D\\pi^2t/R^2=t/\\tau$，得到 $\\tau=R^2/(D\\pi^2)$。"
+        }
+      ],
+      "check": [
+        "$D$ 的单位是长度$^2/$时间，所以 $R^2/D$ 的单位确实是时间。",
+        "在 $t=\\tau$ 时，最慢模态变为 $e^{-1}$ 倍，符合时间尺度的定义。",
+        "若把 $R$ 加倍而 $D$ 不变，$\\tau$ 变为四倍，符合扩散距离平方律。"
+      ]
+    },
+    "en": {
+      "question": "A sphere of radius $R$ is held at zero surface temperature. What is the slowest decay time for a spherically symmetric temperature?",
+      "given": "Inside the sphere, $u_t=D\\nabla^2u$, where $D>0$ is the thermal diffusivity. The boundary condition is $u(R,t)=0$, and only spherically symmetric modes are considered.",
+      "goal": "Find the smallest positive eigenvalue $k_1$, then obtain the time scale $\\tau$.",
+      "steps": [
+        {
+          "title": "Write the radial solution",
+          "why": "Spherical symmetry means angular order $l=0$, whose center-finite Helmholtz radial solution is a spherical Bessel function.",
+          "work": "$X(r)=j_0(kr)=\\frac{\\sin(kr)}{kr}$. As $r\\to0$, $\\sin(kr)/(kr)\\to1$, so it stays finite at the center."
+        },
+        {
+          "title": "Apply the surface boundary",
+          "why": "The homogeneous boundary permits only discrete wave numbers for which the radial function vanishes at $r=R$.",
+          "work": "$X(R)=0$ gives $\\sin(kR)=0$, hence $k_n=n\\pi/R$, where $n=1,2,\\ldots$."
+        },
+        {
+          "title": "Choose the slowest mode",
+          "why": "A heat mode decays as $e^{-Dk_n^2t}$, so the smallest $k_n$ decays most slowly.",
+          "work": "The smallest positive wave number is $k_1=\\pi/R$, giving the time factor $e^{-D\\pi^2t/R^2}$."
+        },
+        {
+          "title": "Read the time scale",
+          "why": "Writing the exponential in the standard form $e^{-t/\\tau}$ makes the characteristic time explicit.",
+          "work": "Comparing $D\\pi^2t/R^2=t/\\tau$ gives $\\tau=R^2/(D\\pi^2)$."
+        }
+      ],
+      "check": [
+        "$D$ has units length$^2/$time, so $R^2/D$ indeed has units of time.",
+        "At $t=\\tau$, the slowest mode is multiplied by $e^{-1}$, matching the definition of the time scale.",
+        "If $R$ doubles while $D$ stays fixed, $\\tau$ becomes four times larger, as expected from diffusion's distance-squared scaling."
+      ]
+    }
+  },
+  "5.5-taper": {
+    "chapter": 5,
+    "zh": {
+      "question": "一端为尖端的自由楔杆满足 $A(x)\\propto x$，哪些零点决定它的正频率？",
+      "given": "杆占据 $0\\le x\\le l$，尖端在 $x=0$，粗端 $x=l$ 也无外力。分离后的空间方程为 $(AX')'+k^2AX=0$，频率满足 $\\omega=ck$。",
+      "goal": "求允许的正波数 $k_n$ 和正频率 $\\omega_n$。",
+      "steps": [
+        {
+          "title": "代入截面积",
+          "why": "截面积的幂次决定空间方程属于哪一种 Bessel 方程。",
+          "work": "取 $A(x)=A_0x/l$，展开 $(AX')'+k^2AX=0$ 并除以 $A$，得 $X''+x^{-1}X'+k^2X=0$。"
+        },
+        {
+          "title": "选择尖端有限解",
+          "why": "这个方程的两支解是 $J_0(kx)$ 和 $Y_0(kx)$，但物理位移不能在尖端发散。",
+          "work": "$Y_0(kx)$ 在 $x\\to0$ 时发散，因此取 $X(x)=C J_0(kx)$。"
+        },
+        {
+          "title": "写自由端条件",
+          "why": "自由端的轴向力 $EA(l)X'(l)$ 为零；因 $A(l)\\ne0$，这等价于导数为零。",
+          "work": "$X'(l)=0$，而 $J_0'(s)=-J_1(s)$，所以 $X'(l)=-CkJ_1(kl)=0$。"
+        },
+        {
+          "title": "求正频率",
+          "why": "对正频率有 $k>0$，因此不能用 $k=0$ 来满足上一步。",
+          "work": "令 $J_1(j_{1n})=0$，便有 $kl=j_{1n}$、$k_n=j_{1n}/l$，最终 $\\omega_n=cj_{1n}/l$。"
+        },
+        {
+          "title": "单独处理零模态",
+          "why": "除以 $k$ 会遗漏 $k=0$，所以它必须回到原方程检查。",
+          "work": "$k=0$ 时 $(xX')'=0$，有限解是 $X=$常数，表示整根杆刚体平移而不是正频振动。"
+        }
+      ],
+      "check": [
+        "$cj_{1n}/l$ 的单位是 $1/$时间，因为 $j_{1n}$ 无量纲且 $c/l$ 是频率。",
+        "代入 $x=l$ 得 $X'(l)=-C(j_{1n}/l)J_1(j_{1n})=0$，自由边界满足。",
+        "不能保留 $Y_0$；它在 $x=0$ 发散，不符合尖端有限性。"
+      ]
+    },
+    "en": {
+      "question": "A free wedge rod has a pointed end and $A(x)\\propto x$. Which zeros determine its positive frequencies?",
+      "given": "The rod occupies $0\\le x\\le l$, with the tip at $x=0$ and no external force at the thick end $x=l$. The separated spatial equation is $(AX')'+k^2AX=0$, and $\\omega=ck$.",
+      "goal": "Find the allowed positive wave numbers $k_n$ and frequencies $\\omega_n$.",
+      "steps": [
+        {
+          "title": "Substitute the area",
+          "why": "The power of the cross-sectional area determines the type of Bessel equation.",
+          "work": "Take $A(x)=A_0x/l$. Expanding $(AX')'+k^2AX=0$ and dividing by $A$ gives $X''+x^{-1}X'+k^2X=0$."
+        },
+        {
+          "title": "Keep the finite tip solution",
+          "why": "The two branches are $J_0(kx)$ and $Y_0(kx)$, but a physical displacement cannot diverge at the tip.",
+          "work": "$Y_0(kx)$ diverges as $x\\to0$, so choose $X(x)=C J_0(kx)$."
+        },
+        {
+          "title": "Write the free-end condition",
+          "why": "The axial force $EA(l)X'(l)$ vanishes at a free end; since $A(l)\\ne0$, the derivative must vanish.",
+          "work": "$X'(l)=0$, and $J_0'(s)=-J_1(s)$, so $X'(l)=-CkJ_1(kl)=0$."
+        },
+        {
+          "title": "Find positive frequencies",
+          "why": "A positive-frequency mode has $k>0$, so the previous equation cannot be satisfied by choosing $k=0$.",
+          "work": "Let $J_1(j_{1n})=0$. Then $kl=j_{1n}$, $k_n=j_{1n}/l$, and finally $\\omega_n=cj_{1n}/l$."
+        },
+        {
+          "title": "Handle the zero mode separately",
+          "why": "Dividing by $k$ would lose $k=0$, so it must be checked in the original equation.",
+          "work": "For $k=0$, $(xX')'=0$, and the finite solution is $X=$constant, representing rigid translation rather than positive-frequency vibration."
+        }
+      ],
+      "check": [
+        "$cj_{1n}/l$ has units $1/$time because $j_{1n}$ is dimensionless and $c/l$ is a frequency.",
+        "At $x=l$, $X'(l)=-C(j_{1n}/l)J_1(j_{1n})=0$, so the free boundary is satisfied.",
+        "Do not keep $Y_0$; it diverges at $x=0$ and violates tip finiteness."
+      ]
+    }
+  },
+  "fundamental": {
+    "chapter": 6,
+    "zh": {
+      "question": "为什么 $1/(4\\pi r)$ 不符合本章 $\\Delta G=\\delta$ 的基本解符号？",
+      "given": "$r=|\\mathbf r|$，候选函数为 $g(r)=1/(4\\pi r)$。点源系数可由包围原点的小球通量求出。",
+      "goal": "判断 $\\Delta g$ 的符号，并写出满足 $\\Delta G=\\delta$ 的 $G$。",
+      "steps": [
+        {
+          "title": "先查源点外",
+          "why": "基本解必须在没有点源的地方满足齐次方程。",
+          "work": "对 $r>0$，径向公式给 $\\Delta g=r^{-2}(r^2g')'=r^{-2}[-1/(4\\pi)]'=0$。"
+        },
+        {
+          "title": "计算径向导数",
+          "why": "穿过小球面的通量就是点源强度。",
+          "work": "$g'(r)=-1/(4\\pi r^2)$；半径为 $\\varepsilon$ 的球面面积是 $4\\pi\\varepsilon^2$。"
+        },
+        {
+          "title": "求小球通量",
+          "why": "散度定理把 $\\Delta g$ 在小球内的积分变成边界通量。",
+          "work": "$\\int_{r<\\varepsilon}\\Delta g\\,dV=4\\pi\\varepsilon^2g'(\\varepsilon)=4\\pi\\varepsilon^2[-1/(4\\pi\\varepsilon^2)]=-1$。"
+        },
+        {
+          "title": "修正整体符号",
+          "why": "通量为 $-1$ 表示候选函数产生的是负单位点源。",
+          "work": "因此 $\\Delta g=-\\delta$；把函数整体乘 $-1$，得到 $G(r)=-1/(4\\pi r)$ 且 $\\Delta G=\\delta$。"
+        }
+      ],
+      "check": [
+        "$G'(r)=1/(4\\pi r^2)$，故小球通量为 $4\\pi\\varepsilon^2G'(\\varepsilon)=1$。",
+        "对任意 $r>0$，$G$ 仍满足 $\\Delta G=0$；点源只在 $r=0$。",
+        "若题目改用算符 $-\\Delta$，则 $1/(4\\pi r)$ 的正号反而正确。"
+      ]
+    },
+    "en": {
+      "question": "Why does $1/(4\\pi r)$ have the wrong sign for this chapter's convention $\\Delta G=\\delta$?",
+      "given": "$r=|\\mathbf r|$, and the candidate is $g(r)=1/(4\\pi r)$. The point-source coefficient can be found from the flux through a small sphere around the origin.",
+      "goal": "Determine the sign of $\\Delta g$, then satisfy $\\Delta G=\\delta$ by writing $G$.",
+      "steps": [
+        {
+          "title": "Check away from the source",
+          "why": "A fundamental solution must satisfy the homogeneous equation wherever there is no point source.",
+          "work": "For $r>0$, the radial formula gives $\\Delta g=r^{-2}(r^2g')'=r^{-2}[-1/(4\\pi)]'=0$."
+        },
+        {
+          "title": "Differentiate radially",
+          "why": "The flux through a small sphere is the strength of the point source.",
+          "work": "$g'(r)=-1/(4\\pi r^2)$, while a sphere of radius $\\varepsilon$ has area $4\\pi\\varepsilon^2$."
+        },
+        {
+          "title": "Compute the small-sphere flux",
+          "why": "The divergence theorem converts the integral of $\\Delta g$ over the ball into boundary flux.",
+          "work": "$\\int_{r<\\varepsilon}\\Delta g\\,dV=4\\pi\\varepsilon^2g'(\\varepsilon)=4\\pi\\varepsilon^2[-1/(4\\pi\\varepsilon^2)]=-1$."
+        },
+        {
+          "title": "Correct the overall sign",
+          "why": "Flux $-1$ means that the candidate produces a negative unit point source.",
+          "work": "Therefore $\\Delta g=-\\delta$. Multiplying the function by $-1$ gives $G(r)=-1/(4\\pi r)$ and $\\Delta G=\\delta$."
+        }
+      ],
+      "check": [
+        "$G'(r)=1/(4\\pi r^2)$, so its small-sphere flux is $4\\pi\\varepsilon^2G'(\\varepsilon)=1$.",
+        "For every $r>0$, $G$ still satisfies $\\Delta G=0$; the point source occurs only at $r=0$.",
+        "If the operator were $-\\Delta$, the positive sign in $1/(4\\pi r)$ would instead be correct."
+      ]
+    }
+  },
+  "dirichlet": {
+    "chapter": 6,
+    "zh": {
+      "question": "怎样构造三维上半空间中零边界、单位点源的 Dirichlet 格林函数？",
+      "given": "区域是 $y>0$，真实源点为 $\\mathbf r_0=(x_0,y_0,z_0)$ 且 $y_0>0$。约定 $\\Delta G=\\delta(\\mathbf r-\\mathbf r_0)$，并要求 $G=0$ 于 $y=0$。",
+      "goal": "用镜像法写出 $G$，并逐项检查点源和边界。",
+      "steps": [
+        {
+          "title": "放置镜像源",
+          "why": "关于平面反射后，边界上任一点到两源的距离相等。",
+          "work": "把镜像点放在 $\\mathbf r_0^*=(x_0,-y_0,z_0)$，并定义 $R=|\\mathbf r-\\mathbf r_0|$、$R_*=|\\mathbf r-\\mathbf r_0^*|$。"
+        },
+        {
+          "title": "写真实源项",
+          "why": "本章采用 $\\Delta G=+\\delta$，所以三维单位点源前必须带负号。",
+          "work": "真实源贡献取 $-1/(4\\pi R)$，它在 $\\mathbf r=\\mathbf r_0$ 产生单位正点源。"
+        },
+        {
+          "title": "选择镜像符号",
+          "why": "要让平面上的两个等距离项相消，镜像项必须与真实源项异号。",
+          "work": "取 $G=-1/(4\\pi R)+1/(4\\pi R_*)$；镜像点位于 $y<0$，所以第二项在求解区域 $y>0$ 内没有奇点。"
+        },
+        {
+          "title": "检查平面边界",
+          "why": "Dirichlet 格林函数最关键的附加条件是边界值为零。",
+          "work": "当 $y=0$ 时，$R^2=(x-x_0)^2+y_0^2+(z-z_0)^2=R_*^2$，于是 $G=0$。"
+        },
+        {
+          "title": "得到边界核",
+          "why": "若边界值不是零，格林公式还需要 $G$ 的外法向导数。",
+          "work": "边界外法向为 $-\\mathbf e_y$；求导后得到 $P=\\frac{y}{2\\pi[(x-\\xi)^2+y^2+(z-\\zeta)^2]^{3/2}}$，且 $\\int_{\\mathbb R^2}P\\,d\\xi d\\zeta=1$。"
+        }
+      ],
+      "check": [
+        "域内只有 $R=0$ 的真实奇点，$R_*=0$ 位于区域外。",
+        "在 $y=0$ 上有 $R=R_*$，两个倒数项严格相消。",
+        "边界核 $P$ 为正且积分为 $1$，所以常边界值 $C$ 会返回常数解 $u=C$。"
+      ]
+    },
+    "en": {
+      "question": "How do we construct the Dirichlet Green function for a unit point source in the three-dimensional upper half-space with zero boundary values?",
+      "given": "The domain is $y>0$, with real source $\\mathbf r_0=(x_0,y_0,z_0)$ and $y_0>0$. Use $\\Delta G=\\delta(\\mathbf r-\\mathbf r_0)$ and require $G=0$ on $y=0$.",
+      "goal": "Use the image method to write $G$, then check the point source and boundary term by term.",
+      "steps": [
+        {
+          "title": "Place the image source",
+          "why": "After reflection across the plane, every boundary point is equally far from the two sources.",
+          "work": "Put the image at $\\mathbf r_0^*=(x_0,-y_0,z_0)$, and define $R=|\\mathbf r-\\mathbf r_0|$ and $R_*=|\\mathbf r-\\mathbf r_0^*|$."
+        },
+        {
+          "title": "Write the real-source term",
+          "why": "This chapter uses $\\Delta G=+\\delta$, so the three-dimensional unit-source term needs a minus sign.",
+          "work": "Use $-1/(4\\pi R)$ for the real source; it produces a positive unit point source at $\\mathbf r=\\mathbf r_0$."
+        },
+        {
+          "title": "Choose the image sign",
+          "why": "The two equal-distance terms must have opposite signs to cancel on the plane.",
+          "work": "Take $G=-1/(4\\pi R)+1/(4\\pi R_*)$. The image lies in $y<0$, so the second term has no singularity in the solution domain $y>0$."
+        },
+        {
+          "title": "Check the plane boundary",
+          "why": "The defining extra condition for a Dirichlet Green function is a zero boundary value.",
+          "work": "When $y=0$, $R^2=(x-x_0)^2+y_0^2+(z-z_0)^2=R_*^2$, so $G=0$."
+        },
+        {
+          "title": "Obtain the boundary kernel",
+          "why": "For nonzero prescribed boundary data, Green's formula also needs the outward normal derivative of $G$.",
+          "work": "The outward normal is $-\\mathbf e_y$. Differentiation gives $P=\\frac{y}{2\\pi[(x-\\xi)^2+y^2+(z-\\zeta)^2]^{3/2}}$, with $\\int_{\\mathbb R^2}P\\,d\\xi d\\zeta=1$."
+        }
+      ],
+      "check": [
+        "The only singularity in the domain is the real one at $R=0$; $R_*=0$ lies outside.",
+        "On $y=0$, $R=R_*$, so the two reciprocal-distance terms cancel exactly.",
+        "The kernel $P$ is positive and integrates to $1$, so constant boundary data $C$ returns the constant solution $u=C$."
+      ]
+    }
+  },
+  "neumann": {
+    "chapter": 6,
+    "zh": {
+      "question": "区间 $(0,L)$ 上的 $u''=1$ 配合 $u'(0)=u'(L)=0$ 是否有解？",
+      "given": "$L>0$，方程给定内部总源，两个端点给定导数。Neumann 问题必须先检查总源与边界通量是否相容。",
+      "goal": "判断原问题是否有解，并说明相容时为什么仍差一个常数。",
+      "steps": [
+        {
+          "title": "先积分方程",
+          "why": "对全区间积分会直接得到总源与端点通量之间的必要关系。",
+          "work": "$\\int_0^L u''(x)dx=u'(L)-u'(0)$，而 $\\int_0^L1dx=L$，所以必须有 $u'(L)-u'(0)=L$。"
+        },
+        {
+          "title": "代入原边界",
+          "why": "相容条件不满足时，无论怎样积分都不可能得到解。",
+          "work": "原条件给 $u'(L)-u'(0)=0-0=0$，却要求它等于 $L>0$，因此原问题无解。"
+        },
+        {
+          "title": "看一个相容版本",
+          "why": "把右端导数改成 $L$，可以看清求解过程以及剩余自由度。",
+          "work": "若 $u'(0)=0$、$u'(L)=L$，积分得 $u'=x+C_1$，由 $u'(0)=0$ 得 $C_1=0$；再积分得 $u=x^2/2+C_2$。"
+        },
+        {
+          "title": "用归一化定常数",
+          "why": "Neumann 条件只含导数，不能区分相差常数的两个函数。",
+          "work": "若再规定平均值为零，则 $L^{-1}\\int_0^L u\\,dx=L^2/6+C_2=0$，故 $C_2=-L^2/6$。"
+        }
+      ],
+      "check": [
+        "对相容解 $u=x^2/2+C_2$，有 $u''=1$、$u'(0)=0$、$u'(L)=L$。",
+        "把任意常数加到 $u$ 上都不改变 $u''$ 和两个导数边界，这正是常数自由度。",
+        "原问题的矛盾是总量矛盾，不是积分常数选择错误。"
+      ]
+    },
+    "en": {
+      "question": "On $(0,L)$, does $u''=1$ with $u'(0)=u'(L)=0$ have a solution?",
+      "given": "$L>0$; the equation specifies the total interior source, while derivatives are prescribed at both endpoints. A Neumann problem first requires compatibility between total source and boundary flux.",
+      "goal": "Decide whether the original problem has a solution, then explain why a compatible problem still has an arbitrary constant.",
+      "steps": [
+        {
+          "title": "Integrate the equation first",
+          "why": "Integrating over the whole interval directly gives the necessary relation between total source and endpoint flux.",
+          "work": "$\\int_0^L u''(x)dx=u'(L)-u'(0)$, while $\\int_0^L1dx=L$, so we must have $u'(L)-u'(0)=L$."
+        },
+        {
+          "title": "Insert the original boundary data",
+          "why": "If compatibility fails, no choice of integration constants can produce a solution.",
+          "work": "The original conditions give $u'(L)-u'(0)=0-0=0$, but it must equal $L>0$. Therefore the original problem has no solution."
+        },
+        {
+          "title": "Study a compatible version",
+          "why": "Changing the right derivative to $L$ shows both the solution process and the remaining freedom.",
+          "work": "If $u'(0)=0$ and $u'(L)=L$, integration gives $u'=x+C_1$, and $u'(0)=0$ gives $C_1=0$. Integrating again gives $u=x^2/2+C_2$."
+        },
+        {
+          "title": "Fix the constant by normalization",
+          "why": "Neumann conditions contain only derivatives, so they cannot distinguish functions that differ by a constant.",
+          "work": "If zero mean is also required, then $L^{-1}\\int_0^L u\\,dx=L^2/6+C_2=0$, so $C_2=-L^2/6$."
+        }
+      ],
+      "check": [
+        "For the compatible solution $u=x^2/2+C_2$, we have $u''=1$, $u'(0)=0$, and $u'(L)=L$.",
+        "Adding any constant to $u$ changes neither $u''$ nor the two derivative boundaries, which is exactly the constant freedom.",
+        "The contradiction in the original problem is a total-balance failure, not a bad choice of integration constants."
+      ]
+    }
+  },
+  "helmholtz": {
+    "chapter": 6,
+    "zh": {
+      "question": "为什么只检查 $R>0$ 的方程，不能证明 $g_C(R)=Ce^{ikR}/R$ 是单位点源基本解？",
+      "given": "$R=|\\mathbf r-\\mathbf r'|$，算符为 $\\Delta+k^2$，并要求 $(\\Delta+k^2)G=\\delta$。常数 $C$ 尚未确定。",
+      "goal": "分别检查源点外方程和源点通量，从而定出 $C$。",
+      "steps": [
+        {
+          "title": "检查源点外",
+          "why": "径向 Helmholtz 方程在 $R>0$ 可通过令 $v=Rg_C$ 化成常系数方程。",
+          "work": "$v(R)=Ce^{ikR}$，所以 $v''+k^2v=(-k^2+k^2)Ce^{ikR}=0$；因此任意 $C$ 都通过 $R>0$ 的检查。"
+        },
+        {
+          "title": "展开源点附近",
+          "why": "点源强度只由 $1/R$ 奇异项决定，正则项不会留下有限小球通量。",
+          "work": "$e^{ikR}=1+ikR+O(R^2)$，故 $g_C=C/R+ikC+O(R)$，并有 $g_C'=-C/R^2+O(1)$。"
+        },
+        {
+          "title": "计算通量",
+          "why": "$k^2g_C$ 的小球体积分趋于零，单位点源系数由导数通量给出。",
+          "work": "$\\oint_{R=\\varepsilon}g_C'\\,dS=4\\pi\\varepsilon^2[-C/\\varepsilon^2+O(1)]\\to-4\\pi C$。"
+        },
+        {
+          "title": "归一化单位点源",
+          "why": "方程右端是系数为 $1$ 的 $\\delta$，所以通量极限必须等于 $1$。",
+          "work": "令 $-4\\pi C=1$，得到 $C=-1/(4\\pi)$，即 $G=-e^{ikR}/(4\\pi R)$。"
+        },
+        {
+          "title": "再选辐射方向",
+          "why": "点源归一化只确定系数；出射或入射还要由时间约定和辐射条件选择。",
+          "work": "采用时间因子 $e^{-i\\omega t}$ 时，$e^{ikR}$ 对应出射波；$e^{-ikR}$ 也有相同的点源归一化，但对应入射波。"
+        }
+      ],
+      "check": [
+        "若误取 $C=-1/(2\\pi)$，通量为 $2$，对应强度为 $2$ 的点源。",
+        "$k^2\\int_{R<\\varepsilon}g_CdV=O(\\varepsilon^2)\\to0$，不会改变点源系数。",
+        "把 $G$ 乘以 $R$ 后是指数函数，直接满足 $v''+k^2v=0$。"
+      ]
+    },
+    "en": {
+      "question": "Why is checking the equation only for $R>0$ insufficient to prove that $g_C(R)=Ce^{ikR}/R$ is a unit-source fundamental solution?",
+      "given": "$R=|\\mathbf r-\\mathbf r'|$, the operator is $\\Delta+k^2$, and $(\\Delta+k^2)G=\\delta$ is required. The constant $C$ is unknown.",
+      "goal": "Check the equation away from the source and the source flux separately, then determine $C$.",
+      "steps": [
+        {
+          "title": "Check away from the source",
+          "why": "For $R>0$, the radial Helmholtz equation becomes a constant-coefficient equation after setting $v=Rg_C$.",
+          "work": "$v(R)=Ce^{ikR}$, so $v''+k^2v=(-k^2+k^2)Ce^{ikR}=0$. Thus every $C$ passes the $R>0$ check."
+        },
+        {
+          "title": "Expand near the source",
+          "why": "Only the singular $1/R$ term determines point-source strength; regular terms leave no finite small-sphere flux.",
+          "work": "$e^{ikR}=1+ikR+O(R^2)$, so $g_C=C/R+ikC+O(R)$ and $g_C'=-C/R^2+O(1)$."
+        },
+        {
+          "title": "Compute the flux",
+          "why": "The small-ball volume integral of $k^2g_C$ vanishes, so the derivative flux supplies the unit-source coefficient.",
+          "work": "$\\oint_{R=\\varepsilon}g_C'\\,dS=4\\pi\\varepsilon^2[-C/\\varepsilon^2+O(1)]\\to-4\\pi C$."
+        },
+        {
+          "title": "Normalize the unit source",
+          "why": "The coefficient $1$ multiplying $\\delta$ requires the limiting flux to equal $1$.",
+          "work": "Set $-4\\pi C=1$ to obtain $C=-1/(4\\pi)$, hence $G=-e^{ikR}/(4\\pi R)$."
+        },
+        {
+          "title": "Select the radiation direction",
+          "why": "Source normalization fixes the coefficient, while outgoing or incoming behavior still requires a time convention and radiation condition.",
+          "work": "With time factor $e^{-i\\omega t}$, $e^{ikR}$ is outgoing. The choice $e^{-ikR}$ has the same point-source normalization but is incoming."
+        }
+      ],
+      "check": [
+        "If $C=-1/(2\\pi)$ were used, the flux would be $2$, corresponding to a point source of strength $2$.",
+        "$k^2\\int_{R<\\varepsilon}g_CdV=O(\\varepsilon^2)\\to0$, so it does not alter the point-source coefficient.",
+        "After multiplying $G$ by $R$, the result is an exponential that directly satisfies $v''+k^2v=0$."
+      ]
+    }
+  },
+  "retarded": {
+    "chapter": 6,
+    "zh": {
+      "question": "原点从 $t=0$ 起持续施加 $f(\\mathbf r,t)=\\delta(\\mathbf r)H(t)$，零初值响应是什么？",
+      "given": "算符为 $\\partial_t^2-c^2\\Delta$，三维推迟格林函数是 $G_{\\rm ret}=\\delta(t-t'-R/c)/(4\\pi c^2R)$。这里 $R=|\\mathbf r-\\mathbf r'|$，且 $c>0$。",
+      "goal": "完成时空卷积，并说明信号到达前后的响应。",
+      "steps": [
+        {
+          "title": "写出卷积",
+          "why": "线性方程的响应是格林函数与源在全部源点和源时刻上的叠加。",
+          "work": "$u(\\mathbf r,t)=\\int d^3r'\\int dt'\\,\\frac{\\delta(t-t'-|\\mathbf r-\\mathbf r'|/c)}{4\\pi c^2|\\mathbf r-\\mathbf r'|}\\delta(\\mathbf r')H(t')$。"
+        },
+        {
+          "title": "先算空间积分",
+          "why": "空间 $\\delta(\\mathbf r')$ 只保留原点这个源位置。",
+          "work": "令 $\\mathbf r'=0$ 后，$|\\mathbf r-\\mathbf r'|=R=|\\mathbf r|$，所以 $u(R,t)=\\frac1{4\\pi c^2R}\\int dt'\\,\\delta(t-t'-R/c)H(t')$。"
+        },
+        {
+          "title": "再算时间积分",
+          "why": "时间 δ 函数只取推迟时刻，表示传播需要时间 $R/c$。",
+          "work": "零点是 $t'=t-R/c$，且 $|d(t-t'-R/c)/dt'|=1$，故积分等于 $H(t-R/c)$，没有额外的 $c$ 因子。"
+        },
+        {
+          "title": "写出响应",
+          "why": "把两次积分的结果合并，就得到完整的因果解。",
+          "work": "$u(R,t)=\\frac{H(t-R/c)}{4\\pi c^2R}$。"
+        },
+        {
+          "title": "分到达前后解释",
+          "why": "阶跃函数把有限传播速度直接变成一个清楚的分段结果。",
+          "work": "若 $t<R/c$，则 $u=0$；若 $t>R/c$，则 $u=1/(4\\pi c^2R)$。"
+        }
+      ],
+      "check": [
+        "到达时间为 $t=R/c$；把距离加倍会把等待时间也加倍。",
+        "到达后响应含 $1/R$，把距离加倍会把幅值减半。",
+        "当 $t<0$ 时必有 $t<R/c$，所以 $u=0$，满足零初值的因果要求。"
+      ]
+    },
+    "en": {
+      "question": "From $t=0$, a source $f(\\mathbf r,t)=\\delta(\\mathbf r)H(t)$ acts continuously at the origin. What is the zero-initial-data response?",
+      "given": "The operator is $\\partial_t^2-c^2\\Delta$, and the three-dimensional retarded Green function is $G_{\\rm ret}=\\delta(t-t'-R/c)/(4\\pi c^2R)$. Here $R=|\\mathbf r-\\mathbf r'|$ and $c>0$.",
+      "goal": "Carry out the space-time convolution and explain the response before and after signal arrival.",
+      "steps": [
+        {
+          "title": "Write the convolution",
+          "why": "For a linear equation, the response is the Green function summed over all source positions and source times.",
+          "work": "$u(\\mathbf r,t)=\\int d^3r'\\int dt'\\,\\frac{\\delta(t-t'-|\\mathbf r-\\mathbf r'|/c)}{4\\pi c^2|\\mathbf r-\\mathbf r'|}\\delta(\\mathbf r')H(t')$."
+        },
+        {
+          "title": "Do the spatial integral first",
+          "why": "The spatial $\\delta(\\mathbf r')$ keeps only the source position at the origin.",
+          "work": "After setting $\\mathbf r'=0$, $|\\mathbf r-\\mathbf r'|=R=|\\mathbf r|$, so $u(R,t)=\\frac1{4\\pi c^2R}\\int dt'\\,\\delta(t-t'-R/c)H(t')$."
+        },
+        {
+          "title": "Do the time integral",
+          "why": "The time delta selects the retarded time, showing that propagation requires time $R/c$.",
+          "work": "Its zero is $t'=t-R/c$, and $|d(t-t'-R/c)/dt'|=1$. Thus the integral is $H(t-R/c)$ with no extra factor of $c$."
+        },
+        {
+          "title": "Write the response",
+          "why": "Combining the two integrations gives the complete causal solution.",
+          "work": "$u(R,t)=\\frac{H(t-R/c)}{4\\pi c^2R}$."
+        },
+        {
+          "title": "Interpret before and after arrival",
+          "why": "The step function turns finite propagation speed into a clear piecewise result.",
+          "work": "If $t<R/c$, then $u=0$; if $t>R/c$, then $u=1/(4\\pi c^2R)$."
+        }
+      ],
+      "check": [
+        "The arrival time is $t=R/c$; doubling the distance doubles the waiting time.",
+        "After arrival, the response contains $1/R$, so doubling the distance halves the amplitude.",
+        "When $t<0$, we necessarily have $t<R/c$, so $u=0$, satisfying zero-initial-data causality."
+      ]
+    }
+  }
+}
